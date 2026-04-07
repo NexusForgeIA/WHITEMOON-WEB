@@ -12,8 +12,8 @@
             --primary: #6366f1; --primary-dark: #4f46e5; --secondary: #8b5cf6;
             --whatsapp: #25D366; --whatsapp-dark: #128C7E;
             --dark: #0f172a; --gray: #64748b; --light: #f8fafc;
-            --success: #10b981; --error: #ef4444; --shadow: 0 10px 40px -10px rgba(0,0,0,0.15); --radius: 16px;
             --phone: #0ea5e9; --phone-dark: #0284c7;
+            --shadow: 0 10px 40px -10px rgba(0,0,0,0.15); --radius: 16px;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: var(--dark); background: var(--light); }
@@ -32,8 +32,6 @@
         .btn-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(37,211,102,0.3); }
         .btn-phone { background: var(--phone); color: white; }
         .btn-phone:hover { background: var(--phone-dark); transform: translateY(-2px); box-shadow: 0 10px 25px rgba(14,165,233,0.3); }
-        .btn-outline { background: transparent; border: 2px solid white; color: white; }
-        .btn-outline:hover { background: rgba(255,255,255,0.15); }
         
         .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; padding: 30px 0; background: white; border-radius: var(--radius); box-shadow: var(--shadow); margin: -30px auto 0; position: relative; z-index: 3; max-width: 1000px; }
         .stat { text-align: center; padding: 20px 10px; }
@@ -79,55 +77,50 @@
         .phone-display { font-size: 1.5rem; font-weight: 700; color: var(--dark); letter-spacing: 2px; margin: 10px 0; }
 
         /* ========== BOTÓN FLOTANTE WHATSAPP ========== */
-        .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark)); display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5); transition: transform 0.2s ease, box-shadow 0.2s ease; animation: wa-pulse 2s infinite; }
+        .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 9999; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark)); display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5); transition: transform 0.2s ease; animation: wa-pulse 2s infinite; }
         .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
-        .whatsapp-float:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7); animation: none; }
+        .whatsapp-float:hover { transform: scale(1.05) translateY(-2px); animation: none; }
         .status-badge { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; background: #4ade80; border: 2px solid white; border-radius: 50%; }
         .tooltip { position: absolute; right: 72px; bottom: 50%; transform: translateY(50%); background: var(--dark); color: white; padding: 8px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 500; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.2s; pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
         .tooltip::after { content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-left-color: var(--dark); }
         .whatsapp-float:hover .tooltip { opacity: 1; visibility: visible; transform: translateY(45%); }
         @keyframes wa-pulse { 0%, 100% { box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5); } 50% { box-shadow: 0 6px 35px rgba(37, 211, 102, 0.8); } }
 
-        /* ========== CHATBOT INTERACTIVO ========== */
+        /* ========== CHATBOT (CORREGIDO Y ROBUSTO) ========== */
         .chatbot-toggle { position: fixed; bottom: 24px; left: 24px; z-index: 9998; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(99,102,241,0.5); transition: all 0.2s; animation: pulse-primary 2s infinite; }
         .chatbot-toggle svg { width: 28px; height: 28px; fill: white; }
         .chatbot-toggle:hover { transform: scale(1.05) translateY(-2px); animation: none; }
         @keyframes pulse-primary { 0%, 100% { box-shadow: 0 6px 24px rgba(99,102,241,0.5); } 50% { box-shadow: 0 6px 35px rgba(99,102,241,0.8); } }
 
-        .chatbot-window { position: fixed; bottom: 96px; left: 24px; z-index: 9997; width: 360px; max-height: 500px; background: white; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; border: 1px solid #e2e8f0; animation: slideUp 0.3s ease; }
-        .chatbot-window.active { display: flex; }
-        .chatbot-header { padding: 14px 18px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; display: flex; align-items: center; justify-content: space-between; }
-        .chatbot-header-info { display: flex; align-items: center; gap: 10px; }
-        .chatbot-avatar { width: 36px; height: 36px; border-radius: 50%; background: white; display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: 700; font-size: 1rem; }
-        .chatbot-header-text h4 { font-size: 0.95rem; font-weight: 600; }
-        .chatbot-header-text p { font-size: 0.75rem; opacity: 0.9; display: flex; align-items: center; gap: 4px; }
-        .chatbot-header-text p .online-dot { width: 7px; height: 7px; background: #4ade80; border-radius: 50%; display: inline-block; }
+        .chatbot-window { position: fixed; bottom: 96px; left: 24px; z-index: 9997; width: 350px; max-height: 480px; background: white; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,0.2); display: none; flex-direction: column; overflow: hidden; border: 1px solid #e2e8f0; }
+        .chatbot-window.active { display: flex; animation: slideUp 0.3s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .chatbot-header { padding: 14px 18px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+        .chatbot-header h4 { font-size: 0.95rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
         .chatbot-close { background: rgba(255,255,255,0.2); border: none; color: white; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: background 0.2s; }
         .chatbot-close:hover { background: rgba(255,255,255,0.35); }
         
-        .chatbot-messages { flex: 1; padding: 14px; background: #fafafa; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; min-height: 120px; }
+        .chatbot-messages { flex: 1; padding: 14px; background: #fafafa; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; min-height: 150px; max-height: 260px; }
         .chatbot-message { display: flex; gap: 8px; animation: fadeIn 0.2s ease; }
         .chatbot-message.bot { align-self: flex-start; }
         .chatbot-message.user { align-self: flex-end; flex-direction: row-reverse; }
-        .chatbot-message .bubble { padding: 10px 14px; border-radius: 14px; font-size: 0.85rem; line-height: 1.45; max-width: 85%; }
+        .chatbot-message .bubble { padding: 10px 14px; border-radius: 14px; font-size: 0.85rem; line-height: 1.45; max-width: 90%; }
         .chatbot-message.bot .bubble { background: #f1f5f9; color: var(--dark); border-bottom-left-radius: 4px; }
         .chatbot-message.user .bubble { background: var(--primary); color: white; border-bottom-right-radius: 4px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        .chatbot-quick-replies { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px; background: white; border-top: 1px solid #e2e8f0; }
-        .quick-btn { flex: 1 1 calc(50% - 8px); background: #f8fafc; border: 1px solid #e2e8f0; color: var(--dark); padding: 9px 10px; border-radius: 10px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; text-align: center; font-weight: 500; }
+        .chatbot-panels { flex-shrink: 0; background: white; border-top: 1px solid #e2e8f0; padding: 12px; }
+        .chatbot-quick-replies { display: flex; flex-wrap: wrap; gap: 8px; }
+        .quick-btn { flex: 1 1 calc(50% - 4px); background: #f8fafc; border: 1px solid #e2e8f0; color: var(--dark); padding: 9px 10px; border-radius: 10px; font-size: 0.8rem; cursor: pointer; transition: all 0.2s; text-align: center; font-weight: 500; }
         .quick-btn:hover { background: var(--primary); color: white; border-color: var(--primary); transform: translateY(-1px); }
         
-        .chatbot-actions { display: none; flex-direction: column; gap: 8px; padding: 12px; background: white; border-top: 1px solid #e2e8f0; }
-        .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border-radius: 10px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.2s; border: 1px solid #e2e8f0; }
+        .chatbot-actions { display: none; flex-direction: column; gap: 8px; }
+        .action-btn { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px; border-radius: 10px; font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: all 0.2s; border: 1px solid #e2e8f0; cursor: pointer; background: none; width: 100%; }
         .action-btn.whatsapp { background: var(--whatsapp); color: white; border-color: var(--whatsapp-dark); }
         .action-btn.whatsapp:hover { background: var(--whatsapp-dark); }
-        .action-btn.phone { background: var(--phone); color: white; border-color: var(--phone-dark); }
-        .action-btn.phone:hover { background: var(--phone-dark); }
         .action-btn.menu { background: #f1f5f9; color: var(--dark); }
         .action-btn.menu:hover { background: #e2e8f0; }
-        
-        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         @media (max-width: 480px) {
             .whatsapp-float { width: 54px; height: 54px; bottom: 16px; right: 16px; }
@@ -150,14 +143,9 @@
             <span class="badge">🧠 IA + WhatsApp Business + Automatización</span>
             <h1>Transforma tu Negocio con <br>Inteligencia Artificial</h1>
             <p>Atiende, vende y escala con chatbots inteligentes y flujos automáticos en WhatsApp 24/7.</p>
-            
             <div class="contact-cta">
-                <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20con%20IA" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    💬 WhatsApp: 643 199 580
-                </a>
-                <a href="tel:+34643199580" class="btn btn-phone">
-                    📞 Llamar ahora
-                </a>
+                <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20automatizaci%C3%B3n%20con%20IA" class="btn btn-whatsapp" target="_blank" rel="noopener">💬 WhatsApp: 643 199 580</a>
+                <a href="tel:+34643199580" class="btn btn-phone">📞 Llamar ahora</a>
             </div>
         </div>
     </header>
@@ -199,24 +187,10 @@
             <div class="cta-section">
                 <h2>🎯 ¿Hablamos?</h2>
                 <p>Contáctanos directamente por WhatsApp o llamada. Sin formularios, sin esperas. Respuesta en menos de 5 minutos.</p>
-                
                 <div class="contact-cards">
-                    <div class="contact-card">
-                        <h3>💬 WhatsApp</h3>
-                        <p>Escríbenos cuando quieras. Te respondemos al instante con información personalizada.</p>
-                        <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20quiero%20m%C3%A1s%20informaci%C3%B3n" class="btn btn-whatsapp" target="_blank" rel="noopener">
-                            Chatear ahora
-                        </a>
-                    </div>
-                    <div class="contact-card">
-                        <h3>📞 Llamada directa</h3>
-                        <p>¿Prefieres hablar por teléfono? Llámanos y te atendemos personalmente.</p>
-                        <a href="tel:+34643199580" class="btn btn-phone">
-                            643 199 580
-                        </a>
-                    </div>
+                    <div class="contact-card"><h3>💬 WhatsApp</h3><p>Escríbenos cuando quieras. Te respondemos al instante con información personalizada.</p><a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20quiero%20m%C3%A1s%20informaci%C3%B3n" class="btn btn-whatsapp" target="_blank" rel="noopener">Chatear ahora</a></div>
+                    <div class="contact-card"><h3>📞 Llamada directa</h3><p>¿Prefieres hablar por teléfono? Llámanos y te atendemos personalmente.</p><a href="tel:+34643199580" class="btn btn-phone">643 199 580</a></div>
                 </div>
-                
                 <p style="margin-top:25px;font-size:0.9rem;opacity:0.8">📍 Majadahonda, Madrid | 🕒 Lunes-Viernes 9:00-20:00</p>
             </div>
         </div>
@@ -224,154 +198,137 @@
 
     <footer>
         <div class="container">
-            <div class="footer-links">
-                <a href="#">Privacidad</a>
-                <a href="#">Términos</a>
-                <a href="mailto:comercialaetheria@gmail.com">comercialaetheria@gmail.com</a>
-            </div>
+            <div class="footer-links"><a href="#">Privacidad</a><a href="#">Términos</a><a href="mailto:comercialaetheria@gmail.com">comercialaetheria@gmail.com</a></div>
             <p>&copy; <span id="year"></span> AETHERIA. Todos los derechos reservados.</p>
             <p class="phone-display">📞 643 199 580</p>
         </div>
     </footer>
 
     <!-- ========== BOTÓN FLOTANTE WHATSAPP ========== -->
-    <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20necesito%20informaci%C3%B3n" 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Contactar por WhatsApp"
-       title="Escríbenos por WhatsApp">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
+    <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20necesito%20informaci%C3%B3n" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" title="Escríbenos por WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         <span class="status-badge" title="Online"></span>
         <span class="tooltip">💬 Respuesta en &lt;5 min</span>
     </a>
 
     <!-- ========== CHATBOT INTERACTIVO ========== -->
-    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Abrir asistente">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-2-2H6v-2h12v2zm0-4H6V8h12v2z"/>
-        </svg>
+    <button class="chatbot-toggle" id="chatbotToggle" type="button" aria-label="Abrir asistente">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-2-2H6v-2h12v2zm0-4H6V8h12v2z"/></svg>
     </button>
 
     <div class="chatbot-window" id="chatbotWindow" role="dialog" aria-label="Asistente AETHERIA">
         <div class="chatbot-header">
-            <div class="chatbot-header-info">
-                <div class="chatbot-avatar">🤖</div>
-                <div class="chatbot-header-text">
-                    <h4>AETHERIA Assistant</h4>
-                    <p><span class="online-dot"></span> Online</p>
-                </div>
-            </div>
-            <button class="chatbot-close" id="chatbotClose" aria-label="Cerrar">×</button>
+            <h4>🤖 AETHERIA Assistant</h4>
+            <button class="chatbot-close" id="chatbotClose" type="button" aria-label="Cerrar">×</button>
         </div>
         
         <div class="chatbot-messages" id="chatbotMessages">
-            <div class="chatbot-message bot">
-                <div class="bubble">¡Hola! 👋 Soy tu asistente virtual. Elige el servicio que te interesa y te explico cómo funciona:</div>
-            </div>
+            <div class="chatbot-message bot"><div class="bubble">¡Hola! 👋 Elige un servicio para ver cómo funciona:</div></div>
         </div>
         
-        <div class="chatbot-quick-replies" id="quickReplies">
-            <button class="quick-btn" data-service="whatsapp">📱 Automatización WhatsApp</button>
-            <button class="quick-btn" data-service="chatbot">🤖 Chatbots IA</button>
-            <button class="quick-btn" data-service="marketing">📊 Marketing Predictivo</button>
-            <button class="quick-btn" data-service="embudos">🎯 Embudos Inteligentes</button>
-            <button class="quick-btn" data-service="contenido">✍️ Contenido con IA</button>
-            <button class="quick-btn" data-service="analytics">🔍 Business Intelligence</button>
-        </div>
+        <div class="chatbot-panels">
+            <div class="chatbot-quick-replies" id="quickReplies">
+                <button class="quick-btn" type="button" data-service="whatsapp">📱 Automatización WhatsApp</button>
+                <button class="quick-btn" type="button" data-service="chatbot">🤖 Chatbots IA</button>
+                <button class="quick-btn" type="button" data-service="marketing">📊 Marketing Predictivo</button>
+                <button class="quick-btn" type="button" data-service="embudos">🎯 Embudos Inteligentes</button>
+                <button class="quick-btn" type="button" data-service="contenido">✍️ Contenido con IA</button>
+                <button class="quick-btn" type="button" data-service="analytics">🔍 Business Intelligence</button>
+            </div>
 
-        <div class="chatbot-actions" id="chatActions">
-            <a href="https://wa.me/34643199580?text=Hola%20AETHERIA,%20me%20interesa%20este%20servicio%3A%20" class="action-btn whatsapp" target="_blank" rel="noopener" id="waLink">💬 Consultar por WhatsApp</a>
-            <a href="tel:+34643199580" class="action-btn phone">📞 Llamar ahora</a>
-            <button class="action-btn menu" id="backToMenu">🔄 Ver otros servicios</button>
+            <div class="chatbot-actions" id="chatActions">
+                <a href="#" class="action-btn whatsapp" target="_blank" rel="noopener" id="waLink">💬 Consultar por WhatsApp</a>
+                <button class="action-btn menu" id="backToMenu" type="button">🔄 Ver otros servicios</button>
+            </div>
         </div>
     </div>
 
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
-        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => { 
-            e.preventDefault(); 
-            const t = document.querySelector(a.getAttribute('href')); 
-            if(t) t.scrollIntoView({behavior:'smooth', block:'start'}); 
-        }));
 
-        // ========== LÓGICA DEL CHATBOT ==========
-        const servicesData = {
-            whatsapp: "📱 <b>Automatización WhatsApp:</b> Conectamos tu CRM, email y herramientas con flujos N8N/Zapier. Enviamos recordatorios, confirmaciones y seguimientos automáticos sin intervención manual.",
-            chatbot: "🤖 <b>Chatbots IA:</b> Agentes con GPT-4 que atienden 24/7, califican leads, agendan citas y transfieren a humanos con contexto completo. Se integra en web, WhatsApp y redes.",
-            marketing: "📊 <b>Marketing Predictivo:</b> Analizamos datos históricos y comportamiento en tiempo real para optimizar campañas, predecir conversiones y lanzar mensajes en el momento exacto.",
-            embudos: "🎯 <b>Embudos Inteligentes:</b> Rutas de conversión dinámicas que adaptan el mensaje, ofertas y pasos según el comportamiento del usuario. Aumentan la tasa de cierre un 40-60%.",
-            contenido: "✍️ <b>Contenido con IA:</b> Generación masiva de copy persuasivo para emails, posts, guiones y WhatsApp, entrenado con la voz y valores de tu marca. Listo para publicar o editar.",
-            analytics: "🔍 <b>Business Intelligence:</b> Dashboards personalizados con métricas clave: tasa de apertura, respuesta, conversión, CAC y ROI. Alertas automáticas cuando algo se desvía."
-        };
+        // Esperar a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', () => {
+            const servicesData = {
+                whatsapp: "📱 <b>Automatización WhatsApp:</b> Conectamos tu CRM, email y herramientas con flujos N8N/Zapier. Enviamos recordatorios, confirmaciones y seguimientos automáticos sin intervención manual.",
+                chatbot: "🤖 <b>Chatbots IA:</b> Agentes con GPT-4 que atienden 24/7, califican leads, agendan citas y transfieren a humanos con contexto completo. Se integra en web, WhatsApp y redes.",
+                marketing: "📊 <b>Marketing Predictivo:</b> Analizamos datos históricos y comportamiento en tiempo real para optimizar campañas, predecir conversiones y lanzar mensajes en el momento exacto.",
+                embudos: "🎯 <b>Embudos Inteligentes:</b> Rutas de conversión dinámicas que adaptan el mensaje, ofertas y pasos según el comportamiento del usuario. Aumentan la tasa de cierre un 40-60%.",
+                contenido: "✍️ <b>Contenido con IA:</b> Generación masiva de copy persuasivo para emails, posts, guiones y WhatsApp, entrenado con la voz y valores de tu marca. Listo para publicar o editar.",
+                analytics: "🔍 <b>Business Intelligence:</b> Dashboards personalizados con métricas clave: tasa de apertura, respuesta, conversión, CAC y ROI. Alertas automáticas cuando algo se desvía."
+            };
 
-        const chatToggle = document.getElementById('chatbotToggle');
-        const chatWindow = document.getElementById('chatbotWindow');
-        const chatClose = document.getElementById('chatbotClose');
-        const messages = document.getElementById('chatbotMessages');
-        const quickReplies = document.getElementById('quickReplies');
-        const chatActions = document.getElementById('chatActions');
-        const waLink = document.getElementById('waLink');
-        const backToMenu = document.getElementById('backToMenu');
+            const chatToggle = document.getElementById('chatbotToggle');
+            const chatWindow = document.getElementById('chatbotWindow');
+            const chatClose = document.getElementById('chatbotClose');
+            const messages = document.getElementById('chatbotMessages');
+            const quickReplies = document.getElementById('quickReplies');
+            const chatActions = document.getElementById('chatActions');
+            const waLink = document.getElementById('waLink');
+            const backToMenu = document.getElementById('backToMenu');
 
-        function addMessage(html, sender) {
-            const div = document.createElement('div');
-            div.className = `chatbot-message ${sender}`;
-            div.innerHTML = `<div class="bubble">${html}</div>`;
-            messages.appendChild(div);
-            messages.scrollTop = messages.scrollHeight;
-        }
+            // Abrir chat
+            chatToggle.addEventListener('click', () => {
+                chatWindow.classList.add('active');
+                chatToggle.style.display = 'none';
+            });
 
-        function showService(key) {
-            const btnText = document.querySelector(`[data-service="${key}"]`).textContent;
-            addMessage(btnText, 'user');
-            
-            setTimeout(() => {
-                addMessage(servicesData[key] + '<br><br>¿Te gustaría ver cómo se aplicaría a tu negocio?', 'bot');
-                quickReplies.style.display = 'none';
-                chatActions.style.display = 'flex';
-                
-                // Actualizar enlace de WhatsApp con el servicio seleccionado
-                const cleanText = btnText.replace(/[^\w\s]/gi, '').trim();
-                waLink.href = `https://wa.me/34643199580?text=Hola%20AETHERIA,%20me%20interesa:%20${encodeURIComponent(cleanText)}`;
-                
-                messages.scrollTop = messages.scrollHeight;
-            }, 300);
-        }
-
-        function resetChat() {
-            chatActions.style.display = 'none';
-            quickReplies.style.display = 'flex';
-            // Limpiar mensajes excepto el saludo inicial
-            messages.innerHTML = `<div class="chatbot-message bot"><div class="bubble">¡Hola! 👋 Soy tu asistente virtual. Elige el servicio que te interesa y te explico cómo funciona:</div></div>`;
-        }
-
-        // Event Listeners
-        chatToggle.addEventListener('click', () => {
-            chatWindow.classList.add('active');
-            chatToggle.style.display = 'none';
-        });
-
-        chatClose.addEventListener('click', () => {
-            chatWindow.classList.remove('active');
-            chatToggle.style.display = 'flex';
-        });
-
-        document.querySelectorAll('.quick-btn').forEach(btn => {
-            btn.addEventListener('click', () => showService(btn.dataset.service));
-        });
-
-        backToMenu.addEventListener('click', resetChat);
-
-        document.addEventListener('click', (e) => {
-            if (chatWindow.classList.contains('active') && 
-                !chatWindow.contains(e.target) && 
-                e.target !== chatToggle) {
+            // Cerrar chat
+            chatClose.addEventListener('click', () => {
                 chatWindow.classList.remove('active');
                 chatToggle.style.display = 'flex';
+            });
+
+            // Cerrar al hacer clic fuera
+            document.addEventListener('click', (e) => {
+                if (chatWindow.classList.contains('active') && 
+                    !chatWindow.contains(e.target) && 
+                    e.target !== chatToggle) {
+                    chatWindow.classList.remove('active');
+                    chatToggle.style.display = 'flex';
+                }
+            });
+
+            // Función para mostrar servicio
+            function showService(key) {
+                const btn = document.querySelector(`[data-service="${key}"]`);
+                if (!btn) return;
+                const serviceName = btn.textContent;
+
+                // Mensaje usuario
+                const userMsg = document.createElement('div');
+                userMsg.className = 'chatbot-message user';
+                userMsg.innerHTML = `<div class="bubble">${serviceName}</div>`;
+                messages.appendChild(userMsg);
+
+                // Respuesta bot con delay
+                setTimeout(() => {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'chatbot-message bot';
+                    botMsg.innerHTML = `<div class="bubble">${servicesData[key] || 'Info no disponible.'}<br><br>¿Quieres que te lo explique por WhatsApp?</div>`;
+                    messages.appendChild(botMsg);
+                    
+                    quickReplies.style.display = 'none';
+                    chatActions.style.display = 'flex';
+                    
+                    // Actualizar enlace WhatsApp
+                    const cleanName = serviceName.replace(/[^\w\s]/gi, '').trim();
+                    waLink.href = `https://wa.me/34643199580?text=Hola%20AETHERIA,%20me%20interesa:%20${encodeURIComponent(cleanName)}`;
+                    
+                    messages.scrollTop = messages.scrollHeight;
+                }, 350);
             }
+
+            // Eventos botones rápidos
+            document.querySelectorAll('.quick-btn').forEach(btn => {
+                btn.addEventListener('click', () => showService(btn.dataset.service));
+            });
+
+            // Botón volver al menú
+            backToMenu.addEventListener('click', () => {
+                chatActions.style.display = 'none';
+                quickReplies.style.display = 'flex';
+                messages.innerHTML = `<div class="chatbot-message bot"><div class="bubble">¡Hola! 👋 Elige un servicio para ver cómo funciona:</div></div>`;
+            });
         });
     </script>
 </body>
