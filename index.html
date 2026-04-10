@@ -521,6 +521,52 @@
     .mnotice { background: rgba(255,200,0,.05); border: 1px solid rgba(255,200,0,.15); border-radius: 8px; padding: 10px 14px; margin-top: 12px; }
     .mnotice p { font-size: .78rem; color: rgba(255,220,100,.7); }
     .mwa { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 14px; border-radius: 10px; border: none; background: var(--wa); color: #fff; font-family: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; text-decoration: none; margin-top: 22px; transition: all .2s; }
+    /* Lead form inside modal */
+    .lead-divider { display: flex; align-items: center; gap: 12px; margin: 24px 0 16px; }
+    .lead-divider::before,.lead-divider::after { content:''; flex:1; height:1px; background: rgba(124,77,255,.2); }
+    .lead-divider span { font-size: .78rem; color: var(--p2); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; white-space: nowrap; }
+    .lead-form { display: flex; flex-direction: column; gap: 10px; }
+    .lead-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    @media(max-width:520px){ .lead-row { grid-template-columns: 1fr; } }
+    .lead-field { display: flex; flex-direction: column; gap: 5px; }
+    .lead-field label { font-size: .8rem; font-weight: 500; color: var(--muted); }
+    .lead-field input, .lead-field textarea {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: .88rem;
+      outline: none;
+      transition: border .2s, box-shadow .2s;
+      width: 100%;
+    }
+    .lead-field input:focus, .lead-field textarea:focus {
+      border-color: var(--p);
+      box-shadow: 0 0 0 3px rgba(124,77,255,.12);
+    }
+    .lead-field textarea { min-height: 70px; resize: vertical; line-height: 1.5; }
+    .lead-send-btn {
+      display: flex; align-items: center; justify-content: center; gap: 9px;
+      width: 100%; padding: 13px;
+      border-radius: 10px; border: none;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff; font-family: inherit; font-size: .9rem; font-weight: 700;
+      cursor: pointer; margin-top: 6px; transition: all .2s;
+      box-shadow: 0 4px 18px rgba(124,58,237,.3);
+    }
+    .lead-send-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 22px rgba(124,58,237,.45); }
+    .lead-ok {
+      background: rgba(16,185,129,.08);
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: .85rem;
+      color: #6ee7b7;
+      text-align: center;
+      margin-top: 4px;
+    }
     .mwa:hover { background: var(--wa-dark); transform: translateY(-1px); }
 
     /* ─── LEGAL ─── */
@@ -1054,15 +1100,82 @@ function openPack(id){
   document.getElementById('pm-ico').textContent=p.ico;
   document.getElementById('pm-title').textContent=p.title;
   document.getElementById('pm-sub').textContent=p.sub;
+
+  const leadForm = (id === 'basic' || id === 'advance') ? `
+    <div class="lead-divider"><span>¿Te interesa? Déjanos tus datos</span></div>
+    <div class="lead-form" id="leadForm-${id}">
+      <div class="lead-row">
+        <div class="lead-field">
+          <label>Nombre y apellido</label>
+          <input type="text" id="lead-nombre-${id}" placeholder="Tu nombre">
+        </div>
+        <div class="lead-field">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" id="lead-tel-${id}" placeholder="6XX XXX XXX">
+        </div>
+      </div>
+      <div class="lead-row">
+        <div class="lead-field">
+          <label>Email</label>
+          <input type="email" id="lead-email-${id}" placeholder="tu@email.com">
+        </div>
+        <div class="lead-field">
+          <label>Tipo de negocio</label>
+          <input type="text" id="lead-negocio-${id}" placeholder="Ej: clínica, abogado, tienda...">
+        </div>
+      </div>
+      <div class="lead-field" style="margin-top:8px">
+        <label>¿Algo que quieras contarnos? <span style="color:var(--muted);font-weight:400">(opcional)</span></label>
+        <textarea id="lead-msg-${id}" placeholder="Cuéntanos brevemente tu negocio o dudas..." style="min-height:70px;resize:vertical"></textarea>
+      </div>
+      <button class="lead-send-btn" onclick="sendLead('${id}')">
+        <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2C8.268 2 2 8.268 2 16c0 2.49.638 4.83 1.757 6.865L2 30l7.331-1.724A13.916 13.916 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"/></svg>
+        Enviar solicitud por WhatsApp
+      </button>
+      <div id="lead-ok-${id}" class="lead-ok" style="display:none">
+        ✅ <strong>¡Solicitud enviada!</strong> Te contactaremos en menos de 24h.
+      </div>
+    </div>
+  ` : '';
+
   document.getElementById('pm-body').innerHTML=
     '<div class="mprice"><div class="mprice-main">'+p.price+'</div><div class="mprice-per">'+p.period+'</div>'+(p.note?'<div class="mprice-note">'+p.note+'</div>':'')+' </div>'+
     '<div class="mftitle">Qué incluye</div>'+
     '<ul class="mflist">'+p.features.map(f=>'<li>'+f+'</li>').join('')+'</ul>'+
     (p.noInclude?'<div class="mnotice"><p>ℹ️ '+p.noInclude+'</p></div>':'')+
+    leadForm +
     '<a href="https://wa.me/34643199580?text=Hola%20WHITEMOON,%20quiero%20info%20'+p.wa+'" target="_blank" class="mwa">'+
-    '<svg width="16" height="16" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 8.268 2 16c0 2.49.638 4.83 1.757 6.865L2 30l7.331-1.724A13.916 13.916 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"/></svg>Pedir información sobre este pack</a>';
+    '<svg width="16" height="16" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 8.268 2 16c0 2.49.638 4.83 1.757 6.865L2 30l7.331-1.724A13.916 13.916 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"/></svg>Hablar directamente por WhatsApp</a>';
   document.getElementById('pack-modal').style.display='block';
   document.body.style.overflow='hidden';
+}
+
+function sendLead(packId) {
+  const nombre  = document.getElementById('lead-nombre-' + packId)?.value.trim() || '';
+  const tel     = document.getElementById('lead-tel-' + packId)?.value.trim() || '';
+  const email   = document.getElementById('lead-email-' + packId)?.value.trim() || '';
+  const negocio = document.getElementById('lead-negocio-' + packId)?.value.trim() || '';
+  const msg     = document.getElementById('lead-msg-' + packId)?.value.trim() || '';
+
+  if (!nombre || !tel) {
+    alert('Por favor, rellena al menos tu nombre y teléfono.');
+    return;
+  }
+
+  const packName = packId === 'basic' ? 'Pack Basic 99€/mes' : 'Pack Advance 199€/mes';
+  const text = encodeURIComponent(
+    '🔥 *Nuevo lead desde la web* 🔥\n\n' +
+    '*Pack interesado:* ' + packName + '\n' +
+    '*Nombre:* ' + nombre + '\n' +
+    '*Teléfono:* ' + tel + '\n' +
+    '*Email:* ' + (email || '—') + '\n' +
+    '*Negocio:* ' + (negocio || '—') + '\n' +
+    '*Mensaje:* ' + (msg || '—')
+  );
+
+  window.open('https://wa.me/34643199580?text=' + text, '_blank');
+  document.getElementById('lead-ok-' + packId).style.display = 'block';
+  document.getElementById('lead-send-btn') && (document.getElementById('lead-send-btn').disabled = true);
 }
 function closePack(){document.getElementById('pack-modal').style.display='none';document.body.style.overflow='';}
 function closePackOut(e){if(e.target.id==='pack-modal')closePack();}
