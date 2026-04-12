@@ -103,7 +103,7 @@
           "@type": "Offer",
           "name": "Pack Basic – Chatbot IA WhatsApp",
           "description": "Chatbot IA informativo con menú guiado para WhatsApp o web. Responde FAQs 24/7.",
-          "price": "299",
+          "price": "120",
           "priceCurrency": "EUR",
           "priceSpecification": {"@type": "RecurringCharge", "billingPeriod": "P1M"}
         },
@@ -111,7 +111,7 @@
           "@type": "Offer",
           "name": "Pack Advance – Chatbot IA Conversacional",
           "description": "Chatbot conversacional con IA, escritura libre, cualificación de leads y captación por WhatsApp.",
-          "price": "599",
+          "price": "299",
           "priceCurrency": "EUR",
           "priceSpecification": {"@type": "RecurringCharge", "billingPeriod": "P1M"}
         },
@@ -153,7 +153,7 @@
         "name": "¿Cuánto cuesta un chatbot WhatsApp para mi empresa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pack Basic 299€ pago único, Pack Advance 599€ pago único, Pack Pyme 1.800€ pago único + 599€/año mantenimiento (web + chatbot IA todo incluido), Pack Enterprise desde 3.599€. Sin costes ocultos."
+          "text": "Pack Basic 120€ setup + 89€/año mantenimiento + 49€/mes. Pack Advance 399€ setup + 199€/año mantenimiento + 99€/mes. Pack Pyme 1.800€ setup + 599€/año mantenimiento (web + chatbot IA todo incluido). Pack Enterprise desde 3.599€. Sin permanencia ni costes ocultos."
         }
       },
       {
@@ -522,6 +522,12 @@
     .price-desc { font-size: .84rem; color: var(--muted); line-height: 1.5; margin-bottom: 20px; }
     .price-big {
       font-size: 2.6rem; font-weight: 800; letter-spacing: -.04em; line-height: 1;
+      background: linear-gradient(135deg, var(--p2), var(--g));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      display: flex; align-items: baseline; gap: 2px;
+    }
+    .price-big span {
+      font-size: 1.4rem; font-weight: 700; opacity: .85;
       background: linear-gradient(135deg, var(--p2), var(--g));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
@@ -1120,7 +1126,7 @@
     </div>
     <div class="value-grid">
       <div class="value-card"><div class="value-num">01</div><div class="value-body"><h3>Implementación en 48-72 horas</h3><p>Mientras otros tardan semanas en configurar, nosotros tenemos tu sistema operativo en días.</p><ul><li>Reunión de diagnóstico y toma de datos en el día 1</li><li>Chatbot o automatización en producción antes del día 3</li><li>Formación y entrega con soporte incluido</li></ul></div></div>
-      <div class="value-card"><div class="value-num">02</div><div class="value-body"><h3>Precios claros, sin sorpresas</h3><p>Pago único sin sorpresas. Sin cuotas mensuales, sin permanencia en los packs Basic y Advance.</p><ul><li>Pack Basic: 299€ pago único</li><li>Pack Advance: 599€ pago único</li><li>Pack Pyme: 1.800€ setup + 599€/año</li><li>Sin costes ocultos ni letras pequeñas</li></ul></div></div>
+      <div class="value-card"><div class="value-num">02</div><div class="value-body"><h3>Precios claros, sin sorpresas</h3><p>Setup inicial, cuota mensual y mantenimiento anual. Sin permanencia ni costes ocultos.</p><ul><li>Pack Basic: 120€ setup + 89€/año + 49€/mes</li><li>Pack Advance: 299€ setup + 99€/mes</li><li>Pack Pyme: 1.800€ setup + 599€/año</li><li>Sin costes ocultos ni letras pequeñas</li></ul></div></div>
       <div class="value-card"><div class="value-num">03</div><div class="value-body"><h3>Integración con tus herramientas actuales</h3><p>No te pedimos que cambies lo que ya usas. Conectamos la IA con tu CRM, email, agenda, WhatsApp y cualquier software existente.</p><ul><li>Compatible con HubSpot, Salesforce, Zoho y más</li><li>Conexión con Google Workspace y Microsoft 365</li></ul></div></div>
       <div class="value-card"><div class="value-num">04</div><div class="value-body"><h3>Soporte local y respuesta &lt;5 minutos</h3><p>Equipo basado en Madrid, disponible por WhatsApp. Conocemos el mercado local y respondemos más rápido que cualquier agencia nacional.</p><ul><li>Atención en Majadahonda, Las Rozas, Boadilla y Pozuelo</li><li>Canal directo de soporte por WhatsApp</li><li>Informes mensuales de rendimiento incluidos</li></ul></div></div>
     </div>
@@ -1132,7 +1138,7 @@
   <div class="wrap">
     <div class="hdr c">
       <span class="sec-lbl">Precios</span>
-      <h2 class="sec-h">Pago único, sin permanencia</h2>
+      <h2 class="sec-h">Empieza desde 49€/mes, sin permanencia</h2>
       <p class="sec-sub">Cuatro planes diseñados para que empieces rápido y escales cuando tu negocio lo pida.</p>
     </div>
     <div class="price-grid">
@@ -1141,9 +1147,9 @@
         <div class="price-tier">Para empezar</div>
         <div class="price-name">Pack Basic</div>
         <div class="price-desc">Chatbot IA informativo con menú guiado</div>
-        <div class="price-big">299€</div>
-        <div class="price-period">Pago único · Sin permanencia</div>
-        <div class="price-note">Mantenimiento  · Activación 48h</div>
+        <div class="price-big">49€<span style="font-size:1.6rem;font-weight:700;opacity:.85">/mes</span></div>
+        <div class="price-period">Setup 120€ · Mantenimiento 89€/año</div>
+        <div class="price-note">Sin permanencia · Activación 48h</div>
         <div class="price-div"></div>
         <ul class="price-feats">
           <li>Chatbot IA en tu web o QR</li>
@@ -1154,10 +1160,12 @@
         </ul>
         <div class="price-first-pay">
           <div class="pfp-label">💳 1er pago</div>
-          <div class="pfp-row"><span>Pago único</span><span>299€</span></div>
+          <div class="pfp-row"><span>Setup inicial</span><span>120€</span></div>
+          <div class="pfp-row"><span>Mantenimiento anual</span><span>89€</span></div>
+          <div class="pfp-row"><span>Cuota mensual</span><span>49€/mes</span></div>
           
-          <div class="pfp-total"><span>Total 1er mes</span><span>259€</span></div>
-          <div class="pfp-after">Sin cuotas mensuales. Sin permanencia.</div>
+          <div class="pfp-total"><span>Pago inicial (solo setup)</span><span>120€</span></div>
+          <div class="pfp-after">Desde el 2º mes: solo <b>49€/mes</b> · Mantenimiento anual <b>89€</b></div>
         </div>
         <div class="price-btn-group"><button class="price-btn pb-ghost" onclick="toggleDesglose('basic')">Ver desglose ▾</button><button class="price-btn pb-out" onclick="openPack('basic')">Ver detalles →</button></div>
       </div>
@@ -1168,9 +1176,9 @@
         <div class="price-tier">Para crecer</div>
         <div class="price-name">Pack Advance</div>
         <div class="price-desc">Chatbot conversacional completo con IA</div>
-        <div class="price-big">599€</div>
-        <div class="price-period">Pago único · Sin permanencia</div>
-        <div class="price-note">Mantenimiento  · Activación 48h</div>
+        <div class="price-big">99€<span style="font-size:1.6rem;font-weight:700;opacity:.85">/mes</span></div>
+        <div class="price-period">Setup 299€ · Mantenimiento 99€/año</div>
+        <div class="price-note">Sin permanencia · Activación 48h</div>
         <div class="price-div"></div>
         <ul class="price-feats">
           <li>Todo lo del Pack Basic</li>
@@ -1182,10 +1190,12 @@
         </ul>
         <div class="price-first-pay">
           <div class="pfp-label">💳 1er pago</div>
-          <div class="pfp-row"><span>Pago único</span><span>599€</span></div>
+          <div class="pfp-row"><span>Setup inicial</span><span>299€</span></div>
+          <div class="pfp-row"><span>Mantenimiento anual</span><span>99€</span></div>
+          <div class="pfp-row"><span>Cuota mensual</span><span>99€/mes</span></div>
           
-          <div class="pfp-total"><span>Total 1er mes</span><span>339€</span></div>
-          <div class="pfp-after">Sin cuotas mensuales. Sin permanencia.</div>
+          <div class="pfp-total"><span>Pago inicial (solo setup)</span><span>299€</span></div>
+          <div class="pfp-after">Desde el 2º mes: solo <b>99€/mes</b> · Mantenimiento anual <b>99€</b></div>
         </div>
         <div class="price-btn-group"><button class="price-btn pb-ghost" onclick="toggleDesglose('advance')">Ver desglose ▾</button><button class="price-btn pb-solid" onclick="openPack('advance')">Ver detalles →</button></div>
       </div>
@@ -1298,7 +1308,7 @@
     <div class="faq-wrap">
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto tiempo tarda la implementación?<span class="faq-icon">+</span></button><div class="faq-body"><p>La mayoría de sistemas están operativos en 3-7 días hábiles. El Pack Pyme (web + chatbot) en 5-7 días. Incluye configuración, pruebas y formación de tu equipo.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Necesito conocimientos técnicos?<span class="faq-icon">+</span></button><div class="faq-body"><p>Para nada. Nos encargamos de toda la parte técnica. Tú solo nos cuentas tu proceso actual y nosotros lo automatizamos.</p></div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es el precio?<span class="faq-icon">+</span></button><div class="faq-body"><p>Pack Basic 299€ pago único. Pack Advance 599€ pago único. Pack Pyme 1.800€ setup + 599€/año mantenimiento. Pack Enterprise 3.599€ configuración + 1.399€/año mantenimiento. Sin permanencia. Presupuesto sin compromiso.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es el precio?<span class="faq-icon">+</span></button><div class="faq-body"><p>Pack Basic: 120€ setup + 89€/año mantenimiento + 49€/mes desde el 2º mes. Pack Advance: 299€ setup + 99€/año mantenimiento + 99€/mes desde el 2º mes. Pack Pyme 1.800€ setup + 599€/año mantenimiento. Pack Enterprise 3.599€ configuración + 1.399€/año mantenimiento. Sin permanencia. Presupuesto sin compromiso.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué incluye el Pack Pyme?<span class="faq-icon">+</span></button><div class="faq-body"><p>Setup 1.800€: web profesional, dominio incluido, chatbot IA con sistema de reservas integrado, responsive y SEO básico. Mantenimiento 599€/año fraccionado: 299,50€ al activar + 299,50€ a los 6 meses.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Puedo ver una demo antes de contratar?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. Tenemos demos en vivo para distintos sectores. Contáctanos y te enviamos el enlace o agendamos una videollamada de 20 minutos completamente gratuita.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿En qué zonas trabajáis?<span class="faq-icon">+</span></button><div class="faq-body"><p>Presencia local en Majadahonda, Las Rozas, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital. También atendemos clientes de forma 100% remota en toda España.</p></div></div>
@@ -1413,13 +1423,13 @@ function toggleFaq(btn) {
 // ── CHATBOT KB ──
 const KB = {
   precios:{ kw:['precio','precios','cuanto','cuánto','cuesta','coste','tarifa','€','pack','plan'],
-    answer:`💰 <b>Nuestros planes:</b><br><br>🤖 <b>Pack Basic — 79€/mes</b><br>Chatbot IA informativo con menú de botones.<br><br>💬 <b>Pack Advance — 99€/mes</b><br>Chatbot conversacional con IA, escritura libre y cualificación de leads.<br><br>🏆 <b>Pack Pyme — 1.800€</b> <i>(setup único)</i><br>Web profesional + dominio + chatbot IA integrado. Mantenimiento 599€/año.<br><br>⚙️ <b>Pack Enterprise — 3.599€</b> + mantenimiento<br>Automatización N8N completa a medida.`,
-    replies:['Pack Basic 79€/mes','Pack Advance 99€/mes','Pack Pyme 1.800€','Pack Enterprise','Solicitar presupuesto'] },
+    answer:`💰 <b>Nuestros planes:</b><br><br>🤖 <b>Pack Basic — 49€/mes</b><br>Setup 199€ + 199€/año mantenimiento. Chatbot IA informativo con menú de botones.<br><br>💬 <b>Pack Advance — 99€/mes</b><br>Chatbot conversacional con IA, escritura libre y cualificación de leads.<br><br>🏆 <b>Pack Pyme — 1.800€</b> <i>(setup único)</i><br>Web profesional + dominio + chatbot IA integrado. Mantenimiento 599€/año.<br><br>⚙️ <b>Pack Enterprise — 3.599€</b> + mantenimiento<br>Automatización N8N completa a medida.`,
+    replies:['Pack Basic 49€/mes','Pack Advance 99€/mes','Pack Pyme 1.800€','Pack Enterprise','Solicitar presupuesto'] },
   basic:{ kw:['basic','básico','79'],
-    answer:`🤖 <b>Pack Basic — 299€</b><br><br>→ Chatbot IA en web o QR<br>→ Responde FAQs 24/7<br>→ Diseño con tu marca<br>→ Botón directo a WhatsApp<br>→ Pago único · Activación 48h`,
+    answer:`🤖 <b>Pack Basic — 49€/mes</b><br><br>→ Setup 120€ · Mantenimiento 89€/año<br>→ Chatbot IA en web o QR<br>→ Responde FAQs 24/7<br>→ Diseño con tu marca<br>→ Botón directo a WhatsApp<br>→ Sin permanencia · Activación 48h`,
     replies:['Pedir info Pack Basic','Pack Advance 99€/mes','Pack Pyme 1.800€','Ver demo'] },
   advance:{ kw:['advance','99','conversacional','libre'],
-    answer:`💬 <b>Pack Advance — 599€</b><br><br>→ Todo lo del Basic<br>→ Escritura libre del cliente<br>→ IA detecta intención<br>→ Cualificación de leads<br>→ Captación datos WhatsApp<br>→ Pago único · Activación 48h`,
+    answer:`💬 <b>Pack Advance — 99€/mes</b><br><br>→ Setup 299€ · Mantenimiento 99€/año<br>→ Todo lo del Basic<br>→ Escritura libre del cliente<br>→ IA detecta intención<br>→ Cualificación de leads<br>→ Captación datos WhatsApp<br>→ Sin permanencia · Activación 48h`,
     replies:['Pedir info Pack Advance','Pack Pyme 1.800€','Pack Enterprise','Ver demo'] },
   pyme:{ kw:['pyme','web','página','pagina','dominio','1800','1.800','diseño','diseño web','página web'],
     answer:`🏆 <b>Pack Pyme — 1.800€</b> <i>(setup único)</i><br><br>→ Diseño web profesional personalizado<br>→ Dominio incluido (1 año)<br>→ Chatbot IA conversacional integrado<br>→ Sistema de reservas con calendario y horas<br>→ Funciones Basic + Advance<br>→ Responsive y SEO básico<br><br>✅ Mantenimiento 599€/año: 299,50€ al activar + 299,50€ a los 6 meses`,
@@ -1462,8 +1472,8 @@ const ACTIONS = {
   'Contactar':()=>window.open('https://wa.me/34643199580','_blank'),
   'Ver los planes':()=>{document.getElementById('precios').scrollIntoView({behavior:'smooth'});toggleChat();},
   'Pack Pyme 1.800€':null, // handled as text
-  'Pack Basic 299€':null,
-  'Pack Advance 599€':null,
+  'Pack Basic 49€/mes':null,
+  'Pack Advance 99€/mes':null,
   'Pack Enterprise':null,
 };
 
@@ -1527,14 +1537,14 @@ function onKey(e){if(e.key==='Enter')send();}
 const PACKS={
   basic:{
     ico:'🤖',title:'Pack Basic',sub:'Chatbot IA informativo',isGold:false,
-    price:'299€',period:'Pago único · Sin permanencia',note:'Activación 48h',
+    price:'49€/mes',period:'Setup 120€ · Mantenimiento 89€/año',note:'Pago inicial: 120€ · Desde 2º mes 49€/mes',
     features:['Chatbot IA instalado en tu web o QR','Informa sobre servicios, horarios y precios','Responde preguntas frecuentes 24/7','Menú de botones para guiar al visitante','Botón directo a WhatsApp predefinido','Diseño con tu marca, colores y logo','Actualizaciones incluidas'],
     noInclude:'El visitante navega por botones predefinidos, sin escritura libre.',
     wa:'Pack%20Basic%2079%E2%82%AC%2Fmes'
   },
   advance:{
     ico:'💬',title:'Pack Advance',sub:'Chatbot IA conversacional',isGold:false,
-    price:'599€',period:'Pago único · Sin permanencia',note:'El pack más completo · Activación 48h',
+    price:'99€/mes',period:'Setup 299€ · Mantenimiento 99€/año',note:'Pago inicial: 299€ · Desde 2º mes 99€/mes',
     features:['Todo lo del Pack Basic','El cliente puede escribir libremente','IA detecta intención y responde en contexto','Cualificación automática de leads','Captación de datos por WhatsApp','Respuestas rápidas personalizadas','Detección de palabras clave por área','Actualización de contenidos incluida'],
     noInclude:'',wa:'Pack%20Advance%2099%E2%82%AC%2Fmes'
   },
@@ -1646,7 +1656,7 @@ function sendLead(packId){
   const negocio=document.getElementById('lead-negocio-'+packId)?.value.trim()||'';
   const msg=document.getElementById('lead-msg-'+packId)?.value.trim()||'';
   if(!nombre||!tel){alert('Por favor, rellena al menos tu nombre y teléfono.');return;}
-  const packNames={basic:'Pack Basic 79€/mes',advance:'Pack Advance 99€/mes',pyme:'Pack Pyme 1.800€ (web+chatbot)'};
+  const packNames={basic:'Pack Basic 49€/mes',advance:'Pack Advance 99€/mes',pyme:'Pack Pyme 1.800€ (web+chatbot)'};
   const text=encodeURIComponent(
     '🔥 *Nuevo lead desde la web* 🔥\n\n'+
     '*Pack interesado:* '+(packNames[packId]||packId)+'\n'+
