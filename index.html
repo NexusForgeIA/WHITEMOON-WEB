@@ -864,7 +864,8 @@
     }
     .valores-grid { grid-template-columns: repeat(3,1fr); }
     @media(max-width:960px) { .valores-grid { grid-template-columns: repeat(2,1fr); } }
-    @media(max-width:520px) { .valores-grid { grid-template-columns: 1fr; } }
+    @media(max-width:640px) { .valores-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px) { .valores-grid { grid-template-columns: 1fr; } }
     @media(max-width:640px) {
       .svc-grid { grid-template-columns: 1fr; }
       .method-grid { grid-template-columns: 1fr; }
@@ -1002,7 +1003,7 @@
     </div>
 
     <!-- GRID VALORES -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="valores-grid">
+    <div style="display:grid;gap:20px;" class="valores-grid">
 
       <div style="background:var(--bg3);border:1px solid var(--border);border-radius:18px;padding:28px 24px;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(124,77,255,.4)'" onmouseout="this.style.borderColor='var(--border)'">
         <div style="font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:12px;">Misión</div>
