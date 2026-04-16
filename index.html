@@ -1958,5 +1958,336 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     <p>WHITEMOON es la agencia líder en automatización con IA en el noroeste de Madrid. Especializados en chatbots WhatsApp para empresas, automatización de procesos con N8N, webs con chatbot IA integrado y embudos de venta inteligentes. Servicio presencial en Majadahonda, Las Rozas de Madrid, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital. También servicio remoto en toda España.</p>
     <p>Nuestros servicios incluyen: chatbot WhatsApp para clínicas, chatbot WhatsApp para restaurantes, chatbot WhatsApp para inmobiliarias, automatización de citas, gestión automática de leads, integración con CRM HubSpot Salesforce y Zoho, automatización con Google Calendar, emails automáticos, marketing digital con IA.</p>
   </section>
+  <!-- ═══════════════════════════════════════════════════════════
+     WHITEMOON - BOTÓN UNIFICADO IA
+     Reemplaza: chatbot luna + WhatsApp + Laura
+     Un solo botón → 3 opciones: Voz IA, Chat IA, WhatsApp
+     Pegar ANTES de </body> en index.html
+     ═══════════════════════════════════════════════════════════ -->
+
+<style>
+/* === BOTÓN PRINCIPAL FLOTANTE === */
+.wm-hub-wrap{position:fixed;bottom:24px;right:24px;z-index:99990;font-family:'Outfit','Inter','Segoe UI',sans-serif}
+.wm-hub-btn{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#7c4dff,#5c35cc);border:2px solid rgba(201,168,104,.4);box-shadow:0 8px 32px rgba(124,77,255,.45);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;position:relative}
+.wm-hub-btn:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(124,77,255,.6)}
+.wm-hub-btn.open{transform:rotate(45deg);background:linear-gradient(135deg,#ef4444,#dc2626);border-color:rgba(239,68,68,.4)}
+.wm-hub-btn svg{width:28px;height:28px;fill:#fff;transition:transform .3s}
+.wm-hub-badge{position:absolute;top:-4px;right:-4px;background:#00d4aa;color:#000;font-size:.55rem;font-weight:800;padding:2px 6px;border-radius:8px;letter-spacing:.03em;animation:wm-badge-pulse 3s infinite}
+@keyframes wm-badge-pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+/* === MENÚ DESPLEGABLE === */
+.wm-hub-menu{position:fixed;bottom:96px;right:24px;width:300px;background:rgba(17,17,25,.97);backdrop-filter:blur(20px);border:1px solid rgba(124,77,255,.3);border-radius:20px;padding:0;box-shadow:0 24px 64px rgba(0,0,0,.6);color:#fff;z-index:99991;display:none;overflow:hidden}
+.wm-hub-menu.show{display:block;animation:wm-menu-in .25s ease-out}
+@keyframes wm-menu-in{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:none}}
+
+.wm-hub-header{padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+.wm-hub-title{font-size:.92rem;font-weight:700;color:#fff;margin:0 0 2px}
+.wm-hub-sub{font-size:.72rem;color:#888;font-weight:400}
+
+/* === OPCIONES === */
+.wm-hub-opt{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;transition:all .2s;border-bottom:1px solid rgba(255,255,255,.04);text-decoration:none;color:#fff}
+.wm-hub-opt:last-child{border-bottom:none}
+.wm-hub-opt:hover{background:rgba(124,77,255,.1)}
+.wm-hub-opt:active{background:rgba(124,77,255,.2)}
+
+.wm-opt-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.wm-opt-icon.voz{background:linear-gradient(135deg,#7c4dff,#5c35cc)}
+.wm-opt-icon.chat{background:linear-gradient(135deg,#6366f1,#4f46e5)}
+.wm-opt-icon.wa{background:linear-gradient(135deg,#22c55e,#16a34a)}
+
+.wm-opt-info{flex:1;min-width:0}
+.wm-opt-title{font-size:.88rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px}
+.wm-opt-desc{font-size:.72rem;color:#999;margin-top:2px;line-height:1.4}
+.wm-opt-tag{font-size:.55rem;font-weight:700;background:rgba(0,212,170,.15);color:#00d4aa;padding:2px 7px;border-radius:6px;letter-spacing:.03em}
+.wm-opt-arrow{color:#555;font-size:.9rem;flex-shrink:0;transition:transform .2s}
+.wm-hub-opt:hover .wm-opt-arrow{transform:translateX(3px);color:#7c4dff}
+
+.wm-hub-footer{padding:10px 20px;text-align:center;font-size:.62rem;color:#555;border-top:1px solid rgba(255,255,255,.04)}
+
+/* === MODAL LAURA VOZ === */
+.wm-laura-modal{position:fixed;bottom:96px;right:24px;width:320px;background:rgba(17,17,25,.97);backdrop-filter:blur(20px);border:1px solid rgba(124,77,255,.3);border-radius:20px;padding:20px;box-shadow:0 24px 64px rgba(0,0,0,.6);color:#fff;z-index:99992;display:none}
+.wm-laura-modal.show{display:block;animation:wm-menu-in .25s ease-out}
+.wm-laura-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.wm-laura-ava{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#7c4dff,#5c35cc);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.wm-laura-name{font-size:.95rem;font-weight:700}
+.wm-laura-status{font-size:.75rem;color:#00d4aa;display:flex;align-items:center;gap:5px}
+.wm-laura-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#00d4aa;animation:wm-status-pulse 2s infinite}
+@keyframes wm-status-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.wm-laura-desc{font-size:.82rem;line-height:1.5;color:#b0b0c0;margin-bottom:14px}
+.wm-laura-controls{display:flex;gap:8px}
+.wm-laura-start{flex:1;padding:12px;background:#7c4dff;color:#fff;border:none;border-radius:12px;cursor:pointer;font-weight:600;font-size:.86rem;font-family:inherit;transition:all .2s}
+.wm-laura-start:hover{background:#5c35cc;transform:translateY(-1px)}
+.wm-laura-end{flex:1;padding:12px;background:#ef4444;color:#fff;border:none;border-radius:12px;cursor:pointer;font-weight:600;font-size:.86rem;font-family:inherit;display:none}
+.wm-laura-back{background:none;border:1px solid #333;color:#888;padding:8px;border-radius:10px;cursor:pointer;font-size:.75rem;font-family:inherit;margin-top:10px;width:100%;transition:all .2s}
+.wm-laura-back:hover{border-color:#7c4dff;color:#fff}
+.wm-laura-wave{display:flex;gap:3px;align-items:center;height:28px;justify-content:center;margin:10px 0}
+.wm-laura-wave span{width:3px;background:#7c4dff;border-radius:2px;animation:wm-wave 1.2s infinite ease-in-out}
+.wm-laura-wave span:nth-child(1){animation-delay:-.8s}
+.wm-laura-wave span:nth-child(2){animation-delay:-.6s}
+.wm-laura-wave span:nth-child(3){animation-delay:-.4s}
+.wm-laura-wave span:nth-child(4){animation-delay:-.2s}
+.wm-laura-wave span:nth-child(5){animation-delay:0s}
+@keyframes wm-wave{0%,100%{height:6px}50%{height:22px}}
+.wm-laura-wave.hidden{display:none}
+
+/* === MODAL CHATBOT === */
+.wm-chat-modal{position:fixed;bottom:96px;right:24px;width:370px;height:520px;background:#111119;border:1px solid rgba(124,77,255,.3);border-radius:20px;box-shadow:0 24px 64px rgba(0,0,0,.6);z-index:99992;display:none;overflow:hidden;flex-direction:column}
+.wm-chat-modal.show{display:flex;animation:wm-menu-in .25s ease-out}
+.wm-chat-head{padding:14px 18px;background:linear-gradient(135deg,#6366f1,#4f46e5);display:flex;justify-content:space-between;align-items:center}
+.wm-chat-head-title{font-size:.9rem;font-weight:700;color:#fff}
+.wm-chat-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:4px 8px}
+.wm-chat-close:hover{color:#fff}
+.wm-chat-body{flex:1;overflow-y:auto;padding:16px;background:#0d0d18}
+.wm-chat-msg{max-width:82%;margin-bottom:10px;padding:11px 15px;font-size:.82rem;line-height:1.5;border-radius:14px 14px 14px 4px;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.2);color:#e0e0e0;font-family:inherit}
+.wm-chat-msg.user{background:linear-gradient(135deg,#6366f1,#4f46e5);color:#fff;margin-left:auto;border-radius:14px 14px 4px 14px;border:none}
+.wm-chat-input-wrap{padding:12px;border-top:1px solid rgba(255,255,255,.06);display:flex;gap:8px;background:#111119}
+.wm-chat-input{flex:1;background:#0d0d18;border:1px solid #2a2a3a;border-radius:20px;padding:10px 16px;font-size:.86rem;color:#fff;font-family:inherit;outline:none}
+.wm-chat-input:focus{border-color:#6366f1}
+.wm-chat-input::placeholder{color:#555}
+.wm-chat-send{width:40px;height:40px;border-radius:50%;background:#6366f1;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.wm-chat-send svg{width:16px;height:16px;fill:#fff}
+
+/* === RESPONSIVE === */
+@media(max-width:500px){
+  .wm-hub-menu,.wm-laura-modal{right:10px;left:10px;width:auto;bottom:90px}
+  .wm-chat-modal{right:0;left:0;bottom:0;width:100%;height:85vh;border-radius:20px 20px 0 0}
+  .wm-hub-wrap{bottom:16px;right:16px}
+  .wm-hub-btn{width:56px;height:56px}
+}
+</style>
+
+<!-- BOTÓN PRINCIPAL -->
+<div class="wm-hub-wrap">
+  <div class="wm-hub-btn" id="wmHubBtn" onclick="wmToggleHub()">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="wm-hub-badge">IA</span>
+  </div>
+</div>
+
+<!-- MENÚ CON 3 OPCIONES -->
+<div class="wm-hub-menu" id="wmHubMenu">
+  <div class="wm-hub-header">
+    <div class="wm-hub-title">¿Cómo prefieres contactarnos?</div>
+    <div class="wm-hub-sub">Elige tu canal favorito</div>
+  </div>
+  <div class="wm-hub-opt" onclick="wmOpenLaura()">
+    <div class="wm-opt-icon voz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div>
+    <div class="wm-opt-info">
+      <div class="wm-opt-title">Laura · Voz IA <span class="wm-opt-tag">NUEVO</span></div>
+      <div class="wm-opt-desc">Habla por voz con nuestra IA comercial. Te explica todo en 2 minutos.</div>
+    </div>
+    <div class="wm-opt-arrow">›</div>
+  </div>
+  <div class="wm-hub-opt" onclick="wmOpenChat()">
+    <div class="wm-opt-icon chat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+    <div class="wm-opt-info">
+      <div class="wm-opt-title">Chat IA</div>
+      <div class="wm-opt-desc">Escribe tus dudas y el chatbot te responde al instante.</div>
+    </div>
+    <div class="wm-opt-arrow">›</div>
+  </div>
+  <a class="wm-hub-opt" href="https://wa.me/34643199580?text=Hola%2C%20me%20interesa%20información%20sobre%20los%20servicios%20de%20WhiteMoon" target="_blank" onclick="wmCloseAll()">
+    <div class="wm-opt-icon wa"><svg viewBox="0 0 24 24" width="22" height="22" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
+    <div class="wm-opt-info">
+      <div class="wm-opt-title">WhatsApp</div>
+      <div class="wm-opt-desc">Escríbenos directo. Respuesta en menos de 5 minutos.</div>
+    </div>
+    <div class="wm-opt-arrow">›</div>
+  </a>
+  <div class="wm-hub-footer">WhiteMoon · Agencia de IA · Majadahonda</div>
+</div>
+
+<!-- MODAL LAURA VOZ -->
+<div class="wm-laura-modal" id="wmLauraModal">
+  <div class="wm-laura-head">
+  <div class="wm-laura-ava"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div>
+    <div>
+      <div class="wm-laura-name">Laura · Asistente IA</div>
+      <div class="wm-laura-status" id="wmLauraStatus">Lista para atenderte</div>
+    </div>
+  </div>
+  <div class="wm-laura-desc" id="wmLauraDesc">Te explico los servicios de WhiteMoon, resuelvo dudas y agendo reunión con Cristóbal si te interesa.</div>
+  <div class="wm-laura-wave hidden" id="wmLauraWave">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="wm-laura-controls">
+    <button class="wm-laura-start" id="wmLauraStart" onclick="wmStartCall()">Empezar llamada</button>
+    <button class="wm-laura-end" id="wmLauraEnd" onclick="wmEndCall()">Colgar</button>
+  </div>
+  <button class="wm-laura-back" onclick="wmBackToMenu()">← Volver al menú</button>
+</div>
+
+<!-- MODAL CHATBOT -->
+<div class="wm-chat-modal" id="wmChatModal">
+  <div class="wm-chat-head">
+    <span class="wm-chat-head-title">💬 Chat IA · WhiteMoon</span>
+    <button class="wm-chat-close" onclick="wmBackToMenu()">✕</button>
+  </div>
+  <div class="wm-chat-body" id="wmChatBody">
+    <div class="wm-chat-msg">¡Hola! Soy el asistente IA de WhiteMoon. 👋
+
+¿Sobre qué servicio te gustaría saber más?
+
+• Chatbot IA para tu web
+• Agente de voz IA
+• Gestión de RRSS con IA
+• Web profesional con IA</div>
+  </div>
+  <div class="wm-chat-input-wrap">
+    <input class="wm-chat-input" id="wmChatInput" type="text" placeholder="Escribe tu mensaje..." onkeydown="if(event.key==='Enter')wmChatSend()">
+    <button class="wm-chat-send" onclick="wmChatSend()"><svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script type="module">
+  import Vapi from 'https://esm.sh/@vapi-ai/web';
+  
+  const VAPI_PUBLIC_KEY = '28d35f10-3dd0-4089-91c7-da600a26bfd7';
+  const LAURA_ASSISTANT_ID = 'c977e7e3-d28b-4267-b882-efa766ac3cc3';
+  
+  /* ── WEBHOOK del chatbot (si tienes) ── */
+  const CHATBOT_WEBHOOK = ''; /* dejar vacío si no quieres webhook aún */
+  
+  let vapi = null;
+  let isOnCall = false;
+  
+  try {
+    vapi = new Vapi(VAPI_PUBLIC_KEY);
+    
+    vapi.on('call-start', () => {
+      isOnCall = true;
+      document.getElementById('wmLauraStatus').textContent = 'En llamada...';
+      document.getElementById('wmHubBtn').classList.add('open');
+      document.getElementById('wmLauraStart').style.display = 'none';
+      document.getElementById('wmLauraEnd').style.display = 'block';
+      document.getElementById('wmLauraWave').classList.remove('hidden');
+      document.getElementById('wmLauraDesc').textContent = '📞 Conectado con Laura. Habla con naturalidad.';
+    });
+    
+    vapi.on('call-end', () => {
+      isOnCall = false;
+      document.getElementById('wmLauraStatus').textContent = 'Llamada finalizada';
+      document.getElementById('wmHubBtn').classList.remove('open');
+      document.getElementById('wmLauraStart').style.display = 'block';
+      document.getElementById('wmLauraEnd').style.display = 'none';
+      document.getElementById('wmLauraWave').classList.add('hidden');
+      document.getElementById('wmLauraDesc').textContent = 'Gracias por hablar con Laura. Cristóbal te contactará por WhatsApp en menos de 5 minutos.';
+    });
+    
+    vapi.on('speech-start', () => {
+      document.getElementById('wmLauraStatus').textContent = 'Laura hablando...';
+    });
+    
+    vapi.on('speech-end', () => {
+      document.getElementById('wmLauraStatus').textContent = 'Escuchándote...';
+    });
+    
+    vapi.on('error', (e) => {
+      console.error('Error Laura:', e);
+      document.getElementById('wmLauraStatus').textContent = 'Error - permite el micrófono';
+    });
+    
+  } catch(err){ console.error('VAPI SDK error:', err); }
+  
+  /* ── NAVEGACIÓN ── */
+  window.wmToggleHub = function(){
+    var menu = document.getElementById('wmHubMenu');
+    var btn = document.getElementById('wmHubBtn');
+    var isOpen = menu.classList.contains('show');
+    wmCloseAll();
+    if(!isOpen){
+      menu.classList.add('show');
+      btn.classList.add('open');
+    }
+  };
+  
+  window.wmCloseAll = function(){
+    document.getElementById('wmHubMenu').classList.remove('show');
+    document.getElementById('wmLauraModal').classList.remove('show');
+    document.getElementById('wmChatModal').classList.remove('show');
+    if(!isOnCall) document.getElementById('wmHubBtn').classList.remove('open');
+  };
+  
+  window.wmOpenLaura = function(){
+    document.getElementById('wmHubMenu').classList.remove('show');
+    document.getElementById('wmLauraModal').classList.add('show');
+  };
+  
+  window.wmOpenChat = function(){
+    document.getElementById('wmHubMenu').classList.remove('show');
+    document.getElementById('wmChatModal').classList.add('show');
+  };
+  
+  window.wmBackToMenu = function(){
+    if(isOnCall) return; /* no cerrar Laura si está en llamada */
+    document.getElementById('wmLauraModal').classList.remove('show');
+    document.getElementById('wmChatModal').classList.remove('show');
+    document.getElementById('wmHubMenu').classList.add('show');
+  };
+  
+  window.wmStartCall = async function(){
+    if(!vapi){alert('Cargando IA, espera un segundo...'); return;}
+    try {
+      document.getElementById('wmLauraStatus').textContent = 'Conectando...';
+      await vapi.start(LAURA_ASSISTANT_ID);
+    } catch(err){
+      console.error('Error:', err);
+      document.getElementById('wmLauraStatus').textContent = 'Permite el micrófono e inténtalo de nuevo';
+    }
+  };
+  
+  window.wmEndCall = function(){
+    if(vapi && isOnCall) vapi.stop();
+  };
+  
+  /* ── CHATBOT BÁSICO ── */
+  var chatKB = {
+    advance: { kw:['advance','99','chatbot','bot','web'], answer:'🤖 <b>Pack Advance</b> — 99€/mes + 299€ setup<br><br>Chatbot IA conversacional para tu web. El cliente escribe libremente y la IA responde 24/7. Cualifica leads y envía datos por WhatsApp.<br><br>Sin permanencia. Activo en 48-72h.' },
+    pyme: { kw:['pyme','web','1800','1.800','pagina','página','dominio'], answer:'🏆 <b>Pack Pyme</b> — 1.800€ pago único<br><br>Web profesional + dominio + chatbot IA + reservas. Todo incluido. Operativo en 5-7 días.<br><br>Mantenimiento: 599€/año.' },
+    enterprise: { kw:['enterprise','2500','2.500','n8n','automatizacion','automatización'], answer:'⚙️ <b>Pack Enterprise</b> — desde 2.500€<br><br>Automatización completa con N8N: Google Calendar, emails, WhatsApp automáticos, CRM. Presupuesto según complejidad.<br><br>Mantenimiento: 1.399€/año.' },
+    voz: { kw:['voz','llamada','telefono','teléfono','agente','laura','1299','1.299'], answer:'🎙️ <b>Pack Agente Voz IA</b> — 1.299€ setup + 99€/mes<br><br>Agente que atiende llamadas 24/7 con voz natural. 300 min incluidos. Extra: 0,25€/min.<br><br>¡Pruébala ahora! Vuelve al menú y elige "Laura · Voz IA".' },
+    rrss: { kw:['rrss','redes','instagram','facebook','social','publicaciones'], answer:'📱 <b>Gestión RRSS con IA</b><br><br>LaunchPack: 99€/mes (1 red, 8 posts)<br>Accelerator: 199€/mes (2 redes, 12 posts)<br>Scale: 399€/mes (todas + GMB, 16 posts)<br><br>Sin permanencia.' },
+    precio: { kw:['precio','cuanto','cuesta','coste','tarifa','presupuesto'], answer:'💰 <b>Nuestros precios</b> (sin IVA):<br><br>• Chatbot IA: desde 99€/mes<br>• Web + Chatbot: 1.800€ único<br>• Agente Voz IA: 1.299€ + 99€/mes<br>• RRSS: desde 99€/mes<br>• Enterprise: desde 2.500€<br><br>Todos sin permanencia. ¿Cuál te interesa?' },
+    contacto: { kw:['contacto','hablar','reunion','reunión','cita','whatsapp','llamar'], answer:'📞 <b>Contacta con nosotros</b><br><br>WhatsApp: <a href="https://wa.me/34643199580" target="_blank" style="color:#00d4aa">643 199 580</a><br>Respuesta en menos de 5 min.<br><br>O si prefieres, vuelve al menú y habla con Laura por voz. ¡Te agenda reunión directa!' },
+    hola: { kw:['hola','buenas','hey','buenos'], answer:'¡Hola! 👋 Soy el chatbot de WhiteMoon.<br><br>¿Qué te interesa saber?<br>• Chatbot IA para web<br>• Agente de voz IA<br>• Gestión de RRSS<br>• Precios<br>• Hablar con el equipo' }
+  };
+  
+  function chatMatch(text){
+    var t = text.toLowerCase();
+    for(var k in chatKB){
+      var pack = chatKB[k];
+      for(var i=0;i<pack.kw.length;i++){
+        if(t.includes(pack.kw[i])) return pack.answer;
+      }
+    }
+    return '🤔 No estoy seguro de entender la consulta.<br><br>Puedes preguntar sobre:<br>• <b>Chatbot IA</b> (Pack Advance)<br>• <b>Web + IA</b> (Pack Pyme)<br>• <b>Agente voz</b> (Laura IA)<br>• <b>Precios</b><br>• <b>Contacto</b><br><br>O si prefieres, <b>habla con Laura por voz</b> — ella te explica todo mejor.';
+  }
+  
+  function addChatMsg(html, isUser){
+    var body = document.getElementById('wmChatBody');
+    var div = document.createElement('div');
+    div.className = 'wm-chat-msg' + (isUser ? ' user' : '');
+    div.innerHTML = isUser ? html.replace(/</g,'&lt;').replace(/>/g,'&gt;') : html;
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+  }
+  
+  window.wmChatSend = function(){
+    var inp = document.getElementById('wmChatInput');
+    var msg = inp.value.trim();
+    if(!msg) return;
+    inp.value = '';
+    addChatMsg(msg, true);
+    setTimeout(function(){ addChatMsg(chatMatch(msg), false); }, 600);
+  };
+  
+  /* ── Cerrar al hacer clic fuera ── */
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.wm-hub-wrap') && !e.target.closest('.wm-hub-menu') && !e.target.closest('.wm-laura-modal') && !e.target.closest('.wm-chat-modal')){
+      if(!isOnCall) wmCloseAll();
+    }
+  });
+</script>
 </body>
 </html>
