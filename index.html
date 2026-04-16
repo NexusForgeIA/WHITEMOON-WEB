@@ -294,18 +294,6 @@
       transition: all .2s; margin-left: 6px; border: 1px solid transparent;
     }
     .nav-cta:hover { background: var(--p-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(124,77,255,.35); }
-    .nav-agent {
-      display: inline-flex; align-items: center; gap: 7px;
-      padding: 9px 18px; border-radius: 8px;
-      background: linear-gradient(135deg, rgba(124,77,255,.12), rgba(0,212,170,.08));
-      border: 1px solid rgba(124,77,255,.35);
-      color: var(--p2); font-size: .82rem; font-weight: 600;
-      cursor: pointer; text-decoration: none; font-family: inherit;
-      transition: all .2s; margin-right: 4px; position: relative;
-    }
-    .nav-agent:hover { background: linear-gradient(135deg, rgba(124,77,255,.22), rgba(0,212,170,.14)); border-color: var(--p); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(124,77,255,.25); }
-    .nav-agent::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--g); animation: blink 2s infinite; flex-shrink: 0; }
-    @media(max-width:900px){ .nav-agent span.nav-agent-full { display: none; } .nav-agent { padding: 8px 12px; } }
     .hero {
       padding: 148px 0 100px;
       text-align: center;
@@ -937,7 +925,7 @@
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('metodo').scrollIntoView({behavior:'smooth'})">Método</a>
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</a>
       <a href="https://whitemoon.es/blog/" class="nav-link">Blog</a>
-      <button type="button" id="navAgentBtn" class="nav-agent" aria-label="Abrir agente IA comercial"><span class="nav-agent-full">Agente IA Comercial</span><span style="display:none" class="nav-agent-short">IA</span></button>
+      
       <a href="https://wa.me/34643199580?text=Hola%20WHITEMOON" target="_blank" rel="noopener" class="nav-cta" rel="noopener noreferrer">Contactar</a>
     </div>
   </div>
@@ -1767,9 +1755,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     <p>WHITEMOON es la agencia líder en automatización con IA en el noroeste de Madrid. Especializados en chatbots WhatsApp para empresas, automatización de procesos con N8N, webs con chatbot IA integrado y embudos de venta inteligentes. Servicio presencial en Majadahonda, Las Rozas de Madrid, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital. También servicio remoto en toda España.</p>
     <p>Nuestros servicios incluyen: chatbot WhatsApp para clínicas, chatbot WhatsApp para restaurantes, chatbot WhatsApp para inmobiliarias, automatización de citas, gestión automática de leads, integración con CRM HubSpot Salesforce y Zoho, automatización con Google Calendar, emails automáticos, marketing digital con IA.</p>
   </section>
+
 <!-- ═══════════════════════════════════════════════════════════
-     WHITEMOON - BOTÓN UNIFICADO IA
-     Un solo botón → 3 opciones: Voz IA, Chat IA, WhatsApp
+     WHITEMOON - BOTÓN UNIFICADO IA (Chat IA + WhatsApp)
      ═══════════════════════════════════════════════════════════ -->
 <style>
 /* === BOTÓN PRINCIPAL FLOTANTE === */
@@ -1787,19 +1775,16 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 .wm-hub-header{padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
 .wm-hub-title{font-size:.92rem;font-weight:700;color:#fff;margin:0 0 2px}
 .wm-hub-sub{font-size:.72rem;color:#888;font-weight:400}
-/* === OPCIONES === */
 .wm-hub-opt{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;transition:all .2s;border-bottom:1px solid rgba(255,255,255,.04);text-decoration:none;color:#fff}
 .wm-hub-opt:last-child{border-bottom:none}
 .wm-hub-opt:hover{background:rgba(124,77,255,.1)}
 .wm-hub-opt:active{background:rgba(124,77,255,.2)}
 .wm-opt-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
-.wm-opt-icon.voz{background:linear-gradient(135deg,#7c4dff,#5c35cc)}
 .wm-opt-icon.chat{background:linear-gradient(135deg,#6366f1,#4f46e5)}
 .wm-opt-icon.wa{background:linear-gradient(135deg,#22c55e,#16a34a)}
 .wm-opt-info{flex:1;min-width:0}
 .wm-opt-title{font-size:.88rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px}
 .wm-opt-desc{font-size:.72rem;color:#999;margin-top:2px;line-height:1.4}
-.wm-opt-tag{font-size:.55rem;font-weight:700;background:rgba(0,212,170,.15);color:#00d4aa;padding:2px 7px;border-radius:6px;letter-spacing:.03em}
 .wm-opt-arrow{color:#555;font-size:.9rem;flex-shrink:0;transition:transform .2s}
 .wm-hub-opt:hover .wm-opt-arrow{transform:translateX(3px);color:#7c4dff}
 .wm-hub-footer{padding:10px 20px;text-align:center;font-size:.62rem;color:#555;border-top:1px solid rgba(255,255,255,.04)}
@@ -1821,7 +1806,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 .wm-chat-send svg{width:16px;height:16px;fill:#fff}
 /* === RESPONSIVE === */
 @media(max-width:500px){
-  .wm-hub-menu,.wm-laura-modal{right:10px;left:10px;width:auto;bottom:90px}
+  .wm-hub-menu{right:10px;left:10px;width:auto;bottom:90px}
   .wm-chat-modal{right:0;left:0;bottom:0;width:100%;height:85vh;border-radius:20px 20px 0 0}
   .wm-hub-wrap{bottom:16px;right:16px}
   .wm-hub-btn{width:56px;height:56px}
@@ -1836,13 +1821,12 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   </div>
 </div>
 
-<!-- MENÚ CON 3 OPCIONES -->
+<!-- MENÚ CON 2 OPCIONES -->
 <div class="wm-hub-menu" id="wmHubMenu">
   <div class="wm-hub-header">
     <div class="wm-hub-title">¿Cómo prefieres contactarnos?</div>
     <div class="wm-hub-sub">Elige tu canal favorito</div>
   </div>
-
   <div class="wm-hub-opt" id="wmOptChat">
     <div class="wm-opt-icon chat"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
     <div class="wm-opt-info">
@@ -1874,9 +1858,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 ¿Sobre qué servicio te gustaría saber más?
 
 • Chatbot IA para tu web
-• Agente de voz IA
 • Gestión de RRSS con IA
-• Web profesional con IA</div>
+• Web profesional con IA
+• Automatización con N8N</div>
   </div>
   <div class="wm-chat-input-wrap">
     <input class="wm-chat-input" id="wmChatInput" type="text" placeholder="Escribe tu mensaje...">
@@ -1884,12 +1868,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   </div>
 </div>
 
-<!-- SCRIPTS DEL HUB -->
-<!-- Script CLÁSICO: lógica del hub (funciona siempre, sin depender de CDN) -->
+<!-- Script del hub -->
 <script>
 (function(){
-  var isOnCall = false;
-
   function getEl(id){ return document.getElementById(id); }
 
   function wmToggleHub(){
@@ -1906,12 +1887,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
   function wmCloseAll(){
     var m = getEl('wmHubMenu'); if(m) m.classList.remove('show');
-    var l = getEl('wmLauraModal'); if(l) l.classList.remove('show');
     var c = getEl('wmChatModal'); if(c) c.classList.remove('show');
-    var b = getEl('wmHubBtn');
-    if(b && !isOnCall) b.classList.remove('open');
+    var b = getEl('wmHubBtn'); if(b) b.classList.remove('open');
   }
-
 
   function wmOpenChat(){
     var m = getEl('wmHubMenu'); if(m) m.classList.remove('show');
@@ -1919,23 +1897,19 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   }
 
   function wmBackToMenu(){
-    if(isOnCall) return;
-    var l = getEl('wmLauraModal'); if(l) l.classList.remove('show');
     var c = getEl('wmChatModal'); if(c) c.classList.remove('show');
     var m = getEl('wmHubMenu'); if(m) m.classList.add('show');
   }
 
-  
   /* ── CHATBOT BÁSICO ── */
   var chatKB = {
     advance: { kw:['advance','99','chatbot','bot'], answer:'🤖 <b>Pack Advance</b> — 99€/mes + 299€ setup<br><br>Chatbot IA conversacional para tu web. El cliente escribe libremente y la IA responde 24/7. Cualifica leads y envía datos por WhatsApp.<br><br>Sin permanencia. Activo en 48-72h.' },
     pyme: { kw:['pyme','web','1800','1.800','pagina','página','dominio'], answer:'🏆 <b>Pack Pyme</b> — 1.800€ pago único<br><br>Web profesional + dominio + chatbot IA + reservas. Todo incluido. Operativo en 5-7 días.<br><br>Mantenimiento: 599€/año.' },
-    enterprise: { kw:['enterprise','2500','2.500','3599','n8n','automatizacion','automatización'], answer:'⚙️ <b>Pack Enterprise</b> — desde 3.599€<br><br>Automatización completa con N8N: Google Calendar, emails, WhatsApp automáticos, CRM. Presupuesto según complejidad.<br><br>Mantenimiento: 1.399€/año.' },
-    voz: { kw:['voz','llamada','telefono','teléfono','agente','laura','1299','1.299'], answer:'🎙️ <b>Pack Agente Voz IA</b> — 1.299€ setup + 99€/mes<br><br>Agente que atiende llamadas 24/7 con voz natural. 300 min incluidos. Extra: 0,25€/min.<br><br>Escríbenos por WhatsApp para una demo personalizada.' },
+    enterprise: { kw:['enterprise','3599','2500','n8n','automatizacion','automatización'], answer:'⚙️ <b>Pack Enterprise</b> — desde 3.599€<br><br>Automatización completa con N8N: Google Calendar, emails, WhatsApp automáticos, CRM. Presupuesto según complejidad.<br><br>Mantenimiento: 1.399€/año.' },
     rrss: { kw:['rrss','redes','instagram','facebook','social','publicaciones'], answer:'📱 <b>Gestión RRSS con IA</b><br><br>LaunchPack: 99€/mes (1 red, 8 posts)<br>Accelerator: 199€/mes (2 redes, 12 posts)<br>Scale: 399€/mes (todas + GMB, 16 posts)<br><br>Sin permanencia.' },
-    precio: { kw:['precio','cuanto','cuesta','coste','tarifa','presupuesto'], answer:'💰 <b>Nuestros precios</b> (sin IVA):<br><br>• Chatbot IA: desde 99€/mes<br>• Web + Chatbot: 1.800€ único<br>• Agente Voz IA: 1.299€ + 99€/mes<br>• RRSS: desde 99€/mes<br>• Enterprise: desde 3.599€<br><br>Todos sin permanencia. ¿Cuál te interesa?' },
+    precio: { kw:['precio','cuanto','cuesta','coste','tarifa','presupuesto'], answer:'💰 <b>Nuestros precios</b> (sin IVA):<br><br>• Chatbot IA: desde 99€/mes<br>• Web + Chatbot: 1.800€ único<br>• RRSS: desde 99€/mes<br>• Enterprise: desde 3.599€<br><br>Todos sin permanencia. ¿Cuál te interesa?' },
     contacto: { kw:['contacto','hablar','reunion','reunión','cita','whatsapp','llamar'], answer:'📞 <b>Contacta con nosotros</b><br><br>WhatsApp: <a href="https://wa.me/34643199580" target="_blank" style="color:#00d4aa">643 199 580</a><br>Respuesta en menos de 5 min.<br><br>Cristóbal te atiende personalmente y agenda reunión.' },
-    hola: { kw:['hola','buenas','hey','buenos'], answer:'¡Hola! 👋 Soy el chatbot de WhiteMoon.<br><br>¿Qué te interesa saber?<br>• Chatbot IA para web<br>• Agente de voz IA<br>• Gestión de RRSS<br>• Precios<br>• Hablar con el equipo' }
+    hola: { kw:['hola','buenas','hey','buenos'], answer:'¡Hola! 👋 Soy el chatbot de WhiteMoon.<br><br>¿Qué te interesa saber?<br>• Chatbot IA para web<br>• Gestión de RRSS<br>• Automatización con N8N<br>• Precios<br>• Hablar con el equipo' }
   };
 
   function chatMatch(t){
@@ -1946,18 +1920,14 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
         if(t.indexOf(p.kw[i]) !== -1) return p.answer;
       }
     }
-    return '🤔 No estoy seguro de entender la consulta.<br><br>Puedes preguntar sobre:<br>• <b>Chatbot IA</b> (Pack Advance)<br>• <b>Web + IA</b> (Pack Pyme)<br>• <b>Agente voz IA</b><br>• <b>RRSS con IA</b><br>• <b>Precios</b><br>• <b>Contacto</b><br><br>O escríbenos directo por WhatsApp — te atendemos en menos de 5 min.';
+    return '🤔 No estoy seguro de entender la consulta.<br><br>Puedes preguntar sobre:<br>• <b>Chatbot IA</b> (Pack Advance)<br>• <b>Web + IA</b> (Pack Pyme)<br>• <b>RRSS con IA</b><br>• <b>Precios</b><br>• <b>Contacto</b><br><br>O escríbenos directo por WhatsApp — te atendemos en menos de 5 min.';
   }
 
   function addChatMsg(html, isUser){
     var body = getEl('wmChatBody'); if(!body) return;
     var div = document.createElement('div');
     div.className = 'wm-chat-msg' + (isUser ? ' user' : '');
-    if(isUser){
-      div.textContent = html;
-    } else {
-      div.innerHTML = html;
-    }
+    if(isUser){ div.textContent = html; } else { div.innerHTML = html; }
     body.appendChild(div);
     body.scrollTop = body.scrollHeight;
   }
@@ -1971,7 +1941,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     setTimeout(function(){ addChatMsg(chatMatch(msg), false); }, 600);
   }
 
-  /* ── Registrar listeners cuando el DOM esté listo ── */
   function wmBind(id, ev, fn){
     var el = getEl(id);
     if(el) el.addEventListener(ev, fn);
@@ -1979,17 +1948,15 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
   function wmInit(){
     wmBind('wmHubBtn', 'click', wmToggleHub);
-    wmBind('navAgentBtn', 'click', wmToggleHub);
     wmBind('wmOptChat', 'click', wmOpenChat);
     wmBind('wmOptWa', 'click', wmCloseAll);
     wmBind('wmChatClose', 'click', wmBackToMenu);
     wmBind('wmChatSend', 'click', wmChatSend);
     wmBind('wmChatInput', 'keydown', function(e){ if(e.key==='Enter') wmChatSend(); });
 
-    /* Cerrar al hacer clic fuera */
     document.addEventListener('click', function(e){
-      if(!e.target.closest('.wm-hub-wrap') && !e.target.closest('.wm-hub-menu') && !e.target.closest('.wm-laura-modal') && !e.target.closest('.wm-chat-modal')){
-        if(!isOnCall) wmCloseAll();
+      if(!e.target.closest('.wm-hub-wrap') && !e.target.closest('.wm-hub-menu') && !e.target.closest('.wm-chat-modal')){
+        wmCloseAll();
       }
     });
   }
@@ -1999,8 +1966,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   } else {
     wmInit();
   }
-
-  })();
+})();
 </script>
 
 </body>
