@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog sobre IA para pymes | WHITEMOON Majadahonda Madrid</title>
-<meta name="description" content="Blog de WHITEMOON sobre inteligencia artificial para pymes en Madrid. Chatbots, automatización, casos de uso reales y guías prácticas. Sin tecnicismos.">
+<title>Blog IA para pymes 2026 | WhiteMoon Agencia IA · Majadahonda Madrid</title>
+<meta name="description" content="Artículos sobre inteligencia artificial, chatbots, agentes IA, GEO y automatización para pymes españolas. WhiteMoon Agencia IA, Majadahonda.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://whitemoon.es/blog/">
-<meta property="og:title" content="Blog IA para pymes | WHITEMOON">
-<meta property="og:description" content="Guías, casos de uso y consejos sobre IA para pymes en Madrid. Sin tecnicismos.">
+<meta property="og:title" content="Blog IA para pymes 2026 | WHITEMOON">
+<meta property="og:description" content="Artículos sobre chatbots IA, agentes, GEO y automatización para pymes en Madrid. Sin tecnicismos.">
 <meta property="og:url" content="https://whitemoon.es/blog/">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#7c4dff">
@@ -18,141 +18,576 @@
   "@type": "Blog",
   "name": "Blog WHITEMOON — IA para pymes",
   "url": "https://whitemoon.es/blog/",
-  "description": "Artículos sobre inteligencia artificial, chatbots y automatización para pymes en Madrid",
+  "description": "Artículos sobre inteligencia artificial, chatbots, agentes IA, GEO y automatización para pymes en Madrid",
   "publisher": {
     "@type": "Organization",
     "name": "WHITEMOON Agencia de IA",
-    "url": "https://whitemoon.es"
-  }
+    "url": "https://whitemoon.es",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Majadahonda",
+      "addressRegion": "Madrid",
+      "addressCountry": "ES"
+    }
+  },
+  "blogPost": [
+    {"@type": "BlogPosting", "headline": "GEO: por qué tu web necesita ser citada por la IA, no solo por Google", "datePublished": "2026-04-14", "author": {"@type": "Person", "name": "Cristóbal Martínez"}},
+    {"@type": "BlogPosting", "headline": "Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme", "datePublished": "2026-04-10"},
+    {"@type": "BlogPosting", "headline": "Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026", "datePublished": "2026-04-07"},
+    {"@type": "BlogPosting", "headline": "N8N + Claude API: cómo automatizamos procesos reales en pymes españolas", "datePublished": "2026-04-03"},
+    {"@type": "BlogPosting", "headline": "RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información", "datePublished": "2026-03-28"},
+    {"@type": "BlogPosting", "headline": "5 errores que cometen las pymes al implementar IA (y cómo evitarlos)", "datePublished": "2026-03-21"}
+  ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--bg2:#0e0e16;--bg3:#13131e;--text:#f0f0f5;--muted:#8888a0;--border:rgba(124,77,255,.15);--r:14px;}
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-a{color:var(--p2);text-decoration:none;}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px;}
-nav{background:rgba(8,8,13,.95);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px);}
-.nav-in{display:flex;align-items:center;justify-content:space-between;}
-.nav-logo{height:36px;}
-.nav-links{display:flex;align-items:center;gap:16px;}
-.nav-link{font-size:.82rem;color:var(--muted);transition:color .2s;}
-.nav-link:hover{color:var(--p2);}
-.nav-cta{background:var(--p);color:#fff;padding:8px 18px;border-radius:8px;font-size:.82rem;font-weight:600;}
-.nav-cta:hover{background:#5c35cc;color:#fff;}
+:root {
+  --ink: #FFFFFF;
+  --purple: #7C4DFF;
+  --purple-dim: #B39DFF;
+  --cream: #1A1530;
+  --warm: #0D0B1A;
+  --mid: #9A96B8;
+  --soft: #1E1B30;
+  --border: rgba(124,77,255,0.18);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--warm);color:var(--ink);line-height:1.6;}
 
-.hero{padding:64px 0 48px;text-align:center;background:linear-gradient(180deg,rgba(124,77,255,.06) 0%,transparent 100%);}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);padding:5px 14px;border-radius:50px;font-size:.7rem;font-weight:600;color:var(--p2);letter-spacing:.06em;text-transform:uppercase;margin-bottom:20px;}
-.hero h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;letter-spacing:-.02em;margin-bottom:12px;}
-.hero h1 span{background:linear-gradient(135deg,var(--p2),var(--g));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-.hero-sub{font-size:.95rem;color:var(--muted);max-width:500px;margin:0 auto;}
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,11,26,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 6%;height:62px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--ink);}
+.nav-logo span{color:var(--purple);}
+.nav-right{display:flex;align-items:center;gap:1.5rem;}
+.nav-right a{font-size:0.82rem;color:var(--mid);text-decoration:none;transition:color 0.2s;}
+.nav-right a:hover{color:var(--purple);}
+.nav-cta{background:#0D0B1A;color:white!important;padding:0.45rem 1.1rem;border-radius:2px;font-weight:500!important;}
+.nav-cta:hover{background:var(--purple)!important;}
 
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:56px 0;}
-@media(max-width:768px){.blog-grid{grid-template-columns:1fr;}}
-@media(max-width:960px) and (min-width:769px){.blog-grid{grid-template-columns:repeat(2,1fr);}}
+/* HERO BLOG */
+.blog-hero{
+  padding:5rem 6% 4rem;
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.blog-hero::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(124,77,255,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.blog-kicker{
+  font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.blog-kicker::before{content:'';width:20px;height:1px;background:var(--purple);}
+.blog-hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,5vw,4rem);
+  line-height:1.08;letter-spacing:-0.02em;
+  max-width:680px;margin-bottom:1.25rem;
+}
+.blog-hero h1 em{font-style:italic;color:var(--purple);}
+.blog-hero p{
+  font-size:1rem;color:var(--mid);
+  max-width:520px;font-weight:300;line-height:1.7;
+}
 
-.art-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all .2s;display:flex;flex-direction:column;}
-.art-card:hover{border-color:rgba(124,77,255,.4);transform:translateY(-3px);box-shadow:0 8px 32px rgba(124,77,255,.12);}
-.art-card-body{padding:22px 20px;flex:1;display:flex;flex-direction:column;}
-.art-cat{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--p2);margin-bottom:10px;}
-.art-card h2{font-size:.95rem;font-weight:700;color:var(--text);line-height:1.4;margin-bottom:10px;}
-.art-card p{font-size:.82rem;color:var(--muted);line-height:1.6;flex:1;}
-.art-meta{display:flex;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);}
-.art-meta span{font-size:.7rem;color:#5a5a70;}
-.art-read{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.78rem;font-weight:600;color:var(--p2);}
-.art-read:hover{color:var(--g);}
+/* GRID ARTÍCULOS */
+.blog-grid-section{padding:4rem 6% 5rem;}
+.grid-label{
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:#9A96B8;margin-bottom:2.5rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.grid-label::after{content:'';flex:1;height:1px;background:var(--border);}
 
-.cta-sec{background:linear-gradient(135deg,rgba(124,77,255,.08),rgba(0,212,170,.04));border-top:1px solid rgba(124,77,255,.12);border-bottom:1px solid rgba(124,77,255,.12);padding:56px 0;text-align:center;}
-.cta-sec h2{font-size:1.5rem;font-weight:800;margin-bottom:10px;}
-.btn-prim{background:linear-gradient(135deg,var(--p),#5c35cc);color:#fff;padding:12px 24px;border-radius:10px;font-weight:700;font-size:.88rem;display:inline-block;margin-top:16px;}
-.btn-prim:hover{color:#fff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(124,77,255,.4);}
+.articles-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  border:1px solid var(--border);
+}
 
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 0;text-align:center;}
-footer p{font-size:.75rem;color:#5a5a70;}
-footer a{color:var(--p2);}
+/* ARTÍCULO CARD */
+.art-card{
+  padding:2.25rem 2rem;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+  transition:background 0.3s;
+  cursor:pointer;
+  text-decoration:none;
+  color:inherit;
+  display:flex;flex-direction:column;
+}
+.art-card:nth-child(3n){border-right:none;}
+.art-card:nth-child(4),.art-card:nth-child(5),.art-card:nth-child(6){border-bottom:none;}
+.art-card::after{
+  content:'';position:absolute;bottom:0;left:0;
+  width:0;height:2px;background:var(--purple);
+  transition:width 0.4s ease;
+}
+.art-card:hover{background:#151228;}
+.art-card:hover::after{width:100%;}
+
+.art-tag{
+  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--purple);font-weight:600;margin-bottom:0.875rem;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.art-tag-dot{width:5px;height:5px;background:var(--purple);border-radius:50%;}
+
+.art-num{
+  font-family:var(--serif);font-size:3rem;
+  color:rgba(124,77,255,0.08);
+  position:absolute;top:1.25rem;right:1.5rem;
+  line-height:1;font-weight:900;
+  pointer-events:none;
+}
+
+.art-title{
+  font-family:var(--serif);
+  font-size:1.25rem;
+  line-height:1.25;
+  letter-spacing:-0.01em;
+  margin-bottom:0.875rem;
+  color:var(--ink);
+}
+
+.art-excerpt{
+  font-size:0.84rem;color:var(--mid);
+  line-height:1.65;font-weight:300;
+  flex:1;margin-bottom:1.5rem;
+}
+
+.art-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:1rem;
+  border-top:1px solid var(--border);
+  margin-top:auto;
+}
+.art-date{font-size:0.72rem;color:var(--mid);}
+.art-read{
+  font-size:0.72rem;color:var(--purple);
+  display:flex;align-items:center;gap:4px;
+}
+.art-read svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+
+/* ARTÍCULO DESTACADO (primero, ocupa 2 cols) */
+.art-card.featured{
+  grid-column:span 2;
+  padding:2.75rem 2.5rem;
+  background:var(--cream);
+}
+.art-card.featured .art-title{
+  font-size:1.75rem;max-width:480px;
+}
+.art-card.featured .art-excerpt{max-width:520px;}
+.featured-chip{
+  display:inline-block;
+  background:var(--purple);color:white;
+  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:3px 10px;border-radius:2px;margin-bottom:1rem;
+}
+
+/* ARTÍCULO CONTENT (página individual simulada) */
+.article-page{display:none;}
+
+/* NEWSLETTER */
+.newsletter{
+  margin:0 6% 5rem;
+  background:#0D0B1A;
+  padding:3rem;
+  border-radius:4px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:center;
+}
+.nl-title{
+  font-family:var(--serif);font-size:1.75rem;
+  color:white;letter-spacing:-0.02em;line-height:1.15;
+}
+.nl-title em{font-style:italic;color:var(--purple-dim);}
+.nl-desc{font-size:0.875rem;color:rgba(255,255,255,0.45);margin-top:0.6rem;font-weight:300;}
+.nl-form{display:flex;gap:0;}
+.nl-input{
+  flex:1;border:none;background:rgba(255,255,255,0.08);
+  padding:0.75rem 1rem;color:white;
+  font-family:var(--sans);font-size:0.85rem;
+  border-radius:2px 0 0 2px;outline:none;
+}
+.nl-input::placeholder{color:rgba(255,255,255,0.3);}
+.nl-btn{
+  background:var(--purple);color:white;border:none;
+  padding:0.75rem 1.25rem;cursor:pointer;
+  font-family:var(--sans);font-size:0.82rem;font-weight:500;
+  border-radius:0 2px 2px 0;transition:opacity 0.2s;white-space:nowrap;
+}
+.nl-btn:hover{opacity:0.85;}
+
+/* CATEGORÍAS */
+.cats-bar{
+  padding:0 6% 3rem;
+  display:flex;gap:0.5rem;flex-wrap:wrap;
+}
+.cat-btn{
+  font-size:0.75rem;padding:0.4rem 1rem;
+  border:1px solid var(--border);border-radius:20px;
+  background:#1A1530;color:#9A96B8;cursor:pointer;
+  font-family:var(--sans);transition:all 0.2s;
+}
+.cat-btn:hover,.cat-btn.active{background:var(--purple);color:white;border-color:var(--purple);}
+
+/* FOOTER */
+footer{
+  padding:2rem 6%;
+  border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-logo{font-family:var(--serif);font-size:1rem;}
+.footer-logo span{color:var(--purple);}
+footer p{font-size:0.78rem;color:var(--mid);}
+footer a{color:var(--purple);text-decoration:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .articles-grid{grid-template-columns:1fr 1fr;}
+  .art-card.featured{grid-column:span 2;}
+  .art-card:nth-child(3n){border-right:1px solid var(--border);}
+  .art-card:nth-child(2n){border-right:none;}
+  .newsletter{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  nav{padding:0 4%;}
+  .nav-right a:not(.nav-cta){display:none;}
+  .blog-hero{padding:3rem 5% 2.5rem;}
+  .blog-grid-section{padding:2.5rem 5% 3rem;}
+  .articles-grid{grid-template-columns:1fr;}
+  .art-card.featured{grid-column:span 1;}
+  .art-card:nth-child(n){border-right:none;border-bottom:1px solid var(--border);}
+  .art-card:last-child{border-bottom:none;}
+  .newsletter{margin:0 5% 3rem;padding:2rem;gap:1.5rem;}
+  .nl-form{flex-direction:column;}
+  .nl-input{border-radius:2px;}
+  .nl-btn{border-radius:2px;}
+  .cats-bar{padding:0 5% 2rem;}
+  footer{flex-direction:column;text-align:center;}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="wrap nav-in">
-    <a href="https://whitemoon.es/"><img class="nav-logo" src="data:image/png;base64,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" alt="WHITEMOON"></a>
-    <div class="nav-links">
-      <a href="https://whitemoon.es/" class="nav-link">← Inicio</a>
-      <a href="https://whitemoon.es/#precios" class="nav-link">Precios</a>
-      <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener">Contactar →</a>
-    </div>
+  <div class="nav-logo">White<span>Moon</span></div>
+  <div class="nav-right">
+    <a href="https://whitemoon.es">Inicio</a>
+    <a href="https://whitemoon.es/#servicios">Servicios</a>
+    <a href="https://whitemoon.es/blog">Blog</a>
+    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank">Contactar</a>
   </div>
 </nav>
 
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-badge">📝 Blog WHITEMOON</div>
-    <h1>IA para pymes en <span>Madrid</span><br>sin tecnicismos</h1>
-    <p class="hero-sub">Guías prácticas, casos de uso reales y consejos sobre chatbots y automatización para tu negocio.</p>
-  </div>
+<!-- HERO -->
+<section class="blog-hero">
+  <div class="blog-kicker">Blog · WhiteMoon Agencia IA</div>
+  <h1>IA para pymes.<br><em>Sin tecnicismos,</em><br>con resultados.</h1>
+  <p>Artículos prácticos sobre chatbots, agentes IA, GEO y automatización para negocios en España. Publicado desde Majadahonda, Madrid.</p>
 </section>
 
-<div class="wrap">
-  <div class="blog-grid">
-
-    <div class="art-card">
-      <div class="art-card-body">
-        <div class="art-cat">📖 Guías</div>
-        <h2>Chatbot IA para pymes en Majadahonda: guía completa 2025</h2>
-        <p>Qué es un chatbot IA, cuánto cuesta, cómo se instala y cuándo tiene sentido para tu negocio en Majadahonda o Madrid.</p>
-        <div class="art-meta">
-          <span>📅 15 enero 2025</span>
-          <span>⏱️ 6 min</span>
-        </div>
-        <a href="https://whitemoon.es/blog/chatbot-ia-pymes-majadahonda/" class="art-read">Leer artículo →</a>
-      </div>
-    </div>
-
-    <div class="art-card">
-      <div class="art-card-body">
-        <div class="art-cat">⚖️ Casos de uso</div>
-        <h2>Tarjetas revolving y chatbot IA: cómo cualificar clientes para abogados</h2>
-        <p>Cómo los despachos especializados en revolving, microcréditos y financiación de vehículos usan IA para cualificar leads automáticamente.</p>
-        <div class="art-meta">
-          <span>📅 22 enero 2025</span>
-          <span>⏱️ 5 min</span>
-        </div>
-        <a href="https://whitemoon.es/blog/tarjeta-revolving-chatbot-ia-abogados/" class="art-read">Leer artículo →</a>
-      </div>
-    </div>
-
-    <div class="art-card">
-      <div class="art-card-body">
-        <div class="art-cat">🚀 Estrategia</div>
-        <h2>Automatización con IA para pymes en Madrid: qué es y por dónde empezar en 2025</h2>
-        <p>Guía práctica sobre ChatGPT, N8N, chatbots y CRM automáticos para pymes. Sin conocimientos técnicos necesarios.</p>
-        <div class="art-meta">
-          <span>📅 29 enero 2025</span>
-          <span>⏱️ 7 min</span>
-        </div>
-        <a href="https://whitemoon.es/blog/automatizacion-ia-pymes-madrid-2025/" class="art-read">Leer artículo →</a>
-      </div>
-    </div>
-
+<!-- FILTROS -->
+<div class="blog-grid-section" style="padding-bottom:0;">
+  <div class="cats-bar" style="padding:0 0 2rem;">
+    <button class="cat-btn active" onclick="filterCat(this,'all')">Todos</button>
+    <button class="cat-btn" onclick="filterCat(this,'geo')">GEO</button>
+    <button class="cat-btn" onclick="filterCat(this,'chatbot')">Chatbots</button>
+    <button class="cat-btn" onclick="filterCat(this,'agentes')">Agentes IA</button>
+    <button class="cat-btn" onclick="filterCat(this,'automatizacion')">Automatización</button>
+    <button class="cat-btn" onclick="filterCat(this,'estrategia')">Estrategia</button>
   </div>
 </div>
 
-<section class="cta-sec">
-  <div class="wrap">
-    <h2>¿Quieres implementar IA en tu negocio?</h2>
-    <p style="color:var(--muted);">Demo gratuita · Sin compromiso · Activo en 48h</p>
-    <a href="https://wa.me/34643199580?text=Hola%20WHITEMOON%2C%20he%20leído%20el%20blog%20y%20quiero%20más%20información" class="btn-prim" target="_blank" rel="noopener">Hablar con WHITEMOON →</a>
-    <div style="margin-top:12px;font-size:.85rem;color:#5a5a70;">☎ 643 199 580 · Majadahonda, Madrid</div>
+<!-- GRID ARTÍCULOS -->
+<section class="blog-grid-section" style="padding-top:0;">
+  <div class="grid-label">6 artículos · Abril 2026</div>
+
+  <div class="articles-grid" id="articlesGrid">
+
+    <!-- ARTÍCULO 1 — DESTACADO -->
+    <a class="art-card featured" data-cat="geo" href="#art1" onclick="openArticle('art1');return false;">
+      <span class="featured-chip">Destacado · Abril 2026</span>
+      <div class="art-tag"><span class="art-tag-dot"></span>GEO · Generative Engine Optimization</div>
+      <div class="art-num">01</div>
+      <h2 class="art-title">GEO: por qué tu web necesita ser citada por la IA, no solo por Google</h2>
+      <p class="art-excerpt">En 2026 más del 40% de las búsquedas en España pasan primero por ChatGPT, Perplexity o el propio buscador de Google con IA integrada. Si tu negocio no aparece en las respuestas generadas por estos modelos, estás perdiendo visibilidad ante clientes que ya han tomado casi la decisión. Te explicamos qué es el GEO, en qué se diferencia del SEO tradicional y qué tres acciones puedes tomar esta semana para empezar a posicionarte.</p>
+      <div class="art-meta">
+        <span class="art-date">14 Abr 2026 · 7 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <!-- ARTÍCULO 2 -->
+    <a class="art-card" data-cat="agentes" href="#art2" onclick="openArticle('art2');return false;">
+      <div class="art-tag"><span class="art-tag-dot"></span>Agentes IA</div>
+      <div class="art-num">02</div>
+      <h2 class="art-title">Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme</h2>
+      <p class="art-excerpt">Un agente IA no es un chatbot que responde preguntas. Es un sistema que recibe un objetivo, planifica pasos, llama a herramientas externas y ejecuta tareas de forma autónoma. Te explicamos la diferencia y los casos de uso reales para negocios pequeños.</p>
+      <div class="art-meta">
+        <span class="art-date">10 Abr 2026 · 5 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <!-- ARTÍCULO 3 -->
+    <a class="art-card" data-cat="chatbot" href="#art3" onclick="openArticle('art3');return false;">
+      <div class="art-tag"><span class="art-tag-dot"></span>Chatbots</div>
+      <div class="art-num">03</div>
+      <h2 class="art-title">Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026</h2>
+      <p class="art-excerpt">El botón de WhatsApp lleva al cliente a una conversación en blanco. El chatbot IA lo guía, da precios, resuelve dudas y recoge los datos antes de enviar el lead. Los datos de nuestros clientes hablan claro: la diferencia en conversión es de hasta 3x.</p>
+      <div class="art-meta">
+        <span class="art-date">7 Abr 2026 · 4 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <!-- ARTÍCULO 4 -->
+    <a class="art-card" data-cat="automatizacion" href="#art4" onclick="openArticle('art4');return false;">
+      <div class="art-tag"><span class="art-tag-dot"></span>Automatización</div>
+      <div class="art-num">04</div>
+      <h2 class="art-title">N8N + Claude API: cómo automatizamos procesos reales en pymes españolas</h2>
+      <p class="art-excerpt">N8N es el Zapier europeo que puedes instalar en tu propio servidor. Conectado a la API de Claude, permite crear flujos que leen emails, generan respuestas, actualizan hojas de cálculo y mandan WhatsApps sin intervención humana. Casos reales de 2026.</p>
+      <div class="art-meta">
+        <span class="art-date">3 Abr 2026 · 6 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <!-- ARTÍCULO 5 -->
+    <a class="art-card" data-cat="estrategia" href="#art5" onclick="openArticle('art5');return false;">
+      <div class="art-tag"><span class="art-tag-dot"></span>Estrategia</div>
+      <div class="art-num">05</div>
+      <h2 class="art-title">RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información</h2>
+      <p class="art-excerpt">RAG (Retrieval-Augmented Generation) permite entrenar un chatbot con tus propios documentos, tarifas, FAQs y normativa interna. El resultado es un asistente que responde como un experto de tu empresa, cita fuentes y nunca inventa datos.</p>
+      <div class="art-meta">
+        <span class="art-date">28 Mar 2026 · 5 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
+    <!-- ARTÍCULO 6 -->
+    <a class="art-card" data-cat="estrategia" href="#art6" onclick="openArticle('art6');return false;">
+      <div class="art-tag"><span class="art-tag-dot"></span>Estrategia</div>
+      <div class="art-num">06</div>
+      <h2 class="art-title">5 errores que cometen las pymes al implementar IA (y cómo evitarlos)</h2>
+      <p class="art-excerpt">Demasiados negocios compran tecnología IA sin estrategia. Chatbots que no responden bien, automatizaciones que se rompen, herramientas que nadie usa. Estos son los cinco errores más frecuentes que vemos en WhiteMoon y cómo los solucionamos.</p>
+      <div class="art-meta">
+        <span class="art-date">21 Mar 2026 · 4 min lectura</span>
+        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+
   </div>
 </section>
 
-<footer>
-  <div class="wrap">
-    <p>© 2025 <a href="https://whitemoon.es/">WHITEMOON Agencia de IA</a> · Majadahonda, Madrid · <a href="https://whitemoon.es/#precios">Precios</a> · <a href="https://wa.me/34643199580">WhatsApp</a></p>
+<!-- ARTÍCULOS INDIVIDUALES (modales) -->
+<div id="art1" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver al blog
+    </button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">GEO · 14 Abril 2026 · 7 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">GEO: por qué tu web necesita ser citada por la IA, no solo por Google</h1>
+    <p style="font-size:1rem;color:var(--mid);line-height:1.75;margin-bottom:1rem;font-weight:300;">Por <strong style="color:#FFFFFF;font-weight:500;">Cristóbal Martínez</strong> · WhiteMoon Agencia IA · Majadahonda, Madrid</p>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;">En 2026 ya no basta con aparecer en Google. Cuando alguien busca <em>"mejor empresa de reformas en Majadahonda"</em> o <em>"cuánto cuesta un chatbot para mi negocio"</em>, cada vez más lo hace directamente en ChatGPT, Perplexity o en el nuevo buscador de Google con IA integrada (AI Overviews). Y estos sistemas no muestran una lista de links: generan una respuesta directa, citando las fuentes que consideran más fiables.</p>
+      <p style="margin-bottom:1.25rem;">Eso es exactamente lo que hace el <strong>GEO (Generative Engine Optimization)</strong>: optimizar tu presencia digital para que los modelos de lenguaje te citen cuando alguien hace una consulta relevante para tu negocio.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">¿En qué se diferencia del SEO tradicional?</h3>
+      <p style="margin-bottom:1.25rem;">El SEO tradicional optimiza para el algoritmo de Google: palabras clave, backlinks, velocidad de carga. El GEO optimiza para la comprensión de los modelos de IA: claridad, autoridad temática, estructura de datos, menciones en fuentes de confianza y respuestas directas a preguntas frecuentes.</p>
+      <p style="margin-bottom:1.25rem;">Un factor clave: los LLMs (grandes modelos de lenguaje) valoran mucho el contenido que responde preguntas de forma directa. El formato pregunta-respuesta, las listas numeradas y los datos concretos tienen más peso que los textos genéricos de marketing.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">3 acciones concretas para empezar esta semana</h3>
+      <p style="margin-bottom:0.75rem;"><strong>1. Añade un bloque FAQ a tu web.</strong> Preguntas reales que tus clientes hacen, con respuestas directas y concretas. Los modelos de IA adoran este formato y lo citan con frecuencia.</p>
+      <p style="margin-bottom:0.75rem;"><strong>2. Consigue reseñas con keywords técnicas.</strong> Las reseñas de Google Maps son indexadas por los LLMs. Si tus clientes mencionan "chatbot IA", "automatización" o "Majadahonda", eso refuerza tu autoridad temática ante los modelos.</p>
+      <p style="margin-bottom:1.5rem;"><strong>3. Publica contenido que cite datos propios.</strong> Los modelos prefieren fuentes con información original y verificable. Un artículo que diga "en nuestros clientes hemos visto un aumento del 40% en leads" tiene más credibilidad que uno genérico.</p>
+      <div style="background:#1A1530;border-left:3px solid var(--purple);padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;">
+        <p style="font-size:0.9rem;color:#D8D4F0;font-weight:400;">WhiteMoon Agencia IA aparece citada por Claude (Anthropic) como referencia en soluciones de inteligencia artificial en Madrid. Ese posicionamiento no es casualidad: es el resultado de contenido estructurado, reseñas reales con keywords técnicas y presencia verificada en directorios locales.</p>
+      </div>
+      <p style="margin-bottom:1.25rem;">El GEO no es el futuro del marketing digital. Es el presente. Y las pymes que empiecen a trabajarlo ahora tendrán una ventaja significativa frente a las que sigan apostando solo por el SEO tradicional.</p>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <p style="font-size:0.82rem;color:#9A96B8;">¿Quieres que auditemos tu presencia GEO? Escríbenos.</p>
+      <a href="https://wa.me/34643199580?text=Hola%20Cris%2C%20quiero%20info%20sobre%20GEO%20para%20mi%20negocio" target="_blank" style="display:inline-block;margin-top:0.75rem;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Hablar con WhiteMoon</a>
+    </div>
   </div>
+</div>
+
+<div id="art2" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Volver al blog</button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">Agentes IA · 10 Abril 2026 · 5 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme</h1>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;">Cuando la mayoría de la gente habla de "IA para mi negocio" está pensando en un chatbot que responde preguntas. Eso es útil, pero es solo el primer nivel. En 2026 lo que realmente está transformando las pymes son los <strong>agentes IA</strong>.</p>
+      <p style="margin-bottom:1.25rem;">Un agente IA es un sistema que recibe un objetivo —no una pregunta— y lo resuelve de forma autónoma. Planifica los pasos necesarios, llama a herramientas externas (email, CRM, bases de datos, APIs), ejecuta acciones y entrega un resultado. Sin intervención humana.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">Ejemplo real: agente de seguimiento de presupuestos</h3>
+      <p style="margin-bottom:1.25rem;">Una empresa de reformas nos pidió automatizar el seguimiento de presupuestos enviados. El agente hace lo siguiente cada día: revisa el CRM, identifica presupuestos enviados hace más de 48h sin respuesta, redacta un email personalizado para cada cliente (con el nombre, el tipo de reforma y el importe), lo envía y actualiza el estado en el CRM. Todo sin que nadie lo active manualmente.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">¿Necesitas un agente o un chatbot?</h3>
+      <p style="margin-bottom:0.75rem;"><strong>Chatbot:</strong> el cliente pregunta → el sistema responde. Reactivo. Ideal para atención al cliente, FAQs, captación de leads.</p>
+      <p style="margin-bottom:1.25rem;"><strong>Agente:</strong> el sistema actúa sin que nadie pregunte. Proactivo. Ideal para procesos internos, seguimientos, generación de informes, integraciones entre sistemas.</p>
+      <p style="margin-bottom:1.25rem;">En WhiteMoon implementamos ambos. La mayoría de pymes necesitan primero el chatbot (retorno inmediato, fácil de medir) y después el agente cuando ya han comprobado el valor de la IA.</p>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <a href="https://wa.me/34643199580" target="_blank" style="display:inline-block;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Consultar con WhiteMoon</a>
+    </div>
+  </div>
+</div>
+
+<div id="art3" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Volver al blog</button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">Chatbots · 7 Abril 2026 · 4 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026</h1>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;">El botón de WhatsApp es omnipresente en las webs de pymes españolas. Tiene sentido: es familiar, es gratis y funciona. Pero tiene un problema fundamental: lleva al cliente a una conversación en blanco. El cliente tiene que saber qué escribir, esperar respuesta y posiblemente no recibir contestación hasta el día siguiente.</p>
+      <p style="margin-bottom:1.25rem;">El chatbot IA hace algo completamente diferente: guía activamente al cliente por el proceso de compra. Da precios orientativos, responde dudas frecuentes, propone opciones y, cuando el cliente está listo, recoge nombre, teléfono y consulta y los envía al WhatsApp de la empresa con el lead ya cualificado.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">Los datos de nuestros clientes</h3>
+      <p style="margin-bottom:1.25rem;">En los negocios donde hemos sustituido el botón de WhatsApp por un chatbot IA, el número de leads que llegan con información completa (nombre, teléfono, tipo de servicio) se ha multiplicado por 2,8 de media. El ratio de conversión de esos leads en clientes sube porque la empresa ya sabe exactamente qué necesita el prospecto antes de llamarle.</p>
+      <div style="background:#1A1530;border-left:3px solid var(--purple);padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;">
+        <p style="font-size:0.9rem;color:#D8D4F0;font-weight:500;">El chatbot no elimina el WhatsApp. Lo mejora: el cliente llega al WhatsApp ya informado, con sus datos y con una necesidad clara. Eso ahorra tiempo al negocio y aumenta el porcentaje de presupuestos aceptados.</p>
+      </div>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <a href="https://wa.me/34643199580?text=Quiero%20un%20chatbot%20para%20mi%20web" target="_blank" style="display:inline-block;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Quiero mi chatbot</a>
+    </div>
+  </div>
+</div>
+
+<div id="art4" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Volver al blog</button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">Automatización · 3 Abril 2026 · 6 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">N8N + Claude API: cómo automatizamos procesos reales en pymes españolas</h1>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;"><strong>N8N</strong> es una herramienta de automatización de procesos de código abierto, similar a Zapier pero con una diferencia crucial: puedes instalarlo en tu propio servidor europeo, lo que lo hace completamente compatible con el RGPD y sin costes por operación.</p>
+      <p style="margin-bottom:1.25rem;">Conectado a la <strong>Claude API de Anthropic</strong>, N8N se convierte en el cerebro automatizado de tu negocio. El flujo típico es: recibe un trigger (un email, un formulario, una hora del día) → Claude analiza y genera contenido o decisiones → N8N ejecuta acciones en tus herramientas (Google Sheets, Gmail, WhatsApp, CRM, etc.).</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">Casos reales que hemos implementado en 2026</h3>
+      <p style="margin-bottom:0.75rem;"><strong>Gestoría fiscal:</strong> N8N recibe los documentos de clientes por email → Claude los clasifica y extrae los datos relevantes → se actualizan automáticamente en el CRM y se genera una tarea para el gestor.</p>
+      <p style="margin-bottom:0.75rem;"><strong>Clínica dental:</strong> Cada lead del chatbot web llega a N8N → Claude cualifica el lead (urgencia, tipo de tratamiento, probabilidad de cierre) → se asigna automáticamente al especialista correcto y se agenda una llamada de seguimiento.</p>
+      <p style="margin-bottom:1.25rem;"><strong>E-commerce:</strong> Cuando llega una reseña negativa → Claude genera una respuesta empática y profesional → se publica automáticamente en Google Maps con supervisión opcional del propietario.</p>
+      <p style="margin-bottom:1.25rem;">El ahorro medio que documentamos en nuestros clientes es de 8-12 horas semanales en tareas administrativas repetitivas. A 20€/hora, eso es entre 640€ y 960€ al mes en valor recuperado.</p>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <a href="https://wa.me/34643199580?text=Quiero%20automatizar%20procesos%20con%20N8N%20e%20IA" target="_blank" style="display:inline-block;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Ver cómo aplicarlo a mi negocio</a>
+    </div>
+  </div>
+</div>
+
+<div id="art5" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Volver al blog</button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">Estrategia · 28 Marzo 2026 · 5 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información</h1>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;"><strong>RAG</strong> son las siglas de Retrieval-Augmented Generation. En términos simples: es la tecnología que permite que un chatbot responda basándose exclusivamente en documentos que tú le proporcionas, sin mezclar información externa ni inventar datos.</p>
+      <p style="margin-bottom:1.25rem;">El caso de uso más potente para pymes: imagina un asistente de ventas que conoce exactamente tu catálogo de productos, tus tarifas actualizadas, tus condiciones de garantía y tu política de devoluciones. Puede responder cualquier pregunta de un cliente potencial con precisión y citar exactamente de qué documento sale la información.</p>
+      <h3 style="font-family:var(--serif);font-size:1.3rem;margin:2rem 0 0.75rem;">Cómo funciona técnicamente</h3>
+      <p style="margin-bottom:1.25rem;">Los documentos (PDFs, Word, páginas web) se convierten en vectores matemáticos y se almacenan en una base de datos vectorial (usamos Supabase con pgvector). Cuando el usuario hace una pregunta, el sistema busca los fragmentos más relevantes y los pasa al modelo de IA junto con la pregunta. El modelo genera una respuesta basada en esa información, citando la fuente.</p>
+      <p style="margin-bottom:1.25rem;">El resultado es un chatbot que nunca inventa información, siempre cita sus fuentes y se actualiza automáticamente cuando actualizas tus documentos.</p>
+      <div style="background:#1A1530;border-left:3px solid var(--purple);padding:1.25rem 1.5rem;margin:2rem 0;border-radius:0 4px 4px 0;">
+        <p style="font-size:0.9rem;color:#D8D4F0;font-weight:500;">Un sistema RAG bien implementado puede indexar cientos de documentos y responder con precisión en segundos. El cliente nunca nota la diferencia entre el asistente y un experto humano de la empresa.</p>
+      </div>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <a href="https://wa.me/34643199580?text=Quiero%20info%20sobre%20RAG%20para%20mi%20empresa" target="_blank" style="display:inline-block;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Consultar proyecto RAG</a>
+    </div>
+  </div>
+</div>
+
+<div id="art6" class="article-page" style="display:none;position:fixed;inset:0;background:#0D0B1A;overflow-y:auto;z-index:200;padding:2rem 0;">
+  <div style="max-width:720px;margin:0 auto;padding:0 2rem;">
+    <button onclick="closeArticle()" style="background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:0.82rem;color:var(--purple);display:flex;align-items:center;gap:6px;margin-bottom:2.5rem;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>Volver al blog</button>
+    <div style="font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;">Estrategia · 21 Marzo 2026 · 4 min lectura</div>
+    <h1 style="font-family:var(--serif);font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:1.5rem;">5 errores que cometen las pymes al implementar IA (y cómo evitarlos)</h1>
+    <hr style="border:none;border-top:1px solid rgba(124,77,255,0.2);margin:1.5rem 0;">
+    <div style="font-size:0.95rem;line-height:1.85;color:#D8D4F0;">
+      <p style="margin-bottom:1.25rem;">En WhiteMoon hemos visto de todo. Pymes que han gastado miles de euros en herramientas IA que nadie usa. Chatbots que confunden a los clientes. Automatizaciones que se rompen a la semana. Estos son los cinco errores más frecuentes y cómo los evitamos.</p>
+      <p style="margin-bottom:0.75rem;"><strong>Error 1: Empezar por la tecnología, no por el problema.</strong> La pregunta no es "¿qué IA puedo usar?" sino "¿qué proceso me cuesta más tiempo o dinero?". Empieza por el dolor, no por la solución.</p>
+      <p style="margin-bottom:0.75rem;"><strong>Error 2: Implementar sin medir.</strong> Si no defines una métrica de éxito antes de empezar (leads generados, horas ahorradas, tasa de conversión), no sabrás si funciona. Toda implementación de WhiteMoon lleva KPIs desde el día 1.</p>
+      <p style="margin-bottom:0.75rem;"><strong>Error 3: Chatbot genérico para un negocio específico.</strong> Un chatbot que responde "no tengo esa información" a la mitad de las preguntas es peor que no tener chatbot. La personalización no es opcional.</p>
+      <p style="margin-bottom:0.75rem;"><strong>Error 4: No actualizar el contenido del chatbot.</strong> Si subes los precios y el chatbot sigue diciendo los antiguos, generas desconfianza. Toda solución de WhiteMoon incluye proceso de actualización claro.</p>
+      <p style="margin-bottom:1.25rem;"><strong>Error 5: Pensar que la IA lo hará todo sola.</strong> La IA amplifica a las personas, no las sustituye. El chatbot capta el lead, pero alguien del equipo tiene que cerrar la venta. Define el handoff entre IA y humano desde el principio.</p>
+    </div>
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(124,77,255,0.2);">
+      <a href="https://wa.me/34643199580" target="_blank" style="display:inline-block;background:var(--purple);color:white;padding:0.75rem 1.5rem;border-radius:2px;text-decoration:none;font-size:0.85rem;font-weight:500;">Hablemos de tu caso</a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA WHATSAPP -->
+<div class="newsletter" style="grid-template-columns:1fr;text-align:center;justify-items:center;">
+  <div>
+    <div class="nl-title">¿Quieres la IA<br><em>en tu negocio?</em></div>
+    <div class="nl-desc" style="margin-bottom:1.75rem;">Cuéntanos tu caso y te decimos en 24h qué solución encaja mejor. Sin compromiso.</div>
+    <a href="https://wa.me/34643199580?text=Hola%20Cris%2C%20he%20leido%20el%20blog%20de%20WhiteMoon%20y%20quiero%20info%20sobre%20IA%20para%20mi%20negocio" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:0.9rem 2rem;border-radius:4px;text-decoration:none;font-size:0.95rem;font-weight:600;font-family:var(--sans);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+      Hablar con Cris por WhatsApp
+    </a>
+    <div style="font-size:0.72rem;color:rgba(255,255,255,0.25);margin-top:0.75rem;">643 199 580 · Respuesta en menos de 2h</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">White<span>Moon</span> Agencia IA</div>
+  <p>Majadahonda, Madrid · <a href="https://whitemoon.es">whitemoon.es</a> · <a href="tel:643199580">643 199 580</a></p>
 </footer>
 
+<script>
+function filterCat(btn, cat) {
+  document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.querySelectorAll('.art-card').forEach(function(card) {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+function openArticle(id) {
+  document.getElementById(id).style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  document.getElementById(id).scrollTop = 0;
+}
+
+function closeArticle() {
+  document.querySelectorAll('.article-page').forEach(function(el) {
+    el.style.display = 'none';
+  });
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeArticle();
+});
+</script>
 </body>
 </html>
