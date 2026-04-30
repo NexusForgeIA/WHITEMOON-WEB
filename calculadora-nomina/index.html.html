@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Nómina IA 2026 Gratis | IRPF y Seguridad Social | WhiteMoon</title>
+<meta name="description" content="Calculadora de nómina IA 2026 gratis. Calcula tu salario neto, retención IRPF y cuota de Seguridad Social al instante. Actualizada con los tramos IRPF 2026. WhiteMoon Agencia IA · Majadahonda, Madrid.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://whitemoon.es/calculadora-nomina/">
+<meta property="og:title" content="Calculadora Nómina IA 2026 Gratis | WhiteMoon">
+<meta property="og:description" content="Calcula tu salario neto mensual, retención IRPF y Seguridad Social. Actualizada 2026. Sin registro, resultado inmediato.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-nomina/">
+<meta name="theme-color" content="#7C4DFF">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora Nómina IA 2026",
+  "url": "https://whitemoon.es/calculadora-nomina/",
+  "description": "Calculadora gratuita de nómina para 2026. Calcula salario neto, retención IRPF y cuota de Seguridad Social con los tramos actualizados.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+  "provider": {
+    "@type": "Organization",
+    "name": "WhiteMoon Agencia IA",
+    "url": "https://whitemoon.es",
+    "telephone": "+34643199580",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Majadahonda",
+      "addressRegion": "Madrid",
+      "addressCountry": "ES"
+    }
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --dark: #0D0B1A;
+  --dark2: #100D22;
+  --dark3: #1A1535;
+  --purple: #7C4DFF;
+  --purple-soft: #B39DFF;
+  --green: #00C896;
+  --green-soft: rgba(0,200,150,.12);
+  --red: #FF4D6D;
+  --red-soft: rgba(255,77,109,.1);
+  --white: #FFFFFF;
+  --mid: #9A96B8;
+  --border: rgba(124,77,255,0.18);
+  --serif: 'Syne', sans-serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--dark);color:var(--white);min-height:100vh;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(13,11,26,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 6%;height:60px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:white;text-decoration:none;}
+.nav-logo span{color:var(--purple);}
+.nav-cta{background:var(--purple);color:white;padding:.45rem 1.1rem;border-radius:2px;font-size:.8rem;font-weight:500;text-decoration:none;transition:opacity .2s;}
+.nav-cta:hover{opacity:.85;}
+
+/* HERO */
+.hero{padding:4rem 6% 3rem;background:linear-gradient(135deg,#100D22 0%,#1A1535 100%);border-bottom:1px solid var(--border);}
+.hero-kicker{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple-soft);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+.hero-kicker::before{content:'';width:20px;height:1px;background:var(--purple-soft);}
+.hero h1{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:1rem;max-width:680px;}
+.hero h1 em{font-style:italic;color:var(--purple-soft);}
+.hero-desc{font-size:.95rem;color:var(--mid);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:1.5rem;}
+.hero-badges{display:flex;gap:.5rem;flex-wrap:wrap;}
+.badge{font-size:.68rem;padding:3px 10px;border-radius:20px;background:rgba(124,77,255,.08);color:var(--purple-soft);border:1px solid var(--border);}
+
+/* CALCULADORA */
+.calc-section{padding:3rem 6%;background:var(--dark);}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:1000px;margin:0 auto;}
+
+/* FORMULARIO */
+.calc-form{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:2rem;}
+.form-title{font-family:var(--serif);font-size:1.15rem;color:white;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
+.form-title span{font-size:1.1rem;}
+.field{margin-bottom:1.25rem;}
+.field label{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.4rem;}
+.field input,.field select{width:100%;background:#0A0818;border:1px solid rgba(124,77,255,.2);border-radius:6px;padding:.7rem 1rem;color:white;font-size:.88rem;font-family:var(--sans);outline:none;transition:border .2s;}
+.field input:focus,.field select:focus{border-color:var(--purple);}
+.field select option{background:#0A0818;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.range-wrap{position:relative;}
+.range-wrap input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:rgba(124,77,255,.2);border-radius:2px;outline:none;padding:0;margin:.5rem 0;}
+.range-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--purple);cursor:pointer;}
+.range-val{position:absolute;right:0;top:0;font-size:.75rem;color:var(--purple-soft);font-weight:500;}
+.calc-btn{width:100%;background:var(--purple);color:white;border:none;padding:.95rem;border-radius:6px;font-size:.95rem;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.calc-btn:hover{background:#6d28d9;transform:translateY(-1px);}
+.calc-btn svg{width:18px;height:18px;fill:none;stroke:white;stroke-width:2;}
+
+/* RESULTADO */
+.calc-result{background:var(--dark2);border:1px solid var(--border);border-radius:12px;padding:2rem;display:flex;flex-direction:column;}
+.result-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;color:var(--mid);padding:2rem;}
+.result-empty svg{width:48px;height:48px;fill:none;stroke:rgba(124,77,255,.3);stroke-width:1.5;margin-bottom:1rem;}
+.result-empty p{font-size:.85rem;line-height:1.6;}
+.result-title{font-family:var(--serif);font-size:1.15rem;color:white;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
+
+/* NETO DESTACADO */
+.neto-card{background:linear-gradient(135deg,rgba(0,200,150,.1) 0%,rgba(0,200,150,.05) 100%);border:1px solid rgba(0,200,150,.2);border-radius:10px;padding:1.5rem;text-align:center;margin-bottom:1.25rem;}
+.neto-label{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;}
+.neto-amount{font-family:var(--serif);font-size:2.8rem;color:var(--white);letter-spacing:-.03em;line-height:1;}
+.neto-amount span{font-size:1.1rem;color:var(--mid);}
+.neto-anual{font-size:.78rem;color:var(--mid);margin-top:.3rem;}
+
+/* DESGLOSE */
+.desglose{display:flex;flex-direction:column;gap:0;margin-bottom:1.25rem;}
+.desglose-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid rgba(124,77,255,.08);}
+.desglose-row:last-child{border-bottom:none;}
+.desglose-label{font-size:.82rem;color:var(--mid);}
+.desglose-val{font-size:.88rem;font-weight:500;}
+.val-green{color:var(--green);}
+.val-red{color:var(--red);}
+.val-white{color:white;}
+.val-purple{color:var(--purple-soft);}
+
+/* BARRA VISUAL */
+.barra-wrap{margin-bottom:1.25rem;}
+.barra-label{font-size:.7rem;color:var(--mid);margin-bottom:.5rem;display:flex;justify-content:space-between;}
+.barra-bg{height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden;display:flex;}
+.barra-neto{background:var(--green);height:100%;border-radius:4px 0 0 4px;transition:width .6s ease;}
+.barra-irpf{background:var(--red);height:100%;transition:width .6s ease;}
+.barra-ss{background:var(--purple);height:100%;border-radius:0 4px 4px 0;transition:width .6s ease;}
+.barra-legend{display:flex;gap:1rem;margin-top:.5rem;flex-wrap:wrap;}
+.legend-item{display:flex;align-items:center;gap:4px;font-size:.68rem;color:var(--mid);}
+.legend-dot{width:8px;height:8px;border-radius:50%;}
+
+/* TIPO EFECTIVO */
+.tipo-card{background:rgba(124,77,255,.06);border:1px solid var(--border);border-radius:8px;padding:.875rem 1rem;display:flex;justify-content:space-between;align-items:center;}
+.tipo-label{font-size:.78rem;color:var(--mid);}
+.tipo-val{font-family:var(--serif);font-size:1.3rem;color:var(--purple-soft);}
+
+/* INFO SECTION */
+.info-section{padding:3rem 6%;background:#0A0818;border-top:1px solid var(--border);}
+.info-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:3rem;}
+.info-card{background:var(--dark);padding:1.75rem;transition:background .3s;}
+.info-card:hover{background:#151228;}
+.info-icon{width:38px;height:38px;background:rgba(124,77,255,.08);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--purple-soft);}
+.info-icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;}
+.info-title{font-family:var(--serif);font-size:1rem;color:white;margin-bottom:.4rem;}
+.info-desc{font-size:.82rem;color:var(--mid);line-height:1.6;font-weight:300;}
+
+/* FAQ */
+.faq-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.02em;margin-bottom:1.75rem;}
+.faq-title em{font-style:italic;color:var(--purple-soft);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:3rem;}
+.faq-item{background:var(--dark);padding:1.75rem;}
+.faq-item:hover{background:#151228;}
+.faq-q{font-family:var(--serif);font-size:.98rem;color:white;margin-bottom:.5rem;}
+.faq-a{font-size:.82rem;color:var(--mid);line-height:1.65;font-weight:300;}
+
+/* TRAMOS */
+.tramos-section{margin-bottom:3rem;}
+.tramos-title{font-family:var(--serif);font-size:1.4rem;margin-bottom:1rem;letter-spacing:-.01em;}
+.tramos-title em{font-style:italic;color:var(--purple-soft);}
+.tramos-table{width:100%;border-collapse:collapse;border:1px solid var(--border);}
+.tramos-table th{background:rgba(124,77,255,.12);padding:.75rem 1rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--purple-soft);font-weight:600;text-align:left;border-bottom:1px solid var(--border);}
+.tramos-table td{padding:.7rem 1rem;font-size:.83rem;border-bottom:1px solid rgba(124,77,255,.06);}
+.tramos-table tr:last-child td{border-bottom:none;}
+.tramos-table tr:hover td{background:rgba(124,77,255,.04);}
+.tramo-pct{font-weight:600;color:var(--purple-soft);}
+
+/* CTA GESTORÍAS */
+.cta-gestoria{background:linear-gradient(135deg,#1A1040 0%,#0D0B1A 100%);border:1px solid var(--border);border-radius:8px;padding:3rem;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;}
+.cta-gestoria-title{font-family:var(--serif);font-size:clamp(1.4rem,3vw,1.9rem);color:white;letter-spacing:-.02em;margin-bottom:.75rem;}
+.cta-gestoria-title em{font-style:italic;color:var(--purple-soft);}
+.cta-gestoria-desc{font-size:.9rem;color:var(--mid);line-height:1.7;font-weight:300;}
+.cta-features{list-style:none;margin-top:1.25rem;display:flex;flex-direction:column;gap:6px;}
+.cta-features li{font-size:.82rem;color:var(--mid);display:flex;align-items:center;gap:8px;}
+.cta-features li::before{content:'';width:16px;height:16px;border-radius:50%;background:rgba(124,77,255,.15);border:1px solid var(--border);flex-shrink:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' stroke='%23B39DFF' stroke-width='2' stroke-linecap='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='2 6 5 9 10 3'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:10px;}
+.cta-precio{text-align:center;flex-shrink:0;}
+.precio-num{font-family:var(--serif);font-size:3rem;color:white;letter-spacing:-.03em;line-height:1;}
+.precio-suf{font-size:1rem;color:var(--mid);}
+.precio-note{font-size:.75rem;color:var(--mid);margin-top:.25rem;margin-bottom:1.5rem;}
+.btn-wa{display:flex;align-items:center;gap:8px;background:#25D366;color:white;padding:.875rem 1.5rem;border-radius:4px;font-size:.88rem;font-weight:500;text-decoration:none;transition:opacity .2s;white-space:nowrap;}
+.btn-wa:hover{opacity:.88;}
+.btn-wa svg{width:18px;height:18px;fill:white;flex-shrink:0;}
+
+/* FOOTER */
+footer{padding:1.75rem 6%;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-logo{font-family:var(--serif);font-size:1rem;font-weight:700;}
+.footer-logo span{color:var(--purple);}
+footer p{font-size:.75rem;color:var(--mid);}
+footer a{color:var(--purple-soft);text-decoration:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr 1fr;}.faq-grid{grid-template-columns:1fr;}.cta-gestoria{grid-template-columns:1fr;}.cta-precio{text-align:left;}}
+@media(max-width:600px){nav{padding:0 4%;}.hero{padding:3rem 5% 2.5rem;}.calc-section{padding:2.5rem 5%;}.info-section{padding:2.5rem 5%;}.field-row{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr;}.cta-gestoria{padding:2rem;}.neto-amount{font-size:2.2rem;}footer{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://whitemoon.es" class="nav-logo">White<span>Moon</span></a>
+  <a href="https://wa.me/34643199580?text=Hola%20Cris%2C%20quiero%20info%20sobre%20la%20calculadora%20n%C3%B3mina%20para%20mi%20gestor%C3%ADa" class="nav-cta" target="_blank">Para gestorías</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-kicker">Herramienta gratuita · WhiteMoon Agencia IA</div>
+  <h1>Calculadora Nómina IA<br><em>2026</em> — totalmente gratis</h1>
+  <p class="hero-desc">Calcula tu salario neto, retención IRPF y cuota de Seguridad Social al instante. Tramos IRPF 2026 actualizados, todas las situaciones familiares. Sin registro, sin límites.</p>
+  <div class="hero-badges">
+    <span class="badge">IRPF 2026 actualizado</span>
+    <span class="badge">Seguridad Social</span>
+    <span class="badge">Todas las CCAA</span>
+    <span class="badge">Sin registro</span>
+    <span class="badge">IA · WhiteMoon</span>
+  </div>
+</section>
+
+<!-- CALCULADORA -->
+<section class="calc-section">
+  <div class="calc-grid">
+
+    <!-- FORMULARIO -->
+    <div class="calc-form">
+      <div class="form-title"><span>🧮</span> Datos de tu nómina</div>
+
+      <div class="field">
+        <label>Salario bruto anual (€)</label>
+        <div class="range-wrap">
+          <div class="range-val" id="rangeVal">30.000 €</div>
+          <input type="range" id="rangeSlider" min="12000" max="120000" step="500" value="30000" oninput="syncRange(this.value)">
+        </div>
+        <input type="number" id="brutoanual" value="30000" min="0" max="9999999" placeholder="Ej: 30000" oninput="syncInput(this.value)">
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Número de pagas</label>
+          <select id="pagas">
+            <option value="12">12 pagas</option>
+            <option value="14" selected>14 pagas</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Situación familiar</label>
+          <select id="familia">
+            <option value="soltero" selected>Soltero/a o divorciado/a sin hijos</option>
+            <option value="casado">Casado/a cónyuge no trabaja</option>
+            <option value="divorciado1">Divorciado/a con 1 hijo a cargo</option>
+            <option value="divorciado2">Divorciado/a con 2 hijos a cargo</option>
+            <option value="divorciado3">Divorciado/a con 3 o más hijos</option>
+            <option value="hijo1">Casado/a — 1 hijo/a menor 3 años</option>
+            <option value="hijo2">Casado/a — 2 hijos/as</option>
+            <option value="hijo3">Casado/a — 3 o más hijos/as</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Comunidad autónoma</label>
+          <select id="ccaa">
+            <option value="madrid" selected>Madrid</option>
+            <option value="cataluna">Cataluña</option>
+            <option value="andalucia">Andalucía</option>
+            <option value="valencia">C. Valenciana</option>
+            <option value="galicia">Galicia</option>
+            <option value="euskadi">País Vasco</option>
+            <option value="aragon">Aragón</option>
+            <option value="castilla">Castilla y León</option>
+            <option value="canarias">Canarias</option>
+            <option value="baleares">Baleares</option>
+            <option value="otras">Otras CCAA</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tipo de contrato</label>
+          <select id="contrato">
+            <option value="indefinido" selected>Indefinido</option>
+            <option value="temporal">Temporal</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Edad</label>
+        <select id="edad">
+          <option value="menor65" selected>Menor de 65 años</option>
+          <option value="65a75">Entre 65 y 75 años</option>
+          <option value="mayor75">Mayor de 75 años</option>
+        </select>
+      </div>
+
+      <button class="calc-btn" onclick="calcular()">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Calcular mi nómina
+      </button>
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="calc-result" id="resultPanel">
+      <div class="result-empty" id="resultEmpty">
+        <svg viewBox="0 0 24 24"><path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3"/><rect x="9" y="3" width="6" height="8" rx="1"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+        <p>Introduce tu salario bruto<br>y pulsa <strong style="color:white;">Calcular</strong></p>
+      </div>
+      <div id="resultContent" style="display:none;">
+        <div class="result-title"><span>✅</span> Resultado</div>
+        <div class="neto-card">
+          <div class="neto-label">Salario neto mensual</div>
+          <div class="neto-amount" id="netoMes">0 <span>€/mes</span></div>
+          <div class="neto-anual" id="netoAnualLabel"></div>
+        </div>
+        <div class="barra-wrap">
+          <div class="barra-label">
+            <span>Distribución del bruto</span>
+          </div>
+          <div class="barra-bg">
+            <div class="barra-neto" id="barNeto"></div>
+            <div class="barra-irpf" id="barIrpf"></div>
+            <div class="barra-ss" id="barSS"></div>
+          </div>
+          <div class="barra-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div>Neto</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div>IRPF</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div>S.S.</div>
+          </div>
+        </div>
+        <div class="desglose">
+          <div class="desglose-row">
+            <span class="desglose-label">Salario bruto anual</span>
+            <span class="desglose-val val-white" id="dBrutoAnual"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">Cuota S.S. empleado (6,35%)</span>
+            <span class="desglose-val val-red" id="dSS"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">Base liquidable IRPF</span>
+            <span class="desglose-val val-white" id="dBaseLiq"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">Retención IRPF anual</span>
+            <span class="desglose-val val-red" id="dIRPF"></span>
+          </div>
+          <div class="desglose-row" style="border-top:1px solid rgba(0,200,150,.2);margin-top:4px;padding-top:10px;">
+            <span class="desglose-label" style="color:white;font-weight:500;">Salario neto anual</span>
+            <span class="desglose-val val-green" id="dNetoAnual"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">Salario neto mensual</span>
+            <span class="desglose-val val-green" id="dNetoMes"></span>
+          </div>
+        </div>
+        <div class="tipo-card">
+          <span class="tipo-label">Tipo efectivo IRPF</span>
+          <span class="tipo-val" id="tipoEfectivo"></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info-section">
+
+  <!-- TRAMOS IRPF 2026 -->
+  <div class="tramos-section">
+    <h2 class="tramos-title">Tramos IRPF <em>2026</em></h2>
+    <table class="tramos-table">
+      <thead>
+        <tr>
+          <th>Tramo</th>
+          <th>Base imponible</th>
+          <th>Tipo estatal</th>
+          <th>Tipo total aprox.</th>
+          <th>Cuota tramo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1º</td><td>Hasta 12.450 €</td><td class="tramo-pct">9,5%</td><td class="tramo-pct">19%</td><td>2.365,50 €</td></tr>
+        <tr><td>2º</td><td>12.450 € – 20.200 €</td><td class="tramo-pct">12%</td><td class="tramo-pct">24%</td><td>1.860 €</td></tr>
+        <tr><td>3º</td><td>20.200 € – 35.200 €</td><td class="tramo-pct">15%</td><td class="tramo-pct">30%</td><td>4.500 €</td></tr>
+        <tr><td>4º</td><td>35.200 € – 60.000 €</td><td class="tramo-pct">18,5%</td><td class="tramo-pct">37%</td><td>9.176 €</td></tr>
+        <tr><td>5º</td><td>60.000 € – 300.000 €</td><td class="tramo-pct">22,5%</td><td class="tramo-pct">45%</td><td>108.000 €</td></tr>
+        <tr><td>6º</td><td>Más de 300.000 €</td><td class="tramo-pct">23,5%</td><td class="tramo-pct">47%</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.72rem;color:var(--mid);margin-top:.75rem;">* El tipo total incluye tramo estatal + tramo autonómico estándar. El tramo autonómico varía por comunidad. Fuente: AEAT 2026.</p>
+  </div>
+
+  <!-- CARDS INFO -->
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="info-title">IRPF 2026 actualizado</div>
+      <p class="info-desc">Implementa los 6 tramos del IRPF vigentes en 2026 con mínimos personales y reducciones por rendimientos del trabajo.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+      <div class="info-title">Situación familiar</div>
+      <p class="info-desc">Calcula con mínimo personal básico (5.550€) y mínimos por descendientes. Casado con cónyuge no trabajador y familias numerosas.</p>
+    </div>
+    <div class="info-card">
+      <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+      <div class="info-title">Seguridad Social</div>
+      <p class="info-desc">Cuota del empleado calculada con el tipo vigente: 4,70% contingencias + 1,55% desempleo + 0,10% formación = 6,35% total.</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 class="faq-title">Preguntas frecuentes sobre<br><em>el cálculo de nóminas</em></h2>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <div class="faq-q">¿Qué es el salario bruto y el neto?</div>
+      <p class="faq-a">El salario bruto es el acordado en contrato antes de deducciones. El neto es lo que realmente cobras — el bruto menos la retención de IRPF y la cuota de Seguridad Social del empleado.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Cómo se calcula la retención de IRPF?</div>
+      <p class="faq-a">Se aplica de forma progresiva por tramos: cada parte de la base liquidable tributa al tipo de su tramo. Primero se restan el mínimo personal, las reducciones por trabajo y la cuota de SS para obtener la base liquidable.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Qué es la cuota de Seguridad Social?</div>
+      <p class="faq-a">El empleado cotiza el 6,35% de su salario bruto: 4,70% por contingencias comunes, 1,55% por desempleo y 0,10% por formación profesional. Esta cantidad se descuenta directamente de la nómina.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Por qué varía el IRPF según la comunidad?</div>
+      <p class="faq-a">El IRPF tiene una parte estatal (igual para todos) y una parte autonómica (fijada por cada comunidad). Madrid tiene los tipos autonómicos más bajos de España; Cataluña y Asturias, los más altos.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Qué diferencia hay entre 12 y 14 pagas?</div>
+      <p class="faq-a">Con 14 pagas recibes el mismo salario neto anual pero distribuido en 14 mensualidades (12 ordinarias + 2 extraordinarias en junio y diciembre). La retención mensual es menor pero el total anual es igual.</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿El cálculo es exacto?</div>
+      <p class="faq-a">La calculadora aplica el algoritmo oficial de la AEAT con los tramos IRPF 2026 y los tipos de SS vigentes. El resultado puede diferir ligeramente del real por variables específicas como deducciones autonómicas, discapacidad o múltiples pagadores.</p>
+    </div>
+  </div>
+
+  <!-- CTA GESTORÍAS -->
+  <div class="cta-gestoria">
+    <div>
+      <div class="cta-gestoria-title">¿Eres gestoría laboral?<br><em>Intégrala en tu web.</em></div>
+      <p class="cta-gestoria-desc">Ofrece esta calculadora de nóminas a tus clientes directamente desde tu web, con tu marca y tus colores. Sin que tengan que salir de tu entorno digital.</p>
+      <ul class="cta-features">
+        <li>Tu logo y colores corporativos</li>
+        <li>Integración en tu web en menos de 48h</li>
+        <li>Actualización automática cada año</li>
+        <li>Sin permanencia mínima</li>
+        <li>Soporte técnico incluido</li>
+      </ul>
+    </div>
+    <div class="cta-precio">
+      <div class="precio-num">99€<span class="precio-suf">/mes</span></div>
+      <div class="precio-note">Tu marca · Tu web · Siempre actualizada</div>
+      <a href="https://wa.me/34643199580?text=Hola%20Cris%2C%20soy%20gestor%C3%ADa%20y%20quiero%20la%20calculadora%20de%20n%C3%B3mina%20en%20mi%20web" class="btn-wa" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
+        Quiero esto en mi web
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div class="footer-logo">White<span>Moon</span> Agencia IA</div>
+  <p>Majadahonda, Madrid · <a href="https://whitemoon.es">whitemoon.es</a> · <a href="tel:643199580">643 199 580</a></p>
+</footer>
+
+<script>
+var TRAMOS = [
+  {hasta:12450,tipo:0.19},{hasta:20200,tipo:0.24},{hasta:35200,tipo:0.30},
+  {hasta:60000,tipo:0.37},{hasta:300000,tipo:0.45},{hasta:Infinity,tipo:0.47}
+];
+var CCAA_AJUSTE = {madrid:-0.005,cataluna:0.01,andalucia:0,valencia:0.005,galicia:0,euskadi:-0.01,aragon:0.005,castilla:0,canarias:-0.005,baleares:0.005,otras:0};
+
+function redRendimientos(rnt) {
+  // Reduccion rendimientos trabajo AEAT 2026
+  // Se aplica sobre el rendimiento neto del trabajo (bruto - SS)
+  if (rnt <= 14047.50) return 6498;
+  if (rnt < 19747.50) return 6498 - 1.14286 * (rnt - 14047.50);
+  return 0;
+}
+function minimoPersonal(edad) {
+  if (edad==='mayor75') return 8100;
+  if (edad==='65a75') return 6700;
+  return 5550;
+}
+function minimoFamiliar(fam) {
+  if (fam==='hijo1'||fam==='divorciado1') return 2400;
+  if (fam==='hijo2'||fam==='divorciado2') return 2400+2700;
+  if (fam==='hijo3'||fam==='divorciado3') return 2400+2700+4000;
+  if (fam==='casado') return 3400;
+  return 0;
+}
+function calcIRPF(base, ccaa) {
+  if(base<=0) return 0;
+  var cuota=0, prev=0, aj=CCAA_AJUSTE[ccaa]||0;
+  for(var i=0;i<TRAMOS.length;i++){
+    var t=TRAMOS[i];
+    if(base<=prev) break;
+    cuota += (Math.min(base,t.hasta)-prev)*(t.tipo+aj);
+    prev=t.hasta;
+    if(base<=t.hasta) break;
+  }
+  return Math.max(0,cuota);
+}
+function fmt(n){return n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
+function syncRange(val){document.getElementById('rangeVal').textContent=parseInt(val).toLocaleString('es-ES')+' €';document.getElementById('brutoanual').value=val;}
+function syncInput(val){var v=Math.min(Math.max(parseInt(val)||0,12000),120000);document.getElementById('rangeSlider').value=v;document.getElementById('rangeVal').textContent=v.toLocaleString('es-ES')+' €';}
+
+function calcular() {
+  var bruto = parseFloat(document.getElementById('brutoanual').value)||0;
+  var pagas = parseInt(document.getElementById('pagas').value);
+  var fam   = document.getElementById('familia').value;
+  var ccaa  = document.getElementById('ccaa').value;
+  var edad  = document.getElementById('edad').value;
+  if(bruto<=0){alert('Introduce un salario bruto válido');return;}
+
+  // 1. SS empleado: 6.35% sobre salario bruto
+  var cuotaSS = Math.round(bruto * 0.0635 * 100) / 100;
+
+  // 2. Rendimiento neto del trabajo = bruto - SS
+  var rnt = bruto - cuotaSS;
+
+  // 3. Reduccion rendimientos del trabajo (se aplica sobre rnt)
+  var red = redRendimientos(rnt);
+
+  // 4. Reduccion declaracion conjunta
+  var redConj = (fam==='casado') ? 3400 : 0;
+
+  // 5. Base imponible
+  var baseImp = Math.max(0, rnt - red - redConj);
+
+  // 6. Minimos
+  var minP = minimoPersonal(edad);
+  var minF = minimoFamiliar(fam);
+  var minT = minP + minF;
+
+  // 7. Cuota IRPF = cuota(base) - cuota(minimos)
+  var cuotaBase = calcIRPF(baseImp, ccaa);
+  var cuotaMin  = calcIRPF(Math.min(minT, baseImp), ccaa);
+  var cuotaIRPF = Math.max(0, cuotaBase - cuotaMin);
+
+  // 8. Minimo exento soltero
+  if(bruto<=15876 && fam==='soltero') cuotaIRPF=0;
+
+  // 9. Neto
+  var netoAnual = bruto - cuotaSS - cuotaIRPF;
+  var netoMes   = netoAnual / pagas;
+  var tipoEf    = bruto>0 ? (cuotaIRPF/bruto)*100 : 0;
+
+  // Mostrar
+  document.getElementById('resultEmpty').style.display='none';
+  document.getElementById('resultContent').style.display='block';
+  document.getElementById('netoMes').innerHTML = Math.round(netoMes).toLocaleString('es-ES')+' <span>€/mes</span>';
+  document.getElementById('netoAnualLabel').textContent = 'Neto anual: '+fmt(netoAnual)+' ('+pagas+' pagas)';
+  document.getElementById('dBrutoAnual').textContent = fmt(bruto);
+  document.getElementById('dSS').textContent = '- '+fmt(cuotaSS);
+  document.getElementById('dBaseLiq').textContent = fmt(baseImp);
+  document.getElementById('dIRPF').textContent = '- '+fmt(cuotaIRPF);
+  document.getElementById('dNetoAnual').textContent = fmt(netoAnual);
+  document.getElementById('dNetoMes').textContent = fmt(netoMes);
+  document.getElementById('tipoEfectivo').textContent = tipoEf.toFixed(1)+'%';
+  var pN=(netoAnual/bruto)*100, pI=(cuotaIRPF/bruto)*100, pS=(cuotaSS/bruto)*100;
+  document.getElementById('barNeto').style.width=pN+'%';
+  document.getElementById('barIrpf').style.width=pI+'%';
+  document.getElementById('barSS').style.width=pS+'%';
+}
+syncRange(30000);
+</script>
+</body>
+</html>
