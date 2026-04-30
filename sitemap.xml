@@ -35,7 +35,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-</url>
 
   <url>
     <loc>https://whitemoon.es/calculadora-itp/</loc>
@@ -43,5 +42,4 @@
     <priority>0.9</priority>
   </url>
 
-</urlset>
 </urlset>
