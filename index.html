@@ -2268,6 +2268,12 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     border-radius:16px 16px 0 0;
   }
 }
+
+/* Ocultar botón flotante cuando modal está abierto (fix UX mobile) */
+#wmChatbotModal:not(.wmcb-hidden) ~ #wmChatbotBtn,
+body:has(#wmChatbotModal:not(.wmcb-hidden)) #wmChatbotBtn{
+  display:none!important;
+}
 </style>
 
 <button id="wmChatbotBtn" type="button" aria-label="Abrir asistente IA WhiteMoon">
@@ -2661,12 +2667,14 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     var m=$id('wmChatbotModal');if(!m)return;
     m.classList.remove('wmcb-hidden');
     requestAnimationFrame(function(){m.classList.add('wmcb-open');});
+    var b=$id('wmChatbotBtn');if(b)b.style.display='none';
     if(WM_CHATBOT.state==='initial'){WM_CHATBOT.state='started';startWelcome();}
   }
   function closeModal(){
     var m=$id('wmChatbotModal');if(!m)return;
     m.classList.remove('wmcb-open');
     setTimeout(function(){m.classList.add('wmcb-hidden');},300);
+    var b=$id('wmChatbotBtn');if(b)b.style.display='';
   }
   function resetChat(){
     if(!confirm('¿Reiniciar la conversación?'))return;
