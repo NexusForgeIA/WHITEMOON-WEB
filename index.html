@@ -702,16 +702,75 @@
     }
     .social-link:hover { background: rgba(124,77,255,.22); border-color: var(--p); transform: translateY(-2px); }
     .social-link svg { width: 18px; height: 18px; }
-    footer { background: #060609; border-top: 1px solid var(--border-soft); padding: 48px 0 32px; }
-    .foot-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; padding-bottom: 32px; border-bottom: 1px solid var(--border-soft); }
-    .foot-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 10px; }
-    .foot-brand img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
-    .foot-name { font-size: 1rem; font-weight: 700; color: var(--text); }
-    .foot-geo { font-size: .8rem; color: var(--muted2); margin-top: 6px; line-height: 1.6; max-width: 280px; }
-    .foot-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
-    .foot-links button, .foot-links a { background: none; border: none; color: var(--muted); font-size: .82rem; cursor: pointer; text-decoration: none; font-family: inherit; transition: color .2s; }
-    .foot-links button:hover, .foot-links a:hover { color: var(--p2); }
-    .foot-copy { font-size: .78rem; color: var(--muted2); margin-top: 24px; }
+    footer { background: #07070e; border-top: 1px solid rgba(139,92,246,.15); padding: 60px 24px 0; }
+    .foot-grid { display: grid; grid-template-columns: 1.3fr 1fr 1.1fr 1.2fr; gap: 40px; padding-bottom: 40px; max-width: var(--max); margin: 0 auto; }
+    .foot-col h4 { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; color: var(--p2); margin: 0 0 18px; }
+    .foot-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px; }
+    .foot-brand img { height: 48px; width: auto; }
+    .foot-desc { font-size: .85rem; color: var(--muted); line-height: 1.65; margin: 0 0 20px; max-width: 280px; }
+    .foot-social { display: flex; gap: 12px; }
+    .foot-social a {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: rgba(139,92,246,.12);
+      border: 1px solid rgba(139,92,246,.3);
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .foot-social a svg { width: 24px; height: 24px; display: block; }
+    .foot-social a:hover {
+      background: rgba(139,92,246,.25);
+      border-color: rgba(139,92,246,.6);
+      transform: scale(1.08);
+    }
+    .foot-links-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+    .foot-links-list a, .foot-links-list button {
+      background: none; border: 0; padding: 0;
+      color: var(--muted); font-size: .85rem; text-decoration: none;
+      cursor: pointer; font-family: inherit; text-align: left;
+      transition: color .2s;
+    }
+    .foot-links-list a:hover, .foot-links-list button:hover { color: var(--text); }
+    .foot-contact { display: flex; flex-direction: column; gap: 14px; }
+    .foot-contact-item { display: flex; gap: 10px; align-items: flex-start; font-size: .85rem; color: var(--muted); line-height: 1.55; }
+    .foot-contact-item svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; stroke: var(--p2); fill: none; stroke-width: 1.6; }
+    .foot-contact-item a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .foot-contact-item a:hover { color: var(--text); }
+    .foot-contact-item strong { display: block; color: var(--text); font-weight: 600; font-size: .82rem; margin-bottom: 2px; }
+    .foot-map iframe {
+      width: 100%; height: 160px;
+      border: 0; border-radius: 12px;
+      filter: invert(90%) hue-rotate(180deg);
+      opacity: .85;
+      transition: opacity .25s;
+    }
+    .foot-map iframe:hover { opacity: 1; }
+    .foot-bottom {
+      border-top: 1px solid rgba(139,92,246,.1);
+      padding: 22px 0;
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 14px;
+      font-size: .78rem; color: var(--muted2);
+    }
+    .foot-bottom a, .foot-bottom button {
+      background: none; border: 0; padding: 0; cursor: pointer;
+      color: var(--muted); font-size: .78rem; font-family: inherit;
+      text-decoration: none; transition: color .2s;
+    }
+    .foot-bottom a:hover, .foot-bottom button:hover { color: var(--text); }
+    .foot-bottom-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .foot-bottom-tag { color: var(--muted2); }
+    @media (max-width: 900px) {
+      .foot-grid { grid-template-columns: repeat(2,1fr); gap: 36px 32px; }
+      .foot-bottom { flex-direction: column; text-align: center; gap: 10px; }
+    }
+    @media (max-width: 600px) {
+      footer { padding: 48px 20px 0; }
+      .foot-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
+      .foot-map iframe { height: 140px; }
+      .foot-bottom-links { justify-content: center; }
+    }
     .mo { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75); z-index: 2000; overflow-y: auto; padding: 48px 20px; backdrop-filter: blur(8px); }
     .mbox { max-width: 520px; margin: 0 auto; background: #111118; border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
     .mhead { background: linear-gradient(135deg, var(--p), #a855f7 60%, var(--g)); padding: 26px 30px; position: relative; }
@@ -883,7 +942,7 @@
       .hdr { margin-bottom: 36px; }
       .sec-sub { margin-bottom: 36px; font-size: .92rem; }
       footer { padding: 36px 0 24px; }
-      .foot-top { gap: 24px; padding-bottom: 24px; }
+      .foot-grid { gap: 28px; }
     }
     @media(max-width:480px) {
       .stats-bar .wrap { grid-template-columns: repeat(2,1fr); }
@@ -2787,31 +2846,101 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div>
-        <a href="javascript:void(0)" class="foot-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-          <span class="foot-name">WHITEMOON Agencia de IA</span>
+  <div class="foot-grid">
+
+    <!-- Col 1 — Marca -->
+    <div class="foot-col">
+      <a href="javascript:void(0)" class="foot-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="WhiteMoon">
+        <img class="foot-logo" alt="WhiteMoon" src="">
+      </a>
+      <p class="foot-desc">Agencia de Inteligencia Artificial para negocios locales y PYMEs en Madrid.</p>
+      <div class="foot-social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#c084fc" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="#c084fc" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="#c084fc"/></svg>
         </a>
-        <p class="foot-geo">Automatización e inteligencia artificial para empresas.<br>Majadahonda · Las Rozas · Boadilla · Pozuelo · Madrid</p>
-        <div class="social-links">
-          <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener" class="social-link" title="Instagram" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><defs><linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#f09433"/><stop offset="50%" stop-color="#dc2743"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig-grad)" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad)" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad)"/></svg>
-          </a>
-          <a href="https://wa.me/34643199580" target="_blank" rel="noopener" class="social-link" title="WhatsApp" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.396A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#25D366" stroke-width="1.8" fill="none"/><path d="M8.5 9.5c.3.9 1 2.5 2.5 4s3.1 2.2 4 2.5c.4.1.8 0 1-.3l.5-.7c.2-.3.1-.7-.1-.9l-1.5-1c-.2-.1-.5-.1-.7.1l-.4.4c-.1.1-.3.1-.4 0-.6-.4-1.8-1.6-2.2-2.2-.1-.1-.1-.3 0-.4l.4-.4c.2-.2.2-.5.1-.7l-1-1.5c-.2-.3-.6-.3-.9-.1l-.7.5c-.3.2-.4.6-.3 1z" fill="#25D366"/></svg>
-          </a>
-        </div>
-      </div>
-      <div class="foot-links">
-        <button onclick="openLegal('aviso')">Aviso Legal</button>
-        <button onclick="openLegal('privacidad')">Privacidad</button>
-        <button onclick="openLegal('cookies')">Cookies</button>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.396A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#a78bfa" stroke-width="1.8" fill="none"/><path d="M8.5 9.5c.3.9 1 2.5 2.5 4s3.1 2.2 4 2.5c.4.1.8 0 1-.3l.5-.7c.2-.3.1-.7-.1-.9l-1.5-1c-.2-.1-.5-.1-.7.1l-.4.4c-.1.1-.3.1-.4 0-.6-.4-1.8-1.6-2.2-2.2-.1-.1-.1-.3 0-.4l.4-.4c.2-.2.2-.5.1-.7l-1-1.5c-.2-.3-.6-.3-.9-.1l-.7.5c-.3.2-.4.6-.3 1z" fill="#a78bfa"/></svg>
+        </a>
       </div>
     </div>
-    <p class="foot-copy">© <span id="yr"></span> WHITEMOON Agencia de IA. Todos los derechos reservados.</p>
+
+    <!-- Col 2 — Servicios -->
+    <div class="foot-col">
+      <h4>Servicios</h4>
+      <ul class="foot-links-list">
+        <li><a href="javascript:void(0)" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Chatbot IA para negocios</a></li>
+        <li><button type="button" onclick="openPack('advance')">Pack Advance</button></li>
+        <li><button type="button" onclick="openPack('pyme')">Pack Pyme</button></li>
+        <li><a href="javascript:void(0)" onclick="document.getElementById('scout').scrollIntoView({behavior:'smooth'})">WhiteMoon Scout</a></li>
+        <li><a href="javascript:void(0)" onclick="var el=document.getElementById('rag');if(el)el.scrollIntoView({behavior:'smooth'})">RAG IA Documentos</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 3 — Contacto -->
+    <div class="foot-col">
+      <h4>Contacto</h4>
+      <div class="foot-contact">
+        <div class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div>
+            <strong>Dirección</strong>
+            Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid
+          </div>
+        </div>
+        <div class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
+          <div>
+            <strong>Teléfono</strong>
+            <a href="tel:+34643199580">643 199 580</a>
+          </div>
+        </div>
+        <div class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div>
+            <strong>Email</strong>
+            <a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>
+          </div>
+        </div>
+        <div class="foot-contact-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div>
+            <strong>Horario</strong>
+            Lun-Vie 9:00 - 19:00
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Col 4 — Mapa -->
+    <div class="foot-col foot-map">
+      <h4>Encuéntranos</h4>
+      <iframe
+        src="https://www.google.com/maps?q=Calle+Madrid+9,+Majadahonda&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa de WhiteMoon en Majadahonda"
+        allowfullscreen></iframe>
+    </div>
+
+  </div>
+
+  <div class="foot-bottom">
+    <div>© <span id="yr"></span> WhiteMoon Agencia IA · Majadahonda, Madrid</div>
+    <div class="foot-bottom-links">
+      <button type="button" onclick="openLegal('aviso')">Aviso Legal</button>
+      <button type="button" onclick="openLegal('privacidad')">Privacidad</button>
+      <button type="button" onclick="openLegal('cookies')">Cookies</button>
+    </div>
+    <div class="foot-bottom-tag">Hecho con IA en Madrid 🤖</div>
   </div>
 </footer>
+<script>
+  (function(){
+    var navImg = document.querySelector('.nav-logo img');
+    var footImg = document.querySelector('.foot-logo');
+    if (navImg && footImg) footImg.src = navImg.src;
+  })();
+</script>
 
 <!-- MODAL PACK -->
 <div id="pack-modal" class="mo" onclick="closePackOut(event)">
