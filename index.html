@@ -898,6 +898,49 @@
       .value-card { flex-direction: column; gap: 10px; }
       .value-num { font-size: 1.5rem; }
     }
+
+    /* ─────────────────────────────────────────────
+       BREAKPOINTS CANÓNICOS DEL REPO
+       Tablet : max-width: 900px
+       Mobile : max-width: 600px
+       Cualquier nuevo grid/columna debe respetar
+       estos breakpoints como mínimo.
+       ───────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      /* Cómo funciona — 2 columnas → 1 columna, iPhone oculto */
+      #servicios .servicios-2col { grid-template-columns: 1fr !important; gap: 32px !important; }
+      #servicios .iphone-wrap { display: none !important; }
+      #servicios .pasos-grid { grid-template-columns: 1fr !important; }
+
+      /* Casos de uso — 3 cards a 2 columnas */
+      .usecase-grid { grid-template-columns: repeat(2,1fr); }
+
+      /* Scout — grids 3 col → 2 col, pasos 4 col → 2x2 */
+      #scout .scout-grid { grid-template-columns: repeat(2,1fr); }
+      #scout .scout-steps { grid-template-columns: repeat(2,1fr); }
+      #scout .scout-stats { flex-wrap: wrap; justify-content: center; gap: 20px; }
+
+      /* Packs Advance / Pyme — 2 columnas → 1 columna */
+      .price-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    }
+
+    @media (max-width: 600px) {
+      /* Casos de uso — siempre 1 columna en móvil */
+      .usecase-grid { grid-template-columns: 1fr; max-width: 100%; }
+
+      /* Scout — todo a 1 columna */
+      #scout .scout-grid { grid-template-columns: 1fr; }
+      #scout .scout-steps { grid-template-columns: 1fr; }
+      #scout .scout-stats { gap: 16px; }
+      #scout .scout-stats > div[style*="width:1px"] { display: none; }
+
+      /* Packs */
+      .price-grid { max-width: 100%; }
+
+      /* Cómo funciona — paso card sin split text/imagen */
+      #servicios .paso-card { grid-template-columns: 1fr !important; }
+      #servicios .paso-img { height: 180px; }
+    }
   </style>
   <!-- ── PERFORMANCE: PRECONNECT ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2701,9 +2744,9 @@
       <p class="sec-sub">Así aplican nuestros clientes la automatización con IA en su día a día.</p>
     </div>
     <div class="usecase-grid">
-      <div class="usecase-card"><div class="usecase-sector">Clínicas y Salud</div><h3>Gestión de citas sin recepcionista manual</h3><p>El chatbot atiende WhatsApp 24/7, recoge datos del paciente, verifica disponibilidad en Google Calendar y confirma la cita por mensaje. Los no-shows bajan drásticamente con recordatorios automáticos.</p><span class="usecase-result">Reducción no-shows hasta 80%</span></div>
-      <div class="usecase-card"><div class="usecase-sector">Agencias y Servicios</div><h3>Cualificación y cierre de leads automático</h3><p>El sistema capta leads desde Instagram, web y WhatsApp, los cualifica según criterios definidos, envía propuestas personalizadas y avisa al comercial solo cuando el lead está listo para cerrar.</p><span class="usecase-result">+300% leads cualificados</span></div>
-      <div class="usecase-card"><div class="usecase-sector">Comercio Local</div><h3>Atención y ventas fuera de horario</h3><p>Negocios locales que reciben consultas de precio, disponibilidad y pedido fuera de horario. El chatbot responde al instante, recoge el pedido y notifica al equipo al abrir al día siguiente.</p><span class="usecase-result">Ventas fuera de horario activas</span></div>
+      <div class="usecase-card"><div class="usecase-sector">Clínicas y Salud</div><h3>Tu clínica atiende consultas las 24 horas</h3><p>El chatbot responde al instante, recoge los datos del paciente y deriva al equipo para confirmar la cita. Sin llamadas perdidas, sin pacientes sin respuesta.</p><span class="usecase-result">↑ Hasta un 60% más de citas captadas</span></div>
+      <div class="usecase-card"><div class="usecase-sector">Restaurantes y Hostelería</div><h3>Reservas y pedidos sin coger el teléfono</h3><p>El chatbot gestiona reservas, responde sobre la carta y recoge pedidos para llevar. El equipo solo interviene para confirmar. Funciona mientras estáis en servicio.</p><span class="usecase-result">↑ Sin llamadas perdidas en hora punta</span></div>
+      <div class="usecase-card"><div class="usecase-sector">Comercio y Servicios Locales</div><h3>Leads captados fuera de tu horario</h3><p>Cuando cierras, el chatbot sigue atendiendo consultas, recogiendo datos de clientes interesados y notificando al equipo para contactarles al día siguiente.</p><span class="usecase-result">↑ Leads 24h sin esfuerzo extra</span></div>
     </div>
   </div>
 </section>
