@@ -1131,9 +1131,13 @@
       </div>
     </div>
 
+    <!-- 2 columnas: pasos + iPhone -->
+    <div class="servicios-2col" style="display:grid;grid-template-columns:1.4fr 1fr;
+      gap:48px;align-items:center">
+
     <!-- 4 pasos -->
-    <div class="pasos-grid" style="display:grid;grid-template-columns:repeat(2,1fr);
-      gap:24px">
+    <div class="pasos-grid" style="display:grid;grid-template-columns:1fr;
+      gap:18px">
 
       <!-- PASO 1 -->
       <div class="paso-card" style="background:#0d0d1a;border:1px solid rgba(139,92,246,.15);
@@ -1295,9 +1299,248 @@
 
     </div>
 
+      <!-- iPhone mockup con chatbot animado -->
+      <div class="iphone-wrap">
+
+        <!-- Cuerpo del iPhone -->
+        <div class="iphone-body">
+
+          <!-- Notch -->
+          <div class="iphone-notch">
+            <div class="iphone-camera"></div>
+          </div>
+
+          <!-- Pantalla -->
+          <div class="iphone-screen">
+
+            <!-- Header del chat -->
+            <div class="iphone-chat-header">
+              <div class="iphone-back">‹</div>
+              <div class="iphone-avatar">W</div>
+              <div>
+                <div class="iphone-chat-name">WhiteMoon IA</div>
+                <div class="iphone-status">
+                  <span class="iphone-online"></span>En línea
+                </div>
+              </div>
+            </div>
+
+            <!-- Mensajes animados -->
+            <div class="iphone-messages" id="iphone-msgs">
+              <!-- Se animan con JS -->
+            </div>
+
+            <!-- Input bar -->
+            <div class="iphone-input-bar">
+              <div class="iphone-input-field">Escribe...</div>
+              <div class="iphone-send-btn">↑</div>
+            </div>
+
+          </div>
+
+          <!-- Home bar -->
+          <div class="iphone-home-bar"></div>
+
+        </div>
+
+        <!-- Glow de fondo -->
+        <div class="iphone-glow"></div>
+
+      </div>
+
+    </div>
+
   </div>
 </section>
 <style>
+  .iphone-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .iphone-glow{
+    position:absolute;
+    inset:-30%;
+    background:radial-gradient(circle,rgba(139,92,246,.15) 0%,transparent 65%);
+    pointer-events:none;
+    animation:glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse{
+    0%,100%{opacity:.6;transform:scale(1)}
+    50%{opacity:1;transform:scale(1.05)}
+  }
+  .iphone-body{
+    width:220px;
+    background:linear-gradient(180deg,#1a1a2e 0%,#16162a 100%);
+    border-radius:36px;
+    border:2px solid rgba(255,255,255,.12);
+    box-shadow:
+      0 40px 80px rgba(0,0,0,.6),
+      0 0 0 1px rgba(255,255,255,.06),
+      inset 0 1px 0 rgba(255,255,255,.1);
+    padding:12px 6px 8px;
+    position:relative;
+    overflow:hidden;
+  }
+  .iphone-body::before{
+    content:'';
+    position:absolute;
+    left:-4px;top:70px;
+    width:3px;height:28px;
+    background:rgba(255,255,255,.15);
+    border-radius:2px 0 0 2px;
+    box-shadow:0 36px 0 rgba(255,255,255,.15);
+  }
+  .iphone-body::after{
+    content:'';
+    position:absolute;
+    right:-4px;top:90px;
+    width:3px;height:50px;
+    background:rgba(255,255,255,.15);
+    border-radius:0 2px 2px 0;
+  }
+  .iphone-notch{
+    width:80px;height:22px;
+    background:#0a0a14;
+    border-radius:0 0 14px 14px;
+    margin:0 auto 8px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .iphone-camera{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:#1a1a2e;
+    border:1px solid rgba(255,255,255,.1);
+  }
+  .iphone-screen{
+    background:#07070e;
+    border-radius:24px;
+    overflow:hidden;
+    height:360px;
+    display:flex;
+    flex-direction:column;
+  }
+  .iphone-chat-header{
+    background:linear-gradient(135deg,#1a0a3e,#0f0a2e);
+    padding:10px 12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    border-bottom:1px solid rgba(139,92,246,.2);
+    flex-shrink:0;
+  }
+  .iphone-back{
+    color:rgba(139,92,246,.8);
+    font-size:1.2rem;
+    line-height:1;
+  }
+  .iphone-avatar{
+    width:28px;height:28px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.72rem;font-weight:700;color:#fff;
+    flex-shrink:0;
+  }
+  .iphone-chat-name{
+    font-size:.65rem;font-weight:700;color:#fff;
+    font-family:'Inter',sans-serif;
+  }
+  .iphone-status{
+    font-size:.52rem;color:#9090b0;
+    display:flex;align-items:center;gap:3px;
+    font-family:'Inter',sans-serif;
+  }
+  .iphone-online{
+    width:5px;height:5px;border-radius:50%;
+    background:#22c55e;
+    animation:blink 1.5s infinite;
+  }
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+  .iphone-messages{
+    flex:1;overflow-y:auto;
+    padding:10px 8px;
+    display:flex;flex-direction:column;gap:6px;
+    scrollbar-width:none;
+  }
+  .iphone-messages::-webkit-scrollbar{display:none}
+  .im-bot{
+    background:#1a1030;
+    border:1px solid rgba(139,92,246,.15);
+    border-radius:12px 12px 12px 3px;
+    padding:7px 10px;
+    font-size:.58rem;color:#e0e0f4;
+    line-height:1.5;
+    max-width:85%;
+    font-family:'Inter',sans-serif;
+    animation:msgIn .3s ease both;
+  }
+  .im-user{
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    border-radius:12px 12px 3px 12px;
+    padding:7px 10px;
+    font-size:.58rem;color:#fff;
+    line-height:1.5;
+    max-width:85%;
+    align-self:flex-end;
+    font-family:'Inter',sans-serif;
+    animation:msgIn .3s ease both;
+  }
+  .im-typing{
+    background:#1a1030;
+    border:1px solid rgba(139,92,246,.15);
+    border-radius:12px 12px 12px 3px;
+    padding:8px 12px;
+    display:flex;gap:3px;align-items:center;
+    width:44px;
+  }
+  .im-typing span{
+    width:5px;height:5px;border-radius:50%;
+    background:#8b5cf6;
+    animation:typingDot 1.2s infinite;
+  }
+  .im-typing span:nth-child(2){animation-delay:.2s}
+  .im-typing span:nth-child(3){animation-delay:.4s}
+  @keyframes typingDot{
+    0%,60%,100%{transform:translateY(0)}
+    30%{transform:translateY(-4px)}
+  }
+  @keyframes msgIn{
+    from{opacity:0;transform:translateY(6px)}
+    to{opacity:1;transform:none}
+  }
+  .iphone-input-bar{
+    padding:7px 8px;
+    background:#0d0d1a;
+    border-top:1px solid rgba(139,92,246,.1);
+    display:flex;align-items:center;gap:6px;
+    flex-shrink:0;
+  }
+  .iphone-input-field{
+    flex:1;background:#1a1a2e;
+    border:1px solid rgba(139,92,246,.15);
+    border-radius:16px;padding:5px 10px;
+    font-size:.55rem;color:#404060;
+    font-family:'Inter',sans-serif;
+  }
+  .iphone-send-btn{
+    width:24px;height:24px;border-radius:50%;
+    background:linear-gradient(135deg,#7c3aed,#5b21b6);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.7rem;color:#fff;flex-shrink:0;
+  }
+  .iphone-home-bar{
+    width:80px;height:3px;
+    background:rgba(255,255,255,.2);
+    border-radius:2px;
+    margin:8px auto 4px;
+  }
+  @media(max-width:900px){
+    #servicios .servicios-2col{grid-template-columns:1fr !important}
+    .iphone-wrap{display:none}
+  }
   @media(max-width:768px){
     #servicios .pasos-grid{grid-template-columns:1fr !important}
     #servicios .paso-card{grid-template-columns:1fr !important}
@@ -3382,6 +3625,78 @@ body:has(#wmChatbotModal:not(.wmcb-hidden)) #wmChatbotBtn{
   }
 
   if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
+})();
+</script>
+
+<!-- iPhone chatbot conversation animation -->
+<script>
+(function(){
+  var CONVERSATIONS = {
+    default: [
+      {type:'bot', text:'¡Hola! 👋 Soy el asistente de la clínica. ¿En qué puedo ayudarte?', delay:500},
+      {type:'user', text:'Quiero información sobre ortodoncia', delay:1800},
+      {type:'typing', delay:2600},
+      {type:'bot', text:'¡Claro! 😊 Trabajamos con brackets y Invisalign. ¿Es para ti o para un menor?', delay:3600},
+      {type:'user', text:'Para mí, soy adulto', delay:5000},
+      {type:'typing', delay:5800},
+      {type:'bot', text:'Perfecto. Para darte más info y ver disponibilidad, ¿me dejas tu nombre y teléfono?', delay:6800},
+      {type:'user', text:'Soy Carlos, 612 345 678', delay:8300},
+      {type:'typing', delay:9100},
+      {type:'bot', text:'¡Gracias Carlos! 🙌 El equipo de la clínica te llamará en menos de 24h para informarte y confirmar tu cita.', delay:10100},
+    ]
+  };
+
+  var msgs = document.getElementById('iphone-msgs');
+  if(!msgs) return;
+
+  var conv = CONVERSATIONS.default;
+  var i = 0;
+
+  function addMsg(item){
+    var typing = msgs.querySelector('.im-typing');
+    if(typing) typing.remove();
+
+    if(item.type === 'typing'){
+      var t = document.createElement('div');
+      t.className = 'im-typing';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      msgs.appendChild(t);
+    } else {
+      var m = document.createElement('div');
+      m.className = item.type === 'bot' ? 'im-bot' : 'im-user';
+      m.textContent = item.text;
+      msgs.appendChild(m);
+    }
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function runConversation(){
+    if(i >= conv.length){
+      setTimeout(function(){
+        msgs.innerHTML = '';
+        i = 0;
+        runConversation();
+      }, 4000);
+      return;
+    }
+    var item = conv[i];
+    var prevDelay = i > 0 ? conv[i-1].delay : 0;
+    var wait = item.delay - prevDelay;
+    setTimeout(function(){
+      addMsg(item);
+      i++;
+      runConversation();
+    }, wait);
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){
+      runConversation();
+      observer.disconnect();
+    }
+  }, {threshold: 0.3});
+
+  observer.observe(msgs);
 })();
 </script>
 
