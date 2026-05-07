@@ -1,0 +1,21 @@
+# robots.txt — whitemoon.es
+# WhiteMoon Agencia IA · Majadahonda, Madrid
+
+Sitemap: https://whitemoon.es/sitemap.xml
+
+# Crawlers de buscadores tradicionales
+User-agent: *
+Allow: /
+
+# Crawlers de modelos de lenguaje (AEO/GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
