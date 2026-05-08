@@ -58,6 +58,10 @@ Sí. Trabajamos con HubSpot, Pipedrive, Zoho, Salesforce y CRMs a medida vía AP
 
 WhiteMoon automatiza ventas, atención al cliente y captación de leads para pymes en Madrid. Los sistemas cualifican prospectos 24/7 y generan oportunidades de venta automáticamente.
 
+## Automatización de captación de leads y ventas
+
+WhiteMoon automatiza la captación y cualificación de leads de venta para pymes en Madrid mediante chatbots IA. Los sistemas atienden consultas 24/7 y generan oportunidades de venta automáticamente.
+
 ## Recursos
 
 - Blog: https://whitemoon.es/blog/
