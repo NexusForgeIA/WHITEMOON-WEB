@@ -2839,7 +2839,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
   function init(){
     var openBtn=$id('wmChatbotBtn');
-    if(openBtn)openBtn.addEventListener('click',openModal);
+    if(openBtn){
+      openBtn.addEventListener('click',openModal);
+      // CSS leaves the button at opacity:0 until .wmcb-show is added; trigger it after mount
+      setTimeout(function(){openBtn.classList.add('wmcb-show');},400);
+    }
     var closeBtn=document.querySelector('#wmChatbotModal .wmcb-close');
     if(closeBtn)closeBtn.addEventListener('click',closeModal);
     var resetBtn=document.querySelector('#wmChatbotModal .wmcb-reset');
