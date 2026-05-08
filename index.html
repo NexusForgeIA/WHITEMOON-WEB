@@ -130,7 +130,10 @@
     },
     "sameAs": [
       "https://www.instagram.com/whitemoon_agencia_ia",
-      "https://wa.me/34643199580"
+      "https://wa.me/34643199580",
+      "https://www.linkedin.com/in/cristobal-martinez-8b9b9951/",
+      "https://www.crunchbase.com/organization/whitemoon-agencia-ia",
+      "https://maps.google.com/?q=Calle+Madrid+9,+28220+Majadahonda"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -1985,7 +1988,7 @@
     <div class="faq-wrap">
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto tiempo tarda la implementación?<span class="faq-icon">+</span></button><div class="faq-body"><p>La mayoría de sistemas están operativos en 3-7 días hábiles. El Core (web + chatbot) en 5-7 días. Incluye configuración, pruebas y formación de tu equipo.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Necesito conocimientos técnicos?<span class="faq-icon">+</span></button><div class="faq-body"><p>Para nada. Nos encargamos de toda la parte técnica. Tú solo nos cuentas tu proceso actual y nosotros lo automatizamos.</p></div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es el precio?<span class="faq-icon">+</span></button><div class="faq-body"><p>Spark: 149€/mes sin setup. Core: 1.800€ setup + 199€/mes. Scale: 3.500€ setup + 349€/mes. Elite: 6.500€ setup + 599€/mes. Orbit: 8.500€ setup + 599€/mes. Sin permanencia. Presupuesto sin compromiso.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es el precio?<span class="faq-icon">+</span></button><div class="faq-body"><p>Spark: 149€/mes sin setup. Core: 1.800€ setup + 199€/mes. Scale: 3.500€ setup + 349€/mes. Elite: 6.500€ setup + 599€/mes (RAG premium con integración CRM). Sin permanencia. Presupuesto sin compromiso.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué incluye el Core?<span class="faq-icon">+</span></button><div class="faq-body"><p>Setup 1.800€: web profesional, dominio incluido, chatbot IA con sistema de reservas integrado, responsive y SEO básico. Cuota 199€/mes que incluye mantenimiento, actualizaciones y soporte. Sin permanencia.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Puedo ver una demo antes de contratar?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. Tenemos demos en vivo para distintos sectores. Contáctanos y te enviamos el enlace o agendamos una videollamada de 20 minutos completamente gratuita.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿En qué zonas trabajáis?<span class="faq-icon">+</span></button><div class="faq-body"><p>Presencia local en Majadahonda, Las Rozas, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital. También atendemos clientes de forma 100% remota en toda España.</p></div></div>
@@ -2915,7 +2918,15 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
       '_Enviado desde whitemoon.es chatbot_\n'+
       '_Hora: '+fecha+'_';
     window.open('https://wa.me/'+WM_CHATBOT.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');
-    addBotMsg('¡Genial! Hemos enviado vuestros datos al equipo de WhiteMoon vía WhatsApp.\n\nOs contactaremos en menos de 4 horas. Mientras tanto:\n- Visitad nuestro blog: whitemoon.es/blog\n- Ver casos de éxito: whitemoon.es/#casos\n\n¡Hasta pronto! 🌙');
+    addBotMsg('¡Genial! Hemos enviado vuestros datos al equipo de WhiteMoon vía WhatsApp.\n\nOs contactaremos en menos de 4 horas. Mientras tanto:\n- Visitad nuestro blog: whitemoon.es/blog\n- Ver casos de éxito: whitemoon.es/#casos\n\n¡Hasta pronto! 🌙').then(function(){
+      var userMsg='Hola WhiteMoon, soy '+d.name+' y mi teléfono es +34 '+d.phone+'. Quiero información sobre vuestros servicios.';
+      var waUrl='https://wa.me/'+WM_CHATBOT.whatsapp+'?text='+encodeURIComponent(userMsg);
+      renderQuick([
+        {label:'💬 Abrir WhatsApp con mensaje listo',handler:function(){
+          window.open(waUrl,'_blank','noopener');
+        }}
+      ]);
+    });
     var inp=$id('wmChatbotInput');
     if(inp){inp.disabled=true;inp.placeholder='Conversación finalizada · Pulsa ↻ para reiniciar';}
   }
