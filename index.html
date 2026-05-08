@@ -2439,7 +2439,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
 
 <!-- ═══════════════════════════════════════════════════════════
-     WHITEMOON · CHATBOT DE VENTAS (6 flujos cualificadores)
+     WHITEMOON · CHATBOT ASISTENTE (precios, demo, contacto)
      ═══════════════════════════════════════════════════════════ -->
 <button id="wmChatbotBtn" type="button" aria-label="Abrir asistente IA WhiteMoon">
   <span class="wmcb-icon">🌙</span>
@@ -2472,36 +2472,53 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 (function(){
   'use strict';
 
-  var WM_CHATBOT = {
-    whatsapp:'34643199580',
+  var SUPABASE_URL='https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
+
+  var WMCB={
     state:'initial',
-    awaitingInput:null,
-    userData:{flow:'',sector:'',volume:'',size:'',webStatus:'',deadline:'',processes:'',package:'',packagePrice:'',name:'',phone:'',email:'',company:'',availability:''}
+    awaiting:null,
+    data:{nombre:'',telefono:'',sector:'',context:''}
   };
 
-  var SECTORS = [
-    {label:'🦷 Clínica/Dental',value:'Clínica dental'},
-    {label:'⚖️ Despacho/Abogados',value:'Despacho jurídico'},
+  var PACKS={
+    spark:{emoji:'⚡',name:'Pack Spark',price:'149€/mes (sin setup)',
+      features:['Chatbot IA conversacional 24/7','Captura de leads automática','Integración WhatsApp Business','Sin permanencia · Activación en 48h','IVA no incluido'],
+      idealFor:'peluquerías, talleres, clínicas, gestorías y cualquier negocio local',
+      url:'/spark/',waMsg:'Hola WHITEMOON, quiero el Pack Spark de 149€/mes'},
+    core:{emoji:'🏗️',name:'Pack Core',price:'1.800€ + 199€/mes',
+      features:['Web profesional responsive con tu dominio','Hosting con SSL incluido','Chatbot IA integrado + reservas online','SEO técnico con Schema.org','Operativa en 5-7 días','IVA no incluido'],
+      idealFor:'autónomos y pymes que necesitan presencia digital completa',
+      url:'/core/',waMsg:'Hola WHITEMOON, quiero el Pack Core'},
+    scale:{emoji:'📈',name:'Pack Scale',price:'3.500€ + 349€/mes',
+      features:['Chatbot RAG con tus documentos propios','Hasta 200 documentos indexados','2.000 consultas/mes incluidas','Widget web + URL pública tipo ChatGPT','Captura de leads + analíticas','IVA no incluido'],
+      idealFor:'despachos medios, consultoras y empresas con conocimiento propietario',
+      url:'/scale/',waMsg:'Hola WHITEMOON, quiero el Pack Scale'},
+    elite:{emoji:'💎',name:'Pack Elite',price:'6.500€ + 599€/mes',
+      features:['Documentos y consultas ilimitados','Integración API + CRM (HubSpot, Salesforce, Pipedrive, Zoho)','Stripe + agentes IA con acciones automatizadas','Panel ejecutivo con KPIs y MRR','Multi-idioma ES/EN/PT','Onboarding personalizado de 4h'],
+      idealFor:'empresas grandes con equipo comercial y CRM activo',
+      url:'/elite/',waMsg:'Hola WHITEMOON, quiero el Pack Elite'},
+    auditoria:{emoji:'🔍',name:'Auditoría IA',price:'899€ pago único',
+      features:['Diagnóstico completo de tu negocio','Identificación de procesos automatizables','ROI estimado para cada implementación','Plan de adopción IA por fases','Informe entregado en 7 días'],
+      idealFor:'empresas que quieren un mapa claro antes de invertir en IA',
+      url:null,waMsg:'Hola WHITEMOON, quiero la Auditoría IA de 899€'}
+  };
+
+  var SECTORS=[
+    {label:'🦷 Clínica dental',value:'Clínica dental'},
     {label:'✂️ Peluquería/Estética',value:'Peluquería/Estética'},
-    {label:'🍽️ Restaurante/Hostelería',value:'Restaurante/Hostelería'},
-    {label:'📋 Gestoría/Asesoría',value:'Gestoría/Asesoría'},
-    {label:'🔧 Taller/Automoción',value:'Taller/Automoción'},
+    {label:'🚗 Taller mecánico',value:'Taller mecánico'},
+    {label:'⚖️ Despacho de abogados',value:'Despacho de abogados'},
+    {label:'📊 Gestoría/Asesoría',value:'Gestoría/Asesoría'},
     {label:'🐾 Veterinaria',value:'Veterinaria'},
-    {label:'📚 Centro formación',value:'Centro de formación'},
+    {label:'🏠 Inmobiliaria',value:'Inmobiliaria'},
+    {label:'💪 Gimnasio',value:'Gimnasio'},
+    {label:'🍽️ Restaurante/Hostelería',value:'Restaurante/Hostelería'},
     {label:'🏢 Otro sector',value:'Otro'}
   ];
 
-  var PACKAGES = {
-    advance:{name:'Spark',price:'149€/mes',short:'Chatbot IA conversacional 24/7 sin setup'},
-    consultor:{name:'Core RAG',price:'1.800€ + 199€/mes',short:'IA con tus documentos para autónomo/consultor'},
-    empresa:{name:'Scale RAG',price:'3.500€ + 349€/mes',short:'IA con tus documentos para despachos/empresas'},
-    premium:{name:'Elite RAG',price:'6.500€ + 599€/mes',short:'IA premium con documentos para empresas grandes'},
-    pyme:{name:'Core (Web + IA)',price:'1.800€ + 199€/mes',short:'Web profesional + chatbot + dominio + SEO'},
-    orbit:{name:'Orbit',price:'8.500€ + 599€/mes',short:'RAG totalmente personalizado a medida'}
-  };
-
   function $id(id){return document.getElementById(id);}
-  function rndDelay(){return 800 + Math.floor(Math.random()*700);}
+  function rndDelay(){return 700+Math.floor(Math.random()*500);}
   function scrollDown(){var b=$id('wmChatbotMessages');if(b)b.scrollTop=b.scrollHeight;}
   function clearQuick(){var q=$id('wmChatbotQuickButtons');if(q)q.innerHTML='';}
 
@@ -2536,7 +2553,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     buttons.forEach(function(b){
       var btn=document.createElement('button');btn.type='button';btn.textContent=b.label;
       btn.addEventListener('click',function(){
-        clearQuick();addUserMsg(b.label);
+        clearQuick();
+        addUserMsg(b.label);
         if(b.handler)b.handler(b.value||b.label);
       });
       q.appendChild(btn);
@@ -2545,306 +2563,245 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   }
 
   function expectInput(handler,placeholder){
-    WM_CHATBOT.awaitingInput=handler;
+    WMCB.awaiting=handler;
     var inp=$id('wmChatbotInput');
     if(inp){inp.placeholder=placeholder||'Escribe tu mensaje...';inp.disabled=false;inp.focus();}
+  }
+
+  function saveLead(data){
+    var payload={
+      nombre:data.nombre||null,
+      telefono:data.telefono||null,
+      sector:data.sector||null,
+      mensaje:data.mensaje||null,
+      origen:data.origen||'chatbot_home'
+    };
+    try{
+      return fetch(SUPABASE_URL+'/rest/v1/leads_web',{
+        method:'POST',
+        headers:{
+          'apikey':SUPABASE_KEY,
+          'Authorization':'Bearer '+SUPABASE_KEY,
+          'Content-Type':'application/json',
+          'Prefer':'return=minimal'
+        },
+        body:JSON.stringify(payload)
+      }).catch(function(){});
+    }catch(e){}
+  }
+
+  function normalize(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+
+  function routeKeyword(text){
+    var t=normalize(text);
+    if(/\b(spark)\b/.test(t)){flowPackDetail('spark');return true;}
+    if(/\b(core)\b/.test(t)){flowPackDetail('core');return true;}
+    if(/\b(scale)\b/.test(t)){flowPackDetail('scale');return true;}
+    if(/\b(elite)\b/.test(t)){flowPackDetail('elite');return true;}
+    if(/(auditoria|audit)/.test(t)){flowPackDetail('auditoria');return true;}
+    if(/(precio|cuanto|coste|cuesta|tarifa|pack|paquete)/.test(t)){flowPacks();return true;}
+    if(/(demo|ejemplo|prueba|probar|ver como)/.test(t)){flowDemo();return true;}
+    if(/(chatbot|asistente|bot\b|qu[eé] es)/.test(t)){flowChatbotExplainer();return true;}
+    var sectorMap=[
+      ['peluqueria|peluquerias|estetica|salon','Peluquería/Estética'],
+      ['taller|talleres|mecanico|mecanica|coche','Taller mecánico'],
+      ['clinica|clinicas|dental|dentista|odonto','Clínica dental'],
+      ['abogado|abogados|despacho|juridic|legal','Despacho de abogados'],
+      ['gestoria|asesoria|asesor','Gestoría/Asesoría'],
+      ['veterinari','Veterinaria'],
+      ['gimnasio|gym|fitness','Gimnasio'],
+      ['inmobiliari|finca','Inmobiliaria'],
+      ['restaurant|hosteleria|bar\\b|cafeteria','Restaurante/Hostelería']
+    ];
+    for(var i=0;i<sectorMap.length;i++){
+      if(new RegExp(sectorMap[i][0]).test(t)){flowDemoAfterSector(sectorMap[i][1]);return true;}
+    }
+    if(/(whatsapp|llamar|llamada|contact|telefono|email|correo|escribir)/.test(t)){flowContact();return true;}
+    if(/(hola|buenas|hey|buenos|saludos)/.test(t)){flowGreeting();return true;}
+    return false;
   }
 
   function handleSend(){
     var inp=$id('wmChatbotInput');if(!inp)return;
     var v=inp.value.trim();if(!v)return;
-    if(WM_CHATBOT.awaitingInput){
-      var fn=WM_CHATBOT.awaitingInput;WM_CHATBOT.awaitingInput=null;
-      inp.value='';addUserMsg(v);fn(v);
-    } else {
-      inp.value='';addUserMsg(v);
-      if(matchScoutKeywords(v)){
-        WM_CHATBOT.userData.flow='Scout';
-        flowScout();
-      } else {
-        addBotMsg('Te respondo mejor con los botones de arriba 👆 Pulsa el icono ↻ para volver al menú.');
-      }
+    inp.value='';
+    if(WMCB.awaiting){
+      var fn=WMCB.awaiting;WMCB.awaiting=null;
+      addUserMsg(v);fn(v);return;
+    }
+    addUserMsg(v);
+    if(!routeKeyword(v)){
+      addBotMsg('Te ayudo mejor con los botones de abajo 👇 O pulsa ↻ para volver al menú principal.').then(function(){
+        renderQuick([
+          {label:'💰 Ver precios y packs',handler:flowPacks},
+          {label:'🎬 Quiero una demo',handler:flowDemo},
+          {label:'📞 Hablar con el equipo',handler:flowContact}
+        ]);
+      });
     }
   }
 
-  function matchScoutKeywords(text){
-    var t=text.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
-    return ['scout','crm','herramienta comercial'].some(function(k){return t.indexOf(k)!==-1;});
-  }
-
-  // ═══ FLUJO INICIAL ═══
-  function startWelcome(){
-    addBotMsg('¡Hola! 🌙 Bienvenido a WhiteMoon, agencia especializada en soluciones de IA para empresas.\n\nTe ayudamos a encontrar la solución de IA perfecta para tu negocio en menos de 2 minutos. ¿Empezamos?').then(function(){
+  // ═══ FLUJO 1 · SALUDO ═══
+  function flowGreeting(){
+    addBotMsg('¡Hola! 👋 Soy el asistente de WhiteMoon Agencia IA.\n\nPuedo ayudarte a encontrar el pack ideal para tu negocio o resolver cualquier duda. ¿Qué necesitas?').then(function(){
       renderQuick([
-        {label:'🎯 Quiero un chatbot',handler:function(){WM_CHATBOT.userData.flow='Chatbot keyword';flowChatbotSector();}},
-        {label:'🧠 IA con mis documentos',handler:function(){WM_CHATBOT.userData.flow='RAG';flowRagDocs();}},
-        {label:'🌐 Web profesional + chatbot',handler:function(){WM_CHATBOT.userData.flow='Web+Chatbot';flowWebStatus();}},
-        {label:'🔍 WhiteMoon Scout',handler:function(){WM_CHATBOT.userData.flow='Scout';flowScout();}},
-        {label:'💰 Ver todos los precios',handler:function(){WM_CHATBOT.userData.flow='Consulta precios';flowAllPrices();}},
-        {label:'📞 Contactar con WhiteMoon',handler:function(){WM_CHATBOT.userData.flow='Contacto directo';flowContact();}}
+        {label:'💰 Ver precios y packs',handler:flowPacks},
+        {label:'🤖 ¿Qué es un chatbot IA?',handler:flowChatbotExplainer},
+        {label:'🎬 Quiero una demo',handler:flowDemo},
+        {label:'📞 Hablar con el equipo',handler:flowContact}
       ]);
     });
   }
 
-  // ═══ FLUJO 1 - CHATBOT ═══
-  function flowChatbotSector(){
-    addBotMsg('Perfecto! ¿En qué sector trabajáis?').then(function(){
-      renderQuick(SECTORS.map(function(s){return {label:s.label,handler:function(){WM_CHATBOT.userData.sector=s.value;flowChatbotVolume();}};}));
-    });
-  }
-  function flowChatbotVolume(){
-    addBotMsg('¿Cuántos clientes/citas atendéis al mes?').then(function(){
+  // ═══ FLUJO 2 · PRECIOS Y PACKS ═══
+  function flowPacks(){
+    addBotMsg('Tenemos 4 packs según tus necesidades:\n\n⚡ Spark — 149€/mes (sin setup)\nChatbot IA 24/7 para negocios locales. Activo en 48h.\n\n🏗️ Core — 1.800€ + 199€/mes\nWeb profesional + Chatbot IA + Reservas. En 5-7 días.\n\n📈 Scale — 3.500€ + 349€/mes\nChatbot RAG entrenado con tus documentos propios.\n\n💎 Elite — 6.500€ + 599€/mes\nRAG premium con integración CRM y agentes IA avanzados.\n\n🔍 Auditoría IA — 899€ único pago\nDiagnóstico completo. Entregamos informe en 7 días.\n\nTodos sin permanencia. ¿Cuál te interesa más?').then(function(){
       renderQuick([
-        {label:'Menos de 50',handler:function(){WM_CHATBOT.userData.volume='Menos de 50';recommendChatbot('advance');}},
-        {label:'50-200',handler:function(){WM_CHATBOT.userData.volume='50-200';recommendChatbot('advance');}},
-        {label:'200-500',handler:function(){WM_CHATBOT.userData.volume='200-500';recommendChatbot('empresa');}},
-        {label:'Más de 500',handler:function(){WM_CHATBOT.userData.volume='Más de 500';recommendChatbot('premium');}}
-      ]);
-    });
-  }
-  function recommendChatbot(packKey){
-    var p=PACKAGES[packKey];
-    WM_CHATBOT.userData.package=p.name;WM_CHATBOT.userData.packagePrice=p.price;
-    addBotMsg('Por vuestro sector y volumen, os recomendamos:\n\n⭐ '+p.name+'\n'+p.price+'\n\n'+p.short+'\n\n¿Os interesa que el equipo de WhiteMoon os contacte para hablar de vuestro caso?').then(function(){
-      renderQuick([
-        {label:'✅ Sí, quiero que me contactéis',handler:function(){startCapture();}},
-        {label:'👀 Antes ver demo de mi sector',handler:function(){
-          addBotMsg('Genial! Os enviamos casos reales de '+WM_CHATBOT.userData.sector+' por WhatsApp. ¿Empezamos con vuestros datos?').then(function(){
-            renderQuick([{label:'✅ Sí, vamos',handler:function(){startCapture();}}]);
-          });
-        }},
-        {label:'📋 Ver otros packs',handler:function(){flowAllPrices();}}
+        {label:'⚡ Spark',handler:function(){flowPackDetail('spark');}},
+        {label:'🏗️ Core',handler:function(){flowPackDetail('core');}},
+        {label:'📈 Scale',handler:function(){flowPackDetail('scale');}},
+        {label:'💎 Elite',handler:function(){flowPackDetail('elite');}},
+        {label:'🔍 Auditoría',handler:function(){flowPackDetail('auditoria');}}
       ]);
     });
   }
 
-  // ═══ FLUJO 2 - RAG ═══
-  function flowRagDocs(){
-    addBotMsg('Excelente decisión! Los chatbots RAG son nuestro producto estrella en WhiteMoon.\n\n¿Cuántos documentos quieres que la IA aprenda?').then(function(){
-      renderQuick([
-        {label:'Hasta 10 documentos',handler:function(){WM_CHATBOT.userData.volume='Hasta 10 docs';flowRagSize();}},
-        {label:'10-50 documentos',handler:function(){WM_CHATBOT.userData.volume='10-50 docs';flowRagSize();}},
-        {label:'50-200 documentos',handler:function(){WM_CHATBOT.userData.volume='50-200 docs';flowRagSize();}},
-        {label:'+200 documentos',handler:function(){WM_CHATBOT.userData.volume='+200 docs';flowRagSize();}}
-      ]);
-    });
-  }
-  function flowRagSize(){
-    addBotMsg('¿Es para un autónomo, despacho mediano o empresa?').then(function(){
-      renderQuick([
-        {label:'Autónomo / 1-3 personas',handler:function(){WM_CHATBOT.userData.size='Autónomo (1-3 personas)';recommendRag('consultor');}},
-        {label:'Despacho / 4-15 personas',handler:function(){WM_CHATBOT.userData.size='Despacho (4-15 personas)';recommendRag('empresa');}},
-        {label:'Empresa / +15 personas',handler:function(){WM_CHATBOT.userData.size='Empresa (+15 personas)';recommendRag('premium');}}
-      ]);
-    });
-  }
-  function recommendRag(packKey){
-    var p=PACKAGES[packKey];
-    WM_CHATBOT.userData.package=p.name;WM_CHATBOT.userData.packagePrice=p.price;
-    addBotMsg('Perfecto. Para vuestro caso recomendamos:\n\n⭐ '+p.name+'\n'+p.price+'\n\nBeneficios:\n- IA con VUESTROS documentos\n- Multi-canal (web + WhatsApp)\n- Panel admin para ver conversaciones\n- Soporte continuo del equipo WhiteMoon\n\n¿Quieres que el equipo de WhiteMoon prepare una propuesta personalizada?').then(function(){
-      renderQuick([
-        {label:'✅ Sí, contactadme cuanto antes',handler:function(){startCapture();}},
-        {label:'📋 Ver detalles del Pack',handler:function(){
-          addBotMsg('Te enviaremos la ficha técnica detallada del '+p.name+' por WhatsApp. ¿Continuamos?').then(function(){
-            renderQuick([{label:'✅ Sí',handler:function(){startCapture();}}]);
-          });
-        }},
-        {label:'👀 Ver demo de RAG',handler:function(){
-          addBotMsg('Te organizamos una demo en vivo del sistema RAG. ¿Avanzamos con vuestros datos?').then(function(){
-            renderQuick([{label:'✅ Vale',handler:function(){startCapture();}}]);
-          });
-        }}
-      ]);
-    });
-  }
-
-  // ═══ FLUJO 3 - WEB ═══
-  function flowWebStatus(){
-    addBotMsg('Genial! ¿Tenéis web actualmente?').then(function(){
-      renderQuick([
-        {label:'No, necesitamos web desde cero',handler:function(){WM_CHATBOT.userData.webStatus='Sin web (desde cero)';flowWebSector();}},
-        {label:'Sí, pero queremos rehacerla',handler:function(){WM_CHATBOT.userData.webStatus='Tiene web (rehacer)';flowWebSector();}},
-        {label:'Solo necesitamos chatbot',handler:function(){WM_CHATBOT.userData.webStatus='Tiene web (solo chatbot)';recommendChatbot('advance');}}
-      ]);
-    });
-  }
-  function flowWebSector(){
-    addBotMsg('¿Para qué sector?').then(function(){
-      renderQuick(SECTORS.map(function(s){return {label:s.label,handler:function(){WM_CHATBOT.userData.sector=s.value;flowWebDeadline();}};}));
-    });
-  }
-  function flowWebDeadline(){
-    addBotMsg('¿Cuándo os gustaría tenerla lista?').then(function(){
-      renderQuick([
-        {label:'En 1-2 semanas (urgente)',handler:function(){WM_CHATBOT.userData.deadline='1-2 semanas (urgente)';recommendWeb();}},
-        {label:'En 1 mes',handler:function(){WM_CHATBOT.userData.deadline='1 mes';recommendWeb();}},
-        {label:'Sin prisa, en 2-3 meses',handler:function(){WM_CHATBOT.userData.deadline='2-3 meses';recommendWeb();}}
-      ]);
-    });
-  }
-  function recommendWeb(){
-    var p=PACKAGES.pyme;
-    WM_CHATBOT.userData.package=p.name;WM_CHATBOT.userData.packagePrice=p.price;
-    addBotMsg('Genial! Os recomendamos:\n\n🌐 '+p.name+'\n'+p.price+'\n\nIncluye:\n- Web profesional responsive\n- Chatbot integrado\n- Dominio + hosting\n- SEO Google + Schema.org\n- 1 año de soporte WhiteMoon\n\n¿Queréis que os preparemos un presupuesto detallado?').then(function(){
-      renderQuick([
-        {label:'✅ Sí, quiero el presupuesto',handler:function(){startCapture();}},
-        {label:'📞 Contactar con WhiteMoon',handler:function(){startCapture();}}
-      ]);
-    });
-  }
-
-  // ═══ FLUJO SCOUT ═══
-  function flowScout(){
-    var msg='Scout es nuestro CRM de ventas IA — el producto que diferencia a WhiteMoon del resto 🚀\n\n'+
-      'Con Scout cualquier agencia puede:\n'+
-      '🔍 Analizar la web de un prospecto en segundos\n'+
-      '🌐 Generar una web demo con chatbot personalizada\n'+
-      '📋 Preparar pitch, ROI y propuesta automáticamente\n'+
-      '📊 Gestionar pipeline y MRR en tiempo real\n\n'+
-      'Planes desde 199€/mes · Sin permanencia · Acceso en 24h\n\n'+
-      '¿Te interesa solicitar acceso?';
+  // ═══ FLUJO 3 · DETALLE DE UN PACK ═══
+  function flowPackDetail(key){
+    var p=PACKS[key];if(!p){flowPacks();return;}
+    var msg=p.emoji+' '+p.name+' — '+p.price+'\n\n'+
+      p.features.map(function(f){return '✅ '+f;}).join('\n')+'\n\n'+
+      'Ideal para: '+p.idealFor+'.\n\n¿Quieres ver una demo o hablar con el equipo?';
     addBotMsg(msg).then(function(){
+      var btns=[
+        {label:'🎬 Pedir demo',handler:function(){WMCB.data.context='demo · '+p.name;flowDemo();}},
+        {label:'💬 WhatsApp directo',handler:function(){
+          window.open('https://wa.me/34643199580?text='+encodeURIComponent(p.waMsg),'_blank','noopener');
+        }}
+      ];
+      if(p.url){btns.push({label:'🔗 Ver más detalles',handler:function(){window.open(p.url,'_blank','noopener');}});}
+      btns.push({label:'← Volver a packs',handler:flowPacks});
+      renderQuick(btns);
+    });
+  }
+
+  // ═══ FLUJO 4 · ¿QUÉ ES UN CHATBOT IA? ═══
+  function flowChatbotExplainer(){
+    addBotMsg('Un chatbot IA es un asistente virtual que atiende a tus clientes 24/7 de forma automática.\n\nA diferencia de los chatbots tradicionales:\n• Entiende lenguaje natural (no solo botones)\n• Responde preguntas complejas\n• Captura leads mientras duermes\n• Se integra con WhatsApp, tu web y tu CRM\n\nEn WhiteMoon lo tenemos activo en menos de 48h.\n¿Quieres ver cómo funcionaría en tu negocio?').then(function(){
       renderQuick([
-        {label:'Solicitar acceso a Scout →',handler:function(){
-          window.open('https://wa.me/'+WM_CHATBOT.whatsapp+'?text='+encodeURIComponent('Hola, me interesa WhiteMoon Scout'),'_blank','noopener');
-        }},
-        {label:'📋 Ver otros servicios',handler:function(){startWelcome();}}
+        {label:'🎬 Ver demo',handler:flowDemo},
+        {label:'💰 Ver precios',handler:flowPacks},
+        {label:'← Menú principal',handler:flowGreeting}
       ]);
     });
   }
 
-  // ═══ FLUJO PRECIOS ═══
-  function flowAllPrices(){
-    addBotMsg('Aquí tenéis nuestros packs principales:\n\n🤖 CHATBOT CONVERSACIONAL\n- Spark: 149€/mes (sin setup)\n\n🧠 CHATBOTS RAG (con documentos)\n- Core RAG: 1.800€ + 199€/mes\n- Scale RAG: 3.500€ + 349€/mes ⭐\n- Elite RAG: 6.500€ + 599€/mes\n- Orbit (RAG a medida): 8.500€ + 599€/mes\n\n🌐 WEB + CHATBOT + SEO\n- Core (Web + IA): 1.800€ + 199€/mes\n\n¿Cuál os encaja mejor?').then(function(){
-      renderQuick([
-        {label:'Spark',handler:function(){pickPack('advance');}},
-        {label:'Core RAG',handler:function(){pickPack('consultor');}},
-        {label:'Scale RAG ⭐',handler:function(){pickPack('empresa');}},
-        {label:'Elite RAG',handler:function(){pickPack('premium');}},
-        {label:'Orbit',handler:function(){pickPack('orbit');}},
-        {label:'Core (Web + IA)',handler:function(){pickPack('pyme');}}
-      ]);
-    });
-  }
-  function pickPack(packKey){
-    var p=PACKAGES[packKey];
-    WM_CHATBOT.userData.package=p.name;WM_CHATBOT.userData.packagePrice=p.price;
-    addBotMsg('¡Buena elección! '+p.name+' ('+p.price+').\n\n'+p.short+'\n\nContinuamos con vuestros datos para que el equipo os prepare propuesta personalizada.').then(function(){
-      startCapture();
+  // ═══ FLUJO 5 · DEMO ═══
+  function flowDemo(){
+    addBotMsg('Genial 🎉 Tenemos demos en vivo para:\n\n🦷 Clínicas dentales\n✂️ Peluquerías\n🚗 Talleres mecánicos\n⚖️ Despachos de abogados\n📊 Gestorías\nY más sectores...\n\n¿De qué sector es tu negocio?').then(function(){
+      renderQuick(SECTORS.map(function(s){
+        return {label:s.label,handler:function(){flowDemoAfterSector(s.value);}};
+      }));
     });
   }
 
-  // ═══ FLUJO 6 - CONTACTO DIRECTO ═══
-  function flowContact(){
-    addBotMsg('¡Genial! El equipo de WhiteMoon os contactará personalmente. Solo necesitamos unos datos rápidos para preparar bien la llamada.').then(function(){
-      startCapture();
+  function flowDemoAfterSector(sector){
+    WMCB.data.sector=sector;
+    if(!WMCB.data.context)WMCB.data.context='demo';
+    addBotMsg('Perfecto. Para enviarte la demo personalizada de '+sector+' necesito tu nombre y teléfono.').then(function(){
+      askName('demo');
     });
   }
 
-  // ═══ CAPTURA FINAL ═══
-  function startCapture(){
-    addBotMsg('Perfecto! Para que el equipo de WhiteMoon os contacte en menos de 4 horas, necesitamos 6 datos rápidos:').then(function(){askName();});
-  }
-  function askName(){
-    addBotMsg('1️⃣ ¿Cuál es vuestro nombre?').then(function(){
+  function askName(context){
+    addBotMsg('¿Cuál es tu nombre?').then(function(){
       expectInput(function(v){
-        if(v.length<2){addBotMsg('Necesito al menos 2 caracteres. ¿Me lo repites?').then(function(){askName();});return;}
-        WM_CHATBOT.userData.name=v;askPhone();
+        if(v.length<2){
+          addBotMsg('Necesito al menos 2 caracteres. ¿Me lo repites?').then(function(){askName(context);});return;
+        }
+        WMCB.data.nombre=v;askPhone(context);
       },'Tu nombre...');
     });
   }
-  function askPhone(){
-    addBotMsg('2️⃣ Vuestro teléfono (os llamaremos):').then(function(){
+
+  function askPhone(context){
+    addBotMsg('Y tu teléfono (te llamamos o escribimos):').then(function(){
       expectInput(function(v){
-        var c=v.replace(/\s|-/g,'');
-        if(!/^[6-9]\d{8}$/.test(c)){addBotMsg('Hmm, el teléfono no parece correcto. Pruébalo de nuevo (9 dígitos):').then(function(){askPhone();});return;}
-        WM_CHATBOT.userData.phone=c;askEmail();
+        var c=v.replace(/[\s\-+().]/g,'');
+        if(!/^\d{9,15}$/.test(c)){
+          addBotMsg('Hmm, el teléfono no parece correcto. Pruébalo de nuevo (mínimo 9 dígitos):').then(function(){askPhone(context);});return;
+        }
+        WMCB.data.telefono=c;
+        if(context==='callback')completeCallback();
+        else completeDemo();
       },'6XX XXX XXX');
     });
   }
-  function askEmail(){
-    addBotMsg('3️⃣ Vuestro email:').then(function(){
-      expectInput(function(v){
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){addBotMsg('El email no parece correcto. Inténtalo de nuevo:').then(function(){askEmail();});return;}
-        WM_CHATBOT.userData.email=v;askCompany();
-      },'tu@email.com');
+
+  function completeDemo(){
+    saveLead({
+      nombre:WMCB.data.nombre,
+      telefono:WMCB.data.telefono,
+      sector:WMCB.data.sector,
+      mensaje:'Solicitud de demo desde chatbot home'+(WMCB.data.context?' · '+WMCB.data.context:''),
+      origen:'chatbot_home'
     });
-  }
-  function askCompany(){
-    addBotMsg('4️⃣ Nombre de vuestra empresa:').then(function(){
-      expectInput(function(v){
-        WM_CHATBOT.userData.company=v;
-        if(WM_CHATBOT.userData.sector){askAvailability();}else{askSector();}
-      },'Nombre de la empresa...');
-    });
-  }
-  function askSector(){
-    addBotMsg('5️⃣ ¿En qué sector trabajáis?').then(function(){
-      expectInput(function(v){WM_CHATBOT.userData.sector=v;askAvailability();},'Tu sector...');
-    });
-  }
-  function askAvailability(){
-    addBotMsg('6️⃣ ¿Cuándo os viene bien que os llamemos?').then(function(){
+    var waMsg='Hola WhiteMoon, soy '+WMCB.data.nombre+' (+34 '+WMCB.data.telefono+'). Quiero la demo de chatbot para '+WMCB.data.sector+'.';
+    var waUrl='https://wa.me/34643199580?text='+encodeURIComponent(waMsg);
+    addBotMsg('✅ '+WMCB.data.nombre+', te enviamos la demo en menos de 1 hora en horario de atención.\n\nSi es urgente, escríbenos ya por WhatsApp:').then(function(){
       renderQuick([
-        {label:'Mañana 10h',handler:function(){WM_CHATBOT.userData.availability='Mañana 10h';showSummary();}},
-        {label:'Mañana 17h',handler:function(){WM_CHATBOT.userData.availability='Mañana 17h';showSummary();}},
-        {label:'Pasado mañana',handler:function(){WM_CHATBOT.userData.availability='Pasado mañana';showSummary();}},
-        {label:'Otro horario (escribir)',handler:function(){
-          addBotMsg('Indícanos día y hora preferida:').then(function(){
-            expectInput(function(v){WM_CHATBOT.userData.availability=v;showSummary();},'Ej: Lunes 11h...');
-          });
-        }}
+        {label:'💬 Escribir ahora por WhatsApp',handler:function(){window.open(waUrl,'_blank','noopener');}},
+        {label:'🌙 Volver al menú',handler:resetAndGreet}
       ]);
     });
-  }
-  function showSummary(){
-    var d=WM_CHATBOT.userData;
-    var pack=d.package||'(a definir con el equipo)';
-    var sector=d.sector||'(no indicado)';
-    addBotMsg('¡Perfecto! Resumen:\n\n👤 '+d.name+'\n📞 '+d.phone+'\n📧 '+d.email+'\n🏢 '+d.company+'\n🏭 '+sector+'\n🎯 '+pack+'\n📅 '+d.availability+'\n\n¿Confirmamos para que WhiteMoon os contacte?').then(function(){
-      renderQuick([
-        {label:'✅ Sí, enviar a WhiteMoon',handler:function(){sendToWhatsApp();}},
-        {label:'✏️ Quiero corregir algo',handler:function(){startCapture();}}
-      ]);
-    });
-  }
-  function sendToWhatsApp(){
-    var d=WM_CHATBOT.userData;
-    var fecha=new Date().toLocaleString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});
-    var msg='🔥 *NUEVO LEAD WHITEMOON*\n\n'+
-      '👤 *Cliente:* '+d.name+'\n'+
-      '📞 *Tel:* +34 '+d.phone+'\n'+
-      '📧 *Email:* '+d.email+'\n'+
-      '🏢 *Empresa:* '+d.company+'\n'+
-      '🏭 *Sector:* '+(d.sector||'—')+'\n\n'+
-      '🎯 *PACK RECOMENDADO:* '+(d.package||'(a definir)')+'\n'+
-      '💰 *Precio:* '+(d.packagePrice||'(a definir)')+'\n'+
-      '📊 *Volumen detectado:* '+(d.volume||'—')+'\n'+
-      '⚡ *Flujo:* '+(d.flow||'—')+'\n\n'+
-      '📅 *Disponibilidad:* '+d.availability+'\n\n'+
-      '_Enviado desde whitemoon.es chatbot_\n'+
-      '_Hora: '+fecha+'_';
-    window.open('https://wa.me/'+WM_CHATBOT.whatsapp+'?text='+encodeURIComponent(msg),'_blank','noopener');
-    addBotMsg('¡Genial! Hemos enviado vuestros datos al equipo de WhiteMoon vía WhatsApp.\n\nOs contactaremos en menos de 4 horas. Mientras tanto:\n- Visitad nuestro blog: whitemoon.es/blog\n- Ver casos de éxito: whitemoon.es/#casos\n\n¡Hasta pronto! 🌙').then(function(){
-      var userMsg='Hola WhiteMoon, soy '+d.name+' y mi teléfono es +34 '+d.phone+'. Quiero información sobre vuestros servicios.';
-      var waUrl='https://wa.me/'+WM_CHATBOT.whatsapp+'?text='+encodeURIComponent(userMsg);
-      renderQuick([
-        {label:'💬 Abrir WhatsApp con mensaje listo',handler:function(){
-          window.open(waUrl,'_blank','noopener');
-        }}
-      ]);
-    });
-    var inp=$id('wmChatbotInput');
-    if(inp){inp.disabled=true;inp.placeholder='Conversación finalizada · Pulsa ↻ para reiniciar';}
   }
 
-  // ═══ CONTROL UI ═══
+  function completeCallback(){
+    saveLead({
+      nombre:WMCB.data.nombre,
+      telefono:WMCB.data.telefono,
+      sector:WMCB.data.sector||null,
+      mensaje:'Solicita que le llamen desde chatbot home',
+      origen:'chatbot_home'
+    });
+    var waMsg='Hola WhiteMoon, soy '+WMCB.data.nombre+' (+34 '+WMCB.data.telefono+'). Quiero información sobre vuestros servicios.';
+    var waUrl='https://wa.me/34643199580?text='+encodeURIComponent(waMsg);
+    addBotMsg('✅ '+WMCB.data.nombre+', tenemos tu número (+34 '+WMCB.data.telefono+'). El equipo te llama en menos de 4 horas en horario laboral.\n\nSi prefieres adelantar, escríbenos por WhatsApp:').then(function(){
+      renderQuick([
+        {label:'💬 Escribir por WhatsApp',handler:function(){window.open(waUrl,'_blank','noopener');}},
+        {label:'🌙 Volver al menú',handler:resetAndGreet}
+      ]);
+    });
+  }
+
+  // ═══ FLUJO 6 · HABLAR CON EL EQUIPO ═══
+  function flowContact(){
+    addBotMsg('Puedes contactarnos por:\n\n📱 WhatsApp: 643 199 580 (respuesta en 5 min)\n📧 Email: comercial@whitemoon.es\n📍 Presencial: Majadahonda, Madrid\n\n¿Prefieres que te llamemos nosotros?').then(function(){
+      renderQuick([
+        {label:'📞 Sí, llamadme',handler:function(){
+          WMCB.data.context='callback';
+          addBotMsg('Perfecto. Necesito tu nombre y teléfono para que el equipo te llame.').then(function(){askName('callback');});
+        }},
+        {label:'💬 WhatsApp directo',handler:function(){
+          window.open('https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20informaci%C3%B3n%20sobre%20vuestros%20servicios','_blank','noopener');
+        }},
+        {label:'← Menú principal',handler:flowGreeting}
+      ]);
+    });
+  }
+
+  function resetAndGreet(){
+    WMCB.data={nombre:'',telefono:'',sector:'',context:''};
+    flowGreeting();
+  }
+
+  // ═══ UI ═══
   function openModal(){
     var m=$id('wmChatbotModal');if(!m)return;
     m.classList.remove('wmcb-hidden');
     requestAnimationFrame(function(){m.classList.add('wmcb-open');});
     var b=$id('wmChatbotBtn');if(b)b.style.display='none';
-    if(WM_CHATBOT.state==='initial'){WM_CHATBOT.state='started';startWelcome();}
+    if(WMCB.state==='initial'){WMCB.state='started';flowGreeting();}
   }
   function closeModal(){
     var m=$id('wmChatbotModal');if(!m)return;
@@ -2854,29 +2811,26 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   }
   function resetChat(){
     if(!confirm('¿Reiniciar la conversación?'))return;
-    WM_CHATBOT.state='started';WM_CHATBOT.awaitingInput=null;
-    WM_CHATBOT.userData={flow:'',sector:'',volume:'',size:'',webStatus:'',deadline:'',processes:'',package:'',packagePrice:'',name:'',phone:'',email:'',company:'',availability:''};
+    WMCB.state='started';WMCB.awaiting=null;
+    WMCB.data={nombre:'',telefono:'',sector:'',context:''};
     var msgs=$id('wmChatbotMessages');if(msgs)msgs.innerHTML='';
     clearQuick();
     var inp=$id('wmChatbotInput');
-    if(inp){inp.disabled=false;inp.value='';inp.placeholder='Escribe tu mensaje...';}
-    startWelcome();
+    if(inp){inp.disabled=false;inp.placeholder='Escribe tu mensaje...';inp.value='';}
+    flowGreeting();
   }
 
   function init(){
-    var btn=$id('wmChatbotBtn');
-    if(btn){
-      setTimeout(function(){btn.classList.add('wmcb-show');},3000);
-      btn.addEventListener('click',openModal);
-    }
+    var openBtn=$id('wmChatbotBtn');
+    if(openBtn)openBtn.addEventListener('click',openModal);
     var closeBtn=document.querySelector('#wmChatbotModal .wmcb-close');
     if(closeBtn)closeBtn.addEventListener('click',closeModal);
     var resetBtn=document.querySelector('#wmChatbotModal .wmcb-reset');
     if(resetBtn)resetBtn.addEventListener('click',resetChat);
-    var send=$id('wmChatbotSend');
-    if(send)send.addEventListener('click',handleSend);
+    var sendBtn=$id('wmChatbotSend');
+    if(sendBtn)sendBtn.addEventListener('click',handleSend);
     var inp=$id('wmChatbotInput');
-    if(inp){inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();handleSend();}});}
+    if(inp)inp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();handleSend();}});
     document.addEventListener('keydown',function(e){
       if(e.key==='Escape'){
         var m=$id('wmChatbotModal');
