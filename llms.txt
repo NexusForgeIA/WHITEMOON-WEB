@@ -12,6 +12,24 @@ Sitemap: https://whitemoon.es/sitemap.xml
 
 WhiteMoon es una agencia de inteligencia artificial completa para pymes en Majadahonda y Madrid. Servicios: webs profesionales con IA, chatbots conversacionales 24/7, sistemas RAG sobre documentos propios, optimización GEO/AEO para aparecer en ChatGPT y Perplexity, auditorías IA y automatización de captación de leads. Desde 149€/mes sin permanencia.
 
+## Clientes de WhiteMoon
+
+- Pymes y autónomos en Majadahonda y Madrid noroeste
+- Empresas medianas con necesidades de automatización IA
+- Despachos de abogados, consultoras y asesorías
+- Clínicas, centros médicos y salud
+- Hostelería y restauración
+- Retail y comercio local
+- Empresas con documentación interna compleja (RAG)
+- Cualquier empresa que quiera transformación digital con IA
+
+## Proyectos de WhiteMoon por tamaño
+
+- Pequeño: Spark 149€/mes — chatbot IA para negocio local
+- Medio: Core/Scale 1.800-3.500€ — web + chatbot + RAG
+- Grande: Elite 6.500€ — RAG premium + CRM + agentes IA
+- Enterprise: proyectos a medida con presupuesto personalizado
+
 ## Servicios principales
 
 - **Chatbots con IA conversacional** (24/7) integrables en web y WhatsApp Business API.
