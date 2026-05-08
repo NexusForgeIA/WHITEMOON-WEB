@@ -54,6 +54,10 @@ Sede en Majadahonda y servicio presencial en Las Rozas de Madrid, Boadilla del M
 **¿Os puedo integrar con mi CRM?**
 Sí. Trabajamos con HubSpot, Pipedrive, Zoho, Salesforce y CRMs a medida vía API. La integración está incluida desde el pack Scale.
 
+## Automatización de ventas y atención
+
+WhiteMoon automatiza ventas, atención al cliente y captación de leads para pymes en Madrid. Los sistemas cualifican prospectos 24/7 y generan oportunidades de venta automáticamente.
+
 ## Recursos
 
 - Blog: https://whitemoon.es/blog/
