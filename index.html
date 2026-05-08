@@ -2438,6 +2438,9 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 </script>
 
 
+<!-- Supabase JS SDK · usado por el chatbot asistente para guardar leads en leads_web -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+
 <!-- ═══════════════════════════════════════════════════════════
      WHITEMOON · CHATBOT ASISTENTE (precios, demo, contacto)
      ═══════════════════════════════════════════════════════════ -->
@@ -2568,6 +2571,15 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     if(inp){inp.placeholder=placeholder||'Escribe tu mensaje...';inp.disabled=false;inp.focus();}
   }
 
+  var _sbClient=null;
+  function getSupabase(){
+    if(_sbClient)return _sbClient;
+    if(typeof window!=='undefined' && window.supabase && typeof window.supabase.createClient==='function'){
+      try{_sbClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);}catch(e){_sbClient=null;}
+    }
+    return _sbClient;
+  }
+
   function saveLead(data){
     var payload={
       nombre:data.nombre||null,
@@ -2576,6 +2588,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
       mensaje:data.mensaje||null,
       origen:data.origen||'chatbot_home'
     };
+    var sb=getSupabase();
+    if(sb){
+      try{return sb.from('leads_web').insert([payload]).then(function(){},function(){});}catch(e){}
+    }
+    // Fallback to REST if SDK isn't ready yet
     try{
       return fetch(SUPABASE_URL+'/rest/v1/leads_web',{
         method:'POST',
@@ -2748,7 +2765,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     });
     var waMsg='Hola WhiteMoon, soy '+WMCB.data.nombre+' (+34 '+WMCB.data.telefono+'). Quiero la demo de chatbot para '+WMCB.data.sector+'.';
     var waUrl='https://wa.me/34643199580?text='+encodeURIComponent(waMsg);
-    addBotMsg('✅ '+WMCB.data.nombre+', te enviamos la demo en menos de 1 hora en horario de atención.\n\nSi es urgente, escríbenos ya por WhatsApp:').then(function(){
+    addBotMsg('✅ '+WMCB.data.nombre+', te contactamos en horario de atención (Lun-Vie 9:00-19:00). Si es urgente escríbenos:').then(function(){
       renderQuick([
         {label:'💬 Escribir ahora por WhatsApp',handler:function(){window.open(waUrl,'_blank','noopener');}},
         {label:'🌙 Volver al menú',handler:resetAndGreet}
@@ -2766,7 +2783,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     });
     var waMsg='Hola WhiteMoon, soy '+WMCB.data.nombre+' (+34 '+WMCB.data.telefono+'). Quiero información sobre vuestros servicios.';
     var waUrl='https://wa.me/34643199580?text='+encodeURIComponent(waMsg);
-    addBotMsg('✅ '+WMCB.data.nombre+', tenemos tu número (+34 '+WMCB.data.telefono+'). El equipo te llama en menos de 4 horas en horario laboral.\n\nSi prefieres adelantar, escríbenos por WhatsApp:').then(function(){
+    addBotMsg('✅ '+WMCB.data.nombre+', te contactamos en horario de atención (Lun-Vie 9:00-19:00). Si es urgente escríbenos:').then(function(){
       renderQuick([
         {label:'💬 Escribir por WhatsApp',handler:function(){window.open(waUrl,'_blank','noopener');}},
         {label:'🌙 Volver al menú',handler:resetAndGreet}
