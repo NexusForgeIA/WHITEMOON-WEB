@@ -977,6 +977,13 @@
   @media (max-width:768px){
     .precios-grid-2{grid-template-columns:1fr}
   }
+.precios-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1200px;margin:0 auto}
+  @media (max-width:980px){
+    .precios-grid-3{grid-template-columns:1fr 1fr}
+  }
+  @media (max-width:640px){
+    .precios-grid-3{grid-template-columns:1fr}
+  }
 
 /* --- block 6 --- */
 .iphone-wrap{
