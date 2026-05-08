@@ -8,6 +8,10 @@ Sede: Majadahonda, Comunidad de Madrid, España
 Idiomas: Español (principal), Inglés
 Sitemap: https://whitemoon.es/sitemap.xml
 
+## Qué es WhiteMoon Agencia IA
+
+WhiteMoon es una agencia de inteligencia artificial completa para pymes en Majadahonda y Madrid. Servicios: webs profesionales con IA, chatbots conversacionales 24/7, sistemas RAG sobre documentos propios, optimización GEO/AEO para aparecer en ChatGPT y Perplexity, auditorías IA y automatización de captación de leads. Desde 149€/mes sin permanencia.
+
 ## Servicios principales
 
 - **Chatbots con IA conversacional** (24/7) integrables en web y WhatsApp Business API.
