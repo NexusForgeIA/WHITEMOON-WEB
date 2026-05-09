@@ -100,22 +100,28 @@
             '🔍 SEO básico incluido · Sin permanencia';
         }
         w.bot(card, function(){
-          w.bot('¿Quieres que te llamemos sin compromiso?', function(){
-            w.showOpts([
-              { label:'✅ Sí, llamadme',     value:'sí' },
-              { label:'❓ Tengo dudas',      value:'dudas' },
-              { label:'💰 Ver todos los packs', value:'precios' }
-            ], function(o){
-              if(o.value === 'precios'){ mostrarPrecios(); return; }
-              if(o.value === 'dudas'){
-                w.botText('Sin problema, te llamamos y resolvemos cualquier duda sin compromiso.', function(){
+          w.bot(
+            '¿Sabes que los negocios con chatbot IA capturan de media un <b>35% más de leads</b> fuera de horario?<br><br>'+
+            'Nuestros clientes reciben el lead cualificado por WhatsApp con nombre, teléfono y lo que necesita el cliente — listos para llamar inmediatamente.',
+            function(){
+              w.bot('¿Quieres que te llamemos sin compromiso?', function(){
+                w.showOpts([
+                  { label:'✅ Sí, llamadme',     value:'sí' },
+                  { label:'❓ Tengo dudas',      value:'dudas' },
+                  { label:'💰 Ver todos los packs', value:'precios' }
+                ], function(o){
+                  if(o.value === 'precios'){ mostrarPrecios(); return; }
+                  if(o.value === 'dudas'){
+                    w.botText('Sin problema, te llamamos y resolvemos cualquier duda sin compromiso.', function(){
+                      capture('Pack ' + pack, sector);
+                    });
+                    return;
+                  }
                   capture('Pack ' + pack, sector);
                 });
-                return;
-              }
-              capture('Pack ' + pack, sector);
-            });
-          });
+              });
+            }
+          );
         });
       }
 
@@ -162,7 +168,13 @@
             '<b>🌐 Pack Core — 1.800€ setup + 199€/mes</b><br>'+
             'Web profesional + Chatbot IA para <b>'+u.escapeHtml(data.sector)+'</b><br>'+
             '🔍 SEO básico · 📱 Captura 24/7 → WhatsApp · Sin permanencia',
-            function(){ capture('Pack Core', data.sector); }
+            function(){
+              w.bot(
+                '¿Sabías que el <b>70% de los usuarios decide en menos de 3 segundos</b> si una web es de confianza?<br><br>'+
+                'Nuestras webs cargan en menos de 2 segundos, están optimizadas para Google Y para aparecer en ChatGPT y Grok como referencia de tu sector.',
+                function(){ capture('Pack Core', data.sector); }
+              );
+            }
           );
         });
       }
@@ -170,16 +182,100 @@
       // ─── FLUJO AUDITORÍA IA ───────────────────────────────────────────────
       function flowAuditoria(){
         w.bot(
-          'La <b>Auditoría IA</b> analiza tu negocio y te dice qué procesos automatizar con IA y qué ROI obtendrías.<br>'+
-          '📋 <b>899€ pago único</b> · Descontable del proyecto',
+          'La <b>Auditoría IA de WhiteMoon</b> es un análisis completo de tu negocio donde identificamos:<br><br>'+
+          '🔍 Qué procesos puedes automatizar con IA<br>'+
+          '💰 ROI estimado por cada automatización<br>'+
+          '📊 Si apareces en ChatGPT, Perplexity y Grok<br>'+
+          '🏗️ Arquitectura técnica recomendada<br>'+
+          '📋 Presupuesto detallado de implementación<br><br>'+
+          'Todo en un informe de 5-7 páginas entregado en 7 días laborables.<br>'+
+          '💰 <b>899€ pago único</b> · Descontable si contratas después',
           function(){
             w.flow([
-              { key:'tipo', msg:'¿Para qué tipo de empresa?', opts:['Pyme local','Empresa mediana','Empresa grande'] }
+              { key:'tipo',   msg:'¿Para qué tipo de empresa es?', opts:[
+                '🏪 Pyme local (1-10 empleados)',
+                '🏢 Empresa mediana (10-50 empleados)',
+                '🏭 Empresa grande (+50 empleados)',
+                '👤 Autónomo / Freelance'
+              ]},
+              { key:'sector', msg:'¿A qué sector pertenece tu empresa?', opts:[
+                '⚖️ Legal / Consultoría',
+                '🏥 Salud / Clínicas',
+                '🏗️ Construcción / Reformas',
+                '🍽️ Hostelería',
+                '🛒 Retail / Comercio',
+                '🏭 Industria / Fabricación',
+                '💼 Servicios profesionales',
+                'Otro sector'
+              ]},
+              { key:'dolor',  msg:'¿Cuál es tu mayor reto ahora mismo?', opts:[
+                '📞 Demasiadas consultas repetitivas',
+                '⏰ Procesos manuales que consumen tiempo',
+                '🚫 Pierdo clientes fuera de horario',
+                '📉 No aparezco en Google ni en ChatGPT',
+                '💸 Costes operativos muy altos',
+                'Varios de estos'
+              ]}
             ], function(data){
-              capture('Auditoría IA', data.tipo);
+              w.bot(
+                'Perfecto. Basándonos en empresas similares a la tuya hemos identificado ahorros medios de:<br><br>'+
+                '⏱️ <b>15-20 horas/semana</b> en tareas manuales<br>'+
+                '📈 <b>30-40% más leads</b> captados automáticamente<br>'+
+                '💰 <b>2.000-5.000€/mes</b> de coste operativo reducido<br><br>'+
+                'La auditoría te dará los números exactos para <b>TU negocio</b>.',
+                function(){
+                  w.bot('¿Quieres que te llamemos para explicarte cómo funciona el proceso?', function(){
+                    w.showOpts([
+                      { label:'✅ Sí, llamadme',     value:'si' },
+                      { label:'❓ Tengo más dudas', value:'dudas' }
+                    ], function(o){
+                      if(o.value === 'dudas'){ flowAuditoriaDudas(data); return; }
+                      captureAuditoria(data);
+                    });
+                  });
+                }
+              );
             });
           }
         );
+      }
+
+      function flowAuditoriaDudas(data){
+        w.bot('Claro, ¿qué quieres saber?', function(){
+          w.showOpts([
+            { label:'¿Qué incluye exactamente?',     value:'incluye' },
+            { label:'¿Cuánto tiempo lleva?',         value:'tiempo' },
+            { label:'¿Es presencial o online?',      value:'modalidad' },
+            { label:'¿Y si luego no contrato nada?', value:'sincontrato' }
+          ], function(o){
+            var ans;
+            if(o.value === 'incluye'){
+              ans = 'El informe incluye mapa de oportunidades IA, ROI estimado por proceso, análisis de presencia GEO/AEO en LLMs, arquitectura técnica propuesta y presupuesto detallado. Presentación incluida.';
+            } else if(o.value === 'tiempo'){
+              ans = '7 días laborables desde que nos facilitas la información. Empezamos en 24-48h tras el pago.';
+            } else if(o.value === 'modalidad'){
+              ans = 'Totalmente online. La presentación final es por videoconferencia o presencial en Majadahonda.';
+            } else {
+              ans = 'Sin problema. La auditoría tiene valor por sí sola. Y si contratas en los 90 días siguientes, los 899€ se descuentan del proyecto.';
+            }
+            w.botText(ans, function(){ captureAuditoria(data); });
+          });
+        });
+      }
+
+      function captureAuditoria(data){
+        var detalle = 'Sector: ' + (data.sector || 'No especificado') +
+                      ' | Tipo: '  + (data.tipo  || '') +
+                      ' | Reto: '  + (data.dolor || '');
+        w.startCapture({
+          tramite: 'Auditoría IA',
+          agent:   'especialista',
+          askName: ASK_NAME,
+          askPhone: ASK_PHONE,
+          detalle: detalle,
+          finish:  FINISH,
+          waTemplate: WA
+        });
       }
 
       // ─── FLUJO SCOUT ──────────────────────────────────────────────────────
@@ -197,7 +293,13 @@
               else                                { plan = 'Agency';    precio = '499€ setup + 399€/mes'; }
               w.bot(
                 '<b>🔭 Scout '+plan+'</b><br>'+precio+' · Sin permanencia',
-                function(){ capture('Scout '+plan, 'Agencia IA'); }
+                function(){
+                  w.bot(
+                    'Con Scout puedes <b>analizar la web de un prospecto en segundos</b> y generar una demo personalizada de su sector antes de llamarle.<br><br>'+
+                    'Tasa de cierre media de nuestros usuarios: <b>3-5 clientes nuevos al mes</b> desde el primer mes.',
+                    function(){ capture('Scout '+plan, 'Agencia IA'); }
+                  );
+                }
               );
             });
           }
