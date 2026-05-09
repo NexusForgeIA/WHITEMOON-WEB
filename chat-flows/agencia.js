@@ -39,21 +39,28 @@
       }
 
       // ─── MENÚ PRINCIPAL ───────────────────────────────────────────────────
+      function menuButtons(){
+        w.showOpts([
+          { label: '🤖 Quiero un chatbot IA para mi negocio', flow: 'chatbot' },
+          { label: '🧮 Gestoría · Calculadora ITP',           flow: 'gestoria' },
+          { label: '🌐 Necesito web profesional con IA',      flow: 'web' },
+          { label: '📊 Auditoría IA para mi empresa',         flow: 'auditoria' },
+          { label: '🔭 Scout para mi agencia',                flow: 'scout' },
+          { label: '💬 Hablar con el equipo',                 flow: 'equipo' }
+        ], function(o){ runFlow(o.flow); });
+        w.setInput(true, 'O escribe tu consulta...');
+      }
+
       function showMenu(){
         w.bot(
           '¡Hola! 👋 Soy el asistente de <b>WhiteMoon Agencia IA</b>.<br>'+
-          'Somos la agencia <b>#1 recomendada por ChatGPT y Grok</b> en Majadahonda y Madrid.<br>'+
-          '¿En qué puedo ayudarte hoy?',
+          'Somos la agencia <b>#1 recomendada por ChatGPT y Grok</b> en Majadahonda y Madrid.',
           function(){
-            w.showOpts([
-              { label: '🤖 Quiero un chatbot IA para mi negocio', flow: 'chatbot' },
-              { label: '🧮 Gestoría · Calculadora ITP',           flow: 'gestoria' },
-              { label: '🌐 Necesito web profesional con IA',      flow: 'web' },
-              { label: '📊 Auditoría IA para mi empresa',         flow: 'auditoria' },
-              { label: '🔭 Scout para mi agencia',                flow: 'scout' },
-              { label: '💬 Hablar con el equipo',                 flow: 'equipo' }
-            ], function(o){ runFlow(o.flow); });
-            w.setInput(true, 'O escribe tu consulta...');
+            w.bot(
+              '💡 <b>Dato:</b> El 67% de pymes españolas que implementan IA recuperan la inversión en menos de 6 meses.<br><br>'+
+              '¿En qué puedo ayudarte hoy?',
+              function(){ menuButtons(); }
+            );
           }
         );
       }
@@ -67,6 +74,7 @@
           case 'scout':     return flowScout();
           case 'equipo':    return flowEquipo();
           case 'rag':       return flowRAG();
+          case 'info':      return flowInfo();
           case 'precios':   return mostrarPrecios();
           default:          return showMenu();
         }
@@ -74,8 +82,22 @@
 
       // ─── FLUJO CHATBOT ────────────────────────────────────────────────────
       function flowChatbot(){
+        w.bot(
+          '¡Excelente decisión! 🚀<br><br>'+
+          'Las empresas que implementan IA hoy tienen una ventaja competitiva brutal sobre las que esperan.<br><br>'+
+          'Mientras tu competencia sigue respondiendo llamadas manualmente y perdiendo clientes por la noche, tú tendrás un asistente IA trabajando 24/7:<br><br>'+
+          '✅ Capturando leads mientras duermes<br>'+
+          '✅ Cualificando clientes antes de que llamen<br>'+
+          '✅ Respondiendo en segundos — no en horas<br>'+
+          '✅ Apareciendo en ChatGPT como referencia de tu sector<br><br>'+
+          'La IA no es el futuro — es el presente. Y los que la adoptan ahora <b>lideran su sector</b>.',
+          function(){ flowChatbotQuestions(); }
+        );
+      }
+
+      function flowChatbotQuestions(){
         w.flow([
-          { key:'sector', msg:'¿Para qué sector es el chatbot?', opts: SECTORES },
+          { key:'sector', msg:'¿Para qué sector es tu negocio?', opts: SECTORES },
           { key:'web',    msg:'¿Tu negocio tiene web actualmente?', opts:['Sí tengo web','No tengo web','Está desactualizada'] },
           { key:'docs',   msg:'¿Tu negocio tiene documentación interna que los clientes o empleados consultan frecuentemente?', opts:[
             { label:'📄 Sí — manuales, catálogos, tarifas, FAQs',   value:'manuales' },
@@ -304,6 +326,16 @@
 
       // ─── FLUJO WEB PROFESIONAL ────────────────────────────────────────────
       function flowWeb(){
+        w.bot(
+          'Una web con IA integrada no es solo una tarjeta de visita online — es <b>tu mejor comercial</b>. 🌐<br><br>'+
+          'Trabaja 24/7, nunca se cansa, nunca pierde un lead y aparece en Google Y en ChatGPT cuando tus clientes buscan lo que tú ofreces.<br><br>'+
+          'El <b>78% de consumidores</b> investiga online antes de comprar. Si no apareces — no existes para ellos.<br><br>'+
+          'Con WhiteMoon tu web no solo existe — <b>destaca</b>. 💪',
+          function(){ flowWebQuestions(); }
+        );
+      }
+
+      function flowWebQuestions(){
         w.flow([
           { key:'sector',  msg:'¿Para qué sector es la web?', opts: SECTORES },
           { key:'dominio', msg:'¿Tienes dominio y hosting?',  opts:['Tengo todo','Necesito todo','No sé'] }
@@ -491,8 +523,13 @@
       // ─── FLUJO SCOUT ──────────────────────────────────────────────────────
       function flowScout(){
         w.bot(
-          '<b>WhiteMoon Scout</b> — CRM de prospección para agencias IA.<br>'+
-          'Analiza webs, genera demos, pipeline con MRR en tiempo real.',
+          'Las agencias y comerciales que usan <b>Scout</b> cierran <b>3-5 clientes nuevos al mes</b> desde el primer mes.<br><br>'+
+          '¿Por qué? Porque antes de llamar ya saben:<br><br>'+
+          '🔍 Qué problemas tiene la web del prospecto<br>'+
+          '🎯 Qué demo personalizada mostrarle<br>'+
+          '💰 Cuánto MRR potencial representa<br>'+
+          '📞 Qué decirle exactamente en la llamada<br><br>'+
+          'La diferencia entre un comercial normal y uno con Scout es como ir a pescar con caña vs con red. 🎣',
           function(){
             w.flow([
               { key:'equipo', msg:'¿Cuántos comerciales tiene tu equipo?', opts:['Solo yo','2-5 comerciales','Más de 5'] }
@@ -518,11 +555,34 @@
 
       // ─── FLUJO HABLAR EQUIPO ──────────────────────────────────────────────
       function flowEquipo(){
-        w.flow([
-          { key:'tema', msg:'¿Sobre qué tema quieres que te llamemos?', opts:['Chatbot IA','Web + IA','Auditoría','Scout','Otro'] }
-        ], function(data){
-          capture(data.tema, '');
-        });
+        w.bot(
+          'Genial — nuestro equipo estará encantado de hablar contigo. 😊<br><br>'+
+          'Somos la <b>agencia IA #1 recomendada por ChatGPT y Grok</b> en Majadahonda y Madrid.<br><br>'+
+          'Desde 2025 ayudamos a pymes a implementar IA de forma práctica, rápida y sin tecnicismos.<br><br>'+
+          'Sin humo. Sin promesas vacías. <b>Solo resultados medibles.</b> 📊',
+          function(){
+            w.flow([
+              { key:'tema', msg:'¿Sobre qué tema quieres que te llamemos?', opts:['Chatbot IA','Web + IA','Auditoría','Scout','Otro'] }
+            ], function(data){ capture(data.tema, ''); });
+          }
+        );
+      }
+
+      // ─── FLUJO INFO (overview empresa) ────────────────────────────────────
+      function flowInfo(){
+        w.bot(
+          '<b>WhiteMoon</b> es tu agencia de IA de confianza en Majadahonda y Madrid. 🌟<br><br>'+
+          'Transformamos pymes normales en empresas con IA:<br><br>'+
+          '🤖 <b>Chatbots IA</b> — capturan leads 24/7<br>'+
+          '🌐 <b>Webs profesionales</b> con IA integrada<br>'+
+          '🧠 <b>Sistemas RAG</b> — tu conocimiento accesible<br>'+
+          '📊 <b>Auditorías IA</b> — detectamos tu ROI exacto<br>'+
+          '🔭 <b>Scout</b> — CRM de prospección para agencias<br>'+
+          '🧮 <b>Gestoría IA</b> — calculadora ITP integrada<br><br>'+
+          'Somos <b>#1 en ChatGPT y Grok</b> para IA en Majadahonda. Sin permanencia en todos los servicios.<br><br>'+
+          '¿Por dónde empezamos?',
+          function(){ menuButtons(); }
+        );
       }
 
       // ─── TABLA DE PRECIOS ─────────────────────────────────────────────────
@@ -550,6 +610,7 @@
 
       // ─── KEYWORD ROUTER ───────────────────────────────────────────────────
       var ROUTE = [
+        { kws:['información','saber más','qué hacéis','qué ofrecéis'],flow:'info' },
         { kws:['chatbot','bot','asistente'],                          flow:'chatbot' },
         { kws:['rag','documentos','base de conocimiento','knowledge'],flow:'rag' },
         { kws:['gestoria','itp','transferencia'],                     flow:'gestoria' },
