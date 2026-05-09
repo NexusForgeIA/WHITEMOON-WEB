@@ -701,6 +701,7 @@
         display: flex; align-items: center; gap: 10px;
       }
       .nav-mobile-panel a:last-child { border-bottom: 0; }
+      .nav-mobile-panel a.cta-audit { color: #fbbf24; font-weight: 700; }
       .nav-mobile-panel a.cta-scout { color: #a78bfa; }
       .nav-mobile-panel a.cta-rag { color: #22d3ee; }
       .nav-mobile-panel a.cta-wa {
