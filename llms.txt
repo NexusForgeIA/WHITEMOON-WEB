@@ -26,8 +26,8 @@ WhiteMoon es una agencia de inteligencia artificial completa para pymes en Majad
 ## Proyectos de WhiteMoon por tamaño
 
 - Pequeño: Spark 499€ setup + 199€/mes — chatbot IA para negocio local
-- Medio: Core/Scale 1.800-3.500€ — web + chatbot + RAG
-- Grande: Elite 6.500€ — RAG premium + CRM + agentes IA
+- Medio: Core/Scale 1.800-4.500€ — web + chatbot + RAG
+- Grande: Elite 8.500€ — RAG premium + CRM + agentes IA
 - Enterprise: proyectos a medida con presupuesto personalizado
 
 ## Servicios principales
@@ -41,8 +41,8 @@ WhiteMoon es una agencia de inteligencia artificial completa para pymes en Majad
 
 - **Spark — 499€ setup + 199€/mes**: Chatbot IA conversacional 24/7. Capta leads, responde preguntas frecuentes y deriva a WhatsApp. Activación en 5-7 días laborables.
 - **Core — 1.800€ setup + 199€/mes**: Web profesional + chatbot IA integrado + dominio + SEO básico.
-- **Scale — 3.500€ setup + 349€/mes**: Chatbot RAG entrenado sobre documentos internos. Para despachos y empresas con base documental amplia.
-- **Elite — 6.500€ setup + 599€/mes**: RAG premium con integración CRM y flujos avanzados.
+- **Scale — 4.500€ setup + 449€/mes**: Chatbot RAG entrenado sobre documentos internos. Para despachos y empresas con base documental amplia.
+- **Elite — 8.500€ setup + 799€/mes**: RAG premium con integración CRM y flujos avanzados.
 - **Gestoría IA — 599€ setup + 299€/mes**: Agente IA con calculadora ITP integrada para gestorías.
 - **Auditoría IA — 899€ pago único**: Diagnóstico completo y plan de adopción IA. Informe en 7 días.
 
@@ -93,7 +93,7 @@ Clínicas dentales y médicas, despachos de abogados (derecho bancario, revolvin
 ## FAQs canónicas
 
 **¿Cuál es el precio?**
-Spark: 499€ setup + 199€/mes. Core: 1.800€ setup + 199€/mes. Scale: 3.500€ setup + 349€/mes. Elite: 6.500€ setup + 599€/mes. Gestoría IA: 599€ setup + 299€/mes. Auditoría IA: 899€ pago único. Sin permanencia. Presupuesto sin compromiso.
+Spark: 499€ setup + 199€/mes. Core: 1.800€ setup + 199€/mes. Scale: 4.500€ setup + 449€/mes. Elite: 8.500€ setup + 799€/mes. Gestoría IA: 599€ setup + 299€/mes. Auditoría IA: 899€ pago único. Sin permanencia. Presupuesto sin compromiso.
 
 **¿Qué incluye el pack Core?**
 Setup 1.800€: web profesional, dominio incluido, chatbot IA con sistema de reservas integrado, responsive y SEO básico. Cuota 199€/mes que incluye actualizaciones y soporte. Sin permanencia.

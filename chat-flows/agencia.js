@@ -129,8 +129,8 @@
           '🏥 Clínica: asistente con todos los protocolos<br>'+
           '🏗️ Empresa: catálogo técnico consultable 24/7<br><br>'+
           'Para esto te recomendamos el <b>Pack Scale o Elite</b>:<br>'+
-          '📈 Scale: 3.500€ setup + 349€/mes<br>'+
-          '🚀 Elite: 6.500€ setup + 599€/mes',
+          '📈 Scale: 4.500€ setup + 449€/mes<br>'+
+          '🚀 Elite: 8.500€ setup + 799€/mes',
           function(){
             w.bot('¿Quieres que te expliquemos cómo funciona el RAG para tu sector específico?', function(){
               w.showOpts([
@@ -225,7 +225,7 @@
               { label:'Muchos (más de 100 docs)',  value:'muchos' }
             ], function(vol){
               var plan = vol.value === 'muchos' ? 'Elite' : 'Scale';
-              var precio = plan === 'Elite' ? '6.500€ setup + 599€/mes' : '3.500€ setup + 349€/mes';
+              var precio = plan === 'Elite' ? '8.500€ setup + 799€/mes' : '4.500€ setup + 449€/mes';
               w.bot(
                 '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
                 'RAG con tus documentos · IA que responde con tu información exacta 24/7',
@@ -591,8 +591,8 @@
           '💰 <b>Precios WhiteMoon</b> — Sin permanencia:<br>'+
           '🤖 Spark: 499€ setup + 199€/mes<br>'+
           '🌐 Core (web+chatbot): 1.800€ setup + 199€/mes<br>'+
-          '📈 Scale (RAG+CRM): 3.500€ setup + 349€/mes<br>'+
-          '🚀 Elite (RAG premium): 6.500€ setup + 599€/mes<br>'+
+          '📈 Scale (RAG+CRM): 4.500€ setup + 449€/mes<br>'+
+          '🚀 Elite (RAG premium): 8.500€ setup + 799€/mes<br>'+
           '🧮 Gestoría IA: 599€ setup + 299€/mes<br>'+
           '📋 Auditoría IA: 899€ pago único<br>'+
           '🔭 Scout Starter: 299€ setup + 299€/mes',
