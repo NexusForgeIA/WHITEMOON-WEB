@@ -13,6 +13,32 @@
     askPhone: 'Gracias {nombre} 👋 ¿Tu teléfono de contacto? (9 dígitos)'
   };
 
+  var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
+
+  function saveLead(data){
+    var payload = {
+      nombre:   data.nombre   || null,
+      telefono: data.telefono || null,
+      sector:   data.sector   || null,
+      interes:  data.interes  || null,
+      origen:   'whitemoon.es',
+      fecha:    new Date().toISOString()
+    };
+    try {
+      return fetch(SUPABASE_URL + '/rest/v1/leads_web', {
+        method: 'POST',
+        headers: {
+          'apikey':        SUPABASE_KEY,
+          'Authorization': 'Bearer ' + SUPABASE_KEY,
+          'Content-Type':  'application/json',
+          'Prefer':        'return=minimal'
+        },
+        body: JSON.stringify(payload)
+      }).catch(function(e){ console.warn('[WM-CHAT] saveLead', e); });
+    } catch(e){ console.warn('[WM-CHAT] saveLead', e); }
+  }
+
   function normalize(s){
     return String(s||'').toLowerCase().trim()
       .replace(/[áàä]/g,'a').replace(/[éèë]/g,'e').replace(/[íìï]/g,'i')
@@ -387,6 +413,14 @@
         msgsEl.appendChild(card);
         msgsEl.scrollTop = msgsEl.scrollHeight;
         showCloseBtn();
+
+        var sectorMatch = typeof detalle === 'string' ? /sector\s*:\s*([^|]+)/i.exec(detalle) : null;
+        saveLead({
+          nombre:   leadData.nombre,
+          telefono: leadData.telefono,
+          sector:   sectorMatch ? sectorMatch[1].trim() : null,
+          interes:  tramite
+        });
       });
     }
 
