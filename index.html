@@ -624,10 +624,10 @@
       <a href="javascript:void(0)" onclick="navMobileGo('quienes-somos')">Quiénes somos</a>
       <a href="javascript:void(0)" onclick="navMobileGo('servicios')">Servicios</a>
       <a href="javascript:void(0)" onclick="navMobileGo('precios')">Precios</a>
+      <a href="javascript:void(0)" class="cta-audit" onclick="navMobileGo('audit')">📋 Auditoría IA</a>
       <a href="javascript:void(0)" onclick="navMobileGo('metodo')">Método</a>
       <a href="javascript:void(0)" onclick="navMobileGo('faq')">FAQ</a>
       <a href="https://whitemoon.es/blog/">Blog</a>
-      <a href="javascript:void(0)" class="cta-audit" onclick="navMobileGo('audit')">📋 Auditoría IA</a>
       <a href="javascript:void(0)" class="cta-scout" onclick="navMobileGo('scout')">🔍 Scout IA</a>
       <a href="javascript:void(0)" class="cta-rag" onclick="navMobileGo('rag')">💬 RAG IA</a>
       <a href="https://wa.me/34643199580?text=Hola%20WHITEMOON" target="_blank" rel="noopener" class="cta-wa">Contactar por WhatsApp</a>
@@ -649,6 +649,17 @@
     var el=document.getElementById(id);
     if(el)el.scrollIntoView({behavior:'smooth'});
   }
+  document.addEventListener('DOMContentLoaded',function(){
+    var links=document.querySelectorAll('#navMobilePanel a');
+    links.forEach(function(a){
+      a.addEventListener('click',function(){
+        var p=document.getElementById('navMobilePanel');
+        var btn=document.querySelector('.nav-toggle');
+        if(p)p.classList.remove('open');
+        if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
+      });
+    });
+  });
 </script>
 
 <!-- HERO -->

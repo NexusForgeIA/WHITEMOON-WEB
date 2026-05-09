@@ -701,13 +701,35 @@
         display: flex; align-items: center; gap: 10px;
       }
       .nav-mobile-panel a:last-child { border-bottom: 0; }
-      .nav-mobile-panel a.cta-audit { color: #fbbf24; font-weight: 700; }
-      .nav-mobile-panel a.cta-scout { color: #a78bfa; }
-      .nav-mobile-panel a.cta-rag { color: #22d3ee; }
+      .nav-mobile-panel a.cta-audit,
+      .nav-mobile-panel a.cta-scout,
+      .nav-mobile-panel a.cta-rag,
       .nav-mobile-panel a.cta-wa {
-        background: linear-gradient(135deg,#7c3aed,#5b21b6);
-        border-radius: 8px; justify-content: center; margin-top: 8px;
+        width: 100%;
+        padding: 14px 16px;
+        margin-top: 6px;
         border: 0;
+        border-radius: 10px;
+        justify-content: center;
+        font-weight: 700;
+        font-size: .92rem;
+      }
+      .nav-mobile-panel a.cta-audit {
+        background: #f59e0b;
+        color: #1a1a1a;
+      }
+      .nav-mobile-panel a.cta-scout {
+        background: linear-gradient(135deg,#7c3aed,#5b21b6);
+        color: #fff;
+      }
+      .nav-mobile-panel a.cta-rag {
+        background: linear-gradient(135deg,#0891b2,#0e7490);
+        color: #fff;
+      }
+      .nav-mobile-panel a.cta-wa {
+        background: linear-gradient(135deg,#22c55e,#15803d);
+        color: #fff;
+        margin-top: 10px;
       }
     }
     .valores-grid { grid-template-columns: repeat(3,1fr); }
@@ -741,7 +763,7 @@
     }
     @media(max-width:480px) {
       .stats-bar .wrap { grid-template-columns: repeat(2,1fr); }
-      .hero h1 { font-size: 1.85rem; letter-spacing: -.02em; }
+      .hero h1 { font-size: 2rem; letter-spacing: -.02em; }
       .price-card { padding: 22px 16px; }
       .hero-actions { flex-direction: column; align-items: center; }
       .btn-prim, .btn-out { width: 100%; justify-content: center; }
@@ -803,7 +825,15 @@
 .wm-audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;max-width:1100px;margin:0 auto}
     @media(max-width:900px){ .wm-audit-grid{grid-template-columns:1fr;gap:40px} }
     @media(max-width:600px){ #audit{padding:60px 16px !important} }
-    @media(max-width:600px){ .hero-proof{flex-direction:column !important;gap:10px !important} }
+    @media(max-width:600px){
+      .hero-proof{
+        display:grid !important;
+        grid-template-columns:repeat(2,1fr) !important;
+        gap:10px 14px !important;
+        justify-content:initial !important;
+      }
+      .hero-proof > div:nth-child(3){ grid-column:1 / -1; justify-content:center; }
+    }
 
 /* --- block 4 --- */
 /* Reset scope para no interferir con estilos existentes */
