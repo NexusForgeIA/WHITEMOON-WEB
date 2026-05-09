@@ -155,10 +155,11 @@
     var sendBtn = modal.querySelector('#wm-send');
     var closeBtn= modal.querySelector('.wm-close');
 
-    var inputHandler = null;
-    var captureCtx   = null;
-    var started      = false;
-    var leadData     = {};
+    var inputHandler     = null;
+    var baseInputHandler = null;
+    var captureCtx       = null;
+    var started          = false;
+    var leadData         = {};
 
     function addBot(html){
       var d = document.createElement('div');
@@ -217,7 +218,7 @@
       inputEl.value = '';
       if(enabled) setTimeout(function(){ inputEl.focus(); }, 50);
     }
-    function onInput(fn){ inputHandler = fn; }
+    function onInput(fn){ inputHandler = fn; baseInputHandler = fn; }
     function onInputOnce(fn){
       var prev = inputHandler;
       inputHandler = function(text){
@@ -284,10 +285,28 @@
       if(opts.tramite)   leadData.tramite = opts.tramite;
       if(opts.prioridad) leadData.prioridad = opts.prioridad;
       if(opts.detalle)   leadData.detalle = opts.detalle;
-      hideClose();
       bot(escapeHtml(opts.askName || cfg.askName), function(){
         setInput(true, 'Tu nombre');
       });
+    }
+
+    function resetState(){
+      captureCtx = null;
+      Object.keys(leadData).forEach(function(k){ delete leadData[k]; });
+      var leftover = msgsEl.querySelectorAll('.wm-opts, .wm-final, .wm-typing');
+      leftover.forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
+      inputHandler = baseInputHandler;
+      showCloseBtn();
+      setInput(true);
+    }
+    function backToMenu(){
+      resetState();
+      bot('↩ Volver al menú principal…', function(){
+        if(typeof api._onOpen === 'function') api._onOpen();
+      });
+    }
+    function isMenuKeyword(text){
+      return /^(menu|menú|inicio|volver|empezar)\b/i.test(String(text||'').trim());
     }
     function handleCaptureInput(text){
       if(!captureCtx) return;
@@ -379,6 +398,11 @@
       text = (text || '').trim();
       if(!text) return;
       inputEl.value = '';
+      if(isMenuKeyword(text)){
+        addUser(text);
+        backToMenu();
+        return;
+      }
       if(captureCtx){ handleCaptureInput(text); return; }
       if(typeof inputHandler === 'function'){ inputHandler(text); return; }
     }
@@ -386,6 +410,22 @@
     btn.addEventListener('click', function(){ openChat(api._onOpen); });
     closeBtn.addEventListener('click', closeChat);
     setTimeout(function(){ btn.classList.add('wm-visible'); }, 1500);
+
+    var swipeStartY = null;
+    var headerEl = modal.querySelector('.wm-header');
+    if(headerEl){
+      headerEl.addEventListener('touchstart', function(e){
+        if(e.touches.length !== 1) return;
+        swipeStartY = e.touches[0].clientY;
+      }, { passive: true });
+      headerEl.addEventListener('touchmove', function(e){
+        if(swipeStartY === null) return;
+        var dy = e.touches[0].clientY - swipeStartY;
+        if(dy > 80){ closeChat(); swipeStartY = null; }
+      }, { passive: true });
+      headerEl.addEventListener('touchend', function(){ swipeStartY = null; }, { passive: true });
+      headerEl.addEventListener('touchcancel', function(){ swipeStartY = null; }, { passive: true });
+    }
 
     var api = {
       cfg: cfg,
