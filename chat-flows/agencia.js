@@ -66,6 +66,7 @@
           case 'auditoria': return flowAuditoria();
           case 'scout':     return flowScout();
           case 'equipo':    return flowEquipo();
+          case 'rag':       return flowRAG();
           case 'precios':   return mostrarPrecios();
           default:          return showMenu();
         }
@@ -76,10 +77,153 @@
         w.flow([
           { key:'sector', msg:'¿Para qué sector es el chatbot?', opts: SECTORES },
           { key:'web',    msg:'¿Tu negocio tiene web actualmente?', opts:['Sí tengo web','No tengo web','Está desactualizada'] },
-          { key:'perdidas', msg:'¿Cuántos clientes pierdes al mes fuera de horario?', opts:['Muchos','Entre 5 y 20','Más de 20','No lo sé'] }
+          { key:'docs',   msg:'¿Tu negocio tiene documentación interna que los clientes o empleados consultan frecuentemente?', opts:[
+            { label:'📄 Sí — manuales, catálogos, tarifas, FAQs',   value:'manuales' },
+            { label:'📋 Sí — contratos, procedimientos, normativa', value:'contratos' },
+            { label:'🗂️ Sí — historial de clientes o casos',        value:'historial' },
+            { label:'❌ No tengo documentación especial',           value:'no' }
+          ]}
         ], function(data){
-          var pack = data.web === 'Sí tengo web' ? 'Spark' : 'Core';
-          mostrarRecomendacion(pack, data.sector);
+          if(data.docs !== 'no'){ mostrarRecomendacionRAG(data); return; }
+          w.flow([
+            { key:'perdidas', msg:'¿Cuántos clientes pierdes al mes fuera de horario?', opts:['Muchos','Entre 5 y 20','Más de 20','No lo sé'] }
+          ], function(){
+            var pack = data.web === 'Sí tengo web' ? 'Spark' : 'Core';
+            mostrarRecomendacion(pack, data.sector);
+          });
+        });
+      }
+
+      function mostrarRecomendacionRAG(data){
+        w.bot(
+          'Entonces necesitas un sistema <b>RAG</b> 🧠<br><br>'+
+          '<b>RAG (Retrieval Augmented Generation)</b> es un chatbot que aprende de TUS documentos y los usa para responder:<br><br>'+
+          '📚 Sube tus manuales, tarifas o catálogos<br>'+
+          '🤖 El chatbot responde con TU información exacta<br>'+
+          '✅ Sin inventarse datos — solo lo que tú le das<br>'+
+          '🔄 Actualizable cuando cambien tus documentos<br><br>'+
+          '<b>Ejemplos reales:</b><br>'+
+          '⚖️ Abogado: chatbot que conoce todos sus casos<br>'+
+          '🏥 Clínica: asistente con todos los protocolos<br>'+
+          '🏗️ Empresa: catálogo técnico consultable 24/7<br><br>'+
+          'Para esto te recomendamos el <b>Pack Scale o Elite</b>:<br>'+
+          '📈 Scale: 3.500€ setup + 349€/mes<br>'+
+          '🚀 Elite: 6.500€ setup + 599€/mes',
+          function(){
+            w.bot('¿Quieres que te expliquemos cómo funciona el RAG para tu sector específico?', function(){
+              w.showOpts([
+                { label:'✅ Sí, explícame más',          value:'explicar' },
+                { label:'📞 Que me llamen directamente', value:'llamar'   },
+                { label:'💰 Ver todos los packs',        value:'precios'  }
+              ], function(o){
+                if(o.value === 'precios'){ mostrarPrecios(); return; }
+                if(o.value === 'llamar'){ captureRAGFromChatbot(data, ''); return; }
+                ragExplicarMas(data);
+              });
+            });
+          }
+        );
+      }
+
+      function ragExplicarMas(data){
+        w.bot(
+          'El proceso es simple:<br><br>'+
+          '1️⃣ Nos envías tus documentos (PDF, Word, Excel)<br>'+
+          '2️⃣ Los procesamos y entrenamos el sistema RAG<br>'+
+          '3️⃣ El chatbot responde usando solo TU información<br>'+
+          '4️⃣ Actualizaciones incluidas cuando cambies docs<br><br>'+
+          '<b>Casos de éxito típicos:</b><br>'+
+          '🔹 Despacho de abogados con 500 resoluciones indexadas<br>'+
+          '🔹 Clínica con todos sus protocolos accesibles 24/7<br>'+
+          '🔹 Empresa industrial con catálogo técnico de 2.000 productos',
+          function(){
+            w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
+              w.showOpts([
+                { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
+                { label:'Medios (20-100 docs)',      value:'medios' },
+                { label:'Muchos (más de 100 docs)',  value:'muchos' }
+              ], function(vol){ captureRAGFromChatbot(data, vol.label); });
+            });
+          }
+        );
+      }
+
+      function captureRAGFromChatbot(data, vol){
+        var plan = (vol && vol.indexOf('Muchos') === 0) ? 'Elite' : 'Scale';
+        var detalle = 'Sector: ' + (data.sector || 'No especificado') +
+                      ' | Web: '   + (data.web   || '') +
+                      ' | Docs: '  + (data.docs  || '') +
+                      (vol ? ' | Volumen: ' + vol : '');
+        w.startCapture({
+          tramite: 'Pack ' + plan + ' — RAG',
+          agent:   'especialista',
+          askName: ASK_NAME,
+          askPhone: ASK_PHONE,
+          detalle: detalle,
+          finish:  FINISH,
+          waTemplate: WA
+        });
+      }
+
+      // ─── FLUJO RAG (entrada directa por keyword) ──────────────────────────
+      var RAG_CASE_MSGS = {
+        manuales:  'Para <b>manuales y procedimientos</b>, el RAG es un asistente que conoce todo lo que el equipo necesita: protocolos, paso a paso y normas internas — accesible 24/7 sin interrumpir a nadie.',
+        legal:     'Para <b>casos y expedientes</b>, el RAG indexa todo el histórico jurídico y responde con jurisprudencia interna, contratos y precedentes — útil para abogados y secretarías.',
+        catalogo:  'Para <b>catálogos</b>, el chatbot conoce cada producto/servicio con precio, especificaciones y disponibilidad — y responde a clientes 24/7 sin que tu equipo levante una llamada.',
+        tarifas:   'Para <b>tarifas y presupuestos</b>, el RAG cualifica al cliente, calcula el precio aproximado y deriva el lead listo para cerrar — sin que tu equipo dedique tiempo a cotizaciones repetitivas.',
+        formativo: 'Para <b>material formativo</b>, el RAG funciona como tutor 24/7 que responde dudas de alumnos sobre el contenido propio del curso — sin que el formador tenga que repetir lo mismo cien veces.',
+        otro:      'Sea cual sea tu documentación, el RAG la indexa y la convierte en un asistente que responde con tu información exacta — sin alucinar.'
+      };
+
+      function flowRAG(){
+        w.bot(
+          'El <b>sistema RAG de WhiteMoon</b> convierte tus documentos en un asistente IA que responde con tu información exacta 24/7.<br><br>'+
+          'Sin alucinar. Sin inventarse datos. Solo lo que tú le has enseñado. 🧠',
+          function(){
+            w.bot('¿Para qué tipo de documentación lo necesitas?', function(){
+              w.showOpts([
+                { label:'📋 Manuales y procedimientos internos', value:'manuales'  },
+                { label:'⚖️ Casos, contratos o expedientes',     value:'legal'     },
+                { label:'🛍️ Catálogo de productos o servicios',  value:'catalogo'  },
+                { label:'📊 Tarifas y presupuestos',             value:'tarifas'   },
+                { label:'🎓 Material formativo',                 value:'formativo' },
+                { label:'Otro tipo de documentación',            value:'otro'      }
+              ], function(o){ ragShowCase(o); });
+            });
+          }
+        );
+      }
+
+      function ragShowCase(opt){
+        w.bot(RAG_CASE_MSGS[opt.value] || RAG_CASE_MSGS.otro, function(){
+          w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
+            w.showOpts([
+              { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
+              { label:'Medios (20-100 docs)',      value:'medios' },
+              { label:'Muchos (más de 100 docs)',  value:'muchos' }
+            ], function(vol){
+              var plan = vol.value === 'muchos' ? 'Elite' : 'Scale';
+              var precio = plan === 'Elite' ? '6.500€ setup + 599€/mes' : '3.500€ setup + 349€/mes';
+              w.bot(
+                '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
+                'RAG con tus documentos · IA que responde con tu información exacta 24/7',
+                function(){ captureRAG(opt.label, vol.label); }
+              );
+            });
+          });
+        });
+      }
+
+      function captureRAG(tipo, vol){
+        var detalle = 'Tipo doc: ' + tipo + ' | Volumen: ' + vol;
+        w.startCapture({
+          tramite: 'RAG — ' + tipo,
+          agent:   'especialista',
+          askName: ASK_NAME,
+          askPhone: ASK_PHONE,
+          detalle: detalle,
+          finish:  FINISH,
+          waTemplate: WA
         });
       }
 
@@ -407,6 +551,7 @@
       // ─── KEYWORD ROUTER ───────────────────────────────────────────────────
       var ROUTE = [
         { kws:['chatbot','bot','asistente'],                          flow:'chatbot' },
+        { kws:['rag','documentos','base de conocimiento','knowledge'],flow:'rag' },
         { kws:['gestoria','itp','transferencia'],                     flow:'gestoria' },
         { kws:['auditoria','analisis','roi'],                         flow:'auditoria' },
         { kws:['scout','crm','prospeccion','agencia'],                flow:'scout' },
