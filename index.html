@@ -567,6 +567,7 @@
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('quienes-somos').scrollIntoView({behavior:'smooth'})">Quiénes somos</a>
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Servicios</a>
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('precios').scrollIntoView({behavior:'smooth'})">Precios</a>
+      <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'})">Auditoría IA</a>
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('metodo').scrollIntoView({behavior:'smooth'})">Método</a>
       <a href="javascript:void(0)" class="nav-link" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</a>
       <a href="https://whitemoon.es/blog/" class="nav-link">Blog</a>
@@ -610,6 +611,7 @@
       <a href="javascript:void(0)" onclick="navMobileGo('quienes-somos')">Quiénes somos</a>
       <a href="javascript:void(0)" onclick="navMobileGo('servicios')">Servicios</a>
       <a href="javascript:void(0)" onclick="navMobileGo('precios')">Precios</a>
+      <a href="javascript:void(0)" onclick="navMobileGo('audit')">Auditoría IA</a>
       <a href="javascript:void(0)" onclick="navMobileGo('metodo')">Método</a>
       <a href="javascript:void(0)" onclick="navMobileGo('faq')">FAQ</a>
       <a href="https://whitemoon.es/blog/">Blog</a>
@@ -655,16 +657,16 @@
         <svg width="16" height="16" viewBox="0 0 32 32"><path fill="currentColor" d="M16 2C8.268 2 2 8.268 2 16c0 2.49.638 4.83 1.757 6.865L2 30l7.331-1.724A13.916 13.916 0 0016 30c7.732 0 14-6.268 14-14S23.732 2 16 2z"/></svg>
         WhatsApp: 643 199 580
       </a>
-      <a href="javascript:void(0)" class="btn-out" onclick="document.getElementById('precios').scrollIntoView({behavior:'smooth'})">Ver planes →</a>
+      <a href="#precios" class="btn-out">Ver planes →</a>
     </div>
     <div class="hero-proof" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:24px;justify-content:center">
       <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
         <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        +500h semanales ahorradas en clientes
+        Hasta 20h/semana ahorradas por negocio
       </div>
       <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
         <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        ROI medio del 342% en 90 días
+        ROI positivo en los primeros 90 días
       </div>
       <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
         <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1179,7 +1181,7 @@
     <div class="hdr c">
       <span class="sec-lbl">Precios</span>
       <h2 class="sec-h">Empieza desde 499€ setup + 199€/mes, sin permanencia</h2>
-      <p class="sec-sub">Dos planes diseñados para que empieces rápido y escales cuando tu negocio lo pida.</p>
+      <p class="sec-sub">Cinco planes diseñados para que empieces rápido y escales cuando tu negocio lo pida.</p>
     </div>
 
     <div class="precios-grid-3">
@@ -1360,6 +1362,216 @@
             font-weight:600;font-size:.78rem;
             transition:all .25s">
             Ver detalles del pack Core →
+          </a>
+        </div>
+      </div>
+
+      <!-- SCALE -->
+      <div style="background:var(--card, #0d0d1a);
+        border:1px solid rgba(6,182,212,.3);
+        border-radius:20px;overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,.5);
+        transition:transform .3s;position:relative">
+
+        <div style="height:220px;overflow:hidden;position:relative">
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+            alt="Scale — chatbot RAG con tus documentos y CRM integrado"
+            style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;
+            background:linear-gradient(180deg,
+              rgba(0,0,0,.1) 0%,rgba(13,13,26,.95) 100%)"></div>
+          <div style="position:absolute;top:16px;left:16px;
+            background:linear-gradient(135deg,#06b6d4,#0e7490);
+            color:#fff;font-size:.62rem;font-weight:700;
+            padding:4px 12px;border-radius:10px;
+            letter-spacing:.08em">📈 ESCALA CON RAG</div>
+        </div>
+
+        <div style="padding:28px">
+          <div style="font-size:.7rem;font-weight:700;
+            letter-spacing:.15em;text-transform:uppercase;
+            color:#06b6d4;margin-bottom:8px">PARA ESCALAR</div>
+          <div style="font-family:'Syne',sans-serif;
+            font-size:1.4rem;font-weight:800;
+            color:#fff;margin-bottom:6px">Scale</div>
+          <div style="font-size:.82rem;color:#9090b0;
+            margin-bottom:20px;line-height:1.5">
+            Todo lo del Core más RAG con tus documentos
+            e integración con tu CRM.</div>
+          <div style="font-family:'Syne',sans-serif;
+            font-size:2.4rem;font-weight:800;color:#fff;
+            margin-bottom:4px;line-height:1">
+            3.500€<span style="font-size:1rem;color:#9090b0;
+            font-weight:400"> setup</span></div>
+          <div style="font-size:.72rem;color:#9090b0;
+            margin-bottom:20px">+ 349€/mes · Sin permanencia</div>
+          <div style="display:flex;flex-direction:column;
+            gap:9px;margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Todo lo de Core + RAG con tus documentos</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Automatizaciones e integraciones CRM</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>HubSpot, Pipedrive y Salesforce</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Panel con analíticas completas</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Soporte prioritario en menos de 24h</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#06b6d4;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Sin permanencia</div>
+          </div>
+          <a href="https://wa.me/34643199580?text=Hola%2C+me+interesa+el+Pack+Scale"
+            target="_blank" rel="noopener"
+            style="display:flex;align-items:center;
+            justify-content:center;gap:8px;
+            padding:13px;width:100%;
+            background:linear-gradient(135deg,#06b6d4,#0e7490);
+            border-radius:10px;color:#fff;text-decoration:none;
+            font-weight:700;font-size:.84rem;
+            transition:all .25s">
+            Solicitar Scale →
+          </a>
+          <a href="/scale/"
+            style="display:flex;align-items:center;
+            justify-content:center;gap:6px;
+            padding:11px;width:100%;margin-top:10px;
+            background:transparent;border:1px solid rgba(6,182,212,.35);
+            border-radius:10px;color:#67e8f9;text-decoration:none;
+            font-weight:600;font-size:.78rem;
+            transition:all .25s">
+            Ver detalles del pack Scale →
+          </a>
+        </div>
+      </div>
+
+      <!-- ELITE -->
+      <div style="background:var(--card, #0d0d1a);
+        border:1px solid rgba(245,158,11,.4);
+        border-radius:20px;overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,.5);
+        transition:transform .3s;position:relative">
+
+        <div style="height:220px;overflow:hidden;position:relative">
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
+            alt="Elite — IA enterprise con agentes avanzados y multi-idioma"
+            style="width:100%;height:100%;object-fit:cover">
+          <div style="position:absolute;inset:0;
+            background:linear-gradient(180deg,
+              rgba(0,0,0,.1) 0%,rgba(13,13,26,.95) 100%)"></div>
+          <div style="position:absolute;top:16px;left:16px;
+            background:linear-gradient(135deg,#f59e0b,#7c3aed);
+            color:#fff;font-size:.62rem;font-weight:700;
+            padding:4px 12px;border-radius:10px;
+            letter-spacing:.08em">💎 PREMIUM ENTERPRISE</div>
+        </div>
+
+        <div style="padding:28px">
+          <div style="font-size:.7rem;font-weight:700;
+            letter-spacing:.15em;text-transform:uppercase;
+            color:#fbbf24;margin-bottom:8px">PARA LIDERAR</div>
+          <div style="font-family:'Syne',sans-serif;
+            font-size:1.4rem;font-weight:800;
+            color:#fff;margin-bottom:6px">Elite</div>
+          <div style="font-size:.82rem;color:#9090b0;
+            margin-bottom:20px;line-height:1.5">
+            RAG premium ilimitado, agentes IA avanzados
+            y onboarding personalizado.</div>
+          <div style="font-family:'Syne',sans-serif;
+            font-size:2.4rem;font-weight:800;color:#fff;
+            margin-bottom:4px;line-height:1">
+            6.500€<span style="font-size:1rem;color:#9090b0;
+            font-weight:400"> setup</span></div>
+          <div style="font-size:.72rem;color:#9090b0;
+            margin-bottom:20px">+ 599€/mes · Sin permanencia</div>
+          <div style="display:flex;flex-direction:column;
+            gap:9px;margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Todo lo de Scale</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>RAG premium — documentos ilimitados</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Agentes IA avanzados</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Integración API + CRM completa</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Onboarding personalizado de 4h</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Multi-idioma (ES, EN, PT)</div>
+            <div style="display:flex;align-items:center;gap:9px;
+              font-size:.8rem;color:#e0e0f4">
+              <svg viewBox="0 0 24 24" style="width:15px;height:15px;
+                stroke:#fbbf24;fill:none;stroke-width:2.5;flex-shrink:0">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>Sin permanencia</div>
+          </div>
+          <a href="https://wa.me/34643199580?text=Hola%2C+me+interesa+el+Pack+Elite"
+            target="_blank" rel="noopener"
+            style="display:flex;align-items:center;
+            justify-content:center;gap:8px;
+            padding:13px;width:100%;
+            background:linear-gradient(135deg,#f59e0b,#7c3aed);
+            border-radius:10px;color:#fff;text-decoration:none;
+            font-weight:700;font-size:.84rem;
+            transition:all .25s">
+            Solicitar Elite →
+          </a>
+          <a href="/elite/"
+            style="display:flex;align-items:center;
+            justify-content:center;gap:6px;
+            padding:11px;width:100%;margin-top:10px;
+            background:transparent;border:1px solid rgba(245,158,11,.35);
+            border-radius:10px;color:#fcd34d;text-decoration:none;
+            font-weight:600;font-size:.78rem;
+            transition:all .25s">
+            Ver detalles del pack Elite →
           </a>
         </div>
       </div>
