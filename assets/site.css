@@ -3,7 +3,9 @@
 
 /* --- block 1 --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html, body { overflow-x: hidden; }
+    img, video { max-width: 100%; height: auto; }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #08080d;
@@ -1231,4 +1233,170 @@
     @media(max-width:900px){ .wm-testi-grid{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:600px){ .wm-testi-grid{grid-template-columns:1fr} }
 
+/* ─────────────────────────────────────────────────────────────────
+   block 10 — RESPONSIVE OVERHAUL (Android + iPhone)
+   Mobile S 320 · Mobile M 375 · Mobile L 430 · Tablet 768
+   Overrides target inline styles with !important on purpose.
+   ───────────────────────────────────────────────────────────────── */
+
+/* ─── NAV MENU MÓVIL (≤900px) — overlay full-screen ─────────────── */
+@media (max-width: 900px) {
+  .nav-mobile-panel.open {
+    position: fixed !important;
+    top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    overflow-y: auto;
+    background: rgba(7,7,14,.985);
+    border-top: 0;
+    padding: 80px 24px 40px !important;
+    gap: 0;
+    z-index: 9999 !important;
+    box-shadow: none;
+  }
+  .nav-mobile-panel a {
+    display: block;
+    padding: 16px 0 !important;
+    font-size: 18px !important;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    min-height: 48px;
+  }
+  .nav-mobile-panel a.cta-audit,
+  .nav-mobile-panel a.cta-scout,
+  .nav-mobile-panel a.cta-rag,
+  .nav-mobile-panel a.cta-wa {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    margin: 8px 0 !important;
+    padding: 16px !important;
+    border-radius: 8px;
+    font-size: 16px !important;
+    border-bottom: 0;
+    min-height: 48px;
+  }
+  .nav-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 44px; height: 44px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 22px; line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-mobile-panel.open .nav-close { display: flex; }
+}
+
+/* ─── HERO (≤600px) ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero { padding: 60px 20px 40px !important; }
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 48px) !important;
+    line-height: 1.15 !important;
+  }
+  .hero-sub { font-size: 15px !important; line-height: 1.6 !important; }
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100%;
+    gap: 12px !important;
+    align-items: stretch;
+  }
+  .hero-actions .btn-prim,
+  .hero-actions .btn-out,
+  .hero-actions .btn-wa,
+  .hero-actions a { width: 100% !important; justify-content: center !important; min-height: 48px; }
+  .hero-proof {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    font-size: 13px !important;
+    justify-content: initial !important;
+  }
+  .hero-proof > div { font-size: 13px !important; }
+  .hero img[alt*="WHITEMOON"], .hero .wrap > div:first-child img { max-width: 120px !important; }
+}
+
+/* ─── PRECIOS (≤768px) ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .precios-grid-3 { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .precios-grid-3 > div { width: 100% !important; }
+  .precios-grid-3 > div > div[style*="padding:28px"] { padding: 20px !important; }
+  .precios-grid-3 a { width: 100% !important; }
+  .precios-grid-3 [style*="font-size:2.4rem"] { font-size: clamp(28px, 6vw, 40px) !important; }
+}
+
+/* ─── SERVICIOS / CASOS DE USO (≤600px) ─────────────────────────── */
+@media (max-width: 600px) {
+  .svc-grid, .usecase-grid { grid-template-columns: 1fr !important; }
+  .svc-card, .usecase-card { padding: 16px !important; }
+}
+
+/* ─── PROCESO 4 PASOS (≤600px) ──────────────────────────────────── */
+@media (max-width: 600px) {
+  .method-grid, .pasos-grid { grid-template-columns: 1fr !important; }
+  .method-step img,
+  .pasos-grid img { height: 180px !important; object-fit: cover !important; width: 100% !important; }
+}
+
+/* ─── FAQ (≤600px) ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  #faq, .faq-section { padding-left: 16px !important; padding-right: 16px !important; }
+  .faq-body p { font-size: 14px !important; line-height: 1.6 !important; }
+  .faq-btn { font-size: 15px !important; padding: 18px 0 !important; min-height: 48px; }
+}
+
+/* ─── CHATBOT FLOTANTE (≤600px) ─────────────────────────────────── */
+@media (max-width: 600px) {
+  #wm-chat-btn {
+    bottom: 16px !important;
+    right: 16px !important;
+    width: 52px !important;
+    height: 52px !important;
+  }
+  #wm-chat-modal {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    max-height: 85vh !important;
+    height: 85vh !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+}
+
+/* ─── RAG DEMO (≤600px) ────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .wm-rag-demo,
+  .wm-rag-grid,
+  .wm-rag-section .wm-rag-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .wm-rag-chat,
+  .wm-rag-section .wm-rag-chat { height: 280px !important; }
+}
+
+/* ─── FOOTER (≤600px) ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .foot-grid { grid-template-columns: 1fr !important; text-align: center; gap: 28px; }
+  .foot-grid ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .foot-grid li { text-align: center; }
+}
+
+/* ─── TOUCH TARGETS + LECTURA ──────────────────────────────────── */
+@media (max-width: 600px) {
+  a, button, [role="button"], input[type="submit"] { min-height: 44px; }
+  p { line-height: 1.6; }
+  .sec p, .sec-sub, body { font-size: max(14px, 1em); }
+}
+
+/* ─── ANCHOS XS — iPhone SE / Android 320px ─────────────────────── */
+@media (max-width: 360px) {
+  .wrap { padding: 0 14px !important; }
+  .hero { padding: 56px 16px 36px !important; }
+  .hero h1 { font-size: clamp(28px, 9vw, 36px) !important; }
+}
 

@@ -621,6 +621,7 @@
       </button>
     </div>
     <div class="nav-mobile-panel" id="navMobilePanel">
+      <button type="button" class="nav-close" aria-label="Cerrar menú" onclick="closeMobileNav()">×</button>
       <a href="javascript:void(0)" onclick="navMobileGo('quienes-somos')">Quiénes somos</a>
       <a href="javascript:void(0)" onclick="navMobileGo('servicios')">Servicios</a>
       <a href="javascript:void(0)" onclick="navMobileGo('precios')">Precios</a>
@@ -640,25 +641,23 @@
     var open=p.classList.toggle('open');
     btn.setAttribute('aria-expanded',open?'true':'false');
     btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    document.body.style.overflow=open?'hidden':'';
   }
-  function navMobileGo(id){
+  function closeMobileNav(){
     var p=document.getElementById('navMobilePanel');
     var btn=document.querySelector('.nav-toggle');
     if(p)p.classList.remove('open');
     if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
+    document.body.style.overflow='';
+  }
+  function navMobileGo(id){
+    closeMobileNav();
     var el=document.getElementById(id);
     if(el)el.scrollIntoView({behavior:'smooth'});
   }
   document.addEventListener('DOMContentLoaded',function(){
     var links=document.querySelectorAll('#navMobilePanel a');
-    links.forEach(function(a){
-      a.addEventListener('click',function(){
-        var p=document.getElementById('navMobilePanel');
-        var btn=document.querySelector('.nav-toggle');
-        if(p)p.classList.remove('open');
-        if(btn){btn.setAttribute('aria-expanded','false');btn.setAttribute('aria-label','Abrir menú');}
-      });
-    });
+    links.forEach(function(a){ a.addEventListener('click',closeMobileNav); });
   });
 </script>
 
