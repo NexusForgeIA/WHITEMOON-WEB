@@ -180,6 +180,58 @@
       }
 
       // ─── FLUJO AUDITORÍA IA ───────────────────────────────────────────────
+      var AUDIT_TIPO_OPTS = [
+        '🏪 Pyme local (1-10 empleados)',
+        '🏢 Empresa mediana (10-50 empleados)',
+        '🏭 Empresa grande (+50 empleados)',
+        '👤 Autónomo / Freelance'
+      ];
+
+      var AUDIT_SECTOR_OPTS = [
+        { label:'🦷 Dental',                  value:'salud' },
+        { label:'⚖️ Legal',                   value:'legal' },
+        { label:'✂️ Peluquería',              value:'peluqueria' },
+        { label:'🍽️ Restaurante',             value:'hosteleria' },
+        { label:'🔧 Taller',                  value:'taller' },
+        { label:'📋 Gestoría',                value:'gestoria' },
+        { label:'🐾 Veterinaria',             value:'veterinaria' },
+        { label:'🏗️ Reformas',                value:'reformas' },
+        { label:'📚 Formación',               value:'formacion' },
+        { label:'🦶 Podología',               value:'podologia' },
+        { label:'🏠 Inmobiliaria',            value:'inmobiliaria' },
+        { label:'🛒 Retail',                  value:'retail' },
+        { label:'🏭 Industria',               value:'industria' },
+        { label:'💼 Servicios profesionales', value:'servicios' },
+        { label:'🤔 Otro',                    value:'otro' }
+      ];
+
+      var AUDIT_DOLOR_OPTS = [
+        '📞 Demasiadas consultas repetitivas',
+        '⏰ Procesos manuales que consumen tiempo',
+        '🚫 Pierdo clientes fuera de horario',
+        '📉 No aparezco en Google ni en ChatGPT',
+        '💸 Costes operativos muy altos',
+        'Varios de estos'
+      ];
+
+      var AUDIT_SECTOR_MSGS = {
+        legal:        'Los <b>despachos de abogados</b> pierden de media el <b>40% de consultas iniciales</b> por no responder a tiempo. Además el <b>60% de clientes</b> busca abogados en Google y ChatGPT antes de llamar — ¿apareces tú?<br><br>Identificamos exactamente dónde estás perdiendo clientes sin saberlo. 🔍',
+        salud:        'Las <b>clínicas</b> gestionan hasta <b>80 llamadas repetitivas al día</b> — citas, precios, horarios. Cada llamada son 5 minutos de tu equipo. Eso es 400 minutos al día en tareas automatizables.<br><br>¿Cuánto te está costando eso al mes? 💰',
+        reformas:     'Las <b>empresas de reformas</b> pierden el <b>70% de presupuestos</b> solicitados fuera de horario. El cliente pide 3 presupuestos — el primero en responder tiene <b>5x más probabilidad de cerrar</b>.<br><br>¿Cuántos presupuestos pierdes cada semana? 🏗️',
+        hosteleria:   'Los <b>restaurantes</b> sin respuesta online pierden hasta <b>20 mesas por semana</b>. El <b>45% de clientes</b> pregunta en ChatGPT antes de reservar — ¿apareces tú o tu competencia?<br><br>¿Tu restaurante aparece cuando buscan en IA? 🍽️',
+        retail:       'El <b>comercio local</b> pierde el <b>65% de ventas potenciales</b> por no tener atención fuera de horario. Los clientes comparan precios en ChatGPT antes de entrar a la tienda.<br><br>¿Apareces tú o aparece Amazon? 🛒',
+        industria:    'Las <b>empresas industriales</b> tardan 3-5 días en responder solicitudes de presupuesto. La IA cualifica y responde en <b>menos de 2 minutos — 24/7</b>.<br><br>¿Cuántos pedidos pierdes por lentitud de respuesta? 🏭',
+        servicios:    'Las <b>consultoras</b> dedican el <b>30% de su tiempo</b> a tareas administrativas repetitivas. La IA puede gestionar propuestas, seguimientos y onboarding automáticamente.<br><br>¿Cuántas horas semanales pierdes en admin? 💼',
+        gestoria:     'Las <b>gestorías</b> reciben las mismas preguntas <b>100 veces al día</b> — ITP, plazos, documentación. Cada consulta respondida manualmente son 10 minutos perdidos de un gestor cualificado.<br><br>¿Cuántas consultas repetitivas gestionas al día? 📋',
+        peluqueria:   'Los <b>salones</b> pierden hasta el <b>30% de citas</b> por no confirmar reservas automáticamente. Cada hueco vacío son 30-60€ perdidos.<br><br>¿Cuántas citas no confirmadas tienes cada semana? ✂️',
+        taller:       'Los <b>talleres</b> reciben decenas de llamadas preguntando precios, disponibilidad y plazos. Cada llamada que no se atiende es un cliente que llama al taller de enfrente.<br><br>¿Cuántas llamadas pierdes al día? 🔧',
+        veterinaria:  'Las <b>clínicas veterinarias</b> gestionan urgencias, citas y preguntas de propietarios preocupados <b>24/7</b>. Cada llamada no atendida fuera de horario es un cliente que busca otra clínica en Google.<br><br>¿Cuántas consultas urgentes pierdes por la noche? 🐾',
+        formacion:    'Los <b>centros de formación</b> pierden el <b>50% de matrículas potenciales</b> por no responder en el momento de máximo interés del alumno.<br><br>¿Cuántas consultas de matrícula quedan sin respuesta cada día fuera de horario? 📚',
+        podologia:    'Las <b>clínicas de podología</b> dependen de citas y la mayoría de pacientes llama en horario laboral cuando el equipo está ocupado atendiendo. Cada llamada perdida es un paciente que llama a la clínica de al lado.<br><br>¿Cuántas llamadas sin respuesta tienes al día? 🦶',
+        inmobiliaria: 'El <b>sector inmobiliario</b> pierde el <b>80% de contactos</b> que llegan fuera de horario. Un comprador interesado toma decisiones en horas — si no le respondes tú, le responde tu competencia.<br><br>¿Cuántos leads inmobiliarios pierdes cada semana? 🏠',
+        otro:         'Independientemente del sector, la mayoría de empresas pierde entre <b>20-40% de oportunidades</b> por falta de automatización.<br><br>La pregunta no es si la IA puede ayudarte — es cuánto te está costando no tenerla hoy. 🤔'
+      };
+
       function flowAuditoria(){
         w.bot(
           'La <b>Auditoría IA de WhiteMoon</b> es un análisis completo de tu negocio donde identificamos:<br><br>'+
@@ -190,51 +242,65 @@
           '📋 Presupuesto detallado de implementación<br><br>'+
           'Todo en un informe de 5-7 páginas entregado en 7 días laborables.<br>'+
           '💰 <b>899€ pago único</b> · Descontable si contratas después',
+          function(){ auditoriaAskTipo({}); }
+        );
+      }
+
+      function auditoriaAskTipo(data){
+        w.bot('¿Para qué tipo de empresa es?', function(){
+          w.showOpts(AUDIT_TIPO_OPTS.map(function(s){ return { label:s, value:s }; }), function(o){
+            data.tipo = o.value;
+            auditoriaAskSector(data);
+          });
+        });
+      }
+
+      function auditoriaAskSector(data){
+        w.bot('¿A qué sector pertenece tu empresa?', function(){
+          w.showOpts(AUDIT_SECTOR_OPTS, function(o){
+            data.sector = o.label;
+            data.sectorKey = o.value;
+            auditoriaSectorPreAnalysis(data);
+          });
+        });
+      }
+
+      function auditoriaSectorPreAnalysis(data){
+        var msg = AUDIT_SECTOR_MSGS[data.sectorKey] || AUDIT_SECTOR_MSGS.otro;
+        w.bot(msg, function(){
+          setTimeout(function(){
+            w.bot('Esto es exactamente lo que analizamos en la <b>Auditoría IA</b>. Dime…', function(){
+              auditoriaAskDolor(data);
+            });
+          }, 1500);
+        });
+      }
+
+      function auditoriaAskDolor(data){
+        w.bot('¿Cuál es tu mayor reto ahora mismo?', function(){
+          w.showOpts(AUDIT_DOLOR_OPTS.map(function(s){ return { label:s, value:s }; }), function(o){
+            data.dolor = o.value;
+            auditoriaShowROI(data);
+          });
+        });
+      }
+
+      function auditoriaShowROI(data){
+        w.bot(
+          'Perfecto. Basándonos en empresas similares a la tuya hemos identificado ahorros medios de:<br><br>'+
+          '⏱️ <b>15-20 horas/semana</b> en tareas manuales<br>'+
+          '📈 <b>30-40% más leads</b> captados automáticamente<br>'+
+          '💰 <b>2.000-5.000€/mes</b> de coste operativo reducido<br><br>'+
+          'La auditoría te dará los números exactos para <b>TU negocio</b>.',
           function(){
-            w.flow([
-              { key:'tipo',   msg:'¿Para qué tipo de empresa es?', opts:[
-                '🏪 Pyme local (1-10 empleados)',
-                '🏢 Empresa mediana (10-50 empleados)',
-                '🏭 Empresa grande (+50 empleados)',
-                '👤 Autónomo / Freelance'
-              ]},
-              { key:'sector', msg:'¿A qué sector pertenece tu empresa?', opts:[
-                '⚖️ Legal / Consultoría',
-                '🏥 Salud / Clínicas',
-                '🏗️ Construcción / Reformas',
-                '🍽️ Hostelería',
-                '🛒 Retail / Comercio',
-                '🏭 Industria / Fabricación',
-                '💼 Servicios profesionales',
-                'Otro sector'
-              ]},
-              { key:'dolor',  msg:'¿Cuál es tu mayor reto ahora mismo?', opts:[
-                '📞 Demasiadas consultas repetitivas',
-                '⏰ Procesos manuales que consumen tiempo',
-                '🚫 Pierdo clientes fuera de horario',
-                '📉 No aparezco en Google ni en ChatGPT',
-                '💸 Costes operativos muy altos',
-                'Varios de estos'
-              ]}
-            ], function(data){
-              w.bot(
-                'Perfecto. Basándonos en empresas similares a la tuya hemos identificado ahorros medios de:<br><br>'+
-                '⏱️ <b>15-20 horas/semana</b> en tareas manuales<br>'+
-                '📈 <b>30-40% más leads</b> captados automáticamente<br>'+
-                '💰 <b>2.000-5.000€/mes</b> de coste operativo reducido<br><br>'+
-                'La auditoría te dará los números exactos para <b>TU negocio</b>.',
-                function(){
-                  w.bot('¿Quieres que te llamemos para explicarte cómo funciona el proceso?', function(){
-                    w.showOpts([
-                      { label:'✅ Sí, llamadme',     value:'si' },
-                      { label:'❓ Tengo más dudas', value:'dudas' }
-                    ], function(o){
-                      if(o.value === 'dudas'){ flowAuditoriaDudas(data); return; }
-                      captureAuditoria(data);
-                    });
-                  });
-                }
-              );
+            w.bot('¿Quieres que te llamemos para explicarte cómo funciona el proceso?', function(){
+              w.showOpts([
+                { label:'✅ Sí, llamadme',     value:'si' },
+                { label:'❓ Tengo más dudas', value:'dudas' }
+              ], function(o){
+                if(o.value === 'dudas'){ flowAuditoriaDudas(data); return; }
+                captureAuditoria(data);
+              });
             });
           }
         );
