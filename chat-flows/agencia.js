@@ -47,13 +47,15 @@
           '━━━━━━━━━━━━━━━\n' +
           'Llamar en menos de 1 hora';
         w.startCapture({
-          tramite:    tramite,
-          agent:      'especialista',
-          askName:    ASK_NAME,
-          askPhone:   ASK_PHONE,
-          detalle:    detalle,
-          waTemplate: waTpl,
-          finish:     FINISH
+          tramite:     tramite,
+          agent:       'especialista',
+          askName:     ASK_NAME,
+          askPhone:    ASK_PHONE,
+          detalle:     detalle,
+          sector:      sec,
+          descripcion: desc,
+          waTemplate:  waTpl,
+          finish:      FINISH
         });
       }
 

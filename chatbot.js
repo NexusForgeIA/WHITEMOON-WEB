@@ -16,14 +16,21 @@
   var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
 
+  // ─── REGLA FIJA (todos los flujos, presentes y futuros) ───────────────────
+  // · Todo startCapture() debe pasar el sector detectado por el bot.
+  // · Todo finishCapture() debe llamar a saveLead().
+  // · saveLead() siempre incluye sector + descripcion además de nombre y telefono.
+  // · Si el envío a Supabase falla → console.warn, NUNCA se interrumpe el flujo.
   function saveLead(data){
+    data = data || {};
     var payload = {
-      nombre:   data.nombre   || null,
-      telefono: data.telefono || null,
-      sector:   data.sector   || null,
-      interes:  data.interes  || null,
-      origen:   'whitemoon.es',
-      fecha:    new Date().toISOString()
+      nombre:      data.nombre      || null,
+      telefono:    data.telefono    || null,
+      sector:      data.sector      || null,
+      interes:     data.interes     || null,
+      descripcion: data.descripcion || null,
+      origen:      'whitemoon.es',
+      fecha:       new Date().toISOString()
     };
     try {
       return fetch(SUPABASE_URL + '/rest/v1/leads_web', {
@@ -35,7 +42,9 @@
           'Prefer':        'return=minimal'
         },
         body: JSON.stringify(payload)
-      }).catch(function(e){ console.warn('[WM-CHAT] saveLead', e); });
+      })
+        .then(function(r){ if(r && !r.ok) console.warn('[WM-CHAT] saveLead HTTP ' + r.status); return r; })
+        .catch(function(e){ console.warn('[WM-CHAT] saveLead', e); });
     } catch(e){ console.warn('[WM-CHAT] saveLead', e); }
   }
 
@@ -308,9 +317,11 @@
     function startCapture(opts){
       opts = opts || {};
       captureCtx = { step: 1, opts: opts };
-      if(opts.tramite)   leadData.tramite = opts.tramite;
-      if(opts.prioridad) leadData.prioridad = opts.prioridad;
-      if(opts.detalle)   leadData.detalle = opts.detalle;
+      if(opts.tramite)     leadData.tramite = opts.tramite;
+      if(opts.prioridad)   leadData.prioridad = opts.prioridad;
+      if(opts.detalle)     leadData.detalle = opts.detalle;
+      if(opts.sector)      leadData.sector = opts.sector;
+      if(opts.descripcion) leadData.descripcion = opts.descripcion;
       bot(escapeHtml(opts.askName || cfg.askName), function(){
         setInput(true, 'Tu nombre');
       });
@@ -415,12 +426,15 @@
         msgsEl.scrollTop = msgsEl.scrollHeight;
         showCloseBtn();
 
-        var sectorMatch = typeof detalle === 'string' ? /sector\s*:\s*([^|]+)/i.exec(detalle) : null;
+        var detStr      = typeof detalle === 'string' ? detalle : '';
+        var sectorMatch = /sector\s*:\s*([^|]+)/i.exec(detStr);
+        var descMatch   = /descripci[oó]n\s*:\s*([^|]+)/i.exec(detStr);
         saveLead({
-          nombre:   leadData.nombre,
-          telefono: leadData.telefono,
-          sector:   sectorMatch ? sectorMatch[1].trim() : null,
-          interes:  tramite
+          nombre:      leadData.nombre,
+          telefono:    leadData.telefono,
+          sector:      opts.sector || leadData.sector || (sectorMatch ? sectorMatch[1].trim() : null),
+          interes:     tramite,
+          descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null)
         });
       });
     }
