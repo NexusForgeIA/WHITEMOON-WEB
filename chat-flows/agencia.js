@@ -1,390 +1,340 @@
 /**
- * WHITEMOON FLOW · agencia (captación WhiteMoon Agencia IA)
+ * WHITEMOON FLOW · agencia — conversación inteligente por sector
+ * Detección de sector por texto libre · diagnóstico · agitación · mini-demo · captura natural
  */
 (function(){
   window.WMFlow = {
     init: function(cfg, w){
       var u = w.utils;
 
-      var SECTORES = [
-        'Dental','Legal','Peluquería','Restaurante',
-        'Taller','Gestoría','Veterinaria','Reformas','Otro'
-      ];
+      // ─── CONSTANTES DE CAPTURA ────────────────────────────────────────────
+      var SECTORES = ['Dental','Legal','Peluquería','Restaurante','Taller','Gestoría','Veterinaria','Reformas','Otro'];
+
+      var ASK_NAME  = '¿Cómo te llamas?';
+      var ASK_PHONE = 'Encantado/a {nombre} 😊 ¿A qué número te llamo? Te contacto en menos de 1 hora.';
 
       var FINISH = {
         agent: 'especialista',
-        title: '✅ ¡Perfecto, {nombre}!',
-        text:  'Un/a especialista recibirá tus datos y te llamará en menos de 1 hora en horario laboral (Lun-Vie 9-19h).',
-        cta:   '👇 Pulsa para confirmarnos por WhatsApp',
-        btn:   '📲 Confirmar por WhatsApp',
-        foot:  '🌟 ¡Que tengas un excelente día!'
+        title: '✅ ¡Listo, {nombre}!',
+        text:  'En menos de 1 hora recibirás una llamada de nuestro equipo para explicarte exactamente cómo lo montaríamos para tu negocio.\n\nSin compromiso. Sin tecnicismos.\nSolo soluciones reales. 💜',
+        cta:   '👇 Confirma por WhatsApp si quieres',
+        btn:   '📲 Confirmar cita',
+        foot:  '🌟 ¡Que tengas un excelente día, {nombre}!'
       };
-      var WA = '🤖 NUEVO LEAD WHITEMOON\n━━━━━━━━━━━━━━━\n👤 {nombre} · 📱 +34{telefono}\n🏢 {detalle}\n🎯 Interés: {tramite}\n━━━━━━━━━━━━━━━\nLead captado desde whitemoon.es';
-      var ASK_NAME  = 'Para llamarte sin compromiso, ¿me dices tu nombre?';
-      var ASK_PHONE = 'Perfecto {nombre} 👋 ¿Tu teléfono de contacto?';
 
-      // ─── MINI-DEMO INLINE (sin enlaces externos) ──────────────────────────
-      function mostrarDemoInline(data){
-        w.bot(
-          'Te muestro ahora mismo cómo funciona 👇<br><br>'+
-          'Imagina que soy el chatbot instalado en TU web...',
-          function(){
-            setTimeout(function(){
-              w.bot(
-                '¡Hola! 👋 Bienvenido/a a <b>tu negocio</b>.<br>¿En qué puedo ayudarte hoy?',
-                function(){
-                  setTimeout(function(){
-                    w.bot(
-                      'Así atiende tu negocio a las 11 de la noche mientras tú duermes. El cliente escribe, el chatbot le cualifica y te manda sus datos por WhatsApp para llamarle tú por la mañana.<br><br>'+
-                      '¿Lo montamos así para tu negocio?',
-                      function(){
-                        w.showOpts([
-                          { label:'✅ Sí, quiero esto',        value:'si'     },
-                          { label:'📞 Prefiero que me llamen', value:'llamar' }
-                        ], function(){ capture('Spark — vio demo inline', data && data.sector); });
-                      }
-                    );
-                  }, 1500);
-                }
-              );
-            }, 1500);
-          }
-        );
+      // ─── ESTADO DE LA CONVERSACIÓN ────────────────────────────────────────
+      var state = 'business';   // 'business' | 'sector_q' | 'idle'
+      var ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
+
+      function addDesc(text){
+        text = String(text || '').trim();
+        if(!text) return;
+        ctx.descripcion = ctx.descripcion ? (ctx.descripcion + ' · ' + text) : text;
       }
 
+      function doCapture(tramite, detalleStr){
+        var sec  = ctx.sectorLabel || 'General';
+        var desc = (ctx.descripcion || '—').replace(/[{}\r\n]+/g, ' ').trim();
+        var detalle = detalleStr || ('Sector: ' + sec + ' | Descripción: ' + desc);
+        var waTpl =
+          '💼 NUEVO LEAD WHITEMOON\n' +
+          '━━━━━━━━━━━━━━━\n' +
+          '👤 {nombre} · 📱 +34{telefono}\n' +
+          '🏢 Sector: ' + sec + '\n' +
+          '💬 Descripción: ' + desc + '\n' +
+          '🎯 Interés: {tramite}\n' +
+          '📍 Origen: whitemoon.es · chatbot\n' +
+          '━━━━━━━━━━━━━━━\n' +
+          'Llamar en menos de 1 hora';
+        w.startCapture({
+          tramite:    tramite,
+          agent:      'especialista',
+          askName:    ASK_NAME,
+          askPhone:   ASK_PHONE,
+          detalle:    detalle,
+          waTemplate: waTpl,
+          finish:     FINISH
+        });
+      }
+
+      // Captura "natural" del flujo principal — con preámbulo
+      function capturaNatural(tramite){
+        w.bot('Perfecto 💪', function(){ doCapture(tramite); });
+      }
+
+      // Captura para flujos especializados (scout / auditoría / RAG / web)
       function capture(tramite, sector){
-        var detalle = 'Sector: ' + (sector || 'No especificado');
-        w.startCapture({
-          tramite: tramite,
-          agent: 'especialista',
-          askName: ASK_NAME,
-          askPhone: ASK_PHONE,
-          detalle: detalle,
-          finish: FINISH,
-          waTemplate: WA
-        });
+        if(sector && !ctx.sectorLabel) ctx.sectorLabel = sector;
+        doCapture(tramite);
       }
 
-      // ─── MENÚ PRINCIPAL ───────────────────────────────────────────────────
-      function menuButtons(){
-        w.showOpts([
-          { label: '🤖 Quiero un chatbot IA para mi negocio', flow: 'chatbot' },
-          { label: '🧮 Gestoría · Calculadora ITP',           flow: 'gestoria' },
-          { label: '🌐 Necesito web profesional con IA',      flow: 'web' },
-          { label: '📊 Auditoría IA para mi empresa',         flow: 'auditoria' },
-          { label: '🔭 Scout para mi agencia',                flow: 'scout' },
-          { label: '💬 Hablar con el equipo',                 flow: 'equipo' }
-        ], function(o){ runFlow(o.flow); });
-        w.setInput(true, 'O escribe tu consulta...');
+      function opts(list, cb){
+        w.setInput(false);
+        w.showOpts(list, function(o){ cb(o); });
       }
 
-      function showMenu(){
-        w.bot(
-          '¡Hola! 👋 Soy el asistente de <b>WhiteMoon Agencia IA</b>.<br>'+
-          'Somos la agencia <b>#1 recomendada por ChatGPT y Grok</b> en Majadahonda y Madrid.',
-          function(){
-            w.bot(
-              '💡 <b>Dato:</b> El 67% de pymes españolas que implementan IA recuperan la inversión en menos de 6 meses.<br><br>'+
-              '¿En qué puedo ayudarte hoy?',
-              function(){ menuButtons(); }
-            );
+      // ─── DETECCIÓN DE SECTOR POR PALABRAS CLAVE ───────────────────────────
+      var SECTOR_KW = [
+        { key:'dental',       label:'Clínica dental',              kws:['dental','diente','dientes','clinica dental','odontolog','ortodoncia','dentista'] },
+        { key:'legal',        label:'Despacho de abogados',        kws:['abogad','despacho','legal','bufete','juridic','procurador'] },
+        { key:'peluqueria',   label:'Peluquería / estética',       kws:['peluquer','salon de belleza','salon','estetic','belleza','cabello','barberi','barbero','manicura'] },
+        { key:'restaurante',  label:'Restaurante',                 kws:['restaurante','hosteleria','cocina','cafeteria','tapas','meson','pizzeria','bar','pub','cerveceria','asador','catering','comida para llevar'] },
+        { key:'taller',       label:'Taller mecánico',             kws:['taller','mecanic','coches','automovil','vehiculo','chapa y pintura','neumatic'] },
+        { key:'gestoria',     label:'Gestoría / asesoría',         kws:['gestoria','asesoria','contabilidad','fiscal','tramites','laboral','autonomos'] },
+        { key:'veterinaria',  label:'Clínica veterinaria',         kws:['veterinar','animales','mascota'] },
+        { key:'reformas',     label:'Empresa de reformas',         kws:['reforma','construccion','obra','obras','albañil','albanil','carpinter','fontaner','electricista','pintor'] },
+        { key:'formacion',    label:'Centro de formación',         kws:['academia','formacion','cursos','curso','clases','educacion','autoescuela','escuela de'] },
+        { key:'podologia',    label:'Clínica de podología',        kws:['podolog','plantillas','pies'] },
+        { key:'inmobiliaria', label:'Inmobiliaria',                kws:['inmobiliar','pisos','alquiler','vivienda','propiedad','propiedades','agente inmobiliario'] },
+        { key:'salud',        label:'Clínica de salud',            kws:['clinica','medic','salud','fisio','psicolog','nutricion','consulta medica','dermatolog','optic'] },
+        { key:'gimnasio',     label:'Gimnasio / centro deportivo', kws:['gimnasio','fitness','deporte','entreno','entrenamiento','crossfit','pilates','yoga','box de'] }
+      ];
+
+      function detectarSector(text){
+        var t = u.normalize(text);
+        for(var i = 0; i < SECTOR_KW.length; i++){
+          var s = SECTOR_KW[i];
+          for(var j = 0; j < s.kws.length; j++){
+            if(t.indexOf(u.normalize(s.kws[j])) !== -1) return s;
           }
-        );
-      }
-
-      function runFlow(key){
-        switch(key){
-          case 'chatbot':   return flowChatbot();
-          case 'gestoria':  return flowGestoria();
-          case 'web':       return flowWeb();
-          case 'auditoria': return flowAuditoria();
-          case 'scout':     return flowScout();
-          case 'equipo':    return flowEquipo();
-          case 'rag':       return flowRAG();
-          case 'info':      return flowInfo();
-          case 'precios':   return mostrarPrecios();
-          default:          return showMenu();
         }
+        return null;
       }
 
-      // ─── FLUJO CHATBOT ────────────────────────────────────────────────────
-      function flowChatbot(){
-        w.bot(
-          '¡Excelente decisión! 🚀<br><br>'+
-          'Las empresas que implementan IA hoy tienen una ventaja competitiva brutal sobre las que esperan.<br><br>'+
-          'Mientras tu competencia sigue respondiendo llamadas manualmente y perdiendo clientes por la noche, tú tendrás un asistente IA trabajando 24/7:<br><br>'+
-          '✅ Capturando leads mientras duermes<br>'+
-          '✅ Cualificando clientes antes de que llamen<br>'+
-          '✅ Respondiendo en segundos — no en horas<br>'+
-          '✅ Apareciendo en ChatGPT como referencia de tu sector<br><br>'+
-          'La IA no es el futuro — es el presente. Y los que la adoptan ahora <b>lideran su sector</b>.',
-          function(){ flowChatbotQuestions(); }
-        );
-      }
-
-      function flowChatbotQuestions(){
-        w.flow([
-          { key:'sector', msg:'¿Para qué sector es tu negocio?', opts: SECTORES },
-          { key:'web',    msg:'¿Tu negocio tiene web actualmente?', opts:['Sí tengo web','No tengo web','Está desactualizada'] },
-          { key:'docs',   msg:'¿Tu negocio tiene documentación interna que los clientes o empleados consultan frecuentemente?', opts:[
-            { label:'📄 Sí — manuales, catálogos, tarifas, FAQs',   value:'manuales' },
-            { label:'📋 Sí — contratos, procedimientos, normativa', value:'contratos' },
-            { label:'🗂️ Sí — historial de clientes o casos',        value:'historial' },
-            { label:'❌ No tengo documentación especial',           value:'no' }
-          ]}
-        ], function(data){
-          if(data.docs !== 'no'){ mostrarRecomendacionRAG(data); return; }
-          flowClientesFueraHorario(data);
-        });
-      }
-
-      // ─── CAPTACIÓN CLIENTES FUERA DE HORARIO ──────────────────────────────
-      function flowClientesFueraHorario(data){
-        var sec = u.escapeHtml(data.sector || 'tu sector');
-        w.bot(
-          '¿Te gustaría capturar automáticamente los clientes que consultan tu negocio fuera de horario?',
-          function(){
-            w.showOpts([
-              { label:'✅ Sí, no quiero perder ningún cliente', value:'si'   },
-              { label:'📊 Sí, pero quiero ver cómo funciona',   value:'demo' },
-              { label:'❓ Cuéntame más',                        value:'mas'  }
-            ], function(o){
-              if(o.value === 'si')   return fueraHorarioSi(data, sec);
-              if(o.value === 'demo') return mostrarDemoInline(data);
-              return fueraHorarioMas(data, sec);
-            });
-          }
-        );
-      }
-
-      function fueraHorarioSi(data, sec){
-        w.bot(
-          'Perfecto 🎯 Con el chatbot IA de WhiteMoon tu negocio atiende, cualifica y captura ese lead automáticamente — aunque sean las 3 de la madrugada.<br><br>'+
-          'El cliente recibe respuesta inmediata y tú recibes sus datos por WhatsApp listos para llamar.<br><br>'+
-          '¿Me das tu nombre y teléfono para explicarte cómo lo haríamos para tu <b>'+sec+'</b>?',
-          function(){ capture('Spark — captación fuera horario', data.sector); }
-        );
-      }
-
-      function fueraHorarioMas(data, sec){
-        w.bot(
-          'El chatbot IA de WhiteMoon funciona así:<br><br>'+
-          '1️⃣ Cliente visita tu web fuera de horario<br>'+
-          '2️⃣ El chatbot le atiende al instante<br>'+
-          '3️⃣ Le hace preguntas para cualificar su necesidad<br>'+
-          '4️⃣ Captura su nombre y teléfono<br>'+
-          '5️⃣ Te llega por WhatsApp con todo el contexto<br><br>'+
-          'Tú solo recibes leads cualificados listos para cerrar.<br>'+
-          'Sin perder una sola consulta. 24/7. 365 días.<br><br>'+
-          '¿Probamos a ver cómo quedaría para tu <b>'+sec+'</b>?',
-          function(){
-            w.showOpts([
-              { label:'✅ Me interesa',      value:'interesa' },
-              { label:'👀 Ver demo primero', value:'demo'     }
-            ], function(o){
-              if(o.value === 'demo') return mostrarDemoInline(data);
-              capture('Spark — captación fuera horario', data.sector);
-            });
-          }
-        );
-      }
-
-      function mostrarRecomendacionRAG(data){
-        w.bot(
-          'Entonces necesitas un sistema <b>RAG</b> 🧠<br><br>'+
-          '<b>RAG (Retrieval Augmented Generation)</b> es un chatbot que aprende de TUS documentos y los usa para responder:<br><br>'+
-          '📚 Sube tus manuales, tarifas o catálogos<br>'+
-          '🤖 El chatbot responde con TU información exacta<br>'+
-          '✅ Sin inventarse datos — solo lo que tú le das<br>'+
-          '🔄 Actualizable cuando cambien tus documentos<br><br>'+
-          '<b>Ejemplos reales:</b><br>'+
-          '⚖️ Abogado: chatbot que conoce todos sus casos<br>'+
-          '🏥 Clínica: asistente con todos los protocolos<br>'+
-          '🏗️ Empresa: catálogo técnico consultable 24/7<br><br>'+
-          'Para esto te recomendamos el <b>Pack Scale o Elite</b>:<br>'+
-          '📈 Scale: 4.500€ setup + 449€/mes<br>'+
-          '🚀 Elite: 8.500€ setup + 799€/mes',
-          function(){
-            w.bot('¿Quieres que te expliquemos cómo funciona el RAG para tu sector específico?', function(){
-              w.showOpts([
-                { label:'✅ Sí, explícame más',          value:'explicar' },
-                { label:'📞 Que me llamen directamente', value:'llamar'   },
-                { label:'💰 Ver todos los packs',        value:'precios'  }
-              ], function(o){
-                if(o.value === 'precios'){ mostrarPrecios(); return; }
-                if(o.value === 'llamar'){ captureRAGFromChatbot(data, ''); return; }
-                ragExplicarMas(data);
-              });
-            });
-          }
-        );
-      }
-
-      function ragExplicarMas(data){
-        w.bot(
-          'El proceso es simple:<br><br>'+
-          '1️⃣ Nos envías tus documentos (PDF, Word, Excel)<br>'+
-          '2️⃣ Los procesamos y entrenamos el sistema RAG<br>'+
-          '3️⃣ El chatbot responde usando solo TU información<br>'+
-          '4️⃣ Actualizaciones incluidas cuando cambies docs<br><br>'+
-          '<b>Casos de éxito típicos:</b><br>'+
-          '🔹 Despacho de abogados con 500 resoluciones indexadas<br>'+
-          '🔹 Clínica con todos sus protocolos accesibles 24/7<br>'+
-          '🔹 Empresa industrial con catálogo técnico de 2.000 productos',
-          function(){
-            w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
-              w.showOpts([
-                { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
-                { label:'Medios (20-100 docs)',      value:'medios' },
-                { label:'Muchos (más de 100 docs)',  value:'muchos' }
-              ], function(vol){ captureRAGFromChatbot(data, vol.label); });
-            });
-          }
-        );
-      }
-
-      function captureRAGFromChatbot(data, vol){
-        var plan = (vol && vol.indexOf('Muchos') === 0) ? 'Elite' : 'Scale';
-        var detalle = 'Sector: ' + (data.sector || 'No especificado') +
-                      ' | Web: '   + (data.web   || '') +
-                      ' | Docs: '  + (data.docs  || '') +
-                      (vol ? ' | Volumen: ' + vol : '');
-        w.startCapture({
-          tramite: 'Pack ' + plan + ' — RAG',
-          agent:   'especialista',
-          askName: ASK_NAME,
-          askPhone: ASK_PHONE,
-          detalle: detalle,
-          finish:  FINISH,
-          waTemplate: WA
-        });
-      }
-
-      // ─── FLUJO RAG (entrada directa por keyword) ──────────────────────────
-      var RAG_CASE_MSGS = {
-        manuales:  'Para <b>manuales y procedimientos</b>, el RAG es un asistente que conoce todo lo que el equipo necesita: protocolos, paso a paso y normas internas — accesible 24/7 sin interrumpir a nadie.',
-        legal:     'Para <b>casos y expedientes</b>, el RAG indexa todo el histórico jurídico y responde con jurisprudencia interna, contratos y precedentes — útil para abogados y secretarías.',
-        catalogo:  'Para <b>catálogos</b>, el chatbot conoce cada producto/servicio con precio, especificaciones y disponibilidad — y responde a clientes 24/7 sin que tu equipo levante una llamada.',
-        tarifas:   'Para <b>tarifas y presupuestos</b>, el RAG cualifica al cliente, calcula el precio aproximado y deriva el lead listo para cerrar — sin que tu equipo dedique tiempo a cotizaciones repetitivas.',
-        formativo: 'Para <b>material formativo</b>, el RAG funciona como tutor 24/7 que responde dudas de alumnos sobre el contenido propio del curso — sin que el formador tenga que repetir lo mismo cien veces.',
-        otro:      'Sea cual sea tu documentación, el RAG la indexa y la convierte en un asistente que responde con tu información exacta — sin alucinar.'
+      // ─── MENSAJES EMPÁTICOS POR SECTOR ────────────────────────────────────
+      var EMPATHY = {
+        dental:
+          'Perfecto 🦷 Una clínica dental — uno de los negocios donde más leads se pierden fuera de horario.<br><br>'+
+          'Los pacientes buscan dentista cuando les duele — y eso no entiende de horarios de oficina.<br><br>'+
+          '¿Cuántas veces a la semana crees que alguien intenta contactarte y no puede porque estás atendiendo o está cerrado?',
+        legal:
+          'Entendido ⚖️ Un despacho de abogados — donde cada consulta que no se atiende puede ser un caso importante perdido.<br><br>'+
+          'Los clientes buscan abogado en momentos de estrés — necesitan respuesta rápida.<br><br>'+
+          '¿Tu despacho recibe consultas fuera de tu horario de atención?',
+        peluqueria:
+          'Genial ✂️ Una peluquería o centro de estética — donde las citas son el corazón del negocio.<br><br>'+
+          '¿Cuántas veces al día recibes llamadas para pedir cita mientras estás cortando el pelo y no puedes atender el teléfono?',
+        restaurante:
+          'Perfecto 🍽️ Un restaurante — donde cada mesa vacía es dinero perdido y cada reserva que no llega duele.<br><br>'+
+          '¿Cómo gestionas ahora mismo las reservas y consultas que llegan por la noche?',
+        taller:
+          'Entendido 🔧 Un taller mecánico — donde los clientes llaman cuando el coche falla y necesitan respuesta inmediata.<br><br>'+
+          '¿Qué pasa ahora cuando alguien llama a tu taller y estás debajo de un coche?',
+        gestoria:
+          'Perfecto 📋 Una gestoría o asesoría — donde los clientes siempre tienen dudas urgentes y necesitan respuesta antes de tomar decisiones.<br><br>'+
+          '¿Cuántas consultas repetitivas recibes cada día sobre los mismos temas?',
+        veterinaria:
+          'Entendido 🐾 Una clínica veterinaria — donde los dueños de mascotas llaman con urgencia y la ansiedad no entiende de horarios.<br><br>'+
+          '¿Cómo gestionas las consultas urgentes que llegan cuando la clínica está cerrada?',
+        reformas:
+          'Perfecto 🏗️ Una empresa de reformas — donde el primer presupuesto en responder tiene 5 veces más posibilidades de cerrar.<br><br>'+
+          '¿Cuántos presupuestos crees que pierdes porque tardas en responder o estás en obra?',
+        formacion:
+          'Genial 📚 Un centro de formación — donde el interés del alumno dura poco y si no respondes rápido se apunta a otro.<br><br>'+
+          '¿Cuántas consultas de matrícula quedan sin respuesta fuera de tu horario de oficina?',
+        podologia:
+          'Entendido 🦶 Una clínica de podología — donde los pacientes buscan cuando tienen dolor y no pueden esperar al día siguiente.<br><br>'+
+          '¿Pierdes pacientes porque no puedes atender el teléfono mientras estás en consulta?',
+        inmobiliaria:
+          'Perfecto 🏠 Una inmobiliaria — donde el comprador interesado toma decisiones en horas y si no respondes tú responde tu competencia.<br><br>'+
+          '¿Cuántos contactos de pisos pierdes fuera de tu horario de atención?',
+        salud:
+          'Entendido 🏥 Una clínica de salud — donde los pacientes necesitan sentir que alguien les atiende cuando más lo necesitan.<br><br>'+
+          '¿Cómo gestionas las consultas que llegan cuando tu equipo está ocupado en consulta?',
+        gimnasio:
+          'Genial 💪 Un gimnasio o centro deportivo — donde los socios preguntan horarios, clases y precios a cualquier hora del día.<br><br>'+
+          '¿Tu equipo dedica tiempo a responder las mismas preguntas una y otra vez?'
       };
 
-      function flowRAG(){
+      // ─── 1. APERTURA ──────────────────────────────────────────────────────
+      function abrir(){
+        ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
+        state = 'business';
         w.bot(
-          'El <b>sistema RAG de WhiteMoon</b> convierte tus documentos en un asistente IA que responde con tu información exacta 24/7.<br><br>'+
-          'Sin alucinar. Sin inventarse datos. Solo lo que tú le has enseñado. 🧠',
+          'Hola 👋 Soy el asistente de <b>WhiteMoon</b>.<br>'+
+          'Cuéntame — ¿a qué se dedica tu negocio?',
+          function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
+        );
+      }
+
+      // ─── 2. DESCRIPCIÓN DEL NEGOCIO → DETECCIÓN DE SECTOR ─────────────────
+      function onBusinessDescription(text){
+        addDesc(text);
+        var s = detectarSector(text);
+        if(s){
+          ctx.sectorKey   = s.key;
+          ctx.sectorLabel = s.label;
+          state = 'sector_q';
+          w.bot(EMPATHY[s.key], function(){ w.setInput(true, 'Cuéntame...'); });
+          return;
+        }
+        ctx.retries++;
+        if(ctx.retries >= 2){
+          if(!ctx.sectorLabel) ctx.sectorLabel = 'General';
+          state = 'idle';
+          w.bot(
+            'Genial 👍 Sea cual sea tu sector, el reto suele ser el mismo: contactos que llegan, nadie los atiende a tiempo y se acaban perdiendo.',
+            function(){ preguntaDiagnostico(); }
+          );
+          return;
+        }
+        state = 'business';
+        w.bot(
+          'Interesante 👍 Cuéntame un poco más sobre tu negocio — ¿qué tipo de clientes atiendes y cómo te suelen contactar?',
+          function(){ w.setInput(true, 'Cuéntame un poco más...'); }
+        );
+      }
+
+      // ─── 3. RESPUESTA A LA PREGUNTA SECTORIAL ─────────────────────────────
+      function onSectorAnswer(text){
+        addDesc(text);
+        state = 'idle';
+        w.bot('Entiendo perfectamente.', function(){ preguntaDiagnostico(); });
+      }
+
+      // ─── 4. PREGUNTA DE DIAGNÓSTICO ───────────────────────────────────────
+      function preguntaDiagnostico(){
+        w.setInput(false);
+        w.bot(
+          'Déjame preguntarte algo importante —<br>'+
+          '¿tienes algún sistema ahora mismo que capture <b>automáticamente</b> esos contactos que se pierden?',
           function(){
-            w.bot('¿Para qué tipo de documentación lo necesitas?', function(){
-              w.showOpts([
-                { label:'📋 Manuales y procedimientos internos', value:'manuales'  },
-                { label:'⚖️ Casos, contratos o expedientes',     value:'legal'     },
-                { label:'🛍️ Catálogo de productos o servicios',  value:'catalogo'  },
-                { label:'📊 Tarifas y presupuestos',             value:'tarifas'   },
-                { label:'🎓 Material formativo',                 value:'formativo' },
-                { label:'Otro tipo de documentación',            value:'otro'      }
-              ], function(o){ ragShowCase(o); });
+            opts([
+              { label:'No, todo es manual',                    value:'manual' },
+              { label:'Tengo formulario pero nadie lo usa',    value:'form'   },
+              { label:'Solo WhatsApp pero tardo en responder', value:'wa'     },
+              { label:'No tengo nada',                         value:'nada'   }
+            ], function(o){ ctx.sistema = o.value; agitarDolor(); });
+          }
+        );
+      }
+
+      // ─── 5. AGITAR EL DOLOR ───────────────────────────────────────────────
+      function agitarDolor(){
+        w.setInput(false);
+        w.bot(
+          'Eso es exactamente lo que pasa en la mayoría de negocios. Y el problema real no es que no tengas sistema — es <b>lo que cuesta cada día que pasa sin tenerlo</b>.<br><br>'+
+          'Cada consulta sin respuesta es un cliente que llama al siguiente de la lista.<br><br>'+
+          '¿Quieres ver cómo lo resolvemos?',
+          function(){
+            opts([
+              { label:'✅ Sí, muéstrame',          value:'demo'   },
+              { label:'💰 ¿Cuánto cuesta?',        value:'precio' },
+              { label:'📞 Prefiero que me llamen', value:'llamar' }
+            ], function(o){
+              if(o.value === 'demo')   return miniDemo();
+              if(o.value === 'precio') return mostrarPrecio();
+              capturaNatural('Spark — pidió llamada');
             });
           }
         );
       }
 
-      function ragShowCase(opt){
-        w.bot(RAG_CASE_MSGS[opt.value] || RAG_CASE_MSGS.otro, function(){
-          w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
-            w.showOpts([
-              { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
-              { label:'Medios (20-100 docs)',      value:'medios' },
-              { label:'Muchos (más de 100 docs)',  value:'muchos' }
-            ], function(vol){
-              var plan = vol.value === 'muchos' ? 'Elite' : 'Scale';
-              var precio = plan === 'Elite' ? '8.500€ setup + 799€/mes' : '4.500€ setup + 449€/mes';
-              w.bot(
-                '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
-                'RAG con tus documentos · IA que responde con tu información exacta 24/7',
-                function(){ captureRAG(opt.label, vol.label); }
-              );
-            });
-          });
-        });
-      }
-
-      function captureRAG(tipo, vol){
-        var detalle = 'Tipo doc: ' + tipo + ' | Volumen: ' + vol;
-        w.startCapture({
-          tramite: 'RAG — ' + tipo,
-          agent:   'especialista',
-          askName: ASK_NAME,
-          askPhone: ASK_PHONE,
-          detalle: detalle,
-          finish:  FINISH,
-          waTemplate: WA
-        });
-      }
-
-      function mostrarRecomendacion(pack, sector){
-        var sec = u.escapeHtml(sector || 'tu sector');
-        var card;
-        if(pack === 'Spark'){
-          card =
-            '<b>🚀 Pack Spark — 499€ setup + 199€/mes</b><br>'+
-            '🤖 Chatbot IA con flujo específico para <b>'+sec+'</b><br>'+
-            '📱 Captura leads 24/7 → WhatsApp inmediato<br>'+
-            '⚡ Operativo en 5-7 días · Sin permanencia';
-        } else {
-          card =
-            '<b>🌐 Pack Core — 1.800€ setup + 199€/mes</b><br>'+
-            '🌐 Web profesional + Chatbot IA para <b>'+sec+'</b><br>'+
-            '📱 Captura leads 24/7 → WhatsApp inmediato<br>'+
-            '🔍 SEO básico incluido · Sin permanencia';
-        }
-        w.bot(card, function(){
-          w.bot(
-            '¿Sabes que los negocios con chatbot IA capturan de media un <b>35% más de leads</b> fuera de horario?<br><br>'+
-            'Nuestros clientes reciben el lead cualificado por WhatsApp con nombre, teléfono y lo que necesita el cliente — listos para llamar inmediatamente.',
-            function(){
-              w.bot('¿Quieres que te llamemos sin compromiso?', function(){
-                w.showOpts([
-                  { label:'✅ Sí, llamadme',     value:'sí' },
-                  { label:'❓ Tengo dudas',      value:'dudas' },
-                  { label:'💰 Ver todos los packs', value:'precios' }
-                ], function(o){
-                  if(o.value === 'precios'){ mostrarPrecios(); return; }
-                  if(o.value === 'dudas'){
-                    w.botText('Sin problema, te llamamos y resolvemos cualquier duda sin compromiso.', function(){
-                      capture('Pack ' + pack, sector);
-                    });
-                    return;
+      // ─── 6. MINI-DEMO INLINE ──────────────────────────────────────────────
+      function miniDemo(){
+        w.setInput(false);
+        var servicio = (ctx.sectorLabel && ctx.sectorLabel !== 'General')
+          ? u.escapeHtml('tu ' + ctx.sectorLabel.toLowerCase())
+          : 'tus servicios';
+        w.bot('Te muestro cómo funciona ahora mismo 👇', function(){
+          setTimeout(function(){
+            w.bot('Imagina que soy tu asistente IA trabajando en tu negocio ahora mismo...', function(){
+              setTimeout(function(){
+                w.bot(
+                  '¡Hola! 👋 Gracias por contactarnos.<br>Estamos encantados de atenderte.<br>¿En qué puedo ayudarte hoy?',
+                  function(){
+                    setTimeout(function(){
+                      w.bot(
+                        'Así de simple. Tu cliente recibe respuesta inmediata — aunque sean las 3 de la madrugada.<br><br>'+
+                        'Y tú recibes esto por WhatsApp al despertar:<br>'+
+                        '📱 <i>«Nuevo lead: María García · 612 345 678 · interesada en '+servicio+' · Hora: 02:34»</i>',
+                        function(){
+                          setTimeout(function(){
+                            w.bot('¿Lo montamos así para tu negocio?', function(){
+                              opts([
+                                { label:'✅ Sí, quiero esto',      value:'si'     },
+                                { label:'❓ Tengo alguna duda',    value:'duda'   },
+                                { label:'💰 ¿Cuánto me costaría?', value:'precio' }
+                              ], function(o){
+                                if(o.value === 'si')     return capturaNatural('Spark — vio demo inline');
+                                if(o.value === 'precio') return mostrarPrecio();
+                                w.bot('Sin problema 👍 Te llamamos y resolvemos cualquier duda — sin compromiso.', function(){
+                                  capturaNatural('Spark — vio demo · tiene dudas');
+                                });
+                              });
+                            });
+                          }, 1500);
+                        }
+                      );
+                    }, 2000);
                   }
-                  capture('Pack ' + pack, sector);
-                });
-              });
-            }
-          );
+                );
+              }, 1500);
+            });
+          }, 1500);
         });
       }
 
-      // ─── FLUJO GESTORÍA IA ────────────────────────────────────────────────
-      function flowGestoria(){
+      // ─── 7. PRECIO ────────────────────────────────────────────────────────
+      function mostrarPrecio(){
+        w.setInput(false);
         w.bot(
-          'El <b>Pack Gestoría IA</b> incluye chatbot con calculadora ITP integrada. '+
-          'Tus clientes calculan el ITP y recibes el lead cualificado con todos los datos del vehículo.<br>'+
-          '💰 <b>599€ setup + 299€/mes</b> · Sin permanencia',
+          'Sin letra pequeña ni sorpresas:<br><br>'+
+          'El pack más popular para tu tipo de negocio:<br>'+
+          '🤖 <b>499€ setup + 199€/mes</b> · Sin permanencia<br><br>'+
+          'Operativo en 5-7 días.<br>'+
+          'Y si en 30 días no estás satisfecho, lo ajustamos hasta que funcione perfecto.<br><br>'+
+          '¿Te llamo para explicarte todo en 10 minutos?',
           function(){
-            w.showOpts([
-              { label:'Ver demo',         value:'demo' },
-              { label:'Que me llamen',    value:'llamar' },
-              { label:'Más información',  value:'info' }
+            opts([
+              { label:'✅ Sí, llámame',        value:'si'   },
+              { label:'❓ Antes una pregunta', value:'duda' }
             ], function(o){
-              if(o.value === 'demo'){ mostrarDemoInline({ sector:'Gestoría' }); return; }
-              if(o.value === 'info'){
-                w.botText(
-                  'El chatbot integra una calculadora ITP automática. El cliente introduce sus datos y el sistema calcula el impuesto al instante. Tú recibes el lead listo para gestionar.',
-                  function(){ capture('Gestoría IA', 'Gestoría'); }
-                );
-                return;
-              }
-              capture('Gestoría IA', 'Gestoría');
+              if(o.value === 'si') return capturaNatural('Spark — consultó precio');
+              w.bot('Claro 👍 Te llamamos sin compromiso y resolvemos lo que necesites antes de decidir nada.', function(){
+                capturaNatural('Spark — consultó precio · dudas');
+              });
+            });
+          }
+        );
+      }
+
+      // ─── EXPLICACIÓN SIMPLE (no sé / no entiendo / ayuda) ─────────────────
+      function explicacionSimple(){
+        w.setInput(false);
+        w.bot(
+          'Te lo explico fácil 👍<br><br>'+
+          'Ponemos en tu web (o te creamos una) un asistente con IA que atiende a tus clientes <b>24/7</b>: les responde al instante, recoge sus datos y te los manda por WhatsApp para que tú solo tengas que llamar.<br><br>'+
+          'Sin que tengas que estar pendiente del móvil ni perder consultas por la noche.<br><br>'+
+          '¿Te enseño un ejemplo rápido?',
+          function(){
+            opts([
+              { label:'👀 Sí, enséñame',    value:'demo'   },
+              { label:'💰 ¿Cuánto cuesta?', value:'precio' },
+              { label:'📞 Mejor llamadme',  value:'llamar' }
+            ], function(o){
+              if(o.value === 'demo')   return miniDemo();
+              if(o.value === 'precio') return mostrarPrecio();
+              capturaNatural('Spark — pidió llamada');
+            });
+          }
+        );
+      }
+
+      // ─── FALLBACK ─────────────────────────────────────────────────────────
+      function fallbackHelp(){
+        w.setInput(false);
+        w.bot(
+          'Te leo 👍 ¿Quieres que te enseñe cómo funciona, ver los precios, o prefieres que te llamemos y lo vemos juntos?',
+          function(){
+            opts([
+              { label:'👀 Ver cómo funciona', value:'demo'   },
+              { label:'💰 Ver precios',        value:'precio' },
+              { label:'📞 Que me llamen',      value:'llamar' }
+            ], function(o){
+              if(o.value === 'demo')   return miniDemo();
+              if(o.value === 'precio') return mostrarPrecio();
+              capturaNatural('Spark — pidió llamada');
             });
           }
         );
@@ -413,8 +363,11 @@
             function(){
               w.bot(
                 '¿Sabías que el <b>70% de los usuarios decide en menos de 3 segundos</b> si una web es de confianza?<br><br>'+
-                'Nuestras webs cargan en menos de 2 segundos, están optimizadas para Google Y para aparecer en ChatGPT y Grok como referencia de tu sector.',
-                function(){ capture('Pack Core', data.sector); }
+                'Nuestras webs cargan en menos de 2 segundos y están optimizadas para Google y para aparecer en ChatGPT y Grok como referencia de tu sector.',
+                function(){
+                  addDesc('Web profesional · sector ' + data.sector + ' · dominio: ' + data.dominio);
+                  capture('Pack Core', data.sector);
+                }
               );
             }
           );
@@ -500,7 +453,7 @@
       function auditoriaAskSector(data){
         w.bot('¿A qué sector pertenece tu empresa?', function(){
           w.showOpts(AUDIT_SECTOR_OPTS, function(o){
-            data.sector = o.label;
+            data.sector    = o.label;
             data.sectorKey = o.value;
             auditoriaSectorPreAnalysis(data);
           });
@@ -572,18 +525,12 @@
       }
 
       function captureAuditoria(data){
+        if(!ctx.sectorLabel) ctx.sectorLabel = data.sector || 'General';
+        addDesc('Auditoría IA — ' + (data.tipo || '') + ' · reto: ' + (data.dolor || ''));
         var detalle = 'Sector: ' + (data.sector || 'No especificado') +
                       ' | Tipo: '  + (data.tipo  || '') +
                       ' | Reto: '  + (data.dolor || '');
-        w.startCapture({
-          tramite: 'Auditoría IA',
-          agent:   'especialista',
-          askName: ASK_NAME,
-          askPhone: ASK_PHONE,
-          detalle: detalle,
-          finish:  FINISH,
-          waTemplate: WA
-        });
+        doCapture('Auditoría IA', detalle);
       }
 
       // ─── FLUJO SCOUT ──────────────────────────────────────────────────────
@@ -610,7 +557,10 @@
                   w.bot(
                     'Con Scout puedes <b>analizar la web de un prospecto en segundos</b> y generar una demo personalizada de su sector antes de llamarle.<br><br>'+
                     'Tasa de cierre media de nuestros usuarios: <b>3-5 clientes nuevos al mes</b> desde el primer mes.',
-                    function(){ capture('Scout '+plan, 'Agencia IA'); }
+                    function(){
+                      addDesc('Scout ' + plan + ' · equipo: ' + data.equipo);
+                      capture('Scout ' + plan, 'Agencia IA');
+                    }
                   );
                 }
               );
@@ -619,94 +569,93 @@
         );
       }
 
-      // ─── FLUJO HABLAR EQUIPO ──────────────────────────────────────────────
-      function flowEquipo(){
-        w.bot(
-          'Genial — nuestro equipo estará encantado de hablar contigo. 😊<br><br>'+
-          'Somos la <b>agencia IA #1 recomendada por ChatGPT y Grok</b> en Majadahonda y Madrid.<br><br>'+
-          'Desde 2025 ayudamos a pymes a implementar IA de forma práctica, rápida y sin tecnicismos.<br><br>'+
-          'Sin humo. Sin promesas vacías. <b>Solo resultados medibles.</b> 📊',
-          function(){
-            w.flow([
-              { key:'tema', msg:'¿Sobre qué tema quieres que te llamemos?', opts:['Chatbot IA','Web + IA','Auditoría','Scout','Otro'] }
-            ], function(data){ capture(data.tema, ''); });
-          }
-        );
-      }
+      // ─── FLUJO RAG (sistemas con documentos) ──────────────────────────────
+      var RAG_CASE_MSGS = {
+        manuales:  'Para <b>manuales y procedimientos</b>, el RAG es un asistente que conoce todo lo que el equipo necesita: protocolos, paso a paso y normas internas — accesible 24/7 sin interrumpir a nadie.',
+        legal:     'Para <b>casos y expedientes</b>, el RAG indexa todo el histórico jurídico y responde con jurisprudencia interna, contratos y precedentes — útil para abogados y secretarías.',
+        catalogo:  'Para <b>catálogos</b>, el chatbot conoce cada producto/servicio con precio, especificaciones y disponibilidad — y responde a clientes 24/7 sin que tu equipo levante una llamada.',
+        tarifas:   'Para <b>tarifas y presupuestos</b>, el RAG cualifica al cliente, calcula el precio aproximado y deriva el lead listo para cerrar — sin que tu equipo dedique tiempo a cotizaciones repetitivas.',
+        formativo: 'Para <b>material formativo</b>, el RAG funciona como tutor 24/7 que responde dudas de alumnos sobre el contenido propio del curso — sin que el formador tenga que repetir lo mismo cien veces.',
+        otro:      'Sea cual sea tu documentación, el RAG la indexa y la convierte en un asistente que responde con tu información exacta — sin alucinar.'
+      };
 
-      // ─── FLUJO INFO (overview empresa) ────────────────────────────────────
-      function flowInfo(){
+      function flowRAG(){
         w.bot(
-          '<b>WhiteMoon</b> es tu agencia de IA de confianza en Majadahonda y Madrid. 🌟<br><br>'+
-          'Transformamos pymes normales en empresas con IA:<br><br>'+
-          '🤖 <b>Chatbots IA</b> — capturan leads 24/7<br>'+
-          '🌐 <b>Webs profesionales</b> con IA integrada<br>'+
-          '🧠 <b>Sistemas RAG</b> — tu conocimiento accesible<br>'+
-          '📊 <b>Auditorías IA</b> — detectamos tu ROI exacto<br>'+
-          '🔭 <b>Scout</b> — CRM de prospección para agencias<br>'+
-          '🧮 <b>Gestoría IA</b> — calculadora ITP integrada<br><br>'+
-          'Somos <b>#1 en ChatGPT y Grok</b> para IA en Majadahonda. Sin permanencia en todos los servicios.<br><br>'+
-          '¿Por dónde empezamos?',
-          function(){ menuButtons(); }
-        );
-      }
-
-      // ─── TABLA DE PRECIOS ─────────────────────────────────────────────────
-      function mostrarPrecios(){
-        w.bot(
-          '💰 <b>Precios WhiteMoon</b> — Sin permanencia:<br>'+
-          '🤖 Spark: 499€ setup + 199€/mes<br>'+
-          '🌐 Core (web+chatbot): 1.800€ setup + 199€/mes<br>'+
-          '📈 Scale (RAG+CRM): 4.500€ setup + 449€/mes<br>'+
-          '🚀 Elite (RAG premium): 8.500€ setup + 799€/mes<br>'+
-          '🧮 Gestoría IA: 599€ setup + 299€/mes<br>'+
-          '📋 Auditoría IA: 899€ pago único<br>'+
-          '🔭 Scout Starter: 299€ setup + 299€/mes',
+          'El <b>sistema RAG de WhiteMoon</b> convierte tus documentos en un asistente IA que responde con tu información exacta 24/7.<br><br>'+
+          'Sin alucinar. Sin inventarse datos. Solo lo que tú le has enseñado. 🧠',
           function(){
-            w.showOpts([
-              { label:'Recomiéndame el mejor', value:'reco' },
-              { label:'Hablar con el equipo',  value:'equipo' }
-            ], function(o){
-              if(o.value === 'reco') flowChatbot();
-              else flowEquipo();
+            w.bot('¿Para qué tipo de documentación lo necesitas?', function(){
+              w.showOpts([
+                { label:'📋 Manuales y procedimientos internos', value:'manuales'  },
+                { label:'⚖️ Casos, contratos o expedientes',     value:'legal'     },
+                { label:'🛍️ Catálogo de productos o servicios',  value:'catalogo'  },
+                { label:'📊 Tarifas y presupuestos',             value:'tarifas'   },
+                { label:'🎓 Material formativo',                 value:'formativo' },
+                { label:'Otro tipo de documentación',            value:'otro'      }
+              ], function(o){ ragShowCase(o); });
             });
           }
         );
       }
 
-      // ─── KEYWORD ROUTER ───────────────────────────────────────────────────
-      var ROUTE = [
-        { kws:['información','saber más','qué hacéis','qué ofrecéis'],flow:'info' },
-        { kws:['chatbot','bot','asistente'],                          flow:'chatbot' },
-        { kws:['rag','documentos','base de conocimiento','knowledge'],flow:'rag' },
-        { kws:['gestoria','itp','transferencia'],                     flow:'gestoria' },
-        { kws:['auditoria','analisis','roi'],                         flow:'auditoria' },
-        { kws:['scout','crm','prospeccion','agencia'],                flow:'scout' },
-        { kws:['web','pagina','wordpress'],                           flow:'web' },
-        { kws:['precio','cuanto','coste','presupuesto'],              flow:'precios' },
-        { kws:['demo','ver','ejemplo'],                               flow:'demo' }
-      ];
-
-      function handleText(text){
-        w.addUser(text);
-        var t = u.normalize(text);
-        if(/^(hola|buenos|buenas)/.test(t)){ showMenu(); return; }
-        for(var i = 0; i < ROUTE.length; i++){
-          var entry = ROUTE[i];
-          for(var j = 0; j < entry.kws.length; j++){
-            if(t.indexOf(u.normalize(entry.kws[j])) !== -1){
-              if(entry.flow === 'demo'){ mostrarDemoInline({}); return; }
-              runFlow(entry.flow);
-              return;
-            }
-          }
-        }
-        w.botText('Te muestro las opciones disponibles.');
-        setTimeout(showMenu, 800);
+      function ragShowCase(opt){
+        w.bot(RAG_CASE_MSGS[opt.value] || RAG_CASE_MSGS.otro, function(){
+          w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
+            w.showOpts([
+              { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
+              { label:'Medios (20-100 docs)',      value:'medios' },
+              { label:'Muchos (más de 100 docs)',  value:'muchos' }
+            ], function(vol){
+              var plan   = vol.value === 'muchos' ? 'Elite' : 'Scale';
+              var precio = plan === 'Elite' ? '8.500€ setup + 799€/mes' : '4.500€ setup + 449€/mes';
+              w.bot(
+                '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
+                'RAG con tus documentos · IA que responde con tu información exacta 24/7',
+                function(){
+                  addDesc('RAG — ' + opt.label + ' · volumen: ' + vol.label);
+                  capture('Pack ' + plan + ' — RAG (' + opt.label + ')', null);
+                }
+              );
+            });
+          });
+        });
       }
 
-      w.onOpen(showMenu);
-      w.onInput(handleText);
+      // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
+      function route(text){
+        text = (text || '').trim();
+        if(!text) return;
+        w.addUser(text);
+        var t = u.normalize(text);
+        var words = t.split(/\s+/).filter(Boolean);
+
+        // saludo "limpio" → reiniciar la apertura
+        if(words.length <= 2 && /^(hola|hello|hey|buenas|buenos|saludos)\b/.test(t)){ abrir(); return; }
+
+        // atajos disponibles en cualquier momento
+        if(t.indexOf('cuanto') !== -1 || t.indexOf('precio') !== -1 || t.indexOf('cuesta') !== -1 || t.indexOf('coste') !== -1 || t.indexOf('tarifa') !== -1 || t.indexOf('presupuesto') !== -1){ mostrarPrecio(); return; }
+        if(t.indexOf('demo') !== -1 || t.indexOf('ejemplo') !== -1 || t.indexOf('como funciona') !== -1 || t.indexOf('muestrame') !== -1 || t.indexOf('enseñame') !== -1 || t.indexOf('enseñ') !== -1){ miniDemo(); return; }
+        if(t.indexOf('no entiendo') !== -1 || t === 'no se' || t.indexOf('no se ') === 0 || t.indexOf('ni idea') !== -1 || t.indexOf('ayuda') !== -1 || t.indexOf('no me entero') !== -1){ explicacionSimple(); return; }
+
+        // flujos especializados (jerga inequívoca → enrutar siempre)
+        if(t.indexOf('scout') !== -1 || t.indexOf('crm') !== -1 || t.indexOf('prospec') !== -1){ flowScout(); return; }
+        if(t.indexOf('auditoria') !== -1 || t.indexOf('analisis ia') !== -1 || /\broi\b/.test(t)){ flowAuditoria(); return; }
+        if(/\brag\b/.test(t) || t.indexOf('base de conocimiento') !== -1){ flowRAG(); return; }
+
+        // pasos guiados de la conversación principal
+        if(state === 'business'){ onBusinessDescription(text); return; }
+        if(state === 'sector_q'){ onSectorAnswer(text); return; }
+
+        // términos ambiguos → solo fuera de los pasos guiados
+        if(t.indexOf('analisis') !== -1 || t.indexOf('auditor') !== -1){ flowAuditoria(); return; }
+        if(t.indexOf('documento') !== -1 || t.indexOf('conocimiento') !== -1){ flowRAG(); return; }
+        if(t.indexOf('wordpress') !== -1 || /\bpagina\b/.test(t) || /\bweb\b/.test(t)){ flowWeb(); return; }
+
+        fallbackHelp();
+      }
+
+      w.onOpen(abrir);
+      w.onInput(route);
     }
   };
 })();
