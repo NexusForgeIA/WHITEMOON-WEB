@@ -23,7 +23,34 @@
       var ASK_NAME  = 'Para llamarte sin compromiso, ¿me dices tu nombre?';
       var ASK_PHONE = 'Perfecto {nombre} 👋 ¿Tu teléfono de contacto?';
 
-      var DEMO_GESTORIA = 'https://nexusforgeia.github.io/WHITEMOON-REFORMAS-CONSTRUCCION/';
+      // ─── MINI-DEMO INLINE (sin enlaces externos) ──────────────────────────
+      function mostrarDemoInline(data){
+        w.bot(
+          'Te muestro ahora mismo cómo funciona 👇<br><br>'+
+          'Imagina que soy el chatbot instalado en TU web...',
+          function(){
+            setTimeout(function(){
+              w.bot(
+                '¡Hola! 👋 Bienvenido/a a <b>tu negocio</b>.<br>¿En qué puedo ayudarte hoy?',
+                function(){
+                  setTimeout(function(){
+                    w.bot(
+                      'Así atiende tu negocio a las 11 de la noche mientras tú duermes. El cliente escribe, el chatbot le cualifica y te manda sus datos por WhatsApp para llamarle tú por la mañana.<br><br>'+
+                      '¿Lo montamos así para tu negocio?',
+                      function(){
+                        w.showOpts([
+                          { label:'✅ Sí, quiero esto',        value:'si'     },
+                          { label:'📞 Prefiero que me llamen', value:'llamar' }
+                        ], function(){ capture('Spark — vio demo inline', data && data.sector); });
+                      }
+                    );
+                  }, 1500);
+                }
+              );
+            }, 1500);
+          }
+        );
+      }
 
       function capture(tramite, sector){
         var detalle = 'Sector: ' + (sector || 'No especificado');
@@ -123,7 +150,7 @@
               { label:'❓ Cuéntame más',                        value:'mas'  }
             ], function(o){
               if(o.value === 'si')   return fueraHorarioSi(data, sec);
-              if(o.value === 'demo') return fueraHorarioDemo(data);
+              if(o.value === 'demo') return mostrarDemoInline(data);
               return fueraHorarioMas(data, sec);
             });
           }
@@ -136,21 +163,6 @@
           'El cliente recibe respuesta inmediata y tú recibes sus datos por WhatsApp listos para llamar.<br><br>'+
           '¿Me das tu nombre y teléfono para explicarte cómo lo haríamos para tu <b>'+sec+'</b>?',
           function(){ capture('Spark — captación fuera horario', data.sector); }
-        );
-      }
-
-      function fueraHorarioDemo(data){
-        w.bot(
-          'Puedes ver una demo en vivo ahora mismo 👇<br>'+
-          'Es el mismo chatbot que instalaríamos en tu web, personalizado con tu sector y tu marca.<br><br>'+
-          '👉 <a href="'+DEMO_GESTORIA+'" target="_blank" rel="noopener" style="color:#a78bfa;text-decoration:underline;">'+DEMO_GESTORIA+'</a><br><br>'+
-          '¿Quieres que te llamemos para mostrarte cómo quedaría para tu negocio específico?',
-          function(){
-            w.showOpts([
-              { label:'✅ Sí, llamadme',            value:'si'    },
-              { label:'Ya vi la demo, me interesa', value:'visto' }
-            ], function(){ capture('Spark — vio demo', data.sector); });
-          }
         );
       }
 
@@ -170,7 +182,7 @@
               { label:'✅ Me interesa',      value:'interesa' },
               { label:'👀 Ver demo primero', value:'demo'     }
             ], function(o){
-              if(o.value === 'demo') return fueraHorarioDemo(data);
+              if(o.value === 'demo') return mostrarDemoInline(data);
               capture('Spark — captación fuera horario', data.sector);
             });
           }
@@ -364,14 +376,7 @@
               { label:'Que me llamen',    value:'llamar' },
               { label:'Más información',  value:'info' }
             ], function(o){
-              if(o.value === 'demo'){
-                w.bot(
-                  '👀 Aquí tienes la demo en directo:<br>'+
-                  '<a href="'+DEMO_GESTORIA+'" target="_blank" rel="noopener" style="color:#a78bfa;text-decoration:underline;">Abrir demo Gestoría IA</a>',
-                  function(){ capture('Gestoría IA', 'Gestoría'); }
-                );
-                return;
-              }
+              if(o.value === 'demo'){ mostrarDemoInline({ sector:'Gestoría' }); return; }
               if(o.value === 'info'){
                 w.botText(
                   'El chatbot integra una calculadora ITP automática. El cliente introduce sus datos y el sistema calcula el impuesto al instante. Tú recibes el lead listo para gestionar.',
@@ -690,14 +695,7 @@
           var entry = ROUTE[i];
           for(var j = 0; j < entry.kws.length; j++){
             if(t.indexOf(u.normalize(entry.kws[j])) !== -1){
-              if(entry.flow === 'demo'){
-                w.bot(
-                  '👀 Tenemos demos en vivo de varios sectores. Mira la demo Gestoría IA:<br>'+
-                  '<a href="'+DEMO_GESTORIA+'" target="_blank" rel="noopener" style="color:#a78bfa;text-decoration:underline;">Abrir demo</a>',
-                  function(){ setTimeout(showMenu, 800); }
-                );
-                return;
-              }
+              if(entry.flow === 'demo'){ mostrarDemoInline({}); return; }
               runFlow(entry.flow);
               return;
             }
