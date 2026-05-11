@@ -219,6 +219,13 @@
     var started          = false;
     var leadData         = {};
 
+    // ─── TIMEOUT DE INACTIVIDAD (45s) ─────────────────────────────────────────
+    var IDLE_MS       = 45000;
+    var idleTimer     = null;
+    var idleStage     = 0;     // 0 = activo · 1 = ya avisado una vez
+    var idleEnded     = false; // true = conversación en pausa por inactividad (no rearmar)
+    var convoFinished = false; // true = lead capturado, conversación terminada
+
     function addBot(html){
       var d = document.createElement('div');
       d.className = 'wm-msg wm-bot';
@@ -247,7 +254,7 @@
         cb();
       }, delay);
     }
-    function bot(html, cb){ showTyping(function(){ addBot(html); if(cb) cb(); }); }
+    function bot(html, cb){ showTyping(function(){ addBot(html); if(cb) cb(); scheduleIdle(); }); }
     function botText(text, cb){ bot(escapeHtml(text).replace(/\n/g,'<br>'), cb); }
 
     function showOpts(opts, onPick){
@@ -258,6 +265,7 @@
         b.type = 'button';
         b.textContent = o.label;
         b.addEventListener('click', function(){
+          userActivity();
           if(wrap.parentNode) wrap.parentNode.removeChild(wrap);
           addUser(o.label);
           onPick(o);
@@ -266,6 +274,37 @@
       });
       msgsEl.appendChild(wrap);
       msgsEl.scrollTop = msgsEl.scrollHeight;
+    }
+
+    // ─── INACTIVIDAD ──────────────────────────────────────────────────────────
+    function clearIdle(){ if(idleTimer){ clearTimeout(idleTimer); idleTimer = null; } }
+    function scheduleIdle(){ clearIdle(); if(idleEnded) return; idleTimer = setTimeout(onIdle, IDLE_MS); }
+    function userActivity(){ clearIdle(); idleStage = 0; idleEnded = false; }
+    function onIdle(){
+      idleTimer = null;
+      if(idleEnded) return;
+      if(idleStage === 0){
+        idleStage = 1;
+        bot('👋 ¿Sigues ahí?<br>Si tienes alguna duda o prefieres que te llamemos directamente, dímelo — estamos aquí para ayudarte.', function(){
+          showOpts([
+            { label: 'Sí, sigo aquí',             value: '__idle_stay' },
+            { label: '📞 Prefiero que me llamen', value: '__idle_call' }
+          ], function(o){
+            if(o.value === '__idle_call'){
+              startCapture({ tramite: 'Llamada solicitada (inactividad chat)', agent: 'especialista' });
+            } else {
+              bot('¡Genial! 👍 Seguimos cuando quieras.', function(){
+                if(inputEl.disabled && !captureCtx) setInput(true);
+              });
+            }
+          });
+        });
+      } else {
+        idleEnded = true;
+        bot('No hay problema 😊<br>Cuando quieras retomar la conversación aquí estaremos.<br>¡Que tengas un excelente día! 🌟', function(){
+          setInput(false, '⏸️ Conversación en pausa — abre el chat para retomar');
+        });
+      }
     }
 
     function setInput(enabled, placeholder, type){
@@ -291,10 +330,21 @@
     function openChat(initFn){
       modal.classList.add('wm-show');
       btn.classList.add('wm-open');
-      if(!started){ started = true; if(initFn) initFn(); }
-      else if(!inputEl.disabled){ inputEl.focus(); }
+      if(!started){ started = true; if(initFn) initFn(); return; }
+      if(convoFinished){ return; }            // conversación ya terminada: solo mostrar el chat
+      // reabrir: si quedó en pausa por inactividad, retomar la conversación
+      if(idleEnded){
+        idleEnded = false; idleStage = 0;
+        if(captureCtx){ setInput(true, captureCtx.step === 2 ? '612345678' : 'Tu nombre', captureCtx.step === 2 ? 'tel' : 'text'); scheduleIdle(); return; }
+        bot('👋 Seguimos donde lo dejamos. Dime, ¿en qué te ayudo?', function(){ setInput(true); });
+        return;
+      }
+      idleStage = 0;
+      if(!inputEl.disabled) inputEl.focus();
+      scheduleIdle();
     }
     function closeChat(){
+      clearIdle();
       modal.classList.remove('wm-show');
       btn.classList.remove('wm-open');
     }
@@ -356,6 +406,7 @@
       var leftover = msgsEl.querySelectorAll('.wm-opts, .wm-final, .wm-typing');
       leftover.forEach(function(el){ if(el.parentNode) el.parentNode.removeChild(el); });
       inputHandler = baseInputHandler;
+      idleStage = 0; idleEnded = false; convoFinished = false; clearIdle();
       showCloseBtn();
       setInput(true);
     }
@@ -402,6 +453,7 @@
     function finishCapture(opts){
       opts = opts || {};
       captureCtx = null;
+      convoFinished = true; idleEnded = true; clearIdle();
       setInput(false, 'Conversación finalizada');
 
       var detalle = buildDetalle(opts.detalle);
@@ -471,6 +523,7 @@
       text = (text || '').trim();
       if(!text) return;
       inputEl.value = '';
+      userActivity();
       if(isMenuKeyword(text)){
         addUser(text);
         backToMenu();
