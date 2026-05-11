@@ -13,6 +13,7 @@
 - Sin testimonios ficticios
 - Sin menciones a Orbit o packs obsoletos
 - Fundada en 2025
+- Descripción del Pack Core: "Web profesional + chatbot IA + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." (incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp, responsive; 1.800€ setup + 199€/mes, operativo en 5-7 días, sin permanencia)
 
 ## Captación de leads (chatbot · Supabase `leads_web`) — REGLA FIJA
 Aplica a todos los flujos, presentes y futuros:
