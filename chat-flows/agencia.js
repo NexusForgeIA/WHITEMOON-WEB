@@ -11,15 +11,17 @@
       var SECTORES = ['Dental','Legal','Peluquería','Restaurante','Taller','Gestoría','Veterinaria','Reformas','Otro'];
 
       var ASK_NAME  = '¿Cómo te llamas?';
-      var ASK_PHONE = 'Encantado/a {nombre} 😊 ¿A qué número te llamo? Te contacto en menos de 1 hora.';
+      var ASK_PHONE = 'Encantado/a {nombre} 😊 ¿A qué número te llamo? {horario}';
 
+      // El cuerpo y el pie de la tarjeta final los rellena chatbot.js según el
+      // horario laboral ({cierreLargo} / {cierreFoot}).
       var FINISH = {
         agent: 'especialista',
         title: '✅ ¡Listo, {nombre}!',
-        text:  'En menos de 1 hora recibirás una llamada de nuestro equipo para explicarte exactamente cómo lo montaríamos para tu negocio.\n\nSin compromiso. Sin tecnicismos.\nSolo soluciones reales. 💜',
+        text:  '{cierreLargo}',
         cta:   '👇 Confirma por WhatsApp si quieres',
         btn:   '📲 Confirmar cita',
-        foot:  '🌟 ¡Que tengas un excelente día, {nombre}!'
+        foot:  '{cierreFoot}'
       };
 
       // ─── ESTADO DE LA CONVERSACIÓN ────────────────────────────────────────
