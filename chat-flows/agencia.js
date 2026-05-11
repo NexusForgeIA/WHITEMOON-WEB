@@ -362,12 +362,12 @@
         ], function(data){
           w.bot(
             '<b>🌐 Pack Core — 1.800€ setup + 199€/mes</b><br>'+
-            'Web profesional + Chatbot IA para <b>'+u.escapeHtml(data.sector)+'</b><br>'+
-            '🔍 SEO básico · 📱 Captura 24/7 → WhatsApp · Sin permanencia',
+            'Web profesional + Chatbot IA para <b>'+u.escapeHtml(data.sector)+'</b> + sistema de reservas<br>'+
+            '🔍 SEO técnico completo · 🤖 GEO/AEO (visible en ChatGPT y Grok) · 📱 Captura 24/7 → WhatsApp · Sin permanencia',
             function(){
               w.bot(
                 '¿Sabías que el <b>70% de los usuarios decide en menos de 3 segundos</b> si una web es de confianza?<br><br>'+
-                'Nuestras webs cargan en menos de 2 segundos y están optimizadas para Google y para aparecer en ChatGPT y Grok como referencia de tu sector.',
+                'Tu web carga en menos de 2 segundos y está optimizada para Google <b>y</b> para aparecer en ChatGPT y Grok como referencia de tu sector desde el día 1.',
                 function(){
                   addDesc('Web profesional · sector ' + data.sector + ' · dominio: ' + data.dominio);
                   capture('Pack Core', data.sector);
