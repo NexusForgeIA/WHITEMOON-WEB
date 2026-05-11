@@ -19,18 +19,18 @@
   // ─── REGLA FIJA (todos los flujos, presentes y futuros) ───────────────────
   // · Todo startCapture() debe pasar el sector detectado por el bot.
   // · Todo finishCapture() debe llamar a saveLead().
-  // · saveLead() siempre incluye sector + descripcion además de nombre y telefono.
+  // · saveLead() siempre incluye sector + mensaje además de nombre y telefono.
   // · Si el envío a Supabase falla → console.warn, NUNCA se interrumpe el flujo.
   function saveLead(data){
     data = data || {};
     var payload = {
-      nombre:      data.nombre      || null,
-      telefono:    data.telefono    || null,
-      sector:      data.sector      || null,
-      interes:     data.interes     || null,
-      descripcion: data.descripcion || null,
-      origen:      'whitemoon.es',
-      fecha:       new Date().toISOString()
+      nombre:   data.nombre      || null,
+      telefono: data.telefono    || null,
+      sector:   data.sector      || null,
+      interes:  data.interes     || null,
+      mensaje:  data.descripcion || null,
+      origen:   'whitemoon.es',
+      fecha:    new Date().toISOString()
     };
     try {
       return fetch(SUPABASE_URL + '/rest/v1/leads_web', {
