@@ -69,6 +69,29 @@
   function replaceVars(text, vars){
     return String(text||'').replace(/\{(\w+)\}/g, function(_, k){ return vars[k] !== undefined ? vars[k] : ''; });
   }
+  // Mensajes adaptados al horario laboral (Lun-Vie 9:00-20:00)
+  function scheduleVars(nombre){
+    var hora = new Date().getHours();
+    var dia  = new Date().getDay();
+    var esHorarioLaboral = hora >= 9 && hora < 20;
+    var esFindeSemana    = (dia === 0 || dia === 6);
+    var n = nombre ? (', ' + nombre) : '';
+    var cierreLargo, cierreFoot, horario;
+    if(esFindeSemana){
+      cierreLargo = 'Hemos recibido tus datos.\nEl lunes a primera hora te llamamos para explicarte todo sin compromiso. 💜';
+      cierreFoot  = '💜 ¡Buen fin de semana' + n + '!';
+      horario     = 'Te llamamos el lunes a primera hora.';
+    } else if(!esHorarioLaboral){
+      cierreLargo = 'Hemos recibido tus datos.\nNuestro equipo te llamará mañana a primera hora (9:00h) para explicarte todo.\n¡Que descanses! 🌙';
+      cierreFoot  = '🌙 ¡Que descanses' + n + '!';
+      horario     = 'Te llamamos mañana a primera hora (9:00h).';
+    } else {
+      cierreLargo = 'Un/a especialista recibirá tus datos y te llamará en menos de 1 hora.\nSin compromiso. Sin tecnicismos. 💜';
+      cierreFoot  = '🌟 ¡Hablamos enseguida' + n + '!';
+      horario     = 'Te contactamos en menos de 1 hora.';
+    }
+    return { cierreLargo: cierreLargo, cierreFoot: cierreFoot, horario: horario, esHorarioLaboral: esHorarioLaboral, esFindeSemana: esFindeSemana };
+  }
   function escapeHtml(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function escAttr(s){ return escapeHtml(s).replace(/"/g,'&quot;'); }
   function hexToRgb(hex){
@@ -351,7 +374,7 @@
         leadData.nombre = text.trim();
         addUser(leadData.nombre);
         captureCtx.step = 2;
-        var ph = replaceVars(captureCtx.opts.askPhone || cfg.askPhone, { nombre: leadData.nombre });
+        var ph = replaceVars(captureCtx.opts.askPhone || cfg.askPhone, { nombre: leadData.nombre, horario: scheduleVars(leadData.nombre).horario });
         bot(escapeHtml(ph), function(){
           setInput(true, '612345678', 'tel');
         });
@@ -403,12 +426,13 @@
 
       var fin = opts.finish || {};
       var agente = opts.agent || fin.agent || 'gestor/a';
-      var finVars = { nombre: leadData.nombre, agent: agente };
-      var title = replaceVars(fin.title || '✅ ¡Perfecto, {nombre}!', finVars);
-      var text  = replaceVars(fin.text  || 'Un/a {agent} recibirá tus datos y te llamará en menos de 1 hora para informarte sobre toda la gestión y el trámite.', finVars);
+      var sch   = scheduleVars(leadData.nombre);
+      var finVars = { nombre: leadData.nombre, agent: agente, cierreLargo: sch.cierreLargo, cierreFoot: sch.cierreFoot, horario: sch.horario };
+      var title = replaceVars(fin.title || '✅ ¡Listo, {nombre}!', finVars);
+      var text  = replaceVars(fin.text  || sch.cierreLargo, finVars);
       var cta   = replaceVars(fin.cta || '👇 Pulsa para confirmar tu solicitud', finVars);
       var btnLb = replaceVars(fin.btn || '📲 Confirmar solicitud', finVars);
-      var foot  = replaceVars(fin.foot || '🌟 ¡Que tengas un excelente día!', finVars);
+      var foot  = replaceVars(fin.foot || sch.cierreFoot, finVars);
 
       showTyping(function(){
         var card = document.createElement('div');
