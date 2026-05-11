@@ -107,13 +107,74 @@
           ]}
         ], function(data){
           if(data.docs !== 'no'){ mostrarRecomendacionRAG(data); return; }
-          w.flow([
-            { key:'perdidas', msg:'¿Cuántos clientes pierdes al mes fuera de horario?', opts:['Muchos','Entre 5 y 20','Más de 20','No lo sé'] }
-          ], function(){
-            var pack = data.web === 'Sí tengo web' ? 'Spark' : 'Core';
-            mostrarRecomendacion(pack, data.sector);
-          });
+          flowClientesFueraHorario(data);
         });
+      }
+
+      // ─── CAPTACIÓN CLIENTES FUERA DE HORARIO ──────────────────────────────
+      function flowClientesFueraHorario(data){
+        var sec = u.escapeHtml(data.sector || 'tu sector');
+        w.bot(
+          '¿Te gustaría capturar automáticamente los clientes que consultan tu negocio fuera de horario?',
+          function(){
+            w.showOpts([
+              { label:'✅ Sí, no quiero perder ningún cliente', value:'si'   },
+              { label:'📊 Sí, pero quiero ver cómo funciona',   value:'demo' },
+              { label:'❓ Cuéntame más',                        value:'mas'  }
+            ], function(o){
+              if(o.value === 'si')   return fueraHorarioSi(data, sec);
+              if(o.value === 'demo') return fueraHorarioDemo(data);
+              return fueraHorarioMas(data, sec);
+            });
+          }
+        );
+      }
+
+      function fueraHorarioSi(data, sec){
+        w.bot(
+          'Perfecto 🎯 Con el chatbot IA de WhiteMoon tu negocio atiende, cualifica y captura ese lead automáticamente — aunque sean las 3 de la madrugada.<br><br>'+
+          'El cliente recibe respuesta inmediata y tú recibes sus datos por WhatsApp listos para llamar.<br><br>'+
+          '¿Me das tu nombre y teléfono para explicarte cómo lo haríamos para tu <b>'+sec+'</b>?',
+          function(){ capture('Spark — captación fuera horario', data.sector); }
+        );
+      }
+
+      function fueraHorarioDemo(data){
+        w.bot(
+          'Puedes ver una demo en vivo ahora mismo 👇<br>'+
+          'Es el mismo chatbot que instalaríamos en tu web, personalizado con tu sector y tu marca.<br><br>'+
+          '👉 <a href="'+DEMO_GESTORIA+'" target="_blank" rel="noopener" style="color:#a78bfa;text-decoration:underline;">'+DEMO_GESTORIA+'</a><br><br>'+
+          '¿Quieres que te llamemos para mostrarte cómo quedaría para tu negocio específico?',
+          function(){
+            w.showOpts([
+              { label:'✅ Sí, llamadme',            value:'si'    },
+              { label:'Ya vi la demo, me interesa', value:'visto' }
+            ], function(){ capture('Spark — vio demo', data.sector); });
+          }
+        );
+      }
+
+      function fueraHorarioMas(data, sec){
+        w.bot(
+          'El chatbot IA de WhiteMoon funciona así:<br><br>'+
+          '1️⃣ Cliente visita tu web fuera de horario<br>'+
+          '2️⃣ El chatbot le atiende al instante<br>'+
+          '3️⃣ Le hace preguntas para cualificar su necesidad<br>'+
+          '4️⃣ Captura su nombre y teléfono<br>'+
+          '5️⃣ Te llega por WhatsApp con todo el contexto<br><br>'+
+          'Tú solo recibes leads cualificados listos para cerrar.<br>'+
+          'Sin perder una sola consulta. 24/7. 365 días.<br><br>'+
+          '¿Probamos a ver cómo quedaría para tu <b>'+sec+'</b>?',
+          function(){
+            w.showOpts([
+              { label:'✅ Me interesa',      value:'interesa' },
+              { label:'👀 Ver demo primero', value:'demo'     }
+            ], function(o){
+              if(o.value === 'demo') return fueraHorarioDemo(data);
+              capture('Spark — captación fuera horario', data.sector);
+            });
+          }
+        );
       }
 
       function mostrarRecomendacionRAG(data){
