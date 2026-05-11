@@ -2849,9 +2849,9 @@
   <div class="foot-bottom">
     <div>© <span id="yr"></span> WhiteMoon Agencia IA · Majadahonda, Madrid</div>
     <div class="foot-bottom-links">
-      <button type="button" onclick="openLegal('aviso')">Aviso Legal</button>
-      <button type="button" onclick="openLegal('privacidad')">Privacidad</button>
-      <button type="button" onclick="openLegal('cookies')">Cookies</button>
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Política de Privacidad</a>
+      <a href="/politica-cookies/">Política de Cookies</a>
     </div>
     <div class="foot-bottom-tag">Hecho con IA en Madrid 🤖</div>
   </div>
@@ -3151,6 +3151,62 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 </script>
 
 <script src="/chatbot.js"></script>
+
+<!-- BANNER COOKIES -->
+<style>
+  #cookie-banner{
+    position:fixed;left:0;right:0;bottom:0;width:100%;z-index:3000;
+    background:#0a0a14;border-top:1px solid #7c3aed;
+    padding:16px 24px;display:none;
+    box-shadow:0 -8px 24px rgba(0,0,0,.4);
+  }
+  #cookie-banner.show{display:block;}
+  #cookie-banner .cb-inner{
+    max-width:1100px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  #cookie-banner p{
+    margin:0;font-family:'Sora',sans-serif;font-size:.85rem;line-height:1.6;color:#c8c8d8;flex:1 1 320px;
+  }
+  #cookie-banner a.cb-more{color:#a78bfa;text-decoration:underline;white-space:nowrap;}
+  #cookie-banner .cb-actions{display:flex;align-items:center;gap:14px;}
+  #cookie-banner button.cb-accept{
+    background:#7c3aed;color:#fff;border:0;border-radius:8px;
+    padding:10px 22px;font-family:'Sora',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;
+    transition:background .2s;
+  }
+  #cookie-banner button.cb-accept:hover{background:#6d28d9;}
+  @media(max-width:600px){
+    #cookie-banner{padding:14px 16px;}
+    #cookie-banner .cb-inner{flex-direction:column;align-items:stretch;text-align:center;}
+    #cookie-banner .cb-actions{justify-content:center;}
+    #cookie-banner button.cb-accept{width:100%;}
+  }
+</style>
+<div id="cookie-banner" role="dialog" aria-label="Aviso de cookies">
+  <div class="cb-inner">
+    <p>Usamos cookies técnicas para el correcto funcionamiento de la web. Sin cookies publicitarias. <a class="cb-more" href="/politica-cookies/">Más información</a></p>
+    <div class="cb-actions">
+      <button type="button" class="cb-accept" onclick="acceptCookies()">Aceptar</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    try{
+      if(!localStorage.getItem('wm_cookies_accepted')){
+        document.getElementById('cookie-banner').classList.add('show');
+      }
+    }catch(e){
+      document.getElementById('cookie-banner').classList.add('show');
+    }
+  })();
+  function acceptCookies(){
+    try{localStorage.setItem('wm_cookies_accepted','1');}catch(e){}
+    var b=document.getElementById('cookie-banner');
+    if(b)b.classList.remove('show');
+  }
+</script>
 
 </body>
 </html>
