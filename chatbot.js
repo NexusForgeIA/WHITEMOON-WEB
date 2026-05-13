@@ -24,15 +24,15 @@
   function saveLead(data){
     data = data || {};
     var payload = {
-      nombre:   data.nombre      || null,
-      telefono: data.telefono    || null,
-      sector:   data.sector      || null,
-      interes:  data.interes     || null,
-      mensaje:  data.descripcion || null,
+      nombre:   data.nombre      || '',
+      telefono: data.telefono    || '',
+      sector:   data.sector      || 'No especificado',
+      interes:  data.tramite     || data.interes || 'General',
+      mensaje:  data.descripcion || data.mensaje || '',
       origen:   'whitemoon.es',
       fecha:    new Date().toISOString()
     };
-    console.log('saveLead payload:', payload);
+    console.log('saveLead payload completo:', JSON.stringify(payload));
     try {
       return fetch(SUPABASE_URL + '/rest/v1/leads_web', {
         method: 'POST',
