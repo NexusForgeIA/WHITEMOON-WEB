@@ -330,6 +330,7 @@
     function openChat(initFn){
       modal.classList.add('wm-show');
       btn.classList.add('wm-open');
+      if(typeof gtag === 'function') gtag('event', 'chatbot_open');
       if(!started){ started = true; if(initFn) initFn(); return; }
       if(convoFinished){ return; }            // conversación ya terminada: solo mostrar el chat
       // reabrir: si quedó en pausa por inactividad, retomar la conversación
@@ -505,13 +506,23 @@
         var detStr      = typeof detalle === 'string' ? detalle : '';
         var sectorMatch = /sector\s*:\s*([^|]+)/i.exec(detStr);
         var descMatch   = /descripci[oó]n\s*:\s*([^|]+)/i.exec(detStr);
+        var sectorFinal = opts.sector || leadData.sector || (sectorMatch ? sectorMatch[1].trim() : null);
         saveLead({
           nombre:      leadData.nombre,
           telefono:    leadData.telefono,
-          sector:      opts.sector || leadData.sector || (sectorMatch ? sectorMatch[1].trim() : null),
+          sector:      sectorFinal,
           interes:     tramite,
           descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null)
         });
+
+        if(typeof gtag === 'function') gtag('event', 'lead_captured', { sector: sectorFinal, interes: tramite });
+
+        var waBtn = card.querySelector('.wm-final-btn');
+        if(waBtn){
+          waBtn.addEventListener('click', function(){
+            if(typeof gtag === 'function') gtag('event', 'whatsapp_click');
+          });
+        }
       });
     }
 
