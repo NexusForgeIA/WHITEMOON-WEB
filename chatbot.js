@@ -32,6 +32,7 @@
       origen:   'whitemoon.es',
       fecha:    new Date().toISOString()
     };
+    console.log('saveLead payload:', payload);
     try {
       return fetch(SUPABASE_URL + '/rest/v1/leads_web', {
         method: 'POST',
@@ -43,9 +44,13 @@
         },
         body: JSON.stringify(payload)
       })
-        .then(function(r){ if(r && !r.ok) console.warn('[WM-CHAT] saveLead HTTP ' + r.status); return r; })
-        .catch(function(e){ console.warn('[WM-CHAT] saveLead', e); });
-    } catch(e){ console.warn('[WM-CHAT] saveLead', e); }
+        .then(function(response){
+          console.log('saveLead status:', response && response.status);
+          if(response && !response.ok) console.warn('[WM-CHAT] saveLead HTTP ' + response.status);
+          return response;
+        })
+        .catch(function(err){ console.error('saveLead error:', err); });
+    } catch(err){ console.error('saveLead error:', err); }
   }
 
   function normalize(s){
