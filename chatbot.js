@@ -24,13 +24,11 @@
   function saveLead(data){
     data = data || {};
     var payload = {
-      nombre:   data.nombre      || '',
-      telefono: data.telefono    || '',
-      sector:   data.sector      || 'No especificado',
-      interes:  data.tramite     || data.interes || 'General',
-      mensaje:  data.descripcion || data.mensaje || '',
-      origen:   'whitemoon.es',
-      fecha:    new Date().toISOString()
+      nombre:   data.nombre   || '',
+      telefono: data.telefono || '',
+      sector:   data.sector   || 'No especificado',
+      mensaje:  data.tramite  || data.interes || 'General',
+      origen:   'whitemoon.es'
     };
     console.log('saveLead payload completo:', JSON.stringify(payload));
     try {
