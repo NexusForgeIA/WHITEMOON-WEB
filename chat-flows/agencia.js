@@ -83,7 +83,8 @@
         { key:'legal',        label:'Despacho de abogados',        kws:['abogad','despacho','legal','bufete','juridic','procurador'] },
         { key:'peluqueria',   label:'Peluquería / estética',       kws:['peluquer','salon de belleza','salon','estetic','belleza','cabello','barberi','barbero','manicura'] },
         { key:'restaurante',  label:'Restaurante',                 kws:['restaurante','hosteleria','cocina','cafeteria','tapas','meson','pizzeria','bar','pub','cerveceria','asador','catering','comida para llevar'] },
-        { key:'taller',       label:'Taller mecánico',             kws:['taller','mecanic','coches','automovil','vehiculo','chapa y pintura','neumatic'] },
+        { key:'automocion',   label:'Automoción / Concesionario',  kws:['concesionario','coche','coches','automovil','vehiculo','motor','cars','auto','comprar coche','vender coche'] },
+        { key:'taller',       label:'Taller mecánico',             kws:['taller','mecanic','chapa y pintura','neumatic'] },
         { key:'gestoria',     label:'Gestoría / asesoría',         kws:['gestoria','asesoria','contabilidad','fiscal','tramites','laboral','autonomos'] },
         { key:'veterinaria',  label:'Clínica veterinaria',         kws:['veterinar','animales','mascota'] },
         { key:'reformas',     label:'Empresa de reformas',         kws:['reforma','construccion','obra','obras','albañil','albanil','carpinter','fontaner','electricista','pintor'] },
@@ -124,6 +125,16 @@
         taller:
           'Entendido 🔧 Un taller mecánico — donde los clientes llaman cuando el coche falla y necesitan respuesta inmediata.<br><br>'+
           '¿Qué pasa ahora cuando alguien llama a tu taller y estás debajo de un coche?',
+        automocion:
+          'Perfecto 🚗 El sector de automoción es uno donde la IA marca una diferencia brutal.<br><br>'+
+          '¿Cuántos leads pierdes cuando un comprador visita tu web a las 23h y no encuentra a nadie que le responda?<br><br>'+
+          'Nuestro agente IA cualifica al comprador:<br>'+
+          '✅ Presupuesto disponible<br>'+
+          '✅ Financiación o contado<br>'+
+          '✅ Modelo de interés<br>'+
+          '✅ Urgencia de compra<br><br>'+
+          'Y te envía el lead cualificado por WhatsApp listo para que tu comercial lo llame.<br><br>'+
+          '¿Quieres ver cómo quedaría en tu web?',
         gestoria:
           'Perfecto 📋 Una gestoría o asesoría — donde los clientes siempre tienen dudas urgentes y necesitan respuesta antes de tomar decisiones.<br><br>'+
           '¿Cuántas consultas repetitivas recibes cada día sobre los mismos temas?',
@@ -169,6 +180,21 @@
           ctx.sectorKey   = s.key;
           ctx.sectorLabel = s.label;
           state = 'sector_q';
+          if(s.key === 'automocion'){
+            w.bot(EMPATHY.automocion, function(){
+              opts([
+                { label:'✅ Ver demo',              value:'demo'   },
+                { label:'💰 Ver precios',           value:'precio' },
+                { label:'📞 Hablar con un experto', value:'llamar' }
+              ], function(o){
+                state = 'idle';
+                if(o.value === 'demo')   return miniDemo();
+                if(o.value === 'precio') return mostrarPrecio();
+                capturaNatural('Automoción — pidió llamada');
+              });
+            });
+            return;
+          }
           w.bot(EMPATHY[s.key], function(){ w.setInput(true, 'Cuéntame...'); });
           return;
         }
