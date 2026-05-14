@@ -568,11 +568,14 @@
     "sameAs": []
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/site.css">
+  <!-- ── PERFORMANCE: PRELOAD LCP ── -->
+  <link rel="preload" as="image" href="/logo-hero.png" fetchpriority="high">
   <!-- ── PERFORMANCE: PRECONNECT ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="/assets/site.css">
   <link rel="dns-prefetch" href="https://wa.me">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <!-- ── SCHEMA WHITEMOON SCOUT ── -->
@@ -611,7 +614,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="wrap">
-    <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}"><img src="./logo.png" alt="WHITEMOON" style="height:52px;width:auto;"></a>
+    <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}"><img src="./logo.png" alt="WHITEMOON" width="140" height="52" style="height:52px;width:auto;"></a>
     <div class="nav-right">
       <a href="#quienes-somos" class="nav-link" onclick="document.getElementById('quienes-somos').scrollIntoView({behavior:'smooth'});return false;">Quiénes somos</a>
       <a href="#servicios" class="nav-link" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});return false;">Servicios</a>
@@ -716,7 +719,7 @@
   <div class="hero-nebula"></div>
   <div class="hero-grid"></div>
   <div class="wrap">
-    <div style="display:flex;justify-content:center;margin-bottom:36px;"><img src="./logo-hero.png" alt="WHITEMOON Agencia de IA" style="max-width:380px;width:80%;height:auto;filter:drop-shadow(0 0 32px rgba(124,77,255,0.35));"></div>
+    <div style="display:flex;justify-content:center;margin-bottom:36px;"><img src="./logo-hero.png" alt="WHITEMOON Agencia de IA" width="380" height="120" fetchpriority="high" decoding="async" style="max-width:380px;width:80%;height:auto;filter:drop-shadow(0 0 32px rgba(124,77,255,0.35));"></div>
 <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:20px;font-size:.62rem;font-weight:700;color:var(--accent,#c084fc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">
       <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;animation:wmPulse 2s infinite"></span>
       Ingeniería de IA · ROI medible desde el día 1
@@ -774,20 +777,20 @@
     <h2>IA para cualquier negocio local</h2>
     <p class="sec-sub">Soluciones específicas para cada sector con flujos conversacionales adaptados.</p>
     <div class="sectores-grid">
-      <a href="/chatbot-ia-clinicas-dentales/" class="sector-item"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=120&q=80" alt="Dental" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Dental</span></a>
-      <a href="/chatbot-ia-despachos-abogados/" class="sector-item"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=120&q=80" alt="Legal" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Legal</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=80" alt="Peluquería" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Peluquería</span></a>
-      <a href="/chatbot-ia-restaurantes/" class="sector-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=80" alt="Restaurante" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Restaurante</span></a>
-      <a href="/chatbot-ia-talleres-mecanicos/" class="sector-item"><img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=120&q=80" alt="Taller" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Taller</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=120&q=80" alt="Gestoría" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gestoría</span></a>
-      <a href="/chatbot-ia-veterinarias/" class="sector-item"><img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=120&q=80" alt="Veterinaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Veterinaria</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=80" alt="Reformas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Reformas</span></a>
-      <a href="/chatbot-ia-academias/" class="sector-item"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=120&q=80" alt="Formación" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Formación</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=120&q=80" alt="Podología" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Podología</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=120&q=80" alt="Inmobiliaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Inmobiliaria</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=80" alt="Gimnasio" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gimnasio</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=120&q=80" alt="Clínicas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Clínicas</span></a>
-      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=80" alt="Empresas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Empresas</span></a>
+      <a href="/chatbot-ia-clinicas-dentales/" class="sector-item"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=120&q=80&auto=format" width="120" height="80" alt="Dental" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Dental</span></a>
+      <a href="/chatbot-ia-despachos-abogados/" class="sector-item"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=120&q=80&auto=format" width="120" height="80" alt="Legal" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Legal</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=80&auto=format" width="120" height="80" alt="Peluquería" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Peluquería</span></a>
+      <a href="/chatbot-ia-restaurantes/" class="sector-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=80&auto=format" width="120" height="80" alt="Restaurante" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Restaurante</span></a>
+      <a href="/chatbot-ia-talleres-mecanicos/" class="sector-item"><img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=120&q=80&auto=format" width="120" height="80" alt="Taller" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Taller</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=120&q=80&auto=format" width="120" height="80" alt="Gestoría" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gestoría</span></a>
+      <a href="/chatbot-ia-veterinarias/" class="sector-item"><img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=120&q=80&auto=format" width="120" height="80" alt="Veterinaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Veterinaria</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=80&auto=format" width="120" height="80" alt="Reformas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Reformas</span></a>
+      <a href="/chatbot-ia-academias/" class="sector-item"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=120&q=80&auto=format" width="120" height="80" alt="Formación" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Formación</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=120&q=80&auto=format" width="120" height="80" alt="Podología" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Podología</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=120&q=80&auto=format" width="120" height="80" alt="Inmobiliaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Inmobiliaria</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=80&auto=format" width="120" height="80" alt="Gimnasio" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gimnasio</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=120&q=80&auto=format" width="120" height="80" alt="Clínicas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Clínicas</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=80&auto=format" width="120" height="80" alt="Empresas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Empresas</span></a>
     </div>
   </div>
 </section>
@@ -1355,7 +1358,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format"
             alt="Auditoría IA — diagnóstico de automatización con ROI estimado"
             style="width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;
@@ -1457,7 +1460,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format"
             alt="Spark — chatbot IA conversacional para empresas"
             style="width:100%;height:100%;object-fit:cover;
             transition:transform .4s">
@@ -1572,7 +1575,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80&auto=format"
             alt="Gestoría IA — agente IA con calculadora ITP integrada"
             style="width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;
@@ -1673,7 +1676,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80&auto=format"
             alt="Core — web profesional con chatbot IA integrado"
             style="width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;
@@ -1762,7 +1765,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format"
             alt="Scale — chatbot RAG con tus documentos y CRM integrado"
             style="width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;
@@ -1864,7 +1867,7 @@
         transition:transform .3s;position:relative">
 
         <div style="height:220px;overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80"
+          <img loading="lazy" decoding="async" width="800" height="600" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80&auto=format"
             alt="Elite — IA enterprise con agentes avanzados y multi-idioma"
             style="width:100%;height:100%;object-fit:cover">
           <div style="position:absolute;inset:0;
@@ -2178,7 +2181,7 @@
           </div>
         </div>
         <div class="paso-img" style="overflow:hidden">
-          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80"
+          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&q=80&auto=format"
             alt="Llamada de diagnóstico inicial con consultor WhiteMoon"
             style="width:100%;height:100%;object-fit:cover;
             filter:brightness(.7) saturate(.8)">
@@ -2216,7 +2219,7 @@
           </div>
         </div>
         <div class="paso-img" style="overflow:hidden">
-          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=500&q=80"
+          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1555421689-d68471e189f2?w=500&q=80&auto=format"
             alt="Diseño y entrenamiento del agente IA personalizado"
             style="width:100%;height:100%;object-fit:cover;
             filter:brightness(.7) saturate(.8)">
@@ -2254,7 +2257,7 @@
           </div>
         </div>
         <div class="paso-img" style="overflow:hidden">
-          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80"
+          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80&auto=format"
             alt="Instalación del chatbot IA en tu sitio web"
             style="width:100%;height:100%;object-fit:cover;
             filter:brightness(.7) saturate(.8)">
@@ -2294,7 +2297,7 @@
           </div>
         </div>
         <div class="paso-img" style="overflow:hidden;position:relative">
-          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500&q=80"
+          <img loading="lazy" decoding="async" width="500" height="375" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500&q=80&auto=format"
             alt="Negocio atendido 24/7 por el chatbot IA"
             style="width:100%;height:100%;object-fit:cover;
             filter:brightness(.7) saturate(.8)">
@@ -3330,7 +3333,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 })();
 </script>
 
-<script src="/chatbot.js"></script>
+<script src="/chatbot.js" defer></script>
 
 <!-- BANNER COOKIES -->
 <style>
