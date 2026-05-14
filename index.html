@@ -660,7 +660,7 @@
         </svg>
         RAG IA
       </a>
-      <a href="https://wa.me/34643199580?text=Hola%20WHITEMOON" target="_blank" rel="noopener" class="nav-cta" rel="noopener noreferrer">Contactar</a>
+      <a href="#contacto" class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'});return false;">Contactar</a>
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobilePanel" onclick="toggleMobileNav(this)">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -680,7 +680,7 @@
       <a href="https://whitemoon.es/blog/">Blog</a>
       <a href="#scout" class="cta-scout" onclick="navMobileGo('scout');return false;">🔍 Scout IA</a>
       <a href="#pack-rag" class="cta-rag" onclick="navMobileGo('rag');return false;">💬 RAG IA</a>
-      <a href="https://wa.me/34643199580?text=Hola%20WHITEMOON" target="_blank" rel="noopener" class="cta-wa">Contactar por WhatsApp</a>
+      <a href="#contacto" class="cta-wa" onclick="navMobileGo('contacto');return false;">Contactar</a>
     </div>
   </div>
 </nav>
@@ -2935,7 +2935,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer id="contacto">
   <div class="foot-grid">
 
     <!-- Col 1 — Marca -->
