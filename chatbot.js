@@ -24,13 +24,16 @@
   function saveLead(data){
     data = data || {};
     var payload = {
-      nombre:   data.nombre      || '',
-      telefono: data.telefono    || '',
-      sector:   data.sector      || 'No especificado',
-      interes:  data.tramite     || data.interes || 'General',
-      mensaje:  data.descripcion || data.mensaje || '',
-      origen:   'whitemoon.es',
-      fecha:    new Date().toISOString()
+      nombre:      data.nombre      || '',
+      telefono:    data.telefono    || '',
+      sector:      data.sector      || 'No especificado',
+      interes:     data.tramite     || data.interes || 'General',
+      mensaje:     data.descripcion || data.mensaje || '',
+      preferencia: data.preferencia || 'llamada',
+      cita_dia:    data.cita_dia    || '',
+      cita_hora:   data.cita_hora   || '',
+      origen:      'whitemoon.es',
+      fecha:       new Date().toISOString()
     };
     console.log('saveLead payload completo:', JSON.stringify(payload));
     try {
@@ -440,8 +443,73 @@
         if(digits.length < 9){ botText('⚠️ El teléfono debe tener al menos 9 dígitos.'); return; }
         leadData.telefono = digits.slice(-9);
         addUser(leadData.telefono);
-        finishCapture(captureCtx.opts || {});
+        askPreferencia(captureCtx.opts || {});
       }
+    }
+
+    function nextWorkingDays(n){
+      var MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+      var DIAS  = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+      var out = [];
+      var d = new Date();
+      while(out.length < n){
+        d.setDate(d.getDate() + 1);
+        var dow = d.getDay();
+        if(dow === 0 || dow === 6) continue;
+        var label = DIAS[dow] + ' ' + d.getDate() + ' ' + MESES[d.getMonth()];
+        out.push({ label: label, value: label });
+      }
+      return out;
+    }
+
+    function askPreferencia(opts){
+      captureCtx = null;
+      setInput(false);
+      var nom = leadData.nombre ? escapeHtml(leadData.nombre) : '';
+      bot('Perfecto ' + nom + ' 👋<br>¿Cómo prefieres que te contactemos?', function(){
+        showOpts([
+          { label: '📞 Llamada — te llamo en menos de 1 hora', value: 'llamada' },
+          { label: '📅 Videollamada — elijo día y hora',        value: 'videollamada' },
+          { label: '💬 WhatsApp — me escribes cuando puedas',   value: 'whatsapp' }
+        ], function(o){
+          leadData.preferencia = o.value;
+          if(o.value === 'videollamada'){ askCitaDia(opts); return; }
+          finishCapture(opts);
+        });
+      });
+    }
+
+    function askCitaDia(opts){
+      bot('¿Qué día te viene mejor?', function(){
+        showOpts(nextWorkingDays(5), function(o){
+          leadData.cita_dia = o.value;
+          askCitaHora(opts);
+        });
+      });
+    }
+
+    function askCitaHora(opts){
+      bot('¿A qué hora prefieres?', function(){
+        showOpts([
+          { label:'9:00h',  value:'9:00h'  },
+          { label:'10:00h', value:'10:00h' },
+          { label:'11:00h', value:'11:00h' },
+          { label:'12:00h', value:'12:00h' },
+          { label:'16:00h', value:'16:00h' },
+          { label:'17:00h', value:'17:00h' },
+          { label:'18:00h', value:'18:00h' },
+          { label:'19:00h', value:'19:00h' }
+        ], function(o){
+          leadData.cita_hora = o.value;
+          bot(
+            '✅ Cita anotada:<br>' +
+            '📅 ' + escapeHtml(leadData.cita_dia || '') + ' a las ' + escapeHtml(leadData.cita_hora || '') + '<br>' +
+            '📹 Videollamada por Google Meet<br><br>' +
+            'Te enviaremos el enlace por WhatsApp antes de la reunión. ¡Hasta pronto!',
+            function(){ finishCapture(opts); }
+          );
+        });
+      });
     }
 
     function buildDetalle(extra){
@@ -478,6 +546,17 @@
         prioridadLine: prioridad ? '\n🚨 Prioridad: ' + prioridad : '',
         detalle:  detalle
       });
+      var preferencia = leadData.preferencia || '';
+      var prefBlock = '';
+      if(preferencia === 'videollamada'){
+        prefBlock = '\n\n📅 Cita: ' + (leadData.cita_dia || '') + ' a las ' + (leadData.cita_hora || '') +
+                    '\n📹 Videollamada — enviar enlace Meet';
+      } else if(preferencia === 'llamada'){
+        prefBlock = '\n\n📞 Prefiere llamada en menos de 1h';
+      } else if(preferencia === 'whatsapp'){
+        prefBlock = '\n\n💬 Prefiere contacto por WhatsApp';
+      }
+      if(prefBlock) msg = msg + prefBlock;
       var waLink = cfg.tel
         ? 'https://wa.me/34'+cfg.tel+'?text='+encodeURIComponent(msg)
         : 'https://wa.me/?text='+encodeURIComponent(msg);
@@ -517,7 +596,10 @@
           telefono:    leadData.telefono,
           sector:      sectorFinal,
           interes:     tramite,
-          descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null)
+          descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null),
+          preferencia: leadData.preferencia,
+          cita_dia:    leadData.cita_dia,
+          cita_hora:   leadData.cita_hora
         });
 
         if(typeof gtag === 'function') gtag('event', 'lead_captured', { sector: sectorFinal, interes: tramite });
