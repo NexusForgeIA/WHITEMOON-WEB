@@ -179,6 +179,9 @@
       '#wm-chat-modal .wm-final-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#25D366;color:#fff;padding:13px 14px;border-radius:10px;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 4px 14px rgba(37,211,102,.35);transition:transform .15s,box-shadow .15s;}',
       '#wm-chat-modal .wm-final-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,211,102,.5);}',
       '#wm-chat-modal .wm-final-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}',
+      '#wm-chat-modal .wm-final-reset{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;border:none;padding:13px 14px;border-radius:10px;cursor:pointer;font-weight:700;font-size:.9rem;font-family:inherit;box-shadow:0 4px 14px rgba(124,58,237,.35);transition:transform .15s,box-shadow .15s;}',
+      '#wm-chat-modal .wm-final-reset:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(124,58,237,.5);}',
+      '#wm-chat-modal .wm-final-reset svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex-shrink:0;}',
       '#wm-chat-modal .wm-final-foot{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.76rem;color:#cbd5e1;}',
       '#wm-chat-modal .wm-powered{text-align:center;padding:4px 0 8px;font-size:.6rem;color:#4a4a6a;}',
       '#wm-chat-modal .wm-powered a{color:#6a6a9a;text-decoration:none;}'
@@ -528,7 +531,8 @@
       opts = opts || {};
       captureCtx = null;
       convoFinished = true; idleEnded = true; clearIdle();
-      setInput(false, 'Conversación finalizada');
+      var isVideoCall = (leadData.preferencia === 'videollamada');
+      if(!isVideoCall) setInput(false, 'Conversación finalizada');
 
       var detalle = buildDetalle(opts.detalle);
       var prioridad = opts.prioridad || leadData.prioridad || '';
@@ -587,12 +591,19 @@
         card.className = 'wm-final';
         var html = '<div class="wm-final-title">'+escapeHtml(title)+'</div>'+
                    '<div class="wm-final-text">'+escapeHtml(text).replace(/\n/g,'<br>')+'</div>';
-        if(cta) html += '<div class="wm-final-cta">'+escapeHtml(cta)+'</div>';
-        html += '<a class="wm-final-btn" href="'+escAttr(waLink)+'" target="_blank" rel="noopener">'+
-                  '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074z"/></svg>'+
-                  escapeHtml(btnLb)+
-                '</a>';
-        if(foot) html += '<div class="wm-final-foot">'+escapeHtml(foot)+'</div>';
+        if(isVideoCall){
+          html += '<button type="button" class="wm-final-reset">'+
+                    '<svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>'+
+                    '🔄 Nueva consulta'+
+                  '</button>';
+        } else {
+          if(cta) html += '<div class="wm-final-cta">'+escapeHtml(cta)+'</div>';
+          html += '<a class="wm-final-btn" href="'+escAttr(waLink)+'" target="_blank" rel="noopener">'+
+                    '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074z"/></svg>'+
+                    escapeHtml(btnLb)+
+                  '</a>';
+          if(foot) html += '<div class="wm-final-foot">'+escapeHtml(foot)+'</div>';
+        }
         card.innerHTML = html;
         msgsEl.appendChild(card);
         msgsEl.scrollTop = msgsEl.scrollHeight;
@@ -615,11 +626,24 @@
 
         if(typeof gtag === 'function') gtag('event', 'lead_captured', { sector: sectorFinal, interes: tramite });
 
-        var waBtn = card.querySelector('.wm-final-btn');
-        if(waBtn){
-          waBtn.addEventListener('click', function(){
-            if(typeof gtag === 'function') gtag('event', 'whatsapp_click');
-          });
+        if(isVideoCall){
+          var resetBtn = card.querySelector('.wm-final-reset');
+          if(resetBtn){
+            resetBtn.addEventListener('click', function(){
+              if(typeof gtag === 'function') gtag('event', 'chatbot_new_consulta');
+              backToMenu();
+            });
+          }
+          setTimeout(function(){
+            setInput(false, 'Conversación finalizada');
+          }, 2000);
+        } else {
+          var waBtn = card.querySelector('.wm-final-btn');
+          if(waBtn){
+            waBtn.addEventListener('click', function(){
+              if(typeof gtag === 'function') gtag('event', 'whatsapp_click');
+            });
+          }
         }
       });
     }
