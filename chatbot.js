@@ -565,8 +565,19 @@
       var agente = opts.agent || fin.agent || 'gestor/a';
       var sch   = scheduleVars(leadData.nombre);
       var finVars = { nombre: leadData.nombre, agent: agente, cierreLargo: sch.cierreLargo, cierreFoot: sch.cierreFoot, horario: sch.horario };
+      var defaultText;
+      if(preferencia === 'videollamada'){
+        defaultText = 'Tu cita está confirmada:\n' +
+                      '📅 ' + (leadData.cita_dia || '') + ' a las ' + (leadData.cita_hora || '') + '\n' +
+                      '📹 Videollamada por Google Meet\n\n' +
+                      'Te enviaremos el enlace por WhatsApp antes de la reunión. ¡Hasta pronto! 🌟';
+      } else if(preferencia === 'whatsapp'){
+        defaultText = 'Te escribiremos por WhatsApp en breve.\nSin compromiso. Sin tecnicismos. 💜';
+      } else {
+        defaultText = sch.cierreLargo;
+      }
       var title = replaceVars(fin.title || '✅ ¡Listo, {nombre}!', finVars);
-      var text  = replaceVars(fin.text  || sch.cierreLargo, finVars);
+      var text  = replaceVars(fin.text  || defaultText, finVars);
       var cta   = replaceVars(fin.cta || '👇 Pulsa para confirmar tu solicitud', finVars);
       var btnLb = replaceVars(fin.btn || '📲 Confirmar solicitud', finVars);
       var foot  = replaceVars(fin.foot || sch.cierreFoot, finVars);
