@@ -2939,7 +2939,7 @@
 
     <!-- Col 1 — Marca -->
     <div class="foot-col">
-      <a href="javascript:void(0)" class="foot-brand" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="WhiteMoon">
+      <a href="/" class="foot-brand" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}" aria-label="WhiteMoon">
         <img class="foot-logo" alt="WhiteMoon Agencia IA" src="./logo.png" width="180" height="82" loading="lazy" decoding="async">
       </a>
       <p class="foot-desc">Agencia de Inteligencia Artificial para negocios locales y PYMEs en Madrid.</p>
