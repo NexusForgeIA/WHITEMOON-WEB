@@ -762,7 +762,8 @@
   .sectores-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;max-width:1100px;margin:0 auto}
   .sector-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 12px;border-radius:12px;border:1px solid rgba(124,58,237,.15);background:rgba(124,58,237,.04);cursor:pointer;transition:all .3s ease;text-decoration:none;color:inherit}
   .sector-item:hover{background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.4);transform:scale(1.05)}
-  .sector-icon{font-size:32px;line-height:1}
+  .sector-item img{width:64px;height:64px;object-fit:cover;border-radius:12px;margin-bottom:8px;transition:transform .3s ease}
+  .sector-item:hover img{transform:scale(1.08)}
   .sector-name{font-size:12px;font-weight:500;color:var(--text2,#9090b0);text-align:center}
   @media (max-width:900px){.sectores-grid{grid-template-columns:repeat(4,1fr)}}
   @media (max-width:600px){.sectores-grid{grid-template-columns:repeat(3,1fr)}}
@@ -773,20 +774,20 @@
     <h2>IA para cualquier negocio local</h2>
     <p class="sec-sub">Soluciones específicas para cada sector con flujos conversacionales adaptados.</p>
     <div class="sectores-grid">
-      <a href="/chatbot-ia-clinicas-dentales/" class="sector-item"><span class="sector-icon">🦷</span><span class="sector-name">Dental</span></a>
-      <a href="/chatbot-ia-despachos-abogados/" class="sector-item"><span class="sector-icon">⚖️</span><span class="sector-name">Legal</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">✂️</span><span class="sector-name">Peluquería</span></a>
-      <a href="/chatbot-ia-restaurantes/" class="sector-item"><span class="sector-icon">🍽️</span><span class="sector-name">Restaurante</span></a>
-      <a href="/chatbot-ia-talleres-mecanicos/" class="sector-item"><span class="sector-icon">🔧</span><span class="sector-name">Taller</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">📋</span><span class="sector-name">Gestoría</span></a>
-      <a href="/chatbot-ia-veterinarias/" class="sector-item"><span class="sector-icon">🐾</span><span class="sector-name">Veterinaria</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">🔨</span><span class="sector-name">Reformas</span></a>
-      <a href="/chatbot-ia-academias/" class="sector-item"><span class="sector-icon">📚</span><span class="sector-name">Formación</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">🦶</span><span class="sector-name">Podología</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">🏠</span><span class="sector-name">Inmobiliaria</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">💪</span><span class="sector-name">Gimnasio</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">🏥</span><span class="sector-name">Clínicas</span></a>
-      <a href="#precios" class="sector-item"><span class="sector-icon">🏢</span><span class="sector-name">Empresas</span></a>
+      <a href="/chatbot-ia-clinicas-dentales/" class="sector-item"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=120&q=80" alt="Dental" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Dental</span></a>
+      <a href="/chatbot-ia-despachos-abogados/" class="sector-item"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=120&q=80" alt="Legal" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Legal</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=120&q=80" alt="Peluquería" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Peluquería</span></a>
+      <a href="/chatbot-ia-restaurantes/" class="sector-item"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=120&q=80" alt="Restaurante" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Restaurante</span></a>
+      <a href="/chatbot-ia-talleres-mecanicos/" class="sector-item"><img src="https://images.unsplash.com/photo-1625047509248-ec889cbff17f?w=120&q=80" alt="Taller" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Taller</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=120&q=80" alt="Gestoría" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gestoría</span></a>
+      <a href="/chatbot-ia-veterinarias/" class="sector-item"><img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?w=120&q=80" alt="Veterinaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Veterinaria</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=120&q=80" alt="Reformas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Reformas</span></a>
+      <a href="/chatbot-ia-academias/" class="sector-item"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=120&q=80" alt="Formación" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Formación</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=120&q=80" alt="Podología" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Podología</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=120&q=80" alt="Inmobiliaria" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Inmobiliaria</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&q=80" alt="Gimnasio" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Gimnasio</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=120&q=80" alt="Clínicas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Clínicas</span></a>
+      <a href="#precios" class="sector-item"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=120&q=80" alt="Empresas" loading="lazy" onerror="this.style.display='none'"/><span class="sector-name">Empresas</span></a>
     </div>
   </div>
 </section>
