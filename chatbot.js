@@ -184,7 +184,13 @@
       '#wm-chat-modal .wm-final-reset svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;flex-shrink:0;}',
       '#wm-chat-modal .wm-final-foot{margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.76rem;color:#cbd5e1;}',
       '#wm-chat-modal .wm-powered{text-align:center;padding:4px 0 8px;font-size:.6rem;color:#4a4a6a;}',
-      '#wm-chat-modal .wm-powered a{color:#6a6a9a;text-decoration:none;}'
+      '#wm-chat-modal .wm-powered a{color:#6a6a9a;text-decoration:none;}',
+      '#wm-chat-bubble{position:fixed;bottom:88px;right:20px;max-width:240px;background:#1a1a2e;color:#fff;padding:12px 30px 12px 14px;border-radius:14px;border:1px solid '+colorMid+';box-shadow:0 8px 24px rgba(0,0,0,.35);font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-size:.82rem;line-height:1.4;z-index:9999;cursor:pointer;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .3s ease,transform .3s ease;}',
+      '#wm-chat-bubble.wm-show{opacity:1;transform:translateY(0);pointer-events:auto;animation:wm-bubble-in .5s ease;}',
+      '#wm-chat-bubble::after{content:"";position:absolute;bottom:-7px;right:22px;width:12px;height:12px;background:#1a1a2e;border-right:1px solid '+colorMid+';border-bottom:1px solid '+colorMid+';transform:rotate(45deg);}',
+      '#wm-chat-bubble .wm-bubble-close{position:absolute;top:6px;right:6px;width:20px;height:20px;background:rgba(255,255,255,.08);border:none;border-radius:50%;color:#fff;font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;}',
+      '#wm-chat-bubble .wm-bubble-close:hover{background:rgba(255,255,255,.18);}',
+      '@keyframes wm-bubble-in{0%{transform:translateY(8px) scale(.92);opacity:0}60%{transform:translateY(-2px) scale(1.02);opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}'
     ].join('');
     document.head.appendChild(sty);
 
@@ -216,8 +222,14 @@
       '<div class="wm-powered">Powered by <a href="https://whitemoon.es" target="_blank">WhiteMoon</a></div>'
     ].join('');
 
+    var bubble = document.createElement('div');
+    bubble.id = 'wm-chat-bubble';
+    bubble.setAttribute('role', 'button');
+    bubble.setAttribute('aria-label', 'Abrir chat');
+
     document.body.appendChild(btn);
     document.body.appendChild(modal);
+    document.body.appendChild(bubble);
 
     var msgsEl  = modal.querySelector('#wm-msgs');
     var inputEl = modal.querySelector('#wm-input');
@@ -339,6 +351,8 @@
     function showCloseBtn(){ closeBtn.classList.remove('wm-hidden'); }
 
     function openChat(initFn){
+      chatOpenedOnce = true;
+      hideBubble();
       modal.classList.add('wm-show');
       btn.classList.add('wm-open');
       if(typeof gtag === 'function') gtag('event', 'chatbot_open');
@@ -669,6 +683,55 @@
     btn.addEventListener('click', function(){ openChat(api._onOpen); });
     closeBtn.addEventListener('click', closeChat);
     setTimeout(function(){ btn.classList.add('wm-visible'); }, 1500);
+
+    // ─── BURBUJA FLOTANTE (auto + exit intent) ────────────────────────────────
+    var chatOpenedOnce = false;
+    var bubbleHideTimer = null;
+    var bubbleAutoShown = false;
+    var bubbleExitShown = false;
+
+    function hideBubble(){
+      bubble.classList.remove('wm-show');
+      if(bubbleHideTimer){ clearTimeout(bubbleHideTimer); bubbleHideTimer = null; }
+    }
+    function showBubble(html, autoHideMs){
+      if(chatOpenedOnce) return;
+      if(modal.classList.contains('wm-show')) return;
+      bubble.innerHTML = '<button class="wm-bubble-close" aria-label="Cerrar">×</button><div class="wm-bubble-text">' + html + '</div>';
+      var closeB = bubble.querySelector('.wm-bubble-close');
+      if(closeB){
+        closeB.addEventListener('click', function(e){
+          e.stopPropagation();
+          hideBubble();
+        });
+      }
+      bubble.classList.add('wm-show');
+      if(bubbleHideTimer){ clearTimeout(bubbleHideTimer); bubbleHideTimer = null; }
+      if(autoHideMs > 0){
+        bubbleHideTimer = setTimeout(hideBubble, autoHideMs);
+      }
+    }
+
+    bubble.addEventListener('click', function(){
+      if(typeof gtag === 'function') gtag('event', 'chatbot_bubble_click');
+      hideBubble();
+      openChat(api._onOpen);
+    });
+
+    setTimeout(function(){
+      if(chatOpenedOnce || bubbleAutoShown) return;
+      bubbleAutoShown = true;
+      if(typeof gtag === 'function') gtag('event', 'chatbot_bubble_auto');
+      showBubble('💬 ¿En qué sector trabajas?<br>Te muestro una demo en 30 segundos', 6000);
+    }, 8000);
+
+    document.addEventListener('mouseleave', function(e){
+      if(bubbleExitShown || chatOpenedOnce) return;
+      if(e.clientY > 5) return;
+      bubbleExitShown = true;
+      if(typeof gtag === 'function') gtag('event', 'chatbot_bubble_exit_intent');
+      showBubble('⏳ Antes de irte — ¿quieres ver la demo para tu sector? Son 30 segundos', 0);
+    });
 
     var swipeStartY = null;
     var headerEl = modal.querySelector('.wm-header');

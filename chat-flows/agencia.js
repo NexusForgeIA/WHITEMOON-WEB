@@ -155,8 +155,8 @@
         ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
         state = 'business';
         w.bot(
-          'Hola 👋 Soy el asistente de <b>WhiteMoon</b>.<br>'+
-          'Cuéntame — ¿a qué se dedica tu negocio?',
+          '¡Hola! 👋 Dime a qué te dedicas y te muestro en 30 segundos cómo quedaría el chatbot en tu negocio.<br>'+
+          '¿Cuál es tu sector?',
           function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
         );
       }
