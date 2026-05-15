@@ -57,58 +57,30 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--bg2:#0e0e16;--text:#f0f0f5;--muted:#8888a0;--border:rgba(124,77,255,.15);}
-html,body{overflow-x:hidden;}
-body{font-family:'Sora','Inter',sans-serif;background:#08080d;color:#f0f0f5;line-height:1.7;-webkit-font-smoothing:antialiased;}
-a{color:#9d70ff;text-decoration:none;}
-a:hover{color:#c084fc;text-decoration:underline;}
-.wrap{max-width:780px;margin:0 auto;padding:0 24px;}
-nav{position:sticky;top:0;background:rgba(8,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(124,77,255,.18);z-index:100;padding:14px 0;}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-nav a{font-weight:700;}
-.back{font-size:.85rem;color:#9090b0;}
-main{padding:60px 0 80px;}
-.art-cat{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9d70ff;padding:4px 12px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);border-radius:50px;margin-bottom:18px;}
-h1{font-family:'Syne','Sora',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;color:#fff;margin-bottom:18px;}
-.art-meta{display:flex;gap:18px;flex-wrap:wrap;color:#9090b0;font-size:.85rem;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(124,77,255,.15);}
-.art-intro{font-size:1.1rem;line-height:1.7;color:#c0c0d0;margin-bottom:32px;padding:24px;background:rgba(124,77,255,.05);border-left:3px solid #9d70ff;border-radius:8px;}
-.art-body h2{font-family:'Syne','Sora',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:40px 0 14px;letter-spacing:-.015em;}
-.art-body h3{font-family:'Syne','Sora',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin:28px 0 10px;}
-.art-body p{margin-bottom:18px;color:#d0d0e0;}
-.art-body ul{margin:0 0 18px 22px;color:#d0d0e0;}
-.art-body li{margin-bottom:8px;}
-.cta-final{margin-top:48px;padding:28px;background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(157,112,255,.06));border:1px solid rgba(124,77,255,.3);border-radius:14px;text-align:center;}
-.cta-final h2{margin-top:0;font-size:1.3rem;}
-.cta-final p{color:#c0c0d0;}
-.btn-cta{display:inline-block;margin-top:14px;padding:13px 26px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s;}
-.btn-cta:hover{transform:translateY(-2px);color:#fff;text-decoration:none;}
-footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border-top:1px solid rgba(124,77,255,.15);}
-</style>
+<link rel="stylesheet" href="/assets/blog.css">
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="/blog/" class="back">← Blog WhiteMoon</a>
-    <a href="https://whitemoon.es/">whitemoon.es</a>
-  </div>
+<nav style="position:sticky;top:0;z-index:100;background:rgba(7,7,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,77,255,0.2);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/blog/" style="font-size:.85rem;color:#8888a8;text-decoration:none;font-weight:700;">← Blog WhiteMoon</a>
+  <a href="https://whitemoon.es/" style="font-size:.85rem;color:#b44dff;text-decoration:none;font-weight:700;">whitemoon.es</a>
 </nav>
 
 <main>
-  <article class="wrap">
-    <div class="art-cat">Agentes IA</div>
-    <h1>¿Qué es un Agente IA para Empresas?</h1>
-    <div class="art-meta">
+  <section class="post-hero">
+    <div class="post-badge">Agentes IA</div>
+    <h1>¿Qué es un Agente IA <em>para Empresas</em>?</h1>
+    <div class="post-meta">
       <span>📅 15 de mayo de 2026</span>
+      <span class="post-meta-dot"></span>
       <span>⏱️ 5 min de lectura</span>
+      <span class="post-meta-dot"></span>
       <span>✍️ Cristobal Martinez · WhiteMoon</span>
     </div>
+  </section>
 
-    <div class="art-intro">Un Agente IA no es un chatbot que responde preguntas. Es un sistema que conversa en lenguaje natural, razona sobre los documentos de tu empresa y ejecuta acciones (cualificar leads, agendar citas, cerrar ventas) sin intervención humana 24/7.</div>
-
-    <div class="art-body">
+  <article class="post-content">
+    <div class="post-callout">Un Agente IA no es un chatbot que responde preguntas. Es un sistema que conversa en lenguaje natural, razona sobre los documentos de tu empresa y ejecuta acciones (cualificar leads, agendar citas, cerrar ventas) sin intervención humana 24/7.</div>
 
 <h2>Definición práctica de Agente IA</h2>
 <p>Un <strong>Agente IA</strong> es un sistema de inteligencia artificial conversacional con tres capacidades clave que lo distinguen de un chatbot clásico:</p>
@@ -145,18 +117,15 @@ footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border
 <h2>Cuánto cuesta un Agente IA en 2026</h2>
 <p>WhiteMoon ofrece 4 packs reales, sin permanencia y con precios públicos. El Pack <strong>Spark</strong> desde 499€ setup + 199€/mes para autónomos y negocios pequeños. El Pack <strong>Core</strong> 1.800€ + 199€/mes incluye además web profesional. <strong>Scale</strong> y <strong>Elite</strong> (4.500€ y 8.500€) para empresas medianas y corporativos con necesidades RAG avanzadas o integración CRM. <a href="/precio-agente-ia/">Mira los precios detallados y la calculadora ROI aquí</a>.</p>
 
-<div class="cta-final">
+<div class="post-cta">
   <h2 style="margin-bottom:8px">¿Quieres ver un Agente IA en acción?</h2>
   <p>Habla ahora mismo con nuestro Agente IA. Es la mejor demo: el propio bot te enseña qué puede hacer.</p>
   <button type="button" class="btn-cta" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}">Habla con nuestro Agente IA →</button>
-</div>
-
-    </div>
   </article>
 </main>
 
-<footer>
-  © 2025-2026 <a href="https://whitemoon.es/">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/">Más artículos</a>
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="https://whitemoon.es/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Más artículos</a>
 </footer>
 
 <script src="/chatbot.js" defer></script>

@@ -56,67 +56,30 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--text:#f0f0f5;--muted:#8888a0;}
-html,body{overflow-x:hidden;}
-body{font-family:'Sora','Inter',sans-serif;background:#08080d;color:#f0f0f5;line-height:1.7;-webkit-font-smoothing:antialiased;}
-a{color:#9d70ff;text-decoration:none;}
-a:hover{color:#c084fc;text-decoration:underline;}
-.wrap{max-width:780px;margin:0 auto;padding:0 24px;}
-nav{position:sticky;top:0;background:rgba(8,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(124,77,255,.18);z-index:100;padding:14px 0;}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-nav a{font-weight:700;}
-.back{font-size:.85rem;color:#9090b0;}
-main{padding:60px 0 80px;}
-.art-cat{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#9d70ff;padding:4px 12px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);border-radius:50px;margin-bottom:18px;}
-h1{font-family:'Syne','Sora',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;color:#fff;margin-bottom:18px;}
-.art-meta{display:flex;gap:18px;flex-wrap:wrap;color:#9090b0;font-size:.85rem;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(124,77,255,.15);}
-.art-intro{font-size:1.1rem;line-height:1.7;color:#c0c0d0;margin-bottom:32px;padding:24px;background:rgba(124,77,255,.05);border-left:3px solid #9d70ff;border-radius:8px;}
-.art-body h2{font-family:'Syne','Sora',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:40px 0 14px;letter-spacing:-.015em;}
-.art-body h3{font-family:'Syne','Sora',sans-serif;font-size:1.2rem;font-weight:700;color:#9d70ff;margin:28px 0 10px;}
-.art-body p{margin-bottom:18px;color:#d0d0e0;}
-.art-body ul,.art-body ol{margin:0 0 18px 22px;color:#d0d0e0;}
-.art-body li{margin-bottom:8px;}
-.diff-num{display:inline-block;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-align:center;line-height:36px;font-weight:800;font-family:'Syne',sans-serif;margin-right:10px;vertical-align:middle;}
-.compara-table{width:100%;margin:24px 0;border-collapse:separate;border-spacing:0;border:1px solid rgba(124,77,255,.2);border-radius:12px;overflow:hidden;}
-.compara-table th,.compara-table td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.06);font-size:.88rem;}
-.compara-table th{background:rgba(124,77,255,.1);color:#fff;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;}
-.compara-table tr:last-child td{border-bottom:0;}
-.compara-table .bad{color:#ef4444;}
-.compara-table .good{color:#22c55e;font-weight:700;}
-.cta-final{margin-top:48px;padding:28px;background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(157,112,255,.06));border:1px solid rgba(124,77,255,.3);border-radius:14px;text-align:center;}
-.cta-final h2{margin-top:0;font-size:1.3rem;}
-.cta-final p{color:#c0c0d0;}
-.btn-cta{display:inline-block;margin-top:14px;padding:13px 26px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s;}
-.btn-cta:hover{transform:translateY(-2px);color:#fff;text-decoration:none;}
-.btn-sec{display:inline-block;margin-top:14px;margin-left:8px;padding:13px 26px;background:transparent;color:#9d70ff;border:1px solid rgba(124,77,255,.5);border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:600;text-decoration:none;transition:all .2s;}
-.btn-sec:hover{color:#c084fc;border-color:rgba(124,77,255,.8);text-decoration:none;}
-footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border-top:1px solid rgba(124,77,255,.15);}
-</style>
+<link rel="stylesheet" href="/assets/blog.css">
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="/blog/" class="back">← Blog WhiteMoon</a>
-    <a href="https://whitemoon.es/">whitemoon.es</a>
-  </div>
+<nav style="position:sticky;top:0;z-index:100;background:rgba(7,7,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,77,255,0.2);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/blog/" style="font-size:.85rem;color:#8888a8;text-decoration:none;font-weight:700;">← Blog WhiteMoon</a>
+  <a href="https://whitemoon.es/" style="font-size:.85rem;color:#b44dff;text-decoration:none;font-weight:700;">whitemoon.es</a>
 </nav>
 
 <main>
-  <article class="wrap">
-    <div class="art-cat">Comparativas</div>
-    <h1>Agente IA vs Chatbot: Las 6 Diferencias que Importan</h1>
-    <div class="art-meta">
+  <section class="post-hero">
+    <div class="post-badge">Comparativa</div>
+    <h1>Agente IA vs Chatbot: <em>Las 6 Diferencias</em> que Importan</h1>
+    <div class="post-meta">
       <span>📅 15 de mayo de 2026</span>
+      <span class="post-meta-dot"></span>
       <span>⏱️ 5 min de lectura</span>
+      <span class="post-meta-dot"></span>
       <span>✍️ Cristobal Martinez · WhiteMoon</span>
     </div>
+  </section>
 
-    <div class="art-intro">"Chatbot" y "Agente IA" suenan parecido pero generan resultados radicalmente distintos para tu empresa. Aquí van las 6 diferencias que cambian si tu chat convierte 5% o 60% de las conversaciones en leads cualificados.</div>
-
-    <div class="art-body">
+  <article class="post-content">
+    <div class="post-callout">"Chatbot" y "Agente IA" suenan parecido pero generan resultados radicalmente distintos para tu empresa. Aquí van las 6 diferencias que cambian si tu chat convierte 5% o 60% de las conversaciones en leads cualificados.</div>
 
 <h2>Por qué importa la diferencia</h2>
 <p>Si estás evaluando soluciones IA para tu negocio probablemente has visto los dos términos mezclados. Las plataformas tipo ManyChat o Tidio se autodenominan "chatbots con IA". WhiteMoon es un "Agente IA". ¿Es solo marketing diferenciador o hay algo real?</p>
@@ -178,19 +141,16 @@ footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border
 <p>Si tu objetivo es solo responder horarios, ubicación y precios fijos, un chatbot tradicional puede bastar. Si quieres <strong>convertir tráfico web en leads cualificados, automatizar atención 24/7 y reducir carga del equipo</strong>, el Agente IA es la opción que escala con tu negocio sin tener que contratar más personal.</p>
 <p>Si quieres profundizar en cuál encaja contigo, <a href="/agente-ia-vs-chatbot/">esta página tiene tabla extendida + 3 casos sectoriales</a>.</p>
 
-<div class="cta-final">
+<div class="post-cta">
   <h2 style="margin-bottom:8px">¿Listo para ver la diferencia en tu sector?</h2>
   <p>Habla ahora con nuestro Agente IA. La mejor demo es que lo pruebes tú.</p>
   <button type="button" class="btn-cta" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}">Habla con Agente IA →</button>
   <a href="/precio-agente-ia/" class="btn-sec">Ver precios →</a>
-</div>
-
-    </div>
   </article>
 </main>
 
-<footer>
-  © 2025-2026 <a href="https://whitemoon.es/">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/">Más artículos</a>
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="https://whitemoon.es/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Más artículos</a>
 </footer>
 
 <script src="/chatbot.js" defer></script>

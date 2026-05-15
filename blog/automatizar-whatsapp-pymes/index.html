@@ -57,65 +57,30 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--text:#f0f0f5;--muted:#8888a0;}
-html,body{overflow-x:hidden;}
-body{font-family:'Sora','Inter',sans-serif;background:#08080d;color:#f0f0f5;line-height:1.7;-webkit-font-smoothing:antialiased;}
-a{color:#9d70ff;text-decoration:none;}
-a:hover{color:#c084fc;text-decoration:underline;}
-.wrap{max-width:780px;margin:0 auto;padding:0 24px;}
-nav{position:sticky;top:0;background:rgba(8,8,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(124,77,255,.18);z-index:100;padding:14px 0;}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;}
-nav a{font-weight:700;}
-.back{font-size:.85rem;color:#9090b0;}
-main{padding:60px 0 80px;}
-.art-cat{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#22c55e;padding:4px 12px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:50px;margin-bottom:18px;}
-h1{font-family:'Syne','Sora',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;color:#fff;margin-bottom:18px;}
-.art-meta{display:flex;gap:18px;flex-wrap:wrap;color:#9090b0;font-size:.85rem;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(124,77,255,.15);}
-.art-intro{font-size:1.1rem;line-height:1.7;color:#c0c0d0;margin-bottom:32px;padding:24px;background:rgba(34,197,94,.06);border-left:3px solid #22c55e;border-radius:8px;}
-.art-body h2{font-family:'Syne','Sora',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:40px 0 14px;letter-spacing:-.015em;}
-.art-body h3{font-family:'Syne','Sora',sans-serif;font-size:1.15rem;font-weight:700;color:#fff;margin:28px 0 10px;}
-.art-body p{margin-bottom:18px;color:#d0d0e0;}
-.art-body ul,.art-body ol{margin:0 0 18px 22px;color:#d0d0e0;}
-.art-body li{margin-bottom:8px;}
-.caso-box{padding:20px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.18);border-radius:12px;margin:14px 0;}
-.caso-box .sector{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#9d70ff;font-weight:700;margin-bottom:6px;}
-.caso-box h3{margin:0 0 6px;color:#fff;font-size:1rem;}
-.caso-box p{margin:0;color:#c0c0d0;font-size:.92rem;line-height:1.6;}
-.caso-box .delta{display:block;margin-top:10px;color:#22c55e;font-weight:700;font-size:.84rem;}
-.cta-final{margin-top:48px;padding:28px;background:linear-gradient(135deg,rgba(34,197,94,.12),rgba(20,140,80,.06));border:1px solid rgba(34,197,94,.3);border-radius:14px;text-align:center;}
-.cta-final h2{margin-top:0;font-size:1.3rem;}
-.cta-final p{color:#c0c0d0;}
-.btn-cta{display:inline-block;margin-top:14px;padding:13px 26px;background:linear-gradient(135deg,#22c55e,#15803d);color:#fff;border:0;border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:transform .2s;}
-.btn-cta:hover{transform:translateY(-2px);color:#fff;text-decoration:none;}
-.btn-sec{display:inline-block;margin-top:14px;margin-left:8px;padding:13px 26px;background:transparent;color:#9d70ff;border:1px solid rgba(124,77,255,.5);border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:600;text-decoration:none;transition:all .2s;}
-.btn-sec:hover{color:#c084fc;border-color:rgba(124,77,255,.8);text-decoration:none;}
-footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border-top:1px solid rgba(124,77,255,.15);}
-</style>
+<link rel="stylesheet" href="/assets/blog.css">
 </head>
 <body>
 
-<nav>
-  <div class="wrap">
-    <a href="/blog/" class="back">← Blog WhiteMoon</a>
-    <a href="https://whitemoon.es/">whitemoon.es</a>
-  </div>
+<nav style="position:sticky;top:0;z-index:100;background:rgba(7,7,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,77,255,0.2);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;">
+  <a href="/blog/" style="font-size:.85rem;color:#8888a8;text-decoration:none;font-weight:700;">← Blog WhiteMoon</a>
+  <a href="https://whitemoon.es/" style="font-size:.85rem;color:#b44dff;text-decoration:none;font-weight:700;">whitemoon.es</a>
 </nav>
 
 <main>
-  <article class="wrap">
-    <div class="art-cat">WhatsApp Business</div>
-    <h1>Cómo Automatizar WhatsApp en tu PYME con IA</h1>
-    <div class="art-meta">
+  <section class="post-hero">
+    <div class="post-badge">Automatización</div>
+    <h1>Cómo Automatizar WhatsApp <em>en tu PYME</em> con IA</h1>
+    <div class="post-meta">
       <span>📅 15 de mayo de 2026</span>
+      <span class="post-meta-dot"></span>
       <span>⏱️ 6 min de lectura</span>
+      <span class="post-meta-dot"></span>
       <span>✍️ Cristobal Martinez · WhiteMoon</span>
     </div>
+  </section>
 
-    <div class="art-intro">El 60% de los leads que recibe una PYME por WhatsApp llega fuera de horario laboral. Si nadie responde en 5 minutos, las probabilidades de cierre caen un 80%. Aquí explicamos cómo automatizar WhatsApp con IA, qué dice la ley en España y casos reales por sector.</div>
-
-    <div class="art-body">
+  <article class="post-content">
+    <div class="post-callout">El 60% de los leads que recibe una PYME por WhatsApp llega fuera de horario laboral. Si nadie responde en 5 minutos, las probabilidades de cierre caen un 80%. Aquí explicamos cómo automatizar WhatsApp con IA, qué dice la ley en España y casos reales por sector.</div>
 
 <h2>El problema: leads perdidos fuera de horario</h2>
 <p>Tu empresa recibe un mensaje a las 11pm. El cliente está investigando opciones, te ha encontrado por Google, te escribe con prisa antes de irse a dormir. Al día siguiente, esa persona ya ha elegido a otra. La realidad estadística del 73% de las pymes españolas en 2026.</p>
@@ -187,19 +152,16 @@ footer{padding:32px 24px;text-align:center;font-size:.82rem;color:#5a5a70;border
 </ol>
 <p>A partir del día 8 ya estás captando leads 24/7. Si quieres empezar, <a href="/precio-agente-ia/">aquí están los precios y la calculadora ROI</a>.</p>
 
-<div class="cta-final">
+<div class="post-cta">
   <h2 style="margin-bottom:8px">¿Empezamos a captar leads 24/7?</h2>
   <p>Demo gratuita personalizada. Implementación en 7 días. Sin permanencia.</p>
   <button type="button" class="btn-cta" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}">Habla con Agente IA →</button>
   <a href="/precio-agente-ia/" class="btn-sec">Ver precios →</a>
-</div>
-
-    </div>
   </article>
 </main>
 
-<footer>
-  © 2025-2026 <a href="https://whitemoon.es/">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/">Más artículos</a>
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="https://whitemoon.es/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Más artículos</a>
 </footer>
 
 <script src="/chatbot.js" defer></script>
