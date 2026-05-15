@@ -715,11 +715,34 @@
         });
       }
 
+      // ─── DETECCIÓN DE DESPEDIDA ───────────────────────────────────────────
+      var DESPEDIDAS = [
+        'nada','gracias','adios','adiós','bye',
+        'no gracias','nada mas','nada más',
+        'hasta luego','ok gracias','perfecto gracias',
+        'ya está','ya esta','no necesito','no me interesa',
+        'no por ahora','otro dia','otro día'
+      ];
+
+      function esDespedida(txt){
+        var t = txt.toLowerCase().trim();
+        return DESPEDIDAS.some(function(d){
+          return t === d || t.indexOf(d) >= 0;
+        });
+      }
+
       // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
       function route(text){
         text = (text || '').trim();
         if(!text) return;
         w.addUser(text);
+
+        // despedida → cerrar con elegancia, sin captura
+        if(esDespedida(text)){
+          w.bot('¡Hasta pronto! 👋 Cuando quieras más clientes, aquí estaremos. ¡Mucho éxito con tu negocio!');
+          return;
+        }
+
         var t = u.normalize(text);
         var words = t.split(/\s+/).filter(Boolean);
 
