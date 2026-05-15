@@ -731,6 +731,19 @@
         });
       }
 
+      // ─── DETECCIÓN DE INTERÉS ─────────────────────────────────────────────
+      var INTERES = [
+        'me interesa','interesa','quiero','si quiero',
+        'sí quiero','adelante','vamos','empezamos',
+        'me apunto','quiero saber mas','quiero saber más',
+        'si','sí','claro','por supuesto','dale'
+      ];
+
+      function esInteres(txt){
+        var t = txt.toLowerCase().trim();
+        return INTERES.some(function(d){ return t === d; });
+      }
+
       // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
       function route(text){
         text = (text || '').trim();
@@ -740,6 +753,12 @@
         // despedida → cerrar con elegancia, sin captura
         if(esDespedida(text)){
           w.bot('¡Hasta pronto! 👋 Cuando quieras más clientes, aquí estaremos. ¡Mucho éxito con tu negocio!');
+          return;
+        }
+
+        // interés directo → captura inmediata (route() solo corre fuera de captura)
+        if(esInteres(text)){
+          capturaNatural('Interés directo · ' + (ctx.sectorLabel || 'General'));
           return;
         }
 
