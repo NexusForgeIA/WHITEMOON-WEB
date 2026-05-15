@@ -34,10 +34,11 @@
         ctx.descripcion = ctx.descripcion ? (ctx.descripcion + ' · ' + text) : text;
       }
 
-      function doCapture(tramite, detalleStr){
+      function doCapture(tramite, detalleStr, origen){
         var sec  = ctx.sectorLabel || 'General';
         var desc = (ctx.descripcion || '—').replace(/[{}\r\n]+/g, ' ').trim();
         var detalle = detalleStr || ('Sector: ' + sec + ' | Descripción: ' + desc);
+        var origenLabel = origen || 'whitemoon.es';
         var waTpl =
           '💼 NUEVO LEAD WHITEMOON\n' +
           '━━━━━━━━━━━━━━━\n' +
@@ -45,7 +46,7 @@
           '🏢 Sector: ' + sec + '\n' +
           '💬 Descripción: ' + desc + '\n' +
           '🎯 Interés: {tramite}\n' +
-          '📍 Origen: whitemoon.es · chatbot\n' +
+          '📍 Origen: ' + origenLabel + ' · chatbot\n' +
           '━━━━━━━━━━━━━━━\n' +
           'Llamar en menos de 1 hora';
         w.startCapture({
@@ -57,7 +58,8 @@
           sector:      sec,
           descripcion: desc,
           waTemplate:  waTpl,
-          finish:      FINISH
+          finish:      FINISH,
+          origen:      origen
         });
       }
 
@@ -643,11 +645,11 @@
         if(!ctx.sectorLabel) ctx.sectorLabel = sectorLabel;
         var tramite = sectorOpt ? ('Agente IA · ' + sectorLabel) : 'Agente IA · conversión';
         addDesc(
-          'Agentes IA · origen:chatbot-agentes-ia · sector:' + sectorLabel +
+          'Agentes IA · sector:' + sectorLabel +
           ' · visitas:' + (data.visitas || '') +
           ' · problema:' + (data.problema || '')
         );
-        doCapture(tramite);
+        doCapture(tramite, null, 'chatbot-agentes-ia');
       }
 
       // ─── FLUJO RAG (sistemas con documentos) ──────────────────────────────
