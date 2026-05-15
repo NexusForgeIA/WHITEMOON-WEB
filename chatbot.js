@@ -455,10 +455,28 @@
       var t = String(text || '').toLowerCase().trim();
       return NAME_INTERES_WORDS.indexOf(t) >= 0;
     }
+    var DESPEDIDAS_CAPTURA = [
+      'no','no gracias','nada','gracias','adios',
+      'adiós','bye','no quiero','no me interesa',
+      'déjalo','dejalo','olvídalo','olvidalo',
+      'no por ahora','otro día','otro dia'
+    ];
+    function esDespedidaCaptura(txt){
+      var t = txt.toLowerCase().trim();
+      return DESPEDIDAS_CAPTURA.some(function(d){
+        return t === d;
+      });
+    }
     function handleCaptureInput(text){
       if(!captureCtx) return;
       if(captureCtx.step === 1){
         var nameRaw = text.trim();
+        if(esDespedidaCaptura(nameRaw)){
+          addUser(nameRaw);
+          resetState();
+          bot('¡Hasta pronto! 👋 Cuando quieras más clientes aquí estaremos. ¡Mucho éxito!');
+          return;
+        }
         if(looksLikeInteres(nameRaw)){
           addUser(nameRaw);
           botText('¡Genial! 😊 Para llamarte, ¿cómo te llamas?');
