@@ -3056,47 +3056,134 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
 // ── STAR FIELD ──
 (function(){
-  const canvas=document.getElementById('star-canvas');
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  function resize(){canvas.width=canvas.offsetWidth;canvas.height=canvas.offsetHeight;}
-  window.addEventListener('resize',()=>{resize();initStars();});
-  resize();
-  const STAR_COUNT=380, stars=[];
-  const STAR_COLORS=['rgba(255,255,255,A)','rgba(255,255,255,A)','rgba(255,255,255,A)','rgba(200,180,255,A)','rgba(180,220,255,A)','rgba(150,255,230,A)'];
+  var c=document.getElementById('star-canvas');
+  if(!c)return;
+  var ctx=c.getContext('2d');
+  var W,H,stars=[],shooters=[];
+  var STAR_COUNT=200;
+  var COLORS=['rgba(255,255,255,0.9)','rgba(255,255,255,0.7)',
+    'rgba(255,255,255,0.5)','rgba(180,150,255,0.8)',
+    'rgba(150,180,255,0.7)','rgba(150,255,200,0.6)'];
+
+  function resize(){
+    W=c.width=c.offsetWidth;
+    H=c.height=c.offsetHeight;
+  }
+
   function initStars(){
-    stars.length=0;
-    for(let i=0;i<STAR_COUNT;i++){
-      const colorTpl=STAR_COLORS[Math.floor(Math.random()*STAR_COLORS.length)];
-      stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.8+0.15,alpha:Math.random()*0.75+0.2,speed:Math.random()*0.007+0.002,phase:Math.random()*Math.PI*2,color:colorTpl});
+    stars=[];
+    for(var i=0;i<STAR_COUNT;i++){
+      var r=Math.random()*1.5+0.3;
+      stars.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:r,
+        speed:Math.random()*0.3+0.05,
+        phase:Math.random()*Math.PI*2,
+        color:COLORS[Math.floor(Math.random()*COLORS.length)],
+        big:r>1.2
+      });
     }
   }
-  initStars();
-  const shooters=[];
-  function spawnShooter(){shooters.push({x:Math.random()*canvas.width*0.7,y:Math.random()*canvas.height*0.4,len:Math.random()*120+60,speed:Math.random()*8+6,alpha:1,angle:Math.PI/5+Math.random()*0.3});}
-  setInterval(spawnShooter,2200);
-  let t=0;
-  function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    t+=0.012;
-    stars.forEach(s=>{
-      const a=s.alpha*(0.5+0.5*Math.sin(t*s.speed*60+s.phase));
-      const col=s.color.replace('A',a.toFixed(3));
-      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=col;ctx.fill();
-      if(s.r>1.2){ctx.beginPath();ctx.arc(s.x,s.y,s.r*2.5,0,Math.PI*2);ctx.fillStyle=col.replace(a.toFixed(3),(a*0.12).toFixed(3));ctx.fill();}
+
+  function spawnShooter(){
+    if(document.hidden||!isVisible)return;
+    shooters.push({
+      x:Math.random()*W*0.7,
+      y:Math.random()*H*0.3,
+      vx:4+Math.random()*3,
+      vy:1.5+Math.random()*2,
+      life:1
     });
-    for(let i=shooters.length-1;i>=0;i--){
-      const s=shooters[i];
-      const dx=Math.cos(s.angle)*s.len,dy=Math.sin(s.angle)*s.len;
-      const grad=ctx.createLinearGradient(s.x,s.y,s.x+dx,s.y+dy);
-      grad.addColorStop(0,'rgba(255,255,255,0)');grad.addColorStop(0.4,`rgba(200,180,255,${s.alpha*0.6})`);grad.addColorStop(1,`rgba(255,255,255,${s.alpha})`);
-      ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x+dx,s.y+dy);ctx.strokeStyle=grad;ctx.lineWidth=1.5;ctx.stroke();
-      s.x+=Math.cos(s.angle)*s.speed;s.y+=Math.sin(s.angle)*s.speed;s.alpha-=0.012;
-      if(s.alpha<=0)shooters.splice(i,1);
-    }
-    requestAnimationFrame(draw);
   }
-  draw();
+
+  var lastFrame=0;
+  var FPS_CAP=30;
+  var FRAME_MS=1000/FPS_CAP;
+  var isVisible=true;
+  var animId=null;
+
+  function draw(ts){
+    animId=requestAnimationFrame(draw);
+    if(ts-lastFrame<FRAME_MS)return;
+    lastFrame=ts;
+    if(!isVisible||document.hidden)return;
+
+    ctx.clearRect(0,0,W,H);
+    var t=ts*0.001;
+
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i];
+      var a=0.4+0.5*Math.sin(t*s.speed+s.phase);
+      ctx.globalAlpha=a;
+      ctx.fillStyle=s.color;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,6.2832);
+      ctx.fill();
+      if(s.big){
+        ctx.globalAlpha=a*0.2;
+        ctx.beginPath();
+        ctx.arc(s.x,s.y,s.r*2.5,0,6.2832);
+        ctx.fill();
+      }
+    }
+
+    ctx.globalAlpha=1;
+    for(var j=shooters.length-1;j>=0;j--){
+      var sh=shooters[j];
+      sh.x+=sh.vx;sh.y+=sh.vy;sh.life-=0.025;
+      if(sh.life<=0||sh.x>W||sh.y>H){shooters.splice(j,1);continue;}
+      var g=ctx.createLinearGradient(
+        sh.x,sh.y,sh.x-sh.vx*8,sh.y-sh.vy*8);
+      g.addColorStop(0,'rgba(255,255,255,'+sh.life+')');
+      g.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.strokeStyle=g;
+      ctx.lineWidth=1.5;
+      ctx.beginPath();
+      ctx.moveTo(sh.x,sh.y);
+      ctx.lineTo(sh.x-sh.vx*8,sh.y-sh.vy*8);
+      ctx.stroke();
+    }
+  }
+
+  // B — IntersectionObserver: pausa cuando hero fuera de viewport
+  var hero=document.querySelector('.hero');
+  if(hero&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(entries){
+      isVisible=entries[0].isIntersecting;
+    },{threshold:0.1}).observe(hero);
+  }
+
+  // C — Pausa cuando tab en background
+  document.addEventListener('visibilitychange',function(){
+    if(!document.hidden&&!animId){
+      lastFrame=0;
+      animId=requestAnimationFrame(draw);
+    }
+  });
+
+  // D — prefers-reduced-motion: dibuja estrellas estáticas sin animar
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    resize();initStars();
+    for(var i=0;i<stars.length;i++){
+      var s=stars[i];
+      ctx.globalAlpha=0.6;
+      ctx.fillStyle=s.color;
+      ctx.beginPath();
+      ctx.arc(s.x,s.y,s.r,0,6.2832);
+      ctx.fill();
+    }
+    return;
+  }
+
+  window.addEventListener('resize',function(){
+    resize();initStars();
+  });
+
+  setInterval(spawnShooter,2200);
+  resize();
+  initStars();
+  requestAnimationFrame(draw);
 })();
 </script>
 
