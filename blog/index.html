@@ -11,7 +11,7 @@
 <meta property="og:description" content="Artículos sobre chatbots IA, agentes, GEO y automatización para pymes en Madrid. Sin tecnicismos.">
 <meta property="og:url" content="https://whitemoon.es/blog/">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#7c4dff">
+<meta name="theme-color" content="#b44dff">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,7 +31,11 @@
     }
   },
   "blogPost": [
-    {"@type": "BlogPosting", "headline": "GEO: por qué tu web necesita ser citada por la IA, no solo por Google", "datePublished": "2026-04-14", "author": {"@type": "Person", "name": "Cristóbal Martínez"}},
+    {"@type": "BlogPosting", "headline": "¿Qué es un Agente IA? Guía completa para empresas 2026", "datePublished": "2026-05-15", "author": {"@type": "Person", "name": "Cristobal Martinez"}},
+    {"@type": "BlogPosting", "headline": "Cuánto Cuesta Implementar IA en tu Negocio: Precios Reales 2026", "datePublished": "2026-05-15"},
+    {"@type": "BlogPosting", "headline": "Agente IA vs Chatbot: 6 Diferencias que Cambian tu Negocio", "datePublished": "2026-05-15"},
+    {"@type": "BlogPosting", "headline": "Automatizar WhatsApp para PYMEs: Guía Práctica 2026", "datePublished": "2026-05-15"},
+    {"@type": "BlogPosting", "headline": "GEO: por qué tu web necesita ser citada por la IA, no solo por Google", "datePublished": "2026-04-14"},
     {"@type": "BlogPosting", "headline": "Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme", "datePublished": "2026-04-10"},
     {"@type": "BlogPosting", "headline": "Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026", "datePublished": "2026-04-07"},
     {"@type": "BlogPosting", "headline": "RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información", "datePublished": "2026-03-28"},
@@ -40,260 +44,72 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/blog.css">
 <style>
-:root {
-  --ink: #FFFFFF;
-  --purple: #7C4DFF;
-  --purple-dim: #B39DFF;
-  --cream: #1A1530;
-  --warm: #0D0B1A;
-  --mid: #9A96B8;
-  --soft: #1E1B30;
-  --border: rgba(124,77,255,0.18);
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Outfit', system-ui, sans-serif;
-}
-*{margin:0;padding:0;box-sizing:border-box;}
+/* Navbar + footer compactos (no cubierto por blog.css) */
+*{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--warm);color:var(--ink);line-height:1.6;}
-
-/* NAV */
-nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(13,11,26,0.92);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:0 6%;height:62px;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--ink);}
-.nav-logo span{color:var(--purple);}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--blog-bg);color:var(--blog-text);line-height:1.6;}
+nav{position:sticky;top:0;z-index:100;background:rgba(7,7,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--blog-border);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:800;color:var(--blog-text);}
+.nav-logo span{color:var(--blog-neon-purple);}
 .nav-right{display:flex;align-items:center;gap:1.5rem;}
-.nav-right a{font-size:0.82rem;color:var(--mid);text-decoration:none;transition:color 0.2s;}
-.nav-right a:hover{color:var(--purple);}
-.nav-cta{background:#0D0B1A;color:white!important;padding:0.45rem 1.1rem;border-radius:2px;font-weight:500!important;}
-.nav-cta:hover{background:var(--purple)!important;}
+.nav-right a{font-size:0.82rem;color:var(--blog-muted);text-decoration:none;transition:color 0.2s;}
+.nav-right a:hover{color:var(--blog-neon-cyan);}
+.nav-cta{background:transparent;color:#fff!important;padding:0.45rem 1.1rem;border:1px solid rgba(180,77,255,0.5);border-radius:8px;font-weight:600!important;transition:all .2s;}
+.nav-cta:hover{background:var(--blog-neon-purple)!important;border-color:var(--blog-neon-purple)!important;}
+footer{padding:48px 6% 32px;text-align:center;border-top:1px solid var(--blog-border);color:var(--blog-muted);font-size:.82rem;background:var(--blog-bg);}
+footer .footer-logo{font-family:'Inter',sans-serif;font-size:1rem;font-weight:800;color:var(--blog-text);margin-bottom:8px;}
+footer .footer-logo span{color:var(--blog-neon-purple);}
+footer a{color:var(--blog-neon-purple);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
 
-/* HERO BLOG */
-.blog-hero{
-  padding:5rem 6% 4rem;
-  border-bottom:1px solid var(--border);
-  position:relative;overflow:hidden;
-}
-.blog-hero::before{
-  content:'';position:absolute;top:-80px;right:-80px;
-  width:500px;height:500px;border-radius:50%;
-  background:radial-gradient(circle,rgba(124,77,255,0.08) 0%,transparent 70%);
-  pointer-events:none;
-}
-.blog-kicker{
-  font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--purple);margin-bottom:1rem;
-  display:flex;align-items:center;gap:0.6rem;
-}
-.blog-kicker::before{content:'';width:20px;height:1px;background:var(--purple);}
-.blog-hero h1{
-  font-family:var(--serif);
-  font-size:clamp(2.4rem,5vw,4rem);
-  line-height:1.08;letter-spacing:-0.02em;
-  max-width:680px;margin-bottom:1.25rem;
-}
-.blog-hero h1 em{font-style:italic;color:var(--purple);}
-.blog-hero p{
-  font-size:1rem;color:var(--mid);
-  max-width:520px;font-weight:300;line-height:1.7;
-}
+/* Banner prueba social LLMs (preservado, adaptado a paleta neon) */
+.social-proof{max-width:1200px;margin:0 auto 36px;padding:0 24px;}
+.social-proof-inner{background:linear-gradient(135deg,#1a0f3d 0%,#2a1855 50%,#1a1530 100%);border:1px solid rgba(180,77,255,0.55);border-radius:20px;padding:32px 36px;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(180,77,255,0.15),0 12px 48px rgba(180,77,255,0.18);}
+.social-proof-inner::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(180,77,255,0.22) 0%,transparent 70%);pointer-events:none;}
+.social-proof .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,255,136,.12);border:1px solid rgba(0,255,136,.35);color:var(--blog-neon-green);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;position:relative;}
+.social-proof h2{font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;color:#fff;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px;position:relative;}
+.social-proof h2 em{font-style:normal;background:linear-gradient(135deg,var(--blog-neon-purple),var(--blog-neon-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.social-proof .desc{font-size:.95rem;color:#c8c4e0;line-height:1.65;max-width:680px;margin-bottom:24px;position:relative;}
+.social-proof .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:24px;max-width:680px;position:relative;}
+.social-proof .quote-card{background:rgba(13,11,26,.55);border:1px solid rgba(180,77,255,.22);border-radius:12px;padding:18px;position:relative;}
+.social-proof .quote-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blog-neon-purple),var(--blog-neon-cyan));border-radius:12px 12px 0 0;}
+.social-proof .quote-source{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blog-neon-purple);margin-bottom:10px;}
+.social-proof .quote-text{font-size:.82rem;color:#e0dcf2;line-height:1.6;font-style:italic;margin-bottom:10px;}
+.social-proof .quote-date{font-size:.7rem;color:var(--blog-muted);font-weight:500;}
+.social-proof .cta-btn{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;font-weight:700;color:#08080d;background:linear-gradient(135deg,var(--blog-neon-purple),var(--blog-neon-cyan));padding:11px 22px;border-radius:9px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(180,77,255,.32);position:relative;}
+.social-proof .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(180,77,255,.4);}
 
-/* GRID ARTÍCULOS */
-.blog-grid-section{padding:4rem 6% 5rem;}
-.grid-label{
-  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;
-  color:#9A96B8;margin-bottom:2.5rem;
-  display:flex;align-items:center;gap:0.75rem;
-}
-.grid-label::after{content:'';flex:1;height:1px;background:var(--border);}
+/* Newsletter compacto */
+.newsletter{max-width:1200px;margin:48px auto;padding:0 24px;}
+.newsletter-inner{background:var(--blog-surface);border:1px solid var(--blog-border);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.newsletter h2{font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.2;}
+.newsletter h2 em{font-style:normal;color:var(--blog-neon-purple);}
+.newsletter p{font-size:.9rem;color:var(--blog-muted);margin-top:10px;}
+.newsletter .form{display:flex;gap:0;}
+.newsletter input{flex:1;border:1px solid var(--blog-border);background:rgba(255,255,255,0.04);padding:.85rem 1rem;color:#fff;font-family:inherit;font-size:.88rem;border-radius:10px 0 0 10px;outline:none;}
+.newsletter input::placeholder{color:var(--blog-muted);}
+.newsletter button{background:linear-gradient(135deg,var(--blog-neon-purple),var(--blog-neon-cyan));color:#08080d;border:none;padding:.85rem 1.4rem;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:800;border-radius:0 10px 10px 0;transition:transform .2s;white-space:nowrap;}
+.newsletter button:hover{transform:translateY(-1px);}
+@media(max-width:700px){.newsletter-inner{grid-template-columns:1fr;padding:32px 24px;gap:24px;}.newsletter input{border-radius:10px 10px 0 0;}.newsletter button{border-radius:0 0 10px 10px;}}
 
-.articles-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap:0;
-  border:1px solid var(--border);
-}
-
-/* ARTÍCULO CARD */
-.art-card{
-  padding:2.25rem 2rem;
-  border-right:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  position:relative;overflow:hidden;
-  transition:background 0.3s;
-  cursor:pointer;
-  text-decoration:none;
-  color:inherit;
-  display:flex;flex-direction:column;
-}
-.art-card:nth-child(3n){border-right:none;}
-.art-card:nth-child(4),.art-card:nth-child(5),.art-card:nth-child(6){border-bottom:none;}
-.art-card::after{
-  content:'';position:absolute;bottom:0;left:0;
-  width:0;height:2px;background:var(--purple);
-  transition:width 0.4s ease;
-}
-.art-card:hover{background:#151228;}
-.art-card:hover::after{width:100%;}
-
-.art-tag{
-  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--purple);font-weight:600;margin-bottom:0.875rem;
-  display:flex;align-items:center;gap:0.5rem;
-}
-.art-tag-dot{width:5px;height:5px;background:var(--purple);border-radius:50%;}
-
-.art-num{
-  font-family:var(--serif);font-size:3rem;
-  color:rgba(124,77,255,0.08);
-  position:absolute;top:1.25rem;right:1.5rem;
-  line-height:1;font-weight:900;
-  pointer-events:none;
-}
-
-.art-title{
-  font-family:var(--serif);
-  font-size:1.25rem;
-  line-height:1.25;
-  letter-spacing:-0.01em;
-  margin-bottom:0.875rem;
-  color:var(--ink);
-}
-
-.art-excerpt{
-  font-size:0.84rem;color:var(--mid);
-  line-height:1.65;font-weight:300;
-  flex:1;margin-bottom:1.5rem;
-}
-
-.art-meta{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:1rem;
-  border-top:1px solid var(--border);
-  margin-top:auto;
-}
-.art-date{font-size:0.72rem;color:var(--mid);}
-.art-read{
-  font-size:0.72rem;color:var(--purple);
-  display:flex;align-items:center;gap:4px;
-}
-.art-read svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
-
-/* ARTÍCULO DESTACADO (primero, ocupa 2 cols) */
-.art-card.featured{
-  grid-column:span 2;
-  padding:2.75rem 2.5rem;
-  background:var(--cream);
-}
-.art-card.featured .art-title{
-  font-size:1.75rem;max-width:480px;
-}
-.art-card.featured .art-excerpt{max-width:520px;}
-.featured-chip{
-  display:inline-block;
-  background:var(--purple);color:white;
-  font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;
-  padding:3px 10px;border-radius:2px;margin-bottom:1rem;
-}
-
-/* ARTÍCULO CONTENT (página individual simulada) */
-.article-page{display:none;}
-
-/* NEWSLETTER */
-.newsletter{
-  margin:0 6% 5rem;
-  background:#0D0B1A;
-  padding:3rem;
-  border-radius:4px;
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:3rem;align-items:center;
-}
-.nl-title{
-  font-family:var(--serif);font-size:1.75rem;
-  color:white;letter-spacing:-0.02em;line-height:1.15;
-}
-.nl-title em{font-style:italic;color:var(--purple-dim);}
-.nl-desc{font-size:0.875rem;color:rgba(255,255,255,0.45);margin-top:0.6rem;font-weight:300;}
-.nl-form{display:flex;gap:0;}
-.nl-input{
-  flex:1;border:none;background:rgba(255,255,255,0.08);
-  padding:0.75rem 1rem;color:white;
-  font-family:var(--sans);font-size:0.85rem;
-  border-radius:2px 0 0 2px;outline:none;
-}
-.nl-input::placeholder{color:rgba(255,255,255,0.3);}
-.nl-btn{
-  background:var(--purple);color:white;border:none;
-  padding:0.75rem 1.25rem;cursor:pointer;
-  font-family:var(--sans);font-size:0.82rem;font-weight:500;
-  border-radius:0 2px 2px 0;transition:opacity 0.2s;white-space:nowrap;
-}
-.nl-btn:hover{opacity:0.85;}
-
-/* CATEGORÍAS */
-.cats-bar{
-  padding:0 6% 3rem;
-  display:flex;gap:0.5rem;flex-wrap:wrap;
-}
-.cat-btn{
-  font-size:0.75rem;padding:0.4rem 1rem;
-  border:1px solid var(--border);border-radius:20px;
-  background:#1A1530;color:#9A96B8;cursor:pointer;
-  font-family:var(--sans);transition:all 0.2s;
-}
-.cat-btn:hover,.cat-btn.active{background:var(--purple);color:white;border-color:var(--purple);}
-
-/* FOOTER */
-footer{
-  padding:2rem 6%;
-  border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:1rem;
-}
-.footer-logo{font-family:var(--serif);font-size:1rem;}
-.footer-logo span{color:var(--purple);}
-footer p{font-size:0.78rem;color:var(--mid);}
-footer a{color:var(--purple);text-decoration:none;}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .articles-grid{grid-template-columns:1fr 1fr;}
-  .art-card.featured{grid-column:span 2;}
-  .art-card:nth-child(3n){border-right:1px solid var(--border);}
-  .art-card:nth-child(2n){border-right:none;}
-  .newsletter{grid-template-columns:1fr;}
-}
-@media(max-width:600px){
-  nav{padding:0 4%;}
+@media(max-width:700px){
+  nav{padding:0 5%;}
+  .nav-right{gap:1rem;}
   .nav-right a:not(.nav-cta){display:none;}
-  .blog-hero{padding:3rem 5% 2.5rem;}
-  .blog-grid-section{padding:2.5rem 5% 3rem;}
-  .articles-grid{grid-template-columns:1fr;}
-  .art-card.featured{grid-column:span 1;}
-  .art-card:nth-child(n){border-right:none;border-bottom:1px solid var(--border);}
-  .art-card:last-child{border-bottom:none;}
-  .newsletter{margin:0 5% 3rem;padding:2rem;gap:1.5rem;}
-  .nl-form{flex-direction:column;}
-  .nl-input{border-radius:2px;}
-  .nl-btn{border-radius:2px;}
-  .cats-bar{padding:0 5% 2rem;}
-  footer{flex-direction:column;text-align:center;}
+  .social-proof-inner{padding:24px 20px;}
 }
 </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-D3BQ7674RX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3BQ7674RX');
-  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D3BQ7674RX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D3BQ7674RX');
+</script>
 </head>
 <body>
 
@@ -307,279 +123,280 @@ footer a{color:var(--purple);text-decoration:none;}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO BLOG -->
 <section class="blog-hero">
-  <div class="blog-kicker">Blog · WhiteMoon Agencia IA</div>
-  <h1>IA para pymes.<br><em>Sin tecnicismos,</em><br>con resultados.</h1>
-  <p>Artículos prácticos sobre chatbots, agentes IA, GEO y automatización para negocios en España. Publicado desde Majadahonda, Madrid.</p>
+  <div class="blog-hero-badge">📚 Blog · WhiteMoon Agencia IA</div>
+  <h1>IA para pymes,<br><span>con resultados.</span></h1>
+  <p class="blog-hero-sub">Artículos prácticos sobre chatbots, agentes IA, GEO y automatización para negocios en España. Sin tecnicismos. Publicado desde Majadahonda, Madrid.</p>
 </section>
 
-<!-- FILTROS -->
-<div class="blog-grid-section" style="padding-bottom:0;">
-  <div class="cats-bar" style="padding:0 0 2rem;">
-    <button class="cat-btn active" onclick="filterCat(this,'all')">Todos</button>
-    <button class="cat-btn" onclick="filterCat(this,'geo')">GEO</button>
-    <button class="cat-btn" onclick="filterCat(this,'chatbot')">Chatbots</button>
-    <button class="cat-btn" onclick="filterCat(this,'agentes')">Agentes IA</button>
-    <button class="cat-btn" onclick="filterCat(this,'automatizacion')">Automatización</button>
-    <button class="cat-btn" onclick="filterCat(this,'estrategia')">Estrategia</button>
+<!-- BANNER · PRUEBA SOCIAL LLMs -->
+<div class="social-proof">
+  <div class="social-proof-inner">
+    <div class="badge">🏆 Verificado en vivo</div>
+    <h2>WhiteMoon, recomendado <em>#1</em> por ChatGPT y Grok</h2>
+    <p class="desc">Las IAs más usadas del mundo nos citan como la mejor agencia IA para contratar en Madrid. Verificado en mayo 2026.</p>
+    <div class="quotes">
+      <div class="quote-card">
+        <div class="quote-source">ChatGPT</div>
+        <p class="quote-text">"La opción más equilibrada para pymes de Madrid/Majadahonda: chatbots IA, automatización y trato boutique."</p>
+        <div class="quote-date">— ChatGPT · mayo 2026</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-source">Grok</div>
+        <p class="quote-text">"Mejor opción todo en uno para empresas locales y pymes de Madrid."</p>
+        <div class="quote-date">— Grok · mayo 2026</div>
+      </div>
+    </div>
+    <a href="/casos-de-exito/" class="cta-btn">
+      Ver prueba completa
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
   </div>
 </div>
 
 <!-- GRID ARTÍCULOS -->
-<section class="blog-grid-section" style="padding-top:0;">
-  <div class="grid-label">6 artículos · Abril 2026</div>
+<div class="blog-grid">
 
-  <!-- BANNER · PRUEBA SOCIAL LLMs -->
-  <div style="margin:0 0 36px;background:linear-gradient(135deg,#1a0f3d 0%,#2a1855 50%,#1a1530 100%);border:1px solid rgba(124,77,255,0.55);border-radius:16px;padding:32px 36px;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(124,77,255,0.15),0 12px 48px rgba(124,77,255,0.18);">
-    <div style="position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(124,77,255,0.22) 0%,transparent 70%);pointer-events:none;"></div>
-    <div style="position:relative;">
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#86efac;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:18px;font-family:var(--sans);">
-        🏆 Verificado en vivo
+  <!-- 01 — Agentes IA (nuevo mayo 2026) -->
+  <a class="blog-card" href="/blog/que-es-un-agente-ia/">
+    <div class="blog-card-stripe blog-card-stripe--purple"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Agentes IA</span>
+      <h2>¿Qué es un Agente IA? Guía completa para empresas 2026</h2>
+      <p class="blog-card-excerpt">Definición práctica de Agente IA, diferencias con chatbot tradicional, cómo funciona RAG sin tecnicismos, sectores ideales y rango de precios real en 2026.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 May 2026 · 5 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-      <h2 style="font-family:var(--serif);font-size:clamp(1.4rem,2.8vw,2rem);font-weight:700;color:#fff;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px;">
-        WhiteMoon, recomendado <em style="font-style:italic;color:#B39DFF;">#1</em> por ChatGPT y Grok
-      </h2>
-      <p style="font-family:var(--sans);font-size:.95rem;color:#c8c4e0;line-height:1.65;font-weight:400;max-width:680px;margin-bottom:24px;">
-        Las IAs más usadas del mundo nos citan como la mejor agencia IA para contratar en Madrid. Verificado en mayo 2026.
-      </p>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:24px;max-width:680px;">
-
-        <div style="background:rgba(13,11,26,.55);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;position:relative;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7C4DFF,#B39DFF);border-radius:12px 12px 0 0;"></div>
-          <div style="font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B39DFF;margin-bottom:10px;">ChatGPT</div>
-          <p style="font-family:var(--sans);font-size:.82rem;color:#e0dcf2;line-height:1.6;font-style:italic;margin-bottom:10px;">"La opción más equilibrada para pymes de Madrid/Majadahonda: chatbots IA, automatización y trato boutique."</p>
-          <div style="font-family:var(--sans);font-size:.7rem;color:#9A96B8;font-weight:500;">— ChatGPT · mayo 2026</div>
-        </div>
-
-        <div style="background:rgba(13,11,26,.55);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;position:relative;">
-          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7C4DFF,#B39DFF);border-radius:12px 12px 0 0;"></div>
-          <div style="font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B39DFF;margin-bottom:10px;">Grok</div>
-          <p style="font-family:var(--sans);font-size:.82rem;color:#e0dcf2;line-height:1.6;font-style:italic;margin-bottom:10px;">"Mejor opción todo en uno para empresas locales y pymes de Madrid."</p>
-          <div style="font-family:var(--sans);font-size:.7rem;color:#9A96B8;font-weight:500;">— Grok · mayo 2026</div>
-        </div>
-
-      </div>
-
-      <a href="/casos-de-exito/" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-size:.88rem;font-weight:600;color:#fff;background:linear-gradient(135deg,#7C4DFF,#5b21b6);padding:11px 22px;border-radius:9px;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.32);">
-        Ver prueba completa
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
     </div>
-  </div>
-  <!-- FIN BANNER PRUEBA SOCIAL -->
+  </a>
 
-  <div class="articles-grid" id="articlesGrid">
-
-    <!-- NUEVO MAYO 2026 — Qué es un Agente IA -->
-    <a class="art-card" data-cat="agentes" href="/blog/que-es-un-agente-ia/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Agentes IA</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">¿Qué es un Agente IA? Guía completa para empresas 2026</h2>
-      <p class="art-excerpt">Definición práctica de Agente IA, diferencias con chatbot tradicional, cómo funciona RAG sin tecnicismos, sectores ideales y rango de precios real en 2026.</p>
-      <div class="art-meta">
-        <span class="art-date">15 May 2026 · 5 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 02 — Precios (nuevo mayo 2026) -->
+  <a class="blog-card" href="/blog/cuanto-cuesta-ia-negocio/">
+    <div class="blog-card-stripe blog-card-stripe--green"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Precios</span>
+      <h2>Cuánto Cuesta Implementar IA en tu Negocio: Precios Reales 2026</h2>
+      <p class="blog-card-excerpt">Los 3 modelos de precio del mercado IA, tabla WhiteMoon (Spark/Core/Scale/Elite) y ROI real con datos de clientes. Errores comunes al contratar IA barata.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 May 2026 · 6 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- NUEVO MAYO 2026 — Cuánto cuesta IA negocio -->
-    <a class="art-card" data-cat="estrategia" href="/blog/cuanto-cuesta-ia-negocio/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Precios</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Cuánto Cuesta Implementar IA en tu Negocio: Precios Reales 2026</h2>
-      <p class="art-excerpt">Los 3 modelos de precio del mercado IA, tabla WhiteMoon (Spark/Core/Scale/Elite) y ROI real con datos de clientes. Errores comunes al contratar IA barata.</p>
-      <div class="art-meta">
-        <span class="art-date">15 May 2026 · 6 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 03 — Comparativa (nuevo mayo 2026) -->
+  <a class="blog-card" href="/blog/agente-ia-vs-chatbot-diferencias/">
+    <div class="blog-card-stripe blog-card-stripe--cyan"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Comparativa</span>
+      <h2>Agente IA vs Chatbot: 6 Diferencias que Cambian tu Negocio | 2026</h2>
+      <p class="blog-card-excerpt">Las 6 diferencias técnicas y prácticas entre Agente IA y chatbot tradicional. Tabla comparativa y guía para elegir cuál necesita tu empresa según sector y volumen.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 May 2026 · 5 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- NUEVO MAYO 2026 — Agente IA vs Chatbot diferencias -->
-    <a class="art-card" data-cat="agentes" href="/blog/agente-ia-vs-chatbot-diferencias/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Agentes IA</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Agente IA vs Chatbot: 6 Diferencias que Cambian tu Negocio | 2026</h2>
-      <p class="art-excerpt">Las 6 diferencias técnicas y prácticas entre Agente IA y chatbot tradicional. Tabla comparativa y guía para elegir cuál necesita tu empresa según sector y volumen.</p>
-      <div class="art-meta">
-        <span class="art-date">15 May 2026 · 5 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 04 — Automatización WhatsApp (nuevo mayo 2026) -->
+  <a class="blog-card" href="/blog/automatizar-whatsapp-pymes/">
+    <div class="blog-card-stripe blog-card-stripe--pink"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Automatización</span>
+      <h2>Automatizar WhatsApp para PYMEs: Guía Práctica 2026</h2>
+      <p class="blog-card-excerpt">5 casos reales de automatización WhatsApp por sector (dental, peluquería, abogados, inmobiliaria, taller). RGPD + WhatsApp Business + implementación en 7 días.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 May 2026 · 6 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- NUEVO MAYO 2026 — Automatizar WhatsApp pymes -->
-    <a class="art-card" data-cat="chatbot" href="/blog/automatizar-whatsapp-pymes/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Agentes IA</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Automatizar WhatsApp para PYMEs: Guía Práctica 2026</h2>
-      <p class="art-excerpt">5 casos reales de automatización WhatsApp por sector (dental, peluquería, abogados, inmobiliaria, taller). RGPD + WhatsApp Business + implementación en 7 días.</p>
-      <div class="art-meta">
-        <span class="art-date">15 May 2026 · 6 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 05 — Zonas Las Rozas -->
+  <a class="blog-card" href="/blog/agencia-ia-las-rozas-2026/">
+    <div class="blog-card-stripe blog-card-stripe--purple"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Zonas · Las Rozas</span>
+      <h2>Mejor agencia IA en Las Rozas 2026: guía para pymes</h2>
+      <p class="blog-card-excerpt">Cómo elegir agencia IA en Las Rozas en 2026. Sectores con mayor impacto (empresas tech, gestorías, clínicas), precios actuales, casos reales y qué pedir antes de contratar.</p>
+      <div class="blog-card-meta">
+        <span>📅 9 May 2026 · 7 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO ZONA — Las Rozas 2026 -->
-    <a class="art-card" data-cat="estrategia" href="/blog/agencia-ia-las-rozas-2026/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Zonas · Las Rozas</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Mejor agencia IA en Las Rozas 2026: guía para pymes</h2>
-      <p class="art-excerpt">Cómo elegir agencia IA en Las Rozas en 2026. Sectores con mayor impacto (empresas tech, gestorías, clínicas), precios actuales, casos reales y qué pedir antes de contratar.</p>
-      <div class="art-meta">
-        <span class="art-date">9 May 2026 · 7 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 06 — Zonas Madrid Noroeste -->
+  <a class="blog-card" href="/blog/agencia-ia-madrid-noroeste/">
+    <div class="blog-card-stripe blog-card-stripe--purple"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Zonas · Madrid Noroeste</span>
+      <h2>Agencia IA Madrid Noroeste 2026: ecosistema de pymes</h2>
+      <p class="blog-card-excerpt">El noroeste de Madrid (Majadahonda, Las Rozas, Pozuelo, Boadilla, Villanueva, Villaviciosa) tiene un tejido de pymes con alta capacidad de adopción IA. Tendencias 2026 y cómo elegir agencia.</p>
+      <div class="blog-card-meta">
+        <span>📅 9 May 2026 · 7 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO ZONA — Madrid Noroeste -->
-    <a class="art-card" data-cat="estrategia" href="/blog/agencia-ia-madrid-noroeste/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Zonas · Madrid Noroeste</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Agencia IA Madrid Noroeste 2026: ecosistema de pymes</h2>
-      <p class="art-excerpt">El noroeste de Madrid (Majadahonda, Las Rozas, Pozuelo, Boadilla, Villanueva, Villaviciosa) tiene un tejido de pymes con alta capacidad de adopción IA. Tendencias 2026 y cómo elegir agencia.</p>
-      <div class="art-meta">
-        <span class="art-date">9 May 2026 · 7 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 07 — Chatbot pymes Madrid -->
+  <a class="blog-card" href="/blog/chatbot-ia-pymes-madrid/">
+    <div class="blog-card-stripe blog-card-stripe--pink"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Chatbots</span>
+      <h2>Chatbot IA para pymes en Madrid 2026: guía práctica</h2>
+      <p class="blog-card-excerpt">Casos por sector, precios actuales y cómo medir el ROI de un chatbot IA en una pyme de Madrid. Spark desde 499€ + 199€/mes sin permanencia. Operativo en 5-7 días laborables.</p>
+      <div class="blog-card-meta">
+        <span>📅 9 May 2026 · 8 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO CHATBOT — Pymes Madrid -->
-    <a class="art-card" data-cat="chatbot" href="/blog/chatbot-ia-pymes-madrid/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Chatbots</div>
-      <div class="art-num">·</div>
-      <h2 class="art-title">Chatbot IA para pymes en Madrid 2026: guía práctica</h2>
-      <p class="art-excerpt">Casos por sector, precios actuales y cómo medir el ROI de un chatbot IA en una pyme de Madrid. Spark desde 499€ + 199€/mes sin permanencia. Operativo en 5-7 días laborables.</p>
-      <div class="art-meta">
-        <span class="art-date">9 May 2026 · 8 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 08 — GEO (destacado abril) -->
+  <a class="blog-card" href="/blog/geo-web-citada-ia/">
+    <div class="blog-card-stripe blog-card-stripe--cyan"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">GEO · Destacado</span>
+      <h2>GEO: por qué tu web necesita ser citada por la IA, no solo por Google</h2>
+      <p class="blog-card-excerpt">En 2026 más del 40% de las búsquedas en España pasan primero por ChatGPT, Perplexity o Google con IA integrada. Qué es el GEO, en qué se diferencia del SEO tradicional y qué tres acciones tomar esta semana.</p>
+      <div class="blog-card-meta">
+        <span>📅 14 Abr 2026 · 7 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 1 — DESTACADO -->
-    <a class="art-card featured" data-cat="geo" href="/blog/geo-web-citada-ia/">
-      <span class="featured-chip">Destacado · Abril 2026</span>
-      <div class="art-tag"><span class="art-tag-dot"></span>GEO · Generative Engine Optimization</div>
-      <div class="art-num">01</div>
-      <h2 class="art-title">GEO: por qué tu web necesita ser citada por la IA, no solo por Google</h2>
-      <p class="art-excerpt">En 2026 más del 40% de las búsquedas en España pasan primero por ChatGPT, Perplexity o el propio buscador de Google con IA integrada. Si tu negocio no aparece en las respuestas generadas por estos modelos, estás perdiendo visibilidad ante clientes que ya han tomado casi la decisión. Te explicamos qué es el GEO, en qué se diferencia del SEO tradicional y qué tres acciones puedes tomar esta semana para empezar a posicionarte.</p>
-      <div class="art-meta">
-        <span class="art-date">14 Abr 2026 · 7 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 09 — Agentes IA pymes -->
+  <a class="blog-card" href="/blog/agentes-ia-pymes-2026/">
+    <div class="blog-card-stripe blog-card-stripe--purple"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Agentes IA</span>
+      <h2>Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme</h2>
+      <p class="blog-card-excerpt">Un agente IA no es un chatbot que responde preguntas. Es un sistema que recibe un objetivo, planifica pasos, llama a herramientas externas y ejecuta tareas de forma autónoma. La diferencia y casos reales para negocios pequeños.</p>
+      <div class="blog-card-meta">
+        <span>📅 10 Abr 2026 · 5 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 2 -->
-    <a class="art-card" data-cat="agentes" href="/blog/agentes-ia-pymes-2026/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Agentes IA</div>
-      <div class="art-num">02</div>
-      <h2 class="art-title">Agentes IA en 2026: qué son, cómo funcionan y para qué sirven en una pyme</h2>
-      <p class="art-excerpt">Un agente IA no es un chatbot que responde preguntas. Es un sistema que recibe un objetivo, planifica pasos, llama a herramientas externas y ejecuta tareas de forma autónoma. Te explicamos la diferencia y los casos de uso reales para negocios pequeños.</p>
-      <div class="art-meta">
-        <span class="art-date">10 Abr 2026 · 5 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 10 — Chatbot vs WhatsApp -->
+  <a class="blog-card" href="/blog/chatbot-vs-whatsapp-leads/">
+    <div class="blog-card-stripe blog-card-stripe--cyan"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Comparativa</span>
+      <h2>Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026</h2>
+      <p class="blog-card-excerpt">El botón de WhatsApp lleva al cliente a una conversación en blanco. El chatbot IA lo guía, da precios, resuelve dudas y recoge los datos antes de enviar el lead. Diferencia en conversión: hasta 3x.</p>
+      <div class="blog-card-meta">
+        <span>📅 7 Abr 2026 · 4 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 3 -->
-    <a class="art-card" data-cat="chatbot" href="/blog/chatbot-vs-whatsapp-leads/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Chatbots</div>
-      <div class="art-num">03</div>
-      <h2 class="art-title">Chatbot con IA vs botón de WhatsApp: qué convierte más leads en 2026</h2>
-      <p class="art-excerpt">El botón de WhatsApp lleva al cliente a una conversación en blanco. El chatbot IA lo guía, da precios, resuelve dudas y recoge los datos antes de enviar el lead. Los datos de nuestros clientes hablan claro: la diferencia en conversión es de hasta 3x.</p>
-      <div class="art-meta">
-        <span class="art-date">7 Abr 2026 · 4 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 11 — IA pymes ventaja competitiva -->
+  <a class="blog-card" href="/blog/ia-pymes-ventaja-competitiva-2026/">
+    <div class="blog-card-stripe blog-card-stripe--green"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Estrategia</span>
+      <h2>IA para pymes en 2026: la ventaja competitiva que no puedes ignorar</h2>
+      <p class="blog-card-excerpt">En 2026 la IA ya no es opcional para una pyme. Sin tecnicismos: por qué adoptarla es la mayor ventaja competitiva del año, qué ocurre si no lo haces y casos reales por sector en Madrid.</p>
+      <div class="blog-card-meta">
+        <span>📅 7 May 2026 · 7 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 4 -->
-    <a class="art-card" data-cat="estrategia" href="/blog/ia-pymes-ventaja-competitiva-2026/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Estrategia</div>
-      <div class="art-num">04</div>
-      <h2 class="art-title">IA para pymes en 2026: la ventaja competitiva que no puedes ignorar</h2>
-      <p class="art-excerpt">En 2026 la IA ya no es opcional para una pyme. Explicamos sin tecnicismos por qué adoptarla es la mayor ventaja competitiva del año, qué ocurre si no lo haces y casos reales por sector en Madrid (peluquería, taller, clínica, gestoría, abogados).</p>
-      <div class="art-meta">
-        <span class="art-date">7 May 2026 · 7 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 12 — RAG asistente -->
+  <a class="blog-card" href="/blog/rag-asistente-ia-empresa/">
+    <div class="blog-card-stripe blog-card-stripe--purple"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">RAG · Estrategia</span>
+      <h2>RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información</h2>
+      <p class="blog-card-excerpt">RAG (Retrieval-Augmented Generation) permite entrenar un chatbot con tus propios documentos, tarifas, FAQs y normativa interna. El resultado: un asistente experto de tu empresa que cita fuentes y nunca inventa.</p>
+      <div class="blog-card-meta">
+        <span>📅 28 Mar 2026 · 5 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 5 -->
-    <a class="art-card" data-cat="estrategia" href="/blog/rag-asistente-ia-empresa/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Estrategia</div>
-      <div class="art-num">05</div>
-      <h2 class="art-title">RAG: cómo tu empresa puede tener un asistente IA que conoce solo tu información</h2>
-      <p class="art-excerpt">RAG (Retrieval-Augmented Generation) permite entrenar un chatbot con tus propios documentos, tarifas, FAQs y normativa interna. El resultado es un asistente que responde como un experto de tu empresa, cita fuentes y nunca inventa datos.</p>
-      <div class="art-meta">
-        <span class="art-date">28 Mar 2026 · 5 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 13 — Errores pymes -->
+  <a class="blog-card" href="/blog/errores-pymes-implementar-ia/">
+    <div class="blog-card-stripe blog-card-stripe--green"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Estrategia</span>
+      <h2>5 errores que cometen las pymes al implementar IA (y cómo evitarlos)</h2>
+      <p class="blog-card-excerpt">Los 5 errores más frecuentes al adoptar IA en una pyme: empezar por el caso de uso incorrecto, sobre-invertir en herramientas, no medir ROI, no formar al equipo y elegir proveedor por precio.</p>
+      <div class="blog-card-meta">
+        <span>📅 21 Mar 2026 · 4 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 6 -->
-    <a class="art-card" data-cat="estrategia" href="/blog/errores-pymes-implementar-ia/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Estrategia</div>
-      <div class="art-num">06</div>
-      <h2 class="art-title">5 errores que cometen las pymes al implementar IA (y cómo evitarlos)</h2>
-      <p class="art-excerpt">Demasiados negocios compran tecnología IA sin estrategia. Chatbots que no responden bien, automatizaciones que se rompen, herramientas que nadie usa. Estos son los cinco errores más frecuentes que vemos en WhiteMoon y cómo los solucionamos.</p>
-      <div class="art-meta">
-        <span class="art-date">21 Mar 2026 · 4 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 14 — Automatización pymes Madrid -->
+  <a class="blog-card" href="/blog/automatizacion-ia-pymes-madrid-2025/">
+    <div class="blog-card-stripe blog-card-stripe--pink"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Automatización</span>
+      <h2>Automatización con IA para pymes en Madrid: qué es y por dónde empezar en 2025</h2>
+      <p class="blog-card-excerpt">Guía práctica de automatización con IA para pymes españolas. Casos sectoriales (gestoría, clínica, comercio), herramientas recomendadas y plan de adopción por fases.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 Ene 2025 · 7 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
-    <!-- ARTÍCULO 7 — Standalone existente -->
-    <a class="art-card" data-cat="automatizacion" href="/blog/automatizacion-ia-pymes-madrid-2025/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Automatización</div>
-      <div class="art-num">07</div>
-      <h2 class="art-title">Automatización con IA para pymes en Madrid: qué es y por dónde empezar en 2025</h2>
-      <p class="art-excerpt">Guía práctica de automatización con inteligencia artificial para pymes en Madrid. ChatGPT, chatbots y CRM automáticos sin conocimientos técnicos. Por dónde empezar y cuándo se amortiza la inversión.</p>
-      <div class="art-meta">
-        <span class="art-date">15 Ene 2025 · 7 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </div>
+  </a>
+
+  <!-- 15 — Chatbot pymes Majadahonda -->
+  <a class="blog-card" href="/blog/chatbot-ia-pymes-majadahonda/">
+    <div class="blog-card-stripe blog-card-stripe--pink"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Chatbots</span>
+      <h2>Chatbot IA para pymes en Majadahonda: guía completa 2025</h2>
+      <p class="blog-card-excerpt">Guía completa sobre chatbots IA para pymes en Majadahonda y Madrid. Qué es, cuánto cuesta, cómo funciona y casos reales. Desde 499€ setup + 199€/mes sin permanencia.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 Ene 2025 · 6 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 8 — Standalone existente -->
-    <a class="art-card" data-cat="chatbot" href="/blog/chatbot-ia-pymes-majadahonda/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Chatbots</div>
-      <div class="art-num">08</div>
-      <h2 class="art-title">Chatbot IA para pymes en Majadahonda: guía completa 2025</h2>
-      <p class="art-excerpt">Guía completa sobre chatbots IA para pymes en Majadahonda y Madrid. Qué es, cuánto cuesta, cómo funciona y casos reales. Desde 499€ setup + 199€/mes sin permanencia.</p>
-      <div class="art-meta">
-        <span class="art-date">15 Ene 2025 · 6 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <!-- 16 — Tarjeta revolving abogados -->
+  <a class="blog-card" href="/blog/tarjeta-revolving-chatbot-ia-abogados/">
+    <div class="blog-card-stripe blog-card-stripe--cyan"></div>
+    <div class="blog-card-body">
+      <span class="blog-card-tag">Chatbots · Caso real</span>
+      <h2>Tarjetas revolving: cómo un chatbot IA cualifica clientes para abogados</h2>
+      <p class="blog-card-excerpt">Cómo los despachos especializados en tarjetas revolving y microcréditos usan chatbots IA para cualificar leads automáticamente. Sistema de triage legal con casos reales.</p>
+      <div class="blog-card-meta">
+        <span>📅 15 Ene 2025 · 5 min</span>
+        <span class="blog-card-cta">Leer →</span>
       </div>
-    </a>
+    </div>
+  </a>
 
-    <!-- ARTÍCULO 9 — Standalone existente -->
-    <a class="art-card" data-cat="chatbot" href="/blog/tarjeta-revolving-chatbot-ia-abogados/">
-      <div class="art-tag"><span class="art-tag-dot"></span>Chatbots</div>
-      <div class="art-num">09</div>
-      <h2 class="art-title">Tarjetas revolving: cómo un chatbot IA cualifica clientes para abogados</h2>
-      <p class="art-excerpt">Cómo los despachos especializados en tarjetas revolving y microcréditos usan chatbots IA para cualificar leads automáticamente. Sistema de triage legal con casos reales.</p>
-      <div class="art-meta">
-        <span class="art-date">15 Ene 2025 · 5 min lectura</span>
-        <span class="art-read">Leer artículo <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
-      </div>
-    </a>
+</div>
 
-
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div>
+      <h2>Recibe nuestros mejores artículos<br><em>una vez al mes</em></h2>
+      <p>Sin spam. Cancela cuando quieras. Solo IA práctica para pymes españolas.</p>
+    </div>
+    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ ¡Suscrito!';this.querySelector('input').disabled=true;">
+      <input type="email" placeholder="tu@email.com" required>
+      <button type="submit">Suscribirme</button>
+    </form>
   </div>
 </section>
-
-<!-- CTA WHATSAPP -->
-<div class="newsletter" style="grid-template-columns:1fr;text-align:center;justify-items:center;">
-  <div>
-    <div class="nl-title">¿Quieres la IA<br><em>en tu negocio?</em></div>
-    <div class="nl-desc" style="margin-bottom:1.75rem;">Cuéntanos tu caso y te decimos en 24h qué solución encaja mejor. Sin compromiso.</div>
-    <a href="https://wa.me/34643199580?text=Hola%20Cris%2C%20he%20leido%20el%20blog%20de%20WhiteMoon%20y%20quiero%20info%20sobre%20IA%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;background:#25D366;color:white;padding:0.9rem 2rem;border-radius:4px;text-decoration:none;font-size:0.95rem;font-weight:600;font-family:var(--sans);transition:opacity 0.2s;" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/></svg>
-      Hablar con Cris por WhatsApp
-    </a>
-    <div style="font-size:0.72rem;color:rgba(255,255,255,0.25);margin-top:0.75rem;">643 199 580 · Respuesta en menos de 2h</div>
-  </div>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -587,18 +404,5 @@ footer a{color:var(--purple);text-decoration:none;}
   <p>Majadahonda, Madrid · <a href="https://whitemoon.es">whitemoon.es</a> · <a href="tel:643199580">643 199 580</a></p>
 </footer>
 
-<script>
-function filterCat(btn, cat) {
-  document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  document.querySelectorAll('.art-card').forEach(function(card) {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.style.display = 'flex';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-</script>
 </body>
 </html>
