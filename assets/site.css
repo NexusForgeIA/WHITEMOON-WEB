@@ -7,3 +7,4 @@
 .tech-logo-item svg{opacity:.7;flex-shrink:0;}
 .tech-logo-item span{font-size:.85rem;font-weight:600;}
 @media(max-width:600px){.tech-logos-grid{gap:24px;}.tech-logo-item span{font-size:.78rem;}}
+.tech-logo-text{font-size:1rem;font-weight:700;letter-spacing:.02em;color:inherit;}
