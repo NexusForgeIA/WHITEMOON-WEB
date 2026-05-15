@@ -254,7 +254,7 @@
       d.className = 'wm-msg wm-bot';
       d.innerHTML = html;
       msgsEl.appendChild(d);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
+      requestAnimationFrame(function(){msgsEl.scrollTop = msgsEl.scrollHeight;});
       return d;
     }
     function addUser(text){
@@ -262,7 +262,7 @@
       d.className = 'wm-msg wm-usr';
       d.innerHTML = escapeHtml(text);
       msgsEl.appendChild(d);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
+      requestAnimationFrame(function(){msgsEl.scrollTop = msgsEl.scrollHeight;});
       return d;
     }
     function showTyping(cb){
@@ -270,7 +270,7 @@
       t.className = 'wm-typing';
       t.innerHTML = '<span></span><span></span><span></span>';
       msgsEl.appendChild(t);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
+      requestAnimationFrame(function(){msgsEl.scrollTop = msgsEl.scrollHeight;});
       var delay = 600 + Math.floor(Math.random() * 500);
       setTimeout(function(){
         if(t.parentNode) t.parentNode.removeChild(t);
@@ -296,7 +296,7 @@
         wrap.appendChild(b);
       });
       msgsEl.appendChild(wrap);
-      msgsEl.scrollTop = msgsEl.scrollHeight;
+      requestAnimationFrame(function(){msgsEl.scrollTop = msgsEl.scrollHeight;});
     }
 
     // ─── INACTIVIDAD ──────────────────────────────────────────────────────────
@@ -620,7 +620,7 @@
         }
         card.innerHTML = html;
         msgsEl.appendChild(card);
-        msgsEl.scrollTop = msgsEl.scrollHeight;
+        requestAnimationFrame(function(){msgsEl.scrollTop = msgsEl.scrollHeight;});
         showCloseBtn();
 
         var detStr      = typeof detalle === 'string' ? detalle : '';
