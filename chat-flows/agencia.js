@@ -187,16 +187,123 @@
       // ─── 6. MINI-DEMO INLINE ──────────────────────────────────────────────
       function miniDemo(){
         w.setInput(false);
+        var sector = ctx.sectorLabel || 'empresas';
+        var demos = {
+          'Clínica dental': [
+            'Cliente: "Hola, ¿tenéis hueco esta semana para una limpieza?"',
+            'Agente IA: "¡Hola! Claro 😊 Tenemos huecos el martes a las 10h y el jueves a las 17h. ¿Cuál te viene mejor?"',
+            'Cliente: "El jueves perfecto"',
+            'Agente IA: "Anotado ✅ Te confirmo la cita para el jueves. ¿Me das tu nombre y teléfono para el recordatorio?"'
+          ],
+          'Despacho de abogados': [
+            'Cliente: "Necesito asesoramiento por un despido improcedente"',
+            'Agente IA: "Entendido 👋 Es un caso que podemos estudiar. ¿Cuándo te despidieron y tienes el finiquito firmado?"',
+            'Cliente: "Hace 2 semanas, sin firmar nada"',
+            'Agente IA: "Perfecto, en ese caso tienes opciones. Te pongo con un abogado laboralista hoy mismo. ¿A qué número te llamamos?"'
+          ],
+          'Peluquería': [
+            'Cliente: "¿Tenéis sitio mañana para corte y tinte?"',
+            'Agente IA: "¡Hola! 💇 Mañana tenemos hueco a las 11h y a las 16h. ¿Cuál prefieres?"',
+            'Cliente: "A las 11h genial"',
+            'Agente IA: "Perfecto ✅ ¿Me dices tu nombre para reservarte el hueco?"'
+          ],
+          'Restaurante': [
+            'Cliente: "¿Tenéis mesa para 4 personas el sábado por la noche?"',
+            'Agente IA: "¡Hola! 🍽️ El sábado tenemos disponibilidad a las 21h y a las 22h. ¿Cuál os viene mejor?"',
+            'Cliente: "A las 21h"',
+            'Agente IA: "Reserva hecha ✅ ¿Nombre para la reserva y alguna alergia que debamos saber?"'
+          ],
+          'Taller mecánico': [
+            'Cliente: "Me ha salido el testigo del aceite, ¿podéis verlo hoy?"',
+            'Agente IA: "¡Hola! 🔧 Podemos recibirte hoy a partir de las 16h. ¿Qué marca y modelo tienes?"',
+            'Cliente: "Un Seat León 2019"',
+            'Agente IA: "Perfecto, lo apunto. ¿Me das tu nombre y teléfono para confirmar la cita?"'
+          ],
+          'Gestoría': [
+            'Cliente: "Necesito presentar el IVA trimestral, ¿me podéis ayudar?"',
+            'Agente IA: "¡Hola! 📋 Por supuesto. El plazo acaba el 20. ¿Tienes ya las facturas del trimestre preparadas?"',
+            'Cliente: "Sí, las tengo todas"',
+            'Agente IA: "Perfecto ✅ Te asigno un gestor ahora mismo. ¿Tu nombre y teléfono?"'
+          ],
+          'Veterinaria': [
+            'Cliente: "Mi perro lleva 2 días sin comer, ¿podéis atenderle hoy?"',
+            'Agente IA: "¡Hola! 🐾 Sí, tenemos hueco esta tarde a las 17h. ¿Qué raza y edad tiene?"',
+            'Cliente: "Golden retriever, 5 años"',
+            'Agente IA: "Anotado ✅ ¿Me das tu nombre para la cita?"'
+          ],
+          'Centro de formación': [
+            'Cliente: "¿Cuándo empieza el próximo curso de inglés B2?"',
+            'Agente IA: "¡Hola! 📚 El próximo grupo B2 empieza el 3 de junio, quedan 3 plazas. ¿Quieres reservar la tuya?"',
+            'Cliente: "Sí, me interesa"',
+            'Agente IA: "Genial 🎉 Te reservo plaza. ¿Me das tu nombre y teléfono para enviarte la info de matrícula?"'
+          ],
+          'Podología': [
+            'Cliente: "Tengo una uña incarnada bastante molesta, ¿tenéis cita pronto?"',
+            'Agente IA: "¡Hola! 🦶 Podemos verte mañana a las 10h o el viernes a las 16h. ¿Cuál te va mejor?"',
+            'Cliente: "Mañana a las 10h"',
+            'Agente IA: "Perfecto ✅ ¿Me dices tu nombre para la cita?"'
+          ],
+          'Inmobiliaria': [
+            'Cliente: "Busco piso de 2 habitaciones en Majadahonda, máximo 300.000€"',
+            'Agente IA: "¡Hola! 🏠 Tenemos 3 opciones que encajan con tu búsqueda. ¿Quieres que te las envíe ahora o prefieres hablar con un agente?"',
+            'Cliente: "Prefiero hablar con alguien"',
+            'Agente IA: "Perfecto, te llamo hoy. ¿A qué número y en qué horario?"'
+          ],
+          'Automoción': [
+            'Cliente: "Me interesa el SUV eléctrico que tenéis en web, ¿está disponible?"',
+            'Agente IA: "¡Hola! 🚗 Sí, está disponible. ¿Quieres que te reserve una prueba de conducción esta semana?"',
+            'Cliente: "Sí, el jueves si puede ser"',
+            'Agente IA: "Perfecto ✅ ¿A qué hora te viene mejor y tu nombre?"'
+          ],
+          'Reformas': [
+            'Cliente: "Quiero reformar el baño completo, ¿hacéis presupuesto gratis?"',
+            'Agente IA: "¡Hola! 🏗️ Sí, el presupuesto es sin compromiso. ¿Puedes enviarnos fotos del baño actual para darte un precio orientativo?"',
+            'Cliente: "Claro, ¿a dónde os las mando?"',
+            'Agente IA: "Te paso el WhatsApp ahora mismo. ¿Tu nombre para el presupuesto?"'
+          ],
+          'Clínica': [
+            'Cliente: "Quiero información sobre tratamiento para el dolor de espalda"',
+            'Agente IA: "¡Hola! 🏥 Tenemos especialistas en columna. ¿El dolor es reciente o crónico?"',
+            'Cliente: "Llevo 3 meses con molestias"',
+            'Agente IA: "En ese caso lo mejor es una primera consulta. ¿Te agendo para esta semana?"'
+          ],
+          'Gimnasio': [
+            'Cliente: "¿Cuánto cuesta la matrícula y la cuota mensual?"',
+            'Agente IA: "¡Hola! 💪 Tenemos cuotas desde 29€/mes sin matrícula este mes. ¿Quieres venir a conocer las instalaciones?"',
+            'Cliente: "Sí, ¿cuándo puedo ir?"',
+            'Agente IA: "Cuando quieras 😊 ¿Te apunto para mañana y te doy un pase de día gratis?"'
+          ]
+        };
+
+        var defaultDemo = [
+          'Cliente: "Hola, ¿me podéis ayudar con información?"',
+          'Agente IA: "¡Hola! 👋 Claro, estoy aquí para ayudarte. ¿Qué necesitas?"',
+          'Cliente: "Quiero saber más sobre vuestros servicios"',
+          'Agente IA: "Con mucho gusto 😊 ¿Prefieres que te llame un especialista o te lo explico aquí?"'
+        ];
+
+        var demoLines = null;
+        var sectorLower = sector.toLowerCase();
+        for(var key in demos){
+          var keyLower = key.toLowerCase();
+          if(sectorLower.indexOf(keyLower) >= 0 || keyLower.indexOf(sectorLower) >= 0){
+            demoLines = demos[key];
+            break;
+          }
+        }
+        if(!demoLines) demoLines = defaultDemo;
+
         w.bot('Así funciona en tu negocio 👇');
+        var delay = 800;
+        for(var i = 0; i < demoLines.length; i++){
+          (function(line, d){
+            setTimeout(function(){ w.bot(line); }, d);
+          })(demoLines[i], delay);
+          delay += 1000;
+        }
         setTimeout(function(){
-          w.bot('Cliente: "Hola, quiero información sobre vuestros servicios"');
-        }, 800);
-        setTimeout(function(){
-          w.bot('Agente IA: "¡Hola! Encantado. Te cuento todo en 30 segundos ¿prefieres que te llame un especialista o te explico aquí?"');
-        }, 1800);
-        setTimeout(function(){
-          capturaNatural('Spark — vio demo · ' + (ctx.sectorLabel || 'General'));
-        }, 2800);
+          capturaNatural('Spark — vio demo · ' + sector);
+        }, delay);
       }
 
       // ─── 7. PRECIO ────────────────────────────────────────────────────────
