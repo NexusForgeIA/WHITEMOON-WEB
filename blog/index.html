@@ -391,7 +391,7 @@ footer a:hover{text-decoration:underline;}
       <h2>Recibe nuestros mejores artículos<br><em>una vez al mes</em></h2>
       <p>Sin spam. Cancela cuando quieras. Solo IA práctica para pymes españolas.</p>
     </div>
-    <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ ¡Suscrito!';this.querySelector('input').disabled=true;">
+    <form class="form" onsubmit="wmNewsletterSubmit(event,this)">
       <input type="email" placeholder="tu@email.com" required>
       <button type="submit">Suscribirme</button>
     </form>
@@ -403,6 +403,54 @@ footer a:hover{text-decoration:underline;}
   <div class="footer-logo">White<span>Moon</span> Agencia IA</div>
   <p>Majadahonda, Madrid · <a href="https://whitemoon.es">whitemoon.es</a> · <a href="tel:643199580">643 199 580</a></p>
 </footer>
+
+<script>
+function wmNewsletterSubmit(e, form) {
+  e.preventDefault();
+  var email = form.querySelector('input[type="email"]').value.trim();
+  if (!email) return;
+  var btn = form.querySelector('button');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+  form.querySelector('input').disabled = true;
+
+  var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
+
+  fetch(SUPABASE_URL + '/rest/v1/leads_web', {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': 'Bearer ' + SUPABASE_KEY,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      nombre: 'Newsletter',
+      telefono: '',
+      sector: 'Newsletter',
+      interes: 'Suscripción newsletter blog',
+      mensaje: 'Email: ' + email,
+      preferencia: 'email',
+      origen: 'newsletter-blog',
+      fecha: new Date().toISOString()
+    })
+  })
+  .then(function(r) {
+    if (r.ok) {
+      btn.textContent = '✓ ¡Suscrito!';
+    } else {
+      btn.textContent = 'Suscribirme';
+      btn.disabled = false;
+      form.querySelector('input').disabled = false;
+      console.warn('Newsletter error:', r.status);
+    }
+  })
+  .catch(function() {
+    btn.textContent = '✓ ¡Suscrito!';
+  });
+}
+</script>
 
 </body>
 </html>
