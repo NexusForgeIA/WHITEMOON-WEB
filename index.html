@@ -1127,7 +1127,7 @@
         <ul class="wm-pack-features">
           <li><strong>Web profesional</strong> con diseño personalizado</li>
           <li><strong>Dominio</strong> incluido el primer año</li>
-          <li><strong>Chatbot IA</strong> conversacional 24/7 + reservas</li>
+          <li><strong>Agente IA</strong> conversacional 24/7 + reservas</li>
           <li><strong>SEO técnico</strong> completo (meta tags, schema, sitemap)</li>
           <li><strong>GEO/AEO</strong> — optimizado para ChatGPT y Grok</li>
           <li>Captura de leads → WhatsApp · responsive · sin permanencia</li>
@@ -1479,7 +1479,7 @@
               <svg viewBox="0 0 24 24" style="width:15px;height:15px;
                 stroke:#22c55e;fill:none;stroke-width:2.5;flex-shrink:0">
                 <polyline points="20 6 9 17 4 12"/>
-              </svg>Chatbot IA conversacional 24/7</div>
+              </svg>Agente IA conversacional 24/7</div>
             <div style="display:flex;align-items:center;gap:9px;
               font-size:.8rem;color:#e0e0f4">
               <svg viewBox="0 0 24 24" style="width:15px;height:15px;
@@ -1699,7 +1699,7 @@
               <svg viewBox="0 0 24 24" style="width:15px;height:15px;
                 stroke:#eab308;fill:none;stroke-width:2.5;flex-shrink:0">
                 <polyline points="20 6 9 17 4 12"/>
-              </svg>Chatbot IA integrado</div>
+              </svg>Agente IA integrado</div>
             <div style="display:flex;align-items:center;gap:9px;
               font-size:.8rem;color:#e0e0f4">
               <svg viewBox="0 0 24 24" style="width:15px;height:15px;
@@ -2639,7 +2639,7 @@
     <div class="foot-col">
       <h4>Servicios</h4>
       <ul class="foot-links-list">
-        <li><a href="/spark/">Pack Spark · Chatbot IA</a></li>
+        <li><a href="/spark/">Pack Spark · Agente IA</a></li>
         <li><a href="/core/">Pack Core · Web profesional</a></li>
         <li><a href="/scale/">Pack Scale · Sistema RAG</a></li>
         <li><a href="/elite/">Pack Elite · IA Premium</a></li>
@@ -2767,18 +2767,18 @@ function toggleFaq(btn) {
 // ── PACKS MODAL ──
 const PACKS={
   advance:{
-    ico:'💬',title:'Spark',sub:'Chatbot IA conversacional',isGold:false,
+    ico:'💬',title:'Spark',sub:'Agente IA conversacional',isGold:false,
     price:'499€ + 199€/mes',period:'Setup único · Cuota mensual',note:'Sin permanencia',
-    features:['Chatbot IA instalado en tu web o QR','El cliente puede escribir libremente','IA detecta intención y responde en contexto','Cualificación automática de leads','Captación de datos por WhatsApp','Respuestas rápidas personalizadas','Detección de palabras clave por área','Actualización de contenidos incluida'],
+    features:['Agente IA instalado en tu web o QR','El cliente puede escribir libremente','IA detecta intención y responde en contexto','Cualificación automática de leads','Captación de datos por WhatsApp','Respuestas rápidas personalizadas','Detección de palabras clave por área','Actualización de contenidos incluida'],
     noInclude:'',wa:'Hola%20WHITEMOON%2C%20me%20interesa%20Spark%20499%E2%82%AC%20%2B%20199%E2%82%AC%2Fmes'
   },
   pyme:{
-    ico:'🏆',title:'Core',sub:'Web profesional + Chatbot IA + SEO y GEO/AEO',isGold:true,
+    ico:'🏆',title:'Core',sub:'Web profesional + Agente IA + SEO y GEO/AEO',isGold:true,
     price:'1.800€ + 199€/mes',period:'Setup único · Cuota mensual',note:'Operativo en 5-7 días · Sin permanencia',
     features:[
       'Web profesional completa con diseño personalizado',
       'Dominio incluido el primer año',
-      'Chatbot IA conversacional 24/7',
+      'Agente IA conversacional 24/7',
       'Sistema de reservas integrado',
       'SEO técnico completo (meta tags, schema, sitemap)',
       'GEO/AEO — optimizado para aparecer en ChatGPT y Grok',
@@ -2870,7 +2870,7 @@ function sendLead(packId){
   const negocio=document.getElementById('lead-negocio-'+packId)?.value.trim()||'';
   const msg=document.getElementById('lead-msg-'+packId)?.value.trim()||'';
   if(!nombre||!tel){alert('Por favor, rellena al menos tu nombre y teléfono.');return;}
-  const packNames={advance:'Spark 499€ + 199€/mes',pyme:'Core 1.800€ + 199€/mes (web+chatbot)'};
+  const packNames={advance:'Spark 499€ + 199€/mes',pyme:'Core 1.800€ + 199€/mes (web+agente IA)'};
   const text=encodeURIComponent(
     '🔥 *Nuevo lead desde la web* 🔥\n\n'+
     '*Pack interesado:* '+(packNames[packId]||packId)+'\n'+
