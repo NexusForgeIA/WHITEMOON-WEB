@@ -36,6 +36,26 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Comparativas vs competencia -->
+  <url>
+    <loc>https://whitemoon.es/whitemoon-vs-intercom/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/whitemoon-vs-manychat/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/whitemoon-vs-tidio/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Agencia IA por zona -->
   <url>
     <loc>https://whitemoon.es/agencia-ia-majadahonda/</loc>
@@ -192,6 +212,32 @@
   <url>
     <loc>https://whitemoon.es/blog/rag-asistente-ia-empresa/</loc>
     <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog: nuevos posts mayo 2026 (cluster Agentes IA) -->
+  <url>
+    <loc>https://whitemoon.es/blog/que-es-un-agente-ia/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/blog/cuanto-cuesta-ia-negocio/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/blog/agente-ia-vs-chatbot-diferencias/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/blog/automatizar-whatsapp-pymes/</loc>
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
