@@ -563,6 +563,93 @@
         doCapture('Auditoría IA', detalle);
       }
 
+      // ─── FLUJO AGENTES IA (conversión · pivote estratégico) ───────────────
+      var AGENTES_VISITAS_OPTS = [
+        { label:'Menos de 500',  value:'<500'    },
+        { label:'500 - 2.000',   value:'500-2k'  },
+        { label:'Más de 2.000',  value:'>2k'     },
+        { label:'No lo sé',      value:'unknown' }
+      ];
+      var AGENTES_PROBLEMA_OPTS = [
+        { label:'Los leads no convierten',          value:'no_convierten' },
+        { label:'Tardamos en responder',            value:'lentos'        },
+        { label:'No sabemos qué quiere el cliente', value:'sin_intencion' },
+        { label:'Otro',                             value:'otro'          }
+      ];
+      var AGENTES_SECTOR_OPTS = [
+        { label:'Clínica dental',        value:'dental'       },
+        { label:'Despacho de abogados',  value:'legal'        },
+        { label:'Peluquería / estética', value:'peluqueria'   },
+        { label:'Restaurante',           value:'restaurante'  },
+        { label:'Taller mecánico',       value:'taller'       },
+        { label:'Gestoría / asesoría',   value:'gestoria'     },
+        { label:'Clínica veterinaria',   value:'veterinaria'  },
+        { label:'Inmobiliaria',          value:'inmobiliaria' },
+        { label:'Otro sector',           value:'otro'         }
+      ];
+
+      function flowAgentesIA(){
+        w.bot(
+          '¿Tu web recibe visitas pero pocas se convierten en clientes?<br>'+
+          'Nuestros <b>Agentes IA</b> cambian eso.<br><br>'+
+          '¿Cuántas visitas mensuales tiene tu web?',
+          function(){
+            w.showOpts(AGENTES_VISITAS_OPTS, function(v){
+              var data = { visitas:v.label };
+              w.bot('¿Cuál es tu mayor problema ahora mismo?', function(){
+                w.showOpts(AGENTES_PROBLEMA_OPTS, function(p){
+                  data.problema = p.label;
+                  w.bot(
+                    'Entendido. Un <b>Agente IA WhiteMoon</b> en tu sector podría cambiar eso esta semana.<br><br>'+
+                    '¿Quieres ver cómo funciona?',
+                    function(){
+                      w.showOpts([
+                        { label:'Sí, quiero verlo',            value:'demo' },
+                        { label:'Prefiero hablar con alguien', value:'call' }
+                      ], function(o){
+                        if(o.value === 'call'){
+                          agentesCapture(data, null);
+                          return;
+                        }
+                        w.bot('¿En qué sector opera tu empresa?', function(){
+                          w.showOpts(AGENTES_SECTOR_OPTS, function(s){
+                            data.sector    = s.label;
+                            data.sectorKey = s.value;
+                            ctx.sectorKey   = s.value;
+                            ctx.sectorLabel = s.label;
+                            var emp = EMPATHY[s.value];
+                            if(emp){
+                              w.bot(emp, function(){ agentesCapture(data, s); });
+                            } else {
+                              w.bot(
+                                'Genial. Para <b>'+s.label+'</b> diseñamos un Agente IA que cualifica, convence y agenda 24/7 sin intervención humana.',
+                                function(){ agentesCapture(data, s); }
+                              );
+                            }
+                          });
+                        });
+                      });
+                    }
+                  );
+                });
+              });
+            });
+          }
+        );
+      }
+
+      function agentesCapture(data, sectorOpt){
+        var sectorLabel = sectorOpt ? sectorOpt.label : (ctx.sectorLabel || 'Agencia IA');
+        if(!ctx.sectorLabel) ctx.sectorLabel = sectorLabel;
+        var tramite = sectorOpt ? ('Agente IA · ' + sectorLabel) : 'Agente IA · conversión';
+        addDesc(
+          'Agentes IA · origen:chatbot-agentes-ia · sector:' + sectorLabel +
+          ' · visitas:' + (data.visitas || '') +
+          ' · problema:' + (data.problema || '')
+        );
+        doCapture(tramite);
+      }
+
       // ─── FLUJO RAG (sistemas con documentos) ──────────────────────────────
       var RAG_CASE_MSGS = {
         manuales:  'Para <b>manuales y procedimientos</b>, el RAG es un asistente que conoce todo lo que el equipo necesita: protocolos, paso a paso y normas internas — accesible 24/7 sin interrumpir a nadie.',
@@ -632,6 +719,7 @@
         if(t.indexOf('no entiendo') !== -1 || t === 'no se' || t.indexOf('no se ') === 0 || t.indexOf('ni idea') !== -1 || t.indexOf('ayuda') !== -1 || t.indexOf('no me entero') !== -1){ explicacionSimple(); return; }
 
         // flujos especializados (jerga inequívoca → enrutar siempre)
+        if(/\bagente(s)?\b/.test(t) || t.indexOf('conversion') !== -1 || t.indexOf('convierte') !== -1 || t.indexOf('cualifica') !== -1 || t.indexOf('pipeline') !== -1 || /\bventas?\b/.test(t) || /\bleads?\b/.test(t) || /\bcierra\b/.test(t) || /\bclientes?\b/.test(t)){ flowAgentesIA(); return; }
         if(t.indexOf('auditoria') !== -1 || t.indexOf('analisis ia') !== -1 || /\broi\b/.test(t)){ flowAuditoria(); return; }
         if(/\brag\b/.test(t) || t.indexOf('base de conocimiento') !== -1){ flowRAG(); return; }
 
