@@ -20,7 +20,11 @@ Aplica a todos los flujos, presentes y futuros:
 - Todo `startCapture()` debe pasar el `sector` detectado por el bot.
 - Todo `finishCapture()` debe llamar a `saveLead()`.
 - `saveLead()` siempre incluye `sector` + `mensaje` además de `nombre` y `telefono`.
-- Payload completo enviado a `leads_web`: `nombre`, `telefono`, `sector`, `interes`, `mensaje`, `origen` (`"whitemoon.es"`), `fecha` (ISO).
+- Payload completo enviado a `leads_web`: `nombre`, `telefono`, `sector`, `interes`, `mensaje`, `origen`, `fecha` (ISO).
+- Campo `origen`: `data.origen || 'whitemoon.es'`
+  → default: `'whitemoon.es'`
+  → sobreescribible por flujo (ej: `'chatbot-agentes-ia'`)
+  → retrocompatible: flujos sin `origen` explícito siguen enviando `'whitemoon.es'`
 - Si el envío a Supabase falla → `console.warn`, NUNCA se interrumpe el flujo del usuario.
 
 ## Skills activas

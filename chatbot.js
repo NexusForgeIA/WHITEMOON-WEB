@@ -32,7 +32,7 @@
       preferencia: data.preferencia || 'llamada',
       cita_dia:    data.cita_dia    || '',
       cita_hora:   data.cita_hora   || '',
-      origen:      'whitemoon.es',
+      origen:      data.origen      || 'whitemoon.es',
       fecha:       new Date().toISOString()
     };
     console.log('saveLead payload completo:', JSON.stringify(payload));
@@ -635,7 +635,8 @@
           descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null),
           preferencia: leadData.preferencia,
           cita_dia:    leadData.cita_dia,
-          cita_hora:   leadData.cita_hora
+          cita_hora:   leadData.cita_hora,
+          origen:      opts.origen || undefined
         });
 
         if(typeof gtag === 'function') gtag('event', 'lead_captured', { sector: sectorFinal, interes: tramite });
