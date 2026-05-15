@@ -17,8 +17,8 @@
       // horario laboral ({cierreLargo} / {cierreFoot}).
       var FINISH = {
         agent: 'especialista',
-        title: '✅ ¡Listo, {nombre}!',
-        text:  '{cierreLargo}',
+        title: '🎉 ¡Perfecto, {nombre}!',
+        text:  'Te llamamos hoy antes de las 20h.<br>Prepárate para ver cómo tu negocio empieza a captar clientes solo 🚀',
         cta:   '👇 Confirma por WhatsApp si quieres',
         btn:   '📲 Confirmar cita',
         foot:  '{cierreFoot}'
@@ -65,7 +65,10 @@
 
       // Captura "natural" del flujo principal — con preámbulo
       function capturaNatural(tramite){
-        w.bot('Perfecto 💪', function(){ doCapture(tramite); });
+        w.bot(
+          'Perfecto 🙌 En menos de 24h te llamamos para mostrarte exactamente cómo quedaría en tu negocio — sin compromiso y gratis.',
+          function(){ doCapture(tramite); }
+        );
       }
 
       // Captura para flujos especializados (auditoría / RAG / web)
@@ -108,34 +111,37 @@
         return null;
       }
 
-      // ─── PROPUESTA DE VALOR POR SECTOR (sin preguntas, solo afirmación) ───
+      // ─── PROPUESTA DE VALOR POR SECTOR (dolor + resultado concreto) ───────
       var VALUE_PROP = {
-        dental:      '🦷 Para clínicas dentales: el Agente IA agenda citas, responde dudas de tratamientos y capta pacientes nuevos 24/7.',
-        legal:       '⚖️ Para despachos: el Agente IA cualifica consultas, filtra casos y agenda visitas mientras tú te centras en los casos.',
-        peluqueria:  '✂️ Para peluquerías: agenda automática, recordatorios de cita y cero llamadas perdidas.',
-        restaurante: '🍽️ Para restaurantes: reservas automáticas, gestión de pedidos y respuesta instantánea a clientes.',
-        automocion:  '🚗 Para concesionarios: el Agente IA cualifica compradores, filtra interesados reales y agenda pruebas de conducción.',
-        taller:      '🔧 Para talleres: presupuestos automáticos, citas de revisión y seguimiento de clientes.',
-        gestoria:    '📋 Para gestorías: el Agente IA responde dudas fiscales básicas, cualifica clientes y agenda consultas.',
-        veterinaria: '🐾 Para veterinarias: citas automáticas, recordatorios de vacunas y atención urgente 24/7.',
-        reformas:    '🏗️ Para reformas: el Agente IA capta leads, pide fotos del espacio y cualifica presupuestos.',
-        formacion:   '📚 Para centros de formación: el Agente IA responde en segundos a consultas de matrícula y capta alumnos antes que tu competencia.',
-        podologia:   '🦶 Para podólogos: agenda online automática y recordatorios que reducen las ausencias.',
-        inmobiliaria:'🏠 Para inmobiliarias: el Agente IA cualifica compradores, filtra curiosos de clientes serios y agenda visitas.',
-        salud:       '🏥 Para clínicas: agenda automática, triaje de urgencias y captación de pacientes nuevos 24/7.',
-        gimnasio:    '💪 Para gimnasios: capta socios nuevos, responde dudas de tarifas y gestiona bajas automáticamente.',
-        empresas:    '🏢 Para empresas: el Agente IA cualifica leads, responde objeciones y agenda reuniones de ventas.'
+        dental:      '🦷 Cada paciente que no responde a tiempo se va a la clínica de enfrente. Nuestros clientes dentales captan un 40% más de pacientes nuevos desde que tienen su Agente IA. ¿Quieres verlo funcionando?',
+        legal:       '⚖️ Un lead que no responde en menos de 5 minutos elige otro despacho. Con IA respondemos al instante, cualificamos el caso y tú solo recibes clientes listos para contratar.',
+        peluqueria:  '✂️ Las peluquerías que usan nuestro Agente IA llenan agenda sin coger el teléfono. Cero llamadas perdidas, cero huecos vacíos. ¿Cuánto te cuesta cada hueco sin cubrir?',
+        restaurante: '🍽️ Mesas vacías = dinero perdido. Nuestros restaurantes han aumentado las reservas un 35% con respuesta automática 24/7. ¿Quieres ver cómo funciona en el tuyo?',
+        automocion:  '🚗 El 70% de compradores de coches contacta con 3 concesionarios a la vez. El que responde primero gana la venta. ¿Quieres ser siempre el primero?',
+        taller:      '🔧 Mientras estás debajo de un coche tu competencia está captando tus clientes online. Nuestro Agente IA capta, agenda y confirma citas solo. ¿Cuántas llamas pierdes al día?',
+        gestoria:    '📋 Cada consulta sin responder es un cliente que va a otra gestoría. Con IA respondes al instante, filtras casos rentables y llenas tu agenda de reuniones cualificadas.',
+        veterinaria: '🐾 Las urgencias no esperan. Las clínicas veterinarias con nuestro Agente IA no pierden ni una llamada de noche o fin de semana. ¿Cuántas urgencias pierdes fuera de horario?',
+        reformas:    '🏗️ El 80% de presupuestos de reforma los piden a 3 empresas. El que responde más rápido con mejor propuesta se lleva el trabajo. ¿Quieres ganar más presupuestos?',
+        formacion:   '📚 Un alumno que no recibe respuesta en 10 minutos se apunta a otro centro. Nuestros clientes de formación han multiplicado sus matrículas sin contratar más personal.',
+        podologia:   '🦶 Las ausencias y los huecos vacíos te cuestan dinero cada día. Con recordatorios automáticos y agenda online nuestros podólogos han reducido ausencias un 60%.',
+        inmobiliaria:'🏠 Cada lead inmobiliario vale miles de euros. Con nuestro Agente IA cualificas compradores serios 24/7 y nunca pierdes una oportunidad por no responder a tiempo.',
+        salud:       '🏥 Los pacientes eligen clínica en menos de 2 minutos online. Con respuesta inmediata y agenda automática captamos nuevos pacientes mientras tú atiendes los actuales.',
+        gimnasio:    '💪 El 90% de personas que buscan gimnasio online se apuntan al que responde más rápido. Nuestros gimnasios captan socios nuevos cada día sin mover un dedo.',
+        empresas:    '🏢 Cada visita a tu web que no convierte es dinero que se va. Nuestro Agente IA convierte visitantes en clientes cualificados 24/7. ¿Cuántas visitas recibes al mes?'
       };
 
       // ─── 1. APERTURA ──────────────────────────────────────────────────────
       function abrir(){
         ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
         state = 'business';
-        w.bot(
-          '¡Hola! 👋 Dime a qué te dedicas y te muestro en 30 segundos cómo quedaría el chatbot en tu negocio.<br>'+
-          '¿Cuál es tu sector?',
-          function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
-        );
+        w.bot('¿Tu negocio podría facturar más este mes? 💰', function(){
+          setTimeout(function(){
+            w.bot(
+              'La mayoría de empresas pierden clientes cada día porque no responden a tiempo. Nosotros lo arreglamos con IA. ¿A qué te dedicas?',
+              function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
+            );
+          }, 800);
+        });
       }
 
       // ─── 2. DESCRIPCIÓN DEL NEGOCIO → DETECCIÓN + 3 OPCIONES DIRECTAS ─────
@@ -173,9 +179,9 @@
         w.setInput(false);
         w.bot('¿Qué quieres hacer?', function(){
           w.showOpts([
-            { label:'Ver demo en vivo 👀', value:'demo' },
-            { label:'Ver precio 💰',       value:'precio' },
-            { label:'Me llaman hoy 📞',    value:'llamada' }
+            { label:'¿Cómo funciona? Muéstrame 👀', value:'demo' },
+            { label:'¿Cuánto cuesta? 💰',           value:'precio' },
+            { label:'Quiero más clientes 🚀',       value:'llamada' }
           ], function(o){
             if(o.value === 'demo')   return miniDemo();
             if(o.value === 'precio') return mostrarPrecio();
@@ -309,25 +315,31 @@
       // ─── 7. PRECIO ────────────────────────────────────────────────────────
       function mostrarPrecio(){
         w.setInput(false);
-        w.bot(
-          'Sin letra pequeña ni sorpresas:<br><br>'+
-          'El pack más popular para tu tipo de negocio:<br>'+
-          '🤖 <b>499€ setup + 199€/mes</b> · Sin permanencia<br><br>'+
-          'Operativo en 5-7 días.<br>'+
-          'Y si en 30 días no estás satisfecho, lo ajustamos hasta que funcione perfecto.<br><br>'+
-          '¿Te llamo para explicarte todo en 10 minutos?',
-          function(){
-            opts([
-              { label:'✅ Sí, llámame',        value:'si'   },
-              { label:'❓ Antes una pregunta', value:'duda' }
-            ], function(o){
-              if(o.value === 'si') return capturaNatural('Spark — consultó precio');
-              w.bot('Claro 👍 Te llamamos sin compromiso y resolvemos lo que necesites antes de decidir nada.', function(){
-                capturaNatural('Spark — consultó precio · dudas');
-              });
+        w.bot('Nuestro Pack Spark es la forma más rápida de empezar 👇');
+        setTimeout(function(){
+          w.bot(
+            '✅ Agente IA en tu web en 5-7 días<br>'+
+            '✅ Capta leads 24/7 mientras duermes<br>'+
+            '✅ Sin permanencia — si no funciona, te vas sin pagar nada más<br><br>'+
+            '💰 <b>499€ de setup + 199€/mes</b>'
+          );
+        }, 800);
+        setTimeout(function(){
+          w.bot('Nuestros clientes recuperan la inversión en menos de 6 semanas con los leads que genera. ¿Quieres calcularlo para tu negocio?');
+        }, 1800);
+        setTimeout(function(){
+          opts([
+            { label:'Sí, quiero empezar 🚀', value:'start' },
+            { label:'Primero ver la demo',   value:'demo'  },
+            { label:'Tengo dudas',           value:'dudas' }
+          ], function(o){
+            if(o.value === 'start')     return capturaNatural('Precio visto — quiere empezar · ' + (ctx.sectorLabel || ''));
+            if(o.value === 'demo')      return miniDemo();
+            w.bot('Sin problema 😊 ¿Qué duda tienes? Te respondo ahora mismo.', function(){
+              w.setInput(true, 'Cuéntame tu duda...');
             });
-          }
-        );
+          });
+        }, 2800);
       }
 
       // ─── EXPLICACIÓN SIMPLE (no sé / no entiendo / ayuda) ─────────────────
