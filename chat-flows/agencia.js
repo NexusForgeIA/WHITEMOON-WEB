@@ -66,7 +66,7 @@
         w.bot('Perfecto 💪', function(){ doCapture(tramite); });
       }
 
-      // Captura para flujos especializados (scout / auditoría / RAG / web)
+      // Captura para flujos especializados (auditoría / RAG / web)
       function capture(tramite, sector){
         if(sector && !ctx.sectorLabel) ctx.sectorLabel = sector;
         doCapture(tramite);
@@ -563,42 +563,6 @@
         doCapture('Auditoría IA', detalle);
       }
 
-      // ─── FLUJO SCOUT ──────────────────────────────────────────────────────
-      function flowScout(){
-        w.bot(
-          'Las agencias y comerciales que usan <b>Scout</b> cierran <b>3-5 clientes nuevos al mes</b> desde el primer mes.<br><br>'+
-          '¿Por qué? Porque antes de llamar ya saben:<br><br>'+
-          '🔍 Qué problemas tiene la web del prospecto<br>'+
-          '🎯 Qué demo personalizada mostrarle<br>'+
-          '💰 Cuánto MRR potencial representa<br>'+
-          '📞 Qué decirle exactamente en la llamada<br><br>'+
-          'La diferencia entre un comercial normal y uno con Scout es como ir a pescar con caña vs con red. 🎣',
-          function(){
-            w.flow([
-              { key:'equipo', msg:'¿Cuántos comerciales tiene tu equipo?', opts:['Solo yo','2-5 comerciales','Más de 5'] }
-            ], function(data){
-              var plan, precio;
-              if(data.equipo === 'Solo yo'){       plan = 'Starter';    precio = '299€ setup + 299€/mes'; }
-              else if(data.equipo === 'Más de 5'){ plan = 'Enterprise'; precio = '699€ setup + 699€/mes'; }
-              else                                { plan = 'Agency';    precio = '499€ setup + 399€/mes'; }
-              w.bot(
-                '<b>🔭 Scout '+plan+'</b><br>'+precio+' · Sin permanencia',
-                function(){
-                  w.bot(
-                    'Con Scout puedes <b>analizar la web de un prospecto en segundos</b> y generar una demo personalizada de su sector antes de llamarle.<br><br>'+
-                    'Tasa de cierre media de nuestros usuarios: <b>3-5 clientes nuevos al mes</b> desde el primer mes.',
-                    function(){
-                      addDesc('Scout ' + plan + ' · equipo: ' + data.equipo);
-                      capture('Scout ' + plan, 'Agencia IA');
-                    }
-                  );
-                }
-              );
-            });
-          }
-        );
-      }
-
       // ─── FLUJO RAG (sistemas con documentos) ──────────────────────────────
       var RAG_CASE_MSGS = {
         manuales:  'Para <b>manuales y procedimientos</b>, el RAG es un asistente que conoce todo lo que el equipo necesita: protocolos, paso a paso y normas internas — accesible 24/7 sin interrumpir a nadie.',
@@ -668,7 +632,6 @@
         if(t.indexOf('no entiendo') !== -1 || t === 'no se' || t.indexOf('no se ') === 0 || t.indexOf('ni idea') !== -1 || t.indexOf('ayuda') !== -1 || t.indexOf('no me entero') !== -1){ explicacionSimple(); return; }
 
         // flujos especializados (jerga inequívoca → enrutar siempre)
-        if(t.indexOf('scout') !== -1 || t.indexOf('crm') !== -1 || t.indexOf('prospec') !== -1){ flowScout(); return; }
         if(t.indexOf('auditoria') !== -1 || t.indexOf('analisis ia') !== -1 || /\broi\b/.test(t)){ flowAuditoria(); return; }
         if(/\brag\b/.test(t) || t.indexOf('base de conocimiento') !== -1){ flowRAG(); return; }
 
