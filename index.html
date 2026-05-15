@@ -614,6 +614,22 @@
         </svg>
         Auditoría IA
       </a>
+      <a href="#agentes-ia" onclick="document.getElementById('agentes-ia').scrollIntoView({behavior:'smooth'});return false;" style="
+        padding:8px 18px;
+        background:linear-gradient(135deg,#7c4dff,#9d70ff);
+        border-radius:8px;color:#fff;text-decoration:none;
+        font-weight:700;font-size:.82rem;
+        display:inline-flex;align-items:center;gap:6px;
+        transition:all .2s;letter-spacing:.02em">
+        <svg viewBox="0 0 24 24" style="width:13px;height:13px;
+          stroke:#fff;fill:none;stroke-width:2">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/>
+          <line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+        Agentes IA
+      </a>
       <a href="#pack-rag" onclick="document.getElementById('pack-rag').scrollIntoView({behavior:'smooth'});return false;" style="
         padding:8px 18px;
         background:linear-gradient(135deg,#0891b2,#0e7490);
@@ -642,6 +658,7 @@
       <a href="#servicios" onclick="navMobileGo('servicios');return false;">Servicios</a>
       <a href="#precios" onclick="navMobileGo('precios');return false;">Precios</a>
       <a href="#audit" class="cta-audit" onclick="navMobileGo('audit');return false;">📋 Auditoría IA</a>
+      <a href="#agentes-ia" class="cta-agentes" onclick="navMobileGo('agentes-ia');return false;">🤖 Agentes IA</a>
       <a href="#metodo" onclick="navMobileGo('metodo');return false;">Método</a>
       <a href="#faq" onclick="navMobileGo('faq');return false;">FAQ</a>
       <a href="https://whitemoon.es/blog/">Blog</a>
@@ -2341,6 +2358,98 @@
   </div>
 </section>
 
+<!-- AGENTES IA -->
+<section id="agentes-ia" style="padding:100px 24px;background:var(--bg2,#0e0e16);position:relative;overflow:hidden">
+  <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--p,#7c4dff),var(--p2,#9d70ff),transparent)"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(124,77,255,.06),transparent 60%);pointer-events:none"></div>
+
+  <div class="wrap" style="position:relative">
+
+    <!-- Header -->
+    <div style="text-align:center;max-width:780px;margin:0 auto 56px">
+      <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);border-radius:20px;font-size:.7rem;font-weight:700;color:var(--p2,#9d70ff);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px">
+        🤖 Agentes IA de Conversión
+      </div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px">
+        Tu empresa necesita <span style="background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));-webkit-background-clip:text;background-clip:text;color:transparent">clientes, no chatbots</span>
+      </h2>
+      <p style="font-size:1.05rem;color:var(--muted,#8888a0);line-height:1.65;max-width:620px;margin:0 auto">
+        Nuestros Agentes IA cualifican, convencen y cierran.<br>Tú solo recibes clientes listos para comprar.
+      </p>
+    </div>
+
+    <!-- 3 cards diferenciadores -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:56px">
+      <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
+        <div style="font-size:2rem;margin-bottom:14px" aria-hidden="true">🎯</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cualifica</h3>
+        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Detecta el interés real. Filtra curiosos de compradores antes de que lleguen a ti.</p>
+      </div>
+      <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
+        <div style="font-size:2rem;margin-bottom:14px" aria-hidden="true">💬</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Convence</h3>
+        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Responde objeciones, muestra casos de éxito y precios. 24/7 sin intervención humana.</p>
+      </div>
+      <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
+        <div style="font-size:2rem;margin-bottom:14px" aria-hidden="true">📅</div>
+        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cierra</h3>
+        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Agenda citas, envía presupuestos y confirma por WhatsApp automáticamente.</p>
+      </div>
+    </div>
+
+    <!-- Franja métricas -->
+    <div style="background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(8,8,13,.6));border:1px solid rgba(124,77,255,.25);border-radius:18px;padding:36px 28px;margin-bottom:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;text-align:center">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">+340</div>
+        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">leads cualificados este mes</div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">68%</div>
+        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">tasa de conversión a cita</div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">23 min</div>
+        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">tiempo medio de respuesta</div>
+      </div>
+    </div>
+
+    <!-- Comparativa -->
+    <div style="max-width:720px;margin:0 auto 48px">
+      <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;text-align:center;margin-bottom:24px;letter-spacing:-.01em">Chatbot tradicional vs Agente IA WhiteMoon</h3>
+      <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;overflow:hidden">
+        <table style="width:100%;border-collapse:collapse;font-size:.92rem">
+          <thead>
+            <tr style="background:rgba(124,77,255,.08)">
+              <th style="text-align:left;padding:14px 20px;color:var(--muted,#8888a0);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Capacidad</th>
+              <th style="padding:14px 16px;color:var(--muted,#8888a0);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Chatbot</th>
+              <th style="padding:14px 16px;color:var(--p2,#9d70ff);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Agente IA</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Responde preguntas</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Cualifica leads</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no">❌</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Maneja objeciones</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no">❌</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Agenda citas</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no">❌</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Aprende del sector</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no">❌</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">ROI medible</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no">❌</td><td style="text-align:center;padding:14px 16px" aria-label="sí">✅</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
+      <button type="button" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.3);letter-spacing:.01em">
+        Quiero mi Agente IA →
+      </button>
+      <a href="https://wa.me/34643199580?text=Hola%2C+quiero+un+Agente+IA+de+conversi%C3%B3n+para+mi+empresa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:11px;color:var(--text,#f0f0f5);font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.01em">
+        Hablar con Cristóbal
+      </a>
+    </div>
+
+  </div>
+</section>
+
 <!-- VALOR DIFERENCIAL -->
 <section class="sec">
   <div class="wrap">
@@ -2535,6 +2644,7 @@
         <li><a href="/scale/">Pack Scale · Sistema RAG</a></li>
         <li><a href="/elite/">Pack Elite · IA Premium</a></li>
         <li><a href="/gestoria-ia/">Gestoría IA</a></li>
+        <li><a href="/#agentes-ia">Agentes IA · Conversión</a></li>
       </ul>
       <h4 style="margin-top:24px;">Agencia IA por zona</h4>
       <ul class="foot-links-list">
