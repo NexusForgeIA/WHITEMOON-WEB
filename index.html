@@ -592,58 +592,35 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="wrap">
-    <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}"><picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="WHITEMOON" width="140" height="52" style="height:52px;width:auto;"></picture></a>
+    <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}">
+      <picture>
+        <source srcset="./logo.webp" type="image/webp">
+        <img src="./logo.png" alt="WHITEMOON" width="140" height="52" style="height:52px;width:auto;">
+      </picture>
+    </a>
+
     <div class="nav-right">
-      <a href="#quienes-somos" class="nav-link" onclick="document.getElementById('quienes-somos').scrollIntoView({behavior:'smooth'});return false;">Quiénes somos</a>
-      <a href="#servicios" class="nav-link" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'});return false;">Servicios</a>
-      <a href="#precios" class="nav-link" onclick="document.getElementById('precios').scrollIntoView({behavior:'smooth'});return false;">Precios</a>
-      <a href="#metodo" class="nav-link" onclick="document.getElementById('metodo').scrollIntoView({behavior:'smooth'});return false;">Método</a>
-      <a href="#faq" class="nav-link" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'});return false;">FAQ</a>
+      <a href="#quienes-somos" class="nav-link" onclick="smoothNav(event,'quienes-somos')">Quiénes somos</a>
+      <a href="#servicios"     class="nav-link" onclick="smoothNav(event,'servicios')">Servicios</a>
+      <a href="#precios"       class="nav-link" onclick="smoothNav(event,'precios')">Precios</a>
+      <a href="#metodo"        class="nav-link" onclick="smoothNav(event,'metodo')">Método</a>
+      <a href="#faq"           class="nav-link" onclick="smoothNav(event,'faq')">FAQ</a>
       <a href="https://whitemoon.es/blog/" class="nav-link">Blog</a>
-      <a href="#audit" onclick="document.getElementById('audit').scrollIntoView({behavior:'smooth'});return false;" style="
-        padding:8px 18px;
-        background:#f59e0b;
-        border-radius:8px;color:#1a1a1a;text-decoration:none;
-        font-weight:700;font-size:.82rem;
-        display:inline-flex;align-items:center;gap:6px;
-        transition:all .2s;letter-spacing:.02em">
-        <svg viewBox="0 0 24 24" style="width:13px;height:13px;
-          stroke:#1a1a1a;fill:none;stroke-width:2">
-          <path d="M9 11l3 3L22 4"/>
-          <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
-        </svg>
+
+      <a href="#audit"      class="nav-pill nav-pill--audit"   onclick="smoothNav(event,'audit')">
+        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         Auditoría IA
       </a>
-      <a href="#agentes-ia" onclick="document.getElementById('agentes-ia').scrollIntoView({behavior:'smooth'});return false;" style="
-        padding:8px 18px;
-        background:linear-gradient(135deg,#7c4dff,#9d70ff);
-        border-radius:8px;color:#fff;text-decoration:none;
-        font-weight:700;font-size:.82rem;
-        display:inline-flex;align-items:center;gap:6px;
-        transition:all .2s;letter-spacing:.02em">
-        <svg viewBox="0 0 24 24" style="width:13px;height:13px;
-          stroke:#fff;fill:none;stroke-width:2">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-          <line x1="9" y1="9" x2="9.01" y2="9"/>
-          <line x1="15" y1="9" x2="15.01" y2="9"/>
-        </svg>
+      <a href="#agentes-ia" class="nav-pill nav-pill--agentes" onclick="smoothNav(event,'agentes-ia')">
+        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
         Agentes IA
       </a>
-      <a href="#pack-rag" onclick="document.getElementById('pack-rag').scrollIntoView({behavior:'smooth'});return false;" style="
-        padding:8px 18px;
-        background:linear-gradient(135deg,#0891b2,#0e7490);
-        border-radius:8px;color:#fff;text-decoration:none;
-        font-weight:700;font-size:.82rem;
-        display:inline-flex;align-items:center;gap:6px;
-        transition:all .2s;letter-spacing:.02em">
-        <svg viewBox="0 0 24 24" style="width:13px;height:13px;
-          stroke:#fff;fill:none;stroke-width:2">
-          <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-        </svg>
+      <a href="#pack-rag"   class="nav-pill nav-pill--rag"     onclick="smoothNav(event,'pack-rag')">
+        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
         RAG IA
       </a>
-      <a href="#contacto" class="nav-cta" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'});return false;">Contactar</a>
+      <a href="#contacto" class="nav-cta" onclick="smoothNav(event,'contacto')">Contactar</a>
+
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobilePanel" onclick="toggleMobileNav(this)">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round">
           <line x1="3" y1="6" x2="21" y2="6"/>
@@ -652,22 +629,29 @@
         </svg>
       </button>
     </div>
+
     <div class="nav-mobile-panel" id="navMobilePanel">
       <button type="button" class="nav-close" aria-label="Cerrar menú" onclick="closeMobileNav()">×</button>
       <a href="#quienes-somos" onclick="navMobileGo('quienes-somos');return false;">Quiénes somos</a>
-      <a href="#servicios" onclick="navMobileGo('servicios');return false;">Servicios</a>
-      <a href="#precios" onclick="navMobileGo('precios');return false;">Precios</a>
-      <a href="#audit" class="cta-audit" onclick="navMobileGo('audit');return false;">📋 Auditoría IA</a>
-      <a href="#agentes-ia" class="cta-agentes" onclick="navMobileGo('agentes-ia');return false;">🤖 Agentes IA</a>
-      <a href="#metodo" onclick="navMobileGo('metodo');return false;">Método</a>
-      <a href="#faq" onclick="navMobileGo('faq');return false;">FAQ</a>
+      <a href="#servicios"     onclick="navMobileGo('servicios');return false;">Servicios</a>
+      <a href="#precios"       onclick="navMobileGo('precios');return false;">Precios</a>
+      <a href="#metodo"        onclick="navMobileGo('metodo');return false;">Método</a>
+      <a href="#faq"           onclick="navMobileGo('faq');return false;">FAQ</a>
       <a href="https://whitemoon.es/blog/">Blog</a>
-      <a href="#pack-rag" class="cta-rag" onclick="navMobileGo('pack-rag');return false;">💬 RAG IA</a>
-      <a href="#contacto" class="cta-wa" onclick="navMobileGo('contacto');return false;">Contactar</a>
+      <a href="#audit"      class="cta-audit"   onclick="navMobileGo('audit');return false;">📋 Auditoría IA</a>
+      <a href="#agentes-ia" class="cta-agentes" onclick="navMobileGo('agentes-ia');return false;">🤖 Agentes IA</a>
+      <a href="#pack-rag"   class="cta-rag"     onclick="navMobileGo('pack-rag');return false;">💬 RAG IA</a>
+      <a href="#contacto"   class="cta-wa"      onclick="navMobileGo('contacto');return false;">✉️ Contactar</a>
     </div>
   </div>
 </nav>
 <script>
+  function smoothNav(e,id){
+    if(e&&e.preventDefault)e.preventDefault();
+    var el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:'smooth'});
+    return false;
+  }
   function toggleMobileNav(btn){
     var p=document.getElementById('navMobilePanel');if(!p)return;
     var open=p.classList.toggle('open');
