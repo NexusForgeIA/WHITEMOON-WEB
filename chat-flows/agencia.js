@@ -187,46 +187,16 @@
       // ─── 6. MINI-DEMO INLINE ──────────────────────────────────────────────
       function miniDemo(){
         w.setInput(false);
-        var servicio = (ctx.sectorLabel && ctx.sectorLabel !== 'General')
-          ? u.escapeHtml('tu ' + ctx.sectorLabel.toLowerCase())
-          : 'tus servicios';
-        w.bot('Te muestro cómo funciona ahora mismo 👇', function(){
-          setTimeout(function(){
-            w.bot('Imagina que soy tu asistente IA trabajando en tu negocio ahora mismo...', function(){
-              setTimeout(function(){
-                w.bot(
-                  '¡Hola! 👋 Gracias por contactarnos.<br>Estamos encantados de atenderte.<br>¿En qué puedo ayudarte hoy?',
-                  function(){
-                    setTimeout(function(){
-                      w.bot(
-                        'Así de simple. Tu cliente recibe respuesta inmediata — aunque sean las 3 de la madrugada.<br><br>'+
-                        'Y tú recibes esto por WhatsApp al despertar:<br>'+
-                        '📱 <i>«Nuevo lead: María García · 612 345 678 · interesada en '+servicio+' · Hora: 02:34»</i>',
-                        function(){
-                          setTimeout(function(){
-                            w.bot('¿Lo montamos así para tu negocio?', function(){
-                              opts([
-                                { label:'✅ Sí, quiero esto',      value:'si'     },
-                                { label:'❓ Tengo alguna duda',    value:'duda'   },
-                                { label:'💰 ¿Cuánto me costaría?', value:'precio' }
-                              ], function(o){
-                                if(o.value === 'si')     return capturaNatural('Spark — vio demo inline');
-                                if(o.value === 'precio') return mostrarPrecio();
-                                w.bot('Sin problema 👍 Te llamamos y resolvemos cualquier duda — sin compromiso.', function(){
-                                  capturaNatural('Spark — vio demo · tiene dudas');
-                                });
-                              });
-                            });
-                          }, 1500);
-                        }
-                      );
-                    }, 2000);
-                  }
-                );
-              }, 1500);
-            });
-          }, 1500);
-        });
+        w.bot('Así funciona en tu negocio 👇');
+        setTimeout(function(){
+          w.bot('Cliente: "Hola, quiero información sobre vuestros servicios"');
+        }, 800);
+        setTimeout(function(){
+          w.bot('Agente IA: "¡Hola! Encantado. Te cuento todo en 30 segundos ¿prefieres que te llame un especialista o te explico aquí?"');
+        }, 1800);
+        setTimeout(function(){
+          capturaNatural('Spark — vio demo · ' + (ctx.sectorLabel || 'General'));
+        }, 2800);
       }
 
       // ─── 7. PRECIO ────────────────────────────────────────────────────────
