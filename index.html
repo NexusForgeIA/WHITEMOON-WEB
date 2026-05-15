@@ -750,6 +750,10 @@
   .sector-icon svg{width:40px;height:40px;display:block}
   .sector-name{font-size:12px;font-weight:600;color:var(--text2,#9090b0);text-align:center;letter-spacing:.01em}
   .sector-item:hover .sector-name{color:#fff}
+  .sectores-cta{text-align:center;margin-top:48px;padding-top:24px}
+  .sectores-cta-text{font-size:.95rem;color:var(--muted,#8888a0);margin-bottom:16px;line-height:1.6}
+  .sectores-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.28);letter-spacing:.01em}
+  .sectores-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,77,255,.4)}
   @media (max-width:900px){.sectores-grid{grid-template-columns:repeat(4,1fr)}}
   @media (max-width:600px){.sectores-grid{grid-template-columns:repeat(3,1fr)}.sector-icon{width:64px;height:64px}.sector-icon svg{width:34px;height:34px}}
 </style>
@@ -843,6 +847,12 @@
         </div>
         <span class="sector-name">Empresas</span>
       </a>
+    </div>
+    <div class="sectores-cta">
+      <p class="sectores-cta-text">¿Tu sector no está o quieres saber más?</p>
+      <button type="button" class="sectores-cta-btn" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}" aria-label="Contactar con WhiteMoon">
+        Contactar →
+      </button>
     </div>
   </div>
 </section>
