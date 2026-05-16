@@ -4,7 +4,7 @@
  */
 (function(){
   var CONFIG = {
-    botName:  'Asistente WhiteMoon',
+    botName:  'Agente IA WhiteMoon',
     color:    '#7c3aed',
     tel:      '643199580',
     biz:      'WhiteMoon Agencia IA',
@@ -144,7 +144,7 @@
       '#wm-chat-modal.wm-show{display:flex;}',
       '@media(max-width:600px){#wm-chat-modal{bottom:0;right:0;width:100vw;height:80vh;border-radius:16px 16px 0 0;}}',
       '#wm-chat-modal .wm-header{background:'+cfg.color+';padding:14px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;}',
-      '#wm-chat-modal .wm-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}',
+      '#wm-chat-modal .wm-avatar{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;overflow:hidden;padding:0;}',
       '#wm-chat-modal .wm-hinfo{flex:1;min-width:0;}',
       '#wm-chat-modal .wm-hname{color:#fff;font-weight:700;font-size:.88rem;}',
       '#wm-chat-modal .wm-hstatus{color:rgba(255,255,255,.8);font-size:.7rem;display:flex;align-items:center;gap:4px;}',
@@ -206,7 +206,7 @@
     modal.setAttribute('aria-label', 'Chat con ' + escapeHtml(cfg.botName));
     modal.innerHTML = [
       '<div class="wm-header">',
-        '<div class="wm-avatar">💬</div>',
+        '<div class="wm-avatar"><img src="/ICONO%20WHITEMOON.jpeg" style="width:36px;height:36px;border-radius:50%;object-fit:cover" alt="WhiteMoon"></div>',
         '<div class="wm-hinfo">',
           '<div class="wm-hname">' + escapeHtml(cfg.botName) + '</div>',
           '<div class="wm-hstatus"><span class="wm-hdot"></span> En línea</div>',
