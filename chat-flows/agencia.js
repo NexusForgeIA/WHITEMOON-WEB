@@ -726,6 +726,16 @@
         });
       }
 
+      // ─── FLUJO DE SOLICITUD DESDE CTA DE PACK ────────────────────────────
+      function flowSolicitud(pack){
+        ctx.packInteres = pack;
+        w.bot('¡Hola! 👋 Veo que te interesa el Pack ' + pack + '.');
+        setTimeout(function(){
+          w.bot('Para darte toda la información personalizada necesito conocerte un poco. ¿Cómo se llama tu empresa?');
+          ctx.state = 'solicitud_empresa';
+        }, 800);
+      }
+
       // ─── DETECCIÓN DE DESPEDIDA ───────────────────────────────────────────
       var DESPEDIDAS = [
         'nada','gracias','adios','adiós','bye',
@@ -760,6 +770,30 @@
         text = (text || '').trim();
         if(!text) return;
         w.addUser(text);
+
+        // flujo solicitud desde CTA — empresa → nombre → teléfono
+        if(ctx.state === 'solicitud_empresa'){
+          ctx.empresaNombre = text;
+          ctx.state = 'solicitud_nombre';
+          w.bot('Perfecto 👍 ¿Y cómo te llamas tú?');
+          return;
+        }
+        if(ctx.state === 'solicitud_nombre'){
+          ctx.contactoNombre = text;
+          ctx.state = 'solicitud_telefono';
+          w.bot('Encantado/a ' + text + ' 😊 ¿A qué número te llamamos? Te contactamos hoy mismo.');
+          return;
+        }
+        if(ctx.state === 'solicitud_telefono'){
+          ctx.state = null;
+          doCapture(
+            'Solicitud Pack ' + (ctx.packInteres || 'General'),
+            'Empresa: ' + (ctx.empresaNombre || '—') +
+              ' | Contacto: ' + (ctx.contactoNombre || '—'),
+            'chatbot-solicitud'
+          );
+          return;
+        }
 
         // despedida → cerrar con elegancia, sin captura
         if(esDespedida(text)){
@@ -799,6 +833,16 @@
 
         fallbackHelp();
       }
+
+      // ─── API PÚBLICA — apertura de chatbot desde CTAs ─────────────────────
+      function wmOpenChat(pack){
+        var btn = document.getElementById('wm-chat-btn');
+        if(btn) btn.click();
+        setTimeout(function(){
+          if(pack) flowSolicitud(pack);
+        }, 600);
+      }
+      window.wmOpenChat = wmOpenChat;
 
       w.onOpen(abrir);
       w.onInput(route);
