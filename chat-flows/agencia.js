@@ -696,20 +696,31 @@
         w.bot(RAG_CASE_MSGS[opt.value] || RAG_CASE_MSGS.otro, function(){
           w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
             w.showOpts([
-              { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
-              { label:'Medios (20-100 docs)',      value:'medios' },
-              { label:'Muchos (más de 100 docs)',  value:'muchos' }
+              { label:'Menos de 100',  value:'pocos'  },
+              { label:'100-200 docs',  value:'medios' },
+              { label:'Más de 200',    value:'muchos' }
             ], function(vol){
-              var plan   = vol.value === 'muchos' ? 'Elite' : 'Scale';
-              var precio = plan === 'Elite' ? '8.500€ setup + 799€/mes' : '4.500€ setup + 449€/mes';
-              w.bot(
-                '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
-                'RAG con tus documentos · IA que responde con tu información exacta 24/7',
-                function(){
-                  addDesc('RAG — ' + opt.label + ' · volumen: ' + vol.label);
-                  capture('Pack ' + plan + ' — RAG (' + opt.label + ')', null);
-                }
-              );
+              var plan, msg;
+              if(vol.value === 'pocos'){
+                plan = 'Core RAG';
+                msg = 'Para ' + opt.label + ' con menos de 100 documentos, ' +
+                      'el Pack Core RAG es perfecto: 3.200€ setup + 349€/mes. ' +
+                      'Tu Agente IA entrenado con tus documentos en 5-7 días.';
+              } else if(vol.value === 'medios'){
+                plan = 'Scale';
+                msg = 'Con ' + vol.label + ', el Pack Scale es tu opción: ' +
+                      '4.500€ setup + 449€/mes. Hasta 200 documentos indexados.';
+              } else {
+                plan = 'Elite';
+                msg = 'Con más de 200 documentos necesitas el Pack Elite: ' +
+                      '8.500€ setup + 799€/mes. Documentos ilimitados.';
+              }
+              w.bot(msg);
+              addDesc('RAG — ' + opt.label + ' · volumen: ' + vol.label);
+              setTimeout(function(){
+                doCapture('Pack ' + plan + ' — RAG (' + opt.label +
+                  ' · ' + vol.label + ')', null, 'chatbot-rag');
+              }, 1000);
             });
           });
         });
