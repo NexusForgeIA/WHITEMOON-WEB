@@ -151,21 +151,42 @@
         empresas: '🏢 Más leads, más reuniones, más ventas. Nuestro Agente IA convierte las visitas de tu web en clientes cualificados 24/7 — mientras tú te centras en cerrar los tratos.'
       };
 
+      // ─── LEAD DATA (Laura captura nombre + teléfono) ─────────────────────
+      var _leadData = { nombre: null, telefono: null };
+
+      function _checkLeadFromClaude(reply, userText){
+        var phone = userText.match(/(\+34|0034)?[\s-]?[6-9]\d{8}/);
+        if (phone && !_leadData.telefono) {
+          _leadData.telefono = phone[0].replace(/[\s-]/g,'');
+        }
+        if (!_leadData.nombre &&
+            claudeHistory.length >= 2 &&
+            /nombre|llamas|cómo te/i.test(claudeHistory[claudeHistory.length-2]?.content||'') &&
+            /^[a-záéíóúñüA-Z\s]{2,30}$/.test(userText.trim())) {
+          _leadData.nombre = userText.trim();
+        }
+        if (_leadData.nombre && _leadData.telefono) {
+          var sector = ctx.sectorLabel || 'General';
+          doCapture(
+            'Laura AI — lead capturado',
+            'Nombre: ' + _leadData.nombre + ' | Sector: ' + sector,
+            'chatbot-laura-ai'
+          );
+          _leadData = { nombre: null, telefono: null };
+        }
+      }
+
       // ─── 1. APERTURA ──────────────────────────────────────────────────────
-      async function abrir(){
+      async function abrir() {
+        _leadData = { nombre: null, telefono: null };
+        ctx = { state: null, sectorLabel: null, descripcion: '' };
         claudeHistory = [];
-        ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
-        state = 'business';
-        var bienvenida = await askClaude('Hola, acabo de llegar a la web de WhiteMoon');
-        if (bienvenida) {
-          w.bot(bienvenida);
-          w.setInput(true, 'Escribe tu pregunta...');
+        w.setInput(true, 'Escribe aquí...');
+        var reply = await askClaude('Hola, acabo de entrar en la web de WhiteMoon');
+        if (reply) {
+          w.bot(reply);
         } else {
-          w.bot('¿Tu negocio podría facturar más este mes? 💰');
-          setTimeout(function(){
-            w.bot('Nuestros Agentes IA convierten visitas en clientes. ¿A qué te dedicas?');
-            w.setInput(true, 'Ej: tengo una clínica dental...');
-          }, 800);
+          w.bot('¡Hola! 👋 Soy Laura, Agente IA de WhiteMoon. ¿A qué te dedicas?');
         }
       }
 
@@ -790,27 +811,35 @@
         return INTERES.some(function(d){ return t === d; });
       }
 
-      // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
+      // ─── ROUTER DE ENTRADA — Laura primero, fallback solo si Claude falla ─
       async function route(text){
         text = (text || '').trim();
         if(!text) return;
         w.addUser(text);
 
-        // Si no hay flujo activo → Claude responde
-        if (!ctx.state && !ctx.sectorLabel) {
-          var reply = await askClaude(text);
-          if (reply) {
-            w.bot(reply);
-            // Detectar si Claude pidió datos de contacto
-            if (/nombre|teléfono|tel\.|llamar|contactar/i.test(reply)) {
-              setTimeout(function(){
-                capturaNatural('Interés via Claude AI · ' + text.slice(0,50));
-              }, 1500);
-            }
-            return;
-          }
+        if (esDespedida(text)) {
+          w.bot('¡Hasta pronto! 👋 Cuando quieras más clientes, aquí estaremos.');
+          return;
+        }
+        if (esInteres(text) && !ctx.state) {
+          capturaNatural('Interés directo · ' + (ctx.sectorLabel||'General'));
+          return;
         }
 
+        // Laura gestiona todo
+        var reply = await askClaude(text);
+        if (reply) {
+          w.bot(reply);
+          _checkLeadFromClaude(reply, text);
+          return;
+        }
+
+        // Fallback solo si Claude falla
+        _fallbackRoute(text);
+      }
+
+      // ─── FALLBACK (flujo antiguo — solo si askClaude devuelve null) ───────
+      function _fallbackRoute(text){
         // flujo solicitud desde CTA — empresa → nombre → teléfono
         if(ctx.state === 'solicitud_empresa'){
           ctx.empresaNombre = text;
