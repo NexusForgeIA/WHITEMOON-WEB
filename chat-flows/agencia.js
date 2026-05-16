@@ -3,6 +3,26 @@
  * Detección de sector por texto libre · diagnóstico · agitación · mini-demo · captura natural
  */
 (function(){
+  const CLAUDE_ENDPOINT = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/whitemoon-chat';
+  var claudeHistory = [];
+
+  async function askClaude(userMsg) {
+    claudeHistory.push({ role: 'user', content: userMsg });
+    try {
+      const res = await fetch(CLAUDE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: claudeHistory })
+      });
+      const data = await res.json();
+      const reply = data.text || '';
+      if (reply) claudeHistory.push({ role: 'assistant', content: reply });
+      return reply;
+    } catch(e) {
+      return null;
+    }
+  }
+
   window.WMFlow = {
     init: function(cfg, w){
       var u = w.utils;
@@ -132,17 +152,21 @@
       };
 
       // ─── 1. APERTURA ──────────────────────────────────────────────────────
-      function abrir(){
+      async function abrir(){
+        claudeHistory = [];
         ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
         state = 'business';
-        w.bot('¿Tu negocio podría facturar más este mes? 💰', function(){
+        var bienvenida = await askClaude('Hola, acabo de llegar a la web de WhiteMoon');
+        if (bienvenida) {
+          w.bot(bienvenida);
+          w.setInput(true, 'Escribe tu pregunta...');
+        } else {
+          w.bot('¿Tu negocio podría facturar más este mes? 💰');
           setTimeout(function(){
-            w.bot(
-              'La mayoría de empresas pierden clientes cada día porque no responden a tiempo. Nosotros lo arreglamos con IA. ¿A qué te dedicas?',
-              function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
-            );
+            w.bot('Nuestros Agentes IA convierten visitas en clientes. ¿A qué te dedicas?');
+            w.setInput(true, 'Ej: tengo una clínica dental...');
           }, 800);
-        });
+        }
       }
 
       // ─── 2. DESCRIPCIÓN DEL NEGOCIO → DETECCIÓN + 3 OPCIONES DIRECTAS ─────
@@ -767,10 +791,25 @@
       }
 
       // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
-      function route(text){
+      async function route(text){
         text = (text || '').trim();
         if(!text) return;
         w.addUser(text);
+
+        // Si no hay flujo activo → Claude responde
+        if (!ctx.state && !ctx.sectorLabel) {
+          var reply = await askClaude(text);
+          if (reply) {
+            w.bot(reply);
+            // Detectar si Claude pidió datos de contacto
+            if (/nombre|teléfono|tel\.|llamar|contactar/i.test(reply)) {
+              setTimeout(function(){
+                capturaNatural('Interés via Claude AI · ' + text.slice(0,50));
+              }, 1500);
+            }
+            return;
+          }
+        }
 
         // flujo solicitud desde CTA — empresa → nombre → teléfono
         if(ctx.state === 'solicitud_empresa'){
