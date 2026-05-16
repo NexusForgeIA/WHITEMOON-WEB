@@ -57,6 +57,7 @@
           detalle:     detalle,
           sector:      sec,
           descripcion: desc,
+          empresa:     ctx.empresaNombre || '',
           waTemplate:  waTpl,
           finish:      FINISH,
           origen:      origen

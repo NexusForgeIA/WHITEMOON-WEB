@@ -26,6 +26,7 @@
     var payload = {
       nombre:      data.nombre      || '',
       telefono:    data.telefono    || '',
+      empresa:     data.empresa     || '',
       sector:      data.sector      || 'No especificado',
       interes:     data.tramite     || data.interes || 'General',
       mensaje:     data.descripcion || data.mensaje || '',
@@ -421,6 +422,7 @@
       if(opts.detalle)     leadData.detalle = opts.detalle;
       if(opts.sector)      leadData.sector = opts.sector;
       if(opts.descripcion) leadData.descripcion = opts.descripcion;
+      if(opts.empresa)     leadData.empresa = opts.empresa;
       bot(escapeHtml(opts.askName || cfg.askName), function(){
         setInput(true, 'Tu nombre');
       });
@@ -664,6 +666,7 @@
         saveLead({
           nombre:      leadData.nombre,
           telefono:    leadData.telefono,
+          empresa:     opts.empresa || (captureCtx && captureCtx.empresa) || leadData.empresa || '',
           sector:      sectorFinal,
           interes:     tramite,
           descripcion: opts.descripcion || leadData.descripcion || (descMatch ? descMatch[1].trim() : null),
