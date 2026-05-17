@@ -3228,6 +3228,21 @@
       </div>
     </div>
 
+    <style>
+    @media(max-width:600px){
+      .foot-col:nth-child(2) ul:nth-child(n+3){
+        display:none;
+      }
+      .foot-col:nth-child(2)::after{
+        content:"Ver todos los servicios →";
+        display:block;
+        margin-top:8px;
+        color:var(--p2,#9d70ff);
+        font-size:.8rem;
+        font-weight:600;
+      }
+    }
+    </style>
     <!-- Col 2 — Servicios -->
     <div class="foot-col">
       <h4>Servicios</h4>
