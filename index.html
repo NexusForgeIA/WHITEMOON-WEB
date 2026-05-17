@@ -3588,5 +3588,20 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   }
 </script>
 
+<button class="navbar-demo-cta" id="demoCta"
+  onclick="var b=document.getElementById('wm-chat-btn');if(b)b.click()">
+  Ver demo de mi sector →
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('demoCta');
+  var hero = document.querySelector('.hero');
+  if(!btn||!hero) return;
+  new IntersectionObserver(function(e){
+    btn.classList.toggle('visible', !e[0].isIntersecting);
+  },{threshold:0.1}).observe(hero);
+})();
+</script>
+
 </body>
 </html>

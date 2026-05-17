@@ -8,3 +8,8 @@
 .tech-logo-item span{font-size:.85rem;font-weight:600;}
 @media(max-width:600px){.tech-logos-grid{gap:24px;}.tech-logo-item span{font-size:.78rem;}}
 .tech-logo-text{font-size:1rem;font-weight:700;letter-spacing:.02em;color:inherit;}
+
+.navbar-demo-cta{display:none;position:fixed;bottom:24px;right:90px;z-index:198;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border:0;padding:12px 20px;border-radius:50px;font-size:.85rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 8px 24px rgba(124,77,255,.4);transition:all .2s;white-space:nowrap;}
+.navbar-demo-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,77,255,.5);}
+.navbar-demo-cta.visible{display:block;}
+@media(max-width:600px){.navbar-demo-cta{bottom:80px;right:16px;}}
