@@ -235,12 +235,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://whitemoon.es/blog/automatizar-whatsapp-pymes/</loc>
-    <lastmod>2026-05-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
 
   <!-- Landings por sector y zona (chatbot-ia-*) -->
   <url><loc>https://whitemoon.es/chatbot-ia-abogados-boadilla/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
