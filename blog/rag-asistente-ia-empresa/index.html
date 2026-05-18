@@ -119,6 +119,9 @@ footer a{color:var(--p2);}
       <div class="art-intro">RAG son las siglas de Retrieval-Augmented Generation. En términos simples: es la tecnología que permite que un chatbot responda basándose exclusivamente en documentos que tú le proporcionas, sin mezclar información externa ni inventar datos.</div>
 
       <div class="art-body">
+<div style="background:rgba(124,77,255,0.08);border:1px solid rgba(124,77,255,0.2);border-left:3px solid #7c4dff;border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:14px;line-height:1.6;color:#b39dff;">
+<strong style="color:#9d70ff;">📌 Nota de WhiteMoon:</strong> Lo que muchos llaman "chatbot" hoy en día es en realidad un <strong>Agente IA</strong> — una tecnología mucho más avanzada que responde, cualifica y actúa de forma autónoma. En este artículo usamos ambos términos para facilitar la búsqueda, pero en WhiteMoon trabajamos exclusivamente con <strong>Agentes IA</strong>. <a href="/blog/agente-ia-vs-chatbot-diferencias/" style="color:#7c4dff;">¿Cuál es la diferencia exacta? →</a>
+</div>
 <p>El caso de uso más potente para pymes: imagina un asistente de ventas que conoce exactamente tu catálogo de productos, tus tarifas actualizadas, tus condiciones de garantía y tu política de devoluciones. Puede responder cualquier pregunta de un cliente potencial con precisión y citar exactamente de qué documento sale la información.</p>
 <h2>Cómo funciona técnicamente</h2>
 <p>Los documentos (PDFs, Word, páginas web) se convierten en vectores matemáticos y se almacenan en una base de datos vectorial (usamos Supabase con pgvector). Cuando el usuario hace una pregunta, el sistema busca los fragmentos más relevantes y los pasa al modelo de IA junto con la pregunta. El modelo genera una respuesta basada en esa información, citando la fuente.</p>
