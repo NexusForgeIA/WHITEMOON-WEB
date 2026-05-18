@@ -3,6 +3,26 @@
  * Detección de sector por texto libre · diagnóstico · agitación · mini-demo · captura natural
  */
 (function(){
+  const CLAUDE_ENDPOINT = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/whitemoon-chat';
+  var claudeHistory = [];
+
+  async function askClaude(userMsg) {
+    claudeHistory.push({ role: 'user', content: userMsg });
+    try {
+      const res = await fetch(CLAUDE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: claudeHistory })
+      });
+      const data = await res.json();
+      const reply = data.text || '';
+      if (reply) claudeHistory.push({ role: 'assistant', content: reply });
+      return reply;
+    } catch(e) {
+      return null;
+    }
+  }
+
   window.WMFlow = {
     init: function(cfg, w){
       var u = w.utils;
@@ -57,6 +77,7 @@
           detalle:     detalle,
           sector:      sec,
           descripcion: desc,
+          empresa:     ctx.empresaNombre || '',
           waTemplate:  waTpl,
           finish:      FINISH,
           origen:      origen
@@ -111,37 +132,62 @@
         return null;
       }
 
-      // ─── PROPUESTA DE VALOR POR SECTOR (dolor + resultado concreto) ───────
+      // ─── PROPUESTA DE VALOR POR SECTOR (afirmar valor + ofrecer solución) ─
       var VALUE_PROP = {
-        dental:      '🦷 Cada paciente que no responde a tiempo se va a la clínica de enfrente. Nuestros clientes dentales captan un 40% más de pacientes nuevos desde que tienen su Agente IA. ¿Quieres verlo funcionando?',
-        legal:       '⚖️ Un lead que no responde en menos de 5 minutos elige otro despacho. Con IA respondemos al instante, cualificamos el caso y tú solo recibes clientes listos para contratar.',
-        peluqueria:  '✂️ Las peluquerías que usan nuestro Agente IA llenan agenda sin coger el teléfono. Cero llamadas perdidas, cero huecos vacíos. ¿Cuánto te cuesta cada hueco sin cubrir?',
-        restaurante: '🍽️ Mesas vacías = dinero perdido. Nuestros restaurantes han aumentado las reservas un 35% con respuesta automática 24/7. ¿Quieres ver cómo funciona en el tuyo?',
-        automocion:  '🚗 El 70% de compradores de coches contacta con 3 concesionarios a la vez. El que responde primero gana la venta. ¿Quieres ser siempre el primero?',
-        taller:      '🔧 Mientras estás debajo de un coche tu competencia está captando tus clientes online. Nuestro Agente IA capta, agenda y confirma citas solo. ¿Cuántas llamas pierdes al día?',
-        gestoria:    '📋 Cada consulta sin responder es un cliente que va a otra gestoría. Con IA respondes al instante, filtras casos rentables y llenas tu agenda de reuniones cualificadas.',
-        veterinaria: '🐾 Las urgencias no esperan. Las clínicas veterinarias con nuestro Agente IA no pierden ni una llamada de noche o fin de semana. ¿Cuántas urgencias pierdes fuera de horario?',
-        reformas:    '🏗️ El 80% de presupuestos de reforma los piden a 3 empresas. El que responde más rápido con mejor propuesta se lleva el trabajo. ¿Quieres ganar más presupuestos?',
-        formacion:   '📚 Un alumno que no recibe respuesta en 10 minutos se apunta a otro centro. Nuestros clientes de formación han multiplicado sus matrículas sin contratar más personal.',
-        podologia:   '🦶 Las ausencias y los huecos vacíos te cuestan dinero cada día. Con recordatorios automáticos y agenda online nuestros podólogos han reducido ausencias un 60%.',
-        inmobiliaria:'🏠 Cada lead inmobiliario vale miles de euros. Con nuestro Agente IA cualificas compradores serios 24/7 y nunca pierdes una oportunidad por no responder a tiempo.',
-        salud:       '🏥 Los pacientes eligen clínica en menos de 2 minutos online. Con respuesta inmediata y agenda automática captamos nuevos pacientes mientras tú atiendes los actuales.',
-        gimnasio:    '💪 El 90% de personas que buscan gimnasio online se apuntan al que responde más rápido. Nuestros gimnasios captan socios nuevos cada día sin mover un dedo.',
-        empresas:    '🏢 Cada visita a tu web que no convierte es dinero que se va. Nuestro Agente IA convierte visitantes en clientes cualificados 24/7. ¿Cuántas visitas recibes al mes?'
+        dental: '🦷 Las clínicas dentales que responden al instante captan hasta un 40% más de pacientes nuevos. Nuestro Agente IA atiende consultas, agenda citas y nunca deja escapar un paciente — ni de noche ni en fin de semana.',
+        legal: '⚖️ El primer despacho que responde se lleva al cliente. Nuestro Agente IA cualifica consultas al instante, filtra los casos rentables y llena tu agenda de reuniones con clientes serios.',
+        peluqueria: '✂️ Agenda siempre llena, cero llamadas perdidas. Nuestro Agente IA gestiona citas, envía recordatorios automáticos y capta clientes nuevos mientras tú trabajas.',
+        restaurante: '🍽️ Más reservas, menos mesas vacías. Nuestro Agente IA gestiona reservas 24/7, responde al instante y llena tu local sin que tengas que mover un dedo.',
+        automocion: '🚗 El comprador que no recibe respuesta en minutos elige otro concesionario. Nuestro Agente IA responde al instante, cualifica el interés real y agenda pruebas de conducción solo.',
+        taller: '🔧 Mientras trabajas en el taller tu Agente IA capta clientes online, agenda revisiones y confirma citas automáticamente. Sin perder ni una oportunidad.',
+        gestoria: '📋 Respuesta inmediata a cada consulta, clientes mejor cualificados y agenda llena de reuniones rentables. Nuestro Agente IA trabaja por ti las 24 horas.',
+        veterinaria: '🐾 Las urgencias no esperan y los dueños tampoco. Nuestro Agente IA atiende consultas a cualquier hora, agenda citas y nunca pierde una llamada fuera de horario.',
+        reformas: '🏗️ El presupuesto que llega primero tiene más probabilidades de cerrarse. Nuestro Agente IA capta el lead, recoge la información del proyecto y te lo entrega listo para presupuestar.',
+        formacion: '📚 Los alumnos eligen centro en minutos. Nuestro Agente IA responde al instante a consultas de matrícula, resuelve dudas y convierte interesados en alumnos matriculados.',
+        podologia: '🦶 Agenda siempre optimizada y menos ausencias. Nuestro Agente IA gestiona citas, envía recordatorios automáticos y capta nuevos pacientes mientras atiendes consulta.',
+        inmobiliaria: '🏠 Compradores cualificados, visitas con clientes serios. Nuestro Agente IA filtra el interés real, responde dudas al instante y agenda visitas automáticamente.',
+        salud: '🏥 Más pacientes nuevos sin más trabajo. Nuestro Agente IA responde consultas al instante, gestiona agenda y capta pacientes mientras tú te centras en atenderlos.',
+        gimnasio: '💪 Socios nuevos cada semana sin esfuerzo. Nuestro Agente IA responde dudas de tarifas, ofrece pruebas gratuitas y convierte interesados en socios automáticamente.',
+        empresas: '🏢 Más leads, más reuniones, más ventas. Nuestro Agente IA convierte las visitas de tu web en clientes cualificados 24/7 — mientras tú te centras en cerrar los tratos.'
       };
 
+      // ─── LEAD DATA (Laura captura nombre + teléfono) ─────────────────────
+      var _leadData = { nombre: null, telefono: null };
+
+      function _checkLeadFromClaude(reply, userText){
+        var phone = userText.match(/(\+34|0034)?[\s-]?[6-9]\d{8}/);
+        if (phone && !_leadData.telefono) {
+          _leadData.telefono = phone[0].replace(/[\s-]/g,'');
+        }
+        if (!_leadData.nombre &&
+            claudeHistory.length >= 2 &&
+            /nombre|llamas|cómo te/i.test(claudeHistory[claudeHistory.length-2]?.content||'') &&
+            /^[a-záéíóúñüA-Z\s]{2,30}$/.test(userText.trim())) {
+          _leadData.nombre = userText.trim();
+        }
+        if (_leadData.nombre && _leadData.telefono) {
+          var sector = ctx.sectorLabel || 'General';
+          doCapture(
+            'Laura AI — lead capturado',
+            'Nombre: ' + _leadData.nombre + ' | Sector: ' + sector,
+            'chatbot-laura-ai'
+          );
+          _leadData = { nombre: null, telefono: null };
+        }
+      }
+
       // ─── 1. APERTURA ──────────────────────────────────────────────────────
-      function abrir(){
-        ctx   = { sectorKey:null, sectorLabel:null, descripcion:null, sistema:null, retries:0 };
-        state = 'business';
-        w.bot('¿Tu negocio podría facturar más este mes? 💰', function(){
-          setTimeout(function(){
-            w.bot(
-              'La mayoría de empresas pierden clientes cada día porque no responden a tiempo. Nosotros lo arreglamos con IA. ¿A qué te dedicas?',
-              function(){ w.setInput(true, 'Ej: tengo una clínica dental...'); }
-            );
-          }, 800);
-        });
+      async function abrir() {
+        _leadData = { nombre: null, telefono: null };
+        ctx = { state: null, sectorLabel: null, descripcion: '' };
+        claudeHistory = [];
+        w.setInput(true, 'Escribe aquí...');
+        var reply = await askClaude('Hola, acabo de entrar en la web de WhiteMoon');
+        if (reply) {
+          w.bot(reply);
+        } else {
+          w.bot('¡Hola! 👋 Soy Laura, Agente IA de WhiteMoon. ¿A qué te dedicas?');
+        }
       }
 
       // ─── 2. DESCRIPCIÓN DEL NEGOCIO → DETECCIÓN + 3 OPCIONES DIRECTAS ─────
@@ -453,21 +499,21 @@
       ];
 
       var AUDIT_SECTOR_MSGS = {
-        legal:        'Los <b>despachos de abogados</b> pierden de media el <b>40% de consultas iniciales</b> por no responder a tiempo. Además el <b>60% de clientes</b> busca abogados en Google y ChatGPT antes de llamar — ¿apareces tú?<br><br>Identificamos exactamente dónde estás perdiendo clientes sin saberlo. 🔍',
-        salud:        'Las <b>clínicas</b> gestionan hasta <b>80 llamadas repetitivas al día</b> — citas, precios, horarios. Cada llamada son 5 minutos de tu equipo. Eso es 400 minutos al día en tareas automatizables.<br><br>¿Cuánto te está costando eso al mes? 💰',
-        reformas:     'Las <b>empresas de reformas</b> pierden el <b>70% de presupuestos</b> solicitados fuera de horario. El cliente pide 3 presupuestos — el primero en responder tiene <b>5x más probabilidad de cerrar</b>.<br><br>¿Cuántos presupuestos pierdes cada semana? 🏗️',
-        hosteleria:   'Los <b>restaurantes</b> sin respuesta online pierden hasta <b>20 mesas por semana</b>. El <b>45% de clientes</b> pregunta en ChatGPT antes de reservar — ¿apareces tú o tu competencia?<br><br>¿Tu restaurante aparece cuando buscan en IA? 🍽️',
-        retail:       'El <b>comercio local</b> pierde el <b>65% de ventas potenciales</b> por no tener atención fuera de horario. Los clientes comparan precios en ChatGPT antes de entrar a la tienda.<br><br>¿Apareces tú o aparece Amazon? 🛒',
-        industria:    'Las <b>empresas industriales</b> tardan 3-5 días en responder solicitudes de presupuesto. La IA cualifica y responde en <b>menos de 2 minutos — 24/7</b>.<br><br>¿Cuántos pedidos pierdes por lentitud de respuesta? 🏭',
-        servicios:    'Las <b>consultoras</b> dedican el <b>30% de su tiempo</b> a tareas administrativas repetitivas. La IA puede gestionar propuestas, seguimientos y onboarding automáticamente.<br><br>¿Cuántas horas semanales pierdes en admin? 💼',
-        gestoria:     'Las <b>gestorías</b> reciben las mismas preguntas <b>100 veces al día</b> — ITP, plazos, documentación. Cada consulta respondida manualmente son 10 minutos perdidos de un gestor cualificado.<br><br>¿Cuántas consultas repetitivas gestionas al día? 📋',
-        peluqueria:   'Los <b>salones</b> pierden hasta el <b>30% de citas</b> por no confirmar reservas automáticamente. Cada hueco vacío son 30-60€ perdidos.<br><br>¿Cuántas citas no confirmadas tienes cada semana? ✂️',
-        taller:       'Los <b>talleres</b> reciben decenas de llamadas preguntando precios, disponibilidad y plazos. Cada llamada que no se atiende es un cliente que llama al taller de enfrente.<br><br>¿Cuántas llamadas pierdes al día? 🔧',
-        veterinaria:  'Las <b>clínicas veterinarias</b> gestionan urgencias, citas y preguntas de propietarios preocupados <b>24/7</b>. Cada llamada no atendida fuera de horario es un cliente que busca otra clínica en Google.<br><br>¿Cuántas consultas urgentes pierdes por la noche? 🐾',
-        formacion:    'Los <b>centros de formación</b> pierden el <b>50% de matrículas potenciales</b> por no responder en el momento de máximo interés del alumno.<br><br>¿Cuántas consultas de matrícula quedan sin respuesta cada día fuera de horario? 📚',
-        podologia:    'Las <b>clínicas de podología</b> dependen de citas y la mayoría de pacientes llama en horario laboral cuando el equipo está ocupado atendiendo. Cada llamada perdida es un paciente que llama a la clínica de al lado.<br><br>¿Cuántas llamadas sin respuesta tienes al día? 🦶',
-        inmobiliaria: 'El <b>sector inmobiliario</b> pierde el <b>80% de contactos</b> que llegan fuera de horario. Un comprador interesado toma decisiones en horas — si no le respondes tú, le responde tu competencia.<br><br>¿Cuántos leads inmobiliarios pierdes cada semana? 🏠',
-        otro:         'Independientemente del sector, la mayoría de empresas pierde entre <b>20-40% de oportunidades</b> por falta de automatización.<br><br>La pregunta no es si la IA puede ayudarte — es cuánto te está costando no tenerla hoy. 🤔'
+        legal:        'Los <b>despachos de abogados</b> que responden al instante captan hasta un <b>40% más de consultas iniciales</b>. Además el <b>60% de clientes</b> busca abogados en Google y ChatGPT antes de llamar — con WhiteMoon apareces ahí desde el día 1.<br><br>Identificamos exactamente dónde se quedan oportunidades sin atender y cómo automatizarlas. 🔍',
+        salud:        'Las <b>clínicas</b> gestionan hasta <b>80 llamadas repetitivas al día</b> — citas, precios, horarios. Cada una son 5 minutos de tu equipo: <b>400 minutos diarios</b> en tareas que la IA resuelve sola.<br><br>Te calculamos el ahorro exacto en horas y euros para tu clínica. 💰',
+        reformas:     'Las <b>empresas de reformas</b> que responden las primeras tienen <b>5x más probabilidad de cerrar</b> el presupuesto. El cliente pide 3 y elige al que llega antes con propuesta clara.<br><br>Con WhiteMoon ese presupuesto siempre es el tuyo. 🏗️',
+        hosteleria:   'Los <b>restaurantes</b> con respuesta automática 24/7 captan hasta <b>20 mesas más por semana</b>. El <b>45% de clientes</b> pregunta en ChatGPT antes de reservar — con WhiteMoon apareces ahí.<br><br>Tu restaurante visible y reservando solo, también de noche. 🍽️',
+        retail:       'El <b>comercio local</b> recupera hasta un <b>65% de ventas potenciales</b> con atención automatizada fuera de horario. Los clientes comparan en ChatGPT antes de entrar a la tienda — apareces tú, no Amazon.<br><br>Tu comercio visible 24/7 sin contratar más personal. 🛒',
+        industria:    'Las <b>empresas industriales</b> tardan 3-5 días en responder solicitudes de presupuesto. La IA cualifica y responde en <b>menos de 2 minutos — 24/7</b>.<br><br>Cada pedido entra en tu pipeline el mismo instante en que se solicita. 🏭',
+        servicios:    'Las <b>consultoras</b> dedican el <b>30% de su tiempo</b> a tareas administrativas repetitivas. La IA gestiona propuestas, seguimientos y onboarding automáticamente.<br><br>Recuperas 15-20 horas semanales para facturarlas en proyectos rentables. 💼',
+        gestoria:     'Las <b>gestorías</b> reciben las mismas preguntas <b>100 veces al día</b> — ITP, plazos, documentación. Cada respuesta manual son 10 minutos de un gestor cualificado.<br><br>La IA responde al instante y libera a tu equipo para las tareas que sí facturan. 📋',
+        peluqueria:   'Los <b>salones</b> con confirmación automática de reservas reducen ausencias hasta un <b>30%</b>. Cada hueco vacío son 30-60€ recuperados.<br><br>Agenda llena, recordatorios automáticos y cero huecos sin cubrir. ✂️',
+        taller:       'Los <b>talleres</b> reciben decenas de llamadas al día preguntando precios, disponibilidad y plazos. Cada llamada no atendida es un cliente que entra en el taller de enfrente.<br><br>La IA atiende cada llamada al instante y te entrega solo los clientes cualificados. 🔧',
+        veterinaria:  'Las <b>clínicas veterinarias</b> gestionan urgencias, citas y propietarios preocupados <b>24/7</b>. Cada llamada nocturna es un cliente que decide en ese momento.<br><br>La IA atiende fuera de horario y nunca deja una urgencia sin respuesta. 🐾',
+        formacion:    'Los <b>centros de formación</b> que responden al instante captan hasta un <b>50% más de matrículas</b>. El alumno decide en el momento de máximo interés — si no le respondes tú, le responde otro centro.<br><br>La IA convierte ese interés en matrícula automática. 📚',
+        podologia:    'Las <b>clínicas de podología</b> reciben la mayoría de llamadas en horario laboral, cuando el equipo está atendiendo consulta. Cada llamada que entra al buzón es un paciente que llama a la clínica de al lado.<br><br>La IA atiende cada consulta y agenda citas mientras tú trabajas. 🦶',
+        inmobiliaria: 'El <b>sector inmobiliario</b> capta hasta un <b>80% más de contactos</b> con respuesta automática fuera de horario. El comprador decide en horas — si no le respondes tú, le responde la competencia.<br><br>La IA cualifica leads serios y agenda visitas 24/7. 🏠',
+        otro:         'Independientemente del sector, la mayoría de empresas deja sin captar entre <b>20-40% de oportunidades</b> por falta de automatización.<br><br>La auditoría te muestra el ahorro exacto para tu negocio — y el ROI mes a mes. 🤔'
       };
 
       function flowAuditoria(){
@@ -696,23 +742,44 @@
         w.bot(RAG_CASE_MSGS[opt.value] || RAG_CASE_MSGS.otro, function(){
           w.bot('¿Cuántos documentos aproximadamente tienes?', function(){
             w.showOpts([
-              { label:'Pocos (menos de 20 docs)',  value:'pocos'  },
-              { label:'Medios (20-100 docs)',      value:'medios' },
-              { label:'Muchos (más de 100 docs)',  value:'muchos' }
+              { label:'Menos de 100',  value:'pocos'  },
+              { label:'100-200 docs',  value:'medios' },
+              { label:'Más de 200',    value:'muchos' }
             ], function(vol){
-              var plan   = vol.value === 'muchos' ? 'Elite' : 'Scale';
-              var precio = plan === 'Elite' ? '8.500€ setup + 799€/mes' : '4.500€ setup + 449€/mes';
-              w.bot(
-                '<b>📈 Pack '+plan+'</b><br>'+precio+' · Sin permanencia<br>'+
-                'RAG con tus documentos · IA que responde con tu información exacta 24/7',
-                function(){
-                  addDesc('RAG — ' + opt.label + ' · volumen: ' + vol.label);
-                  capture('Pack ' + plan + ' — RAG (' + opt.label + ')', null);
-                }
-              );
+              var plan, msg;
+              if(vol.value === 'pocos'){
+                plan = 'Core RAG';
+                msg = 'Para ' + opt.label + ' con menos de 100 documentos, ' +
+                      'el Pack Core RAG es perfecto: 3.200€ setup + 349€/mes. ' +
+                      'Tu Agente IA entrenado con tus documentos en 5-7 días.';
+              } else if(vol.value === 'medios'){
+                plan = 'Scale';
+                msg = 'Con ' + vol.label + ', el Pack Scale es tu opción: ' +
+                      '4.500€ setup + 449€/mes. Hasta 200 documentos indexados.';
+              } else {
+                plan = 'Elite';
+                msg = 'Con más de 200 documentos necesitas el Pack Elite: ' +
+                      '8.500€ setup + 799€/mes. Documentos ilimitados.';
+              }
+              w.bot(msg);
+              addDesc('RAG — ' + opt.label + ' · volumen: ' + vol.label);
+              setTimeout(function(){
+                doCapture('Pack ' + plan + ' — RAG (' + opt.label +
+                  ' · ' + vol.label + ')', null, 'chatbot-rag');
+              }, 1000);
             });
           });
         });
+      }
+
+      // ─── FLUJO DE SOLICITUD DESDE CTA DE PACK ────────────────────────────
+      function flowSolicitud(pack){
+        ctx.packInteres = pack;
+        w.bot('¡Hola! 👋 Veo que te interesa el Pack ' + pack + '.');
+        setTimeout(function(){
+          w.bot('Para darte toda la información personalizada necesito conocerte un poco. ¿Cómo se llama tu empresa?');
+          ctx.state = 'solicitud_empresa';
+        }, 800);
       }
 
       // ─── DETECCIÓN DE DESPEDIDA ───────────────────────────────────────────
@@ -744,11 +811,58 @@
         return INTERES.some(function(d){ return t === d; });
       }
 
-      // ─── ROUTER DE ENTRADA ────────────────────────────────────────────────
-      function route(text){
+      // ─── ROUTER DE ENTRADA — Laura primero, fallback solo si Claude falla ─
+      async function route(text){
         text = (text || '').trim();
         if(!text) return;
         w.addUser(text);
+
+        if (esDespedida(text)) {
+          w.bot('¡Hasta pronto! 👋 Cuando quieras más clientes, aquí estaremos.');
+          return;
+        }
+        if (esInteres(text) && !ctx.state) {
+          capturaNatural('Interés directo · ' + (ctx.sectorLabel||'General'));
+          return;
+        }
+
+        // Laura gestiona todo
+        var reply = await askClaude(text);
+        if (reply) {
+          w.bot(reply);
+          _checkLeadFromClaude(reply, text);
+          return;
+        }
+
+        // Fallback solo si Claude falla
+        _fallbackRoute(text);
+      }
+
+      // ─── FALLBACK (flujo antiguo — solo si askClaude devuelve null) ───────
+      function _fallbackRoute(text){
+        // flujo solicitud desde CTA — empresa → nombre → teléfono
+        if(ctx.state === 'solicitud_empresa'){
+          ctx.empresaNombre = text;
+          ctx.state = 'solicitud_nombre';
+          w.bot('Perfecto 👍 ¿Y cómo te llamas tú?');
+          return;
+        }
+        if(ctx.state === 'solicitud_nombre'){
+          ctx.contactoNombre = text;
+          ctx.state = 'solicitud_telefono';
+          w.bot('Encantado/a ' + text + ' 😊 ¿A qué número te llamamos? Te contactamos hoy mismo.');
+          return;
+        }
+        if(ctx.state === 'solicitud_telefono'){
+          ctx.state = null;
+          doCapture(
+            'Solicitud Pack ' + (ctx.packInteres || 'General'),
+            'Empresa: ' + (ctx.empresaNombre || '—') +
+              ' | Contacto: ' + (ctx.contactoNombre || '—'),
+            'chatbot-solicitud'
+          );
+          return;
+        }
 
         // despedida → cerrar con elegancia, sin captura
         if(esDespedida(text)){
@@ -788,6 +902,16 @@
 
         fallbackHelp();
       }
+
+      // ─── API PÚBLICA — apertura de chatbot desde CTAs ─────────────────────
+      function wmOpenChat(pack){
+        var btn = document.getElementById('wm-chat-btn');
+        if(btn) btn.click();
+        setTimeout(function(){
+          if(pack) flowSolicitud(pack);
+        }, 600);
+      }
+      window.wmOpenChat = wmOpenChat;
 
       w.onOpen(abrir);
       w.onInput(route);

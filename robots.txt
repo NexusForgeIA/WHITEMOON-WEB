@@ -19,3 +19,47 @@ Allow: /
 
 User-agent: Google-Extended
 Allow: /
+
+# OAI-SearchBot (ChatGPT Search)
+User-agent: OAI-SearchBot
+Allow: /
+
+# anthropic-ai (legacy Anthropic)
+User-agent: anthropic-ai
+Allow: /
+
+# Applebot-Extended (Apple Intelligence)
+User-agent: Applebot-Extended
+Allow: /
+
+# meta-externalagent (Meta AI / Llama)
+User-agent: meta-externalagent
+Allow: /
+
+# GoogleOther (crawlers adicionales Google)
+User-agent: GoogleOther
+Allow: /
+
+# Amazonbot (Alexa / Rufus)
+User-agent: Amazonbot
+Allow: /
+
+# cohere-ai
+User-agent: cohere-ai
+Allow: /
+
+# Bytespider (TikTok / Doubao)
+User-agent: Bytespider
+Allow: /
+
+# DuckAssistBot (DuckDuckGo AI)
+User-agent: DuckAssistBot
+Allow: /
+
+# YouBot (You.com)
+User-agent: YouBot
+Allow: /
+
+# LLMs — Fichero de contexto para modelos de lenguaje
+# https://llmstxt.org
+LLMs: https://whitemoon.es/llms.txt
