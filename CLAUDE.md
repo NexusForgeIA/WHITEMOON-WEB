@@ -31,3 +31,16 @@ Aplica a todos los flujos, presentes y futuros:
 - /spec antes de cualquier nueva funcionalidad
 - /review antes de mergear
 - /build para implementación incremental
+
+## SKILLS WHITEMOON
+Repo de skills: https://github.com/NexusForgeIA/WHITEMOON-SKILLS-CLAUDE
+
+Cargar al inicio de sesión:
+curl -fsSL https://raw.githubusercontent.com/NexusForgeIA/WHITEMOON-SKILLS-CLAUDE/main/CLAUDE.md -o ~/.claude/CLAUDE.md
+
+Skills disponibles:
+- skills/seo-geo-aeo/SKILL.md
+- skills/chatbot/SKILL.md
+- skills/supabase/SKILL.md
+- skills/ui-design/SKILL.md
+- skills/git-flow/SKILL.md
