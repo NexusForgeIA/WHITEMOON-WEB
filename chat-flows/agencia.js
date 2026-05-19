@@ -773,6 +773,12 @@
       }
 
       // ─── FLUJO DE SOLICITUD DESDE CTA DE PACK ────────────────────────────
+      function flowOferta(){
+        ctx.packInteres = 'Pack Spark — Oferta primer mes gratis';
+        ctx.state = 'oferta_lead';
+        w.bot('Hola, soy Laura de WhiteMoon. Tenemos una oferta hasta el 31 de mayo: contrata el Pack Spark y el primer mes de mantenimiento es GRATIS. Para informarte sin compromiso, dime el nombre de tu empresa y tu nombre y nuestro equipo te llama hoy.');
+      }
+
       function flowSolicitud(pack){
         ctx.packInteres = pack;
         w.bot('¡Hola! 👋 Veo que te interesa el Pack ' + pack + '.');
@@ -908,7 +914,12 @@
         var btn = document.getElementById('wm-chat-btn');
         if(btn) btn.click();
         setTimeout(function(){
-          if(pack) flowSolicitud(pack);
+          if(!pack) return;
+          if(pack === 'Oferta primer mes gratis'){
+            flowOferta();
+          } else {
+            flowSolicitud(pack);
+          }
         }, 600);
       }
       window.wmOpenChat = wmOpenChat;
