@@ -182,6 +182,10 @@
         ctx = { state: null, sectorLabel: null, descripcion: '' };
         claudeHistory = [];
         w.setInput(true, 'Escribe aquí...');
+        if(window._wmSkipWelcome){
+          window._wmSkipWelcome = false;
+          return;
+        }
         var reply = await askClaude('Hola, acabo de entrar en la web de WhiteMoon');
         if (reply) {
           w.bot(reply);
@@ -911,6 +915,9 @@
 
       // ─── API PÚBLICA — apertura de chatbot desde CTAs ─────────────────────
       function wmOpenChat(pack){
+        if(pack === 'Oferta primer mes gratis'){
+          window._wmSkipWelcome = true;
+        }
         var btn = document.getElementById('wm-chat-btn');
         if(btn) btn.click();
         setTimeout(function(){
