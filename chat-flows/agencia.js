@@ -775,7 +775,7 @@
       // ─── FLUJO DE SOLICITUD DESDE CTA DE PACK ────────────────────────────
       function flowOferta(){
         ctx.packInteres = 'Pack Spark — Oferta primer mes gratis';
-        ctx.state = 'oferta_lead';
+        ctx.state = 'solicitud_empresa';
         w.bot('Hola, soy Laura de WhiteMoon. Tenemos una oferta hasta el 31 de mayo: contrata el Pack Spark y el primer mes de mantenimiento es GRATIS. Para informarte sin compromiso, dime el nombre de tu empresa y tu nombre y nuestro equipo te llama hoy.');
       }
 
