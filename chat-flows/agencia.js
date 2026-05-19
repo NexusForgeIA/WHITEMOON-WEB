@@ -827,16 +827,31 @@
         if(!text) return;
         w.addUser(text);
 
-        if (esDespedida(text)) {
-          w.bot('¡Hasta pronto! 👋 Cuando quieras más clientes, aquí estaremos.');
+        // Estados de captura activa — interceptan antes de Claude
+        if(ctx.state === 'solicitud_empresa'){
+          ctx.empresaNombre = text;
+          ctx.state = 'solicitud_nombre';
+          w.bot('Perfecto 👍 ¿Y cómo te llamas tú?');
           return;
         }
-        if (esInteres(text) && !ctx.state) {
-          capturaNatural('Interés directo · ' + (ctx.sectorLabel||'General'));
+        if(ctx.state === 'solicitud_nombre'){
+          ctx.contactoNombre = text;
+          ctx.state = 'solicitud_telefono';
+          w.bot('Encantado/a ' + text + ' 😊 ¿A qué número te llamamos? Te contactamos hoy mismo.');
+          return;
+        }
+        if(ctx.state === 'solicitud_telefono'){
+          ctx.state = null;
+          doCapture(
+            'Solicitud Pack ' + (ctx.packInteres || 'General'),
+            'Empresa: ' + (ctx.empresaNombre || '—') +
+              ' | Contacto: ' + (ctx.contactoNombre || '—'),
+            'chatbot-solicitud'
+          );
           return;
         }
 
-        // Laura gestiona todo
+        // Conversación libre — TODO a Claude
         var reply = await askClaude(text);
         if (reply) {
           w.bot(reply);
