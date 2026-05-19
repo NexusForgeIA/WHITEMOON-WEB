@@ -3854,18 +3854,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   </div>
 </div>
 
-<!-- BANNER OFERTA HOME -->
-<div id="oferta-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:linear-gradient(135deg,#5c35cc,#7c4dff);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-  <div style="display:flex;align-items:center;gap:12px">
-    <div style="background:rgba(255,255,255,.15);border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;white-space:nowrap">Solo hasta el 31 de mayo</div>
-    <span style="font-size:14px;color:#fff;font-weight:600">Agente IA en tu web + <span style="color:#00d4aa">primer mes GRATIS</span> — Solo 499€</span>
-  </div>
-  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
-    <button onclick="cerrarOfertaYChat()" style="background:#fff;color:#7c4dff;border:none;border-radius:6px;padding:8px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:700;cursor:pointer">Lo quiero</button>
-    <button onclick="cerrarBanner()" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:18px;cursor:pointer">✕</button>
-  </div>
-</div>
-
 <script>
 // OFERTA MAYO 2026
 var OFERTA_FIN = new Date('2026-05-31T23:59:59');
@@ -3883,21 +3871,11 @@ function mostrarOferta() {
 function cerrarOferta() {
   document.getElementById('oferta-popup').style.display = 'none';
   sessionStorage.setItem('oferta_cerrada', '1');
-  if (!sessionStorage.getItem('banner_cerrado') && ofertaActiva()) {
-    document.getElementById('oferta-banner').style.display = 'flex';
-  }
-}
-
-function cerrarBanner() {
-  document.getElementById('oferta-banner').style.display = 'none';
-  sessionStorage.setItem('banner_cerrado', '1');
 }
 
 function cerrarOfertaYChat() {
   document.getElementById('oferta-popup').style.display = 'none';
-  document.getElementById('oferta-banner').style.display = 'none';
   sessionStorage.setItem('oferta_cerrada', '1');
-  sessionStorage.setItem('banner_cerrado', '1');
   if (typeof window.wmOpenChat === 'function') {
     window.wmOpenChat('Oferta primer mes gratis');
   } else {
@@ -3908,10 +3886,6 @@ function cerrarOfertaYChat() {
 
 if (ofertaActiva() && !sessionStorage.getItem('oferta_cerrada')) {
   setTimeout(mostrarOferta, 8000);
-  if (sessionStorage.getItem('oferta_cerrada') &&
-      !sessionStorage.getItem('banner_cerrado')) {
-    document.getElementById('oferta-banner').style.display = 'flex';
-  }
 }
 </script>
 
