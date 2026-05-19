@@ -3838,5 +3838,82 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 })();
 </script>
 
+<!-- OFERTA MAYO 2026 -->
+<div id="oferta-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,8,13,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <div style="background:#0e0e16;border:1px solid rgba(124,77,255,.35);border-radius:16px;padding:40px 36px;max-width:480px;width:90%;position:relative;text-align:center">
+    <button onclick="cerrarOferta()" style="position:absolute;top:14px;right:18px;background:none;border:none;color:#8888a0;font-size:20px;cursor:pointer">✕</button>
+    <div style="display:inline-block;background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.3);border-radius:20px;padding:4px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9d70ff;margin-bottom:16px">Oferta de lanzamiento · Solo hasta el 31 de mayo</div>
+    <h2 style="font-family:'Sora',sans-serif;font-size:28px;font-weight:700;color:#f0f0f5;line-height:1.2;margin-bottom:12px;letter-spacing:-.02em">Agente IA en tu web<br><span style="color:#7c4dff">+ primer mes gratis</span></h2>
+    <p style="font-size:14px;color:#8888a0;line-height:1.7;margin-bottom:24px">Setup completo en 5-7 días. Sin permanencia.<br>Solo para los primeros 5 clientes.</p>
+    <div style="background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:10px;padding:16px;margin-bottom:24px">
+      <div style="font-size:32px;font-weight:700;color:#f0f0f5;font-family:'Sora',sans-serif">499€ <span style="font-size:16px;font-weight:300;color:#8888a0">+ 199€/mes</span></div>
+      <div style="font-size:13px;color:#00d4aa;margin-top:4px;font-weight:500">Primer mes de mantenimiento GRATIS</div>
+    </div>
+    <button onclick="cerrarOfertaYChat()" style="background:#7c4dff;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-bottom:10px;transition:background .2s">Quiero mi primer mes gratis →</button>
+    <button onclick="cerrarOferta()" style="background:transparent;border:none;color:#8888a0;font-size:12px;cursor:pointer">Ahora no, gracias</button>
+  </div>
+</div>
+
+<!-- BANNER OFERTA HOME -->
+<div id="oferta-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:linear-gradient(135deg,#5c35cc,#7c4dff);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="background:rgba(255,255,255,.15);border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;white-space:nowrap">Solo hasta el 31 de mayo</div>
+    <span style="font-size:14px;color:#fff;font-weight:600">Agente IA en tu web + <span style="color:#00d4aa">primer mes GRATIS</span> — Solo 499€</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <button onclick="cerrarOfertaYChat()" style="background:#fff;color:#7c4dff;border:none;border-radius:6px;padding:8px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:700;cursor:pointer">Lo quiero</button>
+    <button onclick="cerrarBanner()" style="background:none;border:none;color:rgba(255,255,255,.6);font-size:18px;cursor:pointer">✕</button>
+  </div>
+</div>
+
+<script>
+// OFERTA MAYO 2026
+var OFERTA_FIN = new Date('2026-05-31T23:59:59');
+
+function ofertaActiva() {
+  return new Date() <= OFERTA_FIN;
+}
+
+function mostrarOferta() {
+  if (!ofertaActiva()) return;
+  if (sessionStorage.getItem('oferta_cerrada')) return;
+  document.getElementById('oferta-popup').style.display = 'flex';
+}
+
+function cerrarOferta() {
+  document.getElementById('oferta-popup').style.display = 'none';
+  sessionStorage.setItem('oferta_cerrada', '1');
+  if (!sessionStorage.getItem('banner_cerrado') && ofertaActiva()) {
+    document.getElementById('oferta-banner').style.display = 'flex';
+  }
+}
+
+function cerrarBanner() {
+  document.getElementById('oferta-banner').style.display = 'none';
+  sessionStorage.setItem('banner_cerrado', '1');
+}
+
+function cerrarOfertaYChat() {
+  document.getElementById('oferta-popup').style.display = 'none';
+  document.getElementById('oferta-banner').style.display = 'none';
+  sessionStorage.setItem('oferta_cerrada', '1');
+  sessionStorage.setItem('banner_cerrado', '1');
+  if (typeof window.wmOpenChat === 'function') {
+    window.wmOpenChat('Oferta primer mes gratis');
+  } else {
+    var btn = document.getElementById('wm-chat-btn');
+    if (btn) btn.click();
+  }
+}
+
+if (ofertaActiva() && !sessionStorage.getItem('oferta_cerrada')) {
+  setTimeout(mostrarOferta, 8000);
+  if (sessionStorage.getItem('oferta_cerrada') &&
+      !sessionStorage.getItem('banner_cerrado')) {
+    document.getElementById('oferta-banner').style.display = 'flex';
+  }
+}
+</script>
+
 </body>
 </html>
