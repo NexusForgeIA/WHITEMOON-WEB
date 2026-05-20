@@ -1204,7 +1204,7 @@
         899€
       </div>
       <div style="font-size:.72rem;color:var(--text2,#9090b0);margin-bottom:20px;font-family:'Space Mono',monospace">
-        // único pago · entrega en 5 días
+        // único pago · entrega en 5-7 días laborables
       </div>
 
       <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px">
@@ -1238,13 +1238,22 @@
         </div>
       </div>
 
-      <button type="button" onclick="window.wmOpenChat && window.wmOpenChat('Auditoría IA')||document.getElementById('wm-chat-btn').click()" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:linear-gradient(135deg,var(--p,#7c3aed),var(--p2,#5b21b6));border:0;border-radius:11px;color:#fff;cursor:pointer;font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;transition:all .2s;box-shadow:0 8px 24px rgba(124,58,237,.3);width:100%">
-        Solicitar Auditoría →
-      </button>
-
-      <p style="font-size:.65rem;color:var(--text2,#9090b0);text-align:center;margin-top:10px">
-        Primera consulta gratuita de 30 min
-      </p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px">
+  <div style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:24px;text-align:center">
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Gratuita</div>
+    <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">0€</div>
+    <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Consulta diagnóstico 30 min<br>Análisis inicial de tu negocio</div>
+    <button onclick="if(typeof wmOpenChat==='function')wmOpenChat('Auditoría Gratuita')" style="background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:8px;padding:10px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:500;color:#9d70ff;cursor:pointer;width:100%;transition:background .2s">Quiero mi diagnóstico →</button>
+  </div>
+  <div style="background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.35);border-radius:12px;padding:24px;text-align:center;position:relative">
+    <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#7c4dff;border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;white-space:nowrap">Más completa</div>
+    <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Premium</div>
+    <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">899€</div>
+    <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Informe completo + plan de acción<br>Se descuenta si contratas</div>
+    <button onclick="if(typeof wmOpenChat==='function')wmOpenChat('Auditoría IA')" style="background:#7c4dff;border:none;border-radius:8px;padding:10px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:#fff;cursor:pointer;width:100%;transition:background .2s">Solicitar Auditoría →</button>
+  </div>
+</div>
+<p style="font-size:11px;color:#8888a0;text-align:center;margin-top:12px">La auditoría premium se descuenta del proyecto si contratas · Sin permanencia</p>
     </div>
 
   </div>
