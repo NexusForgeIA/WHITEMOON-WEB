@@ -715,19 +715,7 @@
       <a href="#sectores" class="nav-link" onclick="smoothNav(event,'sectores')">Sectores</a>
       <a href="#precios"  class="nav-link" onclick="smoothNav(event,'precios')">Precios</a>
       <a href="https://whitemoon.es/blog/" class="nav-link">Blog</a>
-
-      <a href="#audit"      class="nav-pill nav-pill--audit"   onclick="smoothNav(event,'audit')">
-        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        Auditoría IA
-      </a>
-      <a href="#agentes-ia" class="nav-pill nav-pill--agentes" onclick="smoothNav(event,'agentes-ia')">
-        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        Agentes IA
-      </a>
-      <a href="#pack-rag"   class="nav-pill nav-pill--rag"     onclick="smoothNav(event,'pack-rag')">
-        <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" fill="none" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        RAG IA
-      </a>
+      <a href="#pack-rag" class="nav-link" onclick="smoothNav(event,'pack-rag')">Demo</a>
       <a href="#contacto" class="nav-cta" onclick="smoothNav(event,'contacto')">Contactar</a>
 
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobilePanel" onclick="toggleMobileNav(this)">
@@ -741,16 +729,13 @@
 
     <div class="nav-mobile-panel" id="navMobilePanel">
       <button type="button" class="nav-close" aria-label="Cerrar menú" onclick="closeMobileNav()">×</button>
-      <a href="#quienes-somos" onclick="navMobileGo('quienes-somos');return false;">Quiénes somos</a>
-      <a href="#servicios"     onclick="navMobileGo('servicios');return false;">Servicios</a>
-      <a href="#precios"       onclick="navMobileGo('precios');return false;">Precios</a>
-      <a href="#metodo"        onclick="navMobileGo('metodo');return false;">Método</a>
-      <a href="#faq"           onclick="navMobileGo('faq');return false;">FAQ</a>
+      <a href="#sectores" onclick="navMobileGo('sectores');return false;">Sectores</a>
+      <a href="#precios"  onclick="navMobileGo('precios');return false;">Precios</a>
       <a href="https://whitemoon.es/blog/">Blog</a>
-      <a href="#audit"      class="cta-audit"   onclick="navMobileGo('audit');return false;">📋 Auditoría IA</a>
-      <a href="#agentes-ia" class="cta-agentes" onclick="navMobileGo('agentes-ia');return false;">🤖 Agentes IA</a>
-      <a href="#pack-rag"   class="cta-rag"     onclick="navMobileGo('pack-rag');return false;">💬 RAG IA</a>
-      <a href="#contacto"   class="cta-wa"      onclick="navMobileGo('contacto');return false;">✉️ Contactar</a>
+      <a href="#pack-rag" onclick="navMobileGo('pack-rag');return false;">Demo</a>
+      <a href="#faq"      onclick="navMobileGo('faq');return false;">FAQ</a>
+      <a href="#contacto" class="cta-wa" onclick="navMobileGo('contacto');return false;">✉️ Contactar</a>
+      <a href="tel:+34643199580" style="justify-content:center;text-align:center;color:#c084fc !important;font-weight:700;border-bottom:0 !important;margin-top:14px;">📞 643 199 580</a>
     </div>
   </div>
 </nav>
