@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Onboarding · WhiteMoon</title>
+<link rel="icon" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08080d;
+    --purple:#7c4dff;
+    --accent:#00d4aa;
+    --light:#f0f0f5;
+    --panel:#11111a;
+    --panel-2:#16161f;
+    --line:#23232f;
+    --muted:#8a8a9e;
+    --danger:#ff5d6c;
+    --warn:#ffb454;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Sora',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--light);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  a{color:inherit}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px 18px 64px}
+
+  /* Header */
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .dot{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--accent));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff}
+  .brand h1{font-size:1.15rem;font-weight:700;letter-spacing:-.01em}
+  .brand small{display:block;color:var(--muted);font-weight:400;font-size:.74rem}
+  .btn{
+    font-family:inherit;font-weight:600;font-size:.85rem;border:none;border-radius:10px;
+    padding:10px 16px;cursor:pointer;transition:transform .12s,opacity .12s,background .12s;
+    display:inline-flex;align-items:center;gap:8px;color:#fff;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:active{transform:translateY(0)}
+  .btn.primary{background:linear-gradient(135deg,var(--purple),#9d70ff)}
+  .btn.accent{background:linear-gradient(135deg,var(--accent),#16e6bb);color:#04201a}
+  .btn.ghost{background:var(--panel-2);border:1px solid var(--line);color:var(--light)}
+  .btn.sm{padding:7px 12px;font-size:.78rem;border-radius:8px}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:26px}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+  .stat .n{font-size:1.7rem;font-weight:800;letter-spacing:-.02em}
+  .stat .l{color:var(--muted);font-size:.76rem;margin-top:2px}
+  .stat.accent .n{color:var(--accent)}
+  .stat.purple .n{color:var(--purple)}
+  .stat.warn .n{color:var(--warn)}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* Client list */
+  .section-title{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 12px 2px;font-weight:600}
+  .clients{display:flex;flex-direction:column;gap:10px}
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px 16px;
+    cursor:pointer;transition:border-color .15s,background .15s;display:grid;
+    grid-template-columns:1fr auto;gap:10px 16px;align-items:center;
+  }
+  .card:hover{border-color:#33334a;background:var(--panel-2)}
+  .card.stuck{border-color:rgba(255,93,108,.5)}
+  .card .name{font-weight:700;font-size:.98rem;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .card .meta{color:var(--muted);font-size:.78rem;margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
+  .tag{font-size:.68rem;font-weight:600;padding:2px 8px;border-radius:99px;border:1px solid var(--line);color:var(--light);text-transform:capitalize}
+  .tag.pack{background:rgba(124,77,255,.14);border-color:rgba(124,77,255,.4);color:#b9a2ff}
+  .tag.sector{background:rgba(0,212,170,.12);border-color:rgba(0,212,170,.35);color:#5ff0d3}
+  .badge{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:99px}
+  .badge.pendiente{background:#22222e;color:var(--muted)}
+  .badge.curso{background:rgba(124,77,255,.18);color:#c2afff}
+  .badge.completado{background:rgba(0,212,170,.18);color:var(--accent)}
+  .badge.pausado{background:rgba(255,180,84,.16);color:var(--warn)}
+  .alert-chip{font-size:.66rem;font-weight:700;padding:3px 8px;border-radius:99px;background:rgba(255,93,108,.16);color:var(--danger)}
+  .progress-wrap{grid-column:1 / -1;display:flex;align-items:center;gap:10px}
+  .bar{flex:1;height:8px;border-radius:99px;background:#1d1d28;overflow:hidden;display:flex}
+  .bar i{height:100%;flex:1;border-right:2px solid var(--bg)}
+  .bar i:last-child{border-right:none}
+  .bar i.on{background:linear-gradient(90deg,var(--purple),var(--accent))}
+  .bar i.cur{background:var(--purple);animation:pulse 1.6s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.55}}
+  .progress-wrap .lab{font-size:.74rem;color:var(--muted);white-space:nowrap;min-width:74px;text-align:right}
+
+  .empty{text-align:center;color:var(--muted);padding:50px 20px;border:1px dashed var(--line);border-radius:14px}
+
+  /* Modal / drawer */
+  .overlay{position:fixed;inset:0;background:rgba(3,3,7,.72);backdrop-filter:blur(3px);z-index:50;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}
+  .overlay.show{display:flex}
+  .modal{background:var(--panel);border:1px solid var(--line);border-radius:18px;width:100%;max-width:620px;padding:24px;animation:rise .25s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}}
+  .modal h2{font-size:1.15rem;font-weight:700;margin-bottom:4px}
+  .modal .sub{color:var(--muted);font-size:.82rem;margin-bottom:18px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.76rem;color:var(--muted);margin-bottom:6px;font-weight:500}
+  .field input,.field select,.field textarea{
+    width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px;color:var(--light);font-family:inherit;font-size:.88rem;outline:none;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--purple)}
+  .field textarea{resize:vertical;min-height:64px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:540px){.grid2{grid-template-columns:1fr}}
+  .token-row{display:flex;gap:8px}
+  .token-row input{font-family:ui-monospace,monospace;letter-spacing:.04em}
+  .modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px}
+
+  /* Detail */
+  .detail-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .detail-head .info h2{font-size:1.25rem;font-weight:700}
+  .detail-head .info .m{color:var(--muted);font-size:.82rem;margin-top:4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}
+  @media(max-width:540px){.kv{grid-template-columns:1fr}}
+  .day-nav{display:flex;align-items:center;gap:10px;margin:18px 0 10px}
+  .day-nav .dtitle{font-weight:700;font-size:1rem}
+  .step{display:flex;gap:12px;align-items:flex-start;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;transition:border-color .15s}
+  .step.done{border-color:rgba(0,212,170,.4)}
+  .step .chk{flex-shrink:0;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .15s}
+  .step.done .chk{background:var(--accent);border-color:var(--accent)}
+  .step .chk svg{width:14px;height:14px;display:none}
+  .step.done .chk svg{display:block}
+  .step .body .t{font-weight:600;font-size:.92rem}
+  .step.done .body .t{text-decoration:line-through;color:var(--muted)}
+  .step .body .d{color:var(--muted);font-size:.8rem;margin-top:2px}
+  .step .body .when{color:var(--accent);font-size:.7rem;margin-top:4px}
+  .timeline{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+  .tl{flex:1;min-width:34px;text-align:center;font-size:.66rem;color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:6px 4px;cursor:pointer}
+  .tl.on{border-color:var(--accent);color:var(--accent)}
+  .tl.cur{border-color:var(--purple);color:#c2afff;font-weight:700}
+  .stuck-banner{background:rgba(255,93,108,.12);border:1px solid rgba(255,93,108,.4);color:#ffb3ba;border-radius:12px;padding:11px 14px;font-size:.82rem;margin:14px 0;display:flex;gap:8px;align-items:center}
+  .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 18px;font-size:.85rem;z-index:90;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-4px)}
+  .toast.ok{border-color:rgba(0,212,170,.5)}
+  .toast.err{border-color:rgba(255,93,108,.5)}
+  .loading{color:var(--muted);text-align:center;padding:40px}
+  .close-x{background:none;border:none;color:var(--muted);font-size:1.6rem;cursor:pointer;line-height:1;padding:0 4px}
+  .close-x:hover{color:var(--light)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">
+      <div class="dot">W</div>
+      <div>
+        <h1>Onboarding WhiteMoon</h1>
+        <small>Activación de clientes en 7 días</small>
+      </div>
+    </div>
+    <button class="btn primary" id="btnNew">+ Nuevo cliente</button>
+  </header>
+
+  <div class="stats">
+    <div class="stat purple"><div class="n" id="stActivos">–</div><div class="l">En onboarding</div></div>
+    <div class="stat accent"><div class="n" id="stSemana">–</div><div class="l">Completados (7 días)</div></div>
+    <div class="stat"><div class="n" id="stTotal">–</div><div class="l">Total clientes</div></div>
+    <div class="stat warn"><div class="n" id="stStuck">–</div><div class="l">Atascados +2 días</div></div>
+  </div>
+
+  <p class="section-title">Clientes en proceso</p>
+  <div class="clients" id="list"><div class="loading">Cargando…</div></div>
+</div>
+
+<!-- New client modal -->
+<div class="overlay" id="newOverlay">
+  <div class="modal">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start">
+      <div><h2>Nuevo cliente</h2><p class="sub">Se crean los 7 steps y se avisa por WhatsApp.</p></div>
+      <button class="close-x" data-close="newOverlay">&times;</button>
+    </div>
+    <form id="newForm">
+      <div class="grid2">
+        <div class="field"><label>Nombre del cliente *</label><input name="cliente_nombre" required placeholder="Clínica Dental Sonríe"></div>
+        <div class="field"><label>Teléfono</label><input name="cliente_telefono" placeholder="600123456"></div>
+      </div>
+      <div class="field"><label>Email</label><input type="email" name="cliente_email" placeholder="info@cliente.com"></div>
+      <div class="grid2">
+        <div class="field"><label>Sector</label>
+          <select name="sector" required>
+            <option value="" disabled selected>Elegir…</option>
+            <option value="dental">Dental</option>
+            <option value="legal">Legal</option>
+            <option value="abogados">Abogados</option>
+            <option value="restaurante">Restaurante</option>
+            <option value="gestoria">Gestoría</option>
+            <option value="clinica">Clínica</option>
+            <option value="inmobiliaria">Inmobiliaria</option>
+            <option value="gimnasio">Gimnasio</option>
+            <option value="peluqueria">Peluquería</option>
+            <option value="veterinaria">Veterinaria</option>
+            <option value="formacion">Formación</option>
+            <option value="taller">Taller</option>
+            <option value="podologia">Podología</option>
+            <option value="automovil">Automóvil</option>
+          </select>
+        </div>
+        <div class="field"><label>Pack</label>
+          <select name="pack" required>
+            <option value="" disabled selected>Elegir…</option>
+            <option value="spark">Spark</option>
+            <option value="core">Core</option>
+            <option value="scale">Scale</option>
+            <option value="elite">Elite</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="field"><label>URL web cliente</label><input name="url_web_cliente" placeholder="https://cliente.com"></div>
+        <div class="field"><label>Repo GitHub</label><input name="repo_github" placeholder="org/repo"></div>
+      </div>
+      <div class="field"><label>Token CDN</label>
+        <div class="token-row">
+          <input name="token_cdn" id="tokenInput" readonly>
+          <button type="button" class="btn ghost sm" id="regenToken">↻</button>
+        </div>
+      </div>
+      <div class="field"><label>Notas</label><textarea name="notas" placeholder="Detalles del proyecto…"></textarea></div>
+      <div class="modal-actions">
+        <button type="button" class="btn ghost" data-close="newOverlay">Cancelar</button>
+        <button type="submit" class="btn accent" id="createBtn">Crear onboarding</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Detail drawer -->
+<div class="overlay" id="detailOverlay">
+  <div class="modal" id="detailModal" style="max-width:680px"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SUPA = "https://mlaqtniujnvfxcvcourm.supabase.co";
+const ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs";
+const REST = SUPA + "/rest/v1/";
+const FN = SUPA + "/functions/v1/";
+const H = { apikey: ANON, Authorization: "Bearer " + ANON, "Content-Type": "application/json" };
+const DAY_MS = 86400000;
+
+const ESTADO_BY_DIA = ["pendiente","dia1","dia2","dia3","dia4","dia5","dia6","completado"];
+let CLIENTS = [];
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function toast(msg, kind){
+  const t = $("#toast");
+  t.textContent = msg;
+  t.className = "toast show " + (kind || "");
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.className = "toast", 2600);
+}
+
+function genToken(){
+  const c = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let s = "";
+  for (let i = 0; i < 8; i++) s += c[Math.floor(Math.random() * c.length)];
+  return "WM-" + s;
+}
+
+async function api(path, opts){
+  const r = await fetch(REST + path, { headers: H, ...opts });
+  if (!r.ok) throw new Error("HTTP " + r.status + " — " + await r.text());
+  const txt = await r.text();
+  return txt ? JSON.parse(txt) : null;
+}
+
+function diaActual(c){ return Math.max(0, Math.min(7, c.dia_actual || 0)); }
+
+function isStuck(c){
+  if (c.estado === "completado" || c.estado === "pausado" || c.estado === "pendiente") return false;
+  if (!c.dia_iniciado_at) return false;
+  return (Date.now() - new Date(c.dia_iniciado_at).getTime()) > 2 * DAY_MS;
+}
+
+function estadoBadge(c){
+  if (c.estado === "completado") return '<span class="badge completado">Completado</span>';
+  if (c.estado === "pausado") return '<span class="badge pausado">Pausado</span>';
+  if (c.estado === "pendiente") return '<span class="badge pendiente">Pendiente</span>';
+  return '<span class="badge curso">Día ' + diaActual(c) + ' / 7</span>';
+}
+
+function progressBar(c){
+  const d = diaActual(c);
+  let html = '<div class="bar">';
+  for (let i = 1; i <= 7; i++){
+    let cls = "";
+    if (i < d || c.estado === "completado") cls = "on";
+    else if (i === d && c.estado !== "completado" && c.estado !== "pendiente") cls = "on cur";
+    html += '<i class="' + cls + '"></i>';
+  }
+  html += '</div>';
+  return html;
+}
+
+/* ---------- list + stats ---------- */
+async function load(){
+  try{
+    CLIENTS = await api("onboarding_clientes?select=*&order=created_at.desc") || [];
+    render();
+  }catch(e){
+    $("#list").innerHTML = '<div class="empty">Error cargando datos.<br><small>' + esc(e.message) + '</small></div>';
+  }
+}
+
+function render(){
+  const weekAgo = Date.now() - 7 * DAY_MS;
+  const activos = CLIENTS.filter(c => c.estado !== "completado" && c.estado !== "pausado").length;
+  const semana = CLIENTS.filter(c => c.estado === "completado" && c.fecha_completado && new Date(c.fecha_completado).getTime() >= weekAgo).length;
+  const stuck = CLIENTS.filter(isStuck).length;
+  $("#stActivos").textContent = activos;
+  $("#stSemana").textContent = semana;
+  $("#stTotal").textContent = CLIENTS.length;
+  $("#stStuck").textContent = stuck;
+
+  const list = $("#list");
+  if (!CLIENTS.length){
+    list.innerHTML = '<div class="empty">Aún no hay clientes en onboarding.<br>Pulsa <b>+ Nuevo cliente</b> para empezar.</div>';
+    return;
+  }
+  list.innerHTML = CLIENTS.map(c => {
+    const stuckCls = isStuck(c) ? " stuck" : "";
+    const alert = isStuck(c) ? '<span class="alert-chip">⚠ +2 días</span>' : "";
+    return '<div class="card' + stuckCls + '" data-id="' + c.id + '">' +
+        '<div>' +
+          '<div class="name">' + esc(c.cliente_nombre) + estadoBadge(c) + alert + '</div>' +
+          '<div class="meta">' +
+            (c.pack ? '<span class="tag pack">' + esc(c.pack) + '</span>' : '') +
+            (c.sector ? '<span class="tag sector">' + esc(c.sector) + '</span>' : '') +
+            (c.token_cdn ? '<span>🔑 ' + esc(c.token_cdn) + '</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="lab">' + (c.estado === "completado" ? '✅ Activo' : 'Día ' + diaActual(c) + '/7') + '</div>' +
+        '<div class="progress-wrap">' + progressBar(c) + '</div>' +
+      '</div>';
+  }).join("");
+  list.querySelectorAll(".card").forEach(el =>
+    el.addEventListener("click", () => openDetail(el.dataset.id)));
+}
+
+/* ---------- detail ---------- */
+async function openDetail(id){
+  const c = CLIENTS.find(x => x.id === id);
+  if (!c) return;
+  const modal = $("#detailModal");
+  modal.innerHTML = '<div class="loading">Cargando checklist…</div>';
+  $("#detailOverlay").classList.add("show");
+  let steps = [];
+  try{
+    steps = await api("onboarding_steps?onboarding_id=eq." + id + "&order=dia.asc,id.asc") || [];
+  }catch(e){ toast("Error cargando steps", "err"); }
+  renderDetail(c, steps);
+}
+
+function renderDetail(c, steps){
+  const d = diaActual(c);
+  const viewDia = d === 0 ? 1 : d;
+  const modal = $("#detailModal");
+  const dayStep = steps.find(s => s.dia === viewDia) || {};
+  const stuckBanner = isStuck(c)
+    ? '<div class="stuck-banner">⚠ Este cliente lleva más de 2 días en el día ' + d + '. Revisa el bloqueo.</div>'
+    : '';
+
+  const timeline = '<div class="timeline">' + [1,2,3,4,5,6,7].map(n => {
+    const st = steps.find(s => s.dia === n);
+    let cls = st && st.completado ? "on" : "";
+    if (n === viewDia) cls += " cur";
+    return '<div class="tl ' + cls + '" data-day="' + n + '">D' + n + (st && st.completado ? ' ✓' : '') + '</div>';
+  }).join("") + '</div>';
+
+  const dayStepsHtml = steps.filter(s => s.dia === viewDia).map(s =>
+    '<div class="step' + (s.completado ? ' done' : '') + '" data-step="' + s.id + '">' +
+      '<div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#04201a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+      '<div class="body">' +
+        '<div class="t">' + esc(s.titulo) + '</div>' +
+        '<div class="d">' + esc(s.descripcion || "") + '</div>' +
+        (s.completado && s.completado_at ? '<div class="when">✓ ' + new Date(s.completado_at).toLocaleString("es-ES") + '</div>' : '') +
+      '</div>' +
+    '</div>'
+  ).join("") || '<div class="empty">Sin steps para este día.</div>';
+
+  const advLabel = c.estado === "completado" ? "Completado ✅"
+    : c.estado === "pendiente" ? "▶ Iniciar día 1"
+    : d >= 6 ? "Finalizar (día 7)" : "Avanzar a día " + (d + 1);
+  const pauseLabel = c.estado === "pausado" ? "Reanudar" : "Pausar";
+
+  modal.innerHTML =
+    '<div class="detail-head">' +
+      '<div class="info">' +
+        '<h2>' + esc(c.cliente_nombre) + '</h2>' +
+        '<div class="m">' + estadoBadge(c) +
+          (c.pack ? '<span class="tag pack">' + esc(c.pack) + '</span>' : '') +
+          (c.sector ? '<span class="tag sector">' + esc(c.sector) + '</span>' : '') +
+          (c.token_cdn ? '<span>🔑 ' + esc(c.token_cdn) + '</span>' : '') +
+        '</div>' +
+      '</div>' +
+      '<button class="close-x" data-close="detailOverlay">&times;</button>' +
+    '</div>' +
+    stuckBanner +
+    '<div class="progress-wrap" style="margin:14px 0">' + progressBar(c) + '<span class="lab">' + (c.estado === "completado" ? "7/7" : d + "/7") + '</span></div>' +
+    timeline +
+    '<div class="kv">' +
+      field("📧 Email", c.cliente_email) +
+      field("📱 Teléfono", c.cliente_telefono) +
+      editField("url_web_cliente", "🌐 URL web", c.url_web_cliente) +
+      editField("repo_github", "🐙 Repo GitHub", c.repo_github) +
+    '</div>' +
+    '<div class="field"><label>Notas</label><textarea id="dNotas" rows="2">' + esc(c.notas || "") + '</textarea></div>' +
+    '<div style="display:flex;gap:8px;justify-content:flex-end;margin-bottom:6px"><button class="btn ghost sm" id="saveMeta">Guardar datos</button></div>' +
+    '<div class="day-nav"><span class="dtitle">Día ' + viewDia + ' · ' + esc(dayStep.titulo || "") + '</span></div>' +
+    dayStepsHtml +
+    '<div class="modal-actions">' +
+      '<button class="btn ghost" id="pauseBtn">' + pauseLabel + '</button>' +
+      '<button class="btn primary" id="advBtn"' + (c.estado === "completado" ? " disabled" : "") + '>' + advLabel + '</button>' +
+    '</div>';
+
+  // step toggles
+  modal.querySelectorAll(".step").forEach(el =>
+    el.querySelector(".chk").addEventListener("click", () => toggleStep(el.dataset.step, c, steps)));
+  // timeline navigation
+  modal.querySelectorAll(".tl").forEach(el =>
+    el.addEventListener("click", () => { c._view = +el.dataset.day; renderDetailDay(c, steps, +el.dataset.day); }));
+  $("#advBtn").addEventListener("click", () => advanceDay(c));
+  $("#pauseBtn").addEventListener("click", () => togglePause(c));
+  $("#saveMeta").addEventListener("click", () => saveMeta(c));
+}
+
+// re-render only when navigating timeline to a non-current day
+function renderDetailDay(c, steps, day){
+  const modal = $("#detailModal");
+  const dayStep = steps.find(s => s.dia === day) || {};
+  const dayStepsHtml = steps.filter(s => s.dia === day).map(s =>
+    '<div class="step' + (s.completado ? ' done' : '') + '" data-step="' + s.id + '">' +
+      '<div class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="#04201a" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>' +
+      '<div class="body"><div class="t">' + esc(s.titulo) + '</div><div class="d">' + esc(s.descripcion || "") + '</div>' +
+      (s.completado && s.completado_at ? '<div class="when">✓ ' + new Date(s.completado_at).toLocaleString("es-ES") + '</div>' : '') +
+      '</div></div>'
+  ).join("");
+  modal.querySelector(".day-nav .dtitle").textContent = "Día " + day + " · " + (dayStep.titulo || "");
+  // replace step list (between day-nav and modal-actions)
+  let node = modal.querySelector(".day-nav").nextElementSibling;
+  while (node && !node.classList.contains("modal-actions")){ const nx = node.nextElementSibling; node.remove(); node = nx; }
+  modal.querySelector(".modal-actions").insertAdjacentHTML("beforebegin", dayStepsHtml);
+  modal.querySelectorAll(".timeline .tl").forEach(t => t.classList.toggle("cur", +t.dataset.day === day));
+  modal.querySelectorAll(".step").forEach(el =>
+    el.querySelector(".chk").addEventListener("click", () => toggleStep(el.dataset.step, c, steps)));
+}
+
+function field(label, val){
+  return '<div class="field"><label>' + label + '</label><input value="' + esc(val || "") + '" readonly></div>';
+}
+function editField(name, label, val){
+  return '<div class="field"><label>' + label + '</label><input id="ed_' + name + '" value="' + esc(val || "") + '"></div>';
+}
+
+async function toggleStep(stepId, c, steps){
+  const s = steps.find(x => x.id === stepId);
+  if (!s) return;
+  const done = !s.completado;
+  try{
+    await api("onboarding_steps?id=eq." + stepId, {
+      method: "PATCH",
+      headers: { ...H, Prefer: "return=minimal" },
+      body: JSON.stringify({ completado: done, completado_at: done ? new Date().toISOString() : null }),
+    });
+    s.completado = done;
+    s.completado_at = done ? new Date().toISOString() : null;
+    renderDetail(c, steps);
+    toast(done ? "Step completado" : "Step reabierto", "ok");
+  }catch(e){ toast("Error guardando step", "err"); }
+}
+
+async function advanceDay(c){
+  const nextDia = Math.min(7, diaActual(c) + 1);
+  const patch = {
+    dia_actual: nextDia,
+    estado: ESTADO_BY_DIA[nextDia],
+    dia_iniciado_at: new Date().toISOString(),
+  };
+  if (nextDia === 1 && !c.fecha_inicio) patch.fecha_inicio = new Date().toISOString();
+  if (nextDia === 7) patch.fecha_completado = new Date().toISOString();
+  try{
+    await api("onboarding_clientes?id=eq." + c.id, {
+      method: "PATCH",
+      headers: { ...H, Prefer: "return=minimal" },
+      body: JSON.stringify(patch),
+    });
+    Object.assign(c, patch);
+    toast(nextDia === 7 ? "Cliente activado 🎉" : "Avanzado a día " + nextDia, "ok");
+    const steps = await api("onboarding_steps?onboarding_id=eq." + c.id + "&order=dia.asc,id.asc") || [];
+    renderDetail(c, steps);
+    render();
+  }catch(e){ toast("Error al avanzar", "err"); }
+}
+
+async function togglePause(c){
+  const paused = c.estado === "pausado";
+  const estado = paused ? ESTADO_BY_DIA[diaActual(c)] : "pausado";
+  try{
+    await api("onboarding_clientes?id=eq." + c.id, {
+      method: "PATCH",
+      headers: { ...H, Prefer: "return=minimal" },
+      body: JSON.stringify({ estado }),
+    });
+    c.estado = estado;
+    toast(paused ? "Reanudado" : "Pausado", "ok");
+    const steps = await api("onboarding_steps?onboarding_id=eq." + c.id + "&order=dia.asc,id.asc") || [];
+    renderDetail(c, steps);
+    render();
+  }catch(e){ toast("Error", "err"); }
+}
+
+async function saveMeta(c){
+  const patch = {
+    url_web_cliente: $("#ed_url_web_cliente").value.trim() || null,
+    repo_github: $("#ed_repo_github").value.trim() || null,
+    notas: $("#dNotas").value.trim() || null,
+  };
+  try{
+    await api("onboarding_clientes?id=eq." + c.id, {
+      method: "PATCH",
+      headers: { ...H, Prefer: "return=minimal" },
+      body: JSON.stringify(patch),
+    });
+    Object.assign(c, patch);
+    toast("Datos guardados", "ok");
+  }catch(e){ toast("Error guardando", "err"); }
+}
+
+/* ---------- create ---------- */
+async function createClient(form){
+  const fd = new FormData(form);
+  const body = {
+    cliente_nombre: (fd.get("cliente_nombre") || "").trim(),
+    cliente_email: (fd.get("cliente_email") || "").trim() || null,
+    cliente_telefono: (fd.get("cliente_telefono") || "").trim() || null,
+    sector: fd.get("sector") || null,
+    pack: fd.get("pack") || null,
+    token_cdn: fd.get("token_cdn") || null,
+    url_web_cliente: (fd.get("url_web_cliente") || "").trim() || null,
+    repo_github: (fd.get("repo_github") || "").trim() || null,
+    notas: (fd.get("notas") || "").trim() || null,
+    estado: "pendiente",
+    dia_actual: 0,
+  };
+  const rows = await api("onboarding_clientes", {
+    method: "POST",
+    headers: { ...H, Prefer: "return=representation" },
+    body: JSON.stringify(body),
+  });
+  const created = Array.isArray(rows) ? rows[0] : rows;
+
+  // PART 4 — notificación WhatsApp automática (no bloquea el flujo si falla)
+  let sent = false;
+  try{
+    const r = await fetch(FN + "onboarding-notify", {
+      method: "POST",
+      headers: H,
+      body: JSON.stringify({
+        nombre: body.cliente_nombre, pack: body.pack,
+        sector: body.sector, token: body.token_cdn,
+        telefono: body.cliente_telefono,
+      }),
+    });
+    const j = await r.json().catch(() => ({}));
+    sent = !!j.sent;
+  }catch(e){ console.warn("[onboarding] notify falló:", e); }
+
+  if (created && created.id){
+    try{
+      await api("onboarding_clientes?id=eq." + created.id, {
+        method: "PATCH",
+        headers: { ...H, Prefer: "return=minimal" },
+        body: JSON.stringify({ whatsapp_enviados: sent ? 1 : 0 }),
+      });
+    }catch(_){}
+  }
+  return sent;
+}
+
+/* ---------- wiring ---------- */
+$("#btnNew").addEventListener("click", () => {
+  $("#newForm").reset();
+  $("#tokenInput").value = genToken();
+  $("#newOverlay").classList.add("show");
+});
+$("#regenToken").addEventListener("click", () => $("#tokenInput").value = genToken());
+
+$("#newForm").addEventListener("submit", async e => {
+  e.preventDefault();
+  const btn = $("#createBtn");
+  btn.disabled = true; btn.textContent = "Creando…";
+  try{
+    const sent = await createClient(e.target);
+    $("#newOverlay").classList.remove("show");
+    toast(sent ? "Onboarding creado · WhatsApp enviado ✅" : "Onboarding creado ✅", "ok");
+    await load();
+  }catch(err){
+    toast("Error: " + err.message, "err");
+  }finally{
+    btn.disabled = false; btn.textContent = "Crear onboarding";
+  }
+});
+
+document.querySelectorAll("[data-close]").forEach(el =>
+  el.addEventListener("click", () => $("#" + el.dataset.close).classList.remove("show")));
+document.querySelectorAll(".overlay").forEach(ov =>
+  ov.addEventListener("click", e => { if (e.target === ov) ov.classList.remove("show"); }));
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") document.querySelectorAll(".overlay.show").forEach(o => o.classList.remove("show"));
+});
+
+load();
+</script>
+</body>
+</html>
