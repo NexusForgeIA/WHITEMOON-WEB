@@ -1016,6 +1016,8 @@
     cursor:pointer;
     font-family:inherit;
   }
+  .geo-llm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1180px;margin:0 auto}
+  @media (max-width:900px){.geo-llm-grid{grid-template-columns:1fr;max-width:420px}}
 </style>
 <section id="sectores" class="sectores-section">
   <div class="wrap">
@@ -1191,7 +1193,7 @@
       </p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;max-width:820px;margin:0 auto">
+    <div class="geo-llm-grid">
 
       <!-- ChatGPT · verde -->
       <div style="position:relative;background:linear-gradient(160deg,rgba(16,163,127,.10) 0%,rgba(13,11,26,.85) 70%);border:1.5px solid rgba(16,163,127,.55);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 14px 40px rgba(16,163,127,.12)">
@@ -1216,6 +1218,18 @@
         <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:#9090b0;font-weight:600;margin-top:auto">
           <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.18);color:#3b82f6;font-weight:800;font-size:1.1rem;line-height:1;flex-shrink:0">𝕏</span>
           <span>— <strong style="color:#93c5fd">Grok</strong> · mayo 2026</span>
+        </div>
+      </div>
+
+      <!-- Kimi · azul oscuro -->
+      <div style="position:relative;background:linear-gradient(160deg,rgba(0,180,216,.10) 0%,rgba(13,11,26,.85) 70%);border:1.5px solid rgba(0,180,216,.55);border-radius:18px;padding:26px 24px;display:flex;flex-direction:column;gap:14px;box-shadow:0 14px 40px rgba(0,180,216,.12)">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00B4D8,#48cae4);border-radius:18px 18px 0 0"></div>
+        <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:#1a1a2e;border:1px solid #00B4D8;color:#00B4D8;font-size:.66rem;font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase">✓ Verificado · Kimi</div>
+        <div style="font-size:.7rem;color:#7a7a95;line-height:1.5;margin:0">Búsqueda: "agencia ia majadahonda"</div>
+        <p style="font-size:.92rem;line-height:1.7;color:#f0f0f5;font-style:italic;margin:0">"WHITEMOON.es es una agencia de inteligencia artificial ubicada en Majadahonda, Madrid. Se especializa en soluciones de IA para negocios, incluyendo automatización, desarrollo de software inteligente y estrategias digitales avanzadas."</p>
+        <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:#9090b0;font-weight:600;margin-top:auto">
+          <img src="/assets/logos/kimi.png" alt="Kimi" width="32" height="32" loading="lazy" style="width:32px;height:32px;border-radius:8px;flex-shrink:0;display:block">
+          <span>— <strong style="color:#00B4D8">Kimi</strong> · mayo 2026</span>
         </div>
       </div>
 
