@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Sora";
+        font-style: normal;
+        font-weight: 100 800;
+        font-display: block;
+        src: url(fonts/sora-latin.woff2) format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+          U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+      @font-face {
+        font-family: "Sora";
+        font-style: normal;
+        font-weight: 100 800;
+        font-display: block;
+        src: url(fonts/sora-latin-ext.woff2) format("woff2");
+        unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+          U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F,
+          U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+          U+A720-A7FF;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #08080d;
+      }
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        background: #08080d;
+        font-family: "Sora", sans-serif;
+        overflow: hidden;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+      }
+      .sin {
+        position: absolute;
+        inset: 0;
+      }
+      .ff {
+        position: absolute;
+        inset: 0;
+      }
+      .ctr {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* ---------- particles ---------- */
+      #pfield {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .pp {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(160, 130, 255, 0.95) 0%,
+          rgba(124, 77, 255, 0.55) 40%,
+          rgba(124, 77, 255, 0) 72%
+        );
+      }
+
+      /* ---------- S1 opening ---------- */
+      #s1-glow {
+        background: radial-gradient(
+          circle at 50% 48%,
+          rgba(124, 77, 255, 0.38) 0%,
+          rgba(124, 77, 255, 0.12) 34%,
+          rgba(124, 77, 255, 0) 64%
+        );
+      }
+      #s1-flash {
+        background: radial-gradient(
+          circle at 50% 48%,
+          rgba(220, 210, 255, 0.85) 0%,
+          rgba(150, 120, 255, 0.35) 22%,
+          rgba(124, 77, 255, 0) 50%
+        );
+        mix-blend-mode: screen;
+      }
+      #s1-ring {
+        width: 420px;
+        height: 420px;
+        border: 2px solid rgba(124, 77, 255, 0.55);
+        border-radius: 50%;
+        box-shadow: 0 0 60px rgba(124, 77, 255, 0.35);
+      }
+      .logo {
+        width: 660px;
+        height: auto;
+        filter: drop-shadow(0 0 44px rgba(124, 77, 255, 0.45));
+      }
+
+      /* ---------- S2 photo + typewriter ---------- */
+      #s2-photowrap {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+      }
+      #s2-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 45% 20%;
+        filter: brightness(0.85) contrast(1.1);
+      }
+      #s2-vig {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        z-index: 2;
+        pointer-events: none;
+        background: linear-gradient(
+            90deg,
+            #08080d 0%,
+            rgba(8, 8, 13, 0.85) 14%,
+            rgba(8, 8, 13, 0) 38%
+          ),
+          radial-gradient(
+            120% 92% at 60% 50%,
+            rgba(8, 8, 13, 0) 52%,
+            rgba(8, 8, 13, 0.85) 100%
+          );
+      }
+      #s2-pp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 60%;
+        height: 100%;
+        z-index: 3;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      #s2-textcol {
+        position: absolute;
+        left: 60px;
+        top: 0;
+        width: 600px;
+        height: 100%;
+        z-index: 4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 12px;
+      }
+      .eyebrow {
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: #9a78ff;
+      }
+      #s2-eyebrow {
+        margin-bottom: 26px;
+      }
+      .tline {
+        font-weight: 800;
+        color: #f0f0f5;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+      }
+      #s2-l1,
+      #s2-l2 {
+        font-size: 78px;
+      }
+      #s2-l3 {
+        font-size: 56px;
+        margin-top: 8px;
+      }
+      #s2-l3 .hot {
+        color: #9a78ff;
+      }
+
+      /* ---------- S3 problem ---------- */
+      #s3-bg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 50% 22%;
+        filter: brightness(0.36) contrast(1.05) blur(20px);
+      }
+      #s3-scrim {
+        background: radial-gradient(
+          70% 50% at 50% 44%,
+          rgba(8, 8, 13, 0.2) 0%,
+          rgba(8, 8, 13, 0.82) 70%
+        );
+      }
+      #s3-glow-r {
+        background: radial-gradient(
+          circle at 50% 40%,
+          rgba(255, 77, 109, 0.34) 0%,
+          rgba(255, 77, 109, 0) 55%
+        );
+      }
+      #s3-glow-p {
+        background: radial-gradient(
+          circle at 50% 40%,
+          rgba(124, 77, 255, 0.38) 0%,
+          rgba(124, 77, 255, 0) 55%
+        );
+      }
+      #s3-stack {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        text-align: center;
+        padding: 0 70px;
+      }
+      #s3-eyebrow {
+        color: #ff6b81;
+        margin-bottom: 30px;
+      }
+      #s3-numwrap {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+      }
+      #s3-num {
+        font-weight: 800;
+        font-size: 340px;
+        line-height: 0.9;
+        color: #ff4d6d;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.04em;
+        text-shadow: 0 0 60px rgba(255, 77, 109, 0.45);
+      }
+      #s3-label {
+        font-weight: 700;
+        font-size: 50px;
+        color: #f0f0f5;
+        letter-spacing: -0.01em;
+        margin-top: 8px;
+      }
+      #s3-money {
+        font-weight: 700;
+        font-size: 46px;
+        color: #f0f0f5;
+        margin-top: 40px;
+      }
+      #s3-money .hot {
+        color: #ff6b81;
+      }
+
+      /* ---------- S4 solution ---------- */
+      #s4-glow {
+        background: radial-gradient(
+          circle at 70% 16%,
+          rgba(124, 77, 255, 0.2) 0%,
+          rgba(124, 77, 255, 0) 52%
+        );
+      }
+      #s4-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 90px;
+      }
+      #s4-eyebrow {
+        margin-bottom: 70px;
+        color: #9a78ff;
+      }
+      #s4-list {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        padding-left: 40px;
+      }
+      #s4-line {
+        position: absolute;
+        left: 0;
+        top: 6px;
+        bottom: 6px;
+        width: 4px;
+        border-radius: 2px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 212, 170, 0) 0%,
+          #00d4aa 18%,
+          #00d4aa 82%,
+          rgba(0, 212, 170, 0) 100%
+        );
+        transform-origin: top center;
+      }
+      .bullet {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+      .chk {
+        flex: 0 0 auto;
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+        background: rgba(0, 212, 170, 0.12);
+        border: 2px solid #00d4aa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+      }
+      .chk svg {
+        width: 40px;
+        height: 40px;
+      }
+      .btext {
+        font-weight: 500;
+        font-size: 50px;
+        color: #f0f0f5;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+      }
+      .btext b {
+        font-weight: 800;
+        color: #1fe7bd;
+      }
+
+      /* ---------- S5 pack ---------- */
+      #s5-cardglow {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 800px;
+        height: 760px;
+        margin-left: -400px;
+        margin-top: -380px;
+        border-radius: 48px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 77, 255, 0) 30%,
+          rgba(124, 77, 255, 0.34) 50%,
+          rgba(124, 77, 255, 0) 74%
+        );
+        z-index: 4;
+      }
+      #s5-cardctr {
+        z-index: 6;
+      }
+      #s5-card {
+        position: relative;
+        width: 760px;
+        padding: 84px 70px 78px;
+        border-radius: 40px;
+        border: 2px solid #7c4dff;
+        background: rgba(124, 77, 255, 0.1);
+        box-shadow: 0 0 70px rgba(124, 77, 255, 0.4),
+          inset 0 0 50px rgba(124, 77, 255, 0.08);
+        text-align: center;
+      }
+      #s5-tag {
+        font-weight: 700;
+        font-size: 26px;
+        letter-spacing: 0.34em;
+        text-transform: uppercase;
+        color: #9a9ab0;
+      }
+      #s5-title {
+        font-weight: 800;
+        font-size: 124px;
+        color: #f0f0f5;
+        letter-spacing: -0.03em;
+        line-height: 1;
+        margin-top: 18px;
+      }
+      #s5-title b {
+        color: #9a78ff;
+      }
+      #s5-price {
+        font-weight: 700;
+        font-size: 52px;
+        color: #f0f0f5;
+        margin-top: 30px;
+        letter-spacing: -0.01em;
+      }
+      #s5-price b {
+        color: #cdbcff;
+        font-weight: 800;
+      }
+      #s5-badge {
+        display: inline-block;
+        margin-top: 48px;
+        padding: 22px 44px;
+        border-radius: 100px;
+        background: rgba(0, 212, 170, 0.1);
+        border: 2px solid #00d4aa;
+        color: #5ef0d2;
+        font-weight: 800;
+        font-size: 34px;
+        letter-spacing: 0.06em;
+      }
+
+      /* ---------- S6 close ---------- */
+      #s6-glow {
+        background: radial-gradient(
+          circle at 50% 46%,
+          rgba(124, 77, 255, 0.36) 0%,
+          rgba(124, 77, 255, 0) 60%
+        );
+      }
+      #s6-up {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      #s6-stack {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #s6-logo {
+        width: 600px;
+        height: auto;
+        filter: drop-shadow(0 0 44px rgba(124, 77, 255, 0.5));
+      }
+      #s6-phonewrap {
+        position: relative;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #s6-phoneglow {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 640px;
+        height: 220px;
+        margin-left: -320px;
+        margin-top: -110px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 212, 170, 0.32) 0%,
+          rgba(0, 212, 170, 0) 66%
+        );
+      }
+      #s6-phone {
+        position: relative;
+        font-weight: 800;
+        font-size: 96px;
+        color: #00d4aa;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 40px rgba(0, 212, 170, 0.55);
+        font-variant-numeric: tabular-nums;
+      }
+      #s6-web {
+        margin-top: 26px;
+        font-weight: 500;
+        font-size: 44px;
+        color: #b0b0c8;
+        letter-spacing: 0.04em;
+      }
+      #blackout {
+        position: absolute;
+        inset: 0;
+        z-index: 60;
+        background: #000;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- persistent falling particles -->
+      <div id="pfield" class="clip" data-start="0" data-duration="30" data-track-index="0" data-layout-allow-overflow></div>
+
+      <!-- ===== S1 OPENING (0-3.3) ===== -->
+      <div id="s1" class="scene clip" data-start="0" data-duration="3.3" data-track-index="1" style="z-index: 11">
+        <div id="s1-in" class="sin">
+          <div id="s1-glow" class="ff"></div>
+          <div id="s1-flash" class="ff"></div>
+          <div class="ctr"><div id="s1-ring"></div></div>
+          <div class="ctr"><img id="s1-logo" class="logo" src="logo-clean.png" alt="WhiteMoon" /></div>
+        </div>
+      </div>
+
+      <!-- ===== S2 PHOTO + TYPEWRITER (3-8.3) ===== -->
+      <div id="s2" class="scene clip" data-start="3" data-duration="5.3" data-track-index="2" style="z-index: 12">
+        <div id="s2-in" class="sin" data-layout-allow-overflow>
+          <div id="s2-photowrap" data-layout-allow-overflow><img id="s2-photo" src="cris.jpg" alt="Cris" /></div>
+          <div id="s2-vig"></div>
+          <div id="s2-pp" data-layout-allow-overflow></div>
+          <div id="s2-textcol">
+            <div id="s2-eyebrow" class="eyebrow">La realidad</div>
+            <div id="s2-l1" class="tline">Tu negocio</div>
+            <div id="s2-l2" class="tline">sin respuesta</div>
+            <div id="s2-l3" class="tline">= <span class="hot">clientes perdidos</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== S3 PROBLEM COUNTER (8-13.3) ===== -->
+      <div id="s3" class="scene clip" data-start="8" data-duration="5.3" data-track-index="1" style="z-index: 13">
+        <div id="s3-in" class="sin">
+          <img id="s3-bg" class="ff" src="cris-bg.jpg" alt="" style="position: absolute" />
+          <div id="s3-scrim" class="ff"></div>
+          <div id="s3-glow-r" class="ff"></div>
+          <div id="s3-glow-p" class="ff"></div>
+          <div id="s3-stack">
+            <div id="s3-eyebrow" class="eyebrow">El coste real</div>
+            <div id="s3-numwrap"><span id="s3-num">0</span></div>
+            <div id="s3-label">leads sin responder</div>
+            <div id="s3-money">= <span class="hot">+1.500&euro;</span> perdidos al mes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== S4 SOLUTION (13-19.3) ===== -->
+      <div id="s4" class="scene clip" data-start="13" data-duration="6.3" data-track-index="2" style="z-index: 14">
+        <div id="s4-in" class="sin">
+          <div id="s4-glow" class="ff"></div>
+          <div id="s4-wrap">
+            <div id="s4-eyebrow" class="eyebrow">La solución</div>
+            <div id="s4-list">
+              <div id="s4-line"></div>
+              <div id="s4-b1" class="bullet">
+                <span id="s4-c1" class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6.5" stroke="#00d4aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="btext">Agente IA <b>24/7</b> — nunca duerme</span>
+              </div>
+              <div id="s4-b2" class="bullet">
+                <span id="s4-c2" class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6.5" stroke="#00d4aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="btext">Operativo en <b>7 días</b></span>
+              </div>
+              <div id="s4-b3" class="bullet">
+                <span id="s4-c3" class="chk"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5l5 5L20 6.5" stroke="#00d4aa" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <span class="btext"><b>Sin permanencia</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== S5 PACK SPARK (19-25.3) ===== -->
+      <div id="s5" class="scene clip" data-start="19" data-duration="6.3" data-track-index="1" style="z-index: 15">
+        <div id="s5-in" class="sin">
+          <div id="s5-cardglow"></div>
+          <div class="ctr" id="s5-cardctr">
+          <div id="s5-card">
+            <div id="s5-tag">Pack</div>
+            <div id="s5-title">Spark</div>
+            <div id="s5-price"><b>499&euro;</b> setup + <b>199&euro;</b>/mes</div>
+            <div><span id="s5-badge">SIN PERMANENCIA</span></div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== S6 CLOSE (25-30) ===== -->
+      <div id="s6" class="scene clip" data-start="25" data-duration="5" data-track-index="2" style="z-index: 16">
+        <div id="s6-in" class="sin">
+          <div id="s6-glow" class="ff"></div>
+          <div id="s6-up" data-layout-allow-overflow></div>
+          <div id="s6-stack">
+            <img id="s6-logo" src="logo-clean-2.png" alt="WhiteMoon" />
+            <div id="s6-phonewrap">
+              <div id="s6-phoneglow"></div>
+              <div id="s6-phone">643 199 580</div>
+            </div>
+            <div id="s6-web">whitemoon.es</div>
+          </div>
+          <div id="blackout"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // deterministic PRNG
+      function mulberry32(a) {
+        return function () {
+          a |= 0;
+          a = (a + 0x6d2b79f5) | 0;
+          let t = Math.imul(a ^ (a >>> 15), 1 | a);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+      const rnd = mulberry32(20250520);
+
+      const W = 1080,
+        H = 1920;
+
+      function mkParticle(parent, x, size, opacity) {
+        const p = document.createElement("div");
+        p.className = "pp";
+        p.style.left = x + "px";
+        p.style.width = size + "px";
+        p.style.height = size + "px";
+        p.style.top = "0px";
+        p.style.opacity = opacity;
+        parent.appendChild(p);
+        return p;
+      }
+
+      // ---- global falling particles (0-30) ----
+      const pfield = document.getElementById("pfield");
+      for (let i = 0; i < 24; i++) {
+        const x = rnd() * W;
+        const size = 3 + rnd() * 6;
+        const op = 0.22 + rnd() * 0.42;
+        const dur = 8 + rnd() * 7;
+        const y0 = rnd() * H; // initial scatter so the field is populated at t=0
+        const el = mkParticle(pfield, x, size, op);
+        const introDur = dur * ((H + 60 - y0) / (H + 120));
+        tl.fromTo(el, { y: y0, opacity: op }, { y: H + 60, opacity: op, duration: introDur, ease: "none" }, 0);
+        const reps = Math.max(0, Math.ceil((30 - introDur) / dur) - 1);
+        tl.fromTo(el, { y: -60, opacity: op }, { y: H + 60, opacity: op, duration: dur, ease: "none", repeat: reps }, introDur);
+      }
+
+      // ---- S2 particle overlay on the photo (3-8.3) ----
+      const s2pp = document.getElementById("s2-pp");
+      const s2w = W * 0.6;
+      for (let i = 0; i < 11; i++) {
+        const x = rnd() * s2w;
+        const size = 3 + rnd() * 5;
+        const op = 0.3 + rnd() * 0.45;
+        const dur = 4 + rnd() * 3;
+        const y0 = rnd() * H;
+        const el = mkParticle(s2pp, x, size, op);
+        const introDur = dur * ((H + 60 - y0) / (H + 120));
+        tl.fromTo(el, { y: y0, opacity: op }, { y: H + 60, opacity: op, duration: introDur, ease: "none" }, 3);
+        const reps = Math.max(0, Math.ceil((5.4 - introDur) / dur) - 1);
+        tl.fromTo(el, { y: -60, opacity: op }, { y: H + 60, opacity: op, duration: dur, ease: "none", repeat: reps }, 3 + introDur);
+      }
+
+      // ---- S6 upward accelerating particles (25-30) ----
+      const s6up = document.getElementById("s6-up");
+      for (let i = 0; i < 18; i++) {
+        const x = rnd() * W;
+        const size = 3 + rnd() * 6;
+        const op = 0.3 + rnd() * 0.5;
+        const dur = 2.2 + rnd() * 1.8;
+        const delay = rnd() * 1.2;
+        const el = mkParticle(s6up, x, size, op);
+        el.style.top = H + 40 + "px";
+        tl.fromTo(el, { y: 0, opacity: 0 }, { y: -(H + 120), opacity: op, duration: dur, ease: "power2.in" }, 25 + delay);
+      }
+
+      /* ============ S1 (0-3.3) ============ */
+      tl.fromTo("#s1-in", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 0);
+      tl.fromTo("#s1-glow", { opacity: 0 }, { opacity: 1, duration: 1.1, ease: "sine.out" }, 0.2);
+      tl.to("#s1-glow", { scale: 1.12, duration: 1.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.2);
+      tl.fromTo("#s1-flash", { opacity: 0, scale: 0.55 }, { opacity: 1, scale: 1.25, duration: 0.55, ease: "power2.out" }, 0.1);
+      tl.to("#s1-flash", { opacity: 0, duration: 1.3, ease: "power2.inOut" }, 0.7);
+      tl.fromTo("#s1-ring", { opacity: 0, scale: 0.2 }, { opacity: 0.55, scale: 1.45, duration: 1.3, ease: "power2.out" }, 0.2);
+      tl.to("#s1-ring", { opacity: 0, duration: 1.2, ease: "power1.out" }, 1.55);
+      tl.fromTo("#s1-logo", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1.0, duration: 1.5, ease: "power3.out" }, 0.45);
+
+      /* ============ S2 (3-8.3) ============ */
+      tl.fromTo("#s2-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 3.0);
+      tl.fromTo("#s2-photowrap", { opacity: 0, x: 150 }, { opacity: 1, x: 0, duration: 0.95, ease: "power3.out" }, 3.05);
+      tl.fromTo("#s2-photo", { scale: 1.0 }, { scale: 1.08, duration: 5.2, ease: "sine.inOut" }, 3.1);
+      tl.fromTo("#s2-eyebrow", { opacity: 0, x: -34 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 3.35);
+      tl.fromTo("#s2-textcol", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 3.4);
+      tl.fromTo("#s2-l1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.55, ease: "steps(10)" }, 3.55);
+      tl.fromTo("#s2-l2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.6, ease: "steps(12)" }, 4.35);
+      tl.fromTo("#s2-l3", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.75, ease: "steps(16)" }, 5.2);
+
+      /* ============ S3 (8-13.3) ============ */
+      tl.fromTo("#s3-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 8.0);
+      tl.fromTo("#s3-bg", { opacity: 0, scale: 1.12 }, { opacity: 0.5, scale: 1.0, duration: 1.3, ease: "power2.out" }, 8.0);
+      tl.fromTo("#s3-eyebrow", { opacity: 0, y: -18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 8.25);
+      tl.fromTo("#s3-numwrap", { opacity: 0, scale: 0.65 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, 8.3);
+      tl.set("#s3-glow-p", { opacity: 0 }, 8.0);
+      tl.fromTo("#s3-glow-r", { opacity: 0, scale: 0.85 }, { opacity: 0.7, scale: 1.12, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.4);
+      const s3num = document.getElementById("s3-num");
+      tl.set(s3num, { color: "#ff4d6d", x: 0 }, 8.3);
+      const cObj = { v: 0 };
+      tl.to(cObj, { v: 20, duration: 2.6, ease: "power1.inOut", onUpdate: () => { s3num.textContent = Math.round(cObj.v); } }, 8.5);
+      tl.to(s3num, { scale: 1.05, duration: 0.45, ease: "sine.inOut", yoyo: true, repeat: 4 }, 8.6);
+      tl.fromTo("#s3-label", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 9.1);
+      tl.to(s3num, { x: -10, duration: 0.05, ease: "none", yoyo: true, repeat: 6 }, 11.0);
+      tl.set(s3num, { x: 0 }, 11.35);
+      tl.to(s3num, { color: "#7c4dff", duration: 0.8, ease: "power2.inOut" }, 11.3);
+      tl.to("#s3-glow-r", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 11.2);
+      tl.fromTo("#s3-glow-p", { opacity: 0, scale: 0.9 }, { opacity: 0.6, scale: 1.05, duration: 0.8, ease: "sine.out" }, 11.2);
+      tl.fromTo("#s3-money", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 11.2);
+
+      /* ============ S4 (13-19.3) ============ */
+      tl.fromTo("#s4-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 13.0);
+      tl.fromTo("#s4-glow", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "sine.out" }, 13.0);
+      tl.fromTo("#s4-eyebrow", { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 13.2);
+      tl.fromTo("#s4-line", { scaleY: 0 }, { scaleY: 1, duration: 0.85, ease: "power2.inOut" }, 13.35);
+      tl.fromTo("#s4-b1", { opacity: 0, x: -170 }, { opacity: 1, x: 0, duration: 0.7, ease: "back.out(1.5)" }, 13.6);
+      tl.fromTo("#s4-c1", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 13.85);
+      tl.fromTo("#s4-b2", { opacity: 0, x: -170 }, { opacity: 1, x: 0, duration: 0.7, ease: "back.out(1.5)" }, 14.35);
+      tl.fromTo("#s4-c2", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 14.6);
+      tl.fromTo("#s4-b3", { opacity: 0, x: -170 }, { opacity: 1, x: 0, duration: 0.7, ease: "back.out(1.5)" }, 15.1);
+      tl.fromTo("#s4-c3", { scale: 0 }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, 15.35);
+      tl.to(".chk", { boxShadow: "0 0 46px rgba(0,212,170,0.55)", duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 16.0);
+
+      /* ============ S5 (19-25.3) ============ */
+      tl.fromTo("#s5-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 19.0);
+      tl.fromTo("#s5-cardglow", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 19.1);
+      tl.to("#s5-cardglow", { scale: 1.1, duration: 1.3, ease: "sine.inOut", yoyo: true, repeat: 3 }, 20.0);
+      tl.fromTo("#s5-card", { opacity: 0, scale: 0.9, y: 40 }, { opacity: 1, scale: 1, y: 0, duration: 0.75, ease: "back.out(1.4)" }, 19.2);
+      tl.fromTo("#s5-tag", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 19.6);
+      tl.fromTo("#s5-title", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 19.75);
+      tl.fromTo("#s5-price", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 20.05);
+      tl.fromTo("#s5-badge", { opacity: 0, scale: 0.4 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(2)" }, 20.45);
+      tl.to("#s5-badge", { boxShadow: "0 0 40px rgba(0,212,170,0.7)", duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 4 }, 21.2);
+
+      /* ============ S6 (25-30) ============ */
+      tl.fromTo("#s6-in", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.inOut" }, 25.0);
+      tl.fromTo("#s6-glow", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 1.1, ease: "sine.out" }, 25.0);
+      tl.fromTo("#s6-logo", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }, 25.2);
+      tl.fromTo("#s6-phoneglow", { opacity: 0 }, { opacity: 1, duration: 0.7, ease: "sine.out" }, 26.1);
+      tl.to("#s6-phoneglow", { opacity: 0.55, scale: 1.08, duration: 0.9, ease: "sine.inOut", yoyo: true, repeat: 2 }, 26.8);
+      tl.fromTo("#s6-phone", { opacity: 0, y: 26 }, { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, 26.2);
+      tl.fromTo("#s6-web", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 26.9);
+      tl.to("#s6-in", { opacity: 0, duration: 1.0, ease: "power2.in" }, 29.0);
+      tl.fromTo("#blackout", { opacity: 0 }, { opacity: 1, duration: 1.0, ease: "power2.in" }, 29.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
