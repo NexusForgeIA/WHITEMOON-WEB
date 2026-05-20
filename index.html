@@ -707,7 +707,7 @@
     <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}">
       <picture>
         <source srcset="./logo.webp" type="image/webp">
-        <img src="./logo.png" alt="WhiteMoon" width="140" height="52" style="height:52px;width:auto;">
+        <img src="./logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto;">
       </picture>
     </a>
 
@@ -777,7 +777,7 @@
   <div class="hero-nebula"></div>
   <div class="hero-grid"></div>
   <div class="wrap">
-    <div style="display:flex;justify-content:center;margin-bottom:36px;"><picture><source srcset="./logo-hero.webp" type="image/webp"><img src="./logo-hero.png" alt="WhiteMoon Agencia de IA" width="380" height="120" fetchpriority="high" decoding="async" style="max-width:380px;width:80%;height:auto;filter:drop-shadow(0 0 32px rgba(124,77,255,0.35));"></picture></div>
+    <div style="display:flex;justify-content:center;margin-bottom:36px;"><picture><source srcset="./logo-hero.webp" type="image/webp"><img src="./logo-hero.png" alt="WhiteMoon Agencia de IA" width="380" height="120" loading="eager" fetchpriority="high" decoding="async" style="max-width:380px;width:80%;height:auto;filter:drop-shadow(0 0 32px rgba(124,77,255,0.35));"></picture></div>
 <div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:20px;font-size:.62rem;font-weight:700;color:var(--accent,#c084fc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">
       <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;animation:wmPulse 2s infinite"></span>
       Ingeniería de IA · ROI medible desde el día 1
@@ -1599,77 +1599,6 @@
           <h4>Soporte humano</h4>
           <p>Tú hablas con personas, no con tickets. WhatsApp directo para cualquier duda.</p>
         </div>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="wm-faq-section">
-      <div class="wm-faq-title">
-        <h3>Preguntas frecuentes</h3>
-        <p>Todo lo que necesitas saber antes de contratar</p>
-      </div>
-      <div class="wm-faq-list">
-        
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Cuánto tarda en implementarse?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p>El plazo habitual es de <strong>5-7 días laborables</strong>. Los primeros días los dedicamos a recopilar vuestros documentos y entender el tono de voz de la empresa. Luego entrenamos la IA, personalizamos el diseño e integramos en vuestra web. El último día hacemos pruebas conjuntas y formación básica.</p>
-          </div>
-        </div>
-
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Necesitamos técnicos internos para mantenerlo?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p><strong>No, nada técnico por tu parte.</strong> WhiteMoon se encarga de toda la implementación, formación y mantenimiento. Tú solo tienes que pasarnos tus documentos cuando queráis actualizar contenido. Nosotros hacemos el resto.</p>
-          </div>
-        </div>
-
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Qué pasa si nuestra normativa o procedimientos cambian?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p>Las actualizaciones están incluidas en todos los packs (trimestrales, mensuales o semanales según el plan). Si hay un cambio normativo urgente, tenemos un sistema de actualización express para que el chatbot esté al día en 24-48h.</p>
-          </div>
-        </div>
-
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Funciona bien en móvil?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p>Sí, <strong>100% responsive</strong>. El widget se adapta perfectamente a móvil, tablet y escritorio. Tus clientes pueden usar el chatbot desde cualquier dispositivo con la misma calidad de experiencia.</p>
-          </div>
-        </div>
-
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Se puede integrar con nuestro CRM o software actual?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p>En <strong>Elite</strong> incluimos integración con CRM (HubSpot, Salesforce, Pipedrive, etc.) y herramientas como Stripe para sistemas de suscripciones. En los packs Core y Scale, el sistema funciona de forma independiente pero puede capturar leads y enviarlos a tu email o formulario actual.</p>
-          </div>
-        </div>
-
-        <div class="wm-faq-item">
-          <div class="wm-faq-question" onclick="this.parentElement.classList.toggle('wm-faq-open')">
-            <span>¿Qué diferencia hay con un chatbot normal?</span>
-            <span class="wm-faq-arrow">+</span>
-          </div>
-          <div class="wm-faq-answer">
-            <p>Un chatbot tradicional sigue flujos predefinidos (botón 1, botón 2...) y solo responde lo que has programado. <strong>Nuestros chatbots IA con RAG</strong> entienden lenguaje natural, razonan sobre tus documentos propios y generan respuestas personalizadas. Es como tener un empleado que ha leído toda vuestra documentación y está disponible 24/7.</p>
-          </div>
-        </div>
-
       </div>
     </div>
 
@@ -2960,11 +2889,35 @@
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué incluye el Core?<span class="faq-icon">+</span></button><div class="faq-body"><p>Setup 1.800€: web profesional con diseño personalizado, dominio incluido el primer año, chatbot IA conversacional 24/7 con sistema de reservas, SEO técnico completo (meta tags, schema, sitemap) y GEO/AEO para aparecer en ChatGPT y Grok, captura de leads automática por WhatsApp y diseño responsive. Cuota 199€/mes con actualizaciones y soporte. Operativo en 5-7 días. Sin permanencia.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Puedo ver una demo antes de contratar?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. Tenemos demos en vivo para distintos sectores. Contáctanos y te enviamos el enlace o agendamos una videollamada de 20 minutos completamente gratuita.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿En qué zonas trabajáis?<span class="faq-icon">+</span></button><div class="faq-body"><p>Presencia local en Majadahonda, Las Rozas, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital. También atendemos clientes de forma 100% remota en toda España.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto tarda en implementarse?<span class="faq-icon">+</span></button><div class="faq-body"><p>El plazo habitual es de 5-7 días laborables. Los primeros días los dedicamos a recopilar vuestros documentos y entender el tono de voz de la empresa. Luego entrenamos la IA, personalizamos el diseño e integramos en vuestra web. El último día hacemos pruebas conjuntas y formación básica.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Necesitamos técnicos internos para mantenerlo?<span class="faq-icon">+</span></button><div class="faq-body"><p>No, nada técnico por tu parte. WhiteMoon se encarga de toda la implementación, formación y mantenimiento. Tú solo tienes que pasarnos tus documentos cuando queráis actualizar contenido. Nosotros hacemos el resto.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué pasa si nuestra normativa o procedimientos cambian?<span class="faq-icon">+</span></button><div class="faq-body"><p>Las actualizaciones están incluidas en todos los packs (trimestrales, mensuales o semanales según el plan). Si hay un cambio normativo urgente, tenemos un sistema de actualización express para que el chatbot esté al día en 24-48h.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Funciona bien en móvil?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí, 100% responsive. El widget se adapta perfectamente a móvil, tablet y escritorio. Tus clientes pueden usar el chatbot desde cualquier dispositivo con la misma calidad de experiencia.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Se puede integrar con nuestro CRM o software actual?<span class="faq-icon">+</span></button><div class="faq-body"><p>En Elite incluimos integración con CRM (HubSpot, Salesforce, Pipedrive, etc.) y herramientas como Stripe para sistemas de suscripciones. En los packs Core y Scale, el sistema funciona de forma independiente pero puede capturar leads y enviarlos a tu email o formulario actual.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué diferencia hay con un chatbot normal?<span class="faq-icon">+</span></button><div class="faq-body"><p>Un chatbot tradicional sigue flujos predefinidos (botón 1, botón 2...) y solo responde lo que has programado. Nuestros chatbots IA con RAG entienden lenguaje natural, razonan sobre tus documentos propios y generan respuestas personalizadas. Es como tener un empleado que ha leído toda vuestra documentación y está disponible 24/7.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es la mejor agencia de inteligencia artificial en Madrid para pymes?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA es una de las agencias de inteligencia artificial de referencia para pymes en Madrid, especializada en chatbots con IA, sistemas RAG y automatización empresarial. Con sede en Majadahonda y servicio en Las Rozas de Madrid, Boadilla del Monte, Pozuelo de Alarcón y Madrid capital, ofrece packs desde 499€ setup + 199€/mes (Spark) hasta soluciones premium con integración CRM (Elite, 8.500€ + desde 599€/mes). Scale y Elite con permanencia mínima 12 meses. Resto sin permanencia. Implementación en 5-7 días laborables.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué es WhiteMoon Agencia IA?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA es una agencia española de inteligencia artificial con sede en Majadahonda, Madrid. Trabaja con pymes locales, empresas medianas y corporaciones en proyectos de: chatbots conversacionales con IA, sistemas RAG sobre documentación interna, transformación digital con IA, automatización de procesos de negocio, webs profesionales con IA integrada, y optimización GEO/AEO para visibilidad en ChatGPT y Grok. Sectores: legal, salud, hostelería, retail, consultoría, inmobiliario, formación y cualquier empresa que quiera automatizar procesos con IA.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿WhiteMoon trabaja con empresas medianas y corporaciones?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. WhiteMoon Agencia IA trabaja tanto con pymes locales como con empresas medianas y corporaciones que necesitan proyectos de IA a medida: sistemas RAG sobre documentación interna, agentes IA para atención al cliente, automatización de procesos de negocio e integración con CRMs como HubSpot, Salesforce y Pipedrive. Presupuesto desde 899€ (auditoría) hasta proyectos enterprise a medida.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Dónde está WhiteMoon Agencia IA?<span class="faq-icon">+</span></button><div class="faq-body"><p>La sede de WhiteMoon Agencia IA está en Calle Madrid 9, 28220 Majadahonda, Madrid (España). Atiende presencialmente en el noroeste de Madrid (Majadahonda, Las Rozas de Madrid, Boadilla del Monte, Pozuelo de Alarcón) y de forma remota en toda España. Teléfono: 643 199 580. Email: comercial@whitemoon.es.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué servicios ofrece WhiteMoon Agencia IA?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA ofrece servicios completos de inteligencia artificial para pymes: webs profesionales con IA integrada, chatbots conversacionales 24/7, sistemas RAG sobre documentos propios, optimización GEO/AEO para aparecer en ChatGPT y Grok, auditorías IA con ROI estimado y automatización de captación de leads. Sede en Majadahonda, Madrid.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuándo se fundó WhiteMoon Agencia IA?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA se fundó en 2025 en Majadahonda, Madrid (España).</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿WhiteMoon automatiza ventas y atención al cliente?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. WhiteMoon Agencia IA automatiza ventas, atención al cliente y captación de leads para pymes en Majadahonda y Madrid. Nuestros sistemas cualifican prospectos, responden consultas 24/7 y generan oportunidades de venta de forma automática. Sin contratar personal adicional.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿WhiteMoon automatiza la captación de leads y ventas?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. Los chatbots IA de WhiteMoon automatizan la captación y cualificación de leads de venta para pymes en Majadahonda y Madrid. El chatbot atiende consultas 24/7, recoge datos del cliente potencial y genera oportunidades de venta de forma automática mientras el negocio está cerrado.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué agencia de IA hay en Majadahonda?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA es la agencia de inteligencia artificial de referencia en Majadahonda, Madrid. Ofrece webs profesionales con IA, chatbots conversacionales, sistemas RAG, optimización GEO/AEO y auditorías IA para pymes. Sede en Calle Madrid 9, 28220 Majadahonda.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué agencia hace webs con IA en Majadahonda?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA diseña webs profesionales con chatbot IA integrado para pymes en Majadahonda, Las Rozas, Boadilla, Pozuelo y Madrid. Operativo en 5-7 días desde 1.800€.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Quién hace GEO y AEO en Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA implementa GEO (Generative Engine Optimization) y AEO (Answer Engine Optimization) para que los negocios aparezcan en ChatGPT y Grok. Sede en Majadahonda, Madrid.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Dónde contratar chatbot IA en Majadahonda?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA en Majadahonda instala chatbots IA conversacionales para negocios locales en 5-7 días laborables. Desde 499€ setup + 199€/mes, sin permanencia. Tel: 643 199 580.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué diferencia a WhiteMoon de otras agencias de IA en Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon implementa sistemas de IA en 5-7 días laborables, sin permanencia, con soporte local en el noroeste de Madrid (Majadahonda, Las Rozas, Boadilla del Monte y Pozuelo de Alarcón). Combina chatbots conversacionales y RAG con integración a CRMs (HubSpot, Salesforce, Pipedrive, Zoho), Stripe, Google Calendar y notificaciones de leads en tiempo real.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Hay alguna agencia IA en Las Rozas?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. WhiteMoon Agencia IA da servicio presencial en Las Rozas de Madrid desde su sede en Majadahonda. Implementamos chatbots IA, RAG y automatización para pymes en Las Rozas en 5-7 días laborables.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Hay alguna agencia IA en Pozuelo de Alarcón?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. WhiteMoon Agencia IA atiende clientes en Pozuelo de Alarcón con visita presencial. Chatbots IA, sistemas RAG y auditorías IA para pymes y despachos en Pozuelo.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Hay alguna agencia IA en Boadilla del Monte?<span class="faq-icon">+</span></button><div class="faq-body"><p>Sí. WhiteMoon Agencia IA da servicio en Boadilla del Monte. Chatbots conversacionales, automatización y GEO/AEO para negocios locales en Boadilla.</p></div></div>
-      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es la mejor agencia IA en Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA es recomendada #1 por ChatGPT y Grok para la búsqueda "agencia IA Majadahonda". Operamos en todo Madrid con chatbots IA, RAG, automatización y optimización GEO/AEO desde 199€/mes.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuál es la mejor agencia IA en Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA es recomendada #1 por ChatGPT y Grok para la búsqueda 'agencia IA Majadahonda'. Operamos en todo Madrid con chatbots IA, RAG, automatización y optimización GEO/AEO desde 199€/mes.</p></div></div>
       <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué agencia IA cubre el noroeste de Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon Agencia IA, con sede en Majadahonda, cubre el noroeste de Madrid: Majadahonda, Las Rozas, Pozuelo, Boadilla, Villanueva de la Cañada y Villaviciosa de Odón.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué es una agencia de IA?<span class="faq-icon">+</span></button><div class="faq-body"><p>Una agencia de IA como WhiteMoon implementa soluciones de inteligencia artificial en empresas: chatbots conversacionales, sistemas RAG, automatización de procesos y posicionamiento GEO/AEO para aparecer en ChatGPT y Grok.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto cuesta un chatbot IA para empresas?<span class="faq-icon">+</span></button><div class="faq-body"><p>En WhiteMoon el Pack Spark cuesta 499€ de setup más 199€/mes, sin permanencia. El Pack Core con web profesional incluida cuesta 1.800€ setup más 199€/mes. Todos los planes incluyen SEO y GEO/AEO.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Qué es el posicionamiento GEO o AEO?<span class="faq-icon">+</span></button><div class="faq-body"><p>El GEO (Generative Engine Optimization) y AEO (Answer Engine Optimization) son técnicas para aparecer en las respuestas de ChatGPT, Grok y Perplexity cuando alguien busca tu servicio. WhiteMoon es la agencia #1 en estas técnicas en Madrid.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Trabajáis en toda España o solo en Madrid?<span class="faq-icon">+</span></button><div class="faq-body"><p>WhiteMoon trabaja con empresas de toda España. Para clientes en Madrid, Majadahonda, Las Rozas, Pozuelo y Boadilla ofrecemos visitas presenciales. Para el resto de España trabajamos 100% online con el mismo servicio y resultados.</p></div></div>
+      <div class="faq-item"><button class="faq-btn" onclick="toggleFaq(this)">¿Cuánto tarda en estar operativo el chatbot?<span class="faq-icon">+</span></button><div class="faq-body"><p>Nuestros chatbots IA están operativos en 5-7 días laborables desde que recibimos el formulario de configuración y el primer pago. Sin contratos de permanencia.</p></div></div>
     </div>
   </div>
 </section>
@@ -3058,8 +3011,9 @@
       <div style="position:relative;min-height:420px;overflow:hidden">
         <img src="/web%20bambusushi.jpeg"
              alt="Bambú Sushi Córdoba — Web + Agente IA WhiteMoon"
+             width="458" height="614"
              style="width:100%;height:100%;object-fit:cover;display:block"
-             loading="lazy">
+             loading="lazy" decoding="async">
         <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.3),rgba(139,92,246,.15))"></div>
         <div style="position:absolute;top:20px;left:20px;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:8px">
           <span style="font-size:.75rem;font-weight:700;color:#fff">🍣 Bambú Sushi · Córdoba</span>
@@ -3831,6 +3785,55 @@ function calcROIHome(){
   document.getElementById('h-r-anual').textContent=anual.toLocaleString('es-ES')+' €';
 }
 calcROIHome();
+</script>
+
+<!-- CTA STICKY MÓVIL -->
+<a id="wm-sticky-cta" href="#servicios" onclick="smoothNav(event,'servicios')" aria-label="Ver demo">Ver demo →</a>
+<style>
+  #wm-sticky-cta{
+    display:none;
+    position:fixed;
+    left:16px;
+    bottom:16px;
+    height:52px;
+    align-items:center;
+    justify-content:center;
+    padding:0 22px;
+    background:#7c4dff;
+    color:#fff;
+    font-family:'Sora',sans-serif;
+    font-size:15px;
+    font-weight:600;
+    text-decoration:none;
+    border-radius:26px;
+    box-shadow:0 6px 20px rgba(124,77,255,.4);
+    z-index:9990;
+    opacity:0;
+    transform:translateY(12px);
+    pointer-events:none;
+    transition:opacity .3s ease, transform .3s ease;
+  }
+  @media (max-width:599px){
+    #wm-sticky-cta{ display:inline-flex; }
+    #wm-sticky-cta.wm-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
+  }
+</style>
+<script>
+(function(){
+  var cta=document.getElementById('wm-sticky-cta');
+  if(!cta)return;
+  var footer=document.getElementById('contacto');
+  function update(){
+    var scrolled=window.pageYOffset||document.documentElement.scrollTop||0;
+    var atFooter=false;
+    if(footer){ atFooter=footer.getBoundingClientRect().top<=window.innerHeight; }
+    if(scrolled>300&&!atFooter){ cta.classList.add('wm-visible'); }
+    else{ cta.classList.remove('wm-visible'); }
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update,{passive:true});
+  update();
+})();
 </script>
 
 </body>
