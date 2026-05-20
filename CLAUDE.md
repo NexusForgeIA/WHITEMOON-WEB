@@ -8,8 +8,8 @@
 
 ## Reglas
 - Siempre pushear a rama designada, nunca directo a main
-- Plazos: "5-7 días laborables" para Spark, Core, Core RAG y Gestoría IA. Scale y Elite: "Plazo según proyecto" (nunca 48h)
-- Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Core RAG 3.200€+349€/mes · Scale 4500€+449€/mes · Elite 8500€+desde 599€/mes — según proyecto · Gestoría IA 599€+299€/mes · Auditoría 899€
+- Plazos: "5-7 días laborables" para Spark, Core y Core RAG. Scale y Elite: "Plazo según proyecto" (nunca 48h)
+- Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Core RAG 3.200€+349€/mes · Scale 4500€+449€/mes · Elite 8500€+desde 599€/mes — según proyecto · Auditoría 899€
 - Permanencia — Scale y Elite: 12 meses mínimo. Resto sin permanencia, 30 días aviso.
 - Oferta Spark: primer mes GRATIS hasta el 26 mayo
 - Sin testimonios ficticios
