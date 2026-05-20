@@ -99,6 +99,34 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+.roi-section{padding:80px 24px;background:var(--bg2,#0e0e16);border-top:1px solid rgba(124,77,255,.12)}
+.roi-wrap{max-width:860px;margin:0 auto}
+.roi-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9d70ff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.roi-kicker::before{content:'';width:24px;height:1px;background:#7c4dff}
+.roi-title{font-size:clamp(26px,3.5vw,40px);font-weight:700;color:#f0f0f5;line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+.roi-title span{color:#7c4dff}
+.roi-sub{font-size:14px;color:#8888a0;font-weight:300;margin-bottom:40px}
+.roi-card{background:#111118;border:1px solid rgba(124,77,255,.18);border-radius:16px;padding:40px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.roi-inputs{display:flex;flex-direction:column;gap:28px}
+.roi-field{}
+.roi-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;color:#f0f0f5;font-weight:400}
+.roi-val{color:#9d70ff;font-weight:600;font-size:13px}
+input[type=range]{width:100%;-webkit-appearance:none;height:4px;border-radius:2px;background:rgba(124,77,255,.2);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:#7c4dff;cursor:pointer;border:2px solid #f0f0f5;transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.roi-results{display:flex;flex-direction:column;gap:16px;justify-content:center}
+.roi-result-item{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.12);border-radius:10px;padding:20px 24px}
+.roi-result-item.highlight{background:rgba(124,77,255,.14);border-color:rgba(124,77,255,.4)}
+.roi-result-num{font-size:32px;font-weight:700;color:#f0f0f5;letter-spacing:-.03em;margin-bottom:4px}
+.roi-result-item.highlight .roi-result-num{color:#9d70ff}
+.roi-result-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8888a0}
+.roi-cta-wrap{grid-column:1/-1;text-align:center;border-top:1px solid rgba(124,77,255,.12);padding-top:28px}
+.roi-nota{font-size:12px;color:#8888a0;margin-bottom:16px}
+.roi-btn{display:inline-block;background:#7c4dff;color:#fff;border-radius:8px;padding:13px 28px;font-size:13px;font-weight:600;letter-spacing:.04em;transition:background .2s;cursor:pointer}
+.roi-btn:hover{background:#9d70ff}
+@media(max-width:720px){.roi-card{grid-template-columns:1fr;gap:28px}.roi-section{padding:60px 16px}}
+</style>
 </head>
 <body>
 
@@ -205,6 +233,60 @@
     </div>
   </section>
 
+  <!-- CALCULADORA ROI -->
+  <section class="roi-section">
+    <div class="roi-wrap">
+      <div class="roi-header">
+        <div class="roi-kicker">Calcula tu ROI</div>
+        <h2 class="roi-title">¿Cuánto te cuesta <span>no tener</span> un Agente IA?</h2>
+        <p class="roi-sub">Mueve los sliders y ve en tiempo real cuánto pierdes cada mes sin atención 24/7</p>
+      </div>
+      <div class="roi-card">
+        <div class="roi-inputs">
+          <div class="roi-field">
+            <div class="roi-label">
+              <span>Leads sin atender fuera de horario</span>
+              <span class="roi-val" id="v-leads">20 leads/mes</span>
+            </div>
+            <input type="range" id="sl-leads" min="5" max="200" value="20" step="5" oninput="calcROI()">
+          </div>
+          <div class="roi-field">
+            <div class="roi-label">
+              <span>Valor medio por cliente</span>
+              <span class="roi-val" id="v-valor">150 €</span>
+            </div>
+            <input type="range" id="sl-valor" min="30" max="2000" value="150" step="10" oninput="calcROI()">
+          </div>
+          <div class="roi-field">
+            <div class="roi-label">
+              <span>Tasa de conversión estimada</span>
+              <span class="roi-val" id="v-conv">30%</span>
+            </div>
+            <input type="range" id="sl-conv" min="5" max="80" value="30" step="5" oninput="calcROI()">
+          </div>
+        </div>
+        <div class="roi-results">
+          <div class="roi-result-item">
+            <div class="roi-result-num" id="r-perdida">900 €</div>
+            <div class="roi-result-label">Pérdida mensual estimada</div>
+          </div>
+          <div class="roi-result-item highlight">
+            <div class="roi-result-num" id="r-roi">+352%</div>
+            <div class="roi-result-label">ROI mensual con Spark</div>
+          </div>
+          <div class="roi-result-item">
+            <div class="roi-result-num" id="r-anual">8.412 €</div>
+            <div class="roi-result-label">Ahorro anual estimado</div>
+          </div>
+        </div>
+        <div class="roi-cta-wrap">
+          <p class="roi-nota">Coste Spark: 499€ setup + 199€/mes · Sin permanencia · Operativo en 5-7 días</p>
+          <a href="#contacto" class="roi-btn" onclick="if(typeof wmOpenChat==='function')wmOpenChat('Spark')">Quiero recuperar esos leads →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-sec">
     <div class="wrap">
@@ -229,6 +311,26 @@
     <p>© 2025 <a href="https://whitemoon.es/">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="https://whitemoon.es/#precios">Ver precios</a> · <a href="https://wa.me/34643199580">WhatsApp</a></p>
   </div>
 </footer>
+
+<script>
+function calcROI(){
+  var leads=parseInt(document.getElementById('sl-leads').value);
+  var valor=parseInt(document.getElementById('sl-valor').value);
+  var conv=parseInt(document.getElementById('sl-conv').value)/100;
+  var coste=199;
+  var perdida=Math.round(leads*valor*conv);
+  var ahorro=perdida-coste;
+  var roi=ahorro>0?Math.round((ahorro/coste)*100):0;
+  var anual=ahorro*12;
+  document.getElementById('v-leads').textContent=leads+' leads/mes';
+  document.getElementById('v-valor').textContent=valor+' €';
+  document.getElementById('v-conv').textContent=conv*100+'%';
+  document.getElementById('r-perdida').textContent=perdida.toLocaleString('es-ES')+' €';
+  document.getElementById('r-roi').textContent=(ahorro>0?'+':'')+roi+'%';
+  document.getElementById('r-anual').textContent=anual.toLocaleString('es-ES')+' €';
+}
+calcROI();
+</script>
 
 </body>
 </html>
