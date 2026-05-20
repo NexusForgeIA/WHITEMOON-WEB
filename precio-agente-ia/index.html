@@ -34,7 +34,7 @@
   "provider": {"@id": "https://whitemoon.es/#negocio"},
   "serviceType": "Agente IA conversacional",
   "areaServed": ["Madrid", "Majadahonda", "Las Rozas", "Pozuelo", "Boadilla", "España"],
-  "description": "Planes Spark (499€+199€/mes), Core (1.800€+199€/mes), Scale (4.500€+449€/mes), Elite (8.500€+799€/mes). Sin permanencia.",
+  "description": "Planes Spark (499€+199€/mes), Core (1.800€+199€/mes), Scale (4.500€+449€/mes), Elite (8.500€+799€/mes). Sin permanencia excepto Pack Scale (12 meses mínimo).",
   "url": "https://whitemoon.es/precio-agente-ia/",
   "offers": [
     {"@type":"Offer","name":"Pack Spark","price":"499","priceCurrency":"EUR","url":"https://whitemoon.es/spark/"},
@@ -49,7 +49,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"¿Hay permanencia en los planes de WhiteMoon?","acceptedAnswer":{"@type":"Answer","text":"No. Ningún pack tiene permanencia. Pagas el setup inicial + cuota mensual sólo mientras quieras seguir usando el servicio. Puedes cancelar avisando con 30 días."}},
+    {"@type":"Question","name":"¿Hay permanencia en los planes de WhiteMoon?","acceptedAnswer":{"@type":"Answer","text":"Solo el Pack Scale tiene permanencia mínima de 12 meses. El resto sin permanencia, cancelas con 30 días."}},
     {"@type":"Question","name":"¿El precio del Agente IA varía según mi sector?","acceptedAnswer":{"@type":"Answer","text":"No. El mismo Pack Spark cuesta 499€ + 199€/mes para una clínica dental, una gestoría o una peluquería. Lo que cambia es el entrenamiento del Agente con la documentación de tu sector, sin coste extra."}},
     {"@type":"Question","name":"¿Qué pasa si quiero cancelar el servicio?","acceptedAnswer":{"@type":"Answer","text":"Avisas con 30 días por email o WhatsApp. No hay penalización ni costes ocultos. Te entregamos el código fuente y los datos del Agente para que puedas migrar si quieres seguir por tu cuenta."}},
     {"@type":"Question","name":"¿El precio incluye el diseño de la web?","acceptedAnswer":{"@type":"Answer","text":"Sólo el Pack Core (1.800€) incluye web profesional con dominio y hosting el primer año. Spark, Scale y Elite añaden el Agente IA a una web ya existente. Si necesitas web nueva, Core es la opción recomendada."}},
@@ -150,19 +150,88 @@
   <section class="sec" id="tabla-precios">
     <div class="wrap">
       <span class="sec-label">Planes y precios</span>
-      <h2 class="sec-h">Los 4 packs, sin letra pequeña</h2>
-      <table class="precios-table">
+      <h2 class="sec-h">Todos los packs, sin letra pequeña</h2>
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+      <table class="precios-table" style="min-width:700px">
         <thead>
-          <tr><th>Pack</th><th>Setup</th><th>Mensual</th><th>Para quién</th></tr>
+          <tr>
+            <th>Pack</th>
+            <th>Setup</th>
+            <th>Mensual</th>
+            <th>Web incluida</th>
+            <th>Agente IA</th>
+            <th>Permanencia</th>
+            <th>Para quién</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td class="pack-name">Spark</td><td class="price">499 €</td><td class="price">199 €/mes</td><td>Autónomos y negocios pequeños</td></tr>
-          <tr><td class="pack-name">Core</td><td class="price">1.800 €</td><td class="price">199 €/mes</td><td>PYMEs consolidadas (incluye web)</td></tr>
-          <tr><td class="pack-name">Scale</td><td class="price">4.500 €</td><td class="price">449 €/mes</td><td>Empresas en escala (RAG documental)</td></tr>
-          <tr><td class="pack-name">Elite</td><td class="price">8.500 €</td><td class="price">799 €/mes</td><td>Corporativo (RAG premium + CRM)</td></tr>
+          <tr style="background:rgba(124,77,255,.06)">
+            <td class="pack-name">Spark ⭐</td>
+            <td class="price">499 €</td>
+            <td class="price">199 €/mes</td>
+            <td style="text-align:center;color:#ef4444">✗</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>Autónomos y negocios pequeños con web existente</td>
+          </tr>
+          <tr>
+            <td class="pack-name">Core</td>
+            <td class="price">1.800 €</td>
+            <td class="price">199 €/mes</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>PYMEs que necesitan web nueva + posicionamiento IA</td>
+          </tr>
+          <tr>
+            <td class="pack-name">Core RAG</td>
+            <td class="price">3.200 €</td>
+            <td class="price">349 €/mes</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">✓ + docs</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>Negocios con catálogos, tarifas o protocolos propios</td>
+          </tr>
+          <tr>
+            <td class="pack-name">Scale</td>
+            <td class="price">4.500 €</td>
+            <td class="price">449 €/mes</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">✓ RAG 200</td>
+            <td style="text-align:center;color:#f5c842">12 meses</td>
+            <td>Empresas con alto volumen de leads + CRM integrado</td>
+          </tr>
+          <tr>
+            <td class="pack-name">Elite</td>
+            <td class="price">8.500 €</td>
+            <td class="price">799 €/mes</td>
+            <td style="text-align:center;color:#00d4aa">✓</td>
+            <td style="text-align:center;color:#00d4aa">✓ Corp.</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>Corporativo y cadenas multi-sede</td>
+          </tr>
+          <tr style="border-top:1px solid rgba(124,77,255,.2)">
+            <td class="pack-name">Gestoría IA</td>
+            <td class="price">599 €</td>
+            <td class="price">299 €/mes</td>
+            <td style="text-align:center;color:#ef4444">✗</td>
+            <td style="text-align:center;color:#00d4aa">✓ ITP+fiscal</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>Gestorías y asesorías con cálculo ITP real BOE</td>
+          </tr>
+          <tr>
+            <td class="pack-name">Auditoría IA</td>
+            <td class="price">899 €</td>
+            <td class="price">— pago único</td>
+            <td style="text-align:center;color:#ef4444">✗</td>
+            <td style="text-align:center;color:#ef4444">✗</td>
+            <td style="text-align:center;color:#00d4aa">Sin permanencia</td>
+            <td>Diagnóstico completo antes de contratar</td>
+          </tr>
         </tbody>
       </table>
-      <p class="precios-note">Sin permanencia en todos los packs · Sin costes ocultos · IVA no incluido · Operativo en 5-7 días laborables</p>
+      </div>
+      <p class="precios-note">⭐ Oferta hasta el 26 mayo: Pack Spark con primer mes GRATIS · Scale: permanencia mínima 12 meses · Resto sin permanencia · IVA no incluido · Operativo en 5-7 días laborables</p>
     </div>
   </section>
 
@@ -244,7 +313,7 @@
       <div style="max-width:760px;margin:32px auto 0">
         <div class="faq-item">
           <div class="faq-q">¿Hay permanencia?</div>
-          <div class="faq-a">No. Ningún pack tiene permanencia. Pagas el setup inicial + cuota mensual sólo mientras quieras seguir usando el servicio. Puedes cancelar avisando con 30 días.</div>
+          <div class="faq-a">Solo el Pack Scale tiene permanencia mínima de 12 meses. El resto sin permanencia, cancelas con 30 días.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">¿El precio varía según mi sector?</div>
