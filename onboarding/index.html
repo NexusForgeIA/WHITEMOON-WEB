@@ -245,7 +245,6 @@
 const SUPA = "https://mlaqtniujnvfxcvcourm.supabase.co";
 const ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs";
 const REST = SUPA + "/rest/v1/";
-const FN = SUPA + "/functions/v1/";
 const H = { apikey: ANON, Authorization: "Bearer " + ANON, "Content-Type": "application/json" };
 const DAY_MS = 86400000;
 
@@ -555,39 +554,14 @@ async function createClient(form){
     estado: "pendiente",
     dia_actual: 0,
   };
-  const rows = await api("onboarding_clientes", {
+  // El aviso WhatsApp lo dispara el Database Webhook de Supabase al insertar
+  // (trigger trg_notify_onboarding_created → onboarding-notify). No se llama
+  // desde aquí para evitar envíos duplicados.
+  await api("onboarding_clientes", {
     method: "POST",
-    headers: { ...H, Prefer: "return=representation" },
+    headers: { ...H, Prefer: "return=minimal" },
     body: JSON.stringify(body),
   });
-  const created = Array.isArray(rows) ? rows[0] : rows;
-
-  // PART 4 — notificación WhatsApp automática (no bloquea el flujo si falla)
-  let sent = false;
-  try{
-    const r = await fetch(FN + "onboarding-notify", {
-      method: "POST",
-      headers: H,
-      body: JSON.stringify({
-        nombre: body.cliente_nombre, pack: body.pack,
-        sector: body.sector, token: body.token_cdn,
-        telefono: body.cliente_telefono,
-      }),
-    });
-    const j = await r.json().catch(() => ({}));
-    sent = !!j.sent;
-  }catch(e){ console.warn("[onboarding] notify falló:", e); }
-
-  if (created && created.id){
-    try{
-      await api("onboarding_clientes?id=eq." + created.id, {
-        method: "PATCH",
-        headers: { ...H, Prefer: "return=minimal" },
-        body: JSON.stringify({ whatsapp_enviados: sent ? 1 : 0 }),
-      });
-    }catch(_){}
-  }
-  return sent;
 }
 
 /* ---------- wiring ---------- */
@@ -603,9 +577,9 @@ $("#newForm").addEventListener("submit", async e => {
   const btn = $("#createBtn");
   btn.disabled = true; btn.textContent = "Creando…";
   try{
-    const sent = await createClient(e.target);
+    await createClient(e.target);
     $("#newOverlay").classList.remove("show");
-    toast(sent ? "Onboarding creado · WhatsApp enviado ✅" : "Onboarding creado ✅", "ok");
+    toast("Onboarding creado · aviso WhatsApp en camino ✅", "ok");
     await load();
   }catch(err){
     toast("Error: " + err.message, "err");

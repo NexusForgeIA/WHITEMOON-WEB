@@ -4,6 +4,10 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // Mensaje:
 //   🚀 Nuevo cliente en onboarding: [nombre] · Pack [pack] · Sector [sector] · Token: [token]
 //
+// Se invoca de dos formas (ambas soportadas):
+//   1) Database Webhook (trigger pg_net) → payload { type, table, record:{...fila...} }
+//   2) Llamada directa → payload { nombre, pack, sector, token, telefono }
+//
 // Proveedor de envío configurable por env (Project Settings → Edge Functions → Secrets):
 //   CALLMEBOT_APIKEY    → usa api.callmebot.com (GET phone+text+apikey)
 //   WHATSAPP_NOTIFY_URL → POST genérico { phone, message } (Twilio proxy, n8n, etc.)
@@ -36,10 +40,16 @@ Deno.serve(async (req: Request) => {
     payload = {};
   }
 
-  const nombre = String(payload.nombre ?? "—");
-  const pack = String(payload.pack ?? "—");
-  const sector = String(payload.sector ?? "—");
-  const token = String(payload.token ?? payload.token_cdn ?? "—");
+  // Database Webhook envía la fila en `record`; la llamada directa manda los campos sueltos.
+  const rec: Record<string, unknown> =
+    payload.record && typeof payload.record === "object"
+      ? payload.record as Record<string, unknown>
+      : {};
+
+  const nombre = String(payload.nombre ?? rec.cliente_nombre ?? "—");
+  const pack = String(payload.pack ?? rec.pack ?? "—");
+  const sector = String(payload.sector ?? rec.sector ?? "—");
+  const token = String(payload.token ?? payload.token_cdn ?? rec.token_cdn ?? "—");
 
   const message =
     `🚀 Nuevo cliente en onboarding: ${nombre} · Pack ${pack} · Sector ${sector} · Token: ${token}`;
@@ -47,29 +57,56 @@ Deno.serve(async (req: Request) => {
   const callmebotKey = Deno.env.get("CALLMEBOT_APIKEY");
   const webhookUrl = Deno.env.get("WHATSAPP_NOTIFY_URL");
 
+  let sent = false;
+  let provider = "none";
   try {
     if (callmebotKey) {
+      provider = "callmebot";
       const url =
         `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(NOTIFY_PHONE)}` +
         `&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(callmebotKey)}`;
       const r = await fetch(url);
-      return json({ ok: true, sent: r.ok, provider: "callmebot", message });
-    }
-
-    if (webhookUrl) {
+      sent = r.ok;
+    } else if (webhookUrl) {
+      provider = "webhook";
       const r = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone: NOTIFY_PHONE, message }),
       });
-      return json({ ok: true, sent: r.ok, provider: "webhook", message });
+      sent = r.ok;
+    } else {
+      console.warn("[onboarding-notify] sin proveedor configurado, mensaje:", message);
     }
-
-    // Sin proveedor configurado: no rompemos nada, dejamos rastro en logs.
-    console.warn("[onboarding-notify] sin proveedor configurado, mensaje:", message);
-    return json({ ok: true, sent: false, provider: "none", message });
   } catch (e) {
+    provider = "error";
     console.error("[onboarding-notify] error enviando WhatsApp:", e);
-    return json({ ok: true, sent: false, provider: "error", message });
   }
+
+  // Si vino del webhook (tenemos record.id) y se envió, incrementa el contador.
+  const recId = rec.id;
+  if (sent && recId) {
+    try {
+      const supaUrl = Deno.env.get("SUPABASE_URL");
+      const service = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+      if (supaUrl && service) {
+        await fetch(`${supaUrl}/rest/v1/onboarding_clientes?id=eq.${recId}`, {
+          method: "PATCH",
+          headers: {
+            apikey: service,
+            Authorization: `Bearer ${service}`,
+            "Content-Type": "application/json",
+            Prefer: "return=minimal",
+          },
+          body: JSON.stringify({
+            whatsapp_enviados: (Number(rec.whatsapp_enviados) || 0) + 1,
+          }),
+        });
+      }
+    } catch (e) {
+      console.warn("[onboarding-notify] no se pudo actualizar whatsapp_enviados:", e);
+    }
+  }
+
+  return json({ ok: true, sent, provider, message });
 });
