@@ -9,7 +9,9 @@
 ## Reglas
 - Siempre pushear a rama designada, nunca directo a main
 - Plazos: siempre "5-7 días laborables" (nunca 48h)
-- Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Scale 4500€+449€/mes · Elite 8500€+799€/mes · Gestoría IA 599€+299€/mes · Auditoría 899€
+- Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Core RAG 3.200€+349€/mes · Scale 4500€+449€/mes · Elite 8500€+799€/mes · Gestoría IA 599€+299€/mes · Auditoría 899€
+- Permanencia: solo Scale tiene permanencia mínima de 12 meses; el resto sin permanencia (cancelas con 30 días)
+- Oferta Spark: primer mes GRATIS hasta el 26 mayo
 - Sin testimonios ficticios
 - Sin menciones a Orbit o packs obsoletos
 - Fundada en 2025
