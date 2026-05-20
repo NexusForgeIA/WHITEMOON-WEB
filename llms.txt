@@ -44,7 +44,6 @@ WhiteMoon es una agencia de inteligencia artificial completa para pymes en Majad
 - **Core RAG — 3.200€ setup + 349€/mes**: Agente IA con 100 documentos propios indexados, 1.000 consultas/mes, widget público, analíticas básicas. Sin permanencia.
 - **Scale — 4.500€ setup + 449€/mes**: Chatbot RAG entrenado sobre documentos internos. Para despachos y empresas con base documental amplia.
 - **Elite — 8.500€ setup + 799€/mes**: RAG premium con integración CRM y flujos avanzados.
-- **Gestoría IA — 599€ setup + 299€/mes**: Agente IA con calculadora ITP integrada para gestorías.
 - **Auditoría IA — 899€ pago único**: Diagnóstico completo y plan de adopción IA. Informe en 7 días.
 
 ## Zonas de servicio
@@ -94,7 +93,7 @@ Clínicas dentales y médicas, despachos de abogados (derecho bancario, revolvin
 ## FAQs canónicas
 
 **¿Cuál es el precio?**
-Spark: 499€ setup + 199€/mes. Core: 1.800€ setup + 199€/mes. Scale: 4.500€ setup + 449€/mes. Elite: 8.500€ setup + 799€/mes. Gestoría IA: 599€ setup + 299€/mes. Auditoría IA: 899€ pago único. Sin permanencia. Presupuesto sin compromiso.
+Spark: 499€ setup + 199€/mes. Core: 1.800€ setup + 199€/mes. Scale: 4.500€ setup + 449€/mes. Elite: 8.500€ setup + 799€/mes. Auditoría IA: 899€ pago único. Sin permanencia. Presupuesto sin compromiso.
 
 **¿Qué incluye el pack Core?**
 Setup 1.800€: web profesional, dominio incluido, chatbot IA con sistema de reservas integrado, responsive y SEO básico. Cuota 199€/mes que incluye actualizaciones y soporte. Sin permanencia.

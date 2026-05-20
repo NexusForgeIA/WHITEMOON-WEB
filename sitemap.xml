@@ -120,14 +120,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Productos / Verticales -->
-  <url>
-    <loc>https://whitemoon.es/gestoria-ia/</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Herramientas -->
   <url>
     <loc>https://whitemoon.es/calculadora-nomina/</loc>
@@ -269,7 +261,6 @@
   <url><loc>https://whitemoon.es/chatbot-abogados-ia-majadahonda/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://whitemoon.es/chatbot-abogados-madrid/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://whitemoon.es/chatbot-clinicas-dentales-madrid/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://whitemoon.es/chatbot-gestorias-madrid/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://whitemoon.es/chatbot-peluquerias-madrid/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://whitemoon.es/chatbot-talleres-mecanicos-madrid/</loc><lastmod>2026-05-13</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
