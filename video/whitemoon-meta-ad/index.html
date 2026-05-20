@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #08080d;
+        font-family: "Sora", sans-serif;
+        color: #f0f0f5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #08080d;
+      }
+      #scene1 { z-index: 4; }
+      #scene2 { z-index: 3; opacity: 0; }
+      #scene3 { z-index: 2; opacity: 0; }
+      #scene4 { z-index: 1; opacity: 0; }
+
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 160px 110px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      /* Decorative radial glows (no flat linear gradients on dark bg) */
+      .glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(8px);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .glow-purple {
+        background: radial-gradient(circle, rgba(124, 77, 255, 0.55) 0%, rgba(124, 77, 255, 0) 70%);
+      }
+      .glow-green {
+        background: radial-gradient(circle, rgba(0, 212, 170, 0.42) 0%, rgba(0, 212, 170, 0) 70%);
+      }
+
+      .star-dot {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #f0f0f5;
+        opacity: 0.7;
+        z-index: 1;
+      }
+
+      .kicker {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: #7c4dff;
+      }
+
+      .divider {
+        width: 220px;
+        height: 3px;
+        border-radius: 3px;
+        background: linear-gradient(90deg, rgba(124, 77, 255, 0) 0%, #7c4dff 50%, rgba(124, 77, 255, 0) 100%);
+        transform-origin: center;
+      }
+
+      /* ---- Scene 1: logo ---- */
+      .moon-wrap { width: 200px; height: 200px; }
+      .wordmark {
+        display: flex;
+        gap: 6px;
+        font-size: 122px;
+        line-height: 1;
+        letter-spacing: 2px;
+      }
+      .wm-white { font-weight: 400; color: #f0f0f5; }
+      .wm-moon { font-weight: 800; color: #f0f0f5; }
+      .tagline {
+        font-size: 34px;
+        font-weight: 600;
+        letter-spacing: 14px;
+        text-transform: uppercase;
+        color: #7c4dff;
+      }
+
+      /* ---- Scene 2: headline ---- */
+      .headline {
+        font-size: 92px;
+        font-weight: 700;
+        line-height: 1.16;
+        max-width: 860px;
+        letter-spacing: -1px;
+      }
+      .headline .word { display: inline-block; }
+      .accent-green { color: #00d4aa; }
+      .accent-purple { color: #7c4dff; }
+
+      /* ---- Scene 3: counter ---- */
+      .stat-card {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 90px 80px;
+        border: 2px solid rgba(124, 77, 255, 0.45);
+        border-radius: 36px;
+        background: rgba(124, 77, 255, 0.06);
+      }
+      .big-num {
+        font-size: 300px;
+        font-weight: 800;
+        line-height: 0.9;
+        color: #f0f0f5;
+        font-variant-numeric: tabular-nums;
+      }
+      .stat-label {
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #f0f0f5;
+      }
+      .stat-sub {
+        font-size: 30px;
+        font-weight: 400;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: rgba(240, 240, 245, 0.65);
+      }
+      .equals-row {
+        display: flex;
+        align-items: baseline;
+        gap: 22px;
+        margin-top: 24px;
+      }
+      .equals-sign { font-size: 96px; font-weight: 400; color: rgba(240,240,245,0.6); }
+      .euro-num {
+        font-size: 150px;
+        font-weight: 800;
+        color: #00d4aa;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ---- Scene 4: CTA ---- */
+      .cta-domain {
+        font-size: 110px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        color: #f0f0f5;
+      }
+      .cta-row { display: flex; align-items: center; gap: 26px; margin-bottom: 26px; }
+      .cta-moon { width: 96px; height: 96px; }
+      .cta-pill {
+        margin-top: 44px;
+        font-size: 42px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: #08080d;
+        background: #00d4aa;
+        padding: 26px 56px;
+        border-radius: 999px;
+      }
+      .cta-underline {
+        width: 360px;
+        height: 4px;
+        margin-top: 40px;
+        border-radius: 4px;
+        background: #7c4dff;
+        transform-origin: center;
+      }
+
+      #flash {
+        position: absolute;
+        inset: 0;
+        background: #7c4dff;
+        opacity: 0;
+        z-index: 50;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1080"
+      data-height="1920"
+    >
+      <!-- ===================== SCENE 1 · LOGO (0-3s) ===================== -->
+      <div id="scene1" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s1-glow" style="width: 900px; height: 900px; top: 510px; left: 90px;"></div>
+        <div class="star-dot" id="s1-star1" style="top: 480px; left: 230px;"></div>
+        <div class="star-dot" id="s1-star2" style="top: 560px; left: 840px; width: 9px; height: 9px;"></div>
+        <div class="star-dot" id="s1-star3" style="top: 1380px; left: 320px;"></div>
+        <div class="star-dot" id="s1-star4" style="top: 1320px; left: 790px; width: 8px; height: 8px;"></div>
+        <div class="scene-content" style="gap: 40px;">
+          <div class="moon-wrap" id="s1-moon">
+            <svg viewBox="0 0 200 200" width="200" height="200">
+              <defs>
+                <mask id="crescent">
+                  <rect width="200" height="200" fill="#fff" />
+                  <circle cx="128" cy="82" r="74" fill="#000" />
+                </mask>
+              </defs>
+              <circle cx="96" cy="100" r="82" fill="#7c4dff" mask="url(#crescent)" />
+              <path d="M150 38 l9 22 22 9 -22 9 -9 22 -9-22 -22-9 22-9 z" fill="#00d4aa" />
+            </svg>
+          </div>
+          <div class="wordmark">
+            <span class="wm-white" id="s1-white">White</span><span class="wm-moon" id="s1-moon-txt">Moon</span>
+          </div>
+          <div class="divider" id="s1-div"></div>
+          <div class="tagline" id="s1-tag">Agencia de IA</div>
+        </div>
+      </div>
+
+      <!-- ===================== SCENE 2 · HEADLINE (3-8s) ===================== -->
+      <div id="scene2" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s2-glow" style="width: 760px; height: 760px; top: 200px; left: -120px;"></div>
+        <div data-layout-ignore class="glow glow-green" id="s2-glow2" style="width: 640px; height: 640px; bottom: 220px; right: -160px;"></div>
+        <div class="scene-content" style="gap: 56px;">
+          <div class="kicker" id="s2-kicker">WhiteMoon · Agentes IA</div>
+          <div class="headline" id="s2-head">
+            <span class="word">Cada</span> <span class="word">día</span> <span class="word">sin</span>
+            <span class="word accent-green">Agente</span> <span class="word accent-green">IA</span>
+            <span class="word">pierdes</span> <span class="word accent-purple">clientes</span>
+          </div>
+          <div class="divider" id="s2-div"></div>
+        </div>
+      </div>
+
+      <!-- ===================== SCENE 3 · COUNTER (8-12s) ===================== -->
+      <div id="scene3" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s3-glow" style="width: 820px; height: 820px; top: 540px; left: 130px;"></div>
+        <div class="scene-content" style="gap: 50px;">
+          <div class="kicker" id="s3-kicker">El coste de no actuar</div>
+          <div class="stat-card" id="s3-card">
+            <div class="big-num" id="s3-num">0</div>
+            <div class="stat-label" id="s3-label">leads perdidos</div>
+            <div class="stat-sub" id="s3-sub">cada mes</div>
+            <div class="equals-row" id="s3-eq">
+              <span class="equals-sign">=</span>
+              <span class="euro-num" id="s3-euro">0€</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== SCENE 4 · CTA (12-15s) ===================== -->
+      <div id="scene4" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s4-glow" style="width: 980px; height: 980px; top: 470px; left: 50px;"></div>
+        <div class="scene-content" style="gap: 10px;">
+          <div class="cta-row" id="s4-row">
+            <svg class="cta-moon" id="s4-moon" viewBox="0 0 200 200">
+              <defs>
+                <mask id="crescent2">
+                  <rect width="200" height="200" fill="#fff" />
+                  <circle cx="128" cy="82" r="74" fill="#000" />
+                </mask>
+              </defs>
+              <circle cx="96" cy="100" r="82" fill="#7c4dff" mask="url(#crescent2)" />
+            </svg>
+            <div class="cta-domain" id="s4-domain">whitemoon.es</div>
+          </div>
+          <div class="cta-underline" id="s4-underline"></div>
+          <div class="cta-pill" id="s4-pill">Operativo en 7 días</div>
+        </div>
+      </div>
+
+      <div id="flash"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Helper: finite-repeat ambient pulse (no repeat:-1)
+      function pulse(target, vars, start, cycle, totalDur) {
+        const reps = Math.max(0, Math.ceil(totalDur / cycle) - 1);
+        tl.to(target, Object.assign({ repeat: reps, yoyo: true }, vars), start);
+      }
+
+      /* ---------------- SCENE 1 · LOGO (0-3s) ---------------- */
+      tl.from("#s1-glow", { opacity: 0, scale: 0.7, duration: 0.9, ease: "power2.out" }, 0.1);
+      tl.from("#s1-moon", { opacity: 0, scale: 0.4, rotation: -18, duration: 0.9, ease: "back.out(1.7)" }, 0.2);
+      tl.from("#s1-white", { opacity: 0, y: 46, duration: 0.7, ease: "power3.out" }, 0.55);
+      tl.from("#s1-moon-txt", { opacity: 0, y: 46, duration: 0.7, ease: "power3.out" }, 0.7);
+      tl.from("#s1-div", { scaleX: 0, opacity: 0, duration: 0.6, ease: "expo.out" }, 1.0);
+      tl.from("#s1-tag", { opacity: 0, y: 18, duration: 0.6, ease: "power2.out" }, 1.1);
+      tl.from(["#s1-star1", "#s1-star2", "#s1-star3", "#s1-star4"], { opacity: 0, scale: 0, duration: 0.5, stagger: 0.1, ease: "back.out(2)" }, 0.6);
+      pulse("#s1-glow", { scale: 1.12, opacity: 0.85, duration: 1.3, ease: "sine.inOut" }, 1.2, 1.3, 1.5);
+      pulse(["#s1-star2", "#s1-star4"], { opacity: 0.2, duration: 0.9, ease: "sine.inOut" }, 1.2, 0.9, 1.5);
+
+      /* ---------------- TRANSITION 1 → SCENE 2 (~2.8s) ---------------- */
+      gsap.set("#scene1", { transformOrigin: "50% 50%" });
+      tl.to("#scene1", { opacity: 0, scale: 1.06, duration: 0.5, ease: "power2.in" }, 2.8);
+      tl.set("#scene1", { visibility: "hidden" }, 3.3);
+      tl.set("#scene2", { opacity: 1 }, 2.8);
+
+      /* ---------------- SCENE 2 · HEADLINE (3-8s) ---------------- */
+      tl.from("#s2-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 2.85);
+      tl.from("#s2-glow2", { opacity: 0, duration: 0.8, ease: "power2.out" }, 3.0);
+      tl.from("#s2-kicker", { opacity: 0, y: -22, duration: 0.6, ease: "back.out(1.6)" }, 3.0);
+      tl.from("#scene2 .headline .word", { opacity: 0, y: 28, filter: "blur(6px)", duration: 0.55, stagger: 0.42, ease: "power3.out" }, 3.3);
+      tl.from("#s2-div", { scaleX: 0, opacity: 0, duration: 0.7, ease: "expo.out" }, 6.4);
+      pulse("#s2-glow", { scale: 1.1, duration: 1.5, ease: "sine.inOut" }, 3.6, 1.5, 4.0);
+      pulse("#s2-glow2", { scale: 1.12, duration: 1.7, ease: "sine.inOut" }, 3.8, 1.7, 3.8);
+
+      /* ---------------- TRANSITION 2 → SCENE 3 (~7.7s) ---------------- */
+      gsap.set("#scene2", { transformOrigin: "50% 50%" });
+      tl.to("#scene2", { opacity: 0, y: -70, duration: 0.5, ease: "power2.in" }, 7.7);
+      tl.set("#scene2", { visibility: "hidden" }, 8.2);
+      tl.set("#scene3", { opacity: 1 }, 7.7);
+
+      /* ---------------- SCENE 3 · COUNTER (8-12s) ---------------- */
+      tl.from("#s3-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 7.75);
+      tl.from("#s3-kicker", { opacity: 0, y: -20, duration: 0.6, ease: "back.out(1.6)" }, 7.9);
+      tl.from("#s3-card", { opacity: 0, scale: 0.88, y: 30, duration: 0.7, ease: "back.out(1.4)" }, 8.0);
+      tl.from("#s3-num", { opacity: 0, y: 26, duration: 0.5, ease: "power3.out" }, 8.35);
+      tl.from("#s3-label", { opacity: 0, duration: 0.5, ease: "power1.out" }, 8.7);
+      tl.from("#s3-sub", { opacity: 0, duration: 0.5, ease: "power1.out" }, 8.85);
+      tl.from("#s3-eq", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.6)" }, 9.5);
+
+      // Deterministic count-ups (driven by timeline position, no random/time)
+      const leads = { v: 0 };
+      tl.to(leads, {
+        v: 20, duration: 1.3, ease: "power2.out", snap: { v: 1 },
+        onUpdate: () => { document.getElementById("s3-num").textContent = Math.round(leads.v); },
+      }, 8.55);
+      const euro = { v: 0 };
+      tl.to(euro, {
+        v: 450, duration: 1.4, ease: "power2.out", snap: { v: 1 },
+        onUpdate: () => { document.getElementById("s3-euro").textContent = Math.round(euro.v) + "€"; },
+      }, 9.6);
+      pulse("#s3-glow", { scale: 1.1, opacity: 0.8, duration: 1.4, ease: "sine.inOut" }, 9.0, 1.4, 2.5);
+
+      /* ---------------- TRANSITION 3 + PURPLE FLASH → SCENE 4 (~11.6s) ---------------- */
+      tl.to("#scene3", { opacity: 0, duration: 0.35, ease: "power2.in" }, 11.6);
+      tl.set("#scene3", { visibility: "hidden" }, 11.95);
+      tl.set("#scene4", { opacity: 1 }, 11.7);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.72, duration: 0.16, ease: "power2.out" }, 11.6);
+      tl.to("#flash", { opacity: 0, duration: 0.4, ease: "power2.in" }, 11.76);
+
+      /* ---------------- SCENE 4 · CTA (12-15s) ---------------- */
+      tl.from("#s4-glow", { opacity: 0, scale: 0.7, duration: 0.8, ease: "power2.out" }, 11.8);
+      tl.from("#s4-moon", { opacity: 0, scale: 0.4, rotation: -20, duration: 0.7, ease: "back.out(1.7)" }, 11.95);
+      tl.from("#s4-domain", { opacity: 0, y: 34, duration: 0.7, ease: "power3.out" }, 12.05);
+      tl.from("#s4-underline", { scaleX: 0, opacity: 0, duration: 0.6, ease: "expo.out" }, 12.4);
+      tl.from("#s4-pill", { opacity: 0, scale: 0.85, y: 20, duration: 0.6, ease: "back.out(1.6)" }, 12.55);
+      // Second, softer purple accent flash on the pill landing
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.28, duration: 0.12, ease: "power2.out" }, 12.55);
+      tl.to("#flash", { opacity: 0, duration: 0.3, ease: "power2.in" }, 12.67);
+      pulse("#s4-glow", { scale: 1.12, opacity: 0.85, duration: 1.3, ease: "sine.inOut" }, 13.0, 1.3, 1.8);
+      pulse("#s4-pill", { scale: 1.04, duration: 0.9, ease: "sine.inOut" }, 13.3, 0.9, 1.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
