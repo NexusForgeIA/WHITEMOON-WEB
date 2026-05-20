@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #08080d;
+        font-family: "Sora", sans-serif;
+        color: #f0f0f5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .scene {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #08080d;
+      }
+      #scene1 { z-index: 6; }
+      #scene2 { z-index: 5; opacity: 0; }
+      #scene3 { z-index: 4; opacity: 0; }
+      #scene4 { z-index: 3; opacity: 0; }
+      #scene5 { z-index: 2; opacity: 0; }
+      #scene6 { z-index: 1; opacity: 0; }
+
+      .scene-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        padding: 150px 100px;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      .glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(8px);
+        pointer-events: none;
+        z-index: 1;
+      }
+      .glow-purple { background: radial-gradient(circle, rgba(124,77,255,0.5) 0%, rgba(124,77,255,0) 70%); }
+      .glow-green  { background: radial-gradient(circle, rgba(0,212,170,0.4) 0%, rgba(0,212,170,0) 70%); }
+
+      .kicker {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: #7c4dff;
+      }
+      .divider {
+        width: 220px;
+        height: 3px;
+        border-radius: 3px;
+        background: linear-gradient(90deg, rgba(124,77,255,0) 0%, #7c4dff 50%, rgba(124,77,255,0) 100%);
+        transform-origin: center;
+      }
+
+      /* Scene 1 — real logo */
+      .hero-logo { width: 760px; height: auto; display: block; }
+      .subtitle {
+        font-size: 38px;
+        font-weight: 500;
+        letter-spacing: 4px;
+        color: #8888a0;
+        margin-top: 48px;
+      }
+
+      /* Scene 2 — headline */
+      .headline {
+        font-size: 86px;
+        font-weight: 700;
+        line-height: 1.18;
+        max-width: 880px;
+        letter-spacing: -1px;
+        color: #f0f0f5;
+      }
+      .headline .word { display: inline-block; }
+
+      /* Scene 3 — bullets */
+      .bullets { display: flex; flex-direction: column; gap: 54px; align-items: flex-start; }
+      .bullet {
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        font-size: 58px;
+        font-weight: 600;
+        color: #f0f0f5;
+      }
+      .bullet .check {
+        flex: 0 0 auto;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: rgba(0,212,170,0.14);
+        color: #00d4aa;
+        font-size: 46px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Scene 4 — Pack Spark card */
+      .card {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+        width: 840px;
+        padding: 90px 72px;
+        background: #111118;
+        border: 2px solid #7c4dff;
+        border-radius: 40px;
+      }
+      .card-title {
+        font-size: 70px;
+        font-weight: 800;
+        color: #7c4dff;
+        letter-spacing: 1px;
+      }
+      .card-price {
+        font-size: 60px;
+        font-weight: 700;
+        color: #f0f0f5;
+      }
+      .card-price .eur { color: #00d4aa; }
+      .card-features {
+        font-size: 34px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #a6a6bd;
+        max-width: 660px;
+        margin-top: 8px;
+      }
+      .card-divider {
+        width: 120px;
+        height: 3px;
+        border-radius: 3px;
+        background: #7c4dff;
+        transform-origin: center;
+      }
+
+      /* Scene 5 — counter */
+      .big-num {
+        font-size: 300px;
+        font-weight: 800;
+        line-height: 0.9;
+        color: #f0f0f5;
+        font-variant-numeric: tabular-nums;
+      }
+      .stat-label { font-size: 46px; font-weight: 600; letter-spacing: 1px; color: #f0f0f5; }
+      .euro-row { display: flex; align-items: baseline; gap: 20px; margin-top: 30px; }
+      .euro-eq { font-size: 90px; font-weight: 400; color: rgba(240,240,245,0.55); }
+      .euro-num { font-size: 140px; font-weight: 800; color: #00d4aa; font-variant-numeric: tabular-nums; }
+      .stat-foot { font-size: 38px; font-weight: 500; letter-spacing: 6px; text-transform: uppercase; color: #8888a0; margin-top: 14px; }
+
+      /* Scene 6 — CTA */
+      .cta-label { font-size: 34px; font-weight: 500; letter-spacing: 8px; text-transform: uppercase; color: #8888a0; margin-bottom: 40px; }
+      .cta-domain { font-size: 116px; font-weight: 800; letter-spacing: -1px; color: #7c4dff; }
+      .cta-underline { width: 380px; height: 4px; margin: 38px 0; border-radius: 4px; background: #7c4dff; transform-origin: center; }
+      .cta-phone { font-size: 92px; font-weight: 800; letter-spacing: 2px; color: #00d4aa; font-variant-numeric: tabular-nums; }
+
+      #flash {
+        position: absolute;
+        inset: 0;
+        background: #7c4dff;
+        opacity: 0;
+        z-index: 50;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="30" data-width="1080" data-height="1920">
+
+      <!-- ============ SCENE 1 · LOGO (0-4s) ============ -->
+      <div id="scene1" class="scene">
+        <div class="scene-content">
+          <img id="s1-logo" class="hero-logo" src="logo-hero.webp" alt="WhiteMoon · Agencia de IA" />
+          <div class="subtitle" id="s1-sub">Agencia IA · Majadahonda, Madrid</div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 2 · HEADLINE (4-9s) ============ -->
+      <div id="scene2" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s2-glow" style="width: 780px; height: 780px; top: 220px; left: -140px;"></div>
+        <div data-layout-ignore class="glow glow-green" id="s2-glow2" style="width: 620px; height: 620px; bottom: 240px; right: -160px;"></div>
+        <div class="scene-content" style="gap: 56px;">
+          <div class="kicker" id="s2-kicker">WhiteMoon · Agentes IA</div>
+          <div class="headline" id="s2-head">
+            <span class="word">Cada</span> <span class="word">día</span> <span class="word">sin</span>
+            <span class="word">Agente</span> <span class="word">IA</span> <span class="word">pierdes</span>
+            <span class="word">clientes</span> <span class="word">a</span> <span class="word">tu</span>
+            <span class="word">competencia</span>
+          </div>
+          <div class="divider" id="s2-div"></div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 3 · BULLETS (9-14s) ============ -->
+      <div id="scene3" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s3-glow" style="width: 820px; height: 820px; top: 540px; left: 130px;"></div>
+        <div class="scene-content" style="gap: 70px; align-items: center;">
+          <div class="kicker" id="s3-kicker">Por qué WhiteMoon</div>
+          <div class="bullets">
+            <div class="bullet" id="s3-b1"><span class="check">&#10003;</span><span>Operativo en 7 días</span></div>
+            <div class="bullet" id="s3-b2"><span class="check">&#10003;</span><span>Sin permanencia</span></div>
+            <div class="bullet" id="s3-b3"><span class="check">&#10003;</span><span>ROI positivo en 90 días</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 4 · PACK SPARK (14-20s) ============ -->
+      <div id="scene4" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s4-glow" style="width: 940px; height: 940px; top: 490px; left: 70px;"></div>
+        <div class="scene-content">
+          <div class="card" id="s4-card">
+            <div class="card-title" id="s4-title">Pack Spark</div>
+            <div class="card-divider" id="s4-cdiv"></div>
+            <div class="card-price" id="s4-price"><span class="eur">499€</span> setup + <span class="eur">199€</span>/mes</div>
+            <div class="card-features" id="s4-feat">Agente IA 24/7 · Captura leads automática · Notificación WhatsApp</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 5 · COUNTER (20-26s) ============ -->
+      <div id="scene5" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s5-glow" style="width: 860px; height: 860px; top: 520px; left: 110px;"></div>
+        <div class="scene-content" style="gap: 18px;">
+          <div class="kicker" id="s5-kicker">El coste de no actuar</div>
+          <div class="big-num" id="s5-num">0</div>
+          <div class="stat-label" id="s5-label">leads sin atender</div>
+          <div class="euro-row" id="s5-eurorow">
+            <span class="euro-eq">=</span>
+            <span class="euro-num" id="s5-euro">0€</span>
+          </div>
+          <div class="stat-foot" id="s5-foot">al mes perdidos</div>
+        </div>
+      </div>
+
+      <!-- ============ SCENE 6 · CTA (26-30s) ============ -->
+      <div id="scene6" class="scene">
+        <div data-layout-ignore class="glow glow-purple" id="s6-glow" style="width: 1000px; height: 1000px; top: 460px; left: 40px;"></div>
+        <div class="scene-content" style="gap: 6px;">
+          <div class="cta-label" id="s6-label">Empieza hoy</div>
+          <div class="cta-domain" id="s6-domain">whitemoon.es</div>
+          <div class="cta-underline" id="s6-underline"></div>
+          <div class="cta-phone" id="s6-phone">643 199 580</div>
+        </div>
+      </div>
+
+      <div id="flash"></div>
+    </div>
+
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      function pulse(target, vars, start, cycle, totalDur) {
+        const reps = Math.max(0, Math.ceil(totalDur / cycle) - 1);
+        tl.to(target, Object.assign({ repeat: reps, yoyo: true }, vars), start);
+      }
+
+      /* ---------- SCENE 1 · LOGO (0-4s) ---------- */
+      gsap.set("#s1-logo", { transformOrigin: "50% 50%" });
+      tl.from("#s1-logo", { opacity: 0, scale: 0.92, duration: 1.5, ease: "power2.out" }, 0.2);
+      tl.from("#s1-sub", { opacity: 0, y: 22, duration: 0.8, ease: "power2.out" }, 1.4);
+
+      /* T1 -> SCENE 2 (~3.7s) */
+      gsap.set("#scene1", { transformOrigin: "50% 50%" });
+      tl.to("#scene1", { opacity: 0, scale: 1.05, duration: 0.5, ease: "power2.in" }, 3.7);
+      tl.set("#scene1", { visibility: "hidden" }, 4.2);
+      tl.set("#scene2", { opacity: 1 }, 3.7);
+
+      /* ---------- SCENE 2 · HEADLINE (4-9s) ---------- */
+      tl.from("#s2-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 3.8);
+      tl.from("#s2-glow2", { opacity: 0, duration: 0.8, ease: "power2.out" }, 4.0);
+      tl.from("#s2-kicker", { opacity: 0, y: -22, duration: 0.6, ease: "back.out(1.6)" }, 4.0);
+      tl.from("#scene2 .headline .word", { opacity: 0, y: 28, filter: "blur(6px)", duration: 0.5, stagger: 0.38, ease: "power3.out" }, 4.4);
+      tl.from("#s2-div", { scaleX: 0, opacity: 0, duration: 0.7, ease: "expo.out" }, 8.2);
+      pulse("#s2-glow", { scale: 1.1, duration: 1.6, ease: "sine.inOut" }, 4.6, 1.6, 3.8);
+      pulse("#s2-glow2", { scale: 1.12, duration: 1.8, ease: "sine.inOut" }, 4.8, 1.8, 3.6);
+
+      /* T2 -> SCENE 3 (~8.7s) */
+      gsap.set("#scene2", { transformOrigin: "50% 50%" });
+      tl.to("#scene2", { opacity: 0, y: -70, duration: 0.5, ease: "power2.in" }, 8.7);
+      tl.set("#scene2", { visibility: "hidden" }, 9.2);
+      tl.set("#scene3", { opacity: 1 }, 8.7);
+
+      /* ---------- SCENE 3 · BULLETS (9-14s) ---------- */
+      tl.from("#s3-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 8.8);
+      tl.from("#s3-kicker", { opacity: 0, y: -20, duration: 0.6, ease: "back.out(1.6)" }, 9.0);
+      tl.from("#s3-b1", { opacity: 0, x: -90, duration: 0.6, ease: "power3.out" }, 9.4);
+      tl.from("#s3-b2", { opacity: 0, x: -90, duration: 0.6, ease: "power3.out" }, 9.95);
+      tl.from("#s3-b3", { opacity: 0, x: -90, duration: 0.6, ease: "power3.out" }, 10.5);
+      tl.from(["#s3-b1 .check", "#s3-b2 .check", "#s3-b3 .check"], { scale: 0, duration: 0.45, stagger: 0.55, ease: "back.out(2)" }, 9.55);
+      pulse("#s3-glow", { scale: 1.1, opacity: 0.85, duration: 1.5, ease: "sine.inOut" }, 10.6, 1.5, 3.0);
+
+      /* T3 -> SCENE 4 (~13.7s) */
+      gsap.set("#scene3", { transformOrigin: "50% 50%" });
+      tl.to("#scene3", { opacity: 0, scale: 1.04, duration: 0.5, ease: "power2.in" }, 13.7);
+      tl.set("#scene3", { visibility: "hidden" }, 14.2);
+      tl.set("#scene4", { opacity: 1 }, 13.7);
+
+      /* ---------- SCENE 4 · PACK SPARK (14-20s) ---------- */
+      tl.from("#s4-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 13.8);
+      tl.from("#s4-card", { opacity: 0, scale: 0.9, y: 36, duration: 0.7, ease: "back.out(1.4)" }, 14.0);
+      tl.from("#s4-title", { opacity: 0, y: 24, duration: 0.6, ease: "power3.out" }, 14.4);
+      tl.from("#s4-cdiv", { scaleX: 0, opacity: 0, duration: 0.5, ease: "expo.out" }, 14.7);
+      tl.from("#s4-price", { opacity: 0, y: 22, duration: 0.6, ease: "power2.out" }, 14.9);
+      tl.from("#s4-feat", { opacity: 0, y: 18, duration: 0.6, ease: "power1.out" }, 15.3);
+      pulse("#s4-glow", { scale: 1.1, opacity: 0.8, duration: 1.6, ease: "sine.inOut" }, 15.6, 1.6, 4.0);
+
+      /* T4 -> SCENE 5 (~19.7s) */
+      gsap.set("#scene4", { transformOrigin: "50% 50%" });
+      tl.to("#scene4", { opacity: 0, y: -60, duration: 0.5, ease: "power2.in" }, 19.7);
+      tl.set("#scene4", { visibility: "hidden" }, 20.2);
+      tl.set("#scene5", { opacity: 1 }, 19.7);
+
+      /* ---------- SCENE 5 · COUNTER (20-26s) ---------- */
+      tl.from("#s5-glow", { opacity: 0, duration: 0.8, ease: "power2.out" }, 19.8);
+      tl.from("#s5-kicker", { opacity: 0, y: -20, duration: 0.6, ease: "back.out(1.6)" }, 20.0);
+      tl.from("#s5-num", { opacity: 0, y: 26, duration: 0.5, ease: "power3.out" }, 20.4);
+      tl.from("#s5-label", { opacity: 0, duration: 0.5, ease: "power1.out" }, 20.8);
+      tl.from("#s5-eurorow", { opacity: 0, scale: 0.8, duration: 0.5, ease: "back.out(1.6)" }, 21.5);
+      tl.from("#s5-foot", { opacity: 0, duration: 0.5, ease: "power1.out" }, 22.4);
+
+      const leads = { v: 0 };
+      tl.to(leads, {
+        v: 20, duration: 1.4, ease: "power2.out", snap: { v: 1 },
+        onUpdate: () => { document.getElementById("s5-num").textContent = Math.round(leads.v); },
+      }, 20.6);
+      const euro = { v: 0 };
+      tl.to(euro, {
+        v: 450, duration: 1.5, ease: "power2.out", snap: { v: 1 },
+        onUpdate: () => { document.getElementById("s5-euro").textContent = Math.round(euro.v) + "€"; },
+      }, 21.6);
+      pulse("#s5-glow", { scale: 1.1, opacity: 0.8, duration: 1.5, ease: "sine.inOut" }, 22.6, 1.5, 3.0);
+
+      /* T5 + PURPLE FLASH -> SCENE 6 (~25.6s) */
+      tl.to("#scene5", { opacity: 0, duration: 0.35, ease: "power2.in" }, 25.6);
+      tl.set("#scene5", { visibility: "hidden" }, 25.95);
+      tl.set("#scene6", { opacity: 1 }, 25.7);
+      tl.fromTo("#flash", { opacity: 0 }, { opacity: 0.7, duration: 0.16, ease: "power2.out" }, 25.6);
+      tl.to("#flash", { opacity: 0, duration: 0.4, ease: "power2.in" }, 25.76);
+
+      /* ---------- SCENE 6 · CTA (26-30s) ---------- */
+      tl.from("#s6-glow", { opacity: 0, scale: 0.7, duration: 0.9, ease: "power2.out" }, 25.8);
+      tl.from("#s6-label", { opacity: 0, y: -18, duration: 0.6, ease: "back.out(1.6)" }, 25.95);
+      tl.from("#s6-domain", { opacity: 0, y: 34, duration: 0.7, ease: "power3.out" }, 26.1);
+      tl.from("#s6-underline", { scaleX: 0, opacity: 0, duration: 0.6, ease: "expo.out" }, 26.5);
+      tl.from("#s6-phone", { opacity: 0, y: 24, duration: 0.7, ease: "back.out(1.5)" }, 26.7);
+      pulse("#s6-glow", { scale: 1.12, opacity: 0.85, duration: 1.4, ease: "sine.inOut" }, 27.4, 1.4, 2.4);
+      pulse("#s6-phone", { scale: 1.04, duration: 1.0, ease: "sine.inOut" }, 27.6, 1.0, 2.0);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
