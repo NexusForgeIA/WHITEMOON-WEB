@@ -29,6 +29,11 @@ Aplica a todos los flujos, presentes y futuros:
   → retrocompatible: flujos sin `origen` explícito siguen enviando `'whitemoon.es'`
 - Si el envío a Supabase falla → `console.warn`, NUNCA se interrumpe el flujo del usuario.
 
+## Edge Functions — Regla crítica
+SIEMPRE desplegar con --no-verify-jwt:
+supabase functions deploy <nombre> --no-verify-jwt --project-ref mlaqtniujnvfxcvcourm
+NUNCA desplegar sin --no-verify-jwt o el chatbot público dejará de funcionar.
+
 ## Skills activas
 - /spec antes de cualquier nueva funcionalidad
 - /review antes de mergear
