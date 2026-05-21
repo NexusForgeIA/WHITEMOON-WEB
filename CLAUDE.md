@@ -7,7 +7,11 @@
 - Sin frameworks, sin npm
 
 ## Reglas
-- Siempre pushear a rama designada, nunca directo a main
+- Git:
+  - Features nuevas → siempre rama + PR
+  - Fixes críticos de producción (chatbot roto, leads sin capturar, web caída) → commit directo a main permitido
+  - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
+  - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
 - Plazos: "5-7 días laborables" para Spark, Core y Core RAG. Scale y Elite: "Plazo según proyecto" (nunca 48h)
 - Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Core RAG 3.200€+349€/mes · Scale 4500€+449€/mes · Elite 8500€+desde 599€/mes — según proyecto · Auditoría 899€
 - Permanencia — Scale y Elite: 12 meses mínimo. Resto sin permanencia, 30 días aviso.
