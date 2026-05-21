@@ -34,14 +34,8 @@
   .legal .data-card b{color:var(--text);}
   .legal .updated{font-size:.78rem;color:#5a5a70;margin-top:32px;}
 </style>
-  <!-- Google tag (gtag.js) -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-D3BQ7674RX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-D3BQ7674RX');
-  </script>
+  <!-- Analytics (GA4) con consentimiento de cookies -->
+  <script defer src="/assets/cookie-consent.js?v=2026052101"></script>
 </head>
 <body class="legal">
 
@@ -74,15 +68,34 @@
       <h2>1. ¿Qué son las cookies?</h2>
       <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en el navegador o dispositivo del usuario cuando se visitan. Permiten que la web recuerde información sobre la visita, como las preferencias del usuario, y son útiles para que el sitio funcione correctamente.</p>
 
-      <h2>2. Cookies que utiliza whitemoon.es</h2>
-      <div class="data-card">
-        <p><b>Cookies técnicas necesarias:</b> imprescindibles para el correcto funcionamiento de la web. Por ejemplo, recordar que el usuario ya ha aceptado el aviso de cookies (almacenado en el almacenamiento local del navegador). No requieren consentimiento previo.</p>
-        <p><b>Sin cookies publicitarias:</b> no utilizamos cookies de publicidad ni de marketing.</p>
-        <p><b>Sin rastreo de terceros:</b> no instalamos cookies de seguimiento ni de redes de terceros con fines de perfilado.</p>
-      </div>
-      <p>En caso de incorporar en el futuro cookies de analítica o de terceros, se actualizará esta política y se solicitará el consentimiento correspondiente.</p>
+      <h2>2. Cookies y tecnologías que utiliza whitemoon.es</h2>
 
-      <h2>3. Cómo desactivar las cookies</h2>
+      <h3>2.1. Cookies técnicas o necesarias (no requieren consentimiento)</h3>
+      <div class="data-card">
+        <p><b>Preferencia de cookies:</b> guardamos tu decisión sobre el banner de cookies en el almacenamiento local del navegador (clave <code>wm_cookie_consent</code>), para no volver a mostrarte el aviso en cada visita. No identifica al usuario ni se comparte con terceros.</p>
+        <p><b>Duración:</b> persistente hasta que la borres o cambies tus preferencias.</p>
+      </div>
+
+      <h3>2.2. Cookies de analítica (requieren tu consentimiento)</h3>
+      <p>Solo se instalan si pulsas <b>«Aceptar todas»</b> en el banner de cookies. Si eliges <b>«Solo esenciales»</b>, <b>no se carga ningún script de analítica</b>. Utilizamos <b>Google Analytics 4</b> (proveedor: Google Ireland Ltd.) para obtener estadísticas agregadas de uso (páginas vistas, dispositivo, origen de la visita) que nos ayudan a mejorar la web.</p>
+      <div class="data-card">
+        <p><b>_ga</b> — distingue usuarios de forma anónima. Duración: hasta 2 años.</p>
+        <p><b>_ga_&lt;ID&gt;</b> — mantiene el estado de la sesión para Google Analytics 4. Duración: hasta 2 años.</p>
+        <p><b>_gid</b> — distingue usuarios (si Google lo activa). Duración: 24 horas.</p>
+      </div>
+      <p>El tratamiento de estos datos se rige por la <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Política de Privacidad de Google</a>. La activación de Google Analytics implica la posible transferencia de datos a servidores de Google (ver apartado 5).</p>
+
+      <h3>2.3. Sin cookies publicitarias</h3>
+      <div class="data-card">
+        <p>No utilizamos cookies de publicidad, marketing ni perfilado comercial, ni vendemos datos a terceros.</p>
+      </div>
+
+      <h2>3. Gestión y retirada del consentimiento</h2>
+      <p>En tu primera visita aparece un banner en la parte inferior con dos opciones: <b>«Aceptar todas»</b> (activa la analítica) o <b>«Solo esenciales»</b> (mantiene únicamente las cookies técnicas). Tu elección queda guardada para próximas visitas.</p>
+      <p>Puedes <b>cambiar o retirar tu consentimiento</b> en cualquier momento —es tan sencillo como otorgarlo— pulsando el siguiente botón:</p>
+      <p><button type="button" class="btn-sec" style="cursor:pointer;font-family:inherit;" onclick="if(window.wmCookieConsent){window.wmCookieConsent.reset();}else{try{localStorage.removeItem('wm_cookie_consent');}catch(e){}location.reload();}">Cambiar mis preferencias de cookies</button></p>
+
+      <h2>4. Cómo desactivar las cookies</h2>
       <p>Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo configurando las opciones de tu navegador. A continuación te indicamos cómo hacerlo en los navegadores más habituales:</p>
 
       <h3>Google Chrome</h3>
@@ -105,7 +118,10 @@
 
       <p>Ten en cuenta que si desactivas todas las cookies, es posible que algunas funcionalidades del sitio web no funcionen correctamente.</p>
 
-      <h2>4. Más información</h2>
+      <h2>5. Transferencias internacionales de datos</h2>
+      <p>Si aceptas las cookies de analítica, Google Analytics 4 puede tratar y almacenar datos en servidores de Google ubicados fuera del Espacio Económico Europeo. Google se acoge a los mecanismos de transferencia previstos en el RGPD (incluido el EU-US Data Privacy Framework y cláusulas contractuales tipo). Si no aceptas la analítica, no se produce ninguna transferencia.</p>
+
+      <h2>6. Más información</h2>
       <p>Para más detalles sobre el tratamiento de datos personales, consulta nuestra <a href="/politica-privacidad/">Política de Privacidad</a> y el <a href="/aviso-legal/">Aviso Legal</a>.</p>
 
       <p class="updated">Última actualización: mayo de 2026.</p>
