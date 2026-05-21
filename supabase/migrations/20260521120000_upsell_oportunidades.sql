@@ -37,6 +37,7 @@ create or replace function public.pack_precio_mensual(p text)
 returns integer
 language sql
 immutable
+set search_path = ''
 as $$
   select case lower(coalesce(p, ''))
     when 'spark' then 199
