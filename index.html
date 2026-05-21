@@ -3658,50 +3658,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
   }
 </script>
 
-<div id="exit-modal" style="display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.7);z-index:9999;
-  align-items:center;justify-content:center;backdrop-filter:blur(4px)">
-  <div style="background:#0d0d1a;border:1px solid rgba(124,77,255,.3);
-    border-radius:20px;padding:40px;max-width:480px;width:90%;
-    text-align:center;position:relative">
-    <button onclick="document.getElementById('exit-modal').style.display='none'"
-      style="position:absolute;top:16px;right:16px;background:none;border:0;
-      color:#9090b0;font-size:1.4rem;cursor:pointer">×</button>
-    <div style="font-size:2rem;margin-bottom:12px">👋</div>
-    <h3 style="font-size:1.4rem;font-weight:800;color:#fff;margin:0 0 10px">
-      ¿Te vas sin ver la demo?
-    </h3>
-    <p style="color:#9090b0;font-size:.9rem;line-height:1.6;margin:0 0 24px">
-      En 2 minutos te mostramos cómo quedaría<br>
-      el Agente IA en <strong style="color:#fff">tu sector</strong>. Sin compromiso.
-    </p>
-    <button onclick="document.getElementById('exit-modal').style.display='none';
-      var b=document.getElementById('wm-chat-btn');if(b)b.click();"
-      style="width:100%;padding:14px;background:linear-gradient(135deg,#7c4dff,#9d70ff);
-      color:#fff;border:0;border-radius:10px;font-size:.95rem;font-weight:700;
-      cursor:pointer;font-family:inherit;margin-bottom:10px">
-      Ver demo de mi sector →
-    </button>
-    <button onclick="document.getElementById('exit-modal').style.display='none'"
-      style="background:none;border:0;color:#9090b0;font-size:.82rem;
-      cursor:pointer;font-family:inherit">
-      No me interesa por ahora
-    </button>
-  </div>
-</div>
-<script>
-(function(){
-  var shown = false;
-  document.addEventListener('mouseleave', function(e){
-    if(e.clientY <= 0 && !shown){
-      shown = true;
-      var m = document.getElementById('exit-modal');
-      if(m) m.style.display='flex';
-    }
-  });
-})();
-</script>
-
 <button class="navbar-demo-cta" id="demoCta"
   onclick="var b=document.getElementById('wm-chat-btn');if(b)b.click()">
   Ver demo de mi sector →
@@ -3715,57 +3671,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     btn.classList.toggle('visible', !e[0].isIntersecting);
   },{threshold:0.1}).observe(hero);
 })();
-</script>
-
-<!-- OFERTA MAYO 2026 -->
-<div id="oferta-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(8,8,13,.85);backdrop-filter:blur(8px);align-items:center;justify-content:center">
-  <div style="background:#0e0e16;border:1px solid rgba(124,77,255,.35);border-radius:16px;padding:40px 36px;max-width:480px;width:90%;position:relative;text-align:center">
-    <button onclick="cerrarOferta()" style="position:absolute;top:14px;right:18px;background:none;border:none;color:#8888a0;font-size:20px;cursor:pointer">✕</button>
-    <div style="display:inline-block;background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.3);border-radius:20px;padding:4px 14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#9d70ff;margin-bottom:16px">Oferta de lanzamiento · Solo hasta el 31 de mayo</div>
-    <h2 style="font-family:'Sora',sans-serif;font-size:28px;font-weight:700;color:#f0f0f5;line-height:1.2;margin-bottom:12px;letter-spacing:-.02em">Agente IA en tu web<br><span style="color:#7c4dff">+ primer mes gratis</span></h2>
-    <p style="font-size:14px;color:#8888a0;line-height:1.7;margin-bottom:24px">Setup completo en 5-7 días. Sin permanencia.<br>Solo para los primeros 5 clientes.</p>
-    <div style="background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:10px;padding:16px;margin-bottom:24px">
-      <div style="font-size:32px;font-weight:700;color:#f0f0f5;font-family:'Sora',sans-serif">499€ <span style="font-size:16px;font-weight:300;color:#8888a0">+ 199€/mes</span></div>
-      <div style="font-size:13px;color:#00d4aa;margin-top:4px;font-weight:500">Primer mes de mantenimiento GRATIS</div>
-    </div>
-    <button onclick="cerrarOfertaYChat()" style="background:#7c4dff;color:#fff;border:none;border-radius:8px;padding:14px 32px;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;margin-bottom:10px;transition:background .2s">Quiero mi primer mes gratis →</button>
-    <button onclick="cerrarOferta()" style="background:transparent;border:none;color:#8888a0;font-size:12px;cursor:pointer">Ahora no, gracias</button>
-  </div>
-</div>
-
-<script>
-// OFERTA MAYO 2026
-var OFERTA_FIN = new Date('2026-05-31T23:59:59');
-
-function ofertaActiva() {
-  return new Date() <= OFERTA_FIN;
-}
-
-function mostrarOferta() {
-  if (!ofertaActiva()) return;
-  if (sessionStorage.getItem('oferta_cerrada')) return;
-  document.getElementById('oferta-popup').style.display = 'flex';
-}
-
-function cerrarOferta() {
-  document.getElementById('oferta-popup').style.display = 'none';
-  sessionStorage.setItem('oferta_cerrada', '1');
-}
-
-function cerrarOfertaYChat() {
-  document.getElementById('oferta-popup').style.display = 'none';
-  sessionStorage.setItem('oferta_cerrada', '1');
-  if (typeof window.wmOpenChat === 'function') {
-    window.wmOpenChat('Oferta primer mes gratis');
-  } else {
-    var btn = document.getElementById('wm-chat-btn');
-    if (btn) btn.click();
-  }
-}
-
-if (ofertaActiva() && !sessionStorage.getItem('oferta_cerrada')) {
-  setTimeout(mostrarOferta, 8000);
-}
 </script>
 
 <script>
