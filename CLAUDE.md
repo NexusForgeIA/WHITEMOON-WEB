@@ -13,8 +13,17 @@
   - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
   - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
 - Plazos: "5-7 días laborables" para Spark, Core y Core RAG. Scale y Elite: "Plazo según proyecto" (nunca 48h)
-- Precios actuales: Spark 499€+199€/mes · Core 1800€+199€/mes · Core RAG 3.200€+349€/mes · Scale 4500€+449€/mes · Elite 8500€+desde 599€/mes — según proyecto · Auditoría 899€
+- Precios actuales:
+  - Spark: 499€ setup + 199€/mes · Sin permanencia · Laura IA en web existente
+  - Core: 1.800€ setup + 199€/mes · Sin permanencia · Web nueva + Laura IA (para quien NO tiene web)
+  - Core RAG: 3.200€ setup + 349€/mes · Sin permanencia · Laura IA con docs propios (100 docs, 1.000 consultas/mes) — SIN web
+  - Scale: 4.500€ setup + 449€/mes · Permanencia 12 meses · RAG mayor capacidad (500 docs, 5.000 consultas/mes) — SIN web
+  - Elite: 8.500€ setup + desde 599€/mes · Permanencia 12 meses · Ilimitado, agentes IA múltiples, soporte dedicado — SIN web
+  - Auditoría: 899€ pago único
 - Permanencia — Scale y Elite: 12 meses mínimo. Resto sin permanencia, 30 días aviso.
+- Core RAG / Scale / Elite: SIN diseño web incluido — solo agente IA RAG
+- Laura IA NUNCA recomienda Core si el cliente ya tiene web (→ Spark)
+- Laura IA NUNCA recomienda RAG sin documentos propios del cliente
 - Oferta Spark: primer mes GRATIS hasta el 26 mayo
 - Sin testimonios ficticios
 - Sin menciones a Orbit o packs obsoletos
