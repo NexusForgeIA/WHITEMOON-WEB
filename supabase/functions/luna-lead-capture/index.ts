@@ -39,10 +39,13 @@ Deno.serve(async (req: Request) => {
     payload = {};
   }
 
-  const nombre = String(payload.nombre ?? "").trim();
-  const telefono = String(payload.telefono ?? "").trim();
-  const sector = String(payload.sector ?? "").trim();
-  const mensaje = String(payload.mensaje ?? "").trim();
+  // Retell (custom function con args_at_root:false) envía los parámetros
+  // anidados bajo `args`; el widget web los envía en la raíz. Aceptamos ambos.
+  const data = (payload.args ?? payload) as Record<string, unknown>;
+  const nombre = String(data.nombre ?? "").trim();
+  const telefono = String(data.telefono ?? "").trim();
+  const sector = String(data.sector ?? "").trim();
+  const mensaje = String(data.mensaje ?? "").trim();
 
   // El teléfono es el dato clave de un lead de voz; sin él no hay nada que capturar.
   if (!telefono) {
