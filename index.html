@@ -3828,8 +3828,15 @@ calcROIHome();
     window.addEventListener("resize", render);
     render();
 
+    const FRIENDLY_ERR =
+      "No se pudo iniciar la llamada. Por favor, inténtalo desde un ordenador o escríbenos al chat.";
+
     function ensureClient() {
       if (client) return client;
+      if (typeof RetellWebClient === "undefined") {
+        console.error("[luna] SDK de Retell no disponible");
+        return null;
+      }
       try { client = new RetellWebClient(); }
       catch (e) { console.error("[luna] no se pudo crear RetellWebClient", e); return null; }
       client.on("call_started", () => { callActive = true; busy = false; render(); });
@@ -3838,17 +3845,31 @@ calcROIHome();
       client.on("agent_stop_talking", () => bars.classList.remove("is-speaking"));
       client.on("error", (err) => {
         console.error("[luna] error en la llamada", err);
+        const wasActive = callActive;
         try { client.stopCall(); } catch (_) {}
         callActive = false; busy = false; render();
+        // Si falla antes de arrancar (típico en móvil: micrófono/SDK), avisa amable.
+        if (!wasActive) alert(FRIENDLY_ERR);
       });
       return client;
     }
 
+    // El permiso de micrófono / contexto seguro es la causa más común de fallo en móvil.
+    async function ensureMic() {
+      if (!window.isSecureContext) throw new Error("contexto no seguro (se requiere HTTPS)");
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        throw new Error("micrófono no soportado en este navegador");
+      }
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((t) => t.stop()); // liberar; el SDK lo volverá a pedir
+    }
+
     async function startCall() {
       const c = ensureClient();
-      if (!c) { alert("El asistente de voz no está disponible ahora mismo."); return; }
+      if (!c) { alert(FRIENDLY_ERR); return; }
       busy = true; btn.disabled = true;
       try {
+        await ensureMic();
         const res = await fetch(EDGE_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -3859,7 +3880,7 @@ calcROIHome();
         await c.startCall({ accessToken: data.access_token });
       } catch (err) {
         console.error("[luna] no se pudo iniciar la llamada", err);
-        alert("No se pudo iniciar la llamada con Luna. Inténtalo de nuevo.");
+        alert(FRIENDLY_ERR);
         callActive = false; render();
       } finally {
         busy = false; btn.disabled = false;
