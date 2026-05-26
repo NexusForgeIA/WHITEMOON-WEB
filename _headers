@@ -44,7 +44,3 @@
 # HTML — sin caché, siempre revalidar
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
-
-# chat-flows — sin caché (sobreescribe la regla /*.js de arriba)
-/chat-flows/*
-  Cache-Control: public, max-age=0, must-revalidate
