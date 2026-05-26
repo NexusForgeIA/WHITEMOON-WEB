@@ -104,7 +104,7 @@
     </a>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="https://whitemoon.es/" class="nav-back">← Ver todos los servicios</a>
-      <button type="button" class="nav-cta" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}" style="border:0;font-family:inherit;cursor:pointer">Habla con el Agente IA →</button>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'))" style="border:0;font-family:inherit;cursor:pointer">Habla con el Agente IA →</button>
     </div>
   </div>
 </nav>
@@ -257,7 +257,7 @@
     <div class="wrap">
       <h2>¿Quieres ver la diferencia en tu sector?</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Demo gratuita personalizada · Sin permanencia · Operativo en 5-7 días</p>
-      <button type="button" class="btn-prim" onclick="var b=document.getElementById('wm-chat-btn');if(b){b.click();}" style="display:inline-block;margin-top:16px;border:0;font-family:inherit;cursor:pointer">Habla con nuestro Agente IA →</button>
+      <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open'))" style="display:inline-block;margin-top:16px;border:0;font-family:inherit;cursor:pointer">Habla con nuestro Agente IA →</button>
       <a href="/precio-agente-ia/" class="btn-sec" style="display:inline-block;margin-left:12px;margin-top:16px">Ver precios →</a>
       <p style="font-size:.8rem;color:#5a5a70;margin-top:14px">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
     </div>
@@ -270,6 +270,6 @@
   </div>
 </footer>
 
-<script src="/chatbot.js?v=2026052202" defer></script>
+<script src="/orion-widget.js?v=2026052701" defer></script>
 </body>
 </html>
