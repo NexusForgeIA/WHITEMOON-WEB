@@ -53,9 +53,9 @@
       padding:20px; font-family:'Sora',sans-serif;
       display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center;
     }
-    #luna-widget .luna-avatar{ width:84px; height:84px; flex:none; }
-    #luna-widget .luna-avatar svg{ width:100%; height:100%; display:block;
+    #luna-widget .luna-avatar{ width:84px; height:84px; flex:none;
       transform-origin:center; animation:luna-breathe 3s ease-in-out infinite; }
+    #luna-widget .luna-avatar img{ width:100%; height:100%; display:block; }
     @keyframes luna-breathe{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
     #luna-widget .luna-name{ font-weight:600; font-size:18px; color:#f0f0f5; line-height:1.15; }
     #luna-widget .luna-sub{ font-weight:300; font-size:13px; color:#8888a0; line-height:1.2; }
@@ -85,7 +85,7 @@
       #luna-widget .luna-bars span{ width:4px; }
     }
     @media (prefers-reduced-motion:reduce){
-      #luna-widget .luna-avatar svg,
+      #luna-widget .luna-avatar,
       #luna-widget .luna-bars.is-speaking span{ animation:none; }
     }
   `;
@@ -103,43 +103,7 @@
   widget.setAttribute("aria-label", "Asistente de voz Orion IA");
   widget.innerHTML = `
     <div class="luna-avatar">
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orion IA">
-        <defs>
-          <clipPath id="lunaClip"><circle cx="60" cy="60" r="57"/></clipPath>
-        </defs>
-        <circle cx="60" cy="60" r="57" fill="#0d0d16" stroke="rgba(124,77,255,.45)" stroke-width="1.5"/>
-        <g clip-path="url(#lunaClip)">
-          <polygon points="60,10 46,30 74,30" fill="#6d3ff0"/>
-          <polygon points="60,10 38,16 46,30" fill="#5e30d6"/>
-          <polygon points="38,16 26,40 46,30" fill="#6d3ff0"/>
-          <polygon points="26,40 44,52 46,30" fill="#7c4dff"/>
-          <polygon points="26,40 28,70 44,52" fill="#5e30d6"/>
-          <polygon points="28,70 50,74 44,52" fill="#6d3ff0"/>
-          <polygon points="28,70 40,98 50,74" fill="#7c4dff"/>
-          <polygon points="60,10 82,16 74,30" fill="#5e30d6"/>
-          <polygon points="82,16 94,40 74,30" fill="#6d3ff0"/>
-          <polygon points="94,40 76,52 74,30" fill="#7c4dff"/>
-          <polygon points="94,40 92,70 76,52" fill="#5e30d6"/>
-          <polygon points="92,70 70,74 76,52" fill="#6d3ff0"/>
-          <polygon points="92,70 80,98 70,74" fill="#7c4dff"/>
-          <polygon points="28,70 40,98 34,78" fill="#00d4aa" opacity=".85"/>
-          <polygon points="92,70 80,98 86,78" fill="#00d4aa" opacity=".85"/>
-          <polygon points="20,120 60,94 40,120" fill="#5e30d6"/>
-          <polygon points="40,120 60,94 80,120" fill="#6d3ff0"/>
-          <polygon points="80,120 60,94 100,120" fill="#7c4dff"/>
-          <polygon points="53,80 67,80 64,96 56,96" fill="#a888ff"/>
-          <polygon points="46,30 74,30 60,56" fill="#cbb8ff"/>
-          <polygon points="74,30 76,52 60,56" fill="#b9a3ff"/>
-          <polygon points="76,52 70,74 60,56" fill="#a888ff"/>
-          <polygon points="70,74 60,86 60,56" fill="#b9a3ff"/>
-          <polygon points="60,86 50,74 60,56" fill="#a888ff"/>
-          <polygon points="50,74 44,52 60,56" fill="#b9a3ff"/>
-          <polygon points="44,52 46,30 60,56" fill="#cbb8ff"/>
-          <polygon points="50,50 57,47 54,55" fill="#00d4aa"/>
-          <polygon points="70,50 63,47 66,55" fill="#00d4aa"/>
-          <polygon points="55,78 65,78 60,83" fill="#7c4dff"/>
-        </g>
-      </svg>
+      <img src="/assets/images/icono.jpg" alt="WhiteMoon IA" width="72" height="72" decoding="async" loading="lazy" style="border-radius:50%;object-fit:cover;border:2px solid rgba(124,77,255,0.4);">
     </div>
     <div class="luna-info">
       <div class="luna-name">Orion IA</div>
