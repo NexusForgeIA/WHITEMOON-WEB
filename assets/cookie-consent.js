@@ -1,6 +1,12 @@
 /* WhiteMoon — consentimiento de cookies (RGPD/LOPD-GDD)
-   GA4 NO se carga hasta que el usuario pulsa "Aceptar todas".
-   Decisión guardada en localStorage. */
+   Consent Mode V2 de Google (modo Advanced):
+   · gtag.js se carga SIEMPRE, también para usuarios sin decisión o
+     que rechazan analítica.
+   · Estado de consentimiento por defecto: 'denied' (analytics_storage
+     y ad_storage). Con denied, Google NO usa cookies; sólo envía
+     pings sin identificadores para conversion modeling.
+   · Si el usuario acepta -> gtag('consent','update', granted).
+   · Decisión persistida en localStorage (clave wm_cookie_consent). */
 (function () {
   'use strict';
 
@@ -13,14 +19,39 @@
   }
   function setConsent(value) {
     try { window.localStorage.setItem(STORAGE_KEY, value); }
-    catch (e) { /* navegación privada: la decisión solo dura la sesión */ }
+    catch (e) { /* navegación privada: la decisión sólo dura la sesión */ }
   }
   function clearConsent() {
     try { window.localStorage.removeItem(STORAGE_KEY); }
     catch (e) {}
   }
 
-  // Carga de Google Analytics 4 (solo tras consentimiento "all")
+  // ---------- Consent Mode V2: bootstrap antes de cargar gtag.js ----------
+  // dataLayer + shim de gtag(). Las llamadas se encolan hasta que
+  // gtag.js esté disponible; gtag.js procesa la cola en orden.
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+
+  // Estado default basado en la decisión previa guardada:
+  //   'all'       -> analytics granted (visitante recurrente que aceptó)
+  //   'essential' -> denied (visitante recurrente que rechazó analítica)
+  //   null/otro   -> denied (primera visita; el banner se mostrará)
+  // ad_storage se mantiene denied hasta accept (hoy no hay Google Ads;
+  // queda forward-compatible para añadir remarketing en el futuro).
+  var stored = getConsent();
+  var defaultAnalytics = (stored === 'all') ? 'granted' : 'denied';
+  var defaultAd        = (stored === 'all') ? 'granted' : 'denied';
+
+  gtag('consent', 'default', {
+    'analytics_storage': defaultAnalytics,
+    'ad_storage':        defaultAd,
+    'wait_for_update':   500
+  });
+
+  // Carga única de Google Analytics 4 (siempre, modo Advanced).
+  // Con consent denied envía pings sin cookies; con granted, hits
+  // completos. La transición denied->granted no requiere recarga.
   function loadGA() {
     if (window.__wmGALoaded) return;
     window.__wmGALoaded = true;
@@ -28,12 +59,12 @@
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { window.dataLayer.push(arguments); }
-    window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', GA_ID, { 'send_page_view': true, 'transport_type': 'beacon' });
   }
+  loadGA();
+
+  // ---------- UI del banner ----------
 
   function injectStyles() {
     if (document.getElementById('wm-cookie-styles')) return;
@@ -90,32 +121,47 @@
     document.getElementById('wm-cookie-essential').addEventListener('click', essentialOnly);
   }
 
+  // ---------- Decisiones del usuario ----------
+
   function acceptAll() {
     setConsent('all');
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage':        'granted'
+    });
     removeBanner();
-    loadGA();
   }
   function essentialOnly() {
     setConsent('essential');
+    // analytics_storage y ad_storage permanecen 'denied':
+    // GA sigue activo en modo cookieless (sólo modeling).
     removeBanner();
   }
 
   function init() {
     var consent = getConsent();
-    if (consent === 'all') {
-      loadGA();
-    } else if (consent === 'essential') {
-      /* el usuario rechazó la analítica: no se carga GA4 */
+    if (consent === 'all' || consent === 'essential') {
+      // Decisión previa ya aplicada vía el 'default' configurado
+      // antes de cargar gtag.js. No mostrar banner.
     } else {
       showBanner();
     }
   }
 
-  // API pública para permitir cambiar/retirar el consentimiento
+  // ---------- API pública (botón "Cambiar mis preferencias") ----------
+
   window.wmCookieConsent = {
     accept: acceptAll,
     essential: essentialOnly,
-    reset: function () { clearConsent(); removeBanner(); showBanner(); }
+    reset: function () {
+      clearConsent();
+      gtag('consent', 'update', {
+        'analytics_storage': 'denied',
+        'ad_storage':        'denied'
+      });
+      removeBanner();
+      showBanner();
+    }
   };
 
   if (document.readyState === 'loading') {
