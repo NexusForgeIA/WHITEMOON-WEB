@@ -275,7 +275,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         </div>
         <div class="roi-cta-wrap">
           <p class="roi-nota">Coste Spark: 499€ setup + 199€/mes · Sin permanencia · Operativo en 5-7 días</p>
-          <a href="#contacto" class="roi-btn" onclick="if(typeof wmOpenChat==='function')wmOpenChat('Spark')">Quiero recuperar esos leads →</a>
+          <a href="#contacto" class="roi-btn" onclick="event.preventDefault();document.dispatchEvent(new CustomEvent('orion-open'))">Quiero recuperar esos leads →</a>
         </div>
       </div>
     </div>
@@ -326,5 +326,6 @@ function calcROI(){
 calcROI();
 </script>
 
+<script src="/orion-widget.js?v=2026052701" defer></script>
 </body>
 </html>
