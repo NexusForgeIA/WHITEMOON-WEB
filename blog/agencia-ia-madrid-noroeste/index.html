@@ -84,6 +84,7 @@ footer a{color:var(--p2);}
 </style>
   <!-- Analytics (GA4) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+  <script defer src="/assets/wm-track.js?v=2026052801"></script>
 <link rel="stylesheet" href="/assets/blog.css">
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
 </head>
@@ -94,7 +95,7 @@ footer a{color:var(--p2);}
     <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
     <div style="display:flex;align-items:center;gap:14px;">
       <a href="https://whitemoon.es/blog/" style="font-size:.78rem;color:var(--muted);">← Blog</a>
-      <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener">Contactar →</a>
+      <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'blog-agencia-madrid-noroeste',placement:'navbar'})">Contactar →</a>
     </div>
   </div>
 </nav>
@@ -163,7 +164,7 @@ footer a{color:var(--p2);}
         <div class="cta-inline">
           <h3>¿Quieres implementar esto en tu negocio?</h3>
           <p>Demo gratuita sin compromiso. Activo en 5-7 días laborables. Sin permanencia.</p>
-          <a href="/agencia-ia-madrid/" class="btn-prim">Ver agencia IA en Madrid →</a>
+          <a href="/agencia-ia-madrid/" class="btn-prim" onclick="wmTrack('click_cta_lead',{source:'blog-agencia-madrid-noroeste',placement:'cta-inline',target:'agencia-madrid'})">Ver agencia IA en Madrid →</a>
         </div>
 
         <section class="related-posts" style="margin-top:48px;padding-top:32px;border-top:1px solid rgba(124,77,255,.15);">
