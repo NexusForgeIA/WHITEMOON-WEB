@@ -90,6 +90,7 @@
 <link rel="stylesheet" href="/assets/landing-generic.css">
   <!-- Analytics (GA4) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+  <script defer src="/assets/wm-track.js?v=2026052801"></script>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -132,7 +133,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
     </a>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="https://whitemoon.es/" class="nav-back">← Ver todos los servicios</a>
-      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="nav-cta" target="_blank" rel="noopener">Contactar →</a>
+      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'spark',placement:'navbar'})">Contactar →</a>
     </div>
   </div>
 </nav>
@@ -153,7 +154,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
       <h1>Pack Spark<br><span>Chatbot IA desde 199€/mes</span></h1>
       <p class="hero-sub">Tu negocio atiende clientes 24/7 por 499€ setup + 199€/mes, sin permanencia y operativo en 5-7 días laborables.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener">Contratar Spark por WhatsApp →</a>
+        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener" onclick="wmTrack('click_solicitar_pack',{pack:'spark'});wmTrack('click_whatsapp',{source:'spark',placement:'hero'})">Contratar Spark por WhatsApp →</a>
         <a href="https://whitemoon.es/#precios" class="btn-sec">Ver todos los packs</a>
       </div>
     </div>
@@ -196,7 +197,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         <div class="pack-price">499€ + 199€/mes</div>
         <div class="pack-period">setup único · sin permanencia</div>
         <div class="pack-setup">Mantenimiento, actualizaciones y soporte humano incluidos</div>
-        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;width:100%;text-align:center;">Solicitar información →</a>
+        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;width:100%;text-align:center;" onclick="wmTrack('click_solicitar_pack',{pack:'spark'});wmTrack('click_whatsapp',{source:'spark',placement:'pack-box'})">Solicitar información →</a>
         <div class="pack-iva">* IVA no incluido · Sin permanencia · Operativo en 5-7 días laborables</div>
       </div>
     </div>
@@ -276,7 +277,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
         </div>
         <div class="roi-cta-wrap">
           <p class="roi-nota">Coste Spark: 499€ setup + 199€/mes · Sin permanencia · Operativo en 5-7 días</p>
-          <a href="#contacto" class="roi-btn" onclick="event.preventDefault();document.dispatchEvent(new CustomEvent('orion-open'))">Quiero recuperar esos leads →</a>
+          <a href="#contacto" class="roi-btn" onclick="event.preventDefault();wmTrack('roi_calculator_used',{pack:'spark'});document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'spark-roi'}}))">Quiero recuperar esos leads →</a>
         </div>
       </div>
     </div>
@@ -287,7 +288,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
     <div class="wrap">
       <h2>¿Activamos tu chatbot Spark?</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Demo gratuita sin compromiso · Operativo en 5-7 días laborables · Sin permanencia</p>
-      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;">Contratar Spark por WhatsApp →</a>
+      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Spark%20de%20499%E2%82%AC%20setup%20%2B%20199%E2%82%AC%2Fmes" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;" onclick="wmTrack('click_solicitar_pack',{pack:'spark'});wmTrack('click_whatsapp',{source:'spark',placement:'cta-final'})">Contratar Spark por WhatsApp →</a>
       <span class="cta-tel">☎ 643 199 580</span>
       <p style="font-size:.8rem;color:#5a5a70;">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
     </div>

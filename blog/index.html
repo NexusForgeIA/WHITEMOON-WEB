@@ -109,6 +109,7 @@ footer a:hover{text-decoration:underline;}
 </style>
 <!-- Analytics (GA4) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
 </head>
 <body>
@@ -119,7 +120,7 @@ footer a:hover{text-decoration:underline;}
     <a href="https://whitemoon.es">Inicio</a>
     <a href="https://whitemoon.es/#servicios">Servicios</a>
     <a href="https://whitemoon.es/blog">Blog</a>
-    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener noreferrer">Contactar</a>
+    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener noreferrer" onclick="wmTrack('click_whatsapp',{source:'blog',placement:'navbar'})">Contactar</a>
   </div>
 </nav>
 
@@ -425,6 +426,9 @@ function wmNewsletterSubmit(e, form) {
   .then(function(r) {
     if (r.ok) {
       btn.textContent = '✓ ¡Suscrito!';
+      if (typeof window.wmTrack === 'function') {
+        window.wmTrack('newsletter_signup', { source: 'blog' });
+      }
     } else {
       btn.textContent = 'Suscribirme';
       btn.disabled = false;
@@ -434,6 +438,9 @@ function wmNewsletterSubmit(e, form) {
   })
   .catch(function() {
     btn.textContent = '✓ ¡Suscrito!';
+    if (typeof window.wmTrack === 'function') {
+      window.wmTrack('newsletter_signup', { source: 'blog' });
+    }
   });
 }
 </script>

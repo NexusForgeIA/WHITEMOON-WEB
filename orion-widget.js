@@ -23,7 +23,14 @@
   // 1) Listener `orion-open` — siempre activo, incluso si el
   //    widget vino renderizado inline (caso index.html futuro).
   // -----------------------------------------------------------
-  document.addEventListener("orion-open", () => {
+  document.addEventListener("orion-open", (e) => {
+    // GA4: trackear apertura del widget. Si no hay source en detail,
+    // intentamos derivar de la ruta actual; si no, 'unknown'.
+    var src = (e && e.detail && e.detail.source) ||
+              (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'home');
+    if (typeof window.wmTrack === 'function') {
+      window.wmTrack('click_open_orion', { source: src });
+    }
     const b = document.getElementById("luna-btn");
     if (b) b.click();
   });

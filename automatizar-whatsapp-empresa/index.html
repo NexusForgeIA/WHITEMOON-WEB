@@ -93,6 +93,7 @@
 </style>
 <!-- Analytics (GA4) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
 </head>
 <body>
@@ -104,7 +105,7 @@
     </a>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="https://whitemoon.es/" class="nav-back">← Ver todos los servicios</a>
-      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'))" style="border:0;font-family:inherit;cursor:pointer">Habla con el Agente IA →</button>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'whatsapp-empresa',placement:'navbar'}}))" style="border:0;font-family:inherit;cursor:pointer">Habla con el Agente IA →</button>
     </div>
   </div>
 </nav>
@@ -125,7 +126,7 @@
       <h1>Capta los leads que se te escapan<br><span>y recíbelos en tu WhatsApp</span></h1>
       <p class="hero-sub">Un Agente IA atiende tu web 24/7, cualifica al cliente y te entrega el lead al instante por WhatsApp y email. Sin que tengas que estar pendiente. Desde 499€ sin permanencia.</p>
       <div class="hero-actions">
-        <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open'))">Ver mi Agente IA →</button>
+        <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'whatsapp-empresa',placement:'hero'}}))">Ver mi Agente IA →</button>
         <a href="/precio-agente-ia/" class="btn-sec">Ver precios →</a>
       </div>
     </div>
@@ -233,7 +234,7 @@
     <div class="wrap">
       <h2>¿Empezamos a captar leads 24/7?</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Demo gratuita personalizada · Sin permanencia · Operativo en 5-7 días</p>
-      <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open'))" style="display:inline-block;margin-top:16px;border:0;font-family:inherit;cursor:pointer">Habla con nuestro Agente IA →</button>
+      <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'whatsapp-empresa',placement:'cta-final'}}))" style="display:inline-block;margin-top:16px;border:0;font-family:inherit;cursor:pointer">Habla con nuestro Agente IA →</button>
       <a href="/precio-agente-ia/" class="btn-sec" style="display:inline-block;margin-left:12px;margin-top:16px">Ver precios →</a>
       <p style="font-size:.8rem;color:#5a5a70;margin-top:14px">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
     </div>
