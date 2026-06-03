@@ -198,6 +198,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
   <!-- Analytics (GA4) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
   <script defer src="/assets/wm-track.js?v=2026052801"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
 </head>
 <body>
@@ -458,10 +459,14 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     <div class="cta-precio">
       <div class="precio-num">499€<span class="precio-suf"> setup + 199€/mes</span></div>
       <div class="precio-note">Pack Spark · Tu marca · Tu web · Siempre actualizada · Sin permanencia</div>
-      <button type="button" class="btn-wa" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-nomina',placement:'cta-principal'})" style="border:0;font-family:inherit;cursor:pointer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        Habla con Orion IA →
-      </button>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-nomina','Nómina')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-nomina">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora Nómina">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
     </div>
   </div>
 
