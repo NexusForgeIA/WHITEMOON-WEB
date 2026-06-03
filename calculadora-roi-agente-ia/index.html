@@ -63,7 +63,7 @@
 <nav>
   <div class="wrap nav-in">
     <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
-    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'calc-roi',placement:'navbar'})">Contactar →</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-roi-agente-ia',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
   </div>
 </nav>
 
@@ -128,7 +128,7 @@
         </p>
 
         <div style="text-align:center;">
-          <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20he%20usado%20la%20calculadora%20ROI%20y%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('calculator_used',{calculator:'roi-agente-ia',pack:document.getElementById('sl-pack').value});wmTrack('click_whatsapp',{source:'calc-roi',placement:'cta'})">Quiero hablar con un Agente IA →</a>
+          <button type="button" class="btn-prim" style="display:inline-block;padding:13px 32px;border:0;font-family:inherit;cursor:pointer" onclick="wmTrack('calculator_used',{calculator:'roi-agente-ia',pack:document.getElementById('sl-pack').value});document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-roi-agente-ia',placement:'cta-principal'})">Habla con Orion IA →</button>
         </div>
       </div>
     </div>

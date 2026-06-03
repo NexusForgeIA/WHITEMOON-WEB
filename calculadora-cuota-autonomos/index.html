@@ -77,7 +77,7 @@
 <nav>
   <div class="wrap nav-in">
     <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
-    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'calc-autonomos',placement:'navbar'})">Contactar →</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-cuota-autonomos',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
   </div>
 </nav>
 
@@ -127,7 +127,7 @@
         </p>
 
         <div style="text-align:center;">
-          <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20vengo%20de%20la%20calculadora%20de%20cuota%20aut%C3%B3nomos%20y%20busco%20gestor%C3%ADa%20IA" target="_blank" rel="noopener" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('calculator_used',{calculator:'cuota-autonomos',rendimiento:document.getElementById('sl-rend').value});wmTrack('click_whatsapp',{source:'calc-autonomos',placement:'cta'})">Quiero gestoría con IA →</a>
+          <button type="button" class="btn-prim" style="display:inline-block;padding:13px 32px;border:0;font-family:inherit;cursor:pointer" onclick="wmTrack('calculator_used',{calculator:'cuota-autonomos',rendimiento:document.getElementById('sl-rend').value});document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-cuota-autonomos',placement:'cta-principal'})">Habla con Orion IA →</button>
         </div>
       </div>
 
