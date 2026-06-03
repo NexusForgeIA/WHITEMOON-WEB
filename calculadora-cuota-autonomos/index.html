@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Cuota Autónomos 2026 · RETA por rendimientos netos · WhiteMoon</title>
+<meta name="description" content="Calculadora cuota autónomos 2026: estima tu cuota RETA mensual según rendimiento neto. Tarifa plana primer año + tramos progresivos según Real Decreto-ley 13/2022.">
+<meta name="keywords" content="calculadora cuota autonomos 2026, cuota reta, tramos autonomos, tarifa plana autonomos, cuota autonomos por ingresos">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-cuota-autonomos/">
+<meta property="og:title" content="Calculadora Cuota Autónomos 2026 · WhiteMoon">
+<meta property="og:description" content="Calcula tu cuota RETA mensual según tus rendimientos netos. Incluye tarifa plana del primer año.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-cuota-autonomos/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora Cuota Autónomos 2026 · WhiteMoon",
+  "description": "Estima tu cuota mensual al RETA en 2026 según tus rendimientos netos. Incluye tarifa plana del primer año y tramos progresivos del Real Decreto-ley 13/2022.",
+  "url": "https://whitemoon.es/calculadora-cuota-autonomos/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "inLanguage": "es-ES"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},
+    {"@type":"ListItem","position":2,"name":"Calculadora Cuota Autónomos","item":"https://whitemoon.es/calculadora-cuota-autonomos/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"¿Cómo funciona el sistema de cotización por ingresos reales?","acceptedAnswer":{"@type":"Answer","text":"Desde 2023 los autónomos cotizan a la Seguridad Social según sus rendimientos netos anuales. Hay 15 tramos: cuanto más se factura (descontando gastos), mayor es la cuota mensual. El sistema es progresivo y se completa en 2032 según el calendario del Real Decreto-ley 13/2022."}},
+    {"@type":"Question","name":"¿Qué es la tarifa plana?","acceptedAnswer":{"@type":"Answer","text":"La tarifa plana es una cuota reducida de 80 €/mes para nuevos autónomos durante el primer año, prorrogable un segundo año si los rendimientos netos no superan el SMI. Se solicita al alta y solo aplica si no se ha estado de alta los 2 años anteriores."}},
+    {"@type":"Question","name":"¿Puedo cambiar de tramo a lo largo del año?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes modificar tu base de cotización hasta 6 veces al año (cada 2 meses) si prevés que tus rendimientos van a subir o bajar. Al final del ejercicio la Seguridad Social regulariza con los datos definitivos de la declaración de la Renta."}}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/landing-generic.css">
+<script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
+<style>
+  .calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto;}
+  .calc-row{margin-bottom:22px;}
+  .calc-label{display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:#f0f0f5;}
+  .calc-val{color:#9d70ff;font-weight:600;}
+  .calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer;}
+  .calc-check{display:flex;align-items:center;gap:8px;padding:11px 14px;background:rgba(124,77,255,.05);border:1px solid rgba(124,77,255,.18);border-radius:10px;font-size:13px;cursor:pointer;}
+  .calc-out{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0;}
+  .calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center;}
+  .calc-out-num{font-size:1.7rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1;}
+  .calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0;}
+  .calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6;}
+  .tramos-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:11px;margin-top:14px;}
+  .tramo{padding:8px 12px;background:rgba(13,13,26,.4);border-radius:8px;display:flex;justify-content:space-between;}
+  @media(max-width:600px){.calc-out,.tramos-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
+    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'calc-autonomos',placement:'navbar'})">Contactar →</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">WhiteMoon</a><span>›</span> Calculadora Cuota Autónomos 2026
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-sector">📋 Calculadora gratuita · RETA 2026</div>
+      <h1>Calculadora <em>Cuota Autónomos 2026</em></h1>
+      <p class="hero-sub">Estima en segundos tu cuota mensual al RETA según rendimientos netos. Tarifa plana primer año + tramos del Real Decreto-ley 13/2022.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-row">
+          <div class="calc-label"><span>Rendimientos netos mensuales (ingresos − gastos deducibles)</span><span class="calc-val" id="aut-rend">1.500 €</span></div>
+          <input type="range" id="sl-rend" class="calc-slider" min="200" max="8000" value="1500" step="50" oninput="calcAut()">
+        </div>
+        <div class="calc-row">
+          <label class="calc-check"><input type="checkbox" id="aut-tarifa" onchange="calcAut()"> Soy autónomo de primer año (tarifa plana 80€)</label>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="aut-cuota">294 €</div>
+            <div class="calc-out-lbl">Cuota mensual estimada</div>
+          </div>
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="aut-anual">3.528 €</div>
+            <div class="calc-out-lbl">Coste anual cotización</div>
+          </div>
+        </div>
+
+        <div class="calc-detail" id="aut-tramo">
+          Tramo 5 · 1.300 € – 1.500 € mensuales · cuota 294 €/mes.
+        </div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px;">
+          Cálculo orientativo basado en la tabla de tramos del Real Decreto-ley 13/2022 para 2026. La cuota definitiva la regulariza la Seguridad Social al cierre del ejercicio con los datos de la Renta. Bonificaciones autonómicas y por discapacidad no incluidas.
+        </p>
+
+        <div style="text-align:center;">
+          <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20vengo%20de%20la%20calculadora%20de%20cuota%20aut%C3%B3nomos%20y%20busco%20gestor%C3%ADa%20IA" target="_blank" rel="noopener" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('calculator_used',{calculator:'cuota-autonomos',rendimiento:document.getElementById('sl-rend').value});wmTrack('click_whatsapp',{source:'calc-autonomos',placement:'cta'})">Quiero gestoría con IA →</a>
+        </div>
+      </div>
+
+      <div class="calc-card" style="margin-top:28px;">
+        <h3 style="font-size:1.1rem;margin:0 0 8px;color:#f0f0f5;">Tramos completos RETA 2026</h3>
+        <p style="font-size:12px;color:#8888a0;margin:0 0 12px;">Fuente: Real Decreto-ley 13/2022 · tabla calendario 2026.</p>
+        <div class="tramos-grid">
+          <div class="tramo"><span>≤ 670 €</span><strong>200 €</strong></div>
+          <div class="tramo"><span>670 – 900 €</span><strong>220 €</strong></div>
+          <div class="tramo"><span>900 – 1.166 €</span><strong>260 €</strong></div>
+          <div class="tramo"><span>1.166 – 1.300 €</span><strong>291 €</strong></div>
+          <div class="tramo"><span>1.300 – 1.500 €</span><strong>294 €</strong></div>
+          <div class="tramo"><span>1.500 – 1.700 €</span><strong>294 €</strong></div>
+          <div class="tramo"><span>1.700 – 1.850 €</span><strong>310 €</strong></div>
+          <div class="tramo"><span>1.850 – 2.030 €</span><strong>315 €</strong></div>
+          <div class="tramo"><span>2.030 – 2.330 €</span><strong>320 €</strong></div>
+          <div class="tramo"><span>2.330 – 2.760 €</span><strong>330 €</strong></div>
+          <div class="tramo"><span>2.760 – 3.190 €</span><strong>350 €</strong></div>
+          <div class="tramo"><span>3.190 – 3.620 €</span><strong>370 €</strong></div>
+          <div class="tramo"><span>3.620 – 4.050 €</span><strong>400 €</strong></div>
+          <div class="tramo"><span>4.050 – 6.000 €</span><strong>445 €</strong></div>
+          <div class="tramo"><span>> 6.000 €</span><strong>530 €</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto;">
+        <span class="sec-label">FAQs</span>
+        <h2 class="sec-h" style="margin-bottom:24px;">Preguntas frecuentes</h2>
+        <div class="faq-item">
+          <div class="faq-q">¿Qué es el rendimiento neto y cómo se calcula?</div>
+          <div class="faq-a">El rendimiento neto es la diferencia entre tus ingresos por la actividad y los gastos deducibles (alquiler, suministros, material, cuotas, asesoría). La Seguridad Social aplica además una deducción adicional del 7% por gastos genéricos (3% para socios de sociedades) sobre el resultado de la actividad.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Cómo se aplica la tarifa plana de 80 €?</div>
+          <div class="faq-a">Si te das de alta como autónomo por primera vez (o llevas más de 2 años sin estar de alta) pagas 80 €/mes durante 12 meses. Si tus rendimientos en ese período no superan el SMI puedes prorrogarla 12 meses más. Cumplido el periodo, pasas al tramo que corresponda según tus ingresos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Qué pasa si me equivoco al elegir tramo?</div>
+          <div class="faq-a">Nada grave: al cierre del ejercicio la Seguridad Social regulariza tu cotización con los rendimientos reales de la Renta. Si has cotizado de más te devuelven la diferencia, y si de menos te giran complementaria. Por eso conviene revisar el tramo cada 2 meses cuando cambian tus ingresos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Hay bonificaciones más allá de la tarifa plana?</div>
+          <div class="faq-a">Sí. Existen bonificaciones por baja maternal/paternal, conciliación familiar, autónomos con discapacidad ≥33%, autónomos en territorios con baja densidad demográfica (Soria, Teruel, Cuenca) y por contratación de familiares colaboradores. Tu gestoría debe revisarlas en cada alta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center;">
+      <span class="sec-label">Pack recomendado</span>
+      <h2 class="sec-h">Gestoría con IA para tu cuota mensual</h2>
+      <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7;">Si necesitas gestoría que te avise de cambios de tramo, presente modelos automáticamente y resuelva dudas de RETA 24/7, el Pack <strong>Spark</strong> incluye Agente IA conversacional. Para gestorías con +50 clientes activos, <strong>Core RAG</strong> permite cargar la base documental de la asesoría.</p>
+      <a href="/spark/" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('click_pack',{from:'calc-autonomos',pack:'spark'})">Ver Pack Spark · 499€ →</a>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none;">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none;">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none;">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+var TRAMOS = [
+  {max:670, cuota:200, etiq:'≤ 670 €'},
+  {max:900, cuota:220, etiq:'670 € – 900 €'},
+  {max:1166, cuota:260, etiq:'900 € – 1.166 €'},
+  {max:1300, cuota:291, etiq:'1.166 € – 1.300 €'},
+  {max:1500, cuota:294, etiq:'1.300 € – 1.500 €'},
+  {max:1700, cuota:294, etiq:'1.500 € – 1.700 €'},
+  {max:1850, cuota:310, etiq:'1.700 € – 1.850 €'},
+  {max:2030, cuota:315, etiq:'1.850 € – 2.030 €'},
+  {max:2330, cuota:320, etiq:'2.030 € – 2.330 €'},
+  {max:2760, cuota:330, etiq:'2.330 € – 2.760 €'},
+  {max:3190, cuota:350, etiq:'2.760 € – 3.190 €'},
+  {max:3620, cuota:370, etiq:'3.190 € – 3.620 €'},
+  {max:4050, cuota:400, etiq:'3.620 € – 4.050 €'},
+  {max:6000, cuota:445, etiq:'4.050 € – 6.000 €'},
+  {max:Infinity, cuota:530, etiq:'> 6.000 €'}
+];
+
+function calcAut(){
+  var rend = parseInt(document.getElementById('sl-rend').value, 10);
+  var tarifa = document.getElementById('aut-tarifa').checked;
+  document.getElementById('aut-rend').textContent = rend.toLocaleString('es-ES') + ' €';
+
+  var t, tramoIdx = 0;
+  for(var i=0; i<TRAMOS.length; i++){
+    if(rend <= TRAMOS[i].max){ t = TRAMOS[i]; tramoIdx = i; break; }
+  }
+
+  var cuota = tarifa ? 80 : t.cuota;
+  var anual = cuota * 12;
+
+  document.getElementById('aut-cuota').textContent = cuota + ' €';
+  document.getElementById('aut-anual').textContent = anual.toLocaleString('es-ES') + ' €';
+  document.getElementById('aut-tramo').textContent = tarifa
+    ? 'Tarifa plana primer año: 80 €/mes. Tu tramo real sería el ' + (tramoIdx + 1) + ' (' + t.etiq + ', cuota ' + t.cuota + ' €) cuando termine el periodo bonificado.'
+    : 'Tramo ' + (tramoIdx + 1) + ' · ' + t.etiq + ' mensuales · cuota ' + t.cuota + ' €/mes.';
+}
+calcAut();
+</script>
+</body>
+</html>

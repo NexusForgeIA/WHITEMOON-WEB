@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora ROI Agente IA · Cuánto te ahorras con WhiteMoon · WhiteMoon</title>
+<meta name="description" content="Calculadora ROI Agente IA gratis. Calcula tu retorno con un Agente IA según visitas, ticket medio y tasa de conversión. Pack Spark, Core o Scale.">
+<meta name="keywords" content="calculadora roi agente ia, roi chatbot, calculadora retorno inversion ia, ahorro agente ia">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-roi-agente-ia/">
+<meta property="og:title" content="Calculadora ROI Agente IA · WhiteMoon">
+<meta property="og:description" content="Calcula en 30 segundos cuánto te ahorras con un Agente IA. Sliders interactivos, resultado al instante.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-roi-agente-ia/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora ROI Agente IA · WhiteMoon",
+  "description": "Calcula el retorno de inversión de un Agente IA conversacional según visitas mensuales, ticket medio y conversión actual.",
+  "url": "https://whitemoon.es/calculadora-roi-agente-ia/",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "inLanguage": "es-ES"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},
+    {"@type":"ListItem","position":2,"name":"Calculadora ROI Agente IA","item":"https://whitemoon.es/calculadora-roi-agente-ia/"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/landing-generic.css">
+<script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
+<style>
+  .calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto;}
+  .calc-row{margin-bottom:24px;}
+  .calc-label{display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:#f0f0f5;}
+  .calc-val{color:#9d70ff;font-weight:600;}
+  .calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer;}
+  .calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px;}
+  .calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0;}
+  .calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center;}
+  .calc-out-num{font-size:1.7rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1;}
+  .calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0;}
+  @media(max-width:600px){.calc-out{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
+    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'calc-roi',placement:'navbar'})">Contactar →</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">WhiteMoon</a><span>›</span> Calculadora ROI Agente IA
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-sector">📊 Calculadora gratuita</div>
+      <h1>Calculadora <em>ROI Agente IA</em></h1>
+      <p class="hero-sub">Calcula en 30 segundos el retorno real de implementar un Agente IA en tu negocio. Sliders interactivos · sin email · resultado al instante.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-row">
+          <div class="calc-label"><span>Visitas a tu web al mes</span><span class="calc-val" id="r-visitas">1.000</span></div>
+          <input type="range" id="sl-visitas" class="calc-slider" min="100" max="20000" value="1000" step="100" oninput="calcROI()">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><span>Ticket medio por cliente</span><span class="calc-val" id="r-ticket">150 €</span></div>
+          <input type="range" id="sl-ticket" class="calc-slider" min="30" max="3000" value="150" step="10" oninput="calcROI()">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><span>Tasa de conversión actual</span><span class="calc-val" id="r-conv">2 %</span></div>
+          <input type="range" id="sl-conv" class="calc-slider" min="1" max="10" value="2" step="1" oninput="calcROI()">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><span>Pack que quieres comparar</span></div>
+          <select id="sl-pack" class="calc-select" onchange="calcROI()">
+            <option value="spark" data-setup="499" data-monthly="199" data-conv-boost="2.5">Spark · 499€ setup + 199€/mes</option>
+            <option value="core" data-setup="1800" data-monthly="199" data-conv-boost="3">Core · 1.800€ setup + 199€/mes (incluye web)</option>
+            <option value="orion-agent" data-setup="999" data-monthly="199" data-conv-boost="3.5">Orion IA Agent · 999€ setup + 199€/mes</option>
+            <option value="orion-calls" data-setup="1499" data-monthly="199" data-conv-boost="4">Orion IA Calls · 1.499€ setup + 199€/mes</option>
+            <option value="scale" data-setup="4500" data-monthly="449" data-conv-boost="5">Scale · 4.500€ setup + 449€/mes</option>
+          </select>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="r-mensual">+450 €</div>
+            <div class="calc-out-lbl">Ingresos extra/mes</div>
+          </div>
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="r-anual">3.012 €</div>
+            <div class="calc-out-lbl">Ahorro/ingreso anual neto</div>
+          </div>
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="r-meses">2 meses</div>
+            <div class="calc-out-lbl">Recuperar setup</div>
+          </div>
+        </div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:8px 0 18px;">
+          Cálculo orientativo basado en conversión media observada en clientes WhiteMoon. El resultado real depende del sector, calidad del tráfico y tasa de conversión específica.
+        </p>
+
+        <div style="text-align:center;">
+          <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20he%20usado%20la%20calculadora%20ROI%20y%20quiero%20m%C3%A1s%20info" target="_blank" rel="noopener" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('calculator_used',{calculator:'roi-agente-ia',pack:document.getElementById('sl-pack').value});wmTrack('click_whatsapp',{source:'calc-roi',placement:'cta'})">Quiero hablar con un Agente IA →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap" style="text-align:center;">
+      <span class="sec-label">¿Cómo se calcula?</span>
+      <h2 class="sec-h">Fórmula transparente, sin trucos</h2>
+      <p style="color:var(--muted);max-width:720px;margin:16px auto 0;line-height:1.7;">El Agente IA captura visitas que llegan fuera de horario (67% del total en pymes españolas según nuestros datos sobre +47 negocios) y aumenta la tasa de conversión sumando un suelo según el pack: Spark +2,5pts, Core +3pts, Orion Agent +3,5pts, Orion Calls +4pts, Scale +5pts. La diferencia mensual menos la cuota = ROI mensual. El setup se divide entre ROI mensual = meses para recuperar.</p>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none;">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none;">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none;">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function calcROI(){
+  var vis = parseInt(document.getElementById('sl-visitas').value, 10);
+  var ticket = parseInt(document.getElementById('sl-ticket').value, 10);
+  var conv = parseFloat(document.getElementById('sl-conv').value);
+  var pack = document.getElementById('sl-pack');
+  var opt = pack.options[pack.selectedIndex];
+  var setup = parseInt(opt.getAttribute('data-setup'), 10);
+  var monthly = parseInt(opt.getAttribute('data-monthly'), 10);
+  var convBoost = parseFloat(opt.getAttribute('data-conv-boost'));
+
+  document.getElementById('r-visitas').textContent = vis.toLocaleString('es-ES');
+  document.getElementById('r-ticket').textContent = ticket.toLocaleString('es-ES') + ' €';
+  document.getElementById('r-conv').textContent = conv + ' %';
+
+  var ingresosSin = vis * (conv / 100) * ticket;
+  var ingresosCon = vis * ((conv + convBoost) / 100) * ticket;
+  var extraMes = ingresosCon - ingresosSin;
+  var ahorroAnualNeto = (extraMes * 12) - (monthly * 12);
+  var roiMensual = extraMes - monthly;
+  var meses = roiMensual > 0 ? Math.ceil(setup / roiMensual) : 99;
+
+  document.getElementById('r-mensual').textContent = '+' + Math.round(extraMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('r-anual').textContent = Math.round(ahorroAnualNeto).toLocaleString('es-ES') + ' €';
+  document.getElementById('r-meses').textContent = (meses <= 24 ? meses : '24+') + ' meses';
+}
+calcROI();
+</script>
+</body>
+</html>
