@@ -157,8 +157,14 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
     'rgba(150,180,255,0.7)','rgba(150,255,200,0.6)'];
 
   function resize(){
-    W=c.width=c.offsetWidth;
-    H=c.height=c.offsetHeight;
+    // Agrupar LECTURAS antes de ESCRITURAS para evitar layout thrash.
+    // Antes: c.width = c.offsetWidth seguido de c.offsetHeight forzaba
+    // un reflow porque la segunda lectura invalidaba el layout tras la
+    // escritura previa a c.width.
+    var w = c.offsetWidth;
+    var h = c.offsetHeight;
+    c.width = W = w;
+    c.height = H = h;
   }
 
   function initStars(){
