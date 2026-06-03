@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora ITP 2026 · Impuesto Transmisiones Patrimoniales por CCAA · WhiteMoon</title>
+<meta name="description" content="Calculadora ITP gratis: estima el Impuesto de Transmisiones Patrimoniales al comprar vivienda usada por comunidad autónoma. Tipos generales y reducidos 2026.">
+<meta name="keywords" content="calculadora itp, itp vivienda 2026, impuesto transmisiones patrimoniales, itp por ccaa, itp vivienda usada">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-itp/">
+<meta property="og:title" content="Calculadora ITP 2026 · WhiteMoon">
+<meta property="og:description" content="Estima en segundos el ITP de una vivienda usada en tu comunidad autónoma.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-itp/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora ITP 2026 · WhiteMoon",
+  "description": "Calculadora del Impuesto de Transmisiones Patrimoniales (ITP) al comprar vivienda usada por comunidad autónoma. Tipos generales y reducidos 2026.",
+  "url": "https://whitemoon.es/calculadora-itp/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "offers": {"@type":"Offer","price":"0","priceCurrency":"EUR"},
+  "inLanguage": "es-ES"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},
+    {"@type":"ListItem","position":2,"name":"Calculadora ITP","item":"https://whitemoon.es/calculadora-itp/"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"¿Qué es el ITP?","acceptedAnswer":{"@type":"Answer","text":"El Impuesto de Transmisiones Patrimoniales (ITP) es un tributo autonómico que se paga al comprar vivienda usada. El tipo varía por comunidad autónoma y, en muchas, se reduce si es vivienda habitual, familia numerosa, joven o discapacidad."}},
+    {"@type":"Question","name":"¿Cuándo se paga el ITP?","acceptedAnswer":{"@type":"Answer","text":"El comprador tiene 30 días hábiles desde la firma de la escritura para liquidar el ITP en la Hacienda autonómica correspondiente. Sin la carta de pago, el Registro no inscribe la vivienda a su nombre."}},
+    {"@type":"Question","name":"¿Vivienda nueva paga ITP o IVA?","acceptedAnswer":{"@type":"Answer","text":"La vivienda nueva (primera entrega del promotor) tributa por IVA al 10% más AJD autonómico. El ITP solo aplica a transmisiones de vivienda usada entre particulares o empresas no promotoras."}}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/landing-generic.css">
+<script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
+<style>
+  .calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto;}
+  .calc-row{margin-bottom:20px;}
+  .calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5;}
+  .calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px;}
+  .calc-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;}
+  .calc-check{display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(124,77,255,.05);border:1px solid rgba(124,77,255,.18);border-radius:9px;font-size:13px;cursor:pointer;}
+  .calc-out{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0;}
+  .calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center;}
+  .calc-out-num{font-size:1.7rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1;}
+  .calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0;}
+  .calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:18px;line-height:1.6;}
+  @media(max-width:600px){.calc-out{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon"></a>
+    <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack('click_whatsapp',{source:'calc-itp',placement:'navbar'})">Contactar →</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="/">WhiteMoon</a><span>›</span> Calculadora ITP
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-sector">🏠 Calculadora gratuita · ITP 2026</div>
+      <h1>Calculadora <em>ITP vivienda usada</em></h1>
+      <p class="hero-sub">Estima el Impuesto de Transmisiones Patrimoniales en segundos según tu comunidad autónoma y bonificaciones disponibles.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-row">
+          <label class="calc-label" for="itp-valor">Valor de compra escriturado</label>
+          <input type="number" id="itp-valor" class="calc-input" value="200000" min="10000" max="5000000" step="1000" oninput="calcITP()">
+        </div>
+        <div class="calc-row">
+          <label class="calc-label" for="itp-ccaa">Comunidad Autónoma</label>
+          <select id="itp-ccaa" class="calc-select" onchange="calcITP()">
+            <option value="andalucia" data-gen="7" data-red="6" data-red-cond="habitual+joven">Andalucía</option>
+            <option value="aragon" data-gen="8" data-red="3" data-red-cond="habitual+joven">Aragón</option>
+            <option value="asturias" data-gen="8" data-red="3" data-red-cond="habitual+joven">Asturias</option>
+            <option value="baleares" data-gen="8" data-red="5" data-red-cond="habitual+joven">Illes Balears</option>
+            <option value="canarias" data-gen="6.5" data-red="5" data-red-cond="habitual">Canarias</option>
+            <option value="cantabria" data-gen="9" data-red="8" data-red-cond="habitual">Cantabria</option>
+            <option value="castilla-mancha" data-gen="9" data-red="6" data-red-cond="joven">Castilla-La Mancha</option>
+            <option value="castilla-leon" data-gen="8" data-red="4" data-red-cond="habitual+joven">Castilla y León</option>
+            <option value="cataluna" data-gen="10" data-red="5" data-red-cond="habitual+joven">Catalunya</option>
+            <option value="valencia" data-gen="10" data-red="6" data-red-cond="habitual+joven">Comunitat Valenciana</option>
+            <option value="extremadura" data-gen="8" data-red="7" data-red-cond="habitual">Extremadura</option>
+            <option value="galicia" data-gen="8" data-red="5" data-red-cond="habitual+joven">Galicia</option>
+            <option value="madrid" data-gen="6" data-red="4" data-red-cond="habitual+joven" selected>Comunidad de Madrid</option>
+            <option value="murcia" data-gen="8" data-red="3" data-red-cond="numerosa">Murcia</option>
+            <option value="navarra" data-gen="6" data-red="5" data-red-cond="habitual">Navarra</option>
+            <option value="pais-vasco" data-gen="7" data-red="4" data-red-cond="habitual">País Vasco</option>
+            <option value="rioja" data-gen="7" data-red="5" data-red-cond="habitual+joven">La Rioja</option>
+          </select>
+        </div>
+        <div class="calc-row">
+          <span class="calc-label">Bonificaciones aplicables (si cumples requisitos)</span>
+          <div class="calc-checks">
+            <label class="calc-check"><input type="checkbox" id="itp-habitual" onchange="calcITP()" checked> Vivienda habitual</label>
+            <label class="calc-check"><input type="checkbox" id="itp-joven" onchange="calcITP()"> Menor de 35 años</label>
+            <label class="calc-check"><input type="checkbox" id="itp-numerosa" onchange="calcITP()"> Familia numerosa</label>
+            <label class="calc-check"><input type="checkbox" id="itp-discap" onchange="calcITP()"> Discapacidad ≥33%</label>
+          </div>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="itp-tipo">6 %</div>
+            <div class="calc-out-lbl">Tipo aplicado</div>
+          </div>
+          <div class="calc-out-card">
+            <div class="calc-out-num" id="itp-pagar">12.000 €</div>
+            <div class="calc-out-lbl">ITP a pagar</div>
+          </div>
+        </div>
+
+        <div class="calc-detail" id="itp-explain">
+          En Madrid el tipo general del ITP es del 6%. Si la vivienda es habitual y el comprador es menor de 32 años con base inferior a 250.000 €, puede aplicarse un tipo reducido del 4%.
+        </div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px;">
+          Cálculo orientativo. Los tipos efectivos dependen de la normativa autonómica vigente en la fecha de devengo y de cumplir los requisitos formales (residencia, censo familiar, etc.). Confirma siempre con tu gestoría antes de firmar.
+        </p>
+
+        <div style="text-align:center;">
+          <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20vengo%20de%20la%20calculadora%20ITP%20y%20busco%20gestor%C3%ADa%20IA" target="_blank" rel="noopener" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('calculator_used',{calculator:'itp',ccaa:document.getElementById('itp-ccaa').value});wmTrack('click_whatsapp',{source:'calc-itp',placement:'cta'})">Necesito gestoría IA para mi compra →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto;">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px;">FAQ ITP 2026</h2>
+        <div class="faq-item">
+          <div class="faq-q">¿Qué es el ITP y por qué cambia según mi comunidad?</div>
+          <div class="faq-a">El ITP es un impuesto cedido a las comunidades autónomas, por eso cada CCAA fija su propio tipo general (entre el 6% y el 10%) y sus reducciones para vivienda habitual, jóvenes, familia numerosa o personas con discapacidad. La diferencia entre comprar en Madrid (6%) y Valencia (10%) sobre una vivienda de 200.000 € son 8.000 € de impuesto.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Hacienda puede pedirme más ITP si compré barato?</div>
+          <div class="faq-a">Sí. Desde 2022 las CCAA calculan el ITP sobre el "valor de referencia" del Catastro, no sobre el precio que aparece en escritura. Si el valor de referencia es superior al precio escriturado, Hacienda gira una complementaria. Puedes recurrir, pero conviene revisar el valor de referencia antes de firmar.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Cuándo y cómo se paga el ITP?</div>
+          <div class="faq-a">Tienes 30 días hábiles desde la fecha de la escritura para presentar el modelo 600/601 ante la Hacienda autonómica. Hasta que no liquides el ITP el Registro de la Propiedad no inscribe la vivienda a tu nombre, así que es lo primero que hace la gestoría tras el notario.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Vivienda nueva paga ITP o IVA?</div>
+          <div class="faq-a">La vivienda nueva (primera entrega del promotor) tributa por IVA al 10% más Actos Jurídicos Documentados (AJD) autonómico. El ITP solo aplica a transmisiones de vivienda usada entre particulares o entre empresas que no sean promotoras.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center;">
+      <span class="sec-label">Pack recomendado</span>
+      <h2 class="sec-h">Automatiza tu gestoría con IA</h2>
+      <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7;">Si gestionas compraventas, herencias o sociedades, el Pack <strong>Gestoría IA</strong> incorpora un agente conversacional que asesora a tus clientes 24/7 sobre ITP, plusvalía, AJD y demás impuestos asociados.</p>
+      <a href="/spark/" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('click_pack',{from:'calc-itp',pack:'spark'})">Ver Pack Spark · 499€ →</a>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none;">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none;">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none;">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none;">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none;">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function calcITP(){
+  var valor = parseFloat(document.getElementById('itp-valor').value) || 0;
+  var sel = document.getElementById('itp-ccaa');
+  var opt = sel.options[sel.selectedIndex];
+  var tipoGen = parseFloat(opt.getAttribute('data-gen'));
+  var tipoRed = parseFloat(opt.getAttribute('data-red'));
+  var redCond = opt.getAttribute('data-red-cond') || '';
+  var habitual = document.getElementById('itp-habitual').checked;
+  var joven = document.getElementById('itp-joven').checked;
+  var numerosa = document.getElementById('itp-numerosa').checked;
+  var discap = document.getElementById('itp-discap').checked;
+
+  var tipo = tipoGen;
+  var aplicaRed = false;
+  if(discap && habitual){ aplicaRed = true; }
+  if(numerosa && redCond.indexOf('numerosa') >= 0){ aplicaRed = true; }
+  if(redCond.indexOf('habitual+joven') >= 0 && habitual && joven){ aplicaRed = true; }
+  if(redCond.indexOf('habitual+joven') >= 0 && habitual && discap){ aplicaRed = true; }
+  if(redCond === 'habitual' && habitual){ aplicaRed = true; }
+  if(redCond === 'joven' && joven){ aplicaRed = true; }
+  if(aplicaRed){ tipo = tipoRed; }
+
+  var pagar = valor * (tipo / 100);
+  document.getElementById('itp-tipo').textContent = tipo.toString().replace('.', ',') + ' %';
+  document.getElementById('itp-pagar').textContent = Math.round(pagar).toLocaleString('es-ES') + ' €';
+  document.getElementById('itp-explain').textContent =
+    'Tipo general en ' + opt.textContent + ': ' + tipoGen + '%. Tipo reducido disponible: ' + tipoRed + '% si cumples los requisitos (' + redCond.replace('+', ' + ') + '). Resultado actual: ' + tipo + '% × ' + Math.round(valor).toLocaleString('es-ES') + ' € = ' + Math.round(pagar).toLocaleString('es-ES') + ' €.';
+}
+calcITP();
+</script>
+</body>
+</html>
