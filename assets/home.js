@@ -383,17 +383,44 @@ calcROIHome();
 
 // === Bloque 5 ===
 (function(){
-  var cta=document.getElementById('wm-sticky-cta');
-  if(!cta)return;
-  var footer=document.getElementById('contacto');
+  // STICKY CTA — sin reflow forzado
+  // Antes (PR #248): getBoundingClientRect() dentro del listener de scroll
+  // disparaba un layout recalc en cada evento (PageSpeed: "Avoid forced
+  // reflows"). Ahora:
+  //   1) atFooter se actualiza vía IntersectionObserver (asíncrono, sin reflow)
+  //   2) El handler de scroll lee solo window.scrollY (sin reflow) y se
+  //      agrupa con requestAnimationFrame para correr una vez por frame.
+  var cta = document.getElementById('wm-sticky-cta');
+  if(!cta) return;
+  var footer = document.getElementById('contacto');
+  var atFooter = false;
+  var ticking = false;
+
   function update(){
-    var scrolled=window.pageYOffset||document.documentElement.scrollTop||0;
-    var atFooter=false;
-    if(footer){ atFooter=footer.getBoundingClientRect().top<=window.innerHeight; }
-    if(scrolled>300&&!atFooter){ cta.classList.add('wm-visible'); }
+    var scrolled = window.scrollY || window.pageYOffset || 0;
+    if(scrolled > 300 && !atFooter){ cta.classList.add('wm-visible'); }
     else{ cta.classList.remove('wm-visible'); }
   }
-  window.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update,{passive:true});
+
+  function onScrollOrResize(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      update();
+      ticking = false;
+    });
+  }
+
+  // IntersectionObserver: dispara solo cuando el footer entra/sale del viewport
+  if(footer && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      atFooter = entries[0].isIntersecting;
+      update();
+    }, { rootMargin: '0px', threshold: 0 });
+    io.observe(footer);
+  }
+
+  window.addEventListener('scroll', onScrollOrResize, { passive: true });
+  window.addEventListener('resize', onScrollOrResize, { passive: true });
   update();
 })();
