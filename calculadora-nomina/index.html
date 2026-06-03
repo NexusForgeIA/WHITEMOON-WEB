@@ -443,31 +443,18 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     </div>
   </div>
 
-  <!-- CTA GESTORÍAS -->
-  <div class="cta-gestoria">
-    <div>
-      <div class="cta-gestoria-title">¿Eres gestoría laboral?<br><em>Intégrala en tu web.</em></div>
-      <p class="cta-gestoria-desc">Ofrece esta calculadora de nóminas a tus clientes directamente desde tu web, con tu marca y tus colores. Sin que tengan que salir de tu entorno digital.</p>
-      <ul class="cta-features">
-        <li>Tu logo y colores corporativos</li>
-        <li>Integración en tu web en 5-7 días laborables</li>
-        <li>Actualización automática cada año</li>
-        <li>Sin permanencia mínima</li>
-        <li>Soporte técnico incluido</li>
-      </ul>
-    </div>
-    <div class="cta-precio">
-      <div class="precio-num">499€<span class="precio-suf"> setup + 199€/mes</span></div>
-      <div class="precio-note">Pack Spark · Tu marca · Tu web · Siempre actualizada · Sin permanencia</div>
-      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-nomina','Nómina')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
-        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
-        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
-        <input type="hidden" name="origen" value="calculadora-nomina">
-        <input type="hidden" name="mensaje" value="Lead desde calculadora Nómina">
-        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
-        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
-      </form>
-    </div>
+  <!-- CTA NEUTRO -->
+  <div class="calc-cta-section" style="max-width:640px;margin:48px auto 0;text-align:center">
+    <h2 style="font-family:var(--serif);font-size:1.6rem;font-weight:700;color:#fff;margin:0 0 12px;letter-spacing:-.02em">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--mid,#9A96B8);font-size:.95rem;line-height:1.7;margin:0 auto 24px;max-width:560px">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-nomina','Nómina')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-nomina">
+      <input type="hidden" name="mensaje" value="Lead desde calculadora Nómina">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
   </div>
 
 </section>
