@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Trabajador 2026 · Salario + SS empresa · WhiteMoon</title>
+<meta name="description" content="Calculadora coste real trabajador 2026: salario bruto + cuota SS empresa (~30%) + bonificaciones por tipo contrato. Coste mensual y por hora.">
+<meta name="keywords" content="calculadora coste trabajador, coste empresa salario, cuota ss empresa 2026, coste contratacion">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-trabajador/">
+<meta property="og:title" content="Calculadora Coste Trabajador 2026 · WhiteMoon">
+<meta property="og:description" content="Calcula el coste real de un empleado para la empresa con la cuota SS 2026.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-trabajador/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Trabajador 2026","description":"Calcula el coste total que supone un empleado para la empresa incluyendo cuota SS empresarial.","url":"https://whitemoon.es/calculadora-coste-trabajador/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Trabajador","item":"https://whitemoon.es/calculadora-coste-trabajador/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué porcentaje paga la empresa de Seguridad Social?","acceptedAnswer":{"@type":"Answer","text":"En 2026 la cuota patronal del régimen general es del 29,9%: 23,6% contingencias comunes, 5,5% desempleo (3,55% indefinidos, 5,5% temporales), 0,2% Fogasa, 0,6% formación profesional y un porcentaje variable por accidentes y enfermedades profesionales (AT/EP) según actividad (oscila entre 0,9% y 7,1%)."}},
+{"@type":"Question","name":"¿Hay bonificaciones por tipo de contrato?","acceptedAnswer":{"@type":"Answer","text":"Sí. La contratación indefinida tiene tarifa plana de 50€/mes durante 12 meses para empresas con menos de 50 trabajadores. Mujeres víctimas de violencia, personas con discapacidad, parados de larga duración y jóvenes menores de 30 años pueden tener bonificaciones adicionales que reducen la cuota patronal entre 1.000 y 5.500 € anuales."}},
+{"@type":"Question","name":"¿Cuánto cuesta realmente un trabajador con salario bruto de 30.000 €?","acceptedAnswer":{"@type":"Answer","text":"Aproximadamente 38.970 € al año (30.000 € salario + 8.970 € de SS empresa al 29,9%). El coste mensual ronda los 3.247 € y el coste hora (jornada completa 1.760 h/año) es de 22,14 €. Sin contar costes indirectos: equipos, formación, vacaciones cubiertas o bajas."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-trabajador',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Trabajador</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa">🏢 Calculadora gratuita · RGSS 2026</span>
+    <h1 class="sec-h">Calculadora <em>Coste Trabajador</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Calcula el coste real de un empleado: salario bruto + cuota SS empresa (29,9% general) menos bonificaciones por tipo de contrato. Resultado mensual y por hora.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-sueldo">Salario bruto anual (€)</label><input type="number" id="ct-sueldo" class="calc-input" value="30000" min="0" step="500" oninput="calcCT()"></div>
+      <div class="calc-row"><label class="calc-label" for="ct-jornada">Jornada</label>
+        <select id="ct-jornada" class="calc-select" onchange="calcCT()">
+          <option value="1760" selected>Completa · 1.760 h/año (40 h/semana)</option>
+          <option value="880">Parcial 50% · 880 h/año (20 h/semana)</option>
+          <option value="1320">Parcial 75% · 1.320 h/año (30 h/semana)</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-tipo">Tipo de contrato</label>
+        <select id="ct-tipo" class="calc-select" onchange="calcCT()">
+          <option value="indef" selected>Indefinido (29,55% empresa)</option>
+          <option value="temp">Temporal (31,50% empresa)</option>
+          <option value="indef-tp">Indefinido + tarifa plana (50€/mes × 12 meses)</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="ct-atep">AT/EP (accidentes y enfermedades) %</label>
+        <select id="ct-atep" class="calc-select" onchange="calcCT()">
+          <option value="0.9">0,9% — oficina, servicios profesionales</option>
+          <option value="1.5" selected>1,5% — comercio, hostelería</option>
+          <option value="3.0">3,0% — industria ligera, construcción ligera</option>
+          <option value="6.5">6,5% — construcción pesada, transporte</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="ct-anual">38.970 €</div><div class="calc-out-lbl">Coste total anual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ct-mensual">3.247 €</div><div class="calc-out-lbl">Coste mensual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ct-hora">22,14 €</div><div class="calc-out-lbl">Coste por hora</div></div>
+    </div>
+
+    <div class="calc-detail" id="ct-explain">Salario bruto: 30.000 €. Cuota SS empresa: 30.000 × 29,9% = 8.970 €. Coste total año: 38.970 €. Coste mensual: 3.247 €. Coste por hora (1.760 h/año): 22,14 €/h.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">No incluye costes indirectos: equipo, formación, vacaciones cubiertas, bajas o seguros voluntarios. Las cifras de SS son la suma estándar 2026 (CC + desempleo + Fogasa + FP + AT/EP).</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Trabajador 2026</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué % paga la empresa de Seguridad Social?</div><div class="faq-a">29,9% en régimen general (23,6% CC + 5,5% desempleo + 0,2% Fogasa + 0,6% FP + AT/EP variable según actividad).</div></div>
+    <div class="faq-item"><div class="faq-q">¿Hay bonificaciones por tipo de contrato?</div><div class="faq-a">Sí. Indefinido tiene tarifa plana 50€/mes durante 12 meses (empresas <50 trabajadores). Mujeres víctimas de violencia, discapacidad, parados larga duración y menores de 30: bonificaciones adicionales de 1.000-5.500 €/año.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta un trabajador con 30.000 € brutos?</div><div class="faq-a">Aproximadamente 38.970 €/año (30.000 € salario + 8.970 € SS empresa). 3.247 €/mes. 22,14 €/hora con jornada completa de 1.760 h/año.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Y los costes indirectos?</div><div class="faq-a">Suman entre 15% y 25% adicional según sector: equipo informático, formación continua, sustituciones por vacaciones/bajas, seguros voluntarios, ticket restaurante o transporte.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-label" style="color:#00d4aa">¿Quieres optimizar tus costes?</span>
+    <h2 class="sec-h">Automatiza tareas repetitivas con IA</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Un Agente IA puede atender llamadas, cualificar leads y responder dudas 24/7 por 199€/mes — menos de 1 hora del coste real de un empleado al día.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-trabajador','Coste Trabajador')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-coste-trabajador"><input type="hidden" name="mensaje" value="Lead desde calculadora Coste Trabajador">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para empresas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-nomina/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">💰</div><div style="font-weight:700;color:#fff;margin-top:8px">Calculadora Nómina</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Neto · IRPF · SS trabajador</div></a>
+      <a href="/calculadora-finiquito/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📄</div><div style="font-weight:700;color:#fff;margin-top:8px">Finiquito</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Indemnización + extras</div></a>
+      <a href="/calculadora-ahorro-automatizacion/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🤖</div><div style="font-weight:700;color:#fff;margin-top:8px">Ahorro IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">ROI automatización</div></a>
+      <a href="/agencia-ia-majadahonda/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📍</div><div style="font-weight:700;color:#fff;margin-top:8px">Agencia IA Majadahonda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA para pymes</div></a>
+    </div>
+  </div></div></section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcCT(){
+  var sueldo=parseFloat(document.getElementById('ct-sueldo').value)||0;
+  var horasAnio=parseFloat(document.getElementById('ct-jornada').value);
+  var tipo=document.getElementById('ct-tipo').value;
+  var atep=parseFloat(document.getElementById('ct-atep').value);
+  // Base SS empresa: CC 23.6 + Desempleo (indef 5.5 / temp 6.7) + Fogasa 0.2 + FP 0.6 + AT/EP variable
+  var ssRate;
+  if(tipo==='indef') ssRate=23.6+5.5+0.2+0.6+atep;
+  else if(tipo==='temp') ssRate=23.6+6.7+0.2+0.6+atep;
+  else ssRate=23.6+5.5+0.2+0.6+atep; // indef-tp: base normal
+  var ssAnual=sueldo*(ssRate/100);
+  // Tarifa plana: 50€/mes × 12 = 600€ resta de la SS (solo aplicable año 1)
+  if(tipo==='indef-tp'){ ssAnual=600; }
+  var anual=sueldo+ssAnual;
+  var mensual=anual/12;
+  var hora=anual/horasAnio;
+  document.getElementById('ct-anual').textContent=Math.round(anual).toLocaleString('es-ES')+' €';
+  document.getElementById('ct-mensual').textContent=Math.round(mensual).toLocaleString('es-ES')+' €';
+  document.getElementById('ct-hora').textContent=hora.toFixed(2).replace('.',',')+' €';
+  var tipoTxt={indef:'indefinido',temp:'temporal','indef-tp':'indefinido con tarifa plana primer año (SS reducida a 600€/año)'}[tipo];
+  document.getElementById('ct-explain').textContent='Salario bruto: '+Math.round(sueldo).toLocaleString('es-ES')+' €. Cuota SS empresa contrato '+tipoTxt+': '+Math.round(ssAnual).toLocaleString('es-ES')+' €. Coste total año: '+Math.round(anual).toLocaleString('es-ES')+' €. Coste mensual: '+Math.round(mensual).toLocaleString('es-ES')+' €. Coste por hora ('+horasAnio+' h/año): '+hora.toFixed(2).replace('.',',')+' €.';
+}
+calcCT();
+</script>
+</body>
+</html>

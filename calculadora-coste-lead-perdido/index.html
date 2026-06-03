@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Lead Perdido · Llamadas no atendidas · WhiteMoon</title>
+<meta name="description" content="Calcula cuánto dinero pierdes al mes por llamadas no atendidas. Estimación de leads perdidos, ingresos perdidos mensuales y anuales.">
+<meta name="keywords" content="calculadora coste lead perdido, llamadas no atendidas ingresos, leads perdidos mes">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-lead-perdido/">
+<meta property="og:title" content="Calculadora Coste Lead Perdido · WhiteMoon">
+<meta property="og:description" content="Cuánto dinero pierdes al mes por llamadas no atendidas en tu negocio.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-lead-perdido/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Lead Perdido","description":"Calcula el coste real de las llamadas no atendidas en tu negocio: leads perdidos, ingresos perdidos mensuales y anuales.","url":"https://whitemoon.es/calculadora-coste-lead-perdido/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Lead Perdido","item":"https://whitemoon.es/calculadora-coste-lead-perdido/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué cuenta como lead perdido?","acceptedAnswer":{"@type":"Answer","text":"Cualquier intento de contacto que no recibe respuesta efectiva: llamadas que entran fuera de horario, llamadas con todos los teléfonos ocupados, mensajes de WhatsApp sin contestar en menos de 1 hora durante la jornada laboral, o emails de contacto que tardan más de 24 h. Estudios sectoriales coinciden en que entre el 50% y el 70% de los leads que no reciben respuesta rápida acaban contactando con la competencia."}},
+{"@type":"Question","name":"¿Cómo se calcula el ingreso perdido?","acceptedAnswer":{"@type":"Answer","text":"Multiplicamos llamadas perdidas/día × 22 días laborables × tasa de conversión a cliente × ticket medio. La tasa de conversión sectorial: clínicas y peluquerías 30-40%, restaurantes/hostelería 40-50%, talleres 25-35%, inmobiliarias 5-10% (visita), despachos 15-25%. Usamos un valor medio orientativo del 20% que se puede ajustar por sector."}},
+{"@type":"Question","name":"¿Un Agente IA puede recuperar todos los leads?","acceptedAnswer":{"@type":"Answer","text":"No todos, pero sí la mayoría. Un Agente IA en web o WhatsApp atiende 24/7 sin saturarse: cualifica, recoge datos, agenda citas y deriva al humano cuando procede. La recuperación típica observada en clientes WhitMoon ronda el 60-80% de los leads que antes se perdían fuera de horario o por saturación, dependiendo del sector y del flujo conversacional."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-lead-perdido',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Lead Perdido</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa">📵 Calculadora gratuita</span>
+    <h1 class="sec-h">Calculadora <em>Coste Lead Perdido</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima cuánto dinero pierdes al mes por llamadas no atendidas, WhatsApps sin respuesta y leads fuera de horario que se van a la competencia.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-row">
+      <div class="calc-label"><span>Llamadas perdidas por día</span><span class="calc-val" id="lp-r-llamadas">5</span></div>
+      <input type="range" id="lp-llamadas" class="calc-slider" min="1" max="50" value="5" step="1" oninput="calcLP()">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Ticket medio por cliente</span><span class="calc-val" id="lp-r-ticket">150 €</span></div>
+      <input type="range" id="lp-ticket" class="calc-slider" min="20" max="5000" value="150" step="10" oninput="calcLP()">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Tasa de conversión esperada</span><span class="calc-val" id="lp-r-conv">20 %</span></div>
+      <input type="range" id="lp-conv" class="calc-slider" min="2" max="60" value="20" step="1" oninput="calcLP()">
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="lp-leads">22</div><div class="calc-out-lbl">Clientes perdidos / mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="lp-mes">3.300 €</div><div class="calc-out-lbl">Ingresos perdidos / mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="lp-anio">39.600 €</div><div class="calc-out-lbl">Ingresos perdidos / año</div></div>
+    </div>
+
+    <div class="calc-detail" id="lp-explain">5 llamadas/día × 22 días laborables = 110 llamadas/mes perdidas. Con 20% de conversión esperada: 22 clientes potenciales perdidos al mes. A 150 € de ticket medio: 3.300 €/mes de ingresos no realizados. Proyección anual: 39.600 €.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Asumimos 22 días laborables al mes. Las tasas de conversión por sector varían: clínicas 30-40%, restaurantes 40-50%, talleres 25-35%, inmobiliarias 5-10%, despachos 15-25%.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Lead Perdido</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué cuenta como lead perdido?</div><div class="faq-a">Llamadas fuera de horario, teléfonos ocupados, WhatsApp sin respuesta en menos de 1 hora durante la jornada, emails que tardan más de 24h. Estudios sectoriales: 50-70% de leads sin respuesta rápida contactan con la competencia.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se calcula el ingreso perdido?</div><div class="faq-a">Llamadas perdidas/día × 22 días lab × tasa conversión × ticket medio. Por sector: clínicas 30-40%, restaurantes 40-50%, talleres 25-35%, inmobiliarias 5-10%, despachos 15-25%. Valor medio orientativo: 20%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Un Agente IA puede recuperar todos los leads?</div><div class="faq-a">No todos, pero sí la mayoría. Recuperación típica 60-80% en clientes WhiteMoon: el Agente IA atiende 24/7, cualifica, recoge datos y agenda citas. Deriva al humano cuando el caso lo requiere.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta el Agente IA frente al coste de leads perdidos?</div><div class="faq-a">Pack Spark: 199€/mes. Si pierdes solo 3-5 leads de 100€ ticket al mes, el Agente IA se paga solo. La mayoría de pymes de servicios recupera entre 10x y 30x lo que cuesta.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-label" style="color:#00d4aa">¿Quieres recuperar esos leads?</span>
+    <h2 class="sec-h">Te llamamos en menos de 24h</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te diseñamos el flujo conversacional específico para tu sector: clínica, restaurante, taller, peluquería, despacho o inmobiliaria. Demo en 7 días.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-lead-perdido','Coste Lead Perdido')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-coste-lead-perdido"><input type="hidden" name="mensaje" value="Lead desde calculadora Coste Lead Perdido">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas IA</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-ahorro-automatizacion/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🤖</div><div style="font-weight:700;color:#fff;margin-top:8px">Ahorro Automatización</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">ROI tareas IA</div></a>
+      <a href="/calculadora-roi-agente-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📈</div><div style="font-weight:700;color:#fff;margin-top:8px">ROI Agente IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Por visitas + ticket</div></a>
+      <a href="/calculadora-horas-ahorradas-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">⏱️</div><div style="font-weight:700;color:#fff;margin-top:8px">Horas Ahorradas</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Tiempo recuperado</div></a>
+      <a href="/agencia-ia-majadahonda/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📍</div><div style="font-weight:700;color:#fff;margin-top:8px">Agencia IA Majadahonda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Auditoría gratuita</div></a>
+    </div>
+  </div></div></section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcLP(){
+  var llamadas=parseInt(document.getElementById('lp-llamadas').value,10);
+  var ticket=parseInt(document.getElementById('lp-ticket').value,10);
+  var conv=parseInt(document.getElementById('lp-conv').value,10);
+  document.getElementById('lp-r-llamadas').textContent=llamadas;
+  document.getElementById('lp-r-ticket').textContent=ticket+' €';
+  document.getElementById('lp-r-conv').textContent=conv+' %';
+  var perMes=llamadas*22, leadsMes=Math.round(perMes*(conv/100)), perdidoMes=leadsMes*ticket, perdidoAnio=perdidoMes*12;
+  document.getElementById('lp-leads').textContent=leadsMes;
+  document.getElementById('lp-mes').textContent=Math.round(perdidoMes).toLocaleString('es-ES')+' €';
+  document.getElementById('lp-anio').textContent=Math.round(perdidoAnio).toLocaleString('es-ES')+' €';
+  document.getElementById('lp-explain').textContent=llamadas+' llamadas/día × 22 días laborables = '+perMes+' llamadas/mes perdidas. Con '+conv+'% de conversión: '+leadsMes+' clientes potenciales perdidos al mes. A '+ticket+' € de ticket medio: '+Math.round(perdidoMes).toLocaleString('es-ES')+' €/mes. Proyección anual: '+Math.round(perdidoAnio).toLocaleString('es-ES')+' €.';
+}
+calcLP();
+</script>
+</body>
+</html>
