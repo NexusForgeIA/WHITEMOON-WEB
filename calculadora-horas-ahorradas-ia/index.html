@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Horas Ahorradas con IA · Tiempo recuperado al mes · WhiteMoon</title>
+<meta name="description" content="Calcula cuántas horas al mes ahorra tu equipo automatizando la atención al cliente con un Agente IA. Días equivalentes y coste recuperado.">
+<meta name="keywords" content="calculadora horas ahorradas ia, tiempo ahorrado chatbot, agente ia atencion cliente">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-horas-ahorradas-ia/">
+<meta property="og:title" content="Calculadora Horas Ahorradas con IA · WhiteMoon">
+<meta property="og:description" content="Cuántas horas y días recuperas al mes con un Agente IA en atención al cliente.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-horas-ahorradas-ia/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Horas Ahorradas con IA","description":"Calcula las horas mensuales que tu equipo ahorra al automatizar atención al cliente con un Agente IA conversacional.","url":"https://whitemoon.es/calculadora-horas-ahorradas-ia/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Horas Ahorradas IA","item":"https://whitemoon.es/calculadora-horas-ahorradas-ia/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué tareas de atención al cliente se automatizan?","acceptedAnswer":{"@type":"Answer","text":"Las preguntas repetitivas son el primer objetivo: horarios, ubicación, precios, servicios disponibles, política de cancelaciones, formas de pago, plazos de entrega. También gestión de citas/reservas, cualificación inicial de leads y derivación a humano para casos complejos. Las tareas no automatizables (atención especializada, negociación, urgencias) siguen gestionadas por el equipo."}},
+{"@type":"Question","name":"¿Cuántas horas reales se ahorran al mes?","acceptedAnswer":{"@type":"Answer","text":"Depende del volumen de consultas. Un negocio con 30 consultas/día de 4 minutos cada una dedica 120 min/día = 44 horas al mes. Con un Agente IA bien configurado, la automatización ronda el 70% (las consultas repetitivas), lo que ahorra unas 31 horas mensuales = casi 4 días laborales recuperados para tareas de mayor valor."}},
+{"@type":"Question","name":"¿Las horas ahorradas se traducen en dinero?","acceptedAnswer":{"@type":"Answer","text":"Sí, directamente. Multiplica las horas ahorradas por el coste hora real del empleado (salario + SS empresa + indirectos). Si una recepcionista cuesta a la empresa 18€/hora real y se ahorran 31 horas al mes, son 558€/mes recuperados. Por encima del coste del Agente IA (199€/mes Spark), el saldo neto positivo se aplica a más facturación, mejor servicio o tareas estratégicas."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-horas-ahorradas-ia',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Horas Ahorradas con IA</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa">⏱️ Calculadora gratuita</span>
+    <h1 class="sec-h">Calculadora <em>Horas Ahorradas con IA</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima cuántas horas al mes recupera tu equipo automatizando la atención al cliente con un Agente IA. Resultado en días laborales equivalentes y coste recuperado.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-row">
+      <div class="calc-label"><span>Tareas de atención al cliente al día</span><span class="calc-val" id="ha-r-tareas">30</span></div>
+      <input type="range" id="ha-tareas" class="calc-slider" min="5" max="200" value="30" step="1" oninput="calcHA()">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Minutos por tarea</span><span class="calc-val" id="ha-r-min">4 min</span></div>
+      <input type="range" id="ha-min" class="calc-slider" min="1" max="30" value="4" step="1" oninput="calcHA()">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Días laborables al mes</span><span class="calc-val" id="ha-r-dias">22</span></div>
+      <input type="range" id="ha-dias" class="calc-slider" min="15" max="26" value="22" step="1" oninput="calcHA()">
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Coste hora del empleado (€)</span><span class="calc-val" id="ha-r-coste">18 €</span></div>
+      <input type="range" id="ha-coste" class="calc-slider" min="8" max="60" value="18" step="1" oninput="calcHA()">
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="ha-horas">31 h</div><div class="calc-out-lbl">Horas ahorradas/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ha-dias-eq">3,8 días</div><div class="calc-out-lbl">Días laborales equivalentes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ha-coste-ahorro">554 €</div><div class="calc-out-lbl">Coste personal ahorrado/mes</div></div>
+    </div>
+
+    <div class="calc-detail" id="ha-explain">30 tareas/día × 4 min = 120 min/día × 22 días = 2.640 min/mes = 44 horas/mes dedicadas. Automatización 70% con Agente IA: 31 horas ahorradas/mes = 3,8 días laborales (8h/día). A 18 €/h: 554 € de coste personal recuperado al mes.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Asumimos automatización del 70% (consultas repetitivas). El 30% restante (atención especializada, urgencias, negociación) sigue gestionada por humanos.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Horas Ahorradas con IA</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué tareas se automatizan?</div><div class="faq-a">Preguntas repetitivas: horarios, ubicación, precios, servicios, formas de pago. También gestión de citas/reservas, cualificación inicial de leads y derivación al humano para casos complejos.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuántas horas reales se ahorran al mes?</div><div class="faq-a">30 consultas/día × 4 min = 120 min/día = 44 horas/mes. Con automatización 70%: ~31 horas ahorradas = casi 4 días laborales recuperados para tareas de mayor valor.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Las horas ahorradas se traducen en dinero?</div><div class="faq-a">Sí: horas × coste hora real (salario + SS empresa + indirectos). Recepcionista a 18€/h real × 31h = 558€/mes recuperados. Tras restar el coste del Agente IA (199€/mes), el saldo neto va a más facturación o tareas estratégicas.</div></div>
+    <div class="faq-item"><div class="faq-q">¿El equipo se siente desplazado por el Agente IA?</div><div class="faq-a">Cuando se comunica bien, no. El IA absorbe las consultas más tediosas (las mismas preguntas todos los días), liberando al equipo para casos con valor real. La satisfacción del equipo en clientes WhiteMoon mejora porque dedica tiempo a lo que realmente requiere humano.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-label" style="color:#00d4aa">¿Quieres recuperar esas horas?</span>
+    <h2 class="sec-h">Te llamamos en menos de 24h</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Diseñamos el flujo conversacional según tus tareas reales y configuramos el Agente IA en 5-7 días. Sin permanencia.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-horas-ahorradas-ia','Horas Ahorradas IA')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-horas-ahorradas-ia"><input type="hidden" name="mensaje" value="Lead desde calculadora Horas Ahorradas IA">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas IA</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-ahorro-automatizacion/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🤖</div><div style="font-weight:700;color:#fff;margin-top:8px">Ahorro Automatización</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">ROI completo</div></a>
+      <a href="/calculadora-coste-lead-perdido/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📵</div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Lead Perdido</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Llamadas no atendidas</div></a>
+      <a href="/calculadora-roi-agente-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📈</div><div style="font-weight:700;color:#fff;margin-top:8px">ROI Agente IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Por visitas + ticket</div></a>
+      <a href="/agencia-ia-majadahonda/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📍</div><div style="font-weight:700;color:#fff;margin-top:8px">Agencia IA Majadahonda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Auditoría gratuita</div></a>
+    </div>
+  </div></div></section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcHA(){
+  var tareas=parseInt(document.getElementById('ha-tareas').value,10);
+  var min=parseInt(document.getElementById('ha-min').value,10);
+  var dias=parseInt(document.getElementById('ha-dias').value,10);
+  var coste=parseInt(document.getElementById('ha-coste').value,10);
+  document.getElementById('ha-r-tareas').textContent=tareas;
+  document.getElementById('ha-r-min').textContent=min+' min';
+  document.getElementById('ha-r-dias').textContent=dias;
+  document.getElementById('ha-r-coste').textContent=coste+' €';
+  var minDia=tareas*min, minMes=minDia*dias, horasMes=minMes/60, horasAhorradas=horasMes*0.70, diasEq=horasAhorradas/8, costeAhorrado=horasAhorradas*coste;
+  document.getElementById('ha-horas').textContent=Math.round(horasAhorradas)+' h';
+  document.getElementById('ha-dias-eq').textContent=diasEq.toFixed(1).replace('.',',')+' días';
+  document.getElementById('ha-coste-ahorro').textContent=Math.round(costeAhorrado).toLocaleString('es-ES')+' €';
+  document.getElementById('ha-explain').textContent=tareas+' tareas/día × '+min+' min = '+minDia+' min/día × '+dias+' días = '+minMes+' min/mes = '+Math.round(horasMes)+' h/mes dedicadas. Automatización 70% con Agente IA: '+Math.round(horasAhorradas)+' h ahorradas/mes = '+diasEq.toFixed(1).replace('.',',')+' días laborales (8h/día). A '+coste+' €/h: '+Math.round(costeAhorrado).toLocaleString('es-ES')+' € de coste personal recuperado al mes.';
+}
+calcHA();
+</script>
+</body>
+</html>

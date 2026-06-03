@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Transferencia Vehículo 2026 · ITP + DGT + Gestoría · WhiteMoon</title>
+<meta name="description" content="Calculadora gastos totales de transferencia de vehículo 2026: ITP por CCAA + tasa DGT + gestoría orientativa. Estimación instantánea.">
+<meta name="keywords" content="calculadora transferencia vehiculo, coste cambio nombre coche, itp dgt gestoria 2026">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-transferencia-vehiculo/">
+<meta property="og:title" content="Calculadora Transferencia Vehículo 2026 · WhiteMoon">
+<meta property="og:description" content="Cuánto cuesta el cambio de nombre de un coche en 2026: ITP + DGT + gestoría.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-transferencia-vehiculo/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Transferencia Vehículo 2026","description":"Calcula los gastos totales de transferencia de un vehículo en España: ITP por CCAA, tasa DGT y gestoría orientativa.","url":"https://whitemoon.es/calculadora-transferencia-vehiculo/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Transferencia Vehículo","item":"https://whitemoon.es/calculadora-transferencia-vehiculo/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto cuesta el cambio de nombre de un coche?","acceptedAnswer":{"@type":"Answer","text":"Tres conceptos sumados: ITP (4-8% del valor venal según CCAA con depreciación BOE), tasa DGT por cambio de titularidad (55,70 €) y gestoría orientativa (200-300 € por gestión completa). Para un coche con valor fiscal de 8.000 € en Madrid (4%): 320 € ITP + 56 € DGT + 250 € gestoría = 626 € totales."}},
+{"@type":"Question","name":"¿Puedo hacerlo sin gestoría?","acceptedAnswer":{"@type":"Answer","text":"Sí. Puedes presentar el modelo 620 ante la Hacienda autonómica (ITP) y luego pedir cita en la DGT con la documentación: contrato de compraventa, último justificante de IVTM municipal pagado, ficha técnica, permiso de circulación, ITV en vigor y DNI. La gestoría te ahorra desplazamientos y errores que cuestan días."}},
+{"@type":"Question","name":"¿Cuánto tiempo tengo para hacer la transferencia?","acceptedAnswer":{"@type":"Answer","text":"Dispones de 30 días naturales desde la firma del contrato para liquidar el ITP en la Hacienda autonómica y cambiar el titular en la DGT. Pasado el plazo, la DGT puede sancionar al comprador y, si el vendedor no notificó la venta, las multas y el IVTM siguen llegando a su nombre."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:repeat(2,1fr)}}@media(max-width:400px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-transferencia-vehiculo',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Transferencia Vehículo</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa">🚗 Calculadora gratuita · Transferencia 2026</span>
+    <h1 class="sec-h">Calculadora <em>Transferencia Vehículo</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima los gastos totales del cambio de nombre: ITP autonómico con depreciación Anexo IV BOE + tasa DGT + gestoría orientativa.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tv-precio">Precio venta acordado (€)</label><input type="number" id="tv-precio" class="calc-input" value="10000" min="0" step="100" oninput="calcTV()"></div>
+      <div class="calc-row"><label class="calc-label" for="tv-anti">Antigüedad (años desde matriculación)</label><input type="number" id="tv-anti" class="calc-input" value="5" min="0" max="30" step="1" oninput="calcTV()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tv-ccaa">Comunidad Autónoma del comprador</label>
+        <select id="tv-ccaa" class="calc-select" onchange="calcTV()">
+          <option value="madrid" data-tipo="4" selected>Comunidad de Madrid · 4%</option>
+          <option value="andalucia" data-tipo="4">Andalucía · 4%</option>
+          <option value="asturias" data-tipo="4">Asturias · 4%</option>
+          <option value="baleares" data-tipo="4">Illes Balears · 4%</option>
+          <option value="navarra" data-tipo="4">Navarra · 4%</option>
+          <option value="rioja" data-tipo="4">La Rioja · 4%</option>
+          <option value="pais-vasco" data-tipo="4">País Vasco · 4%</option>
+          <option value="castilla-leon" data-tipo="5">Castilla y León · 5%</option>
+          <option value="cataluna" data-tipo="5">Catalunya · 5%</option>
+          <option value="castilla-mancha" data-tipo="6">Castilla-La Mancha · 6%</option>
+          <option value="extremadura" data-tipo="6">Extremadura · 6%</option>
+          <option value="valencia" data-tipo="6">Comunitat Valenciana · 6%</option>
+          <option value="aragon" data-tipo="6">Aragón · 6%</option>
+          <option value="cantabria" data-tipo="8">Cantabria · 8%</option>
+          <option value="canarias" data-tipo="5.5">Canarias · 5,5%</option>
+          <option value="galicia" data-tipo="8">Galicia · 8%</option>
+          <option value="murcia" data-tipo="8">Murcia · 8%</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="tv-gest">Gestoría (orientativa)</label>
+        <select id="tv-gest" class="calc-select" onchange="calcTV()">
+          <option value="0">Sin gestoría · solo tasas oficiales</option>
+          <option value="200" selected>Gestoría online · 200 €</option>
+          <option value="280">Gestoría tradicional · 280 €</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-itp">188 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-dgt">56 €</div><div class="calc-out-lbl">Tasa DGT</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-gestoria">200 €</div><div class="calc-out-lbl">Gestoría</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-total">444 €</div><div class="calc-out-lbl">Total transferencia</div></div>
+    </div>
+
+    <div class="calc-detail" id="tv-explain">Valor fiscal con depreciación 47% (5 años): 10.000 × 47% = 4.700 €. ITP Madrid 4%: 188 €. Tasa DGT cambio titularidad: 55,70 € (redondeada). Gestoría online: 200 €. Total: 444 €.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El ITP se calcula sobre el valor venal del BOE 2026 con depreciación Anexo IV, no sobre el precio escriturado. La gestoría es orientativa y varía por empresa.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Transferencia Vehículo 2026</h2>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta el cambio de nombre de un coche?</div><div class="faq-a">Tres conceptos: ITP (4-8% del valor venal según CCAA con depreciación BOE), tasa DGT 55,70 €, gestoría 200-300 € si la contratas. Coche valor fiscal 8.000 € en Madrid: 320 + 56 + 250 = 626 €.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Puedo hacerlo sin gestoría?</div><div class="faq-a">Sí. Presentas el modelo 620 en Hacienda autonómica y luego pides cita en DGT con: contrato compraventa, IVTM pagado, ficha técnica, permiso de circulación, ITV vigente y DNI.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto tiempo tengo para hacer la transferencia?</div><div class="faq-a">30 días naturales desde la firma del contrato. Pasado el plazo, la DGT puede sancionar al comprador. El vendedor debe notificar la venta para que no le sigan llegando multas e IVTM.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Sigue activa la reducción 70% para taxi, autoescuela y alquiler?</div><div class="faq-a">Sí. Acreditando licencia o autorización profesional, la base imponible del ITP se reduce un 70%. No afecta a la tasa DGT ni a la gestoría.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-label" style="color:#00d4aa">¿Quieres que te lo tramitemos?</span>
+    <h2 class="sec-h">Gestoría con IA + WhatsApp</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Gestoría 100% online: nos mandas la foto del contrato y la ficha técnica por WhatsApp, calculamos el ITP exacto y te lo tenemos transferido en 5-7 días.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-transferencia-vehiculo','Transferencia Vehículo')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-transferencia-vehiculo"><input type="hidden" name="mensaje" value="Lead desde calculadora Transferencia Vehículo">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para vehículos</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-itp/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🚗</div><div style="font-weight:700;color:#fff;margin-top:8px">ITP Vehículos</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Solo el ITP detallado</div></a>
+      <a href="/calculadora-itp-vivienda/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🏠</div><div style="font-weight:700;color:#fff;margin-top:8px">ITP Vivienda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">CCAA + bonificaciones</div></a>
+      <a href="/chatbot-ia-talleres-mecanicos/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">🔧</div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Talleres</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA para mecánicos</div></a>
+      <a href="/agencia-ia-majadahonda/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem;line-height:1">📍</div><div style="font-weight:700;color:#fff;margin-top:8px">Agencia IA Majadahonda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Gestoría con IA</div></a>
+    </div>
+  </div></div></section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+var TV_DEPRECIACION=[{e:1,p:100},{e:2,p:84},{e:3,p:67},{e:4,p:56},{e:5,p:47},{e:6,p:39},{e:7,p:34},{e:8,p:28},{e:9,p:24},{e:10,p:19},{e:11,p:17},{e:12,p:13},{e:99,p:10}];
+function tvDep(y){for(var i=0;i<TV_DEPRECIACION.length;i++){if(y<=TV_DEPRECIACION[i].e)return TV_DEPRECIACION[i].p;}return 10;}
+function calcTV(){
+  var precio=parseFloat(document.getElementById('tv-precio').value)||0;
+  var anti=parseInt(document.getElementById('tv-anti').value,10)||0;
+  var sel=document.getElementById('tv-ccaa');
+  var tipo=parseFloat(sel.options[sel.selectedIndex].getAttribute('data-tipo'));
+  var gest=parseFloat(document.getElementById('tv-gest').value)||0;
+  var pctDep=tvDep(anti), valFiscal=precio*(pctDep/100), itp=valFiscal*(tipo/100), dgt=55.70, total=itp+dgt+gest;
+  document.getElementById('tv-itp').textContent=Math.round(itp).toLocaleString('es-ES')+' €';
+  document.getElementById('tv-dgt').textContent='56 €';
+  document.getElementById('tv-gestoria').textContent=Math.round(gest).toLocaleString('es-ES')+' €';
+  document.getElementById('tv-total').textContent=Math.round(total).toLocaleString('es-ES')+' €';
+  document.getElementById('tv-explain').textContent='Valor fiscal depreciado '+pctDep+'% ('+anti+' años): '+Math.round(precio).toLocaleString('es-ES')+' × '+pctDep+'% = '+Math.round(valFiscal).toLocaleString('es-ES')+' €. ITP '+sel.options[sel.selectedIndex].textContent+': '+Math.round(itp).toLocaleString('es-ES')+' €. Tasa DGT cambio titularidad: 55,70 €. Gestoría: '+Math.round(gest).toLocaleString('es-ES')+' €. Total: '+Math.round(total).toLocaleString('es-ES')+' €.';
+}
+calcTV();
+</script>
+</body>
+</html>
