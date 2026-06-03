@@ -107,7 +107,7 @@
     </a>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="https://whitemoon.es/" class="nav-back">← Ver todos los servicios</a>
-      <a href="https://wa.me/34643199580?text=Hola%2C%20soy%20de%20Majadahonda%20y%20quiero%20informaci%C3%B3n" class="nav-cta" target="_blank" rel="noopener">Contactar →</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'agencia-ia-majadahonda',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Contactar →</button>
     </div>
   </div>
 </nav>
@@ -128,7 +128,7 @@
       <h1>Agencia IA en<br><span>Majadahonda</span></h1>
       <p class="hero-sub">Majadahonda es la ciudad con mayor renta per cápita de la Comunidad de Madrid. Sus empresas exigen lo mejor — y sus clientes también. Un Agente IA que responde en segundos marca la diferencia entre ganar o perder un cliente.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/34643199580?text=Hola%2C%20soy%20de%20Majadahonda%20y%20quiero%20informaci%C3%B3n" class="btn-prim" target="_blank" rel="noopener">Hablar por WhatsApp →</a>
+        <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'agencia-ia-majadahonda',placement:'hero'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
         <a href="#servicios" class="btn-sec">Ver servicios y precios</a>
       </div>
     </div>
@@ -267,7 +267,7 @@
     <div class="wrap">
       <h2>¿Quieres una demo para tu pyme en Majadahonda?</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Demo gratuita sin compromiso · Operativo en 5-7 días laborables · Sin permanencia</p>
-      <a href="https://wa.me/34643199580?text=Hola%2C%20soy%20de%20Majadahonda%20y%20quiero%20informaci%C3%B3n" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;">Hablar por WhatsApp →</a>
+      <button type="button" class="btn-prim" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'agencia-ia-majadahonda',placement:'cta-final'})" style="display:inline-block;margin-top:16px;border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
       <a href="mailto:comercial@whitemoon.es" class="cta-mail">comercial@whitemoon.es</a>
       <span class="cta-tel">☎ 643 199 580</span>
       <p style="font-size:.8rem;color:#5a5a70;margin-top:14px;">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
