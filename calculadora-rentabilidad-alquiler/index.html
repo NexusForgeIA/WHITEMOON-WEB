@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Rentabilidad Alquiler 2026 · ROI inversión inmobiliaria · WhiteMoon</title>
+<meta name="description" content="Calcula la rentabilidad bruta y neta de una vivienda en alquiler, ROI a 10 años y TIR estimada incluyendo revalorización. Gratis.">
+<meta name="keywords" content="rentabilidad alquiler, roi vivienda alquiler, calculadora inversion inmobiliaria, tir alquiler, rentabilidad bruta neta">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-rentabilidad-alquiler/">
+<meta property="og:title" content="Calculadora Rentabilidad Alquiler 2026 · WhiteMoon">
+<meta property="og:description" content="Rentabilidad bruta, neta y TIR estimada de una vivienda en alquiler con revalorización.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-rentabilidad-alquiler/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Rentabilidad Alquiler","description":"Estima la rentabilidad bruta y neta de una vivienda en alquiler, su ROI a 10 años y la TIR aproximada incluyendo revalorización.","url":"https://whitemoon.es/calculadora-rentabilidad-alquiler/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Rentabilidad Alquiler","item":"https://whitemoon.es/calculadora-rentabilidad-alquiler/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula la rentabilidad bruta del alquiler?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad bruta = (Renta anual / Inversión total) × 100. Renta anual = alquiler mensual × 12. Inversión total = precio + gastos compraventa (10-13%). Una vivienda comprada por 200.000€ con gastos 22.000€ que se alquila a 900€/mes da: (900 × 12) / 222.000 = 4.86% bruto anual. Sirve como métrica de comparación rápida entre inversiones."}},
+{"@type":"Question","name":"¿Y la rentabilidad neta?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad neta = ((Renta anual − Gastos anuales) / Inversión) × 100. Hay que restar: IBI (~0.5% valor catastral/año), comunidad (~600-1.200€/año), mantenimiento (~1% valor/año), seguro hogar (~250€/año), eventual gestoría de alquiler (8-10% renta), periodos sin inquilino (1 mes/año conservador). La rentabilidad neta suele estar 1.5-2.5 pp por debajo de la bruta."}},
+{"@type":"Question","name":"¿Qué se considera buena rentabilidad inmobiliaria en España?","acceptedAnswer":{"@type":"Answer","text":"En 2026, una rentabilidad neta del 4-5% se considera estándar en ciudades grandes con poca volatilidad (Madrid, Barcelona). Por encima del 6% neto suele encontrarse en zonas con mayor riesgo (impago, vacante) o necesitan reforma. Por debajo del 3% neto se considera baja: la inversión depende de la revalorización futura más que del cash-flow."}},
+{"@type":"Question","name":"¿Qué es la TIR en una inversión de alquiler?","acceptedAnswer":{"@type":"Answer","text":"La TIR (Tasa Interna de Retorno) es el tipo de interés que hace que el valor actual neto de todos los flujos sea cero. Para alquiler incluye cobros mensuales + valor final de la vivienda al venderla. Una TIR del 6-8% (con revalorización del 2-3% anual) es típica de inversión inmobiliaria a 10-15 años en España. Permite comparar con otros activos (bolsa, depósitos, fondos)."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:900px){.calc-out{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-rentabilidad-alquiler',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Rentabilidad Alquiler</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 50 L24 34 L36 44 L56 18"/><polyline points="42 18 56 18 56 32"/><path d="M8 56 H56"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">📈 Calculadora gratuita · Inversión 2026</span>
+    <h1 class="sec-h">Calculadora <em>Rentabilidad Alquiler</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Rentabilidad bruta, neta, ROI a 10 años y TIR estimada de una vivienda en alquiler. Incluye revalorización anual.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Precio compra (€)</span><span class="calc-val" id="ra-r-precio">200.000 €</span></div>
+        <input type="number" id="ra-precio" class="calc-input" value="200000" min="20000" max="3000000" step="1000" oninput="calcRA()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Gastos compra (%)</span><span class="calc-val" id="ra-r-gastos">11 %</span></div>
+        <input type="range" id="ra-gastos" class="calc-slider" min="0" max="20" value="11" step="0.5" oninput="calcRA()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Alquiler mensual (€)</span><span class="calc-val" id="ra-r-alq">900 €</span></div>
+        <input type="number" id="ra-alq" class="calc-input" value="900" min="50" max="20000" step="50" oninput="calcRA()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Gastos anuales (€)</span><span class="calc-val" id="ra-r-anuales">2.400 €</span></div>
+        <input type="number" id="ra-anuales" class="calc-input" value="2400" min="0" max="50000" step="100" oninput="calcRA()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Revalorización anual (%)</span><span class="calc-val" id="ra-r-reva">2.0 %</span></div>
+      <input type="range" id="ra-reva" class="calc-slider" min="-2" max="8" value="2" step="0.1" oninput="calcRA()">
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="ra-bruta">4.86 %</div><div class="calc-out-lbl">Rentabilidad bruta</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ra-neta">3.78 %</div><div class="calc-out-lbl">Rentabilidad neta</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ra-roi10">63 %</div><div class="calc-out-lbl">ROI 10 años</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ra-tir">5.4 %</div><div class="calc-out-lbl">TIR estimada</div></div>
+    </div>
+
+    <div class="calc-detail" id="ra-explain">Inversión total = precio + gastos compra. Renta anual = alquiler × 12. La TIR se aproxima sumando rentabilidad neta + revalorización media anual.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. La rentabilidad real depende de la ocupación efectiva (vacancia), morosidad, impuestos sobre la renta del alquiler (IRPF) y revalorización efectiva. Confirma con tu asesor antes de invertir.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-rentabilidad-alquiler','Rentabilidad Alquiler')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-rentabilidad-alquiler">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora rentabilidad alquiler">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Rentabilidad alquiler</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo se calcula la rentabilidad bruta del alquiler?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Rentabilidad bruta = (Renta anual / Inversión total) × 100. Renta anual = alquiler mensual × 12. Inversión total = precio + gastos compraventa (10-13%). Una vivienda de 200.000€ con gastos 22.000€ alquilada a 900€/mes da: (900 × 12) / 222.000 = 4.86% bruto anual.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Y la rentabilidad neta?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Rentabilidad neta resta gastos anuales: IBI, comunidad, mantenimiento (~1% valor/año), seguro hogar, gestoría alquiler (8-10% renta) y periodos sin inquilino. Suele estar 1.5-2.5 pp por debajo de la bruta.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué se considera buena rentabilidad inmobiliaria en España?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">En 2026, rentabilidad neta del 4-5% es estándar en ciudades grandes con poca volatilidad. Por encima del 6% neto suele encontrarse en zonas con mayor riesgo o que necesitan reforma. Por debajo del 3% neto se considera baja.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué es la TIR en una inversión de alquiler?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La TIR es el tipo de interés que hace cero el valor actual neto de todos los flujos. Para alquiler incluye cobros mensuales + valor final de venta. Una TIR del 6-8% (con revalorización 2-3%) es típica a 10-15 años en España. Permite comparar con bolsa, depósitos, fondos.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-alquiler-vs-compra/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">⚖️</div><div style="font-weight:700;color:#fff;margin-top:4px">Alquiler vs Compra</div><div style="font-size:.78rem;color:#9090b0">Si lo decides para vivir tú</div></a>
+      <a href="/calculadora-hipoteca-mensual/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏠</div><div style="font-weight:700;color:#fff;margin-top:4px">Hipoteca Mensual</div><div style="font-size:.78rem;color:#9090b0">Si financias la inversión</div></a>
+      <a href="/calculadora-gastos-compra-vivienda/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📋</div><div style="font-weight:700;color:#fff;margin-top:4px">Gastos Compra</div><div style="font-size:.78rem;color:#9090b0">Para inversión total exacta</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria de inversión o gestor de patrimonios?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que cualifica leads de inversión inmobiliaria 24/7 estimando rentabilidad y derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-rentabilidad-alquiler',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-rentabilidad-alquiler',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtRA(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcRA(){
+  var precio=parseFloat(document.getElementById('ra-precio').value)||0;
+  var gastosPct=parseFloat(document.getElementById('ra-gastos').value)||0;
+  var alq=parseFloat(document.getElementById('ra-alq').value)||0;
+  var anuales=parseFloat(document.getElementById('ra-anuales').value)||0;
+  var reva=parseFloat(document.getElementById('ra-reva').value)||0;
+
+  document.getElementById('ra-r-precio').textContent=fmtRA(precio);
+  document.getElementById('ra-r-gastos').textContent=gastosPct.toFixed(1)+' %';
+  document.getElementById('ra-r-alq').textContent=fmtRA(alq);
+  document.getElementById('ra-r-anuales').textContent=fmtRA(anuales);
+  document.getElementById('ra-r-reva').textContent=reva.toFixed(1)+' %';
+
+  var inversion=precio*(1+gastosPct/100);
+  var rentaAnual=alq*12;
+  var bruta=inversion>0?(rentaAnual/inversion*100):0;
+  var neta=inversion>0?((rentaAnual-anuales)/inversion*100):0;
+
+  // ROI 10 años: rentaNeta×10 + revalorización
+  var rentaNeta10=(rentaAnual-anuales)*10;
+  var valorFinal=precio*Math.pow(1+reva/100,10);
+  var revaTotal=valorFinal-precio;
+  var roi10=inversion>0?(((rentaNeta10+revaTotal)/inversion)*100):0;
+  // TIR aprox = rentabilidad neta + revalorización media anual
+  var tir=neta+reva;
+
+  document.getElementById('ra-bruta').textContent=bruta.toFixed(2)+' %';
+  document.getElementById('ra-neta').textContent=neta.toFixed(2)+' %';
+  document.getElementById('ra-roi10').textContent=Math.round(roi10)+' %';
+  document.getElementById('ra-tir').textContent=tir.toFixed(2)+' %';
+
+  document.getElementById('ra-explain').textContent='Inversión total: '+fmtRA(inversion)+' (precio + '+gastosPct.toFixed(1)+'% gastos). Renta anual neta: '+fmtRA(rentaAnual-anuales)+'. A 10 años, valor estimado vivienda: '+fmtRA(valorFinal)+' ('+(reva>=0?'+':'')+(reva*10).toFixed(0)+'% acumulado).';
+}
+calcRA();
+</script>
+
+</body>
+</html>

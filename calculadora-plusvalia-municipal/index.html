@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Plusvalía Municipal 2026 · IIVTNU reforma 2021 · WhiteMoon</title>
+<meta name="description" content="Calcula la plusvalía municipal (IIVTNU) según la reforma de 2021. Base imponible objetiva, coeficientes municipales y plusvalía a pagar.">
+<meta name="keywords" content="plusvalia municipal, iivtnu, calculadora plusvalia 2026, reforma plusvalia 2021, impuesto venta vivienda">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-plusvalia-municipal/">
+<meta property="og:title" content="Calculadora Plusvalía Municipal 2026 · WhiteMoon">
+<meta property="og:description" content="Plusvalía municipal (IIVTNU): base imponible, tipo máximo y cuota a pagar según la Ley de Haciendas Locales reforma 2021.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-plusvalia-municipal/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Plusvalía Municipal","description":"Calcula el IIVTNU (plusvalía municipal) con coeficientes oficiales de la reforma 2021 sobre la Ley de Haciendas Locales.","url":"https://whitemoon.es/calculadora-plusvalia-municipal/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Plusvalía Municipal","item":"https://whitemoon.es/calculadora-plusvalia-municipal/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué es la plusvalía municipal (IIVTNU)?","acceptedAnswer":{"@type":"Answer","text":"El IIVTNU (Impuesto sobre el Incremento de Valor de los Terrenos de Naturaleza Urbana), conocido como plusvalía municipal, grava el incremento de valor del SUELO urbano cuando se transmite un inmueble (venta, herencia, donación). Lo paga el vendedor o el heredero/donatario. Se gestiona en el ayuntamiento del municipio donde está el inmueble."}},
+{"@type":"Question","name":"¿Cómo cambió la reforma de noviembre 2021?","acceptedAnswer":{"@type":"Answer","text":"Tras la sentencia del TC, el RDL 26/2021 introdujo dos métodos de cálculo: (a) método objetivo con coeficientes anuales del Ayuntamiento y base sobre el valor catastral del suelo; (b) método real, calculando la plusvalía como diferencia entre precio de venta y compra del suelo. El contribuyente elige el menor. Si NO ha habido incremento real de valor, no hay impuesto."}},
+{"@type":"Question","name":"¿Quién paga la plusvalía municipal?","acceptedAnswer":{"@type":"Answer","text":"En compraventa: el vendedor. En herencia: el heredero. En donación: el donatario (quien recibe). Plazos: 30 días hábiles desde la transmisión (en compraventa); 6 meses (en herencia, prorrogables otros 6). Si no se presenta y liquida en plazo, recargo del 5-20% más intereses de demora."}},
+{"@type":"Question","name":"¿Puedo no pagar plusvalía si vendo a pérdidas?","acceptedAnswer":{"@type":"Answer","text":"Sí. La reforma de 2021 confirmó la exención cuando NO hay incremento real de valor del suelo (vender por menos de lo que se compró). Hay que presentar la autoliquidación con resultado cero y aportar las escrituras de compra y venta. Si Hacienda municipal lo discute, puede recurrirse: la sentencia TC 182/2021 protege esta exención."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-plusvalia-municipal',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Plusvalía Municipal</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 54 H54"/><rect x="14" y="20" width="6" height="32"/><rect x="26" y="14" width="6" height="38"/><rect x="38" y="26" width="6" height="26"/><path d="M10 10 H54 V14 H10 Z"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">🏛️ Calculadora gratuita · IIVTNU 2026</span>
+    <h1 class="sec-h">Calculadora <em>Plusvalía Municipal</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">IIVTNU (plusvalía municipal) según la reforma 2021 (RDL 26/2021). Base imponible objetiva, tipo máximo aplicable y plusvalía estimada a pagar.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Valor catastral del suelo (€)</span><span class="calc-val" id="pm-r-suelo">30.000 €</span></div>
+        <input type="number" id="pm-suelo" class="calc-input" value="30000" min="500" max="5000000" step="500" oninput="calcPM()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Años de tenencia</span><span class="calc-val" id="pm-r-anos">10</span></div>
+        <input type="range" id="pm-anos" class="calc-slider" min="1" max="25" value="10" step="1" oninput="calcPM()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <label class="calc-label" for="pm-mun">Tamaño del municipio</label>
+      <select id="pm-mun" class="calc-select" onchange="calcPM()">
+        <option value="grande" data-tipo="30" selected>Grande (&gt;100.000 hab) · tipo 28-30%</option>
+        <option value="mediano" data-tipo="27">Mediano (20.000-100.000 hab) · tipo 26-27%</option>
+        <option value="pequeno" data-tipo="22">Pequeño (&lt;20.000 hab) · tipo 20-22%</option>
+      </select>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-base">4.500 €</div><div class="calc-out-lbl">Base imponible</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-tipo">30 %</div><div class="calc-out-lbl">Tipo máximo aplicable</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-pagar">1.350 €</div><div class="calc-out-lbl">Plusvalía estimada</div></div>
+    </div>
+
+    <div class="calc-detail" id="pm-explain">Método objetivo: base imponible = valor catastral del suelo × coeficiente del periodo. Los coeficientes oficiales (RDL 26/2021) se actualizan anualmente.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo basado en los coeficientes objetivos del RDL 26/2021. El tipo de gravamen final lo fija cada ayuntamiento (límite 30%). Si NO ha habido incremento real de valor, puedes acogerte al método real con cuota cero. Confirma con tu gestoría.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-plusvalia-municipal','Plusvalía Municipal')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-plusvalia-municipal">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora plusvalía municipal">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Plusvalía municipal</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué es la plusvalía municipal (IIVTNU)?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">El IIVTNU grava el incremento de valor del SUELO urbano cuando se transmite un inmueble (venta, herencia, donación). Lo paga el vendedor o el heredero/donatario. Se gestiona en el ayuntamiento del municipio donde está el inmueble.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo cambió la reforma de noviembre 2021?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Tras la sentencia del TC, el RDL 26/2021 introdujo dos métodos: (a) objetivo con coeficientes oficiales sobre valor catastral del suelo; (b) real, calculando la plusvalía como diferencia entre precio de venta y compra del suelo. El contribuyente elige el menor. Si NO ha habido incremento real, no hay impuesto.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Quién paga la plusvalía municipal?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">En compraventa: el vendedor. En herencia: el heredero. En donación: el donatario. Plazos: 30 días hábiles en compraventa; 6 meses en herencia, prorrogables otros 6.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Puedo no pagar plusvalía si vendo a pérdidas?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Sí. La reforma de 2021 confirmó la exención cuando NO hay incremento real de valor del suelo (vender por menos de lo que se compró). Hay que presentar la autoliquidación con resultado cero aportando las escrituras de compra y venta.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-gastos-compra-vivienda/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📋</div><div style="font-weight:700;color:#fff;margin-top:4px">Gastos Compra Vivienda</div><div style="font-size:.78rem;color:#9090b0">ITP/IVA, notaría, registro</div></a>
+      <a href="/calculadora-itp-vivienda/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏠</div><div style="font-weight:700;color:#fff;margin-top:4px">ITP Vivienda</div><div style="font-size:.78rem;color:#9090b0">Por CCAA y bonificaciones</div></a>
+      <a href="/calculadora-rentabilidad-alquiler/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📈</div><div style="font-weight:700;color:#fff;margin-top:4px">Rentabilidad Alquiler</div><div style="font-size:.78rem;color:#9090b0">ROI a 10 años y TIR estimada</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria o gestoría?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que asesora 24/7 sobre plusvalía, ITP, gastos asociados y otros impuestos de la transmisión, derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-plusvalia-municipal',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-plusvalia-municipal',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+// Coeficientes objetivos RDL 26/2021 (actualizados orientativos 2026) por años de tenencia
+var COEFS = {
+  1: 0.14, 2: 0.13, 3: 0.15, 4: 0.17, 5: 0.18,
+  6: 0.19, 7: 0.18, 8: 0.15, 9: 0.12, 10: 0.10,
+  11: 0.09, 12: 0.09, 13: 0.10, 14: 0.13, 15: 0.17,
+  16: 0.23, 17: 0.29, 18: 0.35, 19: 0.41, 20: 0.45
+};
+function fmtPM(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcPM(){
+  var suelo=parseFloat(document.getElementById('pm-suelo').value)||0;
+  var anos=parseInt(document.getElementById('pm-anos').value,10)||1;
+  var munEl=document.getElementById('pm-mun');
+  var opt=munEl.options[munEl.selectedIndex];
+  var tipo=parseFloat(opt.dataset.tipo)||30;
+
+  document.getElementById('pm-r-suelo').textContent=fmtPM(suelo);
+  document.getElementById('pm-r-anos').textContent=anos;
+
+  // Coeficiente: si anos>20 usar 0.45, si anos<1 usar coef del año más cercano
+  var k = anos > 20 ? 0.45 : (COEFS[anos] || 0.10);
+  var base = suelo * k;
+  var cuota = base * tipo / 100;
+
+  document.getElementById('pm-base').textContent=fmtPM(base);
+  document.getElementById('pm-tipo').textContent=tipo+' %';
+  document.getElementById('pm-pagar').textContent=fmtPM(cuota);
+
+  document.getElementById('pm-explain').textContent='Método objetivo (RDL 26/2021): base = '+fmtPM(suelo)+' × '+k.toFixed(2)+' (coef. '+anos+' años) = '+fmtPM(base)+'. Si tu plusvalía real es inferior, puedes aplicar el método real y pagar menos.';
+}
+calcPM();
+</script>
+
+</body>
+</html>
