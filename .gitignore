@@ -1,3 +1,5 @@
 # Claude Code local files
 .claude/settings.local.json
 .claude/launch.json
+.git-commit-msg-tmp.txt
+.pr-body-tmp.md
