@@ -16,6 +16,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- HUB RAÍZ DEL SISTEMA -->
+  <url>
+    <loc>https://whitemoon.es/white-moon-system/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- Servicio principal: Agentes IA -->
   <url>
     <loc>https://whitemoon.es/agentes-ia/</loc>
