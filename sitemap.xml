@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- HUB CENTRAL ABSOLUTO -->
+  <url>
+    <loc>https://whitemoon.es/costes-eficiencia-empresarial-ia/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- Servicio principal: Agentes IA -->
   <url>
     <loc>https://whitemoon.es/agentes-ia/</loc>
