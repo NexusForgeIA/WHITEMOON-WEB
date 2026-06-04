@@ -73,3 +73,6 @@ footer a{color:var(--p2);}
 .breadcrumb{font-size:.75rem;color:var(--muted);padding:12px 0;}
 .breadcrumb a{color:var(--p2);}
 .breadcrumb span{margin:0 6px;}
+
+.skip-link{position:absolute;top:-40px;left:0;background:var(--p);color:#fff;padding:8px;z-index:9999}
+.skip-link:focus{top:0}

@@ -13,3 +13,6 @@
 .navbar-demo-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,77,255,.5);}
 .navbar-demo-cta.visible{display:block;}
 @media(max-width:600px){.navbar-demo-cta{bottom:80px;right:16px;}}
+
+.skip-link{position:absolute;top:-40px;left:0;background:var(--p);color:#fff;padding:8px;z-index:9999}
+.skip-link:focus{top:0}
