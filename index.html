@@ -747,16 +747,25 @@
   <meta name="google-site-verification" content="0f366eade019ef7a">
   <link rel="sitemap" type="application/xml" href="https://whitemoon.es/sitemap.xml">
 
-  <!-- ── ENTERPRISE TYPOGRAPHY (Inter como única fuente; Sora reservado para logo) ── -->
+  <!-- ── ENTERPRISE PALETTE + TYPOGRAPHY (Inter + paleta premium oscura) ── -->
   <style>
+    :root{
+      --bg:#0B0F17;          /* Premium dark, frío azul-grisáceo (era #08080d) */
+      --bg2:#0E1320;
+      --bg3:#141A28;
+      --text:#E8E8F0;        /* Gris frío premium (era #f0f0f5) */
+      --muted:#6B7280;       /* Gris técnico (era #8888a0) */
+      --p:#7c4dff;            /* Único acento principal */
+      --p2:#9d70ff;
+      /* --g preservado solo para estados de éxito (calc-lead-ok, badges Verificado) */
+    }
+    html,body{background:#0B0F17;color:#E8E8F0}
     body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:400;line-height:1.7;font-feature-settings:'cv11','ss01';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
     h1,h2,h3,h4,h5,h6{font-family:'Inter',-apple-system,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.15}
     h1{font-weight:700}
     h2,h3{font-weight:600}
     h4,h5,h6{font-weight:600}
-    /* Labels, badges, eyebrows: peso medio + uppercase + tracking wide */
     .sec-lbl,.sec-label,.sec-lbl-h,.hero-left .eyebrow,.eyebrow,.badge,.tag-label{font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
-    /* Botones y CTAs */
     .btn-prim,.btn-out,.btn-primary,.btn-ghost,.btn-tel,.nav-cta,.nav-link,button{font-family:inherit;font-weight:500}
   </style>
 
@@ -850,19 +859,19 @@
     .hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:48px}
     .hero-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 18px rgba(124,77,255,.4))}
     .hero-brand .name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;line-height:1;letter-spacing:-.01em}
-    .hero-brand .name .light{color:#f0f0f5}.hero-brand .name .acc{color:#7c4dff}
+    .hero-brand .name .light{color:#E8E8F0}.hero-brand .name .acc{color:#7c4dff}
     .hero-cols{display:grid;grid-template-columns:6fr 4fr;gap:64px;align-items:center}
     @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px}}
     .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
     .hero-left .eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
-    .hero-left h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#f0f0f5;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px}
+    .hero-left h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#E8E8F0;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px}
     .hero-left h1 em{font-style:normal;background:linear-gradient(135deg,#9d70ff 0%,#c4b3ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .hero-left .sub{font-size:1.05rem;color:#9090b0;line-height:1.65;max-width:560px;margin:0 0 32px}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
     .hero-ctas .btn-primary,.hero-ctas .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease;cursor:pointer;border:0}
     .hero-ctas .btn-primary{background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;box-shadow:0 14px 36px rgba(124,77,255,.32)}
     .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
-    .hero-ctas .btn-ghost{background:transparent;color:#f0f0f5;border:1px solid rgba(255,255,255,.2)}
+    .hero-ctas .btn-ghost{background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2)}
     .hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
     /* Dashboard mock */
     .hero-dash{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02) inset;position:relative}
@@ -876,7 +885,7 @@
     .dash-cell{padding:20px 22px;position:relative}
     .dash-cell+.dash-cell{border-left:1px solid rgba(124,77,255,.12)}
     .dash-cell .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
-    .dash-cell .num{font-size:1.9rem;font-weight:700;color:#f0f0f5;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
+    .dash-cell .num{font-size:1.9rem;font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
     .dash-cell .sub{font-size:.72rem;color:#9090b0}
     .dash-cell .num .pre{color:#7c4dff}
     .dash-savings{padding:20px 22px;border-bottom:1px solid rgba(124,77,255,.12)}
@@ -891,12 +900,12 @@
     .dash-pipe .progress-fill{height:100%;background:linear-gradient(90deg,#7c4dff,#9d70ff,#5eead4);border-radius:99px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1) .3s}
     .dash-pipe .progress-fill.go{width:94%}
     .dash-pipe .progress-label{display:flex;justify-content:space-between;margin-top:10px;font-size:.7rem;color:#6b7280;letter-spacing:.04em}
-    .dash-pipe .progress-label b{color:#f0f0f5;font-weight:600}
+    .dash-pipe .progress-label b{color:#E8E8F0;font-weight:600}
     /* Stats row */
     .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12)}
     @media(max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
     .hero-stat{display:flex;flex-direction:column;gap:6px}
-    .hero-stat .v{font-size:1.6rem;font-weight:700;color:#f0f0f5;letter-spacing:-.02em;line-height:1}
+    .hero-stat .v{font-size:1.6rem;font-weight:700;color:#E8E8F0;letter-spacing:-.02em;line-height:1}
     .hero-stat .v em{font-style:normal;color:#7c4dff}
     .hero-stat .l{font-size:.78rem;color:#9090b0;letter-spacing:.02em;line-height:1.4}
   </style>
@@ -1018,14 +1027,14 @@
     <div style="background:var(--card,#111118);border:1px solid rgba(124,77,255,.18);border-radius:14px;padding:36px 32px;max-width:780px;margin:0 auto">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:32px">
         <div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:var(--text,#f0f0f5)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:var(--text,#E8E8F0)">
             <span>Leads sin atender al mes</span>
             <span style="color:var(--p2,#9d70ff);font-weight:600" id="h-v-leads">20</span>
           </div>
           <input type="range" id="h-sl-leads" min="5" max="200" value="20" step="5" oninput="calcROIHome()" style="width:100%;height:44px;accent-color:#7c4dff;cursor:pointer">
         </div>
         <div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:var(--text,#f0f0f5)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;color:var(--text,#E8E8F0)">
             <span>Valor medio por cliente</span>
             <span style="color:var(--p2,#9d70ff);font-weight:600" id="h-v-valor">150 €</span>
           </div>
@@ -1034,19 +1043,19 @@
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px">
         <div style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.12);border-radius:10px;padding:20px 16px;text-align:center">
-          <div style="font-size:28px;font-weight:700;color:var(--text,#f0f0f5);letter-spacing:-.03em;margin-bottom:4px" id="h-r-perdida">450 €</div>
-          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#8888a0)">Pérdida mensual</div>
+          <div style="font-size:28px;font-weight:700;color:var(--text,#E8E8F0);letter-spacing:-.03em;margin-bottom:4px" id="h-r-perdida">450 €</div>
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#6B7280)">Pérdida mensual</div>
         </div>
         <div style="background:rgba(124,77,255,.14);border:1px solid rgba(124,77,255,.35);border-radius:10px;padding:20px 16px;text-align:center">
           <div style="font-size:28px;font-weight:700;color:var(--p2,#9d70ff);letter-spacing:-.03em;margin-bottom:4px" id="h-r-roi">+126%</div>
-          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#8888a0)">ROI con Spark</div>
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#6B7280)">ROI con Spark</div>
         </div>
         <div style="background:rgba(0,212,170,.06);border:1px solid rgba(0,212,170,.15);border-radius:10px;padding:20px 16px;text-align:center">
-          <div style="font-size:28px;font-weight:700;color:var(--g,#00d4aa);letter-spacing:-.03em;margin-bottom:4px" id="h-r-anual">3.012 €</div>
-          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#8888a0)">Ahorro anual</div>
+          <div style="font-size:28px;font-weight:700;color:var(--p2,#9d70ff);letter-spacing:-.03em;margin-bottom:4px" id="h-r-anual">3.012 €</div>
+          <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#6B7280)">Ahorro anual</div>
         </div>
       </div>
-      <p style="font-size:11px;color:var(--muted,#8888a0);margin-bottom:16px">Coste Spark: 499€ setup + 199€/mes</p>
+      <p style="font-size:11px;color:var(--muted,#6B7280);margin-bottom:16px">Coste Spark: 499€ setup + 199€/mes</p>
       <button class="btn-prim" onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="font-size:.95rem;padding:13px 32px">Quiero recuperar esos leads →</button>
     </div>
   </div>
@@ -1119,7 +1128,7 @@
   .sector-name{font-size:12px;font-weight:600;color:var(--text2,#9090b0);text-align:center;letter-spacing:.01em}
   .sector-item:hover .sector-name{color:#fff}
   .sectores-cta{text-align:center;margin-top:48px;padding-top:24px}
-  .sectores-cta-text{font-size:.95rem;color:var(--muted,#8888a0);margin-bottom:16px;line-height:1.6}
+  .sectores-cta-text{font-size:.95rem;color:var(--muted,#6B7280);margin-bottom:16px;line-height:1.6}
   .sectores-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.28);letter-spacing:.01em}
   .sectores-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,77,255,.4)}
   @media (max-width:900px){.sectores-grid{grid-template-columns:repeat(4,1fr)}}
@@ -1334,7 +1343,7 @@
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#10a37f,#22c55e);border-radius:18px 18px 0 0"></div>
         <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:rgba(16,163,127,.18);border:1px solid rgba(16,163,127,.55);color:#86efac;font-size:.66rem;font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase">✓ Verificado · ChatGPT</div>
         <div style="font-size:.7rem;color:#7a7a95;line-height:1.5;margin:0">Búsqueda: "agencia IA Majadahonda"</div>
-        <p style="font-size:.92rem;line-height:1.7;color:#f0f0f5;font-style:italic;margin:0">"Especializados en chatbots IA, automatización de procesos y asistentes con tecnología RAG para empresas, clínicas, despachos y negocios locales. También trabajan integración con CRM y captación de leads por email/web."</p>
+        <p style="font-size:.92rem;line-height:1.7;color:#E8E8F0;font-style:italic;margin:0">"Especializados en chatbots IA, automatización de procesos y asistentes con tecnología RAG para empresas, clínicas, despachos y negocios locales. También trabajan integración con CRM y captación de leads por email/web."</p>
         <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:#9090b0;font-weight:600;margin-top:auto">
           <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(16,163,127,.18);color:#10a37f;flex-shrink:0">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z" fill="currentColor"/></svg>
@@ -1348,7 +1357,7 @@
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#3b82f6,#60a5fa);border-radius:18px 18px 0 0"></div>
         <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:rgba(59,130,246,.18);border:1px solid rgba(59,130,246,.55);color:#93c5fd;font-size:.66rem;font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase">✓ Verificado · Grok</div>
         <div style="font-size:.7rem;color:#7a7a95;line-height:1.5;margin:0">Búsqueda: "agencia IA Majadahonda"</div>
-        <p style="font-size:.92rem;line-height:1.7;color:#f0f0f5;margin:0">WhiteMoon es una agencia de inteligencia artificial con sede en Majadahonda (Madrid). Trabaja con pymes en chatbots conversacionales, sistemas RAG sobre documentos propios, automatización de procesos y webs con IA integrada. Planes desde 499€ setup + 199€/mes.</p>
+        <p style="font-size:.92rem;line-height:1.7;color:#E8E8F0;margin:0">WhiteMoon es una agencia de inteligencia artificial con sede en Majadahonda (Madrid). Trabaja con pymes en chatbots conversacionales, sistemas RAG sobre documentos propios, automatización de procesos y webs con IA integrada. Planes desde 499€ setup + 199€/mes.</p>
         <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:#9090b0;font-weight:600;margin-top:auto">
           <span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:rgba(59,130,246,.18);color:#3b82f6;font-weight:800;font-size:1.1rem;line-height:1;flex-shrink:0">𝕏</span>
           <span>— <strong style="color:#93c5fd">Grok</strong> · mayo 2026</span>
@@ -1360,7 +1369,7 @@
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00B4D8,#48cae4);border-radius:18px 18px 0 0"></div>
         <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:#1a1a2e;border:1px solid #00B4D8;color:#00B4D8;font-size:.66rem;font-weight:700;padding:5px 12px;border-radius:50px;letter-spacing:.08em;text-transform:uppercase">✓ Verificado · Kimi</div>
         <div style="font-size:.7rem;color:#7a7a95;line-height:1.5;margin:0">Búsqueda: "agencia ia majadahonda"</div>
-        <p style="font-size:.92rem;line-height:1.7;color:#f0f0f5;font-style:italic;margin:0">"WHITEMOON.es es una agencia de inteligencia artificial ubicada en Majadahonda, Madrid. Se especializa en soluciones de IA para negocios, incluyendo automatización, desarrollo de software inteligente y estrategias digitales avanzadas."</p>
+        <p style="font-size:.92rem;line-height:1.7;color:#E8E8F0;font-style:italic;margin:0">"WHITEMOON.es es una agencia de inteligencia artificial ubicada en Majadahonda, Madrid. Se especializa en soluciones de IA para negocios, incluyendo automatización, desarrollo de software inteligente y estrategias digitales avanzadas."</p>
         <div style="display:flex;align-items:center;gap:10px;font-size:.78rem;color:#9090b0;font-weight:600;margin-top:auto">
           <img src="/assets/logos/kimi.png" alt="Kimi" width="32" height="32" loading="lazy" style="width:32px;height:32px;border-radius:8px;flex-shrink:0;display:block">
           <span>— <strong style="color:#00B4D8">Kimi</strong> · mayo 2026</span>
@@ -1443,19 +1452,19 @@
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px">
   <div style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:24px;text-align:center">
     <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Gratuita</div>
-    <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">0€</div>
-    <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Consulta diagnóstico 30 min<br>Análisis inicial de tu negocio</div>
+    <div style="font-size:28px;font-weight:700;color:#E8E8F0;margin-bottom:4px">0€</div>
+    <div style="font-size:12px;color:#6B7280;margin-bottom:16px">Consulta diagnóstico 30 min<br>Análisis inicial de tu negocio</div>
     <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:8px;padding:10px 20px;font-size:12px;font-weight:500;color:#9d70ff;cursor:pointer;width:100%;transition:background .2s">Quiero mi diagnóstico →</button>
   </div>
   <div style="background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.35);border-radius:12px;padding:24px;text-align:center;position:relative">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#7c4dff;border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;white-space:nowrap">Más completa</div>
     <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Premium</div>
-    <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">899€</div>
-    <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Informe completo + plan de acción<br>Se descuenta si contratas</div>
+    <div style="font-size:28px;font-weight:700;color:#E8E8F0;margin-bottom:4px">899€</div>
+    <div style="font-size:12px;color:#6B7280;margin-bottom:16px">Informe completo + plan de acción<br>Se descuenta si contratas</div>
     <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:#7c4dff;border:none;border-radius:8px;padding:10px 20px;font-size:12px;font-weight:600;color:#fff;cursor:pointer;width:100%;transition:background .2s">Solicitar Auditoría →</button>
   </div>
 </div>
-<p style="font-size:11px;color:#8888a0;text-align:center;margin-top:12px">La auditoría premium se descuenta del proyecto si contratas</p>
+<p style="font-size:11px;color:#6B7280;text-align:center;margin-top:12px">La auditoría premium se descuenta del proyecto si contratas</p>
     </div>
 
   </div>
@@ -1646,9 +1655,9 @@
     #herramientas-gratis .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px;max-width:1080px;margin-left:auto;margin-right:auto}
     @media(max-width:900px){#herramientas-gratis .tools-grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:560px){#herramientas-gratis .tools-grid{grid-template-columns:1fr}}
-    #herramientas-gratis .tool-card{background:var(--card,#111118);border:1px solid rgba(0,212,170,.22);border-top:2px solid var(--g, #00d4aa);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s ease, border-color .2s ease}
+    #herramientas-gratis .tool-card{background:var(--card,#111118);border:1px solid rgba(124,77,255,.22);border-top:2px solid var(--p, #7c4dff);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s ease, border-color .2s ease}
     #herramientas-gratis .tool-card:hover{transform:translateY(-2px);border-color:rgba(0,212,170,.5)}
-    #herramientas-gratis .tool-card .tool-ico{width:32px;height:32px;color:var(--g, #00d4aa);flex-shrink:0}
+    #herramientas-gratis .tool-card .tool-ico{width:32px;height:32px;color:var(--p, #7c4dff);flex-shrink:0}
     #herramientas-gratis .tool-card h3{font-size:1.1rem;font-weight:600;color:#fff;margin:0;letter-spacing:-.01em;line-height:1.3}
     #herramientas-gratis .tool-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
     #herramientas-gratis .tool-card .tool-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:9px;color:#5eead4;text-decoration:none;font-weight:700;font-size:.82rem;transition:background .2s ease}
@@ -1867,7 +1876,7 @@
       <h2 style="font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px">
         Tu empresa necesita <span style="background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));-webkit-background-clip:text;background-clip:text;color:transparent">clientes, no chatbots</span>
       </h2>
-      <p style="font-size:1.05rem;color:var(--muted,#8888a0);line-height:1.65;max-width:620px;margin:0 auto">
+      <p style="font-size:1.05rem;color:var(--muted,#6B7280);line-height:1.65;max-width:620px;margin:0 auto">
         Nuestros Agentes IA cualifican, convencen y cierran.<br>Tú solo recibes clientes listos para comprar.
       </p>
     </div>
@@ -1877,17 +1886,17 @@
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
         <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cualifica</h3>
-        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Detecta el interés real. Filtra curiosos de compradores antes de que lleguen a ti.</p>
+        <p style="font-size:.92rem;color:var(--muted,#6B7280);line-height:1.65;margin:0">Detecta el interés real. Filtra curiosos de compradores antes de que lleguen a ti.</p>
       </div>
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H8l-5 5V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="13" x2="14" y2="13"/></svg></div>
         <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Convence</h3>
-        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Responde objeciones, muestra casos de éxito y precios. 24/7 sin intervención humana.</p>
+        <p style="font-size:.92rem;color:var(--muted,#6B7280);line-height:1.65;margin:0">Responde objeciones, muestra casos de éxito y precios. 24/7 sin intervención humana.</p>
       </div>
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
         <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cierra</h3>
-        <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Agenda citas, envía presupuestos y confirma por WhatsApp automáticamente.</p>
+        <p style="font-size:.92rem;color:var(--muted,#6B7280);line-height:1.65;margin:0">Agenda citas, envía presupuestos y confirma por WhatsApp automáticamente.</p>
       </div>
     </div>
 
@@ -1895,15 +1904,15 @@
     <div style="background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(8,8,13,.6));border:1px solid rgba(124,77,255,.25);border-radius:18px;padding:36px 28px;margin-bottom:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;text-align:center">
       <div>
         <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">24/7</div>
-        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">disponible sin interrupciones</div>
+        <div style="font-size:.76rem;color:var(--muted,#6B7280);text-transform:uppercase;letter-spacing:.08em;font-weight:600">disponible sin interrupciones</div>
       </div>
       <div>
         <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">&lt; 3s</div>
-        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">tiempo de respuesta IA</div>
+        <div style="font-size:.76rem;color:var(--muted,#6B7280);text-transform:uppercase;letter-spacing:.08em;font-weight:600">tiempo de respuesta IA</div>
       </div>
       <div>
         <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">0</div>
-        <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">leads perdidos fuera de horario</div>
+        <div style="font-size:.76rem;color:var(--muted,#6B7280);text-transform:uppercase;letter-spacing:.08em;font-weight:600">leads perdidos fuera de horario</div>
       </div>
     </div>
 
@@ -1914,18 +1923,18 @@
         <table style="width:100%;border-collapse:collapse;font-size:.92rem">
           <thead>
             <tr style="background:rgba(124,77,255,.08)">
-              <th style="text-align:left;padding:14px 20px;color:var(--muted,#8888a0);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Capacidad</th>
-              <th style="padding:14px 16px;color:var(--muted,#8888a0);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Chatbot</th>
+              <th style="text-align:left;padding:14px 20px;color:var(--muted,#6B7280);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Capacidad</th>
+              <th style="padding:14px 16px;color:var(--muted,#6B7280);font-weight:600;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Chatbot</th>
               <th style="padding:14px 16px;color:var(--p2,#9d70ff);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em">Agente IA</th>
             </tr>
           </thead>
           <tbody>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Responde preguntas</td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Cualifica leads</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Maneja objeciones</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Agenda citas</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">Aprende del sector</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
-            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#f0f0f5">ROI medible</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">Responde preguntas</td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">Cualifica leads</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">Maneja objeciones</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">Agenda citas</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">Aprende del sector</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
+            <tr style="border-top:1px solid var(--border-soft,rgba(124,77,255,.12))"><td style="padding:14px 20px;color:#E8E8F0">ROI medible</td><td style="text-align:center;padding:14px 16px;opacity:.5" aria-label="no" style="color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></td><td style="text-align:center;padding:14px 16px" aria-label="sí" style="color:#5eead4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></svg></td></tr>
           </tbody>
         </table>
       </div>
@@ -1943,7 +1952,7 @@
       <button type="button" onclick="var b=document.getElementById('luna-btn');if(b){b.click();}" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.3);letter-spacing:.01em">
         Quiero mi Agente IA →
       </button>
-      <a href="https://wa.me/34643199580?text=Hola%2C+quiero+un+Agente+IA+de+conversi%C3%B3n+para+mi+empresa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:11px;color:var(--text,#f0f0f5);font-size:.95rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.01em" onclick="wmTrack('click_whatsapp',{source:'home',placement:'agentes-ia-cta'})">
+      <a href="https://wa.me/34643199580?text=Hola%2C+quiero+un+Agente+IA+de+conversi%C3%B3n+para+mi+empresa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:11px;color:var(--text,#E8E8F0);font-size:.95rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.01em" onclick="wmTrack('click_whatsapp',{source:'home',placement:'agentes-ia-cta'})">
         Hablar con WhiteMoon
       </a>
     </div>
