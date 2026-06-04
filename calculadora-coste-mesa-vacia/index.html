@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Mesa Vacía 2026 · Restaurantes · WhiteMoon</title>
+<meta name="description" content="Calcula cuánto pierde tu restaurante por mesas vacías cada semana. Ingresos no capturados y mejora con IA de reservas (+15% ocupación).">
+<meta name="keywords" content="calculadora mesa vacia, ocupacion restaurante, ia reservas restaurante, ingresos perdidos restaurante, optimizacion mesas">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-mesa-vacia/">
+<meta property="og:title" content="Calculadora Coste Mesa Vacía 2026 · WhiteMoon">
+<meta property="og:description" content="Mesas vacías + ingresos perdidos + mejora con IA de reservas (+15% ocupación).">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-mesa-vacia/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Mesa Vacía 2026","description":"Calcula las mesas vacías/semana, los ingresos perdidos y la mejora con IA de reservas en tu restaurante.","url":"https://whitemoon.es/calculadora-coste-mesa-vacia/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Mesa Vacía","item":"https://whitemoon.es/calculadora-coste-mesa-vacia/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto cuesta una mesa vacía en un restaurante?","acceptedAnswer":{"@type":"Answer","text":"Depende del ticket medio. Para un restaurante con ticket medio 25€ y mesa de 2-4 comensales (60-90€ por mesa servida), cada mesa que se queda sin ocupar en hora punta supone una pérdida directa de 60-90€ + el coste fijo prorrateado (alquiler, salarios, suministros) que esa mesa debería haber cubierto. La pérdida real efectiva oscila entre 70€ y 130€ por mesa vacía en hora punta."}},
+{"@type":"Question","name":"¿Cuál es la ocupación óptima en hostelería?","acceptedAnswer":{"@type":"Answer","text":"La ocupación óptima diaria en restauración tradicional ronda el 75-85% (con picos de 100% en hora punta). Para casual dining: 65-78%. Para fine dining: 55-70%. Por debajo del 60% en restaurantes tradicionales hay margen claro de optimización con IA de reservas. La media nacional sin sistema IA está en 55-65%."}},
+{"@type":"Question","name":"¿Cómo aumenta la IA la ocupación de un restaurante?","acceptedAnswer":{"@type":"Answer","text":"Tres mecanismos principales: 1) Reservas 24/7 incluyendo madrugadas y festivos (captura el 30-40% del tráfico que llega fuera del horario telefónico), 2) Confirmación automática de reservas para reducir no-shows del 12-18% al 5-8%, 3) Lista de espera dinámica que rellena mesas por cancelaciones. Resultado típico: +15% de ocupación efectiva mensual."}},
+{"@type":"Question","name":"¿Funciona la IA para todo tipo de restaurantes?","acceptedAnswer":{"@type":"Answer","text":"Sí, con ajustes. Restaurantes tradicionales y casual dining: alto impacto (+15-25%). Fine dining y experiencias degustación: alto impacto en gestión de waiting list y upselling (+10-15%). Comida rápida y delivery: el impacto está más en pedidos (Orion IA Calls) que en mesa. Bares y cervecerías sin reservas previas: el beneficio está en pedidos para llevar y eventos privados."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-mesa-vacia',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Mesa Vacía</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="3" y="9" width="18" height="6" rx="1"/><line x1="6" y1="15" x2="6" y2="21"/><line x1="18" y1="15" x2="18" y2="21"/><line x1="3" y1="6" x2="21" y2="6"/></svg></span> Calculadora gratuita · IA de reservas</span>
+    <h1 class="sec-h">Calculadora <em>Coste Mesa Vacía</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las mesas vacías a la semana, los ingresos perdidos al mes y la mejora con IA de reservas (+15% ocupación efectiva en restaurantes tradicionales).</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mv-mesas">Mesas totales del local</label><input type="number" id="mv-mesas" class="calc-input" value="18" min="1" max="500" step="1" oninput="calcMesaVacia()"></div>
+      <div class="calc-row"><label class="calc-label" for="mv-ocupacion">% ocupación media actual</label><input type="number" id="mv-ocupacion" class="calc-input" value="65" min="0" max="100" step="1" oninput="calcMesaVacia()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mv-ticket">Ticket medio por comensal (€)</label><input type="number" id="mv-ticket" class="calc-input" value="25" min="0" step="1" oninput="calcMesaVacia()"></div>
+      <div class="calc-row"><label class="calc-label" for="mv-comensales">Comensales por mesa</label><input type="number" id="mv-comensales" class="calc-input" value="2.6" min="1" max="20" step="0.1" oninput="calcMesaVacia()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mv-servicios">Servicios al día (comidas + cenas)</label><input type="number" id="mv-servicios" class="calc-input" value="2" min="1" max="3" step="1" oninput="calcMesaVacia()"></div>
+      <div class="calc-row"><label class="calc-label" for="mv-dias">Días abiertos a la semana</label><input type="number" id="mv-dias" class="calc-input" value="6" min="1" max="7" step="1" oninput="calcMesaVacia()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mv-mejora">Mejora ocupación con IA (+%)</label>
+        <select id="mv-mejora" class="calc-select" onchange="calcMesaVacia()">
+          <option value="10">+10% conservador</option>
+          <option value="15" selected>+15% (media WhiteMoon)</option>
+          <option value="20">+20% agresivo</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="mv-tipo">Tipo de restaurante</label>
+        <select id="mv-tipo" class="calc-select" onchange="calcMesaVacia()">
+          <option value="tradicional" selected>Tradicional / casual dining</option>
+          <option value="fine">Fine dining</option>
+          <option value="rapida">Comida rápida / informal</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="mv-vacias">0</div><div class="calc-out-lbl">Mesas vacías/semana</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="mv-perdidos">0 €</div><div class="calc-out-lbl">Ingresos perdidos/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="mv-mejora-eur">0 €</div><div class="calc-out-lbl">Recuperable con IA</div></div>
+    </div>
+
+    <div class="calc-detail" id="mv-explain">Mesas vacías/semana = mesas × servicios × días × (1 − ocupación). Ingresos perdidos/mes = mesas vacías × comensales × ticket × 4,33 semanas/mes. La IA recupera el % de mejora sobre los huecos vacíos.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El resultado depende de la elasticidad de tu demanda y la calidad de tu visibilidad online (Google Maps, RRSS, web).</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Mesa Vacía</h2>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta una mesa vacía?</div><div class="faq-a">Para ticket medio 25€ y mesas 2-4 comensales: 60-90€ por mesa vacía en hora punta + coste fijo prorrateado. Pérdida real 70-130€ por mesa vacía.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuál es la ocupación óptima en hostelería?</div><div class="faq-a">Tradicional 75-85% (picos 100% hora punta). Casual 65-78%. Fine dining 55-70%. Media nacional sin IA: 55-65%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo aumenta la IA la ocupación?</div><div class="faq-a">1) Reservas 24/7 (captura 30-40% tráfico fuera de horario), 2) Confirmaciones automáticas (no-shows del 12-18% al 5-8%), 3) Lista de espera dinámica. Resultado: +15% ocupación.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Funciona para todo tipo de restaurantes?</div><div class="faq-a">Tradicional y casual: +15-25%. Fine dining: +10-15% en waiting list y upselling. Rápida/delivery: el foco está en pedidos (Orion Calls). Bares: para llevar y eventos privados.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu restaurante. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-mesa-vacia','Coste Mesa Vacía')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-coste-mesa-vacia"><input type="hidden" name="mensaje" value="Lead desde calculadora Coste Mesa Vacía">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para restaurantes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-rotacion-mesas/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Rotación de Mesas</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Rotaciones óptimas</div></a>
+      <a href="/calculadora-margen-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Margen Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Bruto + neto</div></a>
+      <a href="/calculadora-perdidas-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 2v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V2"/><line x1="6" y1="11" x2="6" y2="22"/><path d="M16 2c-2 0-3 4-3 6s1 3 3 3v11"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Pérdidas Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Reservas + IA</div></a>
+      <a href="/chatbot-ia-restaurantes/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Restaurantes</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 hostelería</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">59+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcMesaVacia(){
+  var mesas = Math.max(0, parseFloat(document.getElementById('mv-mesas').value)||0);
+  var ocup = Math.max(0, Math.min(100, parseFloat(document.getElementById('mv-ocupacion').value)||0)) / 100;
+  var ticket = Math.max(0, parseFloat(document.getElementById('mv-ticket').value)||0);
+  var comensales = Math.max(1, parseFloat(document.getElementById('mv-comensales').value)||1);
+  var servicios = Math.max(1, parseFloat(document.getElementById('mv-servicios').value)||1);
+  var dias = Math.max(1, parseFloat(document.getElementById('mv-dias').value)||1);
+  var mejora = Math.max(0, parseFloat(document.getElementById('mv-mejora').value)||0) / 100;
+  var tipo = document.getElementById('mv-tipo').value;
+
+  // Mesas vacías/semana = mesas × servicios × días × (1 − ocupación)
+  var mesasServidasSemana = mesas * servicios * dias;
+  var vaciasSemana = Math.round(mesasServidasSemana * (1 - ocup));
+  // Ingresos por mesa servida = comensales × ticket
+  var ingresoMesa = comensales * ticket;
+  // Pérdidas/mes = vacías/semana × 4,33 × ingreso mesa
+  var perdidasMes = vaciasSemana * 4.33 * ingresoMesa;
+  // Mejora con IA = mesasServidasSemana × % mejora × 4,33 × ingreso mesa
+  var mejoraEur = mesasServidasSemana * mejora * 4.33 * ingresoMesa;
+  if(mejoraEur > perdidasMes) mejoraEur = perdidasMes; // cap a las pérdidas
+
+  document.getElementById('mv-vacias').textContent = vaciasSemana.toLocaleString('es-ES');
+  document.getElementById('mv-perdidos').textContent = Math.round(perdidasMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('mv-mejora-eur').textContent = Math.round(mejoraEur).toLocaleString('es-ES') + ' €';
+
+  var tipoTxt = { tradicional:'tradicional/casual (óptimo 75-85%)', fine:'fine dining (óptimo 55-70%)', rapida:'comida rápida (óptimo 70-85%)' }[tipo];
+  document.getElementById('mv-explain').textContent =
+    'Mesas servidas/semana = ' + Math.round(mesas).toLocaleString('es-ES') + ' × ' + Math.round(servicios).toLocaleString('es-ES') + ' servicios × ' + Math.round(dias).toLocaleString('es-ES') + ' días = ' + mesasServidasSemana.toLocaleString('es-ES') + '. Vacías = ' + mesasServidasSemana.toLocaleString('es-ES') + ' × ' + ((1-ocup)*100).toFixed(0) + '% = ' + vaciasSemana.toLocaleString('es-ES') + '/semana. Ingreso por mesa = ' + comensales.toFixed(1).replace('.', ',') + ' comensales × ' + Math.round(ticket).toLocaleString('es-ES') + ' € = ' + Math.round(ingresoMesa).toLocaleString('es-ES') + ' €. Pérdidas/mes = ' + Math.round(perdidasMes).toLocaleString('es-ES') + ' € (' + Math.round(perdidasMes*12).toLocaleString('es-ES') + ' €/año). Restaurante ' + tipoTxt + '. Con IA recuperas ' + Math.round(mejoraEur).toLocaleString('es-ES') + ' €/mes (mejora ocupación +' + (mejora*100).toFixed(0) + '%).';
+}
+calcMesaVacia();
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Rotación de Mesas 2026 · Restaurantes · WhiteMoon</title>
+<meta name="description" content="Calculadora rotación de mesas para restaurantes: rotaciones actuales por mesa, rotaciones óptimas e ingresos adicionales posibles con IA.">
+<meta name="keywords" content="rotacion mesas restaurante, calculo rotaciones, optimizar mesas, tiempo medio mesa, gestion ia restaurante">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-rotacion-mesas/">
+<meta property="og:title" content="Calculadora Rotación de Mesas 2026 · WhiteMoon">
+<meta property="og:description" content="Rotaciones actuales vs óptimas + ingresos adicionales con IA.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-rotacion-mesas/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Rotación de Mesas 2026","description":"Calcula las rotaciones actuales por mesa, las óptimas y los ingresos adicionales posibles optimizando con IA.","url":"https://whitemoon.es/calculadora-rotacion-mesas/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Rotación de Mesas","item":"https://whitemoon.es/calculadora-rotacion-mesas/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué es la rotación de mesas?","acceptedAnswer":{"@type":"Answer","text":"La rotación de mesas mide cuántas veces se ocupa cada mesa con clientes diferentes durante un servicio. Se calcula dividiendo las horas del servicio entre el tiempo medio que un grupo de comensales permanece sentado. Por ejemplo, si un servicio dura 4 horas y los clientes ocupan la mesa 1h 20min de media, la rotación es 3x. Es uno de los KPIs principales de rentabilidad operativa en hostelería."}},
+{"@type":"Question","name":"¿Cuál es la rotación óptima en restauración?","acceptedAnswer":{"@type":"Answer","text":"Depende del segmento. Casual dining: 2,5-3,5 rotaciones por servicio. Restaurantes tradicionales: 1,8-2,8. Fine dining: 1,2-1,8 (el ticket alto compensa la baja rotación). Comida rápida: 4-6 rotaciones. La rotación óptima no es la más alta posible: hay que equilibrar facturación con experiencia del cliente para fidelizarlo."}},
+{"@type":"Question","name":"¿Cómo optimiza la IA la rotación de mesas?","acceptedAnswer":{"@type":"Answer","text":"1) Reservas escalonadas que reducen tiempos muertos entre ocupaciones, 2) Predicción de duración por tipo de grupo y franja horaria, 3) Confirmación automática para reducir no-shows que matan la rotación, 4) Lista de espera dinámica para rellenar mesas si una cancela. Resultado típico: +0,3 a +0,8 rotaciones por servicio según el segmento."}},
+{"@type":"Question","name":"¿Cómo afecta el tiempo medio a la rentabilidad?","acceptedAnswer":{"@type":"Answer","text":"Reducir 15 minutos el tiempo medio sin perder experiencia del cliente puede aumentar la rotación un 15-25% en restaurantes con servicio de 60-90 minutos. En un restaurante con 18 mesas, ticket medio 75€ por mesa y 2 servicios al día, eso significa 4-7 mesas adicionales/día = entre 300€ y 525€/día = 9.000€-15.750€/mes."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-rotacion-mesas',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Rotación de Mesas</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg></span> Calculadora gratuita · KPI hostelería</span>
+    <h1 class="sec-h">Calculadora <em>Rotación de Mesas</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Compara tu rotación actual con la óptima del segmento y cuantifica los ingresos adicionales con optimización IA (reservas escalonadas + predicción de duración).</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="rm-mesas">Mesas disponibles</label><input type="number" id="rm-mesas" class="calc-input" value="18" min="1" max="500" step="1" oninput="calcRotacion()"></div>
+      <div class="calc-row"><label class="calc-label" for="rm-tiempo">Tiempo medio ocupación (min)</label><input type="number" id="rm-tiempo" class="calc-input" value="85" min="15" max="240" step="5" oninput="calcRotacion()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="rm-horas">Horas de servicio al día</label><input type="number" id="rm-horas" class="calc-input" value="6" min="1" max="16" step="0.5" oninput="calcRotacion()"></div>
+      <div class="calc-row"><label class="calc-label" for="rm-dias">Días abiertos a la semana</label><input type="number" id="rm-dias" class="calc-input" value="6" min="1" max="7" step="1" oninput="calcRotacion()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="rm-ticket">Ticket medio por mesa (€)</label><input type="number" id="rm-ticket" class="calc-input" value="75" min="0" step="5" oninput="calcRotacion()"></div>
+      <div class="calc-row"><label class="calc-label" for="rm-segmento">Segmento</label>
+        <select id="rm-segmento" class="calc-select" onchange="calcRotacion()">
+          <option value="casual" selected>Casual dining (óptimo 2,5-3,5x)</option>
+          <option value="tradicional">Tradicional (1,8-2,8x)</option>
+          <option value="fine">Fine dining (1,2-1,8x)</option>
+          <option value="rapida">Comida rápida (4-6x)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="rm-actual">0 x</div><div class="calc-out-lbl">Rotaciones actuales</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="rm-optima">0 x</div><div class="calc-out-lbl">Rotación óptima sector</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="rm-adicional">0 €</div><div class="calc-out-lbl">Ingresos adicionales/mes</div></div>
+    </div>
+
+    <div class="calc-detail" id="rm-explain">Rotación actual = horas servicio × 60 / tiempo medio. Rotación óptima = media del rango sector. Ingresos adicionales = (rotación óptima − actual) × mesas × ticket × días × 4,33 semanas/mes.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. La rotación óptima depende del concepto y la experiencia del cliente. No siempre conviene maximizarla a costa de la fidelización.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Rotación de Mesas</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué es la rotación de mesas?</div><div class="faq-a">KPI que mide cuántas veces se ocupa cada mesa con clientes diferentes durante un servicio. Rotación = horas servicio / tiempo medio mesa. Servicio 4h + mesa 1h 20min = 3x rotación.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuál es la rotación óptima?</div><div class="faq-a">Casual 2,5-3,5x. Tradicional 1,8-2,8x. Fine dining 1,2-1,8x. Comida rápida 4-6x. No la máxima posible: hay que equilibrar facturación con experiencia.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo optimiza la IA la rotación?</div><div class="faq-a">1) Reservas escalonadas (menos tiempos muertos), 2) Predicción duración por tipo grupo, 3) Confirmaciones automáticas (no-shows matan rotación), 4) Lista de espera dinámica. +0,3 a +0,8 rotaciones por servicio.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto impacta reducir 15 min el tiempo medio?</div><div class="faq-a">+15-25% rotación en servicios de 60-90 min. Restaurante 18 mesas × ticket 75€ × 2 servicios = 4-7 mesas adicionales/día = 300-525€/día = 9.000-15.750€/mes.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu restaurante. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-rotacion-mesas','Rotación de Mesas')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-rotacion-mesas"><input type="hidden" name="mensaje" value="Lead desde calculadora Rotación de Mesas">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para restaurantes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-coste-mesa-vacia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="3" y="9" width="18" height="6" rx="1"/><line x1="6" y1="15" x2="6" y2="21"/><line x1="18" y1="15" x2="18" y2="21"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Mesa Vacía</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Ocupación + IA</div></a>
+      <a href="/calculadora-margen-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Margen Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Bruto + neto</div></a>
+      <a href="/calculadora-coste-personal-hosteleria/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="10" r="2.4"/><path d="M14 20c0-2.5 1.7-4.5 4-4.5s4 1.4 4 4"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Personal Hostelería</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Plantilla por cubierto</div></a>
+      <a href="/chatbot-ia-restaurantes/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Restaurantes</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 hostelería</div></a>
+      <a href="/calculadora-perdidas-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 2v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V2"/><line x1="6" y1="11" x2="6" y2="22"/><path d="M16 2c-2 0-3 4-3 6s1 3 3 3v11"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Pérdidas Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Reservas + IA</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">59+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+// Rotaciones óptimas por segmento (media del rango)
+var RM_OPTIMA = {
+  casual: 3.0,
+  tradicional: 2.3,
+  fine: 1.5,
+  rapida: 5.0
+};
+
+function calcRotacion(){
+  var mesas = Math.max(1, parseFloat(document.getElementById('rm-mesas').value)||1);
+  var tiempo = Math.max(15, parseFloat(document.getElementById('rm-tiempo').value)||60);
+  var horas = Math.max(1, parseFloat(document.getElementById('rm-horas').value)||1);
+  var dias = Math.max(1, parseFloat(document.getElementById('rm-dias').value)||1);
+  var ticket = Math.max(0, parseFloat(document.getElementById('rm-ticket').value)||0);
+  var segmento = document.getElementById('rm-segmento').value;
+
+  // Rotación actual = horas servicio × 60 / tiempo medio
+  var rotacionActual = (horas * 60) / tiempo;
+  var rotacionOptima = RM_OPTIMA[segmento] || 2.5;
+  var gap = Math.max(0, rotacionOptima - rotacionActual);
+  // Ingresos adicionales = gap × mesas × ticket × días × 4,33 semanas/mes
+  var ingresosAdicionales = gap * mesas * ticket * dias * 4.33;
+
+  document.getElementById('rm-actual').textContent = rotacionActual.toFixed(2).replace('.', ',') + ' x';
+  document.getElementById('rm-optima').textContent = rotacionOptima.toFixed(2).replace('.', ',') + ' x';
+  document.getElementById('rm-adicional').textContent = Math.round(ingresosAdicionales).toLocaleString('es-ES') + ' €';
+
+  var segTxt = { casual:'casual dining', tradicional:'tradicional', fine:'fine dining', rapida:'comida rápida' }[segmento];
+  var diagnosis;
+  if(rotacionActual >= rotacionOptima){
+    diagnosis = ' Ya estás por encima de la rotación media del segmento. La IA puede ayudar a mantener el nivel sin perder experiencia del cliente.';
+  } else {
+    var deltaPct = ((rotacionOptima - rotacionActual) / rotacionActual * 100).toFixed(0);
+    diagnosis = ' Tienes margen de mejora del ' + deltaPct + '% sobre tu rotación actual hacia la media del segmento.';
+  }
+
+  document.getElementById('rm-explain').textContent =
+    'Rotación actual = ' + horas.toString().replace('.', ',') + ' h × 60 / ' + Math.round(tiempo).toLocaleString('es-ES') + ' min = ' + rotacionActual.toFixed(2).replace('.', ',') + 'x por servicio. Rotación media ' + segTxt + ': ' + rotacionOptima.toFixed(2).replace('.', ',') + 'x. Gap = ' + gap.toFixed(2).replace('.', ',') + 'x. Ingresos adicionales/mes = ' + gap.toFixed(2).replace('.', ',') + ' × ' + Math.round(mesas).toLocaleString('es-ES') + ' mesas × ' + Math.round(ticket).toLocaleString('es-ES') + ' € × ' + Math.round(dias).toLocaleString('es-ES') + ' días × 4,33 semanas = ' + Math.round(ingresosAdicionales).toLocaleString('es-ES') + ' € (' + Math.round(ingresosAdicionales*12).toLocaleString('es-ES') + ' €/año).' + diagnosis;
+}
+calcRotacion();
+</script>
+</body>
+</html>
