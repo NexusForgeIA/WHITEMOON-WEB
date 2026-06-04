@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Seguro Coche Estimado 2026 · Terceros, ampliado, todo riesgo · WhiteMoon</title>
+<meta name="description" content="Calculadora seguro coche 2026: estima la horquilla de precio (terceros, terceros ampliado, todo riesgo) según edad, antigüedad carnet, tipo vehículo, uso y siniestros.">
+<meta name="keywords" content="calculadora seguro coche, precio seguro coche 2026, terceros ampliado todo riesgo, simulador seguro auto">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-seguro-coche-estimado/">
+<meta property="og:title" content="Calculadora Seguro Coche Estimado · WhiteMoon">
+<meta property="og:description" content="Horquilla de precio del seguro según tu perfil de conductor.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-seguro-coche-estimado/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Seguro Coche Estimado 2026 · WhiteMoon","description":"Horquilla de precio orientativa del seguro de coche según edad del conductor, antigüedad del carnet, tipo de vehículo, uso y siniestralidad.","url":"https://whitemoon.es/calculadora-seguro-coche-estimado/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Seguro Coche Estimado","item":"https://whitemoon.es/calculadora-seguro-coche-estimado/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Diferencia entre seguro a terceros, ampliado y todo riesgo?","acceptedAnswer":{"@type":"Answer","text":"Terceros: cubre solo daños a otros vehículos/personas en caso de accidente con culpa. Es el mínimo obligatorio por ley. Terceros ampliado: añade lunas, robo, incendio y a veces asistencia en carretera. Todo riesgo: cubre además daños a tu propio vehículo, incluso con culpa. Suele tener franquicia (importe que pagas en cada siniestro). Precio orientativo anual 2026: terceros 300-500€, ampliado 500-800€, todo riesgo 800-1.500€ según perfil."}},
+{"@type":"Question","name":"¿Qué factores influyen más en el precio del seguro?","acceptedAnswer":{"@type":"Answer","text":"Los tres principales: (1) edad y antigüedad del carnet (menores de 25 años pagan +50%, conductores con <2 años de carnet +30%); (2) siniestralidad reciente (cada parte con culpa en los últimos 3 años puede subir un 15-30% por año); (3) uso del vehículo (particular vs profesional, VTC, taxi). También cuentan: marca/modelo, código postal de aparcamiento nocturno, garaje (sí/no) y kilometraje anual declarado."}},
+{"@type":"Question","name":"¿Cómo bajar el precio del seguro?","acceptedAnswer":{"@type":"Answer","text":"Cinco palancas reales: (1) aumentar la franquicia en todo riesgo (cada 300€ extra de franquicia baja 50-80€/año la prima); (2) limitar conductor (no incluir conductores adicionales si no usan el coche); (3) bajar coberturas accesorias (asistencia en carretera básica, sin coche de sustitución); (4) pagar anual en vez de mensual (típico ahorro 3-7%); (5) comparar al menos 4-5 compañías cada renovación (las primas suben automáticamente cada año si no negocias)."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-row{margin-bottom:18px}
+.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.coverage-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0}@media(max-width:700px){.coverage-grid{grid-template-columns:1fr}}
+.cov-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:20px 16px;text-align:center}
+.cov-card.recommended{background:rgba(0,212,170,.08);border-color:rgba(0,212,170,.4)}
+.cov-name{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0;margin-bottom:6px}
+.cov-card.recommended .cov-name{color:#5eead4}
+.cov-range{font-size:1.4rem;font-weight:800;color:#9d70ff;letter-spacing:-.02em;line-height:1.1;margin-bottom:6px}
+.cov-card.recommended .cov-range{color:#5eead4}
+.cov-mid{font-size:.78rem;color:#8888a0;margin-bottom:4px}
+.cov-detail{font-size:.72rem;color:#7a7a95;line-height:1.4;margin-top:8px}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.related-card{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;color:inherit;text-decoration:none;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.related-card:hover{background:rgba(124,77,255,.12)}
+.related-ico{font-size:1.4rem;line-height:1}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-seguro-coche-estimado',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Contactar →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px">
+      <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Seguro Coche Estimado
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hdr c">
+        <span class="sec-lbl" style="color:#00d4aa">🛡️ Calculadora gratuita · Vehículos 2026</span>
+        <h1 class="sec-h">Calculadora <em>Seguro Coche Estimado</em></h1>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Horquilla orientativa del precio anual del seguro según tu perfil de conductor: edad, antigüedad del carnet, tipo de vehículo, uso y siniestralidad reciente.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="sg-edad">Edad del conductor</label>
+            <select id="sg-edad" class="calc-select" onchange="calcSG()">
+              <option value="-25" data-factor="1.50">Menor de 25 años (+50%)</option>
+              <option value="25-30" data-factor="1.20">25-30 años (+20%)</option>
+              <option value="30-50" data-factor="1.00" selected>30-50 años (base)</option>
+              <option value="50-65" data-factor="0.90">50-65 años (-10%)</option>
+              <option value="+65" data-factor="1.15">Mayor de 65 años (+15%)</option>
+            </select>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="sg-carnet">Antigüedad del carnet</label>
+            <select id="sg-carnet" class="calc-select" onchange="calcSG()">
+              <option value="-2" data-factor="1.30">Menos de 2 años (+30%)</option>
+              <option value="2-5" data-factor="1.00" selected>2-5 años (base)</option>
+              <option value="5-10" data-factor="0.95">5-10 años (-5%)</option>
+              <option value="+10" data-factor="0.85">Más de 10 años (-15%)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="sg-vehiculo">Tipo de vehículo</label>
+            <select id="sg-vehiculo" class="calc-select" onchange="calcSG()">
+              <option value="turismo" data-factor="1.00" selected>Turismo</option>
+              <option value="moto" data-factor="0.70">Motocicleta</option>
+              <option value="furgoneta" data-factor="1.15">Furgoneta / mixta</option>
+              <option value="suv" data-factor="1.20">SUV grande / 4×4</option>
+            </select>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="sg-uso">Uso del vehículo</label>
+            <select id="sg-uso" class="calc-select" onchange="calcSG()">
+              <option value="particular" data-factor="1.00" selected>Particular (uso personal)</option>
+              <option value="trabajo" data-factor="1.15">Desplazamiento al trabajo</option>
+              <option value="profesional" data-factor="1.40">Profesional (comercial, VTC ocasional)</option>
+              <option value="intensivo" data-factor="1.80">Intensivo (taxi, mensajería, alquiler)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-row">
+          <label class="calc-label" for="sg-siniestros">Siniestros con culpa últimos 3 años</label>
+          <select id="sg-siniestros" class="calc-select" onchange="calcSG()">
+            <option value="0" data-factor="0.90" selected>0 siniestros (-10%)</option>
+            <option value="1" data-factor="1.00">1 siniestro (base)</option>
+            <option value="2" data-factor="1.25">2 siniestros (+25%)</option>
+            <option value="3" data-factor="1.60">3 o más (+60%)</option>
+          </select>
+        </div>
+
+        <div class="coverage-grid">
+          <div class="cov-card">
+            <div class="cov-name">Terceros</div>
+            <div class="cov-range" id="sg-3-range">280 - 420 €</div>
+            <div class="cov-mid">Media <span id="sg-3-mid">350 €</span>/año</div>
+            <div class="cov-detail">Daños a terceros. Mínimo obligatorio por ley.</div>
+          </div>
+          <div class="cov-card recommended">
+            <div class="cov-name">Terceros ampliado ⭐</div>
+            <div class="cov-range" id="sg-3a-range">440 - 660 €</div>
+            <div class="cov-mid">Media <span id="sg-3a-mid">550 €</span>/año</div>
+            <div class="cov-detail">+ lunas + robo + incendio + asistencia. La opción más popular.</div>
+          </div>
+          <div class="cov-card">
+            <div class="cov-name">Todo riesgo</div>
+            <div class="cov-range" id="sg-tr-range">760 - 1.140 €</div>
+            <div class="cov-mid">Media <span id="sg-tr-mid">950 €</span>/año</div>
+            <div class="cov-detail">+ daños propios incluso con culpa. Con franquicia opcional.</div>
+          </div>
+        </div>
+
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="sg-detail">Perfil: conductor 30-50 años · carnet 2-5 años · turismo · uso particular · 0 siniestros. Factor multiplicador combinado: 0,90. Aplica sobre precios base (350/550/950€) con horquilla ±20%.</div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Precios orientativos basados en medias del mercado español 2026 (Mutua, Línea Directa, Mapfre, AXA, Allianz). El precio real depende también de modelo concreto, código postal, garaje y descuentos por permanencia. Compara con al menos 4-5 compañías antes de contratar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center">
+      <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+      <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-seguro-coche-estimado','Seguro Coche Estimado')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-seguro-coche-estimado">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora Seguro Coche Estimado">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px">FAQ Seguro Coche</h2>
+        <div class="faq-item"><div class="faq-q">¿Diferencia entre terceros, ampliado y todo riesgo?</div><div class="faq-a">Terceros: cubre solo daños a otros vehículos/personas (mínimo obligatorio). Terceros ampliado: añade lunas, robo, incendio y a veces asistencia. Todo riesgo: cubre también daños a tu propio vehículo, incluso con culpa. Suele tener franquicia. Precios orientativos 2026: terceros 300-500€, ampliado 500-800€, todo riesgo 800-1.500€ según perfil.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Qué factores influyen más en el precio?</div><div class="faq-a">Los tres principales: (1) edad y antigüedad del carnet (menores 25: +50%, &lt;2 años carnet: +30%); (2) siniestralidad reciente (cada parte con culpa últimos 3 años: +15-30%); (3) uso del vehículo (particular vs profesional, VTC, taxi). También: marca/modelo, código postal, garaje y km anual declarado.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Cómo bajar el precio del seguro?</div><div class="faq-a">Cinco palancas: (1) aumentar franquicia en todo riesgo (cada 300€ extra baja 50-80€/año); (2) limitar conductor; (3) bajar coberturas accesorias; (4) pagar anual en vez de mensual (ahorro 3-7%); (5) comparar al menos 4-5 compañías cada renovación.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div style="max-width:880px;margin:0 auto">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 8px">Calculadoras del cluster Vehículos y Gestoría</h2>
+        <p style="color:var(--muted);margin:0 0 20px">Otras herramientas para compra/venta de vehículos y servicios relacionados.</p>
+        <div class="related-grid">
+          <a class="related-card" href="/calculadora-itp/"><div class="related-ico">🚗</div><strong style="color:#fff">Calculadora ITP Vehículos</strong><span style="font-size:.84rem;color:#9090b0">17 CCAA · Anexo IV BOE.</span></a>
+          <a class="related-card" href="/calculadora-cambio-titularidad-vehiculo/"><div class="related-ico">📋</div><strong style="color:#fff">Cambio Titularidad</strong><span style="font-size:.84rem;color:#9090b0">ITP + DGT + gestoría.</span></a>
+          <a class="related-card" href="/calculadora-gastos-compra-coche-segunda-mano/"><div class="related-ico">💰</div><strong style="color:#fff">Gastos Compra Coche</strong><span style="font-size:.84rem;color:#9090b0">Total real de la compra.</span></a>
+          <a class="related-card" href="/calculadora-depreciacion-vehiculo/"><div class="related-ico">📉</div><strong style="color:#fff">Depreciación Vehículo</strong><span style="font-size:.84rem;color:#9090b0">Valor actual y pérdida anual.</span></a>
+          <a class="related-card" href="/chatbot-ia-talleres-mecanicos/"><div class="related-ico">🔧</div><strong style="color:#fff">Chatbot IA Talleres</strong><span style="font-size:.84rem;color:#9090b0">Presupuestos + ITV + recogida.</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+var BASE_PRECIO = {terceros: 350, ampliado: 550, todoRiesgo: 950};
+
+function getFactor(id){
+  var sel = document.getElementById(id);
+  return parseFloat(sel.options[sel.selectedIndex].getAttribute('data-factor'));
+}
+
+function calcSG(){
+  var fEdad = getFactor('sg-edad');
+  var fCarnet = getFactor('sg-carnet');
+  var fVehiculo = getFactor('sg-vehiculo');
+  var fUso = getFactor('sg-uso');
+  var fSiniestros = getFactor('sg-siniestros');
+
+  var combinado = fEdad * fCarnet * fVehiculo * fUso * fSiniestros;
+
+  function rango(base){
+    var mid = base * combinado;
+    var min = mid * 0.80;
+    var max = mid * 1.20;
+    return {min: Math.round(min), max: Math.round(max), mid: Math.round(mid)};
+  }
+
+  var t = rango(BASE_PRECIO.terceros);
+  var a = rango(BASE_PRECIO.ampliado);
+  var r = rango(BASE_PRECIO.todoRiesgo);
+
+  document.getElementById('sg-3-range').textContent = t.min.toLocaleString('es-ES') + ' - ' + t.max.toLocaleString('es-ES') + ' €';
+  document.getElementById('sg-3-mid').textContent = t.mid.toLocaleString('es-ES') + ' €';
+  document.getElementById('sg-3a-range').textContent = a.min.toLocaleString('es-ES') + ' - ' + a.max.toLocaleString('es-ES') + ' €';
+  document.getElementById('sg-3a-mid').textContent = a.mid.toLocaleString('es-ES') + ' €';
+  document.getElementById('sg-tr-range').textContent = r.min.toLocaleString('es-ES') + ' - ' + r.max.toLocaleString('es-ES') + ' €';
+  document.getElementById('sg-tr-mid').textContent = r.mid.toLocaleString('es-ES') + ' €';
+
+  var edadText = document.getElementById('sg-edad').options[document.getElementById('sg-edad').selectedIndex].textContent.split(' (')[0];
+  var carnetText = document.getElementById('sg-carnet').options[document.getElementById('sg-carnet').selectedIndex].textContent.split(' (')[0];
+  var vehText = document.getElementById('sg-vehiculo').options[document.getElementById('sg-vehiculo').selectedIndex].textContent.split(' (')[0];
+  var usoText = document.getElementById('sg-uso').options[document.getElementById('sg-uso').selectedIndex].textContent.split(' (')[0];
+  var sinText = document.getElementById('sg-siniestros').options[document.getElementById('sg-siniestros').selectedIndex].textContent.split(' (')[0];
+
+  document.getElementById('sg-detail').textContent = 'Perfil: ' + edadText.toLowerCase() + ' · ' +
+    carnetText.toLowerCase() + ' carnet · ' + vehText.toLowerCase() + ' · uso ' + usoText.toLowerCase() +
+    ' · ' + sinText.toLowerCase() + '. Factor multiplicador combinado: ' +
+    combinado.toFixed(2).replace('.', ',') + '. Aplica sobre precios base (350/550/950€) con horquilla ±20%.';
+}
+calcSG();
+</script>
+</body>
+</html>
