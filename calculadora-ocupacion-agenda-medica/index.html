@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Ocupación Agenda Médica 2026 · Huecos vacíos + IA · WhiteMoon</title>
+<meta name="description" content="Calculadora ocupación agenda médica: huecos vacíos/mes, ingresos no capturados y mejora con optimización IA (+25%). Para clínicas y consultas.">
+<meta name="keywords" content="calculadora ocupacion agenda medica, huecos vacios clinica, optimizacion citas ia, agenda clinica dental, productividad consulta">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-ocupacion-agenda-medica/">
+<meta property="og:title" content="Calculadora Ocupación Agenda Médica 2026 · WhiteMoon">
+<meta property="og:description" content="Cuántos huecos vacíos tiene tu agenda y cuánto recuperas con IA.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-ocupacion-agenda-medica/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Ocupación Agenda Médica 2026","description":"Calcula huecos vacíos en tu agenda médica, ingresos no capturados y mejora con IA de optimización (+25% ocupación).","url":"https://whitemoon.es/calculadora-ocupacion-agenda-medica/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Ocupación Agenda Médica","item":"https://whitemoon.es/calculadora-ocupacion-agenda-medica/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuál es la ocupación óptima en una clínica?","acceptedAnswer":{"@type":"Answer","text":"La ocupación óptima en clínicas dentales y consultas privadas está entre el 85% y el 92%. Por debajo del 75% hay margen claro de optimización con sistemas IA. Por encima del 95% el sistema pierde flexibilidad y aumentan las quejas por demoras. El sweet spot es 85-90% con un 10-15% de holgura para urgencias y reprogramaciones."}},
+{"@type":"Question","name":"¿Cómo aumenta la IA la ocupación de la agenda?","acceptedAnswer":{"@type":"Answer","text":"Tres mecanismos clave: 1) Lista de espera dinámica que cubre huecos por cancelaciones de última hora notificando a pacientes que querían cita antes, 2) Optimización del mix de tipos de cita para reducir tiempos muertos entre tratamientos, 3) Recordatorios automáticos que reducen no-shows del 18-22% al 7-10%. Resultado típico: +25% de ocupación efectiva."}},
+{"@type":"Question","name":"¿Cuánto se factura por hueco recuperado?","acceptedAnswer":{"@type":"Answer","text":"Depende del ticket medio. Para clínica dental: 60-90€ por hueco (limpiezas, revisiones). Para clínicas estéticas: 80-150€. Para consultas médicas privadas: 50-80€. Para tratamientos especializados (ortodoncia, implantes): 200-500€. Recuperar 10 huecos al mes en una clínica con ticket medio 80€ supone 800€/mes adicionales."}},
+{"@type":"Question","name":"¿Qué pasa con los huecos generados por cancelaciones tardías?","acceptedAnswer":{"@type":"Answer","text":"Sin sistema automatizado se pierden casi siempre (más del 80% no se reocupan). Con Orion IA, el sistema detecta la cancelación, identifica pacientes en lista de espera o con tratamientos pendientes, les notifica por WhatsApp con la disponibilidad y permite confirmación en 1 click. Tasa de reocupación: 50-70% incluso con menos de 24h de antelación."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-ocupacion-agenda-medica',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Ocupación Agenda Médica</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><rect x="7" y="13" width="3" height="3"/><rect x="14" y="13" width="3" height="3"/></svg></span> Calculadora gratuita · Optimización IA agenda</span>
+    <h1 class="sec-h">Calculadora <em>Ocupación Agenda Médica</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica los huecos vacíos en tu agenda médica, los ingresos no capturados y la mejora con optimización IA (+25% ocupación efectiva).</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="oa-citas">Citas disponibles al día</label><input type="number" id="oa-citas" class="calc-input" value="24" min="1" max="200" step="1" oninput="calcOcupacion()"></div>
+      <div class="calc-row"><label class="calc-label" for="oa-ocupacion">% ocupación actual</label><input type="number" id="oa-ocupacion" class="calc-input" value="72" min="0" max="100" step="1" oninput="calcOcupacion()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="oa-precio">Precio medio consulta (€)</label><input type="number" id="oa-precio" class="calc-input" value="65" min="0" step="5" oninput="calcOcupacion()"></div>
+      <div class="calc-row"><label class="calc-label" for="oa-dias">Días laborables al mes</label><input type="number" id="oa-dias" class="calc-input" value="22" min="1" max="31" step="1" oninput="calcOcupacion()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="oa-objetivo">% ocupación objetivo con IA</label>
+        <select id="oa-objetivo" class="calc-select" onchange="calcOcupacion()">
+          <option value="85">85% conservador</option>
+          <option value="90" selected>90% (sweet spot)</option>
+          <option value="92">92% agresivo</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="oa-mejora">Mejora estimada con IA (+%)</label>
+        <select id="oa-mejora" class="calc-select" onchange="calcOcupacion()">
+          <option value="15">+15% conservador</option>
+          <option value="25" selected>+25% (media WhiteMoon)</option>
+          <option value="35">+35% agresivo</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="oa-huecos">0</div><div class="calc-out-lbl">Huecos vacíos/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="oa-no-capturado">0 €</div><div class="calc-out-lbl">No capturado/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="oa-mejora-eur">0 €</div><div class="calc-out-lbl">Recuperable con IA</div></div>
+    </div>
+
+    <div class="calc-detail" id="oa-explain">Huecos vacíos = citas/día × (1 − % ocupación) × días laborables. Ingresos no capturados = huecos × precio consulta. Mejora con IA = huecos × % mejora × precio consulta (cubre cancelaciones + lista de espera + optimización mix).</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo basado en benchmarks 2026 del sector salud privado. El resultado real depende de la elasticidad de tu demanda y la calidad de tu lista de espera.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Ocupación Agenda Médica</h2>
+    <div class="faq-item"><div class="faq-q">¿Cuál es la ocupación óptima en una clínica?</div><div class="faq-a">85-92% es el sweet spot. &lt;75% indica margen de optimización con IA. &gt;95% pierde flexibilidad. Mantener 10-15% de holgura para urgencias y reprogramaciones.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo aumenta la IA la ocupación?</div><div class="faq-a">1) Lista de espera dinámica que cubre cancelaciones, 2) Optimización mix de tipos de cita, 3) Recordatorios automáticos que reducen no-shows del 18-22% al 7-10%. Resultado típico: +25% ocupación efectiva.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto se factura por hueco recuperado?</div><div class="faq-a">Dental 60-90€. Estética 80-150€. Médica privada 50-80€. Tratamientos especializados 200-500€. Recuperar 10 huecos/mes en clínica con ticket 80€ = 800€/mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Qué pasa con las cancelaciones tardías?</div><div class="faq-a">Sin IA: &gt;80% se pierden. Con Orion IA: lista de espera notificada por WhatsApp con confirmación 1-click. Tasa de reocupación 50-70% incluso con &lt;24h de antelación.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu clínica. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-ocupacion-agenda-medica','Ocupación Agenda Médica')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-ocupacion-agenda-medica"><input type="hidden" name="mensaje" value="Lead desde calculadora Ocupación Agenda Médica">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para clínicas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-coste-paciente-perdido/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="10" cy="8" r="3"/><path d="M4 20c0-3.3 2.7-6 6-6"/><polyline points="16 11 20 15 16 19"/><line x1="20" y1="15" x2="13" y2="15"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Paciente Perdido</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Retención + IA</div></a>
+      <a href="/calculadora-coste-gestion-citas-manual/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6"/><circle cx="18" cy="14" r="4"/><polyline points="18 12 18 14 19.5 15.5"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Gestión Citas</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Horas admin</div></a>
+      <a href="/calculadora-impacto-recordatorios-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Recordatorios IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">−40% no-shows</div></a>
+      <a href="/chatbot-ia-clinicas-dentales/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3c-3 0-5 2-5 4 0 2 1 2 1 4l-1 8c0 1 2 2 2 0l1-5h4l1 5c0 2 2 1 2 0l-1-8c0-2 1-2 1-4 0-2-2-4-5-4z"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Clínicas Dentales</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 sector salud</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">54+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcOcupacion(){
+  var citas = Math.max(0, parseFloat(document.getElementById('oa-citas').value)||0);
+  var ocup = Math.max(0, Math.min(100, parseFloat(document.getElementById('oa-ocupacion').value)||0)) / 100;
+  var precio = Math.max(0, parseFloat(document.getElementById('oa-precio').value)||0);
+  var dias = Math.max(0, parseFloat(document.getElementById('oa-dias').value)||0);
+  var objetivo = Math.max(0, parseFloat(document.getElementById('oa-objetivo').value)||0) / 100;
+  var mejora = Math.max(0, parseFloat(document.getElementById('oa-mejora').value)||0) / 100;
+
+  var citasMes = citas * dias;
+  var huecosVacios = Math.round(citasMes * (1 - ocup));
+  var ingresosNoCapturados = huecosVacios * precio;
+  // Mejora con IA: cubrir el % del gap entre ocupación actual y objetivo
+  var gap = Math.max(0, objetivo - ocup);
+  var huecosRecuperables = Math.round(citasMes * gap * (1 + mejora));
+  if(huecosRecuperables > huecosVacios) huecosRecuperables = huecosVacios;
+  var mejoraEur = huecosRecuperables * precio;
+
+  document.getElementById('oa-huecos').textContent = huecosVacios.toLocaleString('es-ES');
+  document.getElementById('oa-no-capturado').textContent = Math.round(ingresosNoCapturados).toLocaleString('es-ES') + ' €';
+  document.getElementById('oa-mejora-eur').textContent = Math.round(mejoraEur).toLocaleString('es-ES') + ' €';
+
+  document.getElementById('oa-explain').textContent =
+    'Citas/mes disponibles = ' + Math.round(citas).toLocaleString('es-ES') + ' × ' + Math.round(dias).toLocaleString('es-ES') + ' días = ' + citasMes.toLocaleString('es-ES') + '. Huecos vacíos = ' + citasMes.toLocaleString('es-ES') + ' × ' + ((1-ocup)*100).toFixed(0) + '% = ' + huecosVacios.toLocaleString('es-ES') + '. Ingresos no capturados = ' + huecosVacios.toLocaleString('es-ES') + ' × ' + Math.round(precio).toLocaleString('es-ES') + ' € = ' + Math.round(ingresosNoCapturados).toLocaleString('es-ES') + ' €/mes. Con IA recuperas ' + huecosRecuperables.toLocaleString('es-ES') + ' huecos (gap ' + (gap*100).toFixed(0) + 'pp × mejora ' + (mejora*100).toFixed(0) + '%): ' + Math.round(mejoraEur).toLocaleString('es-ES') + ' €/mes (' + Math.round(mejoraEur*12).toLocaleString('es-ES') + ' €/año).';
+}
+calcOcupacion();
+</script>
+</body>
+</html>

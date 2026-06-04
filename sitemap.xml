@@ -64,6 +64,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Cluster 7 · Clínicas y Salud (5 calculadoras priority 0.8) -->
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-paciente-perdido/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-ocupacion-agenda-medica/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-gestion-citas-manual/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-rentabilidad-consulta-medica/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-impacto-recordatorios-ia/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Servicio principal: Agentes IA -->
   <url>
     <loc>https://whitemoon.es/agentes-ia/</loc>
