@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Subida Salarial 2026 · Ganancia neta real con un aumento · WhiteMoon</title>
+<meta name="description" content="Calculadora subida salarial 2026: descubre cuánto ganas REALMENTE en neto con una subida de bruto. Aplica IRPF + SS según CCAA y situación familiar.">
+<meta name="keywords" content="calculadora subida salario, aumento sueldo neto, ganancia real subida bruto, simulador subida salarial">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-subida-salarial/">
+<meta property="og:title" content="Calculadora Subida Salarial 2026 · WhiteMoon">
+<meta property="og:description" content="Descubre cuánto ganas neto realmente cuando te suben el salario bruto.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-subida-salarial/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Subida Salarial 2026 · WhiteMoon","description":"Calcula la ganancia neta real de una subida salarial aplicando IRPF y SS según CCAA y situación familiar.","url":"https://whitemoon.es/calculadora-subida-salarial/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Subida Salarial","item":"https://whitemoon.es/calculadora-subida-salarial/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Por qué no me llega el 100% de la subida al bolsillo?","acceptedAnswer":{"@type":"Answer","text":"Porque sobre el incremento bruto se aplican primero la cotización a la Seguridad Social (6,35%) y después el IRPF marginal, que en España puede llegar al 45-47%. En la práctica, de cada 1.000€ brutos extra, te llegan entre 580€ y 720€ netos según tu tramo y CCAA."}},
+{"@type":"Question","name":"¿Cuánto debo pedir de subida para ganar 100€ netos más al mes?","acceptedAnswer":{"@type":"Answer","text":"Depende de tu tramo IRPF marginal. En tramos bajos (24% IRPF + 6,35% SS), 100€ netos requieren ~145€ brutos al mes (1.740€ anuales). En tramos altos (37%+ IRPF), 100€ netos requieren ~175€ brutos al mes (2.100€ anuales). Esta calculadora te lo da exacto."}},
+{"@type":"Question","name":"¿La subida me hace pagar más impuestos también sobre lo que ya cobraba?","acceptedAnswer":{"@type":"Answer","text":"No. El IRPF es progresivo por tramos: solo el dinero NUEVO que entra en un tramo superior paga el tipo superior. Lo que ya cobrabas sigue tributando como antes. Por eso siempre interesa una subida, aunque la ganancia neta sea menor que la bruta."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-row{margin-bottom:18px}
+.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.comp-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.comp-card{background:rgba(13,13,26,.4);border:1px solid rgba(124,77,255,.18);border-radius:10px;padding:14px;text-align:center}
+.comp-card.new{border-color:rgba(0,212,170,.4);background:rgba(0,212,170,.06)}
+.comp-card .lbl{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#8888a0;margin-bottom:4px}
+.comp-card .v{font-size:1.1rem;font-weight:700;color:#fff}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.related-card{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;color:inherit;text-decoration:none;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.related-card:hover{background:rgba(124,77,255,.12)}
+.related-ico{font-size:1.4rem;line-height:1}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-subida-salarial',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Contactar →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px">
+      <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Subida Salarial
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hdr c">
+        <span class="sec-lbl" style="color:#00d4aa">📈 Calculadora gratuita · 2026</span>
+        <h1 class="sec-h">Calculadora <em>Subida Salarial</em> 2026</h1>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Descubre cuánto ganas REALMENTE en neto cuando te suben el salario bruto. Aplica IRPF marginal + SS según CCAA y situación familiar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="ss-bruto">Salario bruto actual anual (€)</label>
+            <input type="number" id="ss-bruto" class="calc-input" value="30000" min="1000" max="500000" step="100" oninput="calcSS()">
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="ss-subida">% subida propuesta</label>
+            <input type="number" id="ss-subida" class="calc-input" value="5" min="0.1" max="100" step="0.1" oninput="calcSS()">
+          </div>
+        </div>
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="ss-ccaa">Comunidad Autónoma</label>
+            <select id="ss-ccaa" class="calc-select" onchange="calcSS()">
+              <option value="madrid" selected>Madrid</option>
+              <option value="cataluna">Catalunya</option>
+              <option value="andalucia">Andalucía</option>
+              <option value="valencia">Comunitat Valenciana</option>
+              <option value="pais-vasco">País Vasco</option>
+              <option value="navarra">Navarra</option>
+              <option value="galicia">Galicia</option>
+              <option value="castilla-leon">Castilla y León</option>
+              <option value="aragon">Aragón</option>
+              <option value="castilla-mancha">Castilla-La Mancha</option>
+              <option value="canarias">Canarias</option>
+              <option value="baleares">Illes Balears</option>
+              <option value="murcia">Murcia</option>
+              <option value="asturias">Asturias</option>
+              <option value="extremadura">Extremadura</option>
+              <option value="cantabria">Cantabria</option>
+              <option value="rioja">La Rioja</option>
+            </select>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="ss-situacion">Situación familiar</label>
+            <select id="ss-situacion" class="calc-select" onchange="calcSS()">
+              <option value="soltero" data-reduccion="5550" selected>Soltero/a sin hijos</option>
+              <option value="casado-2" data-reduccion="9000">Casado/a sin hijos</option>
+              <option value="1-hijo" data-reduccion="8050">1 hijo a cargo</option>
+              <option value="2-hijos" data-reduccion="10350">2 hijos a cargo</option>
+              <option value="3-hijos" data-reduccion="14750">3 o más hijos</option>
+              <option value="discapacidad" data-reduccion="8550">Discapacidad ≥33%</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="comp-row">
+          <div class="comp-card"><div class="lbl">Antes</div><div class="v" id="ss-bruto-old">30.000 €</div></div>
+          <div class="comp-card new"><div class="lbl">Después</div><div class="v" id="ss-bruto-new">31.500 €</div></div>
+          <div class="comp-card"><div class="lbl">Neto antes/mes</div><div class="v" id="ss-neto-old">1.679 €</div></div>
+          <div class="comp-card new"><div class="lbl">Neto después/mes</div><div class="v" id="ss-neto-new">1.751 €</div></div>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card"><div class="calc-out-num" id="ss-gan-mes">+72 €</div><div class="calc-out-lbl">Ganancia neta/mes</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ss-gan-anual">+862 €</div><div class="calc-out-lbl">Ganancia neta/año</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ss-marg">42,5 %</div><div class="calc-out-lbl">Tipo marginal aplicado</div></div>
+        </div>
+
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ss-detail">De 1.500€ brutos de subida, el Estado se lleva 638€ entre IRPF y SS (42,5% marginal). Te quedan 862€ netos al año (+72€/mes).</div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El tipo marginal es lo que pagas sobre el INCREMENTO, no sobre el total. Por eso siempre interesa una subida, aunque te «coman» 30-45% en impuestos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center">
+      <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+      <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-subida-salarial','Subida Salarial')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-subida-salarial">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora Subida Salarial">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px">FAQ Subida Salarial</h2>
+        <div class="faq-item"><div class="faq-q">¿Por qué no me llega el 100% de la subida al bolsillo?</div><div class="faq-a">Porque sobre el incremento bruto se aplican primero la cotización SS (6,35%) y después el IRPF marginal, que en España puede llegar al 45-47%. De cada 1.000€ brutos extra, te llegan entre 580€ y 720€ netos según tu tramo y CCAA.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Cuánto debo pedir de subida para ganar 100€ netos más al mes?</div><div class="faq-a">Depende de tu tramo IRPF marginal. En tramos bajos (24% IRPF + 6,35% SS), 100€ netos requieren ~145€ brutos al mes. En tramos altos (37%+ IRPF), 100€ netos requieren ~175€ brutos al mes.</div></div>
+        <div class="faq-item"><div class="faq-q">¿La subida me hace pagar más impuestos también sobre lo que ya cobraba?</div><div class="faq-a">No. El IRPF es progresivo por tramos: solo el dinero NUEVO que entra en un tramo superior paga el tipo superior. Lo que ya cobrabas sigue tributando como antes.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div style="max-width:880px;margin:0 auto">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 8px">Calculadoras relacionadas</h2>
+        <p style="color:var(--muted);margin:0 0 20px">Otras herramientas del cluster Finanzas Personales y servicios relacionados.</p>
+        <div class="related-grid">
+          <a class="related-card" href="/calculadora-sueldo-neto/"><div class="related-ico">💰</div><strong style="color:#fff">Sueldo Neto</strong><span style="font-size:.84rem;color:#9090b0">Convierte tu bruto a neto mensual.</span></a>
+          <a class="related-card" href="/calculadora-retencion-irpf/"><div class="related-ico">📊</div><strong style="color:#fff">Retención IRPF</strong><span style="font-size:.84rem;color:#9090b0">Cuánto te retiene la empresa.</span></a>
+          <a class="related-card" href="/calculadora-horas-extra/"><div class="related-ico">⏰</div><strong style="color:#fff">Horas extra</strong><span style="font-size:.84rem;color:#9090b0">Importe neto de horas extra trabajadas.</span></a>
+          <a class="related-card" href="/chatbot-ia-despachos-abogados/"><div class="related-ico">⚖️</div><strong style="color:#fff">Chatbot IA Laboralistas</strong><span style="font-size:.84rem;color:#9090b0">Asesoría laboral 24/7 con IA.</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+var TRAMOS_IRPF = [
+  {hasta: 12450, tipo: 19},{hasta: 20200, tipo: 24},{hasta: 35200, tipo: 30},
+  {hasta: 60000, tipo: 37},{hasta: 300000, tipo: 45},{hasta: Infinity, tipo: 47}
+];
+var AJUSTE_CCAA = {madrid:-0.5,cataluna:0.5,andalucia:0,valencia:0.3,'pais-vasco':-1,navarra:-0.8,galicia:0,'castilla-leon':-0.3,aragon:0,'castilla-mancha':0,canarias:-0.2,baleares:0,murcia:0,asturias:0.2,extremadura:0.2,cantabria:0,rioja:-0.2};
+
+function calcIRPF(b){var c=0,a=0;for(var i=0;i<TRAMOS_IRPF.length;i++){var t=TRAMOS_IRPF[i];if(b>t.hasta){c+=(t.hasta-a)*t.tipo/100;a=t.hasta;}else{c+=(b-a)*t.tipo/100;return c;}}return c;}
+
+function getMarginal(base){for(var i=0;i<TRAMOS_IRPF.length;i++){if(base<=TRAMOS_IRPF[i].hasta) return TRAMOS_IRPF[i].tipo;}return 47;}
+
+function netoAnual(bruto, minimo, ajuste){
+  var ss = bruto * 0.0635;
+  var base = Math.max(0, bruto - ss - minimo);
+  var cuota = calcIRPF(base);
+  cuota = Math.max(0, cuota * (1 + ajuste / 100));
+  return {neto: bruto - ss - cuota, base: base};
+}
+
+function calcSS(){
+  var brutoOld = parseFloat(document.getElementById('ss-bruto').value) || 0;
+  var pct = parseFloat(document.getElementById('ss-subida').value) || 0;
+  var ccaa = document.getElementById('ss-ccaa').value;
+  var sit = document.getElementById('ss-situacion');
+  var minimo = parseFloat(sit.options[sit.selectedIndex].getAttribute('data-reduccion'));
+  var ajuste = AJUSTE_CCAA[ccaa] || 0;
+
+  var brutoNew = brutoOld * (1 + pct / 100);
+  var rOld = netoAnual(brutoOld, minimo, ajuste);
+  var rNew = netoAnual(brutoNew, minimo, ajuste);
+
+  var ganMes = (rNew.neto - rOld.neto) / 12;
+  var ganAnual = rNew.neto - rOld.neto;
+  var marginal = getMarginal(rNew.base) + 6.35; // marginal IRPF + SS
+
+  document.getElementById('ss-bruto-old').textContent = Math.round(brutoOld).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-bruto-new').textContent = Math.round(brutoNew).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-neto-old').textContent = Math.round(rOld.neto / 12).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-neto-new').textContent = Math.round(rNew.neto / 12).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-gan-mes').textContent = '+' + Math.round(ganMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-gan-anual').textContent = '+' + Math.round(ganAnual).toLocaleString('es-ES') + ' €';
+  document.getElementById('ss-marg').textContent = marginal.toFixed(1).replace('.', ',') + ' %';
+  document.getElementById('ss-detail').textContent = 'De ' + Math.round(brutoNew - brutoOld).toLocaleString('es-ES') +
+    '€ brutos de subida, el Estado se lleva ' + Math.round((brutoNew - brutoOld) - ganAnual).toLocaleString('es-ES') +
+    '€ entre IRPF y SS (' + marginal.toFixed(1).replace('.', ',') + '% marginal). Te quedan ' +
+    Math.round(ganAnual).toLocaleString('es-ES') + '€ netos al año (+' + Math.round(ganMes).toLocaleString('es-ES') + '€/mes).';
+}
+calcSS();
+</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Horas Extra 2026 · Importe neto + cotización SS · WhiteMoon</title>
+<meta name="description" content="Calculadora horas extra 2026: importe bruto y neto por horas extra realizadas, cotización SS adicional (voluntarias/estructurales) y comparación con salario hora ordinario.">
+<meta name="keywords" content="calculadora horas extra, importe horas extra, cotizacion horas extra estructurales, horas extra voluntarias">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-horas-extra/">
+<meta property="og:title" content="Calculadora Horas Extra 2026 · WhiteMoon">
+<meta property="og:description" content="Importe bruto y neto de horas extra trabajadas según tipo (voluntarias / estructurales).">
+<meta property="og:url" content="https://whitemoon.es/calculadora-horas-extra/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Horas Extra 2026 · WhiteMoon","description":"Calcula el importe bruto y neto de las horas extra realizadas y su cotización SS adicional (estructurales o voluntarias) según el Estatuto de los Trabajadores Art. 35.","url":"https://whitemoon.es/calculadora-horas-extra/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Horas Extra","item":"https://whitemoon.es/calculadora-horas-extra/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula el valor de una hora extra?","acceptedAnswer":{"@type":"Answer","text":"El Estatuto de los Trabajadores (Art. 35.1) establece que las horas extra se pagan o compensan con descanso, con un valor mínimo equivalente al de la hora ordinaria. Muchos convenios fijan un incremento del 25% al 75% sobre la hora ordinaria. Si el convenio guarda silencio, vale lo mismo que la hora ordinaria pero NUNCA menos."}},
+{"@type":"Question","name":"¿Diferencia entre horas extra voluntarias y estructurales?","acceptedAnswer":{"@type":"Answer","text":"Las VOLUNTARIAS son las pactadas libremente entre empresa y trabajador. Las ESTRUCTURALES son las necesarias para reparar siniestros, atender pedidos imprevistos o evitar pérdidas, y están exentas del límite anual de 80 horas. La cotización SS es distinta: voluntarias 14% (12% empresa + 2% trabajador) y estructurales 28,3% (23,6% + 4,7%)."}},
+{"@type":"Question","name":"¿Hay un límite de horas extra al año?","acceptedAnswer":{"@type":"Answer","text":"Sí. El ET fija 80 horas extra voluntarias al año por trabajador. Las estructurales NO cuentan para ese límite. Además, ningún día puede superarse la jornada máxima legal (8h+horas extras justificadas), y hay que respetar el descanso entre jornadas (12h mínimo)."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-row{margin-bottom:18px}
+.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.6rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.related-card{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;color:inherit;text-decoration:none;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.related-card:hover{background:rgba(124,77,255,.12)}
+.related-ico{font-size:1.4rem;line-height:1}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-horas-extra',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Contactar →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px">
+      <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Horas Extra
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hdr c">
+        <span class="sec-lbl" style="color:#00d4aa">⏰ Calculadora gratuita · 2026</span>
+        <h1 class="sec-h">Calculadora <em>Horas Extra</em> 2026</h1>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Importe bruto, cotización SS adicional y neto a cobrar por las horas extra trabajadas (voluntarias o estructurales) según el Estatuto de los Trabajadores Art. 35.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="he-bruto">Salario bruto anual (€)</label>
+            <input type="number" id="he-bruto" class="calc-input" value="25000" min="1000" max="500000" step="100" oninput="calcHE()">
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="he-horas">Horas extra realizadas</label>
+            <input type="number" id="he-horas" class="calc-input" value="20" min="1" max="500" step="1" oninput="calcHE()">
+          </div>
+        </div>
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="he-incremento">% incremento sobre hora ordinaria</label>
+            <select id="he-incremento" class="calc-select" onchange="calcHE()">
+              <option value="0" selected>0% (mismo valor ET, sin convenio mejor)</option>
+              <option value="25">25% (convenio frecuente)</option>
+              <option value="50">50% (convenio mejorado)</option>
+              <option value="75">75% (festivos / nocturnas en algunos convenios)</option>
+              <option value="100">100% (algunos convenios sector industrial)</option>
+            </select>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="he-tipo">Tipo de horas extra</label>
+            <select id="he-tipo" class="calc-select" onchange="calcHE()">
+              <option value="voluntarias" data-ss="2.0" selected>Voluntarias (SS trabajador 2,0%)</option>
+              <option value="estructurales" data-ss="4.7">Estructurales (SS trabajador 4,7%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card"><div class="calc-out-num" id="he-bruto-out">240 €</div><div class="calc-out-lbl">Importe bruto horas extra</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="he-ss-out">5 €</div><div class="calc-out-lbl">Cotización SS adicional</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="he-neto-out">198 €</div><div class="calc-out-lbl">Neto estimado a cobrar</div></div>
+        </div>
+
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="he-detail">Salario hora ordinaria: 25.000€ / 1.760h = 12,02€. Sin incremento: 12,02€ × 20h = 240€ brutos. SS trabajador 2% = 5€. IRPF marginal 18% ≈ 37€. Neto a cobrar: 198€.</div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Salario hora = bruto anual / 1.760h (40h × 52sem - 12 festivos × 8h). Estatuto Art. 35.1: ninguna hora extra puede valer menos que la hora ordinaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center">
+      <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+      <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-horas-extra','Horas Extra')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-horas-extra">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora Horas Extra">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px">FAQ Horas Extra</h2>
+        <div class="faq-item"><div class="faq-q">¿Cómo se calcula el valor de una hora extra?</div><div class="faq-a">El Estatuto de los Trabajadores (Art. 35.1) establece que las horas extra se pagan o compensan con descanso, con un valor mínimo equivalente al de la hora ordinaria. Muchos convenios fijan un incremento del 25% al 75% sobre la hora ordinaria.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Diferencia entre voluntarias y estructurales?</div><div class="faq-a">Las VOLUNTARIAS son las pactadas libremente. Las ESTRUCTURALES son necesarias para reparar siniestros o atender pedidos imprevistos, y están exentas del límite anual de 80 horas. La cotización SS es distinta: voluntarias 14% (12%+2%) y estructurales 28,3% (23,6%+4,7%).</div></div>
+        <div class="faq-item"><div class="faq-q">¿Hay un límite de horas extra al año?</div><div class="faq-a">Sí. El ET fija 80 horas extra voluntarias al año por trabajador. Las estructurales NO cuentan para ese límite. Además, hay que respetar el descanso entre jornadas (12h mínimo).</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div style="max-width:880px;margin:0 auto">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 8px">Calculadoras relacionadas</h2>
+        <p style="color:var(--muted);margin:0 0 20px">Otras herramientas del cluster Finanzas Personales y servicios relacionados.</p>
+        <div class="related-grid">
+          <a class="related-card" href="/calculadora-sueldo-neto/"><div class="related-ico">💰</div><strong style="color:#fff">Sueldo Neto</strong><span style="font-size:.84rem;color:#9090b0">Convierte tu bruto a neto mensual.</span></a>
+          <a class="related-card" href="/calculadora-subida-salarial/"><div class="related-ico">📈</div><strong style="color:#fff">Subida salarial</strong><span style="font-size:.84rem;color:#9090b0">Ganancia neta real con un aumento.</span></a>
+          <a class="related-card" href="/calculadora-vacaciones-pendientes/"><div class="related-ico">🏖️</div><strong style="color:#fff">Vacaciones pendientes</strong><span style="font-size:.84rem;color:#9090b0">Importe a cobrar en finiquito.</span></a>
+          <a class="related-card" href="/chatbot-ia-despachos-abogados/"><div class="related-ico">⚖️</div><strong style="color:#fff">Chatbot IA Laboralistas</strong><span style="font-size:.84rem;color:#9090b0">Asesoría laboral 24/7 con IA.</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcHE(){
+  var bruto = parseFloat(document.getElementById('he-bruto').value) || 0;
+  var horas = parseInt(document.getElementById('he-horas').value, 10) || 0;
+  var incPct = parseFloat(document.getElementById('he-incremento').value);
+  var tipoSel = document.getElementById('he-tipo');
+  var pctSS = parseFloat(tipoSel.options[tipoSel.selectedIndex].getAttribute('data-ss'));
+
+  // Salario hora ordinaria: bruto anual / 1.760h (40h × 52sem - 12 festivos × 8h)
+  var horaOrd = bruto / 1760;
+  var horaExtra = horaOrd * (1 + incPct / 100);
+  var brutoHE = horaExtra * horas;
+
+  // SS adicional sobre horas extra
+  var ssHE = brutoHE * (pctSS / 100);
+
+  // IRPF marginal aprox 18% para bruto medio
+  var marginal = bruto < 12450 ? 19 : (bruto < 20200 ? 24 : (bruto < 35200 ? 30 : (bruto < 60000 ? 37 : 45)));
+  var irpfHE = brutoHE * (marginal / 100);
+  var netoHE = brutoHE - ssHE - irpfHE;
+
+  document.getElementById('he-bruto-out').textContent = Math.round(brutoHE).toLocaleString('es-ES') + ' €';
+  document.getElementById('he-ss-out').textContent = Math.round(ssHE).toLocaleString('es-ES') + ' €';
+  document.getElementById('he-neto-out').textContent = Math.round(netoHE).toLocaleString('es-ES') + ' €';
+  document.getElementById('he-detail').textContent = 'Salario hora ordinaria: ' + bruto.toLocaleString('es-ES') +
+    '€ / 1.760h = ' + horaOrd.toFixed(2).replace('.', ',') + '€. Con incremento ' + incPct + '%: ' +
+    horaExtra.toFixed(2).replace('.', ',') + '€ × ' + horas + 'h = ' + Math.round(brutoHE).toLocaleString('es-ES') +
+    '€ brutos. SS trabajador ' + pctSS.toString().replace('.', ',') + '% = ' + Math.round(ssHE).toLocaleString('es-ES') +
+    '€. IRPF marginal ' + marginal + '% ≈ ' + Math.round(irpfHE).toLocaleString('es-ES') + '€. Neto a cobrar: ' +
+    Math.round(netoHE).toLocaleString('es-ES') + '€.';
+}
+calcHE();
+</script>
+</body>
+</html>
