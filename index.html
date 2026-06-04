@@ -733,8 +733,8 @@
   <link rel="preload" as="font" href="/assets/fonts/inter-latin.woff2" type="font/woff2" crossorigin>
 
   <!-- ── PERFORMANCE: NON-BLOCKING STYLES (preload + onload swap) ── -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap"></noscript>
   <link rel="preload" href="/assets/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/site.css"></noscript>
   <link rel="dns-prefetch" href="https://wa.me">
@@ -746,6 +746,19 @@
   <!-- ── SITEMAP Y VERIFICACIÓN ── -->
   <meta name="google-site-verification" content="0f366eade019ef7a">
   <link rel="sitemap" type="application/xml" href="https://whitemoon.es/sitemap.xml">
+
+  <!-- ── ENTERPRISE TYPOGRAPHY (Inter como única fuente; Sora reservado para logo) ── -->
+  <style>
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:400;line-height:1.7;font-feature-settings:'cv11','ss01';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    h1,h2,h3,h4,h5,h6{font-family:'Inter',-apple-system,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+    h1{font-weight:700}
+    h2,h3{font-weight:600}
+    h4,h5,h6{font-weight:600}
+    /* Labels, badges, eyebrows: peso medio + uppercase + tracking wide */
+    .sec-lbl,.sec-label,.sec-lbl-h,.hero-left .eyebrow,.eyebrow,.badge,.tag-label{font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+    /* Botones y CTAs */
+    .btn-prim,.btn-out,.btn-primary,.btn-ghost,.btn-tel,.nav-cta,.nav-link,button{font-family:inherit;font-weight:500}
+  </style>
 
   <!-- Analytics (GA4) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026060302"></script>
@@ -840,13 +853,13 @@
     .hero-brand .name .light{color:#f0f0f5}.hero-brand .name .acc{color:#7c4dff}
     .hero-cols{display:grid;grid-template-columns:6fr 4fr;gap:64px;align-items:center}
     @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px}}
-    .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+    .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
     .hero-left .eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
-    .hero-left h1{font-family:'Sora',sans-serif;font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#f0f0f5;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px}
+    .hero-left h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#f0f0f5;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px}
     .hero-left h1 em{font-style:normal;background:linear-gradient(135deg,#9d70ff 0%,#c4b3ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
     .hero-left .sub{font-size:1.05rem;color:#9090b0;line-height:1.65;max-width:560px;margin:0 0 32px}
     .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
-    .hero-ctas .btn-primary,.hero-ctas .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:10px;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease;cursor:pointer;border:0}
+    .hero-ctas .btn-primary,.hero-ctas .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease;cursor:pointer;border:0}
     .hero-ctas .btn-primary{background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;box-shadow:0 14px 36px rgba(124,77,255,.32)}
     .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
     .hero-ctas .btn-ghost{background:transparent;color:#f0f0f5;border:1px solid rgba(255,255,255,.2)}
@@ -854,7 +867,7 @@
     /* Dashboard mock */
     .hero-dash{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02) inset;position:relative}
     .hero-dash::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(124,77,255,.12),transparent 60%);pointer-events:none}
-    .dash-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(124,77,255,.12);font-family:'Sora',sans-serif;font-size:.78rem;color:#c4b3ff}
+    .dash-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(124,77,255,.12);font-size:.78rem;color:#c4b3ff}
     .dash-bar .status{display:inline-flex;align-items:center;gap:8px;font-weight:600}
     .dash-bar .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,.6);animation:dashPulse 1.6s ease-in-out infinite}
     @keyframes dashPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
@@ -863,12 +876,12 @@
     .dash-cell{padding:20px 22px;position:relative}
     .dash-cell+.dash-cell{border-left:1px solid rgba(124,77,255,.12)}
     .dash-cell .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
-    .dash-cell .num{font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:700;color:#f0f0f5;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
+    .dash-cell .num{font-size:1.9rem;font-weight:700;color:#f0f0f5;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
     .dash-cell .sub{font-size:.72rem;color:#9090b0}
     .dash-cell .num .pre{color:#7c4dff}
     .dash-savings{padding:20px 22px;border-bottom:1px solid rgba(124,77,255,.12)}
     .dash-savings .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-    .dash-savings .num{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:700;color:#5eead4;letter-spacing:-.025em;line-height:1}
+    .dash-savings .num{font-size:2.2rem;font-weight:700;color:#5eead4;letter-spacing:-.025em;line-height:1}
     .dash-savings .num::after{content:" €";font-size:1.2rem;color:#9090b0;font-weight:500}
     .dash-pipe{padding:18px 22px 20px}
     .dash-pipe .steps{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:.7rem;color:#9090b0;letter-spacing:.04em}
@@ -883,7 +896,7 @@
     .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12)}
     @media(max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
     .hero-stat{display:flex;flex-direction:column;gap:6px}
-    .hero-stat .v{font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:700;color:#f0f0f5;letter-spacing:-.02em;line-height:1}
+    .hero-stat .v{font-size:1.6rem;font-weight:700;color:#f0f0f5;letter-spacing:-.02em;line-height:1}
     .hero-stat .v em{font-style:normal;color:#7c4dff}
     .hero-stat .l{font-size:.78rem;color:#9090b0;letter-spacing:.02em;line-height:1.4}
   </style>
@@ -989,7 +1002,7 @@
   <div class="wrap" style="text-align:center">
     <span class="sec-label">Para empresas que quieren crecer</span>
     <h2 class="sec-h" style="max-width:640px;margin:0 auto 12px;font-size:clamp(1.6rem,4vw,2.6rem)">Las tareas que más tiempo te quitan<br>tienen solución.</h2>
-    <p style="font-size:clamp(1.2rem,3vw,2rem);font-weight:800;color:var(--g);letter-spacing:-.02em;margin-bottom:16px;font-family:'Sora',sans-serif">Se llama WhiteMoon.</p>
+    <p style="font-size:clamp(1.2rem,3vw,2rem);font-weight:800;color:var(--g);letter-spacing:-.02em;margin-bottom:16px;">Se llama WhiteMoon.</p>
     <p class="sec-sub" style="margin:0 auto 32px;text-align:center">Dinos qué te roba horas cada día.<br>Nosotros lo automatizamos en menos de 7 días.</p>
     <button class="btn-prim" onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="font-size:1rem;padding:15px 36px">Quiero recuperar mi tiempo →</button>
     <p style="font-size:.75rem;color:var(--muted);margin-top:14px;letter-spacing:.06em;text-transform:uppercase">Sin compromiso · Respuesta en menos de 5 minutos</p>
@@ -1095,7 +1108,7 @@
 <style>
   .sectores-section{padding:80px 24px;background:var(--bg,#07070e);position:relative;overflow:hidden}
   .sectores-section .sec-eyebrow{display:block;text-align:center;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent,#8b5cf6);margin-bottom:14px}
-  .sectores-section h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;color:#fff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
+  .sectores-section h2{font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;color:#fff;text-align:center;letter-spacing:-.02em;line-height:1.15;margin:0 0 12px}
   .sectores-section .sec-sub{font-size:.95rem;color:var(--text2,#9090b0);max-width:640px;margin:0 auto 40px;text-align:center;line-height:1.65}
   .sectores-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:16px;max-width:1100px;margin:0 auto}
   .sector-item{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 12px;border-radius:12px;border:1px solid rgba(124,58,237,.15);background:rgba(124,58,237,.04);cursor:pointer;transition:all .25s ease;text-decoration:none;color:inherit}
@@ -1107,7 +1120,7 @@
   .sector-item:hover .sector-name{color:#fff}
   .sectores-cta{text-align:center;margin-top:48px;padding-top:24px}
   .sectores-cta-text{font-size:.95rem;color:var(--muted,#8888a0);margin-bottom:16px;line-height:1.6}
-  .sectores-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.28);letter-spacing:.01em}
+  .sectores-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.28);letter-spacing:.01em}
   .sectores-cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,77,255,.4)}
   @media (max-width:900px){.sectores-grid{grid-template-columns:repeat(4,1fr)}}
   @media (max-width:600px){.sectores-grid{grid-template-columns:repeat(3,1fr);gap:12px}.sector-icon{width:56px;height:56px}.sector-icon svg{width:30px;height:30px}.sector-name{font-size:.72rem}}
@@ -1306,7 +1319,7 @@
       <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#86efac;font-size:.62rem;font-weight:700;padding:5px 14px;border-radius:50px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px">
         <span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><path d="M6 4h12v3a6 6 0 0 1-6 6 6 6 0 0 1-6-6V4z"/><path d="M6 7H3v2a3 3 0 0 0 3 3"/><path d="M18 7h3v2a3 3 0 0 1-3 3"/><line x1="12" y1="13" x2="12" y2="18"/><path d="M8 21h8"/></svg> <span>Verificado en mayo 2026</span></span>
       </div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px">
+      <h2 style="font-size:clamp(1.6rem,3.2vw,2.4rem);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.15;margin-bottom:14px">
         Citados en respuestas de ChatGPT, Grok y Perplexity sobre agencia IA en Madrid noroeste
       </h2>
       <p style="font-size:.92rem;color:#9090b0;max-width:640px;margin:0 auto;line-height:1.65">
@@ -1357,7 +1370,7 @@
     </div>
 
     <div style="text-align:center;margin-top:40px">
-      <a href="/casos-de-exito/" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;padding:13px 26px;border-radius:11px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(124,58,237,.3);transition:all .2s">
+      <a href="/casos-de-exito/" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;padding:13px 26px;border-radius:11px;text-decoration:none;font-weight:700;font-size:.9rem;box-shadow:0 12px 32px rgba(124,58,237,.3);transition:all .2s">
         Ver prueba completa
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
@@ -1381,7 +1394,7 @@
         Servicio de entrada
       </div>
 
-      <div style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">
+      <div style="font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.02em">
         Auditoría de IA
       </div>
 
@@ -1389,10 +1402,10 @@
         Diagnóstico completo de automatización IA + optimización para motores IA generativa.
       </p>
 
-      <div style="font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:4px">
+      <div style="font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:4px">
         899€
       </div>
-      <div style="font-size:.72rem;color:var(--text2,#9090b0);margin-bottom:20px;font-family:'Space Mono',monospace">
+      <div style="font-size:.72rem;color:var(--text2,#9090b0);margin-bottom:20px;">
         // único pago · entrega en 5-7 días laborables
       </div>
 
@@ -1432,14 +1445,14 @@
     <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Gratuita</div>
     <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">0€</div>
     <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Consulta diagnóstico 30 min<br>Análisis inicial de tu negocio</div>
-    <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:8px;padding:10px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:500;color:#9d70ff;cursor:pointer;width:100%;transition:background .2s">Quiero mi diagnóstico →</button>
+    <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:8px;padding:10px 20px;font-size:12px;font-weight:500;color:#9d70ff;cursor:pointer;width:100%;transition:background .2s">Quiero mi diagnóstico →</button>
   </div>
   <div style="background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.35);border-radius:12px;padding:24px;text-align:center;position:relative">
     <div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#7c4dff;border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#fff;white-space:nowrap">Más completa</div>
     <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9d70ff;margin-bottom:8px">Premium</div>
     <div style="font-size:28px;font-weight:700;color:#f0f0f5;margin-bottom:4px">899€</div>
     <div style="font-size:12px;color:#8888a0;margin-bottom:16px">Informe completo + plan de acción<br>Se descuenta si contratas</div>
-    <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:#7c4dff;border:none;border-radius:8px;padding:10px 20px;font-family:'Sora',sans-serif;font-size:12px;font-weight:600;color:#fff;cursor:pointer;width:100%;transition:background .2s">Solicitar Auditoría →</button>
+    <button onclick="var b=document.getElementById('luna-btn');if(b)b.click()" style="background:#7c4dff;border:none;border-radius:8px;padding:10px 20px;font-size:12px;font-weight:600;color:#fff;cursor:pointer;width:100%;transition:background .2s">Solicitar Auditoría →</button>
   </div>
 </div>
 <p style="font-size:11px;color:#8888a0;text-align:center;margin-top:12px">La auditoría premium se descuenta del proyecto si contratas</p>
@@ -1575,8 +1588,8 @@
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em">⭐ MÁS POPULAR</div>
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Para crecer</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Spark</div>
-        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1">499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
+        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Spark</div>
+        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 199€/mes · Sin permanencia</div>
         <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente IA conversacional 24/7</li>
@@ -1589,8 +1602,8 @@
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:#10b981;color:#0a0a14;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em" style="display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c1 1 1.5 2 1.5 3.5h5c0-1.5.5-2.5 1.5-3.5A6 6 0 0 0 12 3z"/></svg> <span>INCLUYE WEB</span></div>
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Negocio nuevo o sin web</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Core</div>
-        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1">1.800€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
+        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Core</div>
+        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">1.800€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 199€/mes · Sin permanencia</div>
         <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Web profesional + dominio primer año</li>
@@ -1603,8 +1616,8 @@
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:#7c4dff;color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em" style="display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg> <span>VOZ 24/7</span></div>
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Cero llamadas perdidas</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Orion IA Calls</div>
-        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:#fff;line-height:1">1.499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
+        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Orion IA Calls</div>
+        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">1.499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 199€/mes · Sin permanencia</div>
         <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente IA telefónico 24/7 en español</li>
@@ -1636,7 +1649,7 @@
     #herramientas-gratis .tool-card{background:var(--card,#111118);border:1px solid rgba(0,212,170,.22);border-top:2px solid var(--g, #00d4aa);border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s ease, border-color .2s ease}
     #herramientas-gratis .tool-card:hover{transform:translateY(-2px);border-color:rgba(0,212,170,.5)}
     #herramientas-gratis .tool-card .tool-ico{width:32px;height:32px;color:var(--g, #00d4aa);flex-shrink:0}
-    #herramientas-gratis .tool-card h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:600;color:#fff;margin:0;letter-spacing:-.01em;line-height:1.3}
+    #herramientas-gratis .tool-card h3{font-size:1.1rem;font-weight:600;color:#fff;margin:0;letter-spacing:-.01em;line-height:1.3}
     #herramientas-gratis .tool-card p{font-size:.86rem;color:var(--muted);line-height:1.6;margin:0;flex:1}
     #herramientas-gratis .tool-card .tool-cta{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:9px;color:#5eead4;text-decoration:none;font-weight:700;font-size:.82rem;transition:background .2s ease}
     #herramientas-gratis .tool-card .tool-cta:hover{background:rgba(0,212,170,.22)}
@@ -1704,7 +1717,7 @@
 
     <!-- CTA a hub central con listado completo -->
     <div style="text-align:center;margin-top:2rem">
-      <a href="/costes-eficiencia-empresarial-ia/" class="btn-primary" onclick="wmTrack('click_herramientas_ver_todas',{destination:'hub-central'})" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:12px;text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;box-shadow:0 14px 36px rgba(124,77,255,.32)">Ver las 42 calculadoras gratuitas →</a>
+      <a href="/costes-eficiencia-empresarial-ia/" class="btn-primary" onclick="wmTrack('click_herramientas_ver_todas',{destination:'hub-central'})" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;font-size:.95rem;box-shadow:0 14px 36px rgba(124,77,255,.32)">Ver las 42 calculadoras gratuitas →</a>
     </div>
 
   </div>
@@ -1851,7 +1864,7 @@
       <div style="display:inline-flex;align-items:center;gap:6px;padding:6px 16px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.25);border-radius:20px;font-size:.7rem;font-weight:700;color:var(--p2,#9d70ff);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px">
         <span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg> <span>Agentes IA de Conversión</span></span>
       </div>
-      <h2 style="font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px">
+      <h2 style="font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:16px">
         Tu empresa necesita <span style="background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));-webkit-background-clip:text;background-clip:text;color:transparent">clientes, no chatbots</span>
       </h2>
       <p style="font-size:1.05rem;color:var(--muted,#8888a0);line-height:1.65;max-width:620px;margin:0 auto">
@@ -1863,17 +1876,17 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-bottom:56px">
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg></div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cualifica</h3>
+        <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cualifica</h3>
         <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Detecta el interés real. Filtra curiosos de compradores antes de que lleguen a ti.</p>
       </div>
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M21 15a2 2 0 0 1-2 2H8l-5 5V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="13" x2="14" y2="13"/></svg></div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Convence</h3>
+        <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Convence</h3>
         <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Responde objeciones, muestra casos de éxito y precios. 24/7 sin intervención humana.</p>
       </div>
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px;transition:all .25s">
         <div style="font-size:2rem;margin-bottom:14px;color:var(--p,#9d70ff)" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:36px;height:36px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></svg></div>
-        <h3 style="font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cierra</h3>
+        <h3 style="font-size:1.3rem;font-weight:800;color:#fff;margin-bottom:10px;letter-spacing:-.01em">Cierra</h3>
         <p style="font-size:.92rem;color:var(--muted,#8888a0);line-height:1.65;margin:0">Agenda citas, envía presupuestos y confirma por WhatsApp automáticamente.</p>
       </div>
     </div>
@@ -1881,22 +1894,22 @@
     <!-- Franja métricas -->
     <div style="background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(8,8,13,.6));border:1px solid rgba(124,77,255,.25);border-radius:18px;padding:36px 28px;margin-bottom:56px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;text-align:center">
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">24/7</div>
+        <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">24/7</div>
         <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">disponible sin interrupciones</div>
       </div>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">&lt; 3s</div>
+        <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">&lt; 3s</div>
         <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">tiempo de respuesta IA</div>
       </div>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">0</div>
+        <div style="font-size:2.6rem;font-weight:900;line-height:1;margin-bottom:6px;background:linear-gradient(135deg,var(--p2,#9d70ff),#c084fc);-webkit-background-clip:text;background-clip:text;color:transparent">0</div>
         <div style="font-size:.76rem;color:var(--muted,#8888a0);text-transform:uppercase;letter-spacing:.08em;font-weight:600">leads perdidos fuera de horario</div>
       </div>
     </div>
 
     <!-- Comparativa -->
     <div style="max-width:720px;margin:0 auto 48px">
-      <h3 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;text-align:center;margin-bottom:24px;letter-spacing:-.01em">Chatbot tradicional vs Agente IA WhiteMoon</h3>
+      <h3 style="font-size:1.4rem;font-weight:800;color:#fff;text-align:center;margin-bottom:24px;letter-spacing:-.01em">Chatbot tradicional vs Agente IA WhiteMoon</h3>
       <div style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;overflow:hidden">
         <table style="width:100%;border-collapse:collapse;font-size:.92rem">
           <thead>
@@ -1927,10 +1940,10 @@
 
     <!-- CTAs -->
     <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
-      <button type="button" onclick="var b=document.getElementById('luna-btn');if(b){b.click();}" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.3);letter-spacing:.01em">
+      <button type="button" onclick="var b=document.getElementById('luna-btn');if(b){b.click();}" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:linear-gradient(135deg,var(--p,#7c4dff),var(--p2,#9d70ff));border:0;border-radius:11px;color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s;box-shadow:0 8px 24px rgba(124,77,255,.3);letter-spacing:.01em">
         Quiero mi Agente IA →
       </button>
-      <a href="https://wa.me/34643199580?text=Hola%2C+quiero+un+Agente+IA+de+conversi%C3%B3n+para+mi+empresa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:11px;color:var(--text,#f0f0f5);font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.01em" onclick="wmTrack('click_whatsapp',{source:'home',placement:'agentes-ia-cta'})">
+      <a href="https://wa.me/34643199580?text=Hola%2C+quiero+un+Agente+IA+de+conversi%C3%B3n+para+mi+empresa" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:14px 26px;background:transparent;border:1px solid rgba(124,77,255,.4);border-radius:11px;color:var(--text,#f0f0f5);font-size:.95rem;font-weight:700;text-decoration:none;transition:all .2s;letter-spacing:.01em" onclick="wmTrack('click_whatsapp',{source:'home',placement:'agentes-ia-cta'})">
         Hablar con WhiteMoon
       </a>
     </div>
@@ -2046,7 +2059,7 @@
       Dónde trabajamos
     </div>
 
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em">
+    <h2 style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em">
       Agencia de Inteligencia Artificial en el Noroeste de Madrid
     </h2>
 
@@ -2399,7 +2412,6 @@
     padding:0 22px;
     background:#7c4dff;
     color:#fff;
-    font-family:'Sora',sans-serif;
     font-size:15px;
     font-weight:600;
     text-decoration:none;
