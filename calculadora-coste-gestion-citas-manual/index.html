@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Gestión Citas Manual 2026 · WhiteMoon</title>
+<meta name="description" content="Calcula cuánto gastas en gestión manual de citas (llamadas, reprogramaciones). Horas/mes, coste y ahorro con Orion IA Agent automatizando agenda.">
+<meta name="keywords" content="coste gestion citas manual, automatizar agenda clinica, orion ia agent clinicas, ahorro recepcionista, gestion citas ia">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-gestion-citas-manual/">
+<meta property="og:title" content="Calculadora Coste Gestión Citas Manual 2026 · WhiteMoon">
+<meta property="og:description" content="Cuánto gastas en gestión manual de citas + ahorro con Orion IA Agent.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-gestion-citas-manual/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Gestión Citas Manual 2026","description":"Calcula el coste mensual de gestión manual de citas (llamadas + reprogramaciones) y el ahorro con automatización IA.","url":"https://whitemoon.es/calculadora-coste-gestion-citas-manual/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Gestión Citas Manual","item":"https://whitemoon.es/calculadora-coste-gestion-citas-manual/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto cuesta gestionar las citas manualmente?","acceptedAnswer":{"@type":"Answer","text":"Para una clínica con 40 llamadas/día para citas a 4 minutos por llamada, son 2,67 horas diarias × 22 días = 58,7 horas/mes solo en gestión telefónica de citas. A 18€/h de coste empresa (salario + cotizaciones), eso supone unos 1.060€/mes solo en gestión manual de citas. Sumando reprogramaciones y confirmaciones, fácilmente 1.500-2.000€/mes."}},
+{"@type":"Question","name":"¿Qué ahorra Orion IA Agent en gestión de citas?","acceptedAnswer":{"@type":"Answer","text":"Orion IA Agent absorbe el 75-85% del volumen de gestión de citas: nuevas reservas, modificaciones, cancelaciones y confirmaciones. La recepcionista deja de atender 30-40 llamadas/día rutinarias y se dedica a tareas de mayor valor (pacientes presenciales, gestiones complejas, fidelización). Ahorro típico: 800-1.500€/mes en una clínica mediana."}},
+{"@type":"Question","name":"¿Funciona Orion IA con cualquier software de agenda?","acceptedAnswer":{"@type":"Answer","text":"Orion IA Agent se integra vía API con los principales softwares dentales y de gestión clínica (Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, calendario Google). Para softwares sin API pública, usa scraping autenticado o sincronización por exportación periódica. Si tu software no está soportado, lo evaluamos en la auditoría gratuita."}},
+{"@type":"Question","name":"¿En cuánto tiempo se amortiza la inversión?","acceptedAnswer":{"@type":"Answer","text":"Para una clínica que ahorra 1.000€/mes en gestión manual, la cuota mensual de Orion IA Agent (199€/mes) supone un ROI inmediato del 400%. El setup (999€) se amortiza en el primer mes con el ahorro neto (1.000 − 199 = 801€/mes). A los 12 meses el ahorro neto acumulado supera los 9.000€, descontado el setup."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-gestion-citas-manual',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Gestión Citas Manual</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6"/><circle cx="18" cy="14" r="4"/><polyline points="18 12 18 14 19.5 15.5"/></svg></span> Calculadora gratuita · Automatizar agenda</span>
+    <h1 class="sec-h">Calculadora <em>Coste Gestión Citas Manual</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las horas/mes que tu equipo dedica a gestión manual de citas y el coste real. Comparativa con Orion IA Agent: cuánto ahorras automatizando.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="cm-llamadas">Llamadas para citas al día</label><input type="number" id="cm-llamadas" class="calc-input" value="40" min="0" step="5" oninput="calcCitasManual()"></div>
+      <div class="calc-row"><label class="calc-label" for="cm-minutos">Minutos medios por llamada</label><input type="number" id="cm-minutos" class="calc-input" value="4" min="0" max="60" step="0.5" oninput="calcCitasManual()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="cm-coste">Coste hora admin (€ incluye SS)</label><input type="number" id="cm-coste" class="calc-input" value="18" min="0" step="1" oninput="calcCitasManual()"></div>
+      <div class="calc-row"><label class="calc-label" for="cm-dias">Días laborables al mes</label><input type="number" id="cm-dias" class="calc-input" value="22" min="1" max="31" step="1" oninput="calcCitasManual()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="cm-absorcion">% absorción por Orion IA</label>
+        <select id="cm-absorcion" class="calc-select" onchange="calcCitasManual()">
+          <option value="70">70% conservador</option>
+          <option value="80" selected>80% (media WhiteMoon)</option>
+          <option value="85">85% agresivo</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="cm-cuota">Cuota Orion IA Agent (€/mes)</label>
+        <select id="cm-cuota" class="calc-select" onchange="calcCitasManual()">
+          <option value="199" selected>199 €/mes (Spark + Orion Agent)</option>
+          <option value="349">349 €/mes (Core RAG)</option>
+          <option value="449">449 €/mes (Scale)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="cm-horas">0 h</div><div class="calc-out-lbl">Horas/mes gestión</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="cm-coste-mes">0 €</div><div class="calc-out-lbl">Coste mensual manual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="cm-ahorro">0 €</div><div class="calc-out-lbl">Ahorro neto con IA</div></div>
+    </div>
+
+    <div class="calc-detail" id="cm-explain">Horas/mes = llamadas × minutos / 60 × días laborables. Coste mensual = horas × coste/hora. Ahorro neto = (coste mensual × % absorción) − cuota Orion IA.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. No incluye las horas en reprogramaciones por email/WhatsApp ni el coste de oportunidad de la recepcionista atendiendo cosas más valiosas.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Gestión Citas Manual</h2>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta gestionar las citas manualmente?</div><div class="faq-a">Clínica con 40 llamadas/día × 4 min = 2,67 h/día × 22 días = 58,7 h/mes. A 18€/h: ~1.060€/mes solo gestión telefónica. Con reprogramaciones y confirmaciones: 1.500-2.000€/mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Qué ahorra Orion IA Agent en citas?</div><div class="faq-a">Absorbe el 75-85% del volumen: nuevas reservas, modificaciones, cancelaciones, confirmaciones. Recepcionista pasa de 30-40 llamadas/día rutinarias a tareas de mayor valor. Ahorro: 800-1.500€/mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Funciona con cualquier software de agenda?</div><div class="faq-a">Integración API con Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, Google Calendar. Sin API: scraping autenticado o sync por exportación. Si tu software no está soportado lo evaluamos en auditoría.</div></div>
+    <div class="faq-item"><div class="faq-q">¿En cuánto se amortiza?</div><div class="faq-a">Ahorro neto 1.000€/mes − cuota Orion 199€ = 801€/mes. Setup 999€ amortizado en mes 1. A 12 meses: 9.000€+ neto descontado el setup. ROI 400%.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu clínica. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-gestion-citas-manual','Coste Gestión Citas Manual')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-coste-gestion-citas-manual"><input type="hidden" name="mensaje" value="Lead desde calculadora Coste Gestión Citas Manual">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para clínicas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-coste-paciente-perdido/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="10" cy="8" r="3"/><path d="M4 20c0-3.3 2.7-6 6-6"/><polyline points="16 11 20 15 16 19"/><line x1="20" y1="15" x2="13" y2="15"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Paciente Perdido</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Retención + IA</div></a>
+      <a href="/calculadora-ocupacion-agenda-medica/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><rect x="7" y="13" width="3" height="3"/><rect x="14" y="13" width="3" height="3"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Ocupación Agenda</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Huecos vacíos</div></a>
+      <a href="/calculadora-rentabilidad-consulta-medica/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Rentabilidad Consulta</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Margen + benchmark</div></a>
+      <a href="/chatbot-ia-clinicas-dentales/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 3c-3 0-5 2-5 4 0 2 1 2 1 4l-1 8c0 1 2 2 2 0l1-5h4l1 5c0 2 2 1 2 0l-1-8c0-2 1-2 1-4 0-2-2-4-5-4z"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Clínicas Dentales</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 sector salud</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">54+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcCitasManual(){
+  var llamadas = Math.max(0, parseFloat(document.getElementById('cm-llamadas').value)||0);
+  var minutos = Math.max(0, parseFloat(document.getElementById('cm-minutos').value)||0);
+  var coste = Math.max(0, parseFloat(document.getElementById('cm-coste').value)||0);
+  var dias = Math.max(0, parseFloat(document.getElementById('cm-dias').value)||0);
+  var absorcion = Math.max(0, parseFloat(document.getElementById('cm-absorcion').value)||0) / 100;
+  var cuota = Math.max(0, parseFloat(document.getElementById('cm-cuota').value)||0);
+
+  var horasDia = (llamadas * minutos) / 60;
+  var horasMes = horasDia * dias;
+  var costeMes = horasMes * coste;
+  var ahorroBruto = costeMes * absorcion;
+  var ahorroNeto = ahorroBruto - cuota;
+
+  document.getElementById('cm-horas').textContent = horasMes.toFixed(1).replace('.', ',') + ' h';
+  document.getElementById('cm-coste-mes').textContent = Math.round(costeMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('cm-ahorro').textContent = Math.round(ahorroNeto).toLocaleString('es-ES') + ' €';
+
+  document.getElementById('cm-explain').textContent =
+    'Horas/mes = ' + Math.round(llamadas).toLocaleString('es-ES') + ' llamadas × ' + minutos.toString().replace('.', ',') + ' min / 60 × ' + Math.round(dias).toLocaleString('es-ES') + ' días = ' + horasMes.toFixed(1).replace('.', ',') + ' h. Coste mensual = ' + horasMes.toFixed(1).replace('.', ',') + ' h × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeMes).toLocaleString('es-ES') + ' €. Orion IA absorbe el ' + (absorcion*100).toFixed(0) + '% (' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € bruto) − cuota ' + Math.round(cuota).toLocaleString('es-ES') + ' €/mes = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
+}
+calcCitasManual();
+</script>
+</body>
+</html>
