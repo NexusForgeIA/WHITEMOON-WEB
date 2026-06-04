@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Impuesto Donaciones 2026 · Por CCAA · WhiteMoon</title>
+<meta name="description" content="Calculadora impuesto de donaciones 2026 por CCAA: estima la base imponible, reducción y cuota a pagar según parentesco y tipo de bien.">
+<meta name="keywords" content="calculadora donaciones 2026, impuesto donaciones ccaa, donacion padres hijos, donacion inmueble, donacion dinero">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-donaciones/">
+<meta property="og:title" content="Calculadora Impuesto Donaciones 2026 · WhiteMoon">
+<meta property="og:description" content="Estima el impuesto de donaciones según valor, CCAA, parentesco y tipo de bien.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-donaciones/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Impuesto Donaciones 2026","description":"Calcula el impuesto de donaciones estimado por CCAA, parentesco y tipo de bien.","url":"https://whitemoon.es/calculadora-donaciones/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Donaciones","item":"https://whitemoon.es/calculadora-donaciones/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula el impuesto de donaciones?","acceptedAnswer":{"@type":"Answer","text":"Se aplica la escala estatal progresiva (7,65% al 34%) sobre el valor de la donación, con el coeficiente multiplicador según parentesco (1,0 a 2,4). A diferencia de sucesiones, NO hay reducción estatal por parentesco. Cada CCAA aplica reducciones y bonificaciones propias: Madrid, Andalucía, Galicia y otras bonifican hasta el 99% para Grupos I-II."}},
+{"@type":"Question","name":"¿Quién paga el impuesto de donaciones?","acceptedAnswer":{"@type":"Answer","text":"El donatario (quien recibe la donación), no el donante. La autoliquidación se presenta en la CCAA de residencia habitual del donatario (excepto para inmuebles, donde se aplica la CCAA donde está el inmueble). El plazo es de 30 días hábiles desde la donación."}},
+{"@type":"Question","name":"¿Hay que tributar IRPF también en el donante?","acceptedAnswer":{"@type":"Answer","text":"Sí, si la donación es de un bien que ha generado ganancia patrimonial. Por ejemplo, donar un inmueble cuyo valor subió genera ganancia que tributa en IRPF del donante. La donación de dinero NO genera ganancia patrimonial. Hay excepciones para vivienda habitual de mayores de 65 años."}},
+{"@type":"Question","name":"¿Conviene donar en vida o esperar a heredar?","acceptedAnswer":{"@type":"Answer","text":"Depende de la CCAA. En Madrid, Andalucía, Galicia o Cantabria donar en vida puede ser similar fiscalmente a heredar (ambos bonificados al 99%). En otras CCAA donar suele ser más caro porque las reducciones por parentesco no aplican y el IRPF del donante puede sumar. Consulta siempre con un asesor."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-donaciones',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Donaciones</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/></svg></span> Calculadora gratuita · Donaciones 2026</span>
+    <h1 class="sec-h">Calculadora <em>Impuesto Donaciones</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estimación del impuesto de donaciones por CCAA. Base estatal + bonificación autonómica según parentesco y tipo de bien.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="dn-valor">Valor de la donación (€)</label><input type="number" id="dn-valor" class="calc-input" value="50000" min="0" step="1000" oninput="calcDonaciones()"></div>
+      <div class="calc-row"><label class="calc-label" for="dn-ccaa">Comunidad Autónoma</label>
+        <select id="dn-ccaa" class="calc-select" onchange="calcDonaciones()">
+          <option value="madrid" selected>Madrid · bonif 99% G I-II</option>
+          <option value="andalucia">Andalucía · bonif 99% G I-II</option>
+          <option value="galicia">Galicia · bonif 99% G I-II</option>
+          <option value="cantabria">Cantabria · bonif 99% G I-II</option>
+          <option value="rioja">La Rioja · bonif 99% G I-II</option>
+          <option value="murcia">Murcia · bonif 99% G I-II</option>
+          <option value="cataluna">Cataluña · escala</option>
+          <option value="valencia">Valencia · bonif 50% G I-II</option>
+          <option value="aragon">Aragón · reducción 65%</option>
+          <option value="canarias">Canarias · bonif 99,9% G I-II</option>
+          <option value="baleares">Baleares · tipo fijo 7%</option>
+          <option value="extremadura">Extremadura · bonif 99%</option>
+          <option value="castillaleon">Castilla y León · bonif 99% &lt;400k€</option>
+          <option value="castillamancha">Castilla-La Mancha · bonif 95% G I-II</option>
+          <option value="asturias">Asturias · escala</option>
+          <option value="estatal">Sin bonificación (estatal puro)</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="dn-parent">Parentesco con donante</label>
+        <select id="dn-parent" class="calc-select" onchange="calcDonaciones()">
+          <option value="g1">Grupo I · descendiente &lt; 21 años</option>
+          <option value="g2" selected>Grupo II · cónyuge, hijo mayor o ascendiente</option>
+          <option value="g3">Grupo III · hermano, sobrino, tío</option>
+          <option value="g4">Grupo IV · sin parentesco</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="dn-bien">Tipo de bien donado</label>
+        <select id="dn-bien" class="calc-select" onchange="calcDonaciones()">
+          <option value="dinero" selected>Dinero · sin IRPF donante</option>
+          <option value="inmueble">Inmueble · puede generar IRPF donante</option>
+          <option value="otro">Otros bienes · acciones, vehículos, etc.</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="dn-base">0 €</div><div class="calc-out-lbl">Base imponible</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="dn-cuota">0 €</div><div class="calc-out-lbl">Cuota antes bonif</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="dn-pagar">0 €</div><div class="calc-out-lbl">Impuesto a pagar</div></div>
+    </div>
+
+    <div class="calc-detail" id="dn-explain">Cálculo según escala estatal (7,65% - 34%) sobre la base imponible, multiplicada por el coeficiente según parentesco, con bonificación autonómica aplicable. NO hay reducción estatal por parentesco en donaciones (sí en sucesiones).</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. La donación de inmuebles puede generar IRPF en el donante por ganancia patrimonial. Consulta con un asesor fiscal.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Donaciones 2026</h2>
+    <div class="faq-item"><div class="faq-q">¿Cómo se calcula el impuesto de donaciones?</div><div class="faq-a">Escala estatal (7,65% - 34%) sobre valor × coeficiente parentesco (1,0 - 2,4) − bonificación autonómica. A diferencia de sucesiones, NO hay reducción estatal por parentesco.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Quién paga el impuesto de donaciones?</div><div class="faq-a">El donatario (quien recibe). Autoliquidación en CCAA de residencia del donatario (excepto inmuebles → CCAA donde está el inmueble). Plazo: 30 días hábiles desde la donación.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Hay que tributar IRPF también?</div><div class="faq-a">Sí en el donante si la donación es un bien con ganancia patrimonial (inmueble cuyo valor subió). Donar dinero NO genera ganancia. Excepciones para vivienda habitual de mayores de 65 años.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Conviene donar en vida o esperar a heredar?</div><div class="faq-a">Depende de la CCAA. En Madrid, Andalucía, Galicia o Cantabria donar en vida puede ser similar a heredar (ambos bonificados 99%). En otras CCAA donar suele ser más caro porque las reducciones por parentesco no aplican.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu despacho. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-donaciones','Donaciones')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-donaciones"><input type="hidden" name="mensaje" value="Lead desde calculadora Donaciones">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas legales</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-herencia-impuesto-sucesiones/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 2v6"/><path d="M5 8h14l-2 12H7L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Herencia · Sucesiones</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Estatal + CCAA</div></a>
+      <a href="/calculadora-tasas-judiciales/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><line x1="12" y1="3" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M3 9 6 4 9 9 6 14z"/><path d="M15 9 18 4 21 9 18 14z"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Tasas Judiciales</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Ley 10/2012</div></a>
+      <a href="/calculadora-sanciones-fiscales/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 2 L2 7 v6 c0 5 4 9 10 11 6-2 10-6 10-11 V7 z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Sanciones Fiscales</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">LGT Art. 191-206</div></a>
+      <a href="/chatbot-ia-despachos-abogados/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Despachos</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA legal 24/7</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">44+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+// Bonificación CCAA % aplicable G I-II
+var DN_BONIF_G12 = {
+  madrid: 99, andalucia: 99, galicia: 99, cantabria: 99, rioja: 99, murcia: 99,
+  cataluna: 60, valencia: 50, aragon: 65, canarias: 99.9, baleares: 0,
+  extremadura: 99, castillaleon: 99, castillamancha: 95, asturias: 30, estatal: 0
+};
+var DN_BONIF_G34 = {
+  madrid: 15, andalucia: 0, galicia: 0, cantabria: 0, rioja: 0, murcia: 0,
+  cataluna: 0, valencia: 0, aragon: 0, canarias: 0, baleares: 0,
+  extremadura: 0, castillaleon: 0, castillamancha: 0, asturias: 0, estatal: 0
+};
+
+// Tipo fijo Baleares G I-II
+var DN_TIPO_FIJO = { baleares_g12: 0.07 };
+
+// Escala estatal progresiva
+var DN_ESCALA = [
+  { hasta: 7993.46,    cuotaFija: 0,        tipo: 7.65  },
+  { hasta: 15980.91,   cuotaFija: 611.50,   tipo: 8.50  },
+  { hasta: 23968.36,   cuotaFija: 1290.43,  tipo: 9.35  },
+  { hasta: 31955.81,   cuotaFija: 2037.26,  tipo: 10.20 },
+  { hasta: 39943.26,   cuotaFija: 2851.98,  tipo: 11.05 },
+  { hasta: 47930.72,   cuotaFija: 3734.59,  tipo: 11.90 },
+  { hasta: 55918.17,   cuotaFija: 4685.10,  tipo: 12.75 },
+  { hasta: 63905.62,   cuotaFija: 5703.50,  tipo: 13.60 },
+  { hasta: 71893.07,   cuotaFija: 6789.79,  tipo: 14.45 },
+  { hasta: 79880.52,   cuotaFija: 7943.98,  tipo: 15.30 },
+  { hasta: 119757.67,  cuotaFija: 9166.06,  tipo: 16.15 },
+  { hasta: 159634.83,  cuotaFija: 15606.22, tipo: 18.70 },
+  { hasta: 239389.13,  cuotaFija: 23063.25, tipo: 21.25 },
+  { hasta: 398777.54,  cuotaFija: 40011.04, tipo: 25.50 },
+  { hasta: 797555.08,  cuotaFija: 80655.08, tipo: 29.75 },
+  { hasta: Infinity,   cuotaFija: 199291.40, tipo: 34.00 }
+];
+
+function dnCoef(parent){
+  return { g1: 1.00, g2: 1.00, g3: 1.5882, g4: 2.00 }[parent];
+}
+
+function dnEscala(base){
+  if(base <= 0) return 0;
+  for(var i=0;i<DN_ESCALA.length;i++){
+    var tramo = DN_ESCALA[i];
+    var ant = i===0 ? 0 : DN_ESCALA[i-1].hasta;
+    if(base <= tramo.hasta){
+      return tramo.cuotaFija + (base - ant) * (tramo.tipo / 100);
+    }
+  }
+  return 0;
+}
+
+function calcDonaciones(){
+  var valor = Math.max(0, parseFloat(document.getElementById('dn-valor').value)||0);
+  var ccaa = document.getElementById('dn-ccaa').value;
+  var parent = document.getElementById('dn-parent').value;
+  var bien = document.getElementById('dn-bien').value;
+
+  // En donaciones NO hay reducción estatal por parentesco
+  var base = valor;
+  var cuotaIntegra, cuotaTributaria;
+
+  // Caso especial Baleares: tipo fijo 7% para G I-II
+  if(ccaa === 'baleares' && (parent === 'g1' || parent === 'g2')){
+    cuotaIntegra = base * 0.07;
+    cuotaTributaria = cuotaIntegra;
+  } else {
+    cuotaIntegra = dnEscala(base);
+    cuotaTributaria = cuotaIntegra * dnCoef(parent);
+  }
+
+  var bonifTabla = (parent === 'g1' || parent === 'g2') ? DN_BONIF_G12 : DN_BONIF_G34;
+  var bonifPct = bonifTabla[ccaa] || 0;
+  var pagar = cuotaTributaria * (1 - bonifPct / 100);
+
+  document.getElementById('dn-base').textContent  = Math.round(base).toLocaleString('es-ES') + ' €';
+  document.getElementById('dn-cuota').textContent = Math.round(cuotaTributaria).toLocaleString('es-ES') + ' €';
+  document.getElementById('dn-pagar').textContent = Math.round(pagar).toLocaleString('es-ES') + ' €';
+
+  var parentTxt = { g1:'Grupo I (descendiente <21)', g2:'Grupo II (cónyuge / hijo mayor / ascendiente)', g3:'Grupo III (hermano/sobrino/tío)', g4:'Grupo IV (sin parentesco)' }[parent];
+  var bienTxt = { dinero:'dinero (sin IRPF donante)', inmueble:'inmueble (puede generar IRPF al donante)', otro:'otros bienes (acciones/vehículos/etc.)' }[bien];
+  var ccaaTxt = document.getElementById('dn-ccaa').options[document.getElementById('dn-ccaa').selectedIndex].text;
+  document.getElementById('dn-explain').textContent =
+    'Donación ' + Math.round(valor).toLocaleString('es-ES') + ' € de ' + bienTxt + ' a ' + parentTxt + '. Cuota tributaria (cuota íntegra × coef. ' + dnCoef(parent).toFixed(2).replace('.',',') + '): ' + Math.round(cuotaTributaria).toLocaleString('es-ES') + ' €. Bonificación ' + ccaaTxt.split(' · ')[0] + ' (' + bonifPct + '%). Total a pagar estimado: ' + Math.round(pagar).toLocaleString('es-ES') + ' €.';
+}
+calcDonaciones();
+</script>
+</body>
+</html>

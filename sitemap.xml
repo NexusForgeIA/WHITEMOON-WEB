@@ -32,6 +32,38 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- Cluster 6 · Legal / Administrativo (5 calculadoras priority 0.8) -->
+  <url>
+    <loc>https://whitemoon.es/calculadora-tasas-judiciales/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-herencia-impuesto-sucesiones/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-donaciones/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-sanciones-fiscales/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-indemnizacion-accidente-trafico/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Servicio principal: Agentes IA -->
   <url>
     <loc>https://whitemoon.es/agentes-ia/</loc>
