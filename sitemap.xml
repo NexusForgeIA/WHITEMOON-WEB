@@ -635,4 +635,35 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <!-- Cluster 5 — Empresas y RRHH -->
+  <url>
+    <loc>https://whitemoon.es/calculadora-absentismo-laboral/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-productividad-empleado/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-rotacion-personal/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-reunion/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-roi-formacion/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

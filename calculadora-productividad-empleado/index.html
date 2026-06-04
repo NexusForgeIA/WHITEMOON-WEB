@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Productividad por Empleado 2026 · Ingresos por hora · WhiteMoon</title>
+<meta name="description" content="Calcula los ingresos por empleado y por hora de tu empresa. Benchmark por sector y comparativa con media nacional. Gratis.">
+<meta name="keywords" content="productividad empleado, ingresos por empleado, calculadora productividad empresa, ingresos por hora trabajada">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-productividad-empleado/">
+<meta property="og:title" content="Calculadora Productividad por Empleado 2026 · WhiteMoon">
+<meta property="og:description" content="Ingresos por empleado, ingresos por hora y benchmark por sector.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-productividad-empleado/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Productividad por Empleado","description":"Calcula ingresos por empleado, ingresos por hora y compara con el benchmark por sector.","url":"https://whitemoon.es/calculadora-productividad-empleado/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Productividad por Empleado","item":"https://whitemoon.es/calculadora-productividad-empleado/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula la productividad por empleado?","acceptedAnswer":{"@type":"Answer","text":"La fórmula básica es: Ingresos por empleado = Ingresos totales anuales / Número de empleados. Es una métrica de eficiencia que indica cuánto factura cada miembro del equipo. Para comparar empresas de distinto tamaño se usa también ingresos por hora trabajada: ingresos / (empleados × horas semanales × 52)."}},
+{"@type":"Question","name":"¿Cuáles son los benchmarks de productividad por sector en España?","acceptedAnswer":{"@type":"Answer","text":"Datos orientativos de productividad por empleado en España: tecnología y software 120.000-180.000€, banca y finanzas 200.000-300.000€, consultoría 100.000-150.000€, industria manufacturera 90.000-130.000€, retail 70.000-110.000€, hostelería y restauración 40.000-70.000€, servicios personales 35.000-60.000€. Las cifras varían mucho según margen y modelo de negocio."}},
+{"@type":"Question","name":"¿Cómo aumentar la productividad por empleado con IA?","acceptedAnswer":{"@type":"Answer","text":"La IA aumenta productividad principalmente liberando horas de tareas repetitivas: atención al cliente, gestión administrativa, cualificación de leads y generación de informes. Un Agente IA bien implementado libera 5-10h/semana por empleado en negocios con alto volumen de consultas, equivalente al 12-25% más de tiempo dedicado a tareas de mayor valor: ventas, estrategia, atención premium."}},
+{"@type":"Question","name":"¿Qué se considera buena productividad por empleado?","acceptedAnswer":{"@type":"Answer","text":"Una productividad por empleado superior al promedio del sector indica eficiencia operativa. La regla práctica es que los ingresos por empleado deben ser al menos 3-4 veces el coste total del trabajador (salario + SS + indirectos) para que la empresa sea rentable. Por debajo de 2.5x indica problemas de eficiencia o márgenes bajos; por encima de 5x es excelente."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-num.bench{color:#5eead4}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-productividad-empleado',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Productividad por Empleado</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="22" cy="20" r="8"/><path d="M8 50 C8 40 14 36 22 36 C30 36 36 40 36 50"/><circle cx="46" cy="26" r="6"/><path d="M36 50 C36 42 41 38 46 38 C51 38 56 42 56 50"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">📈 Calculadora gratuita · Productividad 2026</span>
+    <h1 class="sec-h">Calculadora <em>Productividad por Empleado</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Ingresos por empleado, ingresos por hora y benchmark sectorial de tu empresa.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-row">
+      <div class="calc-label"><span>Ingresos anuales empresa (€)</span><span class="calc-val" id="pe-r-ing">1.500.000 €</span></div>
+      <input type="number" id="pe-ing" class="calc-input" value="1500000" min="10000" max="500000000" step="10000" oninput="calcPE()">
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Número de empleados</span><span class="calc-val" id="pe-r-emp">15</span></div>
+        <input type="number" id="pe-emp" class="calc-input" value="15" min="1" max="50000" step="1" oninput="calcPE()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Horas trabajadas / semana</span><span class="calc-val" id="pe-r-h">40 h</span></div>
+        <input type="range" id="pe-h" class="calc-slider" min="20" max="50" value="40" step="1" oninput="calcPE()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <label class="calc-label" for="pe-sect">Sector (para benchmark)</label>
+      <select id="pe-sect" class="calc-select" onchange="calcPE()">
+        <option value="tecnologia" data-bench="150000">Tecnología y software</option>
+        <option value="banca" data-bench="250000">Banca y finanzas</option>
+        <option value="consultoria" data-bench="125000">Consultoría profesional</option>
+        <option value="industria" data-bench="110000">Industria manufacturera</option>
+        <option value="retail" data-bench="90000" selected>Retail y comercio</option>
+        <option value="hosteleria" data-bench="55000">Hostelería y restauración</option>
+        <option value="servicios" data-bench="50000">Servicios personales</option>
+      </select>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="pe-porEmp">100.000 €</div><div class="calc-out-lbl">Ingresos / empleado</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pe-porHora">48 €</div><div class="calc-out-lbl">Ingresos / hora</div></div>
+      <div class="calc-out-card"><div class="calc-out-num bench" id="pe-bench">90.000 €</div><div class="calc-out-lbl">Benchmark sector</div></div>
+    </div>
+
+    <div class="calc-detail" id="pe-explain">Ingresos por hora = ingresos / (empleados × horas semanales × 52 semanas). El benchmark es una media orientativa de empresas del mismo sector en España.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. Los benchmarks reales varían según tamaño de empresa, márgenes y modelo de negocio. Para comparar con tu sector concreto, consulta INE o asociaciones sectoriales.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-productividad-empleado','Productividad Empleado')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-productividad-empleado">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora productividad empleado">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Productividad por empleado</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo se calcula la productividad por empleado?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Fórmula básica: Ingresos por empleado = Ingresos totales / Número de empleados. Es una métrica de eficiencia que indica cuánto factura cada miembro del equipo. Para comparar empresas de distinto tamaño se usa también ingresos por hora trabajada.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuáles son los benchmarks de productividad por sector en España?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Orientativo: tecnología 120-180k€, banca 200-300k€, consultoría 100-150k€, industria 90-130k€, retail 70-110k€, hostelería 40-70k€, servicios personales 35-60k€. Varían mucho según margen y modelo.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo aumentar la productividad por empleado con IA?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La IA aumenta productividad liberando horas de tareas repetitivas: atención al cliente, gestión administrativa, cualificación de leads, informes. Un Agente IA libera 5-10h/semana por empleado en negocios con alto volumen de consultas, equivalente al 12-25% más de tiempo en tareas de mayor valor.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué se considera buena productividad por empleado?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Regla práctica: los ingresos por empleado deben ser al menos 3-4 veces el coste total del trabajador. Por debajo de 2.5x indica problemas de eficiencia o márgenes bajos; por encima de 5x es excelente.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster empresas y RRHH</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-absentismo-laboral/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📅</div><div style="font-weight:700;color:#fff;margin-top:4px">Absentismo Laboral</div><div style="font-size:.78rem;color:#9090b0">Coste mensual y anual</div></a>
+      <a href="/calculadora-coste-reunion/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">👥</div><div style="font-weight:700;color:#fff;margin-top:4px">Coste Reunión</div><div style="font-size:.78rem;color:#9090b0">Horas productivas perdidas</div></a>
+      <a href="/calculadora-coste-trabajador/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">💼</div><div style="font-weight:700;color:#fff;margin-top:4px">Coste Real Trabajador</div><div style="font-size:.78rem;color:#9090b0">Salario + SS + indirectos</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">Libera horas con un Agente IA</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon liberan 5-10 horas/semana por empleado en negocios con alto volumen de consultas, traduciéndose en mejora directa de productividad por empleado.</p>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-productividad-empleado',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">37 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtPE(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcPE(){
+  var ing=parseFloat(document.getElementById('pe-ing').value)||0;
+  var emp=parseInt(document.getElementById('pe-emp').value,10)||1;
+  var h=parseInt(document.getElementById('pe-h').value,10)||40;
+  var sectEl=document.getElementById('pe-sect');
+  var bench=parseFloat(sectEl.options[sectEl.selectedIndex].dataset.bench)||0;
+
+  document.getElementById('pe-r-ing').textContent=fmtPE(ing);
+  document.getElementById('pe-r-emp').textContent=emp;
+  document.getElementById('pe-r-h').textContent=h+' h';
+
+  var porEmp=emp>0?(ing/emp):0;
+  var porHora=(emp*h*52)>0?(ing/(emp*h*52)):0;
+
+  document.getElementById('pe-porEmp').textContent=fmtPE(porEmp);
+  document.getElementById('pe-porHora').textContent=fmtPE(porHora);
+  document.getElementById('pe-bench').textContent=fmtPE(bench);
+
+  var diff=bench>0?((porEmp/bench-1)*100):0;
+  var sign=diff>=0?'+':'';
+  var msg=Math.abs(diff)<5?'en línea con el benchmark':(diff>0?'por encima del benchmark':'por debajo del benchmark');
+  document.getElementById('pe-explain').textContent='Tu empresa: '+fmtPE(porEmp)+' por empleado, '+sign+diff.toFixed(0)+'% '+msg+' del sector ('+fmtPE(bench)+'). Ingresos por hora: '+fmtPE(porHora)+' sobre '+(emp*h*52).toLocaleString('es-ES')+' horas/año.';
+}
+calcPE();
+</script>
+
+</body>
+</html>

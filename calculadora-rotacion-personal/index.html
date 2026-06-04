@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Rotación de Personal 2026 · Coste anual reemplazos · WhiteMoon</title>
+<meta name="description" content="Calcula el coste real de la rotación de personal: coste por baja, coste anual y % sobre masa salarial. Gratis, sin registro.">
+<meta name="keywords" content="calculadora rotacion personal, coste rotacion empleados, coste reemplazo trabajador, turnover rate empresa">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-rotacion-personal/">
+<meta property="og:title" content="Calculadora Rotación de Personal 2026 · WhiteMoon">
+<meta property="og:description" content="Coste por baja, coste anual y % sobre masa salarial de la rotación de empleados.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-rotacion-personal/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Rotación de Personal","description":"Estima el coste anual de la rotación de personal: bajas, selección, formación y curva de aprendizaje.","url":"https://whitemoon.es/calculadora-rotacion-personal/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Rotación de Personal","item":"https://whitemoon.es/calculadora-rotacion-personal/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué es la rotación de personal y cómo se calcula?","acceptedAnswer":{"@type":"Answer","text":"La rotación de personal (turnover rate) mide la velocidad a la que los empleados dejan la empresa. Tasa de rotación (%) = (empleados que abandonan en el año / plantilla media) × 100. Se considera saludable entre 5% y 15% anual: por debajo puede indicar estancamiento, por encima del 20% genera costes significativos y problemas operativos."}},
+{"@type":"Question","name":"¿Cuánto cuesta reemplazar a un empleado?","acceptedAnswer":{"@type":"Answer","text":"El coste de reemplazar a un empleado varía según puesto: para posiciones operativas suele rondar el 30-50% del salario anual; para perfiles cualificados llega al 100-150%; para ejecutivos puede superar el 200%. Incluye costes de selección, onboarding, formación, baja productividad inicial (3-6 meses) y pérdida de conocimiento."}},
+{"@type":"Question","name":"¿Por qué la rotación reduce la productividad?","acceptedAnswer":{"@type":"Answer","text":"Cada baja genera: (1) periodo sin cubrir el puesto (vacante 1-3 meses); (2) sobrecarga del equipo restante; (3) curva de aprendizaje del nuevo empleado (3-6 meses al 60-70% de productividad); (4) pérdida de conocimiento institucional; (5) coste de selección y onboarding. La productividad real del puesto cae 30-50% durante el periodo de transición."}},
+{"@type":"Question","name":"¿Cómo reducir la rotación con IA y mejores procesos?","acceptedAnswer":{"@type":"Answer","text":"La IA conversacional ayuda en RRHH a: detectar señales de desmotivación mediante encuestas conversacionales periódicas, mejorar la experiencia del empleado con asistente IA 24/7 para dudas administrativas, automatizar el onboarding reduciendo fricción inicial, y dar al management visibilidad temprana de problemas. Reducción típica: 15-30% en empresas con buen plan de retención + automatización."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-rotacion-personal',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Rotación de Personal</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M52 16 A22 22 0 1 0 56 36"/><polyline points="56 16 52 16 52 28"/><circle cx="32" cy="32" r="4"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">🔄 Calculadora gratuita · Rotación 2026</span>
+    <h1 class="sec-h">Calculadora <em>Rotación de Personal</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Coste real de la rotación: coste por baja, anual y % sobre masa salarial. Para tomar decisiones informadas sobre retención.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Empleados que abandonan / año</span><span class="calc-val" id="rp-r-bajas">8</span></div>
+        <input type="number" id="rp-bajas" class="calc-input" value="8" min="0" max="10000" step="1" oninput="calcRP()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Plantilla total</span><span class="calc-val" id="rp-r-plantilla">50</span></div>
+        <input type="number" id="rp-plantilla" class="calc-input" value="50" min="1" max="50000" step="1" oninput="calcRP()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Salario medio anual bruto (€)</span><span class="calc-val" id="rp-r-salario">28.000 €</span></div>
+        <input type="number" id="rp-salario" class="calc-input" value="28000" min="10000" max="500000" step="500" oninput="calcRP()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Coste reemplazo (% del salario)</span><span class="calc-val" id="rp-r-coste">50 %</span></div>
+        <input type="range" id="rp-coste" class="calc-slider" min="20" max="200" value="50" step="5" oninput="calcRP()">
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="rp-porBaja">14.000 €</div><div class="calc-out-lbl">Coste por baja</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="rp-anual">112.000 €</div><div class="calc-out-lbl">Coste anual rotación</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="rp-pct">8.0 %</div><div class="calc-out-lbl">% masa salarial</div></div>
+    </div>
+
+    <div class="calc-detail" id="rp-explain">Coste por baja = salario × % reemplazo. Tasa de rotación = bajas / plantilla × 100. % sobre masa salarial = coste anual / (plantilla × salario) × 100.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. El coste real de la rotación incluye selección, onboarding, formación, baja productividad inicial (3-6 meses) y pérdida de conocimiento institucional. SHRM estima 30-50% del salario para operativos y 100-150% para perfiles cualificados.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-rotacion-personal','Rotación Personal')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-rotacion-personal">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora rotación personal">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Rotación de personal</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué es la rotación de personal y cómo se calcula?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La rotación (turnover rate) mide la velocidad a la que los empleados dejan la empresa. Tasa (%) = (bajas año / plantilla media) × 100. Saludable entre 5-15% anual: por debajo puede indicar estancamiento, por encima del 20% genera costes significativos.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuánto cuesta reemplazar a un empleado?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Para puestos operativos: 30-50% del salario anual. Perfiles cualificados: 100-150%. Ejecutivos: 200%+. Incluye selección, onboarding, formación, baja productividad inicial (3-6 meses) y pérdida de conocimiento.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Por qué la rotación reduce la productividad?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Cada baja genera: vacante 1-3 meses, sobrecarga del equipo, curva de aprendizaje del nuevo (3-6 meses al 60-70% de productividad), pérdida de conocimiento, coste de selección. La productividad del puesto cae 30-50% durante la transición.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo reducir la rotación con IA y mejores procesos?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La IA detecta señales tempranas de desmotivación, mejora la experiencia del empleado con asistente 24/7, automatiza el onboarding y da visibilidad temprana al management. Reducción típica: 15-30% con plan de retención + automatización.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster empresas y RRHH</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-absentismo-laboral/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📅</div><div style="font-weight:700;color:#fff;margin-top:4px">Absentismo Laboral</div><div style="font-size:.78rem;color:#9090b0">Coste mensual y anual</div></a>
+      <a href="/calculadora-roi-formacion/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🎓</div><div style="font-weight:700;color:#fff;margin-top:4px">ROI Formación</div><div style="font-size:.78rem;color:#9090b0">Payback y beneficio estimado</div></a>
+      <a href="/calculadora-coste-trabajador/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">💼</div><div style="font-weight:700;color:#fff;margin-top:4px">Coste Real Trabajador</div><div style="font-size:.78rem;color:#9090b0">Salario + SS + indirectos</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">Reduce rotación con experiencia empleado IA</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que mejora la experiencia del empleado: respuestas 24/7 sobre nóminas, vacaciones, permisos y gestión de incidencias. Una de las palancas más eficaces para reducir rotación voluntaria.</p>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-rotacion-personal',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">37 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtRP(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcRP(){
+  var bajas=parseInt(document.getElementById('rp-bajas').value,10)||0;
+  var plantilla=parseInt(document.getElementById('rp-plantilla').value,10)||1;
+  var salario=parseFloat(document.getElementById('rp-salario').value)||0;
+  var coste=parseFloat(document.getElementById('rp-coste').value)||0;
+
+  document.getElementById('rp-r-bajas').textContent=bajas;
+  document.getElementById('rp-r-plantilla').textContent=plantilla;
+  document.getElementById('rp-r-salario').textContent=fmtRP(salario);
+  document.getElementById('rp-r-coste').textContent=coste+' %';
+
+  var porBaja=salario*coste/100;
+  var anual=porBaja*bajas;
+  var masa=plantilla*salario;
+  var pct=masa>0?(anual/masa*100):0;
+  var tasa=plantilla>0?(bajas/plantilla*100):0;
+
+  document.getElementById('rp-porBaja').textContent=fmtRP(porBaja);
+  document.getElementById('rp-anual').textContent=fmtRP(anual);
+  document.getElementById('rp-pct').textContent=pct.toFixed(1)+' %';
+
+  var nivel=tasa<5?'baja':(tasa<15?'saludable':(tasa<20?'elevada':'crítica'));
+  document.getElementById('rp-explain').textContent='Tasa de rotación: '+tasa.toFixed(1)+'% ('+nivel+'). '+bajas+' bajas a '+fmtRP(porBaja)+' por reemplazo. Masa salarial total: '+fmtRP(masa)+'.';
+}
+calcRP();
+</script>
+
+</body>
+</html>
