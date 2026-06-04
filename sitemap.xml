@@ -282,6 +282,38 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Agencia IA Madrid centro · clusters de zona -->
+  <url>
+    <loc>https://whitemoon.es/agencia-ia-madrid-centro/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/agencia-ia-salamanca-madrid/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/agencia-ia-chamberi-madrid/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/agencia-ia-centro-madrid/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/agencia-ia-norte-madrid/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
   <!-- Packs -->
   <url>
     <loc>https://whitemoon.es/spark/</loc>
