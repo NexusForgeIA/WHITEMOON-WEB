@@ -147,6 +147,40 @@ a{color:var(--p2);}
   </ul>
 </div>
 
+<!-- MÉTRICAS REALES ACTUALES -->
+<section style="margin:48px 0 32px;padding:28px 24px;background:linear-gradient(180deg,rgba(124,77,255,.04),rgba(11,15,23,.6));border:1px solid rgba(124,77,255,.18);border-radius:14px">
+  <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#c4b3ff;margin-bottom:14px">
+    <span style="width:6px;height:6px;border-radius:50%;background:#10b981;box-shadow:0 0 8px rgba(16,185,129,.6);display:inline-block"></span>
+    Estado actual · datos verificables
+  </div>
+  <h3 style="font-family:'Inter',sans-serif;font-size:1.15rem;font-weight:600;color:#fff;letter-spacing:-.015em;margin:0 0 18px">Métricas reales del proyecto</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+    <div style="padding:16px;background:rgba(13,13,26,.5);border:1px solid rgba(124,77,255,.12);border-radius:10px">
+      <div style="font-size:.7rem;color:#9CA3AF;letter-spacing:.04em;margin-bottom:6px">Estado web</div>
+      <div style="font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:#fff;line-height:1.4">Activa desde mayo 2026</div>
+    </div>
+    <div style="padding:16px;background:rgba(13,13,26,.5);border:1px solid rgba(124,77,255,.12);border-radius:10px">
+      <div style="font-size:.7rem;color:#9CA3AF;letter-spacing:.04em;margin-bottom:6px">Pack implementado</div>
+      <div style="font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:#fff;line-height:1.4">Core · Web + Agente IA</div>
+    </div>
+    <div style="padding:16px;background:rgba(13,13,26,.5);border:1px solid rgba(124,77,255,.12);border-radius:10px">
+      <div style="font-size:.7rem;color:#9CA3AF;letter-spacing:.04em;margin-bottom:6px">Agente IA</div>
+      <div style="font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;color:#5eead4;line-height:1.4">Operativo 24/7</div>
+    </div>
+  </div>
+  <div style="margin-top:18px;padding-top:18px;border-top:1px solid rgba(124,77,255,.12)">
+    <div style="font-size:.7rem;color:#9CA3AF;letter-spacing:.04em;margin-bottom:10px">Eventos GA4 activos en producción</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">
+      <code style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,.4);border:1px solid rgba(124,77,255,.2);border-radius:6px;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;color:#c4b3ff;letter-spacing:0">abrir_chat_pedido</code>
+      <code style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,.4);border:1px solid rgba(124,77,255,.2);border-radius:6px;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;color:#c4b3ff;letter-spacing:0">abrir_chat_reserva</code>
+      <code style="display:inline-block;padding:4px 10px;background:rgba(0,0,0,.4);border:1px solid rgba(124,77,255,.2);border-radius:6px;font-family:'SF Mono',Menlo,Consolas,monospace;font-size:.72rem;color:#c4b3ff;letter-spacing:0">click_whatsapp</code>
+    </div>
+    <p style="font-size:.78rem;color:#6B7280;line-height:1.6;margin:14px 0 0">
+      Estos eventos disparan en cada interacción del cliente con el chat (pedidos, reservas o derivación a WhatsApp) y permiten medir el uso real del Agente IA en producción. Sin métricas infladas: solo los datos que tenemos del despliegue.
+    </p>
+  </div>
+</section>
+
 <div class="post-cta">
   <h2 style="margin-bottom:8px">¿Tu restaurante también?</h2>
   <p>Demo en vivo del flujo de pedidos/reservas · sin compromiso.</p>
