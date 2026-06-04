@@ -827,53 +827,161 @@
 </script>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-enterprise">
   <canvas id="star-canvas"></canvas>
   <div class="hero-nebula"></div>
   <div class="hero-grid"></div>
+  <style>
+    .hero-enterprise{position:relative;padding:80px 24px 60px;overflow:hidden}
+    .hero-enterprise .wrap{max-width:1240px;margin:0 auto;position:relative;z-index:2}
+    .hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:48px}
+    .hero-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 18px rgba(124,77,255,.4))}
+    .hero-brand .name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;line-height:1;letter-spacing:-.01em}
+    .hero-brand .name .light{color:#f0f0f5}.hero-brand .name .acc{color:#7c4dff}
+    .hero-cols{display:grid;grid-template-columns:6fr 4fr;gap:64px;align-items:center}
+    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px}}
+    .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
+    .hero-left .eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
+    .hero-left h1{font-family:'Sora',sans-serif;font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#f0f0f5;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px}
+    .hero-left h1 em{font-style:normal;background:linear-gradient(135deg,#9d70ff 0%,#c4b3ff 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-left .sub{font-size:1.05rem;color:#9090b0;line-height:1.65;max-width:560px;margin:0 0 32px}
+    .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+    .hero-ctas .btn-primary,.hero-ctas .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:10px;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease;cursor:pointer;border:0}
+    .hero-ctas .btn-primary{background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;box-shadow:0 14px 36px rgba(124,77,255,.32)}
+    .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
+    .hero-ctas .btn-ghost{background:transparent;color:#f0f0f5;border:1px solid rgba(255,255,255,.2)}
+    .hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
+    /* Dashboard mock */
+    .hero-dash{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02) inset;position:relative}
+    .hero-dash::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(124,77,255,.12),transparent 60%);pointer-events:none}
+    .dash-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(124,77,255,.12);font-family:'Sora',sans-serif;font-size:.78rem;color:#c4b3ff}
+    .dash-bar .status{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+    .dash-bar .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,.6);animation:dashPulse 1.6s ease-in-out infinite}
+    @keyframes dashPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
+    .dash-bar .time{font-size:.7rem;color:#6b7280;letter-spacing:.06em}
+    .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(124,77,255,.12)}
+    .dash-cell{padding:20px 22px;position:relative}
+    .dash-cell+.dash-cell{border-left:1px solid rgba(124,77,255,.12)}
+    .dash-cell .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
+    .dash-cell .num{font-family:'Sora',sans-serif;font-size:1.9rem;font-weight:700;color:#f0f0f5;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
+    .dash-cell .sub{font-size:.72rem;color:#9090b0}
+    .dash-cell .num .pre{color:#7c4dff}
+    .dash-savings{padding:20px 22px;border-bottom:1px solid rgba(124,77,255,.12)}
+    .dash-savings .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+    .dash-savings .num{font-family:'Sora',sans-serif;font-size:2.2rem;font-weight:700;color:#5eead4;letter-spacing:-.025em;line-height:1}
+    .dash-savings .num::after{content:" €";font-size:1.2rem;color:#9090b0;font-weight:500}
+    .dash-pipe{padding:18px 22px 20px}
+    .dash-pipe .steps{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:.7rem;color:#9090b0;letter-spacing:.04em}
+    .dash-pipe .steps b{color:#c4b3ff;font-weight:600}
+    .dash-pipe .steps .arrow{color:#4b5563}
+    .dash-pipe .progress{height:6px;background:rgba(124,77,255,.1);border-radius:99px;overflow:hidden;position:relative}
+    .dash-pipe .progress-fill{height:100%;background:linear-gradient(90deg,#7c4dff,#9d70ff,#5eead4);border-radius:99px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1) .3s}
+    .dash-pipe .progress-fill.go{width:94%}
+    .dash-pipe .progress-label{display:flex;justify-content:space-between;margin-top:10px;font-size:.7rem;color:#6b7280;letter-spacing:.04em}
+    .dash-pipe .progress-label b{color:#f0f0f5;font-weight:600}
+    /* Stats row */
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12)}
+    @media(max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
+    .hero-stat{display:flex;flex-direction:column;gap:6px}
+    .hero-stat .v{font-family:'Sora',sans-serif;font-size:1.6rem;font-weight:700;color:#f0f0f5;letter-spacing:-.02em;line-height:1}
+    .hero-stat .v em{font-style:normal;color:#7c4dff}
+    .hero-stat .l{font-size:.78rem;color:#9090b0;letter-spacing:.02em;line-height:1.4}
+  </style>
   <div class="wrap">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:18px;margin-bottom:36px;">
-      <img src="/assets/images/icono.jpg" alt="WhiteMoon Agencia de IA" width="120" height="120" loading="eager" fetchpriority="high" decoding="async" style="width:120px;height:120px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 32px rgba(124,77,255,0.35));">
-      <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1;letter-spacing:-.01em;"><span style="color:#f0f0f5">WHITE</span><span style="color:#7c4dff">MOON</span></div>
+
+    <!-- Brand bar -->
+    <div class="hero-brand">
+      <img src="/assets/images/icono.jpg" alt="WhiteMoon Agencia de IA" width="44" height="44" loading="eager" fetchpriority="high" decoding="async">
+      <div class="name"><span class="light">WHITE</span><span class="acc">MOON</span></div>
     </div>
-<div style="display:inline-flex;align-items:center;gap:6px;padding:5px 14px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:20px;font-size:.62rem;font-weight:700;color:var(--accent,#c084fc);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px">
-      <span style="width:5px;height:5px;border-radius:50%;background:#22c55e;animation:wmPulse 2s infinite"></span>
-      Ingeniería de IA aplicada a pymes en Madrid
-    </div>
-    <h1>Tu negocio responde 24/7<br>con un <span>Agente IA propio</span></h1>
-    <!-- H1 principal: keyword "Agente IA" + beneficio funcional -->
-    <p class="hero-sub">Implementamos Agentes IA conversacionales en 7 días laborables. Sin permanencia en Spark, Core y Core RAG.</p>
-    <div class="hero-actions">
-      <button type="button" class="btn-prim" onclick="var b=document.getElementById('luna-btn');if(b){b.click();}">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-        Habla con nuestro Agente IA →
-      </button>
-      <a href="#pack-rag" class="btn-out">Ver demo en vivo →</a>
-    </div>
-    <div style="display:flex;justify-content:center;margin-top:14px">
-      <a href="tel:+34643199580" class="btn-tel" style="display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:15px;font-weight:500;opacity:.85;background:transparent;border:1px solid rgba(255,255,255,.25);padding:10px 20px;border-radius:10px;text-decoration:none;transition:opacity .2s,border-color .2s" onmouseover="this.style.opacity='1';this.style.borderColor='rgba(255,255,255,.45)'" onmouseout="this.style.opacity='.85';this.style.borderColor='rgba(255,255,255,.25)'">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg> <span style="margin-left:6px">643 199 580</span>
-      </a>
-    </div>
-    <div class="hero-proof" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:24px;justify-content:center">
-      <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        67% consultas llegan fuera de horario
+
+    <!-- 60/40 layout -->
+    <div class="hero-cols">
+
+      <!-- LEFT -->
+      <div class="hero-left">
+        <div class="eyebrow">Sistemas de automatización IA</div>
+        <h1>Reduce <em>costes operativos</em> con agentes IA</h1>
+        <p class="sub">Diseñamos e implementamos agentes que eliminan procesos manuales críticos y reducen costes operativos desde el día 1. Operativo en 7 días laborables. Sin permanencia en los planes Spark, Core y Core RAG.</p>
+        <div class="hero-ctas">
+          <a href="/precios/" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'ver-planes'})">Ver planes →</a>
+          <a href="/calculadora-roi-agente-ia/" class="btn-ghost" onclick="wmTrack('click_hero_cta',{action:'calcular-roi'})">Calcular mi ROI →</a>
+        </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        +47 negocios automatizados
+
+      <!-- RIGHT: dashboard mock -->
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-dash">
+          <div class="dash-bar">
+            <div class="status"><span class="dot"></span> Sistema Orion IA · Activo</div>
+            <div class="time">LIVE</div>
+          </div>
+          <div class="dash-grid">
+            <div class="dash-cell">
+              <div class="label">Llamadas atendidas</div>
+              <div class="num" data-target="247">0</div>
+              <div class="sub">hoy</div>
+            </div>
+            <div class="dash-cell">
+              <div class="label">Leads capturados</div>
+              <div class="num" data-target="18">0</div>
+              <div class="sub">hoy</div>
+            </div>
+          </div>
+          <div class="dash-savings">
+            <div class="label">Ahorro estimado este mes</div>
+            <div class="num" data-target="3840">0</div>
+          </div>
+          <div class="dash-pipe">
+            <div class="steps"><b>Incoming</b><span class="arrow">→</span><b>AI</b><span class="arrow">→</span><b>CRM</b><span class="arrow">→</span><b>Done</b></div>
+            <div class="progress"><div class="progress-fill" id="dashProgress"></div></div>
+            <div class="progress-label"><span>Resueltos sin humano</span><b>94 %</b></div>
+          </div>
+        </div>
       </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        0 llamadas perdidas con Orion IA
-      </div>
-      <div style="display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--text2,#9090b0)">
-        <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#22c55e;fill:none;stroke-width:2"><polyline points="20 6 9 17 4 12"/></svg>
-        Operativo en 5-7 días laborables
-      </div>
+
     </div>
+
+    <!-- 4 STATS -->
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="v"><em>42+</em></div><div class="l">Calculadoras gratuitas</div></div>
+      <div class="hero-stat"><div class="v"><em>+18</em></div><div class="l">Sistemas IA desplegados</div></div>
+      <div class="hero-stat"><div class="v"><em>−40 %</em></div><div class="l">Costes operativos medio</div></div>
+      <div class="hero-stat"><div class="v"><em>7 d</em></div><div class="l">Hasta operativo</div></div>
+    </div>
+
   </div>
+
+  <script>
+  // CountUp animado para los números del dashboard
+  (function(){
+    function countUp(el, target, duration){
+      var start=null;
+      function step(ts){
+        if(!start)start=ts;
+        var p=Math.min((ts-start)/duration,1);
+        // ease-out cubic
+        var eased=1-Math.pow(1-p,3);
+        var val=Math.floor(target*eased);
+        el.textContent=val.toLocaleString('es-ES');
+        if(p<1)requestAnimationFrame(step);
+        else el.textContent=target.toLocaleString('es-ES');
+      }
+      requestAnimationFrame(step);
+    }
+    function runDashboard(){
+      var nums=document.querySelectorAll('.hero-dash [data-target]');
+      nums.forEach(function(el){
+        var t=parseInt(el.getAttribute('data-target'),10)||0;
+        countUp(el,t,1500);
+      });
+      var pf=document.getElementById('dashProgress');
+      if(pf)setTimeout(function(){pf.classList.add('go');},200);
+    }
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',runDashboard);
+    else runDashboard();
+  })();
+  </script>
 </section>
 
 <!-- SECCIÓN GANCHO TIEMPO -->
