@@ -970,18 +970,18 @@
           <div class="dash-grid">
             <div class="dash-cell">
               <div class="label">Llamadas atendidas</div>
-              <div class="num" data-target="247">0</div>
+              <div class="num" data-target="247">247</div>
               <div class="sub">hoy</div>
             </div>
             <div class="dash-cell">
               <div class="label">Leads capturados</div>
-              <div class="num" data-target="18">0</div>
+              <div class="num" data-target="18">18</div>
               <div class="sub">hoy</div>
             </div>
           </div>
           <div class="dash-savings">
             <div class="label">Ahorro estimado este mes</div>
-            <div class="num" data-target="3840">0</div>
+            <div class="num" data-target="3840">3.840</div>
           </div>
           <div class="dash-pipe">
             <div class="steps"><b>Incoming</b><span class="arrow">→</span><b>AI</b><span class="arrow">→</span><b>CRM</b><span class="arrow">→</span><b>Done</b></div>
@@ -1004,33 +1004,62 @@
   </div>
 
   <script>
-  // CountUp animado para los números del dashboard
+  // CountUp animado del dashboard simulado del hero.
+  // Estrategia robusta: el HTML inicial ya muestra el valor final (no '0')
+  // como fallback noscript. El JS sobrescribe a '0' al disparar la animación
+  // y anima hasta target con ease-out cubic.
   (function(){
+    var dash = document.querySelector('.hero-dash');
+    if(!dash) return;
+    var animated = false;
+
+    function fmt(n){ return Math.round(n).toLocaleString('es-ES'); }
+
     function countUp(el, target, duration){
-      var start=null;
+      el.textContent = '0';
+      var start = null;
       function step(ts){
-        if(!start)start=ts;
-        var p=Math.min((ts-start)/duration,1);
-        // ease-out cubic
-        var eased=1-Math.pow(1-p,3);
-        var val=Math.floor(target*eased);
-        el.textContent=val.toLocaleString('es-ES');
-        if(p<1)requestAnimationFrame(step);
-        else el.textContent=target.toLocaleString('es-ES');
+        if(!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(target * eased);
+        if(p < 1) requestAnimationFrame(step);
+        else el.textContent = fmt(target);
       }
       requestAnimationFrame(step);
     }
+
     function runDashboard(){
-      var nums=document.querySelectorAll('.hero-dash [data-target]');
-      nums.forEach(function(el){
-        var t=parseInt(el.getAttribute('data-target'),10)||0;
-        countUp(el,t,1500);
+      if(animated) return;
+      animated = true;
+      dash.querySelectorAll('[data-target]').forEach(function(el){
+        var t = parseInt(el.getAttribute('data-target'), 10) || 0;
+        countUp(el, t, 1500);
       });
-      var pf=document.getElementById('dashProgress');
-      if(pf)setTimeout(function(){pf.classList.add('go');},200);
+      var pf = document.getElementById('dashProgress');
+      if(pf) setTimeout(function(){ pf.classList.add('go'); }, 200);
     }
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',runDashboard);
-    else runDashboard();
+
+    // IntersectionObserver: dispara cuando el dashboard entra al viewport
+    // (above-the-fold ya cuenta, pero garantiza disparo correcto).
+    function init(){
+      if('IntersectionObserver' in window){
+        var io = new IntersectionObserver(function(entries){
+          entries.forEach(function(en){
+            if(en.isIntersecting){ runDashboard(); io.disconnect(); }
+          });
+        }, { threshold: 0.2 });
+        io.observe(dash);
+      } else {
+        // Fallback browsers antiguos: ejecutar directo
+        runDashboard();
+      }
+      // Safety net: ejecutar en cualquier caso al cabo de 500ms
+      setTimeout(runDashboard, 500);
+    }
+
+    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+    else init();
   })();
   </script>
 </section>
