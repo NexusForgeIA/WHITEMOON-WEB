@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Pérdidas Restaurante 2026 · Mesas vacías y ocupación · WhiteMoon</title>
+<meta name="description" content="Calculadora pérdidas restaurante: estima ingresos perdidos por mesas vacías e ingresos recuperables con un Agente IA de reservas (+15% ocupación media).">
+<meta name="keywords" content="calculadora perdidas restaurante, ocupacion restaurante, reservas automaticas restaurante, chatbot restaurante">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-perdidas-restaurante/">
+<meta property="og:title" content="Calculadora Pérdidas Restaurante 2026 · WhiteMoon">
+<meta property="og:description" content="Cuánto pierdes por mesas vacías y cuánto recuperas con un Agente IA de reservas.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-perdidas-restaurante/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-default.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Pérdidas Restaurante 2026 · WhiteMoon","description":"Estima los ingresos perdidos por mesas vacías y los ingresos recuperables con un Agente IA de reservas que sube la ocupación media un 15%.","url":"https://whitemoon.es/calculadora-perdidas-restaurante/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Pérdidas Restaurante","item":"https://whitemoon.es/calculadora-perdidas-restaurante/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuál es la ocupación media de un restaurante en España?","acceptedAnswer":{"@type":"Answer","text":"Según informes públicos del sector (Hostelería de España, KPMG sector restauración), la ocupación media de un restaurante de menú/carta en España oscila entre el 55% y el 70% semanal en condiciones normales. Los mejores restaurantes superan el 85%. La franja con más mesas vacías suele ser los servicios de cena de martes a jueves."}},
+{"@type":"Question","name":"¿Cómo aumenta la ocupación un Agente IA de reservas?","acceptedAnswer":{"@type":"Answer","text":"Un Agente IA conversacional capta reservas 24/7 (también fuera de horario y fines de semana), confirma con doble check 24h antes para reducir no-shows, ofrece reprogramación instantánea si el cliente no puede venir, y rellena huecos automáticamente con la lista de espera. El impacto típico en ocupación media es +10% a +20%, según estado inicial del restaurante."}},
+{"@type":"Question","name":"¿El Agente IA sustituye a la persona que coge el teléfono?","acceptedAnswer":{"@type":"Answer","text":"No. Lo complementa. El Agente IA atiende lo repetitivo (¿hay mesa para 4 hoy? ¿menú del día? ¿alérgenos?) cuando el equipo está en el pase. Las consultas complejas (grupos grandes, eventos privados, peticiones especiales) llegan al equipo ya cualificadas con fecha, comensales, presupuesto y motivo de la celebración."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-row{margin-bottom:18px}
+.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-out{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-card.win{background:rgba(0,212,170,.08);border-color:rgba(0,212,170,.3)}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-card.win .calc-out-num{color:#5eead4}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.related-card{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;color:inherit;text-decoration:none;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.related-card:hover{background:rgba(124,77,255,.12)}
+.related-ico{font-size:1.4rem;line-height:1}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-perdidas-restaurante',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Contactar →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px">
+      <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Pérdidas Restaurante
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hdr c">
+        <span class="sec-lbl" style="color:#00d4aa">🍽️ Calculadora gratuita · Hostelería</span>
+        <h1 class="sec-h">Calculadora <em>Pérdidas en Restaurante</em></h1>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima los ingresos perdidos por mesas vacías y cuánto puedes recuperar con un Agente IA de reservas 24/7 (impacto medio observado: +15% ocupación según informes del sector).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="pr-mesas">Mesas del restaurante</label>
+            <input type="number" id="pr-mesas" class="calc-input" value="20" min="1" max="500" step="1" oninput="calcPR()">
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="pr-ocupacion">% ocupación media actual</label>
+            <input type="number" id="pr-ocupacion" class="calc-input" value="65" min="10" max="95" step="1" oninput="calcPR()">
+          </div>
+        </div>
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="pr-ticket">Ticket medio por mesa (€)</label>
+            <input type="number" id="pr-ticket" class="calc-input" value="55" min="5" max="500" step="1" oninput="calcPR()">
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="pr-servicios">Servicios al día</label>
+            <select id="pr-servicios" class="calc-select" onchange="calcPR()">
+              <option value="1">Solo comida (1)</option>
+              <option value="2" selected>Comida + cena (2)</option>
+              <option value="3">Comida + tarde + cena (3)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-row">
+          <label class="calc-label" for="pr-dias">Días abierto a la semana</label>
+          <select id="pr-dias" class="calc-select" onchange="calcPR()">
+            <option value="5">5 días</option>
+            <option value="6" selected>6 días</option>
+            <option value="7">7 días (todos)</option>
+          </select>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card"><div class="calc-out-num" id="pr-vacias">84</div><div class="calc-out-lbl">Mesas vacías/semana</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="pr-perd-sem">4.620 €</div><div class="calc-out-lbl">Ingresos perdidos/semana</div></div>
+        </div>
+        <div class="calc-out">
+          <div class="calc-out-card"><div class="calc-out-num" id="pr-perd-mes">19.866 €</div><div class="calc-out-lbl">Ingresos perdidos/mes</div></div>
+          <div class="calc-out-card win"><div class="calc-out-num" id="pr-recup">35.640 €</div><div class="calc-out-lbl">Recuperables/año con IA (+15%)</div></div>
+        </div>
+
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="pr-detail">20 mesas × 2 servicios × 6 días × 35% mesas vacías = 84 mesas vacías/semana. A 55€/mesa = 4.620€/sem (19.866€/mes). Subiendo ocupación +15% con Agente IA: recuperas 35.640€/año.</div>
+
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">+15% ocupación es la media observada con Agente IA de reservas 24/7 + confirmación + reprogramación según informes del sector hostelería (KPMG, Hostelería de España). El impacto real depende del estado inicial y franja horaria.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center">
+      <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+      <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-perdidas-restaurante','Pérdidas Restaurante')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-perdidas-restaurante">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora Pérdidas Restaurante">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px">FAQ Pérdidas en Restaurante</h2>
+        <div class="faq-item"><div class="faq-q">¿Cuál es la ocupación media de un restaurante en España?</div><div class="faq-a">Según informes públicos del sector (Hostelería de España, KPMG sector restauración), la ocupación media de un restaurante de menú/carta oscila entre el 55% y el 70% semanal en condiciones normales. Los mejores superan el 85%. La franja con más mesas vacías suele ser cena de martes a jueves.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Cómo aumenta la ocupación un Agente IA de reservas?</div><div class="faq-a">Capta reservas 24/7 (también fuera de horario y fines de semana), confirma con doble check 24h antes para reducir no-shows, ofrece reprogramación instantánea si el cliente no puede venir, y rellena huecos automáticamente con la lista de espera. Impacto típico: +10% a +20% en ocupación media.</div></div>
+        <div class="faq-item"><div class="faq-q">¿El Agente IA sustituye a la persona que coge el teléfono?</div><div class="faq-a">No. Lo complementa. El Agente IA atiende lo repetitivo (¿hay mesa para 4 hoy? ¿menú del día? ¿alérgenos?) cuando el equipo está en el pase. Las consultas complejas (grupos, eventos privados, peticiones especiales) llegan al equipo ya cualificadas con fecha, comensales, presupuesto y motivo.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div style="max-width:880px;margin:0 auto">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 8px">Calculadoras y servicios relacionados</h2>
+        <p style="color:var(--muted);margin:0 0 20px">Herramientas de impacto en negocio y landings sectoriales.</p>
+        <div class="related-grid">
+          <a class="related-card" href="/calculadora-coste-trabajador/"><div class="related-ico">👥</div><strong style="color:#fff">Coste Trabajador</strong><span style="font-size:.84rem;color:#9090b0">Coste real de cada empleado para la empresa.</span></a>
+          <a class="related-card" href="/calculadora-roi-agente-ia/"><div class="related-ico">📈</div><strong style="color:#fff">ROI Agente IA</strong><span style="font-size:.84rem;color:#9090b0">Cuánto recuperas con un Agente IA.</span></a>
+          <a class="related-card" href="/calculadora-coste-lead-perdido/"><div class="related-ico">📉</div><strong style="color:#fff">Coste Lead Perdido</strong><span style="font-size:.84rem;color:#9090b0">Pérdidas por no responder leads.</span></a>
+          <a class="related-card" href="/calculadora-no-shows-clinicas/"><div class="related-ico">🦷</div><strong style="color:#fff">No-Shows Clínicas</strong><span style="font-size:.84rem;color:#9090b0">Pérdidas por citas no asistidas.</span></a>
+          <a class="related-card" href="/chatbot-ia-restaurantes/"><div class="related-ico">🍽️</div><strong style="color:#fff">Chatbot IA Restaurantes</strong><span style="font-size:.84rem;color:#9090b0">Reservas + carta + alérgenos 24/7.</span></a>
+          <a class="related-card" href="/chatbot-ia-peluquerias-madrid/"><div class="related-ico">✂️</div><strong style="color:#fff">Chatbot IA Peluquerías</strong><span style="font-size:.84rem;color:#9090b0">Reservas con duración variable.</span></a>
+          <a class="related-card" href="/precios/"><div class="related-ico">💼</div><strong style="color:#fff">Catálogo de planes</strong><span style="font-size:.84rem;color:#9090b0">9 productos · desde 499€ · sin permanencia.</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcPR(){
+  var mesas = parseInt(document.getElementById('pr-mesas').value, 10) || 0;
+  var ocupacion = parseFloat(document.getElementById('pr-ocupacion').value) || 0;
+  var ticket = parseFloat(document.getElementById('pr-ticket').value) || 0;
+  var servicios = parseInt(document.getElementById('pr-servicios').value, 10) || 1;
+  var dias = parseInt(document.getElementById('pr-dias').value, 10) || 6;
+
+  // Mesas vacías/semana = mesas × servicios × días × (1-ocupación)
+  var pctVacias = 1 - (ocupacion / 100);
+  var capacidadSemana = mesas * servicios * dias;
+  var vaciasSemana = capacidadSemana * pctVacias;
+
+  var perdSem = vaciasSemana * ticket;
+  // Mes = ~4.33 semanas
+  var perdMes = perdSem * 4.33;
+  var perdAnual = perdSem * 52;
+  // Recuperación con +15% ocupación: 15% del total potencial (capacidad × ticket)
+  var potencialAnual = capacidadSemana * ticket * 52;
+  var recupAnual = potencialAnual * 0.15;
+
+  document.getElementById('pr-vacias').textContent = Math.round(vaciasSemana).toLocaleString('es-ES');
+  document.getElementById('pr-perd-sem').textContent = Math.round(perdSem).toLocaleString('es-ES') + ' €';
+  document.getElementById('pr-perd-mes').textContent = Math.round(perdMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('pr-recup').textContent = Math.round(recupAnual).toLocaleString('es-ES') + ' €';
+  document.getElementById('pr-detail').textContent = mesas + ' mesas × ' + servicios + ' servicios × ' + dias +
+    ' días × ' + Math.round(pctVacias * 100) + '% mesas vacías = ' + Math.round(vaciasSemana).toLocaleString('es-ES') +
+    ' mesas vacías/semana. A ' + ticket.toLocaleString('es-ES') + '€/mesa = ' +
+    Math.round(perdSem).toLocaleString('es-ES') + '€/sem (' + Math.round(perdMes).toLocaleString('es-ES') +
+    '€/mes). Subiendo ocupación +15% con Agente IA: recuperas ' +
+    Math.round(recupAnual).toLocaleString('es-ES') + '€/año.';
+}
+calcPR();
+</script>
+</body>
+</html>
