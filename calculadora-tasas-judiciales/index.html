@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Tasas Judiciales 2026 · Ley 10/2012 · WhiteMoon</title>
+<meta name="description" content="Calculadora tasas judiciales 2026: estima la tasa según tipo de proceso (civil, contencioso, social), cuantía e instancia. Ley 10/2012 actualizada.">
+<meta name="keywords" content="calculadora tasas judiciales 2026, ley 10 2012, tasa judicial civil, tasa contencioso, tasa apelacion casacion">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-tasas-judiciales/">
+<meta property="og:title" content="Calculadora Tasas Judiciales 2026 · WhiteMoon">
+<meta property="og:description" content="Estima la tasa judicial según tipo de proceso, cuantía e instancia. Personas físicas exentas desde STC 140/2016.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-tasas-judiciales/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Tasas Judiciales 2026","description":"Calcula la tasa judicial estimada según tipo de proceso, cuantía e instancia. Base Ley 10/2012.","url":"https://whitemoon.es/calculadora-tasas-judiciales/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Tasas Judiciales","item":"https://whitemoon.es/calculadora-tasas-judiciales/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Quién paga las tasas judiciales en España?","acceptedAnswer":{"@type":"Answer","text":"Desde la STC 140/2016 (Tribunal Constitucional, julio 2016) las personas físicas están totalmente exentas de pagar tasas judiciales en cualquier instancia y proceso. Las tasas solo se aplican a personas jurídicas (sociedades mercantiles principalmente), con excepciones para entidades sin ánimo de lucro con beneficio fiscal acreditado y sindicatos en acción colectiva."}},
+{"@type":"Question","name":"¿Hay tasa en procesos penales?","acceptedAnswer":{"@type":"Answer","text":"No. La jurisdicción penal está totalmente exenta de tasas judiciales según el artículo 4 de la Ley 10/2012. Tampoco se aplica tasa en los procesos de capacidad, filiación, menores ni en los procesos matrimoniales no contenciosos."}},
+{"@type":"Question","name":"¿Cómo se calcula la tasa variable?","acceptedAnswer":{"@type":"Answer","text":"La tasa tiene una parte fija según el tipo de procedimiento y una parte variable: 0,5% sobre la cuantía hasta 1.000.000€ y 0,25% sobre el exceso, con un máximo de 10.000€ adicionales para personas jurídicas. La cuantía es el valor económico del litigio o el importe reclamado."}},
+{"@type":"Question","name":"¿La tasa es deducible si gano el juicio?","acceptedAnswer":{"@type":"Answer","text":"Sí. La tasa judicial pagada se incluye en la condena en costas a la parte perdedora si la sentencia la impone. Si pierdes y la sentencia impone costas, eres tú quien paga las tasas de la otra parte también. Si hay allanamiento o desistimiento, se devuelve el 60% de la tasa pagada."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-tasas-judiciales',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Tasas Judiciales</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><line x1="12" y1="3" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M3 9 6 4 9 9 6 14z"/><path d="M15 9 18 4 21 9 18 14z"/></svg></span> Calculadora gratuita · Ley 10/2012</span>
+    <h1 class="sec-h">Calculadora <em>Tasas Judiciales</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima la tasa judicial según tipo de proceso, cuantía e instancia. Personas físicas exentas desde la STC 140/2016. Cálculo orientativo para personas jurídicas.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tj-tipo">Tipo de proceso</label>
+        <select id="tj-tipo" class="calc-select" onchange="calcTasas()">
+          <option value="civil" selected>Civil (ordinario / verbal)</option>
+          <option value="contencioso">Contencioso-administrativo</option>
+          <option value="social">Social (laboral)</option>
+          <option value="penal">Penal · exento</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="tj-instancia">Instancia</label>
+        <select id="tj-instancia" class="calc-select" onchange="calcTasas()">
+          <option value="primera" selected>1ª instancia</option>
+          <option value="verbal">Juicio verbal</option>
+          <option value="apelacion">Apelación</option>
+          <option value="casacion">Casación</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tj-cuantia">Cuantía del litigio (€)</label><input type="number" id="tj-cuantia" class="calc-input" value="60000" min="0" step="1000" oninput="calcTasas()"></div>
+      <div class="calc-row"><label class="calc-label" for="tj-persona">Tipo de parte</label>
+        <select id="tj-persona" class="calc-select" onchange="calcTasas()">
+          <option value="fisica" selected>Persona física · exenta (STC 140/2016)</option>
+          <option value="juridica">Persona jurídica · sujeta a tasa</option>
+          <option value="snl">Entidad sin ánimo de lucro · exenta</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="tj-fija">0 €</div><div class="calc-out-lbl">Tasa fija</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tj-variable">0 €</div><div class="calc-out-lbl">Tasa variable</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tj-total">0 €</div><div class="calc-out-lbl">Total a pagar</div></div>
+    </div>
+
+    <div class="calc-detail" id="tj-explain">Como persona física estás totalmente exenta del pago de tasas judiciales desde la sentencia del Tribunal Constitucional 140/2016 (julio 2016). No tienes que pagar tasa en ningún proceso ni instancia.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. Base legal: Ley 10/2012 + STC 140/2016. Procesos penales totalmente exentos. La parte variable es 0,5% hasta 1M€ + 0,25% sobre el exceso, máximo 10.000 € adicionales.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Tasas Judiciales 2026</h2>
+    <div class="faq-item"><div class="faq-q">¿Quién paga las tasas judiciales en España?</div><div class="faq-a">Desde la STC 140/2016 las personas físicas están exentas en cualquier proceso e instancia. Solo personas jurídicas (sociedades mercantiles) las pagan, con excepciones para entidades sin ánimo de lucro con beneficio fiscal y sindicatos en acción colectiva.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Hay tasa en procesos penales?</div><div class="faq-a">No. La jurisdicción penal está totalmente exenta (art. 4 Ley 10/2012). Tampoco en procesos de capacidad, filiación, menores ni en procesos matrimoniales no contenciosos.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se calcula la tasa variable?</div><div class="faq-a">Parte fija según procedimiento + parte variable: 0,5% sobre cuantía hasta 1.000.000 € y 0,25% sobre el exceso, con tope máximo de 10.000 € adicionales para personas jurídicas.</div></div>
+    <div class="faq-item"><div class="faq-q">¿La tasa es deducible si gano el juicio?</div><div class="faq-a">Sí. Se incluye en la condena en costas a la parte perdedora si la sentencia la impone. Allanamiento o desistimiento devuelve el 60% de la tasa pagada.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu despacho. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-tasas-judiciales','Tasas Judiciales')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-tasas-judiciales"><input type="hidden" name="mensaje" value="Lead desde calculadora Tasas Judiciales">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas legales</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-herencia-impuesto-sucesiones/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 2v6"/><path d="M5 8h14l-2 12H7L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Herencia · Sucesiones</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Estatal + CCAA</div></a>
+      <a href="/calculadora-donaciones/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Donaciones</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Por CCAA + bien</div></a>
+      <a href="/calculadora-sanciones-fiscales/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M12 2 L2 7 v6 c0 5 4 9 10 11 6-2 10-6 10-11 V7 z"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Sanciones Fiscales</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">LGT Art. 191-206</div></a>
+      <a href="/chatbot-ia-despachos-abogados/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Despachos</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA legal 24/7</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">44+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+// Tasas Ley 10/2012 - personas jurídicas
+var TJ_FIJAS = {
+  civil:       { primera:300, verbal:150, apelacion:800, casacion:1200 },
+  contencioso: { primera:350, verbal:200, apelacion:800, casacion:1200 },
+  social:      { primera:0,   verbal:0,   apelacion:500, casacion:750  },
+  penal:       { primera:0,   verbal:0,   apelacion:0,   casacion:0    }
+};
+function calcTasas(){
+  var tipo = document.getElementById('tj-tipo').value;
+  var inst = document.getElementById('tj-instancia').value;
+  var cuantia = Math.max(0, parseFloat(document.getElementById('tj-cuantia').value)||0);
+  var persona = document.getElementById('tj-persona').value;
+
+  var fijaEl = document.getElementById('tj-fija');
+  var varEl  = document.getElementById('tj-variable');
+  var totEl  = document.getElementById('tj-total');
+  var expEl  = document.getElementById('tj-explain');
+
+  // Exenciones totales
+  if(persona === 'fisica'){
+    fijaEl.textContent = '0 €'; varEl.textContent = '0 €'; totEl.textContent = '0 €';
+    expEl.textContent = 'Como persona física estás totalmente exenta del pago de tasas judiciales desde la STC 140/2016 (julio 2016). No tienes que pagar tasa en ningún proceso ni instancia.';
+    return;
+  }
+  if(persona === 'snl'){
+    fijaEl.textContent = '0 €'; varEl.textContent = '0 €'; totEl.textContent = '0 €';
+    expEl.textContent = 'Las entidades sin ánimo de lucro con beneficio fiscal acreditado están exentas del pago de tasas judiciales (art. 4 Ley 10/2012).';
+    return;
+  }
+  if(tipo === 'penal'){
+    fijaEl.textContent = '0 €'; varEl.textContent = '0 €'; totEl.textContent = '0 €';
+    expEl.textContent = 'La jurisdicción penal está totalmente exenta de tasas judiciales (art. 4 Ley 10/2012). No se paga tasa en procesos penales independientemente de la cuantía.';
+    return;
+  }
+
+  // Persona jurídica · proceso sujeto
+  var fija = (TJ_FIJAS[tipo] && TJ_FIJAS[tipo][inst]) || 0;
+
+  // Tasa variable: 0,5% hasta 1M + 0,25% exceso, máx 10.000€
+  var variable = 0;
+  if(cuantia > 0){
+    var hasta = Math.min(cuantia, 1000000);
+    variable += hasta * 0.005;
+    if(cuantia > 1000000){
+      variable += (cuantia - 1000000) * 0.0025;
+    }
+    if(variable > 10000) variable = 10000;
+  }
+
+  // Social en 1ª instancia/verbal sin tasa fija pero con variable
+  if(tipo === 'social' && (inst === 'primera' || inst === 'verbal')){
+    variable = 0; // primera instancia social exenta (incluso para jurídicas)
+  }
+
+  var total = fija + variable;
+
+  fijaEl.textContent = Math.round(fija).toLocaleString('es-ES') + ' €';
+  varEl.textContent  = Math.round(variable).toLocaleString('es-ES') + ' €';
+  totEl.textContent  = Math.round(total).toLocaleString('es-ES') + ' €';
+
+  var instTxt = { primera:'1ª instancia', verbal:'juicio verbal', apelacion:'apelación', casacion:'casación' }[inst];
+  var tipoTxt = { civil:'civil', contencioso:'contencioso-administrativo', social:'social' }[tipo];
+  expEl.textContent = 'Persona jurídica · proceso ' + tipoTxt + ' en ' + instTxt + '. Tasa fija ' + Math.round(fija).toLocaleString('es-ES') + ' € + tasa variable ' + Math.round(variable).toLocaleString('es-ES') + ' € sobre cuantía ' + Math.round(cuantia).toLocaleString('es-ES') + ' € (0,5% hasta 1M + 0,25% exceso, máx 10.000 €). Total estimado: ' + Math.round(total).toLocaleString('es-ES') + ' €.';
+}
+calcTasas();
+</script>
+</body>
+</html>
