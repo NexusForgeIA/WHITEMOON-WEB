@@ -128,6 +128,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Cluster 9 · IA y Automatización (5 calculadoras priority 0.9 · alta) -->
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-atencion-manual-vs-ia/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-tiempo-respuesta-leads/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-proceso-manual/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-escalabilidad-ia/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-coste-oportunidad-no-ia/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Servicio principal: Agentes IA -->
   <url>
     <loc>https://whitemoon.es/agentes-ia/</loc>
