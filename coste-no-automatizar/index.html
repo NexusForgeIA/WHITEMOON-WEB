@@ -86,8 +86,10 @@
   .calc-form{display:flex;flex-direction:column;gap:18px}
   .calc-field{display:flex;flex-direction:column;gap:8px}
   .calc-field label{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;color:#9CA3AF;letter-spacing:.04em;text-transform:uppercase}
-  .calc-field select,.calc-field input{padding:13px 16px;background:rgba(11,15,23,.6);border:1px solid var(--border-soft);border-radius:10px;color:#E8E8F0;font-family:'Inter',sans-serif;font-size:.96rem;letter-spacing:-.005em;transition:border-color .15s ease,background .15s ease}
-  .calc-field select:focus,.calc-field input:focus{outline:0;border-color:rgba(124,77,255,.55);background:rgba(124,77,255,.06)}
+  .calc-field select,.calc-field input{padding:13px 16px;background:var(--card,#111118);border:1px solid var(--border-soft);border-radius:10px;color:var(--text,#E8E8F0);font-family:'Inter',sans-serif;font-size:.96rem;letter-spacing:-.005em;transition:border-color .15s ease,background .15s ease}
+  .calc-field select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%239d70ff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><polyline points='1 1 6 6 11 1'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+  .calc-field select option{background:var(--card,#111118);color:var(--text,#E8E8F0)}
+  .calc-field select:focus,.calc-field input:focus{outline:0;border-color:rgba(124,77,255,.55);background-color:rgba(124,77,255,.06)}
   .calc-field .hint{font-size:.74rem;color:#6B7280;letter-spacing:-.005em}
   .calc-out{padding:24px;background:rgba(11,15,23,.55);border:1px solid var(--border-soft);border-radius:14px;display:flex;flex-direction:column;gap:16px}
   .calc-out h3{font-family:'Inter',sans-serif;font-size:.84rem;font-weight:600;color:#9d70ff;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
