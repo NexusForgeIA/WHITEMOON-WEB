@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Hipoteca Mensual 2026 · Cuota, intereses y TAE · WhiteMoon</title>
+<meta name="description" content="Calcula tu cuota mensual de hipoteca, total pagado, total intereses y TAE estimada en segundos. Sistema francés, gratuita y sin registro.">
+<meta name="keywords" content="calculadora hipoteca, cuota mensual hipoteca, simulador hipoteca, calcular cuota prestamo, intereses hipoteca">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-hipoteca-mensual/">
+<meta property="og:title" content="Calculadora Hipoteca Mensual 2026 · WhiteMoon">
+<meta property="og:description" content="Cuota mensual, total pagado, total intereses y TAE estimada de tu hipoteca.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-hipoteca-mensual/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Hipoteca Mensual","description":"Calcula cuota mensual, total pagado, intereses totales y TAE estimada con sistema francés de amortización.","url":"https://whitemoon.es/calculadora-hipoteca-mensual/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Hipoteca Mensual","item":"https://whitemoon.es/calculadora-hipoteca-mensual/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula la cuota mensual de una hipoteca?","acceptedAnswer":{"@type":"Answer","text":"La cuota mensual de una hipoteca de tipo fijo se calcula con el sistema francés de amortización: cuota = capital × (i × (1+i)^n) / ((1+i)^n − 1), donde i es el tipo de interés mensual (TIN anual / 12) y n el número total de cuotas. La cuota incluye amortización de capital + intereses, en proporción cambiante a lo largo del plazo."}},
+{"@type":"Question","name":"¿Qué diferencia hay entre TIN y TAE?","acceptedAnswer":{"@type":"Answer","text":"El TIN (Tipo de Interés Nominal) es el porcentaje contractual aplicado al capital pendiente. La TAE (Tasa Anual Equivalente) añade comisiones (apertura, estudio), gastos vinculados (seguros de vida y hogar obligatorios) y la periodicidad de los pagos. La TAE es siempre mayor o igual que el TIN y permite comparar ofertas reales entre bancos."}},
+{"@type":"Question","name":"¿Es mejor hipoteca fija, variable o mixta en 2026?","acceptedAnswer":{"@type":"Answer","text":"Depende del horizonte y del perfil. Fija da estabilidad y previsibilidad (recomendable si vas a mantenerla más de 10 años o si te preocupa el riesgo de subida del Euríbor). Variable suele tener cuota inicial más baja pero el riesgo de subida es del cliente. Mixta combina años iniciales fijos (5-10) y luego variable: opción intermedia común en 2026."}},
+{"@type":"Question","name":"¿Cuánto suele costar la cuota frente al sueldo?","acceptedAnswer":{"@type":"Answer","text":"La regla prudencial estándar es que la cuota mensual no supere el 30-35% de los ingresos netos del hogar (regla del 30%). Por encima del 40% se considera sobreendeudamiento. Los bancos en España suelen no aprobar hipotecas que dejen al cliente con cuota superior al 35% de ingresos netos."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:900px){.calc-out{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-hipoteca-mensual',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Hipoteca Mensual</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 28 L32 10 L54 28"/><path d="M14 26 V54 H50 V26"/><rect x="26" y="36" width="12" height="18"/><path d="M22 30 H42"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">🏠 Calculadora gratuita · Hipoteca 2026</span>
+    <h1 class="sec-h">Calculadora <em>Hipoteca Mensual</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuota mensual exacta, total pagado, intereses totales y TAE estimada con sistema francés de amortización. Sin email, sin registro.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Precio vivienda (€)</span><span class="calc-val" id="hm-r-precio">250.000 €</span></div>
+        <input type="number" id="hm-precio" class="calc-input" value="250000" min="30000" max="3000000" step="1000" oninput="calcHM()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Entrada (%)</span><span class="calc-val" id="hm-r-entrada">20 %</span></div>
+        <input type="range" id="hm-entrada" class="calc-slider" min="0" max="60" value="20" step="1" oninput="calcHM()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Tipo interés TIN (%)</span><span class="calc-val" id="hm-r-tipo">3.20 %</span></div>
+        <input type="range" id="hm-tipo" class="calc-slider" min="0.5" max="8" value="3.2" step="0.05" oninput="calcHM()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Plazo (años)</span><span class="calc-val" id="hm-r-anos">25</span></div>
+        <input type="range" id="hm-anos" class="calc-slider" min="5" max="40" value="25" step="1" oninput="calcHM()">
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="hm-cuota">967 €</div><div class="calc-out-lbl">Cuota mensual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="hm-total">290.230 €</div><div class="calc-out-lbl">Total pagado</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="hm-intereses">90.230 €</div><div class="calc-out-lbl">Total intereses</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="hm-tae">3.45 %</div><div class="calc-out-lbl">TAE estimada</div></div>
+    </div>
+
+    <div class="calc-detail" id="hm-explain">Sistema francés de amortización. La TAE incluye una estimación de comisiones (0.10-0.25%) y gastos de seguros vinculados.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. Las ofertas reales dependen del perfil del solicitante, vinculación con el banco y condiciones contractuales. Confirma siempre con tu entidad antes de firmar.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-hipoteca-mensual','Hipoteca Mensual')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-hipoteca-mensual">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora hipoteca mensual">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Hipoteca 2026</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo se calcula la cuota mensual de una hipoteca?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La cuota mensual de una hipoteca de tipo fijo se calcula con el sistema francés de amortización: cuota = capital × (i × (1+i)^n) / ((1+i)^n − 1), donde i es el tipo de interés mensual (TIN anual / 12) y n el número total de cuotas. La cuota incluye amortización de capital + intereses, en proporción cambiante a lo largo del plazo.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué diferencia hay entre TIN y TAE?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">El TIN es el porcentaje contractual aplicado al capital pendiente. La TAE añade comisiones (apertura, estudio), gastos vinculados (seguros de vida y hogar obligatorios) y la periodicidad de los pagos. La TAE es siempre mayor o igual que el TIN y permite comparar ofertas reales entre bancos.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Es mejor hipoteca fija, variable o mixta en 2026?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Depende del horizonte y del perfil. Fija da estabilidad y previsibilidad (recomendable si vas a mantenerla más de 10 años). Variable suele tener cuota inicial más baja pero el riesgo de subida es del cliente. Mixta combina años iniciales fijos (5-10) y luego variable: opción intermedia común en 2026.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuánto suele costar la cuota frente al sueldo?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La regla prudencial estándar es que la cuota mensual no supere el 30-35% de los ingresos netos del hogar (regla del 30%). Por encima del 40% se considera sobreendeudamiento. Los bancos en España suelen no aprobar hipotecas que dejen al cliente con cuota superior al 35% de ingresos netos.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas del cluster -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-capacidad-hipotecaria/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📊</div><div style="font-weight:700;color:#fff;margin-top:4px">Capacidad Hipotecaria</div><div style="font-size:.78rem;color:#9090b0">Hipoteca máxima recomendada según ingresos</div></a>
+      <a href="/calculadora-gastos-compra-vivienda/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📋</div><div style="font-weight:700;color:#fff;margin-top:4px">Gastos Compra Vivienda</div><div style="font-size:.78rem;color:#9090b0">ITP/IVA, notaría, registro, gestoría</div></a>
+      <a href="/calculadora-alquiler-vs-compra/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">⚖️</div><div style="font-weight:700;color:#fff;margin-top:4px">Alquiler vs Compra</div><div style="font-size:.78rem;color:#9090b0">Punto de equilibrio según años de estancia</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack recomendado + hub central -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria o gestoría?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Si gestionas compraventas, hipotecas o herencias, los packs de WhiteMoon integran un Agente IA que asesora 24/7 a tus clientes sobre cuotas, gastos y trámites, derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-hipoteca-mensual',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-hipoteca-mensual',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmt(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcHM(){
+  var precio=parseFloat(document.getElementById('hm-precio').value)||0;
+  var entradaPct=parseFloat(document.getElementById('hm-entrada').value)||0;
+  var tin=parseFloat(document.getElementById('hm-tipo').value)||0;
+  var anos=parseInt(document.getElementById('hm-anos').value,10)||25;
+
+  document.getElementById('hm-r-precio').textContent=Math.round(precio).toLocaleString('es-ES')+' €';
+  document.getElementById('hm-r-entrada').textContent=entradaPct+' %';
+  document.getElementById('hm-r-tipo').textContent=tin.toFixed(2)+' %';
+  document.getElementById('hm-r-anos').textContent=anos;
+
+  var entrada=precio*entradaPct/100;
+  var capital=precio-entrada;
+  var i=(tin/100)/12;
+  var n=anos*12;
+  var cuota=(capital>0&&i>0)?capital*(i*Math.pow(1+i,n))/(Math.pow(1+i,n)-1):(capital/n);
+  if(!isFinite(cuota))cuota=0;
+  var total=cuota*n;
+  var intereses=total-capital;
+  // TAE estimada: TIN + ~0.25pp por seguros/comisiones
+  var tae=tin+0.25;
+
+  document.getElementById('hm-cuota').textContent=fmt(cuota);
+  document.getElementById('hm-total').textContent=fmt(total);
+  document.getElementById('hm-intereses').textContent=fmt(intereses);
+  document.getElementById('hm-tae').textContent=tae.toFixed(2)+' %';
+
+  document.getElementById('hm-explain').textContent='Capital financiado: '+fmt(capital)+' tras '+entradaPct+'% de entrada ('+fmt(entrada)+'). Sistema francés a '+anos+' años. La TAE incluye estimación de comisiones y seguros vinculados.';
+}
+calcHM();
+</script>
+
+</body>
+</html>

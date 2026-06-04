@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Gastos Compra Vivienda 2026 · ITP, IVA, notaría, registro · WhiteMoon</title>
+<meta name="description" content="Calcula los gastos totales de comprar vivienda: ITP o IVA+AJD, notaría, registro y gestoría. Por CCAA y vivienda nueva o usada. Gratis.">
+<meta name="keywords" content="gastos compra vivienda, gastos hipoteca, itp vivienda usada, iva vivienda nueva, ajd, notaria registro vivienda">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-gastos-compra-vivienda/">
+<meta property="og:title" content="Calculadora Gastos Compra Vivienda 2026 · WhiteMoon">
+<meta property="og:description" content="ITP/IVA+AJD, notaría, registro y gestoría: gastos totales reales de comprar vivienda en España.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-gastos-compra-vivienda/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Gastos Compra Vivienda","description":"Calcula los gastos asociados a la compra de una vivienda en España: impuestos (ITP o IVA+AJD), notaría, registro y gestoría.","url":"https://whitemoon.es/calculadora-gastos-compra-vivienda/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Gastos Compra Vivienda","item":"https://whitemoon.es/calculadora-gastos-compra-vivienda/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué impuestos paga la compra de vivienda en España?","acceptedAnswer":{"@type":"Answer","text":"Vivienda nueva (primera entrega del promotor): IVA al 10% sobre el precio + AJD (Actos Jurídicos Documentados) autonómico entre 0.5% y 1.5%. Vivienda usada (segunda transmisión): ITP autonómico entre 6% y 10% según CCAA, sin IVA ni AJD. Ambos casos pueden tener bonificaciones por vivienda habitual, joven, familia numerosa o discapacidad."}},
+{"@type":"Question","name":"¿Cuánto cuesta el notario al comprar una vivienda?","acceptedAnswer":{"@type":"Answer","text":"El notario aplica el arancel oficial: entre 600 y 1.000€ para viviendas estándar (150.000-500.000€), pero variable según el valor escriturado y la complejidad del documento. Si hay hipoteca, se firman dos escrituras (compraventa + préstamo hipotecario) que se hacen el mismo día pero generan honorarios separados."}},
+{"@type":"Question","name":"¿Quién paga los gastos de la hipoteca tras la ley 5/2019?","acceptedAnswer":{"@type":"Answer","text":"Desde la entrada en vigor de la Ley 5/2019 de Crédito Inmobiliario, el banco asume todos los gastos hipotecarios: notaría de la hipoteca, registro de la hipoteca, gestoría y AJD del préstamo. El comprador solo paga la tasación y los gastos asociados a la compraventa (no a la hipoteca): ITP/IVA+AJD compraventa, notaría compraventa, registro compraventa."}},
+{"@type":"Question","name":"¿Cuánto suman los gastos totales sobre el precio de la vivienda?","acceptedAnswer":{"@type":"Answer","text":"Vivienda usada: 10-13% adicional al precio (ITP 6-10% + notaría + registro + gestoría). Vivienda nueva: 11-13% adicional (IVA 10% + AJD 0.5-1.5% + notaría + registro). Por eso se recomienda disponer del 30-32% del precio en ahorros: 20% entrada bancaria + 10-12% gastos asociados."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+.calc-check{display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(124,77,255,.05);border:1px solid rgba(124,77,255,.18);border-radius:9px;font-size:13px;cursor:pointer}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.gasto-row{display:flex;justify-content:space-between;padding:10px 14px;background:rgba(124,77,255,.05);border:1px solid rgba(124,77,255,.18);border-radius:9px;margin-bottom:8px;font-size:13.5px;color:#f0f0f5}
+.gasto-row strong{color:#9d70ff;font-weight:700}
+.calc-out-total{background:rgba(0,212,170,.12);border:1.5px solid rgba(0,212,170,.4);border-radius:12px;padding:18px 14px;text-align:center;margin:18px 0 8px}
+.calc-out-total .num{font-size:1.8rem;font-weight:800;color:#5eead4;letter-spacing:-.03em;line-height:1.1;margin-bottom:4px}
+.calc-out-total .lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9090b0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-gastos-compra-vivienda',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Gastos Compra Vivienda</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="14" width="44" height="40" rx="2"/><path d="M18 22 H46"/><path d="M18 30 H38"/><path d="M18 38 H42"/><path d="M18 46 H34"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">📋 Calculadora gratuita · Gastos compra 2026</span>
+    <h1 class="sec-h">Calculadora <em>Gastos Compra Vivienda</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">ITP o IVA+AJD según CCAA, notaría, registro y gestoría. Total de gastos para vivienda nueva o usada.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-row">
+      <label class="calc-label" for="gv-precio">Precio de la vivienda (€)</label>
+      <input type="number" id="gv-precio" class="calc-input" value="250000" min="20000" max="3000000" step="1000" oninput="calcGV()">
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <label class="calc-label" for="gv-tipo">Tipo de vivienda</label>
+        <select id="gv-tipo" class="calc-select" onchange="calcGV()">
+          <option value="usada" selected>Vivienda usada (ITP)</option>
+          <option value="nueva">Vivienda nueva (IVA + AJD)</option>
+        </select>
+      </div>
+      <div class="calc-row">
+        <label class="calc-label" for="gv-ccaa">Comunidad Autónoma</label>
+        <select id="gv-ccaa" class="calc-select" onchange="calcGV()">
+          <option value="andalucia" data-itp="7" data-ajd="1.2">Andalucía</option>
+          <option value="aragon" data-itp="8" data-ajd="1.5">Aragón</option>
+          <option value="asturias" data-itp="8" data-ajd="1.2">Asturias</option>
+          <option value="baleares" data-itp="8" data-ajd="1.2">Illes Balears</option>
+          <option value="canarias" data-itp="6.5" data-ajd="1">Canarias</option>
+          <option value="cantabria" data-itp="9" data-ajd="1.5">Cantabria</option>
+          <option value="castilla-mancha" data-itp="9" data-ajd="1.5">Castilla-La Mancha</option>
+          <option value="castilla-leon" data-itp="8" data-ajd="1.5">Castilla y León</option>
+          <option value="cataluna" data-itp="10" data-ajd="1.5">Catalunya</option>
+          <option value="valencia" data-itp="10" data-ajd="1.5">Comunitat Valenciana</option>
+          <option value="extremadura" data-itp="8" data-ajd="1.5">Extremadura</option>
+          <option value="galicia" data-itp="8" data-ajd="1.5">Galicia</option>
+          <option value="madrid" data-itp="6" data-ajd="0.75" selected>Comunidad de Madrid</option>
+          <option value="murcia" data-itp="8" data-ajd="2">Murcia</option>
+          <option value="navarra" data-itp="6" data-ajd="0.5">Navarra</option>
+          <option value="pais-vasco" data-itp="7" data-ajd="0">País Vasco</option>
+          <option value="rioja" data-itp="7" data-ajd="1">La Rioja</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-row">
+      <span class="calc-label">Condiciones aplicables (puedes reducir ITP/AJD si cumples requisitos)</span>
+      <div class="calc-checks">
+        <label class="calc-check"><input type="checkbox" id="gv-habitual" onchange="calcGV()" checked> Vivienda habitual</label>
+        <label class="calc-check"><input type="checkbox" id="gv-primera" onchange="calcGV()"> Primera vivienda</label>
+        <label class="calc-check"><input type="checkbox" id="gv-joven" onchange="calcGV()"> Menor de 35 años</label>
+      </div>
+    </div>
+
+    <div style="margin:24px 0">
+      <div class="gasto-row"><span id="gv-imp-lbl">Impuesto (ITP)</span><strong id="gv-imp">15.000 €</strong></div>
+      <div class="gasto-row"><span id="gv-ajd-lbl" style="display:none">AJD autonómico</span><strong id="gv-ajd" style="display:none">0 €</strong></div>
+      <div class="gasto-row"><span>Notaría (compraventa)</span><strong id="gv-not">800 €</strong></div>
+      <div class="gasto-row"><span>Registro de la propiedad</span><strong id="gv-reg">500 €</strong></div>
+      <div class="gasto-row"><span>Gestoría</span><strong id="gv-ges">450 €</strong></div>
+      <div class="calc-out-total">
+        <div class="num" id="gv-total">16.750 €</div>
+        <div class="lbl">Total gastos asociados a la compraventa</div>
+      </div>
+      <div class="gasto-row" style="background:rgba(0,212,170,.06);border-color:rgba(0,212,170,.25)"><span>% sobre el precio</span><strong style="color:#5eead4" id="gv-pct">6.7 %</strong></div>
+    </div>
+
+    <div class="calc-detail" id="gv-explain">En Madrid el tipo ITP general es 6% (4% reducido para vivienda habitual). La Ley 5/2019 traspasa los gastos de la hipoteca al banco; aquí solo cuentan los gastos asociados a la compraventa.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. Los porcentajes definitivos dependen de la normativa autonómica vigente, del valor de referencia del Catastro y del cumplimiento formal de requisitos. Confirma con tu gestoría antes de firmar.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-gastos-compra-vivienda','Gastos Compra Vivienda')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-gastos-compra-vivienda">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora gastos compra vivienda">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Gastos compra vivienda</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué impuestos paga la compra de vivienda en España?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Vivienda nueva: IVA 10% + AJD autonómico (0.5-1.5%). Vivienda usada: ITP autonómico (6-10% según CCAA), sin IVA ni AJD. Ambos casos pueden tener bonificaciones por vivienda habitual, joven, familia numerosa o discapacidad.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuánto cuesta el notario al comprar una vivienda?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">El notario aplica el arancel oficial: entre 600 y 1.000€ para viviendas estándar (150.000-500.000€), variable según el valor escriturado y la complejidad del documento. Si hay hipoteca, se firman dos escrituras el mismo día con honorarios separados.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Quién paga los gastos de la hipoteca tras la ley 5/2019?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Desde la Ley 5/2019 de Crédito Inmobiliario, el banco asume todos los gastos hipotecarios: notaría de la hipoteca, registro de la hipoteca, gestoría y AJD del préstamo. El comprador solo paga la tasación y los gastos asociados a la compraventa.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuánto suman los gastos totales sobre el precio?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Vivienda usada: 10-13% adicional al precio. Vivienda nueva: 11-13% adicional. Por eso se recomienda disponer del 30-32% del precio en ahorros: 20% entrada bancaria + 10-12% gastos asociados.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-hipoteca-mensual/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏠</div><div style="font-weight:700;color:#fff;margin-top:4px">Hipoteca Mensual</div><div style="font-size:.78rem;color:#9090b0">Cuota, intereses y TAE estimada</div></a>
+      <a href="/calculadora-capacidad-hipotecaria/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📊</div><div style="font-weight:700;color:#fff;margin-top:4px">Capacidad Hipotecaria</div><div style="font-size:.78rem;color:#9090b0">Hipoteca máxima recomendada</div></a>
+      <a href="/calculadora-plusvalia-municipal/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏛️</div><div style="font-weight:700;color:#fff;margin-top:4px">Plusvalía Municipal</div><div style="font-size:.78rem;color:#9090b0">Reforma 2021 · IIVTNU</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria o gestoría?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que asesora 24/7 sobre gastos, impuestos y trámites por CCAA, derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-gastos-compra-vivienda',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-gastos-compra-vivienda',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtGV(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcGV(){
+  var precio=parseFloat(document.getElementById('gv-precio').value)||0;
+  var tipo=document.getElementById('gv-tipo').value;
+  var ccaaEl=document.getElementById('gv-ccaa');
+  var opt=ccaaEl.options[ccaaEl.selectedIndex];
+  var itpBase=parseFloat(opt.dataset.itp)||6;
+  var ajd=parseFloat(opt.dataset.ajd)||1;
+  var habitual=document.getElementById('gv-habitual').checked;
+  var primera=document.getElementById('gv-primera').checked;
+  var joven=document.getElementById('gv-joven').checked;
+
+  // Reducción ITP por habitual+joven aprox 2pp
+  var itpRate=itpBase;
+  if(tipo==='usada'){
+    if(habitual && (joven||primera)) itpRate=Math.max(4,itpBase-2);
+    else if(habitual) itpRate=Math.max(5,itpBase-1);
+  }
+
+  var imp=0, ajdImp=0;
+  document.getElementById('gv-ajd-lbl').style.display='none';
+  document.getElementById('gv-ajd').style.display='none';
+  if(tipo==='nueva'){
+    imp=precio*0.10; // IVA 10%
+    ajdImp=precio*ajd/100;
+    document.getElementById('gv-imp-lbl').textContent='IVA 10% (vivienda nueva)';
+    document.getElementById('gv-ajd-lbl').style.display='';
+    document.getElementById('gv-ajd').style.display='';
+    document.getElementById('gv-ajd-lbl').textContent='AJD autonómico ('+ajd+'%)';
+    document.getElementById('gv-ajd').textContent=fmtGV(ajdImp);
+  } else {
+    imp=precio*itpRate/100;
+    document.getElementById('gv-imp-lbl').textContent='ITP ('+itpRate+'%)';
+  }
+
+  // Notaría arancel aproximado
+  var not=Math.min(Math.max(450+precio*0.0015,500),1500);
+  // Registro aprox 60% notaría
+  var reg=not*0.6;
+  // Gestoría
+  var ges=400;
+
+  var total=imp+ajdImp+not+reg+ges;
+  var pct=precio>0?(total/precio*100):0;
+
+  document.getElementById('gv-imp').textContent=fmtGV(imp);
+  document.getElementById('gv-not').textContent=fmtGV(not);
+  document.getElementById('gv-reg').textContent=fmtGV(reg);
+  document.getElementById('gv-ges').textContent=fmtGV(ges);
+  document.getElementById('gv-total').textContent=fmtGV(total);
+  document.getElementById('gv-pct').textContent=pct.toFixed(1)+' %';
+
+  var detalle=tipo==='nueva'
+    ? 'Vivienda nueva: IVA 10% + AJD '+ajd+'% en '+opt.text+'. La hipoteca, si la pides, está cubierta por el banco (Ley 5/2019).'
+    : 'Vivienda usada: ITP '+itpRate+'% en '+opt.text+(habitual?' (aplicada reducción por vivienda habitual)':'')+'. Sin IVA ni AJD.';
+  document.getElementById('gv-explain').textContent=detalle;
+}
+calcGV();
+</script>
+
+</body>
+</html>

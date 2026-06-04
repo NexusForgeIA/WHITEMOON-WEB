@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Alquiler vs Compra 2026 · Punto de equilibrio · WhiteMoon</title>
+<meta name="description" content="Comparativa real alquilar vs comprar vivienda: coste total, punto de equilibrio en años y recomendación según tu estancia prevista.">
+<meta name="keywords" content="alquiler vs compra, comprar o alquilar, calculadora vivienda, punto equilibrio compra alquiler">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-alquiler-vs-compra/">
+<meta property="og:title" content="Calculadora Alquiler vs Compra 2026 · WhiteMoon">
+<meta property="og:description" content="Coste total alquiler vs compra, punto de equilibrio en años y recomendación según perfil.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-alquiler-vs-compra/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Alquiler vs Compra","description":"Compara coste total de alquilar y de comprar una vivienda en el mismo horizonte temporal. Punto de equilibrio en años.","url":"https://whitemoon.es/calculadora-alquiler-vs-compra/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Alquiler vs Compra","item":"https://whitemoon.es/calculadora-alquiler-vs-compra/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuántos años merece la pena comprar en lugar de alquilar?","acceptedAnswer":{"@type":"Answer","text":"El punto de equilibrio típico entre alquilar y comprar está en 6-10 años. Por debajo de 5 años, alquilar suele ser más rentable porque los gastos de compraventa (ITP/IVA + notaría + registro + gestoría = 10-13%) no se amortizan en el incremento de patrimonio. Por encima de 10 años, comprar suele ganar gracias a la amortización del capital y posible revalorización."}},
+{"@type":"Question","name":"¿Qué hay que sumar al precio del alquiler para comparar?","acceptedAnswer":{"@type":"Answer","text":"En alquiler se suma la cuota mensual y subidas por IPC (en España actualizado por el SIPC, sustituto temporal del IPC para alquileres ≈ 2% anual en 2026). En compra se suma cuota hipoteca + IBI anual + comunidad + seguros + mantenimiento (~1% del valor/año) + gastos compraventa amortizados. El comparativo correcto incluye el valor patrimonial al final del periodo."}},
+{"@type":"Question","name":"¿La revalorización de la vivienda compensa siempre comprar?","acceptedAnswer":{"@type":"Answer","text":"No siempre. La revalorización media en España ha sido del 2-4% anual nominal en los últimos 20 años, pero con ciclos: hubo caídas del 35-40% entre 2007 y 2013. Si la vivienda no se revaloriza (o se devalúa), el coste real de compra puede superar al alquiler. La estancia larga (10+ años) suaviza la volatilidad."}},
+{"@type":"Question","name":"¿Es mejor comprar joven o esperar a tener más ahorros?","acceptedAnswer":{"@type":"Answer","text":"Si planeas estar más de 7-10 años en la misma zona y tienes el 30% del precio en ahorros (entrada + gastos), comprar joven suele ser ventajoso: amortizas más capital con plazo más largo, fijas el coste de vivienda y reduces dependencia del mercado de alquiler. Si tu situación laboral/familiar es inestable o piensas en mover ciudad, alquilar conserva flexibilidad y ahorro líquido."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-out-num.alq{color:#5eead4}
+.calc-out-num.eq{color:#fbbf24}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+.reco-card{background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(0,212,170,.08));border:1.5px solid rgba(124,77,255,.4);border-radius:14px;padding:18px;margin:16px 0;text-align:center;font-size:.95rem;color:#fff}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-alquiler-vs-compra',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Alquiler vs Compra</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="32" cy="32" r="22"/><path d="M22 32 H42"/><path d="M27 24 L20 32 L27 40"/><path d="M37 24 L44 32 L37 40"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">⚖️ Calculadora gratuita · Decisión 2026</span>
+    <h1 class="sec-h">Calculadora <em>Alquiler vs Compra</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Coste total real de alquilar y de comprar la misma vivienda. Punto de equilibrio en años y recomendación según tu horizonte previsto.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Alquiler mensual (€)</span><span class="calc-val" id="ac-r-alq">900 €</span></div>
+        <input type="number" id="ac-alq" class="calc-input" value="900" min="100" max="20000" step="50" oninput="calcAC()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Precio compra (€)</span><span class="calc-val" id="ac-r-precio">250.000 €</span></div>
+        <input type="number" id="ac-precio" class="calc-input" value="250000" min="20000" max="3000000" step="1000" oninput="calcAC()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Entrada (%)</span><span class="calc-val" id="ac-r-entrada">20 %</span></div>
+        <input type="range" id="ac-entrada" class="calc-slider" min="0" max="60" value="20" step="1" oninput="calcAC()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Tipo interés (%)</span><span class="calc-val" id="ac-r-tipo">3.20 %</span></div>
+        <input type="range" id="ac-tipo" class="calc-slider" min="0.5" max="8" value="3.2" step="0.05" oninput="calcAC()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Años de estancia prevista</span><span class="calc-val" id="ac-r-anos">7</span></div>
+      <input type="range" id="ac-anos" class="calc-slider" min="1" max="30" value="7" step="1" oninput="calcAC()">
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num alq" id="ac-coste-alq">76.800 €</div><div class="calc-out-lbl">Coste total alquiler</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ac-coste-com">102.300 €</div><div class="calc-out-lbl">Coste neto compra</div></div>
+      <div class="calc-out-card"><div class="calc-out-num eq" id="ac-equilibrio">9 años</div><div class="calc-out-lbl">Punto de equilibrio</div></div>
+    </div>
+
+    <div class="reco-card" id="ac-reco">📌 Para 7 años en este escenario, ALQUILAR sale más barato. El punto de equilibrio está en 9 años.</div>
+
+    <div class="calc-detail" id="ac-explain">Compra incluye: hipoteca + entrada + gastos compraventa (10%) + IBI/comunidad/mantenimiento (~1% valor/año), restando valor de la vivienda al vender (revalorización 2%/año). Alquiler: cuota mensual con subida IPC 2% anual.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. La rentabilidad real depende de la revalorización efectiva, el escenario de tipos y los costes de mantenimiento. Confirma con tu asesor financiero antes de decidir.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-alquiler-vs-compra','Alquiler vs Compra')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-alquiler-vs-compra">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora alquiler vs compra">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Alquiler vs compra</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuántos años merece la pena comprar en lugar de alquilar?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">El punto de equilibrio típico está en 6-10 años. Por debajo de 5 años, alquilar suele ser más rentable porque los gastos de compraventa (10-13%) no se amortizan. Por encima de 10 años, comprar suele ganar gracias a la amortización del capital y posible revalorización.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué hay que sumar al precio del alquiler para comparar?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">En alquiler: cuota + subidas por IPC. En compra: cuota hipoteca + IBI + comunidad + seguros + mantenimiento (~1% del valor/año) + gastos compraventa amortizados. El comparativo correcto incluye el valor patrimonial al final del periodo.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿La revalorización compensa siempre comprar?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">No siempre. La revalorización media en España ha sido del 2-4% nominal, pero con ciclos (caídas del 35-40% entre 2007-2013). Si la vivienda no se revaloriza, el coste real de compra puede superar al alquiler. La estancia larga suaviza la volatilidad.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Es mejor comprar joven o esperar?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Si planeas estar más de 7-10 años en la misma zona y tienes el 30% del precio en ahorros, comprar joven suele ser ventajoso: amortizas más capital con plazo largo. Si tu situación es inestable o piensas mover ciudad, alquilar conserva flexibilidad.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-hipoteca-mensual/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏠</div><div style="font-weight:700;color:#fff;margin-top:4px">Hipoteca Mensual</div><div style="font-size:.78rem;color:#9090b0">Cuota, intereses y TAE estimada</div></a>
+      <a href="/calculadora-capacidad-hipotecaria/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📊</div><div style="font-weight:700;color:#fff;margin-top:4px">Capacidad Hipotecaria</div><div style="font-size:.78rem;color:#9090b0">Hipoteca máxima según ingresos</div></a>
+      <a href="/calculadora-rentabilidad-alquiler/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📈</div><div style="font-weight:700;color:#fff;margin-top:4px">Rentabilidad Alquiler</div><div style="font-size:.78rem;color:#9090b0">Si compras para alquilar</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria o asesor financiero?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que asesora a tus clientes 24/7 sobre alquiler vs compra, capacidad hipotecaria y gastos asociados, derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-alquiler-vs-compra',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-alquiler-vs-compra',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtAC(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+// Coste neto compra para "anos" años de estancia. Devuelve coste = pagos − valor vivienda al vender.
+function costeCompra(precio, entradaPct, tin, anos){
+  var entrada=precio*entradaPct/100;
+  var gastosCompra=precio*0.10; // 10% gastos asociados
+  var capital=precio-entrada;
+  var i=(tin/100)/12;
+  var n=30*12; // plazo hipoteca tope 30 años
+  var cuota=(capital>0&&i>0)?capital*(i*Math.pow(1+i,n))/(Math.pow(1+i,n)-1):(capital/n);
+  if(!isFinite(cuota))cuota=0;
+  var meses=anos*12;
+  var pagosHipoteca=cuota*meses;
+  // Capital pendiente tras meses (saldo restante)
+  var saldo=capital*(Math.pow(1+i,n)-Math.pow(1+i,meses))/(Math.pow(1+i,n)-1);
+  if(!isFinite(saldo))saldo=Math.max(0,capital-cuota*meses);
+  var costesAnuales=precio*0.01; // IBI + comunidad + mantenimiento aprox 1%/año
+  var costesPeriodo=costesAnuales*anos;
+  // Revalorización 2%/año (conservador)
+  var valorFinal=precio*Math.pow(1.02,anos);
+  var netoCompra = entrada + gastosCompra + pagosHipoteca + costesPeriodo - (valorFinal - saldo);
+  return netoCompra;
+}
+function costeAlquiler(alq, anos){
+  // IPC 2% anual, alquiler crece
+  var total=0;
+  var actual=alq;
+  for(var y=0;y<anos;y++){
+    total+=actual*12;
+    actual*=1.02;
+  }
+  return total;
+}
+function calcAC(){
+  var alq=parseFloat(document.getElementById('ac-alq').value)||0;
+  var precio=parseFloat(document.getElementById('ac-precio').value)||0;
+  var entradaPct=parseFloat(document.getElementById('ac-entrada').value)||0;
+  var tin=parseFloat(document.getElementById('ac-tipo').value)||0;
+  var anos=parseInt(document.getElementById('ac-anos').value,10)||1;
+
+  document.getElementById('ac-r-alq').textContent=fmtAC(alq);
+  document.getElementById('ac-r-precio').textContent=fmtAC(precio);
+  document.getElementById('ac-r-entrada').textContent=entradaPct+' %';
+  document.getElementById('ac-r-tipo').textContent=tin.toFixed(2)+' %';
+  document.getElementById('ac-r-anos').textContent=anos;
+
+  var cAlq=costeAlquiler(alq,anos);
+  var cCom=costeCompra(precio,entradaPct,tin,anos);
+
+  // Buscar punto de equilibrio (años donde compra ≤ alquiler)
+  var equilibrio=0;
+  for(var y=1;y<=40;y++){
+    if(costeCompra(precio,entradaPct,tin,y) <= costeAlquiler(alq,y)){
+      equilibrio=y;break;
+    }
+  }
+
+  document.getElementById('ac-coste-alq').textContent=fmtAC(cAlq);
+  document.getElementById('ac-coste-com').textContent=fmtAC(cCom);
+  document.getElementById('ac-equilibrio').textContent=equilibrio>0?equilibrio+' años':'>40 años';
+
+  var reco='';
+  if(equilibrio===0){
+    reco='📌 En este escenario, ALQUILAR sale más barato incluso a 40 años. Revisa los inputs o considera otras zonas.';
+  } else if(anos<equilibrio){
+    reco='📌 Para '+anos+' años en este escenario, ALQUILAR sale más barato. El punto de equilibrio está en '+equilibrio+' años.';
+  } else {
+    reco='📌 Para '+anos+' años en este escenario, COMPRAR sale más barato. El punto de equilibrio está en '+equilibrio+' años: cualquier estancia superior compensa la compra.';
+  }
+  document.getElementById('ac-reco').textContent=reco;
+}
+calcAC();
+</script>
+
+</body>
+</html>

@@ -586,6 +586,43 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Cluster 4 — Vivienda e Hipotecas -->
+  <url>
+    <loc>https://whitemoon.es/calculadora-hipoteca-mensual/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-capacidad-hipotecaria/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-gastos-compra-vivienda/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-plusvalia-municipal/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-alquiler-vs-compra/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://whitemoon.es/calculadora-rentabilidad-alquiler/</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://whitemoon.es/roi-inteligencia-artificial/</loc>
     <lastmod>2026-06-04</lastmod>

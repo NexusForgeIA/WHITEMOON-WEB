@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Capacidad Hipotecaria 2026 · Hipoteca máxima según ingresos · WhiteMoon</title>
+<meta name="description" content="Calcula la hipoteca máxima recomendada según tus ingresos netos, deudas y ahorros. Regla del 30% y entrada mínima necesaria. Gratis.">
+<meta name="keywords" content="capacidad hipotecaria, hipoteca maxima ingresos, calculadora endeudamiento, cuota maxima hipoteca, regla 30 porciento">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-capacidad-hipotecaria/">
+<meta property="og:title" content="Calculadora Capacidad Hipotecaria 2026 · WhiteMoon">
+<meta property="og:description" content="Hipoteca máxima recomendada según ingresos, deudas y ahorros. Regla del 30% y entrada necesaria.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-capacidad-hipotecaria/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Capacidad Hipotecaria","description":"Estima la hipoteca máxima que puedes asumir aplicando la regla del 30% de ingresos netos y la entrada mínima necesaria.","url":"https://whitemoon.es/calculadora-capacidad-hipotecaria/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Capacidad Hipotecaria","item":"https://whitemoon.es/calculadora-capacidad-hipotecaria/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué porcentaje de los ingresos puedo dedicar a la hipoteca?","acceptedAnswer":{"@type":"Answer","text":"La regla prudencial estándar es que la cuota mensual no supere el 30-35% de los ingresos netos del hogar. Por encima del 40% se considera sobreendeudamiento. El cálculo debe incluir TODAS las cargas (otras deudas, préstamos personales, créditos al consumo), no solo la nueva hipoteca."}},
+{"@type":"Question","name":"¿Qué entrada necesito para comprar una vivienda?","acceptedAnswer":{"@type":"Answer","text":"Los bancos en España suelen financiar hasta el 80% del menor valor entre precio de compraventa y tasación. El 20% restante más los gastos asociados (10-12% adicional para ITP/IVA + notaría + registro + gestoría) lo aporta el comprador con ahorros. En total se necesita disponer del 30-32% del precio en ahorros."}},
+{"@type":"Question","name":"¿Las deudas actuales reducen mi capacidad hipotecaria?","acceptedAnswer":{"@type":"Answer","text":"Sí. El banco suma cualquier cuota mensual recurrente (préstamo personal, financiación de coche, créditos al consumo, mensualidad de tarjeta diferida) y aplica el límite del 30-35% sobre el TOTAL de cargas. Cuanto más deuda actual tengas, menor será tu cuota hipotecaria viable."}},
+{"@type":"Question","name":"¿Cómo aumentar la capacidad hipotecaria?","acceptedAnswer":{"@type":"Answer","text":"Tres palancas principales: (1) reducir o cancelar préstamos al consumo antes de pedir la hipoteca; (2) alargar plazo para reducir cuota mensual (aunque pagues más intereses totales); (3) añadir un avalista solvente o cotitular con ingresos. Los bancos también valoran estabilidad laboral (contrato indefinido) y ahorros adicionales como colchón."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.5rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-capacidad-hipotecaria',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Capacidad Hipotecaria</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 50 L26 32 L36 42 L56 18"/><path d="M44 18 H56 V30"/><path d="M8 56 H56"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">📊 Calculadora gratuita · Capacidad 2026</span>
+    <h1 class="sec-h">Calculadora <em>Capacidad Hipotecaria</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Hipoteca máxima recomendada según tus ingresos, deudas actuales y ahorros disponibles. Regla del 30%, cuota segura y entrada mínima necesaria.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Ingresos netos mensuales (€)</span><span class="calc-val" id="ch-r-ing">2.500 €</span></div>
+        <input type="number" id="ch-ing" class="calc-input" value="2500" min="600" max="50000" step="100" oninput="calcCH()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Otras deudas (€/mes)</span><span class="calc-val" id="ch-r-deudas">0 €</span></div>
+        <input type="number" id="ch-deudas" class="calc-input" value="0" min="0" max="10000" step="50" oninput="calcCH()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Ahorros disponibles (€)</span><span class="calc-val" id="ch-r-aho">40.000 €</span></div>
+        <input type="number" id="ch-aho" class="calc-input" value="40000" min="0" max="2000000" step="1000" oninput="calcCH()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Plazo previsto (años)</span><span class="calc-val" id="ch-r-anos">25</span></div>
+        <input type="range" id="ch-anos" class="calc-slider" min="5" max="40" value="25" step="1" oninput="calcCH()">
+      </div>
+    </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Tipo interés estimado (%)</span><span class="calc-val" id="ch-r-tipo">3.20 %</span></div>
+      <input type="range" id="ch-tipo" class="calc-slider" min="0.5" max="8" value="3.2" step="0.05" oninput="calcCH()">
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="ch-cuotamax">750 €</div><div class="calc-out-lbl">Cuota máxima segura</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ch-hipmax">154.300 €</div><div class="calc-out-lbl">Hipoteca máxima</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="ch-precio">192.900 €</div><div class="calc-out-lbl">Vivienda máxima</div></div>
+    </div>
+
+    <div class="calc-detail" id="ch-explain">Aplicamos la regla del 30% de ingresos netos. Vivienda máxima asume entrada del 20% más ~10% de gastos (ITP, notaría, registro, gestoría).</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. La capacidad final depende del scoring del banco, estabilidad laboral, antigüedad y vinculación con la entidad. Confirma con tu banco antes de comprometerte.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-capacidad-hipotecaria','Capacidad Hipotecaria')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-capacidad-hipotecaria">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora capacidad hipotecaria">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Capacidad hipotecaria</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué porcentaje de los ingresos puedo dedicar a la hipoteca?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">La regla prudencial estándar es que la cuota mensual no supere el 30-35% de los ingresos netos del hogar. Por encima del 40% se considera sobreendeudamiento. El cálculo debe incluir TODAS las cargas (otras deudas, préstamos personales, créditos al consumo), no solo la nueva hipoteca.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Qué entrada necesito para comprar una vivienda?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Los bancos en España suelen financiar hasta el 80% del menor valor entre precio de compraventa y tasación. El 20% restante más los gastos asociados (10-12% adicional para ITP/IVA + notaría + registro + gestoría) lo aporta el comprador con ahorros. En total se necesita disponer del 30-32% del precio en ahorros.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Las deudas actuales reducen mi capacidad hipotecaria?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Sí. El banco suma cualquier cuota mensual recurrente (préstamo personal, financiación de coche, créditos al consumo, mensualidad de tarjeta diferida) y aplica el límite del 30-35% sobre el TOTAL de cargas. Cuanto más deuda actual tengas, menor será tu cuota hipotecaria viable.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo aumentar la capacidad hipotecaria?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Tres palancas: (1) reducir o cancelar préstamos al consumo antes de pedir la hipoteca; (2) alargar plazo para reducir cuota mensual (aunque pagues más intereses totales); (3) añadir un avalista solvente o cotitular con ingresos. Los bancos también valoran estabilidad laboral (contrato indefinido) y ahorros adicionales como colchón.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster vivienda e hipotecas</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-hipoteca-mensual/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🏠</div><div style="font-weight:700;color:#fff;margin-top:4px">Hipoteca Mensual</div><div style="font-size:.78rem;color:#9090b0">Cuota, intereses y TAE estimada</div></a>
+      <a href="/calculadora-gastos-compra-vivienda/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📋</div><div style="font-weight:700;color:#fff;margin-top:4px">Gastos Compra Vivienda</div><div style="font-size:.78rem;color:#9090b0">ITP/IVA, notaría, registro, gestoría</div></a>
+      <a href="/calculadora-alquiler-vs-compra/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">⚖️</div><div style="font-weight:700;color:#fff;margin-top:4px">Alquiler vs Compra</div><div style="font-size:.78rem;color:#9090b0">Punto de equilibrio según años</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">¿Eres inmobiliaria o gestoría?</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que cualifica leads de compraventa 24/7 estimando su capacidad hipotecaria y derivando los casos cualificados a tu equipo.</p>
+    <a href="/chatbot-ia-inmobiliarias/" class="btn-prim" style="display:inline-block;padding:13px 32px;margin-right:8px" onclick="wmTrack('click_calc_relacionada',{from:'calc-capacidad-hipotecaria',to:'chatbot-ia-inmobiliarias'})">Chatbot IA Inmobiliarias →</a>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-capacidad-hipotecaria',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">31 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtCH(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcCH(){
+  var ing=parseFloat(document.getElementById('ch-ing').value)||0;
+  var deudas=parseFloat(document.getElementById('ch-deudas').value)||0;
+  var aho=parseFloat(document.getElementById('ch-aho').value)||0;
+  var anos=parseInt(document.getElementById('ch-anos').value,10)||25;
+  var tin=parseFloat(document.getElementById('ch-tipo').value)||0;
+
+  document.getElementById('ch-r-ing').textContent=fmtCH(ing);
+  document.getElementById('ch-r-deudas').textContent=fmtCH(deudas);
+  document.getElementById('ch-r-aho').textContent=fmtCH(aho);
+  document.getElementById('ch-r-anos').textContent=anos;
+  document.getElementById('ch-r-tipo').textContent=tin.toFixed(2)+' %';
+
+  // Regla 30%: cuota máxima = 30% ingresos − deudas
+  var cuotaMax=Math.max(0,(ing*0.30)-deudas);
+  // Hipoteca máxima despejando del sistema francés
+  var i=(tin/100)/12;
+  var n=anos*12;
+  var hipMax=(cuotaMax>0&&i>0)?cuotaMax*(Math.pow(1+i,n)-1)/(i*Math.pow(1+i,n)):cuotaMax*n;
+  if(!isFinite(hipMax))hipMax=0;
+  // Vivienda máxima: hipoteca = 80% del precio, gastos 10% adicional
+  // ahorros = entrada (20%) + gastos (10%) = 30% del precio
+  // precio máximo limitado por ahorros: precio = ahorros / 0.30
+  var precioPorAhorros=aho/0.30;
+  // precio máximo limitado por hipoteca: precio = hipoteca / 0.80
+  var precioPorHipoteca=hipMax/0.80;
+  var precioMax=Math.min(precioPorAhorros,precioPorHipoteca);
+  if(!isFinite(precioMax))precioMax=0;
+  // entrada mínima = 30% del precio máximo
+  var entradaMin=precioMax*0.30;
+
+  document.getElementById('ch-cuotamax').textContent=fmtCH(cuotaMax);
+  document.getElementById('ch-hipmax').textContent=fmtCH(hipMax);
+  document.getElementById('ch-precio').textContent=fmtCH(precioMax);
+
+  var limitador=precioPorAhorros<precioPorHipoteca?'ahorros':'capacidad de cuota';
+  document.getElementById('ch-explain').textContent='Cuota máxima recomendada: 30% de ingresos menos otras deudas. Precio máximo asume 20% entrada + 10% gastos. Tu límite actual es: '+limitador+' (necesitas '+fmtCH(entradaMin)+' en ahorros para esa vivienda).';
+}
+calcCH();
+</script>
+
+</body>
+</html>
