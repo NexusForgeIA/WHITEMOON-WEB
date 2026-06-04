@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Reunión 2026 · Cuánto cuestan las reuniones · WhiteMoon</title>
+<meta name="description" content="Calcula el coste real de cada reunión, el coste semanal y anual y las horas productivas perdidas. Gratis, sin registro.">
+<meta name="keywords" content="coste reunion, calculadora reunion empresa, productividad reuniones, horas perdidas reuniones, tiempo reuniones">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-reunion/">
+<meta property="og:title" content="Calculadora Coste Reunión 2026 · WhiteMoon">
+<meta property="og:description" content="Coste por reunión, coste semanal/anual y horas productivas perdidas.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-reunion/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Reunión","description":"Calcula el coste real de las reuniones (por reunión, semanal y anual) y las horas productivas perdidas.","url":"https://whitemoon.es/calculadora-coste-reunion/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Reunión","item":"https://whitemoon.es/calculadora-coste-reunion/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cómo se calcula el coste de una reunión?","acceptedAnswer":{"@type":"Answer","text":"Coste reunión = número de asistentes × coste hora medio × duración (horas). El coste hora se obtiene de: salario anual bruto / (52 semanas × 40 horas) × 1.30 (estimación SS empresa + indirectos). Para 5 asistentes a 18€/hora reales en una reunión de 1 hora, el coste es 90€. A 4 reuniones de 1 hora a la semana, son 360€/semana y ~18.700€/año."}},
+{"@type":"Question","name":"¿Cuánto tiempo dedica una empresa a reuniones?","acceptedAnswer":{"@type":"Answer","text":"Según estudios de Atlassian y Harvard Business Review, los profesionales dedican entre el 23% y el 35% de su jornada a reuniones (incluyendo preparación). En perfiles directivos sube al 50-60%. Las reuniones de status sin agenda definida y sin output documentado son consideradas el mayor desperdicio: 30-50% de las reuniones podrían ser un email."}},
+{"@type":"Question","name":"¿Cómo reducir el coste de reuniones?","acceptedAnswer":{"@type":"Answer","text":"Buenas prácticas: (1) regla 'no agenda, no meeting'; (2) duraciones por defecto de 25 o 50 min en lugar de 30/60; (3) máximo 5 asistentes para reuniones de decisión; (4) horarios bloqueados sin reuniones (focus time); (5) revisar recurrentes cada 3 meses; (6) sustituir status por documentos asíncronos. Pueden recortar 20-40% del tiempo total en reuniones sin perder coordinación."}},
+{"@type":"Question","name":"¿La IA puede sustituir reuniones?","acceptedAnswer":{"@type":"Answer","text":"Parcialmente. La IA conversacional automatiza muchas comunicaciones que hoy generan reuniones: actualizaciones de status, FAQs internas, distribución de información, recordatorios de tareas y resúmenes. Un Agente IA bien implementado reduce el 15-25% de las reuniones recurrentes informativas, liberando horas para reuniones de decisión real."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-val{color:#9d70ff;font-weight:600}.calc-slider{width:100%;height:38px;accent-color:#7c4dff;cursor:pointer}
+.calc-input{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-num{font-size:1.4rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:900px){.calc-out{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.calc-out{grid-template-columns:1fr}}
+.svg-ico{width:64px;height:64px;color:#9d70ff;margin:0 auto 18px;display:block}
+</style>
+</head>
+<body>
+
+<nav class="navbar"><div class="wrap">
+  <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+  <div class="nav-right"><a href="/precios/" class="nav-link">Precios</a><a href="/blog/" class="nav-link">Blog</a>
+    <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-reunion',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+  </div>
+</div></nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px"><div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Reunión</div></div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <svg class="svg-ico" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="20" cy="22" r="6"/><circle cx="44" cy="22" r="6"/><circle cx="32" cy="14" r="6"/><path d="M8 50 C8 40 14 34 20 34 C26 34 32 40 32 50"/><path d="M32 50 C32 40 38 34 44 34 C50 34 56 40 56 50"/><path d="M22 28 C22 24 27 22 32 22 C37 22 42 24 42 28"/></svg>
+    <span class="sec-lbl" style="color:#00d4aa">👥 Calculadora gratuita · Reuniones 2026</span>
+    <h1 class="sec-h">Calculadora <em>Coste de Reuniones</em></h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Coste real por reunión, coste semanal, coste anual y horas productivas perdidas. Datos para decidir qué reuniones son realmente necesarias.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Asistentes por reunión</span><span class="calc-val" id="cr-r-asis">5</span></div>
+        <input type="number" id="cr-asis" class="calc-input" value="5" min="1" max="200" step="1" oninput="calcCR()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Duración (horas)</span><span class="calc-val" id="cr-r-dur">1.0 h</span></div>
+        <input type="range" id="cr-dur" class="calc-slider" min="0.25" max="4" value="1" step="0.25" oninput="calcCR()">
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row">
+        <div class="calc-label"><span>Salario medio anual bruto (€)</span><span class="calc-val" id="cr-r-salario">28.000 €</span></div>
+        <input type="number" id="cr-salario" class="calc-input" value="28000" min="10000" max="500000" step="500" oninput="calcCR()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label"><span>Reuniones / semana</span><span class="calc-val" id="cr-r-freq">4</span></div>
+        <input type="range" id="cr-freq" class="calc-slider" min="1" max="40" value="4" step="1" oninput="calcCR()">
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="cr-porReu">87 €</div><div class="calc-out-lbl">Coste / reunión</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="cr-sem">350 €</div><div class="calc-out-lbl">Coste semanal</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="cr-anu">18.200 €</div><div class="calc-out-lbl">Coste anual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="cr-horas">1.040 h</div><div class="calc-out-lbl">Horas perdidas / año</div></div>
+    </div>
+
+    <div class="calc-detail" id="cr-explain">Coste hora real estimado: salario / (52 × 40) × 1.30 (SS empresa + indirectos). Coste por reunión = asistentes × coste hora × duración. Coste anual = coste semanal × 52.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">Cálculo orientativo. El coste real incluye tiempo de preparación, context switching previo y posterior, y oportunidad perdida en otras tareas. El coste de oportunidad real puede ser superior al coste salarial.</p>
+
+    <div style="text-align:center">
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-reunion','Coste Reunión')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-coste-reunion">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora coste reunión">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </div></div></section>
+
+  <!-- FAQ -->
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-lbl" style="color:#9d70ff">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste reuniones</h2>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo se calcula el coste de una reunión?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Coste reunión = asistentes × coste hora medio × duración. Coste hora = salario anual / (52 × 40) × 1.30 (SS + indirectos). Para 5 asistentes a 18€/h reales en 1h: 90€/reunión. A 4 reuniones/semana: 360€/sem y ~18.700€/año.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cuánto tiempo dedica una empresa a reuniones?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Según Atlassian y HBR, los profesionales dedican 23-35% de su jornada a reuniones (con preparación). Directivos: 50-60%. Las reuniones de status sin agenda son el mayor desperdicio: 30-50% podrían ser un email.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿Cómo reducir el coste de reuniones?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Buenas prácticas: 'no agenda, no meeting', duraciones por defecto 25/50 min, máximo 5 asistentes para decisión, horarios bloqueados sin reuniones, revisar recurrentes cada 3 meses, sustituir status por documentos asíncronos. Recortan 20-40% del tiempo total.</div></details>
+    <details class="faq-item" style="margin-bottom:14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 22px"><summary style="cursor:pointer;font-weight:600;color:#fff">¿La IA puede sustituir reuniones?</summary><div style="margin-top:12px;color:#9090b0;line-height:1.7;font-size:.92rem">Parcialmente. La IA conversacional automatiza actualizaciones de status, FAQs internas, distribución de información y resúmenes. Un Agente IA reduce el 15-25% de las reuniones recurrentes informativas, liberando horas para reuniones de decisión real.</div></details>
+  </div></div></section>
+
+  <!-- Calc hermanas -->
+  <section class="sec"><div class="wrap" style="max-width:1080px;margin:0 auto">
+    <span class="sec-lbl" style="color:#5eead4">Cluster empresas y RRHH</span>
+    <h2 class="sec-h" style="margin-bottom:24px;text-align:center">Calculadoras relacionadas</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px">
+      <a href="/calculadora-productividad-empleado/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">📈</div><div style="font-weight:700;color:#fff;margin-top:4px">Productividad por Empleado</div><div style="font-size:.78rem;color:#9090b0">Ingresos por empleado y por hora</div></a>
+      <a href="/calculadora-roi-formacion/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">🎓</div><div style="font-weight:700;color:#fff;margin-top:4px">ROI Formación</div><div style="font-size:.78rem;color:#9090b0">Payback y beneficio estimado</div></a>
+      <a href="/calculadora-coste-trabajador/" style="display:flex;flex-direction:column;gap:6px;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="font-size:1.3rem">💼</div><div style="font-weight:700;color:#fff;margin-top:4px">Coste Real Trabajador</div><div style="font-size:.78rem;color:#9090b0">Salario + SS + indirectos</div></a>
+    </div>
+  </div></section>
+
+  <!-- Pack -->
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <span class="sec-lbl">Pack recomendado</span>
+    <h2 class="sec-h">Sustituye reuniones informativas con IA</h2>
+    <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7">Los packs de WhiteMoon integran un Agente IA que responde 24/7 las preguntas repetitivas internas (procedimientos, normativa, documentos), reduciendo las reuniones de status y FAQ que hoy bloquean tu equipo.</p>
+    <a href="/precios/" class="btn-prim" style="display:inline-block;padding:13px 32px" onclick="wmTrack('click_pack',{from:'calc-coste-reunion',pack:'precios'})">Ver todos los planes →</a>
+  </div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit">
+      <div style="font-size:1.8rem;line-height:1;flex-shrink:0">⭐</div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">37 calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026052701" defer></script>
+<script>
+function fmtCR(n){return Math.round(n).toLocaleString('es-ES')+' €';}
+function calcCR(){
+  var asis=parseInt(document.getElementById('cr-asis').value,10)||1;
+  var dur=parseFloat(document.getElementById('cr-dur').value)||0;
+  var salario=parseFloat(document.getElementById('cr-salario').value)||0;
+  var freq=parseInt(document.getElementById('cr-freq').value,10)||0;
+
+  document.getElementById('cr-r-asis').textContent=asis;
+  document.getElementById('cr-r-dur').textContent=dur.toFixed(2)+' h';
+  document.getElementById('cr-r-salario').textContent=fmtCR(salario);
+  document.getElementById('cr-r-freq').textContent=freq;
+
+  // Coste hora real: salario / (52 × 40) × 1.30
+  var costeHora=salario/(52*40)*1.30;
+  var porReu=asis*costeHora*dur;
+  var sem=porReu*freq;
+  var anu=sem*52;
+  var horasAnio=asis*dur*freq*52;
+
+  document.getElementById('cr-porReu').textContent=fmtCR(porReu);
+  document.getElementById('cr-sem').textContent=fmtCR(sem);
+  document.getElementById('cr-anu').textContent=fmtCR(anu);
+  document.getElementById('cr-horas').textContent=Math.round(horasAnio).toLocaleString('es-ES')+' h';
+
+  document.getElementById('cr-explain').textContent='Coste hora estimado: '+fmtCR(costeHora)+' (salario × 1.30). Coste por reunión = '+asis+' asistentes × '+fmtCR(costeHora)+' × '+dur.toFixed(2)+' h. '+Math.round(horasAnio).toLocaleString('es-ES')+' horas anuales en reuniones.';
+}
+calcCR();
+</script>
+
+</body>
+</html>
