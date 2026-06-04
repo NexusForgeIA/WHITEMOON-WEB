@@ -2248,171 +2248,135 @@
 
 
 <!-- FOOTER -->
-<footer id="contacto">
-  <div class="foot-grid">
+<!-- FOOTER ENTERPRISE — 4 columnas estilo Linear/Stripe -->
+<style>
+  footer#contacto.foot-ent{margin-top:80px;padding:80px 24px 0;background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.03) 100%);border-top:1px solid rgba(255,255,255,.06)}
+  footer#contacto.foot-ent .foot-grid-ent{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px 48px;padding-bottom:64px}
+  @media(max-width:980px){footer#contacto.foot-ent .foot-grid-ent{grid-template-columns:1fr 1fr;gap:48px 32px}}
+  @media(max-width:560px){footer#contacto.foot-ent .foot-grid-ent{grid-template-columns:1fr;gap:40px}}
+  footer#contacto.foot-ent .fc-brand .fc-logo{display:inline-flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:-.01em;text-decoration:none;margin-bottom:18px}
+  footer#contacto.foot-ent .fc-brand .fc-logo img{width:32px;height:32px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 14px rgba(124,77,255,.35))}
+  footer#contacto.foot-ent .fc-brand .fc-logo .light{color:#E8E8F0}
+  footer#contacto.foot-ent .fc-brand .fc-logo .acc{color:#7c4dff}
+  footer#contacto.foot-ent .fc-brand p{font-size:.88rem;color:#9CA3AF;line-height:1.65;margin:0 0 24px;max-width:320px}
+  footer#contacto.foot-ent .fc-social{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  footer#contacto.foot-ent .fc-social a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid rgba(255,255,255,.08);border-radius:8px;color:#9CA3AF;text-decoration:none;transition:color .15s ease,border-color .15s ease,background .15s ease}
+  footer#contacto.foot-ent .fc-social a:hover{color:#E8E8F0;border-color:rgba(124,77,255,.4);background:rgba(124,77,255,.06)}
+  footer#contacto.foot-ent .fc-social a svg{width:16px;height:16px}
+  footer#contacto.foot-ent .fc-social .fc-seobility{width:auto;height:36px;padding:0 4px;background:transparent;border:1px solid rgba(255,255,255,.06)}
+  footer#contacto.foot-ent .fc-social .fc-seobility:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12)}
+  footer#contacto.foot-ent .fc-social .fc-seobility img{height:30px;width:auto;display:block;object-fit:contain}
+  footer#contacto.foot-ent h4{font-family:'Inter',sans-serif;font-size:.74rem;font-weight:600;color:#E8E8F0;letter-spacing:.08em;text-transform:uppercase;margin:0 0 18px}
+  footer#contacto.foot-ent ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:11px}
+  footer#contacto.foot-ent ul a{font-family:'Inter',sans-serif;font-size:.86rem;font-weight:400;color:#9CA3AF;text-decoration:none;transition:color .12s ease;letter-spacing:-.005em;line-height:1.5}
+  footer#contacto.foot-ent ul a:hover{color:#E8E8F0}
+  footer#contacto.foot-ent .fc-contact{display:flex;flex-direction:column;gap:14px}
+  footer#contacto.foot-ent .fc-contact-item{display:flex;gap:11px;align-items:flex-start}
+  footer#contacto.foot-ent .fc-contact-item svg{width:16px;height:16px;color:#9d70ff;flex-shrink:0;margin-top:3px}
+  footer#contacto.foot-ent .fc-contact-item .meta{font-size:.86rem;color:#9CA3AF;line-height:1.5}
+  footer#contacto.foot-ent .fc-contact-item .meta a{color:#9CA3AF;text-decoration:none}
+  footer#contacto.foot-ent .fc-contact-item .meta a:hover{color:#E8E8F0}
+  footer#contacto.foot-ent .fc-contact-item .meta strong{display:block;color:#E8E8F0;font-weight:500;font-size:.78rem;margin-bottom:2px;letter-spacing:.04em}
+  footer#contacto.foot-ent .fc-bottom{max-width:1240px;margin:0 auto;padding:24px 0 28px;border-top:1px solid rgba(255,255,255,.06);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:.78rem;color:#6B7280}
+  footer#contacto.foot-ent .fc-bottom a{color:#9CA3AF;text-decoration:none;transition:color .12s ease}
+  footer#contacto.foot-ent .fc-bottom a:hover{color:#E8E8F0}
+  footer#contacto.foot-ent .fc-bottom-links{display:flex;gap:18px;flex-wrap:wrap}
+  footer#contacto.foot-ent .fc-bottom-tag{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;color:#6B7280}
+  footer#contacto.foot-ent .fc-bottom-tag img{width:14px;height:14px;border-radius:50%;object-fit:cover}
+</style>
+<footer id="contacto" class="foot-ent">
+  <div class="foot-grid-ent">
 
     <!-- Col 1 — Marca -->
-    <div class="foot-col">
-      <a href="/" class="foot-brand" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}" aria-label="WhiteMoon">
-        <picture><source srcset="./logo.webp" type="image/webp"><img class="foot-logo" alt="WhiteMoon Agencia IA" src="./logo.png" width="180" height="82" loading="lazy" decoding="async"></picture>
+    <div class="fc-brand">
+      <a href="/" class="fc-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}" aria-label="WhiteMoon">
+        <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="WhiteMoon" width="32" height="32" loading="lazy" decoding="async"></picture>
+        <span><span class="light">WHITE</span><span class="acc">MOON</span></span>
       </a>
-      <p class="foot-desc">Agencia de Inteligencia Artificial para negocios locales y PYMEs en Madrid.</p>
-      <div class="foot-social">
-        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="#c084fc" stroke-width="1.8" fill="none"/><circle cx="12" cy="12" r="4.5" stroke="#c084fc" stroke-width="1.8" fill="none"/><circle cx="17.5" cy="6.5" r="1.2" fill="#c084fc"/></svg>
+      <p>Sistemas de automatización IA para pymes españolas.<br>Operativo en 7 días, sin permanencia.</p>
+      <div class="fc-social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         </a>
-        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp" onclick="wmTrack('click_whatsapp',{source:'home',placement:'footer-social'})">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.396A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" stroke="#a78bfa" stroke-width="1.8" fill="none"/><path d="M8.5 9.5c.3.9 1 2.5 2.5 4s3.1 2.2 4 2.5c.4.1.8 0 1-.3l.5-.7c.2-.3.1-.7-.1-.9l-1.5-1c-.2-.1-.5-.1-.7.1l-.4.4c-.1.1-.3.1-.4 0-.6-.4-1.8-1.6-2.2-2.2-.1-.1-.1-.3 0-.4l.4-.4c.2-.2.2-.5.1-.7l-1-1.5c-.2-.3-.6-.3-.9-.1l-.7.5c-.3.2-.4.6-.3 1z" fill="#a78bfa"/></svg>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp" onclick="wmTrack('click_whatsapp',{source:'home',placement:'footer-social'})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
         </a>
-        <a href="https://www.linkedin.com/in/cristobal-martinez-8b9b9951" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="#ffffff" stroke-width="1.8" fill="none"/><circle cx="7.5" cy="7.5" r="1.1" fill="#ffffff"/><line x1="7.5" y1="10.5" x2="7.5" y2="17" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/><path d="M11.5 17v-4c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5v4" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><line x1="11.5" y1="10.5" x2="11.5" y2="17" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <a href="https://www.linkedin.com/in/cristobal-martinez-8b9b9951" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="https://www.seobility.net/es/seocheck/check?url=https%3A%2F%2Fwhitemoon.es%2F" target="_blank" rel="noopener">
-          <img src="https://app.seobility.net/widget/widget.png?url=https%3A%2F%2Fwhitemoon.es%2F" alt="Seobility Score para whitemoon.es" width="100" height="100" loading="lazy">
+        <a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+        </a>
+        <a href="https://www.seobility.net/es/seocheck/check?url=https%3A%2F%2Fwhitemoon.es%2F" target="_blank" rel="noopener" class="fc-seobility" aria-label="Seobility Score">
+          <img src="https://app.seobility.net/widget/widget.png?url=https%3A%2F%2Fwhitemoon.es%2F" alt="Seobility Score para whitemoon.es" width="100" height="30" loading="lazy">
         </a>
       </div>
     </div>
 
-    <style>
-    @media(max-width:600px){
-      .foot-col:nth-child(2) ul:nth-child(n+3){
-        display:none;
-      }
-      .foot-col:nth-child(2)::after{
-        content:"Ver todos los servicios →";
-        display:block;
-        margin-top:8px;
-        color:var(--p2,#9d70ff);
-        font-size:.8rem;
-        font-weight:600;
-      }
-    }
-    /* Widget Seobility dentro de .foot-social: misma altura (52px) que
-       los iconos RRSS y baseline alineado. Sin background morado porque
-       el widget ya trae su propia visual de score badge. */
-    .foot-social a[href*="seobility"]{
-      width:auto;
-      background:transparent;
-      border:0;
-      border-radius:0;
-      padding:0;
-      overflow:hidden;
-    }
-    .foot-social a[href*="seobility"]:hover{
-      background:transparent;
-      transform:scale(1.05);
-    }
-    .foot-social a[href*="seobility"] img{
-      height:52px;
-      width:auto;
-      display:block;
-      object-fit:contain;
-    }
-    </style>
     <!-- Col 2 — Servicios -->
-    <div class="foot-col">
+    <div class="fc-services">
       <h4>Servicios</h4>
-      <ul class="foot-links-list">
-        <li><a href="/spark/">Pack Spark · Agente IA</a></li>
-        <li><a href="/core/">Pack Core · Web profesional</a></li>
-        <li><a href="/scale/">Pack Scale · Sistema RAG</a></li>
-        <li><a href="/elite/">Pack Elite · IA Premium</a></li>
-        <li><a href="/#agentes-ia">Agentes IA · Conversión</a></li>
-      </ul>
-      <h4 style="margin-top:24px;">Agentes IA y guías</h4>
-      <ul class="foot-links-list">
-        <li><a href="/agentes-ia/">Agentes IA</a></li>
-        <li><a href="/precio-agente-ia/">Precio Agente IA</a></li>
-        <li><a href="/agente-ia-vs-chatbot/">Agente IA vs Chatbot</a></li>
-        <li><a href="/automatizar-whatsapp-empresa/">Automatizar WhatsApp</a></li>
-        <li><a href="/whitemoon-vs-intercom/">vs Intercom</a></li>
-        <li><a href="/whitemoon-vs-manychat/">vs ManyChat</a></li>
-        <li><a href="/whitemoon-vs-tidio/">vs Tidio</a></li>
-      </ul>
-      <h4 style="margin-top:24px;">Agencia IA por zona</h4>
-      <ul class="foot-links-list">
-        <li><a href="/agencia-ia-madrid/">Agencia IA Madrid</a></li>
-        <li><a href="/agencia-ia-majadahonda/">Agencia IA Majadahonda</a></li>
-        <li><a href="/agencia-ia-las-rozas/">Agencia IA Las Rozas</a></li>
-        <li><a href="/agencia-ia-pozuelo/">Agencia IA Pozuelo</a></li>
-        <li><a href="/agencia-ia-boadilla/">Agencia IA Boadilla</a></li>
-      </ul>
-      <h4 style="margin-top:24px;">Chatbot IA por sector</h4>
-      <ul class="foot-links-list">
-        <li><a href="/chatbot-peluquerias-madrid">Peluquerías en Madrid</a></li>
-        <li><a href="/chatbot-talleres-mecanicos-madrid">Talleres mecánicos</a></li>
-        <li><a href="/chatbot-clinicas-dentales-madrid">Clínicas dentales</a></li>
-        <li><a href="/chatbot-abogados-madrid">Abogados</a></li>
-      </ul>
-      <h4 style="margin-top:24px;">Recursos</h4>
-      <ul class="foot-links-list">
-        <li><a href="/costes-eficiencia-empresarial-ia/"><strong>⭐ Hub central · Costes, eficiencia y ROI</strong></a></li>
-        <li><a href="/recursos/">Hub de recursos</a></li>
-        <li><a href="/casos/">Casos de uso por sector</a></li>
-        <li><a href="/roi-inteligencia-artificial/">Guía ROI Inteligencia Artificial</a></li>
-        <li><a href="/ahorro-costes-empresa/">Guía Ahorro de Costes con IA</a></li>
-        <li><a href="/auditoria-ia/">Auditoría IA · 899€</a></li>
+      <ul>
+        <li><a href="/spark/">Spark</a></li>
+        <li><a href="/orion-agent/">Orion IA Agent</a></li>
+        <li><a href="/orion-calls/">Orion IA Calls</a></li>
+        <li><a href="/core/">Core</a></li>
+        <li><a href="/core-rag/">Core RAG</a></li>
+        <li><a href="/scale/">Scale</a></li>
+        <li><a href="/elite/">Elite</a></li>
+        <li><a href="/calculadora-itp/">Calculadora ITP Pro</a></li>
       </ul>
     </div>
 
-    <!-- Col 3 — Contacto -->
-    <div class="foot-col">
+    <!-- Col 3 — Recursos -->
+    <div class="fc-resources">
+      <h4>Recursos</h4>
+      <ul>
+        <li><a href="/recursos/">Calculadoras</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/auditoria-ia/">Auditoría IA · 899€</a></li>
+        <li><a href="/precios/">Precios</a></li>
+        <li><a href="/agencia-ia-majadahonda/">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <!-- Col 4 — Contacto -->
+    <div class="fc-contact-col">
       <h4>Contacto</h4>
-      <div class="foot-contact">
-        <div class="foot-contact-item">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div>
-            <strong>Dirección</strong>
-            Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid
-          </div>
+      <div class="fc-contact">
+        <div class="fc-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
+          <div class="meta"><strong>Email</strong><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a></div>
         </div>
-        <div class="foot-contact-item">
-          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.37 1.9.72 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0122 16.92z"/></svg>
-          <div>
-            <strong>Teléfono</strong>
-            <a href="tel:+34643199580">643 199 580</a>
-          </div>
+        <div class="fc-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+          <div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div>
         </div>
-        <div class="foot-contact-item">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <div>
-            <strong>Email</strong>
-            <a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>
-          </div>
+        <div class="fc-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div>
         </div>
-        <div class="foot-contact-item">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div>
-            <strong>Horario</strong>
-            Lun-Vie 9:00 - 19:00
-          </div>
+        <div class="fc-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>
+          <div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div>
         </div>
       </div>
-    </div>
-
-    <!-- Col 4 — Mapa -->
-    <div class="foot-col foot-map">
-      <h4>Encuéntranos</h4>
-      <iframe
-        src="https://www.google.com/maps?q=Calle+Madrid+9,+Majadahonda&output=embed"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title="Mapa de WhiteMoon en Majadahonda"
-        allowfullscreen></iframe>
     </div>
 
   </div>
 
-  <div class="foot-bottom">
-    <div>© 2025-<span id="yr"></span> WhiteMoon Agencia IA · Majadahonda, Madrid</div>
-    <div class="foot-bottom-links">
+  <!-- Bottom bar -->
+  <div class="fc-bottom">
+    <div>© 2025-<span id="yr">2026</span> WhiteMoon Agencia IA · Majadahonda, Madrid</div>
+    <div class="fc-bottom-links">
       <a href="/aviso-legal/">Aviso Legal</a>
-      <a href="/politica-privacidad/">Política de Privacidad</a>
-      <a href="/politica-cookies/">Política de Cookies</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
     </div>
-    <div class="foot-bottom-tag">
+    <div class="fc-bottom-tag">
       Hecho por
-      <img src="/logo.webp" alt="WhiteMoon" style="width:18px;height:18px;border-radius:50%;object-fit:cover;vertical-align:middle;margin:0 4px">
+      <img src="/logo.webp" alt="WhiteMoon">
       whitemoon.es
     </div>
   </div>
