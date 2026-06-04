@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Coste Proceso Manual 2026 · Automatización IA · WhiteMoon</title>
+<meta name="description" content="Cuantifica el coste de procesos manuales repetitivos: horas, errores humanos y ahorro con automatización IA. ROI medio 1-3 meses.">
+<meta name="keywords" content="coste proceso manual, automatizacion procesos ia, errores humanos coste, rpa automatizacion, ahorro automatizar pyme">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-coste-proceso-manual/">
+<meta property="og:title" content="Calculadora Coste Proceso Manual 2026 · WhiteMoon">
+<meta property="og:description" content="Coste procesos repetitivos + errores humanos + ahorro IA.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-coste-proceso-manual/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Coste Proceso Manual 2026","description":"Calcula el coste mensual de procesos manuales repetitivos, el coste de errores humanos y el ahorro estimado con automatización IA.","url":"https://whitemoon.es/calculadora-coste-proceso-manual/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Proceso Manual","item":"https://whitemoon.es/calculadora-coste-proceso-manual/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué procesos se pueden automatizar con IA?","acceptedAnswer":{"@type":"Answer","text":"Procesos típicos automatizables: respuesta a FAQ repetitivas, gestión de citas y agenda, envío de recordatorios, generación de presupuestos estándar, captura y registro de leads en CRM, derivación de consultas según área, sincronización entre sistemas (CRM-email-WhatsApp), generación de informes periódicos, búsqueda en documentos propios (RAG), traducción multilingüe y validación de datos. Si lo haces más de 5 veces a la semana siguiendo siempre el mismo patrón, es automatizable."}},
+{"@type":"Question","name":"¿Cuánto cuesta un error humano en un proceso manual?","acceptedAnswer":{"@type":"Answer","text":"Depende del tipo. Errores de transcripción de datos: 5-20€ por error (corrección + reproceso). Errores de cita o agenda: 30-80€ (cliente molesto + hueco perdido). Errores en presupuestos enviados: 50-200€ (renegociación o pérdida del cliente). Errores en facturación: 100-500€ (devolución, reclamación, sanción). Errores en cumplimiento normativo: 500€-50.000€ (sanciones LOPD/RGPD). La IA bien implementada reduce los errores en un 80-95%."}},
+{"@type":"Question","name":"¿Cuál es el ROI medio de automatizar procesos?","acceptedAnswer":{"@type":"Answer","text":"Para procesos repetitivos con volumen alto (>50 ejecuciones/día), el ROI medio se alcanza en 1-3 meses. Para procesos críticos con coste alto de error (facturación, cumplimiento normativo), el ROI puede ser inmediato (menos de 1 mes). Para procesos muy específicos con volumen bajo (<5/día), conviene evaluar caso por caso: a veces no compensa automatizar y es mejor capacitar al equipo."}},
+{"@type":"Question","name":"¿Cómo se implementa la automatización con IA?","acceptedAnswer":{"@type":"Answer","text":"WhiteMoon usa un enfoque por fases: 1) Auditoría gratuita para identificar los 3-5 procesos con mayor ROI, 2) Diseño del flujo automatizado (qué hace IA, qué deriva al humano, qué excepciones), 3) Implementación con Orion IA Agent (web/chat) u Orion IA Calls (telefónico) + integraciones con tu CRM/agenda/email, 4) Periodo de prueba 2-4 semanas con seguimiento, 5) Optimización continua. Tiempo medio total: 7-21 días según complejidad."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-coste-proceso-manual',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Coste Proceso Manual</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg></span> Calculadora gratuita · Automatización IA</span>
+    <h1 class="sec-h">Calculadora <em>Coste Proceso Manual</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica el coste mensual de procesos manuales repetitivos + errores humanos. Compara con el ahorro estimado al automatizar con IA.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pm-procesos">Procesos repetitivos al día</label><input type="number" id="pm-procesos" class="calc-input" value="40" min="0" step="5" oninput="calcProcesoManual()"></div>
+      <div class="calc-row"><label class="calc-label" for="pm-minutos">Minutos por proceso</label><input type="number" id="pm-minutos" class="calc-input" value="6" min="0" max="120" step="0.5" oninput="calcProcesoManual()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pm-coste">Coste hora empleado (€ inc SS)</label><input type="number" id="pm-coste" class="calc-input" value="20" min="0" step="1" oninput="calcProcesoManual()"></div>
+      <div class="calc-row"><label class="calc-label" for="pm-dias">Días laborables al mes</label><input type="number" id="pm-dias" class="calc-input" value="22" min="1" max="31" step="1" oninput="calcProcesoManual()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pm-errores">Errores humanos al mes</label><input type="number" id="pm-errores" class="calc-input" value="8" min="0" max="500" step="1" oninput="calcProcesoManual()"></div>
+      <div class="calc-row"><label class="calc-label" for="pm-coste-error">Coste medio por error (€)</label><input type="number" id="pm-coste-error" class="calc-input" value="80" min="0" step="5" oninput="calcProcesoManual()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pm-automatizable">% automatizable con IA</label>
+        <select id="pm-automatizable" class="calc-select" onchange="calcProcesoManual()">
+          <option value="65">65% conservador</option>
+          <option value="80" selected>80% (media WhiteMoon)</option>
+          <option value="90">90% agresivo</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="pm-cuota">Cuota IA mensual (€)</label>
+        <select id="pm-cuota" class="calc-select" onchange="calcProcesoManual()">
+          <option value="199" selected>199 €/mes (Spark / Orion Agent)</option>
+          <option value="349">349 €/mes (Core RAG)</option>
+          <option value="449">449 €/mes (Scale)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-proceso-eur">0 €</div><div class="calc-out-lbl">Coste proceso manual</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-errores-eur">0 €</div><div class="calc-out-lbl">Coste errores</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pm-ahorro">0 €</div><div class="calc-out-lbl">Ahorro neto con IA</div></div>
+    </div>
+
+    <div class="calc-detail" id="pm-explain">Coste proceso = procesos × minutos × días / 60 × coste hora. Coste errores = errores × coste por error. Ahorro IA = (proceso + errores × 85% reducción) × % automatizable − cuota IA.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. La IA reduce errores hasta el 85% de los actuales (no los elimina). El % automatizable depende de la estructura del proceso (estandarizable vs con excepciones).</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Proceso Manual</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué procesos se pueden automatizar?</div><div class="faq-a">FAQ, citas, recordatorios, presupuestos estándar, captura leads CRM, derivación consultas, sync sistemas, informes periódicos, RAG sobre docs, traducción, validación. Regla: &gt;5 veces/semana mismo patrón = automatizable.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta un error humano?</div><div class="faq-a">Transcripción 5-20€. Cita/agenda 30-80€. Presupuesto 50-200€. Facturación 100-500€. Cumplimiento LOPD/RGPD 500-50.000€. IA reduce errores 80-95%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuál es el ROI medio?</div><div class="faq-a">Procesos &gt;50/día: 1-3 meses. Procesos críticos con alto coste error: &lt;1 mes. Procesos &lt;5/día: caso por caso, a veces no compensa.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se implementa?</div><div class="faq-a">5 fases: auditoría (gratuita), diseño flujo, implementación Orion + integraciones, prueba 2-4 semanas, optimización continua. Total: 7-21 días.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-coste-proceso-manual','Coste Proceso Manual')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-coste-proceso-manual"><input type="hidden" name="mensaje" value="Lead desde calculadora Coste Proceso Manual">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas IA</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-coste-atencion-manual-vs-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6"/><rect x="14" y="11" width="8" height="8" rx="1"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Atención Manual vs IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Comparativa coste</div></a>
+      <a href="/calculadora-escalabilidad-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Escalabilidad IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Crecimiento sin contratar</div></a>
+      <a href="/calculadora-coste-oportunidad-no-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Oportunidad No IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Por sector</div></a>
+      <a href="/white-moon-system/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">WhiteMoon System</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 pilares del sistema</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">64+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcProcesoManual(){
+  var procesos = Math.max(0, parseFloat(document.getElementById('pm-procesos').value)||0);
+  var minutos = Math.max(0, parseFloat(document.getElementById('pm-minutos').value)||0);
+  var coste = Math.max(0, parseFloat(document.getElementById('pm-coste').value)||0);
+  var dias = Math.max(1, parseFloat(document.getElementById('pm-dias').value)||1);
+  var errores = Math.max(0, parseFloat(document.getElementById('pm-errores').value)||0);
+  var costeError = Math.max(0, parseFloat(document.getElementById('pm-coste-error').value)||0);
+  var automatizable = Math.max(0, Math.min(100, parseFloat(document.getElementById('pm-automatizable').value)||0)) / 100;
+  var cuota = Math.max(0, parseFloat(document.getElementById('pm-cuota').value)||0);
+
+  // Coste proceso/mes
+  var costeProcesoMes = (procesos * minutos * dias / 60) * coste;
+  // Coste errores/mes
+  var costeErroresMes = errores * costeError;
+  // Coste total
+  var costeTotal = costeProcesoMes + costeErroresMes;
+  // Ahorro: automatizable × proceso + errores × 85% reducción × % automatizable − cuota IA
+  var ahorroBruto = (costeProcesoMes * automatizable) + (costeErroresMes * 0.85 * automatizable);
+  var ahorroNeto = ahorroBruto - cuota;
+
+  document.getElementById('pm-proceso-eur').textContent = Math.round(costeProcesoMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('pm-errores-eur').textContent = Math.round(costeErroresMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('pm-ahorro').textContent = Math.round(ahorroNeto).toLocaleString('es-ES') + ' €';
+
+  document.getElementById('pm-explain').textContent =
+    'Coste proceso/mes = ' + Math.round(procesos).toLocaleString('es-ES') + ' procesos × ' + minutos.toString().replace('.', ',') + ' min × ' + Math.round(dias) + ' días / 60 × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeProcesoMes).toLocaleString('es-ES') + ' €. Coste errores = ' + Math.round(errores).toLocaleString('es-ES') + ' × ' + Math.round(costeError).toLocaleString('es-ES') + ' € = ' + Math.round(costeErroresMes).toLocaleString('es-ES') + ' €. Total ' + Math.round(costeTotal).toLocaleString('es-ES') + ' €/mes. Automatizable ' + (automatizable*100).toFixed(0) + '% → ahorro bruto ' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € − cuota IA ' + Math.round(cuota).toLocaleString('es-ES') + ' € = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
+}
+calcProcesoManual();
+</script>
+</body>
+</html>
