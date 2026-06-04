@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Pérdidas Delivery 2026 · Comisiones plataformas · WhiteMoon</title>
+<meta name="description" content="Cuánto pierdes en comisiones de Glovo, Uber Eats y Just Eat. Coste anual + ahorro con canal propio. Calculadora 2026 para restaurantes y bares.">
+<meta name="keywords" content="calculadora perdidas delivery, comisiones glovo uber eats, canal propio restaurante, coste plataformas delivery, ahorro pedidos directos">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-perdidas-delivery/">
+<meta property="og:title" content="Calculadora Pérdidas Delivery 2026 · WhiteMoon">
+<meta property="og:description" content="Comisiones de plataformas vs canal propio. Ahorro estimado anual.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-perdidas-delivery/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Pérdidas Delivery 2026","description":"Calcula el coste real de las comisiones de plataformas delivery (Glovo, Uber Eats, Just Eat) y el ahorro potencial con canal propio.","url":"https://whitemoon.es/calculadora-perdidas-delivery/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Pérdidas Delivery","item":"https://whitemoon.es/calculadora-perdidas-delivery/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Cuánto cobran las plataformas de delivery en España?","acceptedAnswer":{"@type":"Answer","text":"Las comisiones efectivas en 2026 en España: Glovo 25-32% según paquete (Basic, Plus, Premium). Uber Eats 28-35%. Just Eat 22-30%. La Nevera Roja 25-30%. Estas comisiones incluyen el coste de reparto del rider, el procesamiento del pago y la exposición en la plataforma. Algunas plataformas reducen la comisión un 5-10% si el restaurante hace el reparto propio (modelo 'Pick-up')."}},
+{"@type":"Question","name":"¿Por qué duele tanto la comisión de delivery?","acceptedAnswer":{"@type":"Answer","text":"Porque se aplica sobre el ticket bruto, no sobre el margen. En un restaurante con food cost 30% y margen neto del 8%, una comisión del 30% se come prácticamente todo el margen del pedido. Muchos restaurantes pierden dinero en pedidos por plataformas, salvo que tengan un menú específico para delivery con precios marked-up o usen los pedidos solo para llenar huecos de capacidad ociosa."}},
+{"@type":"Question","name":"¿Cómo se pueden reducir las comisiones?","acceptedAnswer":{"@type":"Answer","text":"Cuatro estrategias: 1) Canal propio (web + WhatsApp + página de pedidos) que el restaurante promueve activamente, 2) Programa de fidelización que convierta clientes de plataformas en clientes directos, 3) QR mesa con pedidos para llevar gestionados internamente, 4) Negociación con plataformas según volumen (a partir de 200 pedidos/mes hay margen). El canal propio tiene coste tecnológico de 50-200€/mes y elimina comisiones del 25-35%."}},
+{"@type":"Question","name":"¿Cómo ayuda la IA al canal propio de delivery?","acceptedAnswer":{"@type":"Answer","text":"Orion IA Agent gestiona pedidos directos vía WhatsApp y web 24/7: toma el pedido, calcula el precio, gestiona la dirección y tiempo de entrega, integra con el sistema de cocina y envía al rider propio o externo (modelo Glovo Local, Uber Direct, repartidores propios). Resultado: hasta el 60-70% de los pedidos pueden migrar al canal propio en 6-12 meses, ahorrando 8-15 puntos de margen por pedido."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:repeat(2,1fr)}}@media(max-width:400px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-perdidas-delivery',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Pérdidas Delivery</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M3 13h18"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="20" r="2"/><path d="M8 18h8"/></svg></span> Calculadora gratuita · Canal propio</span>
+    <h1 class="sec-h">Calculadora <em>Pérdidas Delivery</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuánto pierdes en comisiones de Glovo, Uber Eats y Just Eat. Ingresos no capturados al año + ahorro estimado migrando al canal propio.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pd-pedidos">Pedidos/mes en plataformas</label><input type="number" id="pd-pedidos" class="calc-input" value="350" min="0" step="10" oninput="calcDelivery()"></div>
+      <div class="calc-row"><label class="calc-label" for="pd-comision">Comisión media plataforma (%)</label><input type="number" id="pd-comision" class="calc-input" value="30" min="0" max="100" step="1" oninput="calcDelivery()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pd-ticket">Ticket medio pedido (€)</label><input type="number" id="pd-ticket" class="calc-input" value="22" min="0" step="1" oninput="calcDelivery()"></div>
+      <div class="calc-row"><label class="calc-label" for="pd-propios">Pedidos propios/mes actuales</label><input type="number" id="pd-propios" class="calc-input" value="40" min="0" step="5" oninput="calcDelivery()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pd-migracion">Migración a canal propio con IA</label>
+        <select id="pd-migracion" class="calc-select" onchange="calcDelivery()">
+          <option value="30">30% conservador</option>
+          <option value="50" selected>50% (media WhiteMoon)</option>
+          <option value="70">70% agresivo</option>
+        </select>
+      </div>
+      <div class="calc-row"><label class="calc-label" for="pd-coste-propio">Coste canal propio (% sobre ticket)</label><input type="number" id="pd-coste-propio" class="calc-input" value="8" min="0" max="100" step="1" oninput="calcDelivery()"></div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="pd-mensual">0 €</div><div class="calc-out-lbl">Comisiones/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pd-anual">0 €</div><div class="calc-out-lbl">Comisiones/año</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pd-migrados">0</div><div class="calc-out-lbl">Pedidos migrados/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="pd-ahorro">0 €</div><div class="calc-out-lbl">Ahorro/año con canal propio</div></div>
+    </div>
+
+    <div class="calc-detail" id="pd-explain">Comisiones/mes = pedidos × ticket × % comisión. Ahorro = pedidos migrados × ticket × (% comisión − % coste canal propio) × 12.</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. No incluye el efecto positivo del canal propio sobre fidelización (datos del cliente, marketing directo, repetición de compra). El ahorro real puede ser mayor.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Pérdidas Delivery</h2>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cobran las plataformas en España?</div><div class="faq-a">Glovo 25-32%. Uber Eats 28-35%. Just Eat 22-30%. La Nevera Roja 25-30%. Incluyen rider, pago y exposición. Modelo Pick-up reduce 5-10%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Por qué duele tanto la comisión?</div><div class="faq-a">Se aplica sobre ticket bruto, no sobre margen. Food cost 30% + margen 8% → comisión 30% se come el margen. Solución: menú delivery con markup o solo capacidad ociosa.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se pueden reducir las comisiones?</div><div class="faq-a">1) Canal propio (web + WhatsApp + página pedidos), 2) Fidelización para convertir clientes plataforma en directos, 3) QR mesa para llevar, 4) Negociación >200 pedidos/mes. Canal propio: 50-200€/mes vs comisión 25-35%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo ayuda la IA al canal propio?</div><div class="faq-a">Orion IA Agent gestiona pedidos WhatsApp/web 24/7: toma, calcula, dirección, tiempo, cocina y rider (Glovo Local, Uber Direct o propios). 60-70% migración en 6-12 meses. Ahorro 8-15 pts margen.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu restaurante. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-perdidas-delivery','Pérdidas Delivery')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-perdidas-delivery"><input type="hidden" name="mensaje" value="Lead desde calculadora Pérdidas Delivery">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para restaurantes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-margen-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Margen Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Bruto + neto</div></a>
+      <a href="/calculadora-coste-mesa-vacia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="3" y="9" width="18" height="6" rx="1"/><line x1="6" y1="15" x2="6" y2="21"/><line x1="18" y1="15" x2="18" y2="21"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Mesa Vacía</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Ocupación + IA</div></a>
+      <a href="/calculadora-perdidas-restaurante/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 2v6a3 3 0 0 0 3 3h0a3 3 0 0 0 3-3V2"/><line x1="6" y1="11" x2="6" y2="22"/><path d="M16 2c-2 0-3 4-3 6s1 3 3 3v11"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Pérdidas Restaurante</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Reservas + IA</div></a>
+      <a href="/chatbot-ia-restaurantes/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Restaurantes</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 hostelería</div></a>
+      <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">59+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+function calcDelivery(){
+  var pedidos = Math.max(0, parseFloat(document.getElementById('pd-pedidos').value)||0);
+  var comision = Math.max(0, Math.min(100, parseFloat(document.getElementById('pd-comision').value)||0)) / 100;
+  var ticket = Math.max(0, parseFloat(document.getElementById('pd-ticket').value)||0);
+  var propios = Math.max(0, parseFloat(document.getElementById('pd-propios').value)||0);
+  var migracion = Math.max(0, parseFloat(document.getElementById('pd-migracion').value)||0) / 100;
+  var costePropioPct = Math.max(0, Math.min(100, parseFloat(document.getElementById('pd-coste-propio').value)||0)) / 100;
+
+  var facturacionPlataformas = pedidos * ticket;
+  var comisionesMes = facturacionPlataformas * comision;
+  var comisionesAnio = comisionesMes * 12;
+  // Pedidos migrables al canal propio
+  var pedidosMigrados = Math.round(pedidos * migracion);
+  // Ahorro/año = pedidos migrados × ticket × (% comisión − % coste propio) × 12
+  var ahorroMes = pedidosMigrados * ticket * (comision - costePropioPct);
+  var ahorroAnio = ahorroMes * 12;
+
+  document.getElementById('pd-mensual').textContent = Math.round(comisionesMes).toLocaleString('es-ES') + ' €';
+  document.getElementById('pd-anual').textContent = Math.round(comisionesAnio).toLocaleString('es-ES') + ' €';
+  document.getElementById('pd-migrados').textContent = pedidosMigrados.toLocaleString('es-ES');
+  document.getElementById('pd-ahorro').textContent = Math.round(ahorroAnio).toLocaleString('es-ES') + ' €';
+
+  document.getElementById('pd-explain').textContent =
+    'Facturación plataformas/mes = ' + Math.round(pedidos).toLocaleString('es-ES') + ' pedidos × ' + Math.round(ticket).toLocaleString('es-ES') + ' € = ' + Math.round(facturacionPlataformas).toLocaleString('es-ES') + ' €. Comisión ' + (comision*100).toFixed(0) + '% = ' + Math.round(comisionesMes).toLocaleString('es-ES') + ' €/mes (' + Math.round(comisionesAnio).toLocaleString('es-ES') + ' €/año). Pedidos directos actuales: ' + Math.round(propios).toLocaleString('es-ES') + '/mes. Migrando ' + (migracion*100).toFixed(0) + '% (' + pedidosMigrados.toLocaleString('es-ES') + ' pedidos/mes) a canal propio (coste ' + (costePropioPct*100).toFixed(0) + '% vs ' + (comision*100).toFixed(0) + '% plataforma) → ahorro ' + Math.round(ahorroMes).toLocaleString('es-ES') + ' €/mes = ' + Math.round(ahorroAnio).toLocaleString('es-ES') + ' €/año.';
+}
+calcDelivery();
+</script>
+</body>
+</html>

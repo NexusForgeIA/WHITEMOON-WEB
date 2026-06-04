@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Margen Restaurante 2026 · Bruto + neto + benchmark · WhiteMoon</title>
+<meta name="description" content="Calculadora margen restaurante 2026: margen bruto, margen neto, punto de equilibrio y benchmark del sector hostelería en España.">
+<meta name="keywords" content="margen restaurante, calculadora rentabilidad restaurante, food cost percentage, punto equilibrio restaurante, benchmark hosteleria">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://whitemoon.es/calculadora-margen-restaurante/">
+<meta property="og:title" content="Calculadora Margen Restaurante 2026 · WhiteMoon">
+<meta property="og:description" content="Margen bruto, neto, punto de equilibrio y benchmark del sector.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-margen-restaurante/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Margen Restaurante 2026","description":"Calcula el margen bruto, el margen neto, el punto de equilibrio y compara con el benchmark del sector hostelería en España.","url":"https://whitemoon.es/calculadora-margen-restaurante/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Margen Restaurante","item":"https://whitemoon.es/calculadora-margen-restaurante/"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"¿Qué margen neto es normal en un restaurante?","acceptedAnswer":{"@type":"Answer","text":"Benchmarks sector hostelería España 2026: restaurante tradicional 6-12% margen neto. Casual dining 8-14%. Fine dining 10-18% (compensa mayor coste con ticket). Comida rápida 12-20%. Cadenas con economía de escala alcanzan 15-22%. Por debajo del 5% el negocio es difícilmente sostenible. Por encima del 20% indica diferenciación clara (concepto único, ubicación premium o gestión muy eficiente)."}},
+{"@type":"Question","name":"¿Cuánto debe ser el food cost?","acceptedAnswer":{"@type":"Answer","text":"El coste de materias primas (food cost) ideal en hostelería es 25-32% para restaurantes tradicionales, 28-35% para casual dining, 22-28% para fine dining (mejor compra a volumen y mayor markup) y 28-35% para comida rápida. Por encima del 38% sin ser de calidad premium, el menú está mal estructurado o hay mermas/control de inventario deficiente."}},
+{"@type":"Question","name":"¿Cómo se calcula el punto de equilibrio?","acceptedAnswer":{"@type":"Answer","text":"Punto de equilibrio = gastos fijos / (1 − % gastos variables sobre ingresos). Para un restaurante con gastos fijos 15.000€/mes y gastos variables (food cost + personal variable) del 60%, el equilibrio está en 37.500€/mes. Por debajo de esa cifra hay pérdidas. La IA ayuda a alcanzar el punto de equilibrio antes con mayor ocupación y menor coste de captación."}},
+{"@type":"Question","name":"¿Cómo aumenta la IA el margen?","acceptedAnswer":{"@type":"Answer","text":"Tres palancas directas: 1) Más ingresos sin más coste fijo: la IA mejora la ocupación 15% y reduce no-shows un 40%, lo que aumenta facturación sin tocar plantilla. 2) Menos coste variable: Orion IA Agent absorbe gestión de reservas, reduce horas extras y libera al equipo para tareas de valor. 3) Mejor mix de menú: análisis automático del ticket medio y sugerencias de upselling. Resultado típico: +3-5 puntos en el margen neto."}}
+]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<script defer src="/assets/cookie-consent.js?v=2026060302"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-row{margin-bottom:20px}.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:24px 0}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:16px 12px;text-align:center}
+.calc-out-num{font-size:1.3rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.calc-detail{font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;margin-top:8px;line-height:1.6}
+@media(max-width:700px){.calc-out{grid-template-columns:repeat(2,1fr)}}@media(max-width:400px){.calc-out{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="wrap">
+    <a href="/" class="nav-logo"><picture><source srcset="/logo.webp" type="image/webp"><img src="/logo.png" alt="WhiteMoon" width="140" height="52" loading="eager" decoding="async" style="height:52px;width:auto"></picture></a>
+    <div class="nav-right">
+      <a href="/precios/" class="nav-link">Precios</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <button type="button" class="nav-cta" onclick="document.dispatchEvent(new CustomEvent('orion-open'));wmTrack('click_open_orion',{source:'calculadora-margen-restaurante',placement:'navbar'})" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion IA →</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px"><a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora Margen Restaurante</div>
+  </div>
+
+  <section class="sec"><div class="wrap"><div class="hdr c">
+    <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></span> Calculadora gratuita · Benchmark hostelería</span>
+    <h1 class="sec-h">Calculadora <em>Margen Restaurante</em> 2026</h1>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Calcula el margen bruto, el margen neto, el punto de equilibrio y compáralo con el benchmark del sector hostelería en España.</p>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap"><div class="calc-card">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mr-facturacion">Facturación mensual (€)</label><input type="number" id="mr-facturacion" class="calc-input" value="45000" min="0" step="500" oninput="calcMargen()"></div>
+      <div class="calc-row"><label class="calc-label" for="mr-tipo">Tipo de restaurante</label>
+        <select id="mr-tipo" class="calc-select" onchange="calcMargen()">
+          <option value="tradicional" selected>Tradicional (benchmark 6-12%)</option>
+          <option value="casual">Casual dining (8-14%)</option>
+          <option value="fine">Fine dining (10-18%)</option>
+          <option value="rapida">Comida rápida (12-20%)</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mr-foodcost">Coste materias primas (%)</label><input type="number" id="mr-foodcost" class="calc-input" value="30" min="0" max="100" step="1" oninput="calcMargen()"></div>
+      <div class="calc-row"><label class="calc-label" for="mr-personal">Coste personal mensual (€)</label><input type="number" id="mr-personal" class="calc-input" value="14000" min="0" step="200" oninput="calcMargen()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="mr-fijos">Gastos fijos restantes (€/mes)</label><input type="number" id="mr-fijos" class="calc-input" value="9500" min="0" step="100" oninput="calcMargen()"></div>
+      <div class="calc-row"><label class="calc-label" for="mr-impuestos">Impuesto sociedades estimado (%)</label><input type="number" id="mr-impuestos" class="calc-input" value="23" min="0" max="50" step="1" oninput="calcMargen()"></div>
+    </div>
+
+    <div class="calc-out">
+      <div class="calc-out-card"><div class="calc-out-num" id="mr-bruto">0 %</div><div class="calc-out-lbl">Margen bruto</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="mr-neto">0 %</div><div class="calc-out-lbl">Margen neto</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="mr-beneficio">0 €</div><div class="calc-out-lbl">Beneficio neto/mes</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="mr-equilibrio">0 €</div><div class="calc-out-lbl">Punto equilibrio</div></div>
+    </div>
+
+    <div class="calc-detail" id="mr-explain">Margen bruto = (facturación − food cost) / facturación. Margen neto = beneficio post impuestos / facturación. Punto equilibrio = gastos fijos totales / (1 − % gastos variables).</div>
+
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. No incluye amortizaciones de inversión inicial ni costes financieros. Consulta con tu gestoría para el cálculo definitivo.</p>
+  </div></div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
+    <span class="sec-label">Preguntas frecuentes</span>
+    <h2 class="sec-h" style="margin-bottom:24px">FAQ Margen Restaurante</h2>
+    <div class="faq-item"><div class="faq-q">¿Qué margen neto es normal en un restaurante?</div><div class="faq-a">Tradicional 6-12%. Casual 8-14%. Fine dining 10-18%. Rápida 12-20%. Cadenas 15-22%. &lt;5% insostenible. &gt;20% indica diferenciación clara.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto debe ser el food cost?</div><div class="faq-a">Tradicional 25-32%. Casual 28-35%. Fine dining 22-28%. Rápida 28-35%. &gt;38% sin ser premium: menú mal estructurado o mermas/control deficiente.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se calcula el punto de equilibrio?</div><div class="faq-a">Gastos fijos / (1 − % variables). Ej: fijos 15.000€ + variables 60% = equilibrio 37.500€/mes. La IA reduce el punto de equilibrio con mejor ocupación.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo aumenta la IA el margen?</div><div class="faq-a">1) Más ingresos sin más fijo (+15% ocupación, −40% no-shows), 2) Menos coste variable (Orion absorbe gestión), 3) Mejor mix menú con upselling automático. +3-5 puntos margen neto.</div></div>
+  </div></div></section>
+
+  <section class="sec"><div class="wrap" style="text-align:center">
+    <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+    <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu restaurante. Sin compromiso.</p>
+    <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-margen-restaurante','Margen Restaurante')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+      <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+      <input type="hidden" name="origen" value="calculadora-margen-restaurante"><input type="hidden" name="mensaje" value="Lead desde calculadora Margen Restaurante">
+      <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+      <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+    </form>
+  </div></section>
+
+  <section class="sec-alt"><div class="wrap"><div style="max-width:880px;margin:0 auto;text-align:center">
+    <span class="sec-label">Calculadoras relacionadas</span>
+    <h2 class="sec-h" style="margin-bottom:24px">Más herramientas para restaurantes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+      <a href="/calculadora-coste-mesa-vacia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="3" y="9" width="18" height="6" rx="1"/><line x1="6" y1="15" x2="6" y2="21"/><line x1="18" y1="15" x2="18" y2="21"/><line x1="3" y1="6" x2="21" y2="6"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Mesa Vacía</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Ocupación + IA</div></a>
+      <a href="/calculadora-rotacion-mesas/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Rotación Mesas</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Rotaciones óptimas</div></a>
+      <a href="/calculadora-coste-personal-hosteleria/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="10" r="2.4"/><path d="M14 20c0-2.5 1.7-4.5 4-4.5s4 1.4 4 4"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Personal</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Plantilla + benchmark</div></a>
+      <a href="/calculadora-perdidas-delivery/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="3" y="3" width="18" height="13" rx="2"/><path d="M3 13h18"/><circle cx="8" cy="20" r="2"/><circle cx="16" cy="20" r="2"/><path d="M8 18h8"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Pérdidas Delivery</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Comisiones plataformas</div></a>
+      <a href="/chatbot-ia-restaurantes/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><rect x="5" y="7" width="14" height="12" rx="2"/><path d="M12 2 12 7"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/><line x1="8" y1="16" x2="16" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Chatbot Restaurantes</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">IA 24/7 hostelería</div></a>
+    </div>
+  </div></div></section>
+
+<!-- Hub central · WhiteMoon -->
+<section style="padding:40px 6%;border-top:1px solid rgba(124,77,255,.18);background:linear-gradient(180deg,rgba(13,13,26,.5) 0%,rgba(124,77,255,.04) 100%)">
+  <div style="max-width:880px;margin:0 auto">
+    <a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_hub_central',{from:'calc'})" style="display:flex;align-items:center;gap:18px;padding:22px 26px;background:linear-gradient(135deg,rgba(124,77,255,.1) 0%,rgba(0,212,170,.06) 100%);border:1px solid rgba(124,77,255,.35);border-radius:14px;text-decoration:none;color:inherit;transition:all .2s">
+      <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
+      <div style="flex:1;min-width:0">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
+        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-size:.82rem;color:#9090b0;line-height:1.5">59+ calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
+      </div>
+      <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;margin-top:40px">
+  © 2025-2026 <a href="/" style="color:#b44dff;text-decoration:none">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:#b44dff;text-decoration:none">Blog</a> · <a href="/aviso-legal/" style="color:#b44dff;text-decoration:none">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:#b44dff;text-decoration:none">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:#b44dff;text-decoration:none">Política de Cookies</a>
+</footer>
+
+<script src="/orion-widget.js?v=2026060302" defer></script>
+<script>
+// Benchmarks margen neto sector hostelería
+var MR_BENCH = {
+  tradicional: { min: 6, max: 12, label: 'restaurante tradicional' },
+  casual: { min: 8, max: 14, label: 'casual dining' },
+  fine: { min: 10, max: 18, label: 'fine dining' },
+  rapida: { min: 12, max: 20, label: 'comida rápida' }
+};
+
+function calcMargen(){
+  var facturacion = Math.max(0, parseFloat(document.getElementById('mr-facturacion').value)||0);
+  var tipo = document.getElementById('mr-tipo').value;
+  var foodCostPct = Math.max(0, Math.min(100, parseFloat(document.getElementById('mr-foodcost').value)||0)) / 100;
+  var personal = Math.max(0, parseFloat(document.getElementById('mr-personal').value)||0);
+  var fijos = Math.max(0, parseFloat(document.getElementById('mr-fijos').value)||0);
+  var imp = Math.max(0, Math.min(50, parseFloat(document.getElementById('mr-impuestos').value)||0)) / 100;
+
+  var foodCostEur = facturacion * foodCostPct;
+  var beneficioBruto = facturacion - foodCostEur;
+  var beneficioAntesImp = facturacion - foodCostEur - personal - fijos;
+  var beneficioNeto = beneficioAntesImp > 0 ? beneficioAntesImp * (1 - imp) : beneficioAntesImp;
+
+  var margenBruto = facturacion > 0 ? (beneficioBruto / facturacion) * 100 : 0;
+  var margenNeto = facturacion > 0 ? (beneficioNeto / facturacion) * 100 : 0;
+
+  // Punto equilibrio: gastos fijos totales (personal + fijos) / (1 − food cost %)
+  // Asumimos personal como semifijo (gastos fijos totales = personal + fijos)
+  var gastosFijosTotales = personal + fijos;
+  var equilibrio = (1 - foodCostPct) > 0 ? gastosFijosTotales / (1 - foodCostPct) : 0;
+
+  document.getElementById('mr-bruto').textContent = margenBruto.toFixed(1).replace('.', ',') + ' %';
+  document.getElementById('mr-neto').textContent = margenNeto.toFixed(1).replace('.', ',') + ' %';
+  document.getElementById('mr-beneficio').textContent = Math.round(beneficioNeto).toLocaleString('es-ES') + ' €';
+  document.getElementById('mr-equilibrio').textContent = Math.round(equilibrio).toLocaleString('es-ES') + ' €';
+
+  var bench = MR_BENCH[tipo];
+  var diagnosis;
+  if(margenNeto < bench.min) diagnosis = ' Estás por debajo del benchmark ' + bench.label + ' (' + bench.min + '-' + bench.max + '%) → margen claro de mejora con IA en ocupación y reducción de no-shows.';
+  else if(margenNeto <= bench.max) diagnosis = ' Dentro del benchmark ' + bench.label + ' (' + bench.min + '-' + bench.max + '%). La IA puede empujarte al rango alto.';
+  else diagnosis = ' Por encima del benchmark ' + bench.label + ' (' + bench.min + '-' + bench.max + '%). Operación muy eficiente.';
+
+  document.getElementById('mr-explain').textContent =
+    'Facturación ' + Math.round(facturacion).toLocaleString('es-ES') + ' € − food cost (' + (foodCostPct*100).toFixed(0) + '% = ' + Math.round(foodCostEur).toLocaleString('es-ES') + ' €) = margen bruto ' + Math.round(beneficioBruto).toLocaleString('es-ES') + ' €. Menos personal ' + Math.round(personal).toLocaleString('es-ES') + ' € + fijos ' + Math.round(fijos).toLocaleString('es-ES') + ' € = beneficio antes impuestos ' + Math.round(beneficioAntesImp).toLocaleString('es-ES') + ' €. Impuesto ' + (imp*100).toFixed(0) + '% → beneficio neto ' + Math.round(beneficioNeto).toLocaleString('es-ES') + ' € (margen neto ' + margenNeto.toFixed(1).replace('.', ',') + '%). Punto equilibrio: ' + Math.round(equilibrio).toLocaleString('es-ES') + ' €/mes.' + diagnosis;
+}
+calcMargen();
+</script>
+</body>
+</html>
