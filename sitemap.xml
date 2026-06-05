@@ -314,6 +314,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Posicionamiento empresas medianas -->
+  <url>
+    <loc>https://whitemoon.es/empresas-medianas-madrid/</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Packs -->
   <url>
     <loc>https://whitemoon.es/spark/</loc>
