@@ -109,6 +109,11 @@
   .btn-submit svg{transition:transform .15s ease}
   .btn-submit:hover svg{transform:translateX(2px)}
   .form-note{margin-top:14px;text-align:center;font-size:.72rem;color:#6B7280;letter-spacing:.02em}
+  /* Inline form message (errores / validación) */
+  .form-msg{display:none;margin-top:14px;padding:12px 16px;border-radius:10px;font-family:'Inter',sans-serif;font-size:.84rem;line-height:1.5;text-align:center}
+  .form-msg.is-error{display:block;background:rgba(239,68,68,.10);border:1px solid rgba(239,68,68,.35);color:#fca5a5}
+  .form-msg.is-warn{display:block;background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.35);color:#fcd34d}
+  .form-msg a{color:inherit;text-decoration:underline}
 
   /* Success state */
   .form-ok{display:none;padding:36px;text-align:center}
@@ -288,6 +293,7 @@
             Solicitar auditoría
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </button>
+          <div class="form-msg" id="audMsg" role="alert" aria-live="assertive"></div>
           <p class="form-note">Sin coste · Sin compromiso · Te llamamos en menos de 24 h laborables</p>
         </div>
 
@@ -324,11 +330,25 @@
   var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
 
+  var MSG = document.getElementById('audMsg');
+  function setMsg(kind, html){
+    if(!MSG) return;
+    MSG.className = 'form-msg' + (kind ? ' is-' + kind : '');
+    MSG.innerHTML = html || '';
+  }
+  function clearMsg(){ setMsg('', ''); }
+  function setFormDisabled(form, state){
+    form.querySelectorAll('input, select, textarea, button').forEach(function(el){ el.disabled = state; });
+  }
+
   function val(form, name){
     var el = form.elements[name];
     if(!el) return '';
-    if(el.length){ // radio group
-      for(var i=0;i<el.length;i++){ if(el[i].checked) return el[i].value; }
+    if(el.tagName === 'SELECT') return (el.value || '').trim();
+    if(el instanceof RadioNodeList){
+      for(var i=0;i<el.length;i++){
+        if(el[i].checked) return el[i].value;
+      }
       return '';
     }
     return (el.value || '').trim();
@@ -337,6 +357,7 @@
   function showSuccess(nombre){
     var form = document.getElementById('auditForm');
     var ok = document.getElementById('auditOk');
+    clearMsg();
     if(form) form.style.display = 'none';
     if(ok){
       ok.style.display = 'block';
@@ -352,6 +373,7 @@
     e.preventDefault();
     var form = e.target;
     var btn = document.getElementById('audSubmit');
+    clearMsg();
 
     // Required fields manual check (porque hicimos novalidate)
     var requiredNames = ['nombre','cargo','email','empresa','equipo','sector','inversion','proceso','tieneWeb','canal'];
@@ -360,10 +382,12 @@
       if(!val(form, requiredNames[i])) missing.push(requiredNames[i]);
     }
     if(missing.length){
-      // Highlight first missing
+      // Mensaje visible + foco en el primer campo que falta
+      setMsg('warn', 'Faltan campos obligatorios por completar. Revisa el formulario antes de enviar.');
       var first = form.querySelector('[name="'+missing[0]+'"]');
       if(first && first.scrollIntoView) first.scrollIntoView({behavior:'smooth', block:'center'});
       if(first && first.focus) first.focus();
+      console.warn('[auditoria-ia] Campos obligatorios sin completar:', missing);
       return false;
     }
 
@@ -379,13 +403,21 @@
     var tieneWeb = val(form,'tieneWeb');
     var canal = val(form,'canal');
 
-    // UI: disable
+    // UI: disable + guardar el contenido del botón para poder restaurarlo
+    var btnHTML = btn ? btn.innerHTML : '';
     if(btn){ btn.disabled = true; btn.innerHTML = 'Enviando…'; }
-    form.querySelectorAll('input, select, textarea, button').forEach(function(el){ el.disabled = true; });
+    setFormDisabled(form, true);
+
+    function handleError(){
+      // Re-habilitar para permitir reintentar + mensaje de error visible
+      setFormDisabled(form, false);
+      if(btn){ btn.disabled = false; btn.innerHTML = btnHTML; }
+      setMsg('error', 'No se pudo enviar. Inténtalo de nuevo o escríbenos a <a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>');
+      if(MSG && MSG.scrollIntoView) MSG.scrollIntoView({behavior:'smooth', block:'center'});
+    }
 
     // Mensaje compuesto enriquecido
     var mensaje = 'Cargo: ' + cargo +
-                  ' | Empresa: ' + empresa +
                   ' | Tamaño: ' + equipo +
                   ' | Inversión: ' + inversion +
                   ' | Proceso: ' + proceso +
@@ -395,6 +427,7 @@
 
     var payload = {
       nombre: nombre,
+      empresa: empresa,
       telefono: telefono || '',
       sector: sector,
       interes: 'Auditoría IA gratuita 15 min',
@@ -415,24 +448,32 @@
       },
       body: JSON.stringify(payload)
     }).then(function(r){
-      if(!r.ok){ console.warn('[auditoria-ia] Supabase respondió', r.status); }
+      if(r.ok){
+        console.log('[auditoria-ia] Lead enviado correctamente ✓', payload);
+        // Track event GA4 solo en envío exitoso
+        try {
+          if(typeof wmTrack === 'function'){
+            wmTrack('submit_auditoria_ia', {
+              sector: sector,
+              equipo: equipo,
+              inversion: inversion,
+              canal: canal,
+              tieneWeb: tieneWeb
+            });
+          }
+        } catch(e){}
+        showSuccess(nombre);
+      } else {
+        r.text().then(function(body){
+          console.error('[auditoria-ia] Supabase respondió ' + r.status, body);
+        }).catch(function(){
+          console.error('[auditoria-ia] Supabase respondió ' + r.status);
+        });
+        handleError();
+      }
     }).catch(function(err){
-      console.warn('[auditoria-ia] Error al enviar lead', err);
-    }).finally(function(){
-      // Track event GA4
-      try {
-        if(typeof wmTrack === 'function'){
-          wmTrack('submit_auditoria_ia', {
-            sector: sector,
-            equipo: equipo,
-            inversion: inversion,
-            canal: canal,
-            tieneWeb: tieneWeb
-          });
-        }
-      } catch(e){}
-      // SIEMPRE mostrar success al usuario (regla CLAUDE.md: no interrumpir el flujo)
-      showSuccess(nombre);
+      console.error('[auditoria-ia] Error de red al enviar lead', err);
+      handleError();
     });
 
     return false;
