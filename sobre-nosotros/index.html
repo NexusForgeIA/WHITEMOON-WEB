@@ -70,14 +70,33 @@
   .diff-card p{font-size:.86rem;color:#9CA3AF;line-height:1.6;margin:0}
 
   /* Equipo */
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
-  @media(max-width:780px){.team-grid{grid-template-columns:1fr}}
-  .team-card{background:var(--card);border:1px solid var(--border-soft);border-radius:12px;overflow:hidden}
-  .team-photo{width:100%;height:auto;object-fit:unset;border-radius:12px;display:block}
-  .team-info{padding:24px}
-  .team-name{font-family:'Inter',sans-serif;font-weight:600;font-size:18px;color:#E8E8F0;letter-spacing:-.01em;margin:0 0 4px}
-  .team-role{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin:0 0 14px}
-  .team-bio{color:var(--muted);line-height:1.7;font-size:.92rem;margin:0}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:28px}
+  @media(max-width:1024px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:768px){.team-grid{grid-template-columns:1fr}}
+  .team-card{background:var(--card);border:1px solid var(--border-soft);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .15s ease,transform .15s ease}
+  .team-card:hover{border-color:rgba(124,77,255,.4);transform:translateY(-2px)}
+  .team-card:focus-visible{outline:2px solid var(--p);outline-offset:2px}
+  .team-photo{width:100%;height:180px;object-fit:cover;object-position:top center;display:block}
+  .team-info{padding:16px}
+  .team-name{font-family:'Inter',sans-serif;font-weight:600;font-size:15px;color:#E8E8F0;letter-spacing:-.01em;margin:0 0 4px}
+  .team-role{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin:0 0 10px}
+  .team-bio{color:var(--muted);line-height:1.6;font-size:13px;margin:0}
+
+  /* Modal de perfil */
+  .team-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
+  .team-modal.open{display:flex}
+  .team-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.85)}
+  .team-modal-box{position:relative;z-index:1;width:100%;max-width:600px;max-height:88vh;overflow-y:auto;background:var(--card);border:1px solid var(--border-soft);border-radius:16px;overflow-x:hidden;animation:tmFade .2s ease}
+  @keyframes tmFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .team-modal-photo{width:100%;height:320px;object-fit:cover;object-position:top center;display:block}
+  .team-modal-body{padding:28px}
+  .team-modal-name{font-family:'Inter',sans-serif;font-weight:700;font-size:24px;color:#E8E8F0;letter-spacing:-.015em;margin:0 0 6px}
+  .team-modal-role{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--p);margin:0 0 16px}
+  .team-modal-bio{color:var(--muted);line-height:1.8;font-size:.95rem;margin:0}
+  .team-modal-close{position:absolute;top:14px;right:14px;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s ease}
+  .team-modal-close:hover{background:rgba(0,0,0,.7)}
+  .team-modal-close svg{width:18px;height:18px}
+  body.modal-open{overflow:hidden}
 
   /* Stack tecnológico */
   .stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
@@ -247,6 +266,65 @@
 <footer>
   © 2025-2026 <a href="/">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/">Blog</a> · <a href="/aviso-legal/">Aviso Legal</a> · <a href="/politica-privacidad/">Política de Privacidad</a> · <a href="/politica-cookies/">Política de Cookies</a>
 </footer>
+
+<!-- MODAL PERFIL EQUIPO -->
+<div class="team-modal" id="teamModal" aria-hidden="true">
+  <div class="team-modal-overlay" data-close></div>
+  <div class="team-modal-box" role="dialog" aria-modal="true" aria-labelledby="tmName">
+    <button type="button" class="team-modal-close" aria-label="Cerrar" data-close>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <img class="team-modal-photo" id="tmPhoto" src="" alt="">
+    <div class="team-modal-body">
+      <h3 class="team-modal-name" id="tmName"></h3>
+      <p class="team-modal-role" id="tmRole"></p>
+      <p class="team-modal-bio" id="tmBio"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal = document.getElementById('teamModal');
+  if(!modal) return;
+  var elPhoto = document.getElementById('tmPhoto'),
+      elName  = document.getElementById('tmName'),
+      elRole  = document.getElementById('tmRole'),
+      elBio   = document.getElementById('tmBio');
+
+  function openModal(card){
+    var img = card.querySelector('.team-photo');
+    elPhoto.src = img ? img.getAttribute('src') : '';
+    elPhoto.alt = img ? (img.getAttribute('alt') || '') : '';
+    elName.textContent = (card.querySelector('.team-name') || {}).textContent || '';
+    elRole.textContent = (card.querySelector('.team-role') || {}).textContent || '';
+    elBio.textContent  = (card.querySelector('.team-bio')  || {}).textContent || '';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.classList.remove('modal-open');
+  }
+
+  document.querySelectorAll('.team-card').forEach(function(card){
+    card.setAttribute('tabindex','0');
+    card.setAttribute('role','button');
+    card.addEventListener('click', function(){ openModal(card); });
+    card.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(card); }
+    });
+  });
+  modal.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click', closeModal);
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+</script>
 
 <script src="/orion-widget.js?v=2026052701" defer></script>
 
