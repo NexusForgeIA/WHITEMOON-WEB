@@ -121,6 +121,15 @@
   `;
   document.body.appendChild(widget);
 
+  // GA4: el widget flotante se ha inyectado y es visible por primera
+  // vez en esta carga (este punto solo se alcanza una vez gracias al
+  // guard __orionWidgetLoaded + el early-return si #luna-widget existe).
+  if (typeof window.wmTrack === 'function') {
+    window.wmTrack('chatbot_bubble_visible', {
+      source: 'widget-flotante'
+    });
+  }
+
   // -----------------------------------------------------------
   // 5) Cliente Retell — importación dinámica del SDK.
   //    El SDK externaliza livekit-client y eventemitter3 en su
@@ -226,6 +235,18 @@
 
   btn.addEventListener("click", () => {
     if (busy) return;
-    callActive ? endCall() : startCall();
+    if (callActive) {
+      endCall();
+      return;
+    }
+    // GA4: apertura de Orion desde el clic directo al botón flotante
+    // (los CTAs externos ya trackean vía el listener `orion-open`).
+    if (typeof window.wmTrack === 'function') {
+      window.wmTrack('click_open_orion', {
+        source: 'widget-flotante',
+        placement: 'bottom-right'
+      });
+    }
+    startCall();
   });
 })();
