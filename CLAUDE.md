@@ -64,3 +64,26 @@ Skills disponibles:
 - skills/supabase/SKILL.md
 - skills/ui-design/SKILL.md
 - skills/git-flow/SKILL.md
+
+## SKILLS DEL SISTEMA
+Skills disponibles en el entorno de ejecución (`/mnt/skills/`). Claude Code
+puede leerlas y usarlas cuando la tarea lo requiera.
+
+### Públicas — documentos y archivos
+- /mnt/skills/public/docx/SKILL.md — crear y editar documentos Word (.docx)
+- /mnt/skills/public/pdf/SKILL.md — crear, manipular y rellenar PDFs
+- /mnt/skills/public/pdf-reading/SKILL.md — leer y extraer contenido de PDFs
+- /mnt/skills/public/pptx/SKILL.md — crear y editar presentaciones PowerPoint (.pptx)
+- /mnt/skills/public/xlsx/SKILL.md — crear y editar hojas de cálculo Excel (.xlsx)
+- /mnt/skills/public/file-reading/SKILL.md — leer y extraer contenido de archivos diversos
+
+### Públicas — diseño y producto
+- /mnt/skills/public/frontend-design/SKILL.md — diseño y construcción de frontend
+- /mnt/skills/public/product-self-knowledge/SKILL.md — conocimiento del producto Claude/Anthropic
+
+### Examples — creación y construcción
+- /mnt/skills/examples/skill-creator/SKILL.md — crear nuevas skills
+- /mnt/skills/examples/web-artifacts-builder/SKILL.md — construir artefactos web interactivos
+- /mnt/skills/examples/mcp-builder/SKILL.md — construir servidores MCP
+- /mnt/skills/examples/canvas-design/SKILL.md — diseño sobre canvas
+- /mnt/skills/examples/algorithmic-art/SKILL.md — arte algorítmico/generativo
