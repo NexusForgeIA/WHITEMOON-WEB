@@ -250,8 +250,19 @@
               <label for="cn-sector">Sector de tu negocio</label>
               <select id="cn-sector" aria-label="Selecciona tu sector">
                 <option value="clinica">Clínica / consulta</option>
+                <option value="clinica-dental">Clínica dental</option>
+                <option value="estetica">Centro de estética / belleza</option>
+                <option value="podologia">Podología</option>
                 <option value="despacho">Despacho profesional</option>
+                <option value="abogados">Abogados</option>
+                <option value="gestoria">Gestoría / asesoría</option>
                 <option value="restaurante">Restaurante</option>
+                <option value="hotel">Hotel / alojamiento</option>
+                <option value="gimnasio">Gimnasio / fitness</option>
+                <option value="academia">Academia / formación</option>
+                <option value="farmacia">Farmacia</option>
+                <option value="ecommerce">E-commerce / tienda online</option>
+                <option value="reformas">Fontanería / electricidad / reformas</option>
                 <option value="taller">Taller mecánico</option>
                 <option value="inmobiliaria">Inmobiliaria</option>
                 <option value="otro">Otro</option>
@@ -379,6 +390,20 @@
     restaurante:  { noshow: .18, conv: .35, faqHrs: 2.0, label: 'restaurante' },
     taller:       { noshow: .10, conv: .28, faqHrs: 2.5, label: 'taller' },
     inmobiliaria: { noshow: .08, conv: .15, faqHrs: 3.0, label: 'inmobiliaria' },
+    // Sectores con defaults editables de ticket medio y llamadas/día.
+    // llamadasDia ≈ (llamadas perdidas/mes) / (DIAS × TASA_PERDIDA), para que
+    // las perdidas/mes del modelo coincidan con el dato sectorial de referencia.
+    'clinica-dental': { noshow: .20, conv: .35, faqHrs: 3.0, ticket: 180, llamadasDia: 14, label: 'clínica dental' },
+    estetica:         { noshow: .22, conv: .40, faqHrs: 2.5, ticket: 65,  llamadasDia: 18, label: 'centro de estética' },
+    podologia:        { noshow: .18, conv: .35, faqHrs: 2.0, ticket: 45,  llamadasDia: 12, label: 'podología' },
+    abogados:         { noshow: .12, conv: .45, faqHrs: 3.0, ticket: 300, llamadasDia: 6,  label: 'despacho de abogados' },
+    gestoria:         { noshow: .10, conv: .40, faqHrs: 3.0, ticket: 150, llamadasDia: 8,  label: 'gestoría' },
+    hotel:            { noshow: .12, conv: .45, faqHrs: 2.5, ticket: 120, llamadasDia: 12, label: 'hotel' },
+    gimnasio:         { noshow: .15, conv: .30, faqHrs: 2.0, ticket: 50,  llamadasDia: 11, label: 'gimnasio' },
+    academia:         { noshow: .15, conv: .35, faqHrs: 2.5, ticket: 200, llamadasDia: 9,  label: 'academia' },
+    farmacia:         { noshow: .05, conv: .20, faqHrs: 1.5, ticket: 35,  llamadasDia: 15, label: 'farmacia' },
+    ecommerce:        { noshow: .05, conv: .25, faqHrs: 2.5, ticket: 95,  llamadasDia: 24, label: 'e-commerce' },
+    reformas:         { noshow: .10, conv: .50, faqHrs: 2.0, ticket: 250, llamadasDia: 17, label: 'reformas / oficios' },
     otro:         { noshow: .12, conv: .22, faqHrs: 2.5, label: 'tu negocio' }
   };
   var DIAS = 22;          // días laborables/mes
@@ -431,6 +456,21 @@
         el.addEventListener('change', calc);
       }
     });
+    // Al elegir un sector con defaults, precarga ticket medio y llamadas/día
+    // (siguen siendo editables por el usuario). Recalcula a continuación.
+    var secEl = document.getElementById('cn-sector');
+    if(secEl){
+      secEl.addEventListener('change', function(){
+        var s = sectorCfg[secEl.value];
+        if(s && typeof s.ticket === 'number'){
+          var t = document.getElementById('cn-ticket');
+          if(t) t.value = s.ticket;
+          var l = document.getElementById('cn-llamadas');
+          if(l && typeof s.llamadasDia === 'number') l.value = s.llamadasDia;
+          calc();
+        }
+      });
+    }
     calc();
   });
 })();
