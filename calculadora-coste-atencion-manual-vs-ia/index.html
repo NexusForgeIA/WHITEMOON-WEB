@@ -24,7 +24,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"¿Cuánto cuesta atender consultas con personal humano?","acceptedAnswer":{"@type":"Answer","text":"El coste total de un agente de atención al cliente en España (salario + cotizaciones + indirectos) ronda los 16-22€/hora para perfiles administrativos y atención telefónica. Para una empresa con 50 consultas/día de 5 minutos de media, eso supone 4,17 horas/día × 22 días × 18€/h = 1.650€/mes solo en atención. Sumando supervisión, formación y bajas, el coste real ronda 2.000-2.500€/mes."}},
-{"@type":"Question","name":"¿Cuánto cuesta Orion IA en comparación?","acceptedAnswer":{"@type":"Answer","text":"Orion IA Agent: 999€ setup + 199€/mes (sin permanencia). Orion IA Calls: 1.499€ setup + 199€/mes. Para una empresa con 50 consultas/día (1.500 consultas/mes), el coste por consulta con IA es 0,13€. Con personal humano: 1,10€ por consulta. Diferencia: 88% menos coste por consulta atendida."}},
+{"@type":"Question","name":"¿Cuánto cuesta Orion IA en comparación?","acceptedAnswer":{"@type":"Answer","text":"Orion IA Agent: 999€ setup + 199€/mes (sin permanencia). Para una empresa con 50 consultas/día (1.500 consultas/mes), el coste por consulta con IA es 0,13€. Con personal humano: 1,10€ por consulta. Diferencia: 88% menos coste por consulta atendida."}},
 {"@type":"Question","name":"¿La IA atiende el 100% de consultas?","acceptedAnswer":{"@type":"Answer","text":"No, ese no es el objetivo. Orion IA resuelve el 75-90% de consultas (FAQ, reservas, citas, horarios, precios) y deriva el 10-25% restante a un humano cuando detecta complejidad o reclamación. Esto permite que el equipo humano se centre en casos de valor: ventas grandes, fidelización de clientes top, gestión de crisis y mejora de procesos."}},
 {"@type":"Question","name":"¿En cuánto tiempo se recupera la inversión?","acceptedAnswer":{"@type":"Answer","text":"Para una empresa con 30-50 consultas/día, el ROI medio se alcanza en 1-3 meses. Si el coste mensual actual es 2.000€ y el coste IA es 199€, el ahorro mensual neto es 1.801€. El setup Orion IA Agent (999€) se amortiza en 17 días. Tras el primer mes hay beneficio neto. A 12 meses, el ahorro neto acumulado supera los 21.000€ descontado el setup."}}
 ]}
@@ -87,7 +87,6 @@
         <select id="am-orion" class="calc-select" onchange="calcManualIA()">
           <option value="199" data-setup="499" selected>Spark · 499€ + 199€/mes</option>
           <option value="199" data-setup="999">Orion IA Agent · 999€ + 199€/mes</option>
-          <option value="199" data-setup="1499">Orion IA Calls · 1.499€ + 199€/mes</option>
           <option value="349" data-setup="3200">Core RAG · 3.200€ + 349€/mes</option>
         </select>
       </div>
