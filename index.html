@@ -881,7 +881,10 @@
     .ht-values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     .ht-card{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:16px;padding:22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.02) inset;transition:transform .2s ease,border-color .2s ease}
     .ht-card:hover{transform:translateY(-2px);border-color:rgba(124,77,255,.45)}
-    .ht-card .ht-ico{display:block;font-size:1.7rem;line-height:1;margin-bottom:12px}
+    .ht-card .ht-ico{display:block;line-height:1;margin-bottom:12px}
+    .ht-card .ht-ico svg{width:32px;height:32px;display:block}
+    .ht-card .ht-ico.is-p{color:var(--p,#7c4dff)}
+    .ht-card .ht-ico.is-g{color:var(--g,#00d4aa)}
     .ht-card .ht-t{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;color:#E8E8F0}
     .ht-card .ht-t.is-p{color:#7c4dff}
     .ht-card .ht-t.is-g{color:#00d4aa}
@@ -925,22 +928,22 @@
           <!-- Sección 1 — 4 bloques de valor -->
           <div class="ht-values">
             <div class="ht-card">
-              <span class="ht-ico" aria-hidden="true">🎙</span>
+              <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></span>
               <p class="ht-t is-p">Voz 24/7 en español natural</p>
               <p class="ht-s">Orion IA atiende llamadas como un humano</p>
             </div>
             <div class="ht-card">
-              <span class="ht-ico" aria-hidden="true">⚡</span>
+              <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
               <p class="ht-t is-g">Operativo en 7 días</p>
               <p class="ht-s">Desde la firma hasta tu primer lead</p>
             </div>
             <div class="ht-card">
-              <span class="ht-ico" aria-hidden="true">💶</span>
+              <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7a7 7 0 1 0 0 10"/><line x1="3" y1="10" x2="13" y2="10"/><line x1="3" y1="14" x2="11" y2="14"/></svg></span>
               <p class="ht-t is-p">Desde 499€ setup</p>
               <p class="ht-s">Sin permanencia en todos los packs</p>
             </div>
             <div class="ht-card">
-              <span class="ht-ico" aria-hidden="true">🔄</span>
+              <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>
               <p class="ht-t is-g">Sin permanencia</p>
               <p class="ht-s">Cancela cuando quieras, sin letra pequeña</p>
             </div>
