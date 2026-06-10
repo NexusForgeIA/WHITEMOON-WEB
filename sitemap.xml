@@ -336,12 +336,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://whitemoon.es/orion-calls/</loc>
-    <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://whitemoon.es/core/</loc>
     <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
@@ -350,18 +344,6 @@
   <url>
     <loc>https://whitemoon.es/core-rag/</loc>
     <lastmod>2026-06-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/scale/</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/elite/</loc>
-    <lastmod>2026-06-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

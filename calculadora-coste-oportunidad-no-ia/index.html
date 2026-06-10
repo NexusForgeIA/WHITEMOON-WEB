@@ -97,9 +97,7 @@
         <select id="op-plan" class="calc-select" onchange="calcOportunidad()">
           <option value="spark" selected>Spark · 499€ + 199€/mes</option>
           <option value="agent">Orion IA Agent · 999€ + 199€/mes</option>
-          <option value="calls">Orion IA Calls · 1.499€ + 199€/mes</option>
           <option value="rag">Core RAG · 3.200€ + 349€/mes</option>
-          <option value="scale">Scale · 4.500€ + 449€/mes</option>
         </select>
       </div>
       <div class="calc-row"><label class="calc-label" for="op-recuperacion">% recuperación esperada con IA</label>
@@ -194,9 +192,7 @@ var OP_PCT_SECTOR = {
 var OP_PLAN = {
   spark: { setup: 499, mes: 199, label: 'Spark' },
   agent: { setup: 999, mes: 199, label: 'Orion IA Agent' },
-  calls: { setup: 1499, mes: 199, label: 'Orion IA Calls' },
-  rag:   { setup: 3200, mes: 349, label: 'Core RAG' },
-  scale: { setup: 4500, mes: 449, label: 'Scale' }
+  rag:   { setup: 3200, mes: 349, label: 'Core RAG' }
 };
 
 function calcOportunidad(){
