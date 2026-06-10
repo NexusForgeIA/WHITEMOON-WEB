@@ -62,4 +62,4 @@ Allow: /
 
 # LLMs — Fichero de contexto para modelos de lenguaje
 # https://llmstxt.org
-LLMs: https://whitemoon.es/llms.txt
+# LLMs: https://whitemoon.es/llms.txt
