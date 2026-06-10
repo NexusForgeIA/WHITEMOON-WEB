@@ -981,41 +981,30 @@
 
 </section>
 
-<!-- TECH STACK TICKER -->
-<section class="tech-ticker" aria-label="Tecnología que usamos">
+<!-- TECNOLOGÍA QUE USAMOS — fila estática de logos oficiales -->
+<section class="tech-stack" aria-label="Tecnología que usamos">
   <style>
-    .tech-ticker{padding:46px 0;border-top:1px solid rgba(124,77,255,.10);border-bottom:1px solid rgba(124,77,255,.10);background:#0B0F17}
-    .tech-ticker .tt-eyebrow{display:block;text-align:center;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;color:#9090b0;letter-spacing:.18em;text-transform:uppercase;margin:0 0 26px}
-    .tt-marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
-    .tt-track{display:flex;width:max-content;animation:ttScroll 34s linear infinite}
-    .tt-marquee:hover .tt-track{animation-play-state:paused}
-    .tt-group{display:flex;flex:0 0 auto}
-    .tt-logo{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;margin:0 12px;padding:11px 24px;border:1px solid rgba(124,77,255,.3);border-radius:99px;background:rgba(124,77,255,.04);font-family:'Inter',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;color:#E8E8F0;opacity:.72;white-space:nowrap;transition:opacity .2s ease,border-color .2s ease}
-    .tt-logo:hover{opacity:1;border-color:rgba(124,77,255,.55)}
-    @keyframes ttScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    @media(max-width:560px){.tt-logo{font-size:.9rem;padding:9px 18px;margin:0 8px}}
-    @media(prefers-reduced-motion:reduce){.tt-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.tt-group--dup{display:none}}
+    .tech-stack{padding:42px 24px;border-top:1px solid rgba(124,77,255,.10);border-bottom:1px solid rgba(124,77,255,.10);background:transparent}
+    .tech-stack .ts-eyebrow{display:block;text-align:center;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--muted,#6B7280);letter-spacing:2px;text-transform:uppercase;margin:0 0 26px}
+    .tech-stack .ts-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:48px;max-width:1000px;margin:0 auto}
+    .tech-stack .ts-logos img{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.78;transition:opacity .2s ease}
+    .tech-stack .ts-logos img:hover{opacity:1}
+    .tech-stack .ts-logos .ts-text{font-family:'Sora',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:-.01em;color:#E8E8F0;opacity:.78;white-space:nowrap;transition:opacity .2s ease}
+    .tech-stack .ts-logos .ts-text:hover{opacity:1}
+    @media(max-width:600px){
+      .tech-stack .ts-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 16px;justify-items:center}
+      .tech-stack .ts-logos img{height:22px}
+      .tech-stack .ts-logos .ts-text{font-size:.95rem}
+    }
   </style>
-  <span class="tt-eyebrow">Tecnología que usamos</span>
-  <div class="tt-marquee">
-    <div class="tt-track">
-      <div class="tt-group">
-        <span class="tt-logo">Anthropic</span>
-        <span class="tt-logo">Retell AI</span>
-        <span class="tt-logo">ElevenLabs</span>
-        <span class="tt-logo">Supabase</span>
-        <span class="tt-logo">Cal.com</span>
-        <span class="tt-logo">GitHub</span>
-      </div>
-      <div class="tt-group tt-group--dup" aria-hidden="true">
-        <span class="tt-logo">Anthropic</span>
-        <span class="tt-logo">Retell AI</span>
-        <span class="tt-logo">ElevenLabs</span>
-        <span class="tt-logo">Supabase</span>
-        <span class="tt-logo">Cal.com</span>
-        <span class="tt-logo">GitHub</span>
-      </div>
-    </div>
+  <span class="ts-eyebrow">Tecnología que usamos</span>
+  <div class="ts-logos">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg" alt="Anthropic" height="26" loading="lazy" decoding="async">
+    <span class="ts-text">Retell AI</span>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/ElevenLabs_Logo.svg/1280px-ElevenLabs_Logo.svg.png" alt="ElevenLabs" height="26" loading="lazy" decoding="async">
+    <img src="https://supabase.com/brand-assets/supabase-logo-wordmark--dark.svg" alt="Supabase" height="26" loading="lazy" decoding="async">
+    <img src="https://cal.com/logo.svg" alt="Cal.com" height="26" loading="lazy" decoding="async">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" height="26" loading="lazy" decoding="async">
   </div>
 </section>
 
