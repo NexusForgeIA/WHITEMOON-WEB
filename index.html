@@ -876,34 +876,27 @@
     .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
     .hero-ctas .btn-ghost{background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2)}
     .hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
-    /* Dashboard mock */
-    .hero-dash{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.02) inset;position:relative}
-    .hero-dash::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(124,77,255,.12),transparent 60%);pointer-events:none}
-    .dash-bar{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid rgba(124,77,255,.12);font-size:.78rem;color:#c4b3ff}
-    .dash-bar .status{display:inline-flex;align-items:center;gap:8px;font-weight:600}
-    .dash-bar .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 12px rgba(34,197,94,.6);animation:dashPulse 1.6s ease-in-out infinite}
-    @keyframes dashPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.85)}}
-    .dash-bar .time{font-size:.7rem;color:#6b7280;letter-spacing:.06em}
-    .dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid rgba(124,77,255,.12)}
-    .dash-cell{padding:20px 22px;position:relative}
-    .dash-cell+.dash-cell{border-left:1px solid rgba(124,77,255,.12)}
-    .dash-cell .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;font-weight:600}
-    .dash-cell .num{font-size:1.9rem;font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1;margin-bottom:4px}
-    .dash-cell .sub{font-size:.72rem;color:#9090b0}
-    .dash-cell .num .pre{color:#7c4dff}
-    .dash-savings{padding:20px 22px;border-bottom:1px solid rgba(124,77,255,.12)}
-    .dash-savings .label{font-size:.7rem;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;font-weight:600;margin-bottom:8px}
-    .dash-savings .num{font-size:2.2rem;font-weight:700;color:#5eead4;letter-spacing:-.025em;line-height:1}
-    .dash-savings .num::after{content:" €";font-size:1.2rem;color:#9090b0;font-weight:500}
-    .dash-pipe{padding:18px 22px 20px}
-    .dash-pipe .steps{display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:.7rem;color:#9090b0;letter-spacing:.04em}
-    .dash-pipe .steps b{color:#c4b3ff;font-weight:600}
-    .dash-pipe .steps .arrow{color:#4b5563}
-    .dash-pipe .progress{height:6px;background:rgba(124,77,255,.1);border-radius:99px;overflow:hidden;position:relative}
-    .dash-pipe .progress-fill{height:100%;background:linear-gradient(90deg,#7c4dff,#9d70ff,#5eead4);border-radius:99px;width:0;transition:width 1.4s cubic-bezier(.4,0,.2,1) .3s}
-    .dash-pipe .progress-fill.go{width:94%}
-    .dash-pipe .progress-label{display:flex;justify-content:space-between;margin-top:10px;font-size:.7rem;color:#6b7280;letter-spacing:.04em}
-    .dash-pipe .progress-label b{color:#E8E8F0;font-weight:600}
+    /* Hero trust block (valor real + caso verificable) */
+    .hero-trust{display:flex;flex-direction:column;gap:16px}
+    .ht-values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .ht-card{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:16px;padding:22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.02) inset;transition:transform .2s ease,border-color .2s ease}
+    .ht-card:hover{transform:translateY(-2px);border-color:rgba(124,77,255,.45)}
+    .ht-card .ht-ico{display:block;font-size:1.7rem;line-height:1;margin-bottom:12px}
+    .ht-card .ht-t{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;color:#E8E8F0}
+    .ht-card .ht-t.is-p{color:#7c4dff}
+    .ht-card .ht-t.is-g{color:#00d4aa}
+    .ht-card .ht-s{font-size:.8rem;color:var(--muted,#6B7280);line-height:1.5;margin:0}
+    .ht-case{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(0,212,170,.3);border-radius:16px;padding:22px 20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+    .ht-case .ht-case-head{display:flex;align-items:center;gap:12px}
+    .ht-case .ht-emoji{font-size:1.9rem;line-height:1}
+    .ht-case .ht-case-name{font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#E8E8F0;margin:0;line-height:1.2}
+    .ht-case .ht-badge{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.04em;color:#5eead4;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:99px;padding:5px 11px;white-space:nowrap}
+    .ht-case .ht-badge .ht-dot{width:7px;height:7px;border-radius:50%;background:#00d4aa;box-shadow:0 0 10px rgba(0,212,170,.7)}
+    .ht-case .ht-case-desc{font-size:.88rem;color:#c0c0d0;line-height:1.55;margin:0}
+    .ht-case .ht-case-pack{font-size:.74rem;color:var(--muted,#6B7280);letter-spacing:.04em}
+    .ht-case .ht-case-pack b{color:#c4b3ff;font-weight:600}
+    @media(max-width:900px){.ht-card{padding:20px 18px}}
+    @media(max-width:600px){.ht-values{grid-template-columns:1fr}.ht-case .ht-case-head{flex-wrap:wrap}.ht-case .ht-badge{margin-left:0}}
     /* Stats row */
     .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12)}
     @media(max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
@@ -935,33 +928,41 @@
         </div>
       </div>
 
-      <!-- RIGHT: dashboard mock -->
-      <div class="hero-right" aria-hidden="true">
-        <div class="hero-dash">
-          <div class="dash-bar">
-            <div class="status"><span class="dot"></span> Sistema Orion IA · Activo</div>
-            <div class="time">LIVE</div>
-          </div>
-          <div class="dash-grid">
-            <div class="dash-cell">
-              <div class="label">Llamadas atendidas</div>
-              <div class="num" data-target="247">247</div>
-              <div class="sub">hoy</div>
+      <!-- RIGHT: bloque de valor real + caso verificable -->
+      <div class="hero-right">
+        <div class="hero-trust">
+          <!-- Sección 1 — 4 bloques de valor -->
+          <div class="ht-values">
+            <div class="ht-card">
+              <span class="ht-ico" aria-hidden="true">🎙</span>
+              <p class="ht-t is-p">Voz 24/7 en español natural</p>
+              <p class="ht-s">Orion IA atiende llamadas como un humano</p>
             </div>
-            <div class="dash-cell">
-              <div class="label">Leads capturados</div>
-              <div class="num" data-target="18">18</div>
-              <div class="sub">hoy</div>
+            <div class="ht-card">
+              <span class="ht-ico" aria-hidden="true">⚡</span>
+              <p class="ht-t is-g">Operativo en 7 días</p>
+              <p class="ht-s">Desde la firma hasta tu primer lead</p>
+            </div>
+            <div class="ht-card">
+              <span class="ht-ico" aria-hidden="true">💶</span>
+              <p class="ht-t is-p">Desde 499€ setup</p>
+              <p class="ht-s">Sin permanencia en todos los packs</p>
+            </div>
+            <div class="ht-card">
+              <span class="ht-ico" aria-hidden="true">🔄</span>
+              <p class="ht-t is-g">Sin permanencia</p>
+              <p class="ht-s">Cancela cuando quieras, sin letra pequeña</p>
             </div>
           </div>
-          <div class="dash-savings">
-            <div class="label">Ahorro estimado este mes</div>
-            <div class="num" data-target="3840">3.840</div>
-          </div>
-          <div class="dash-pipe">
-            <div class="steps"><b>Incoming</b><span class="arrow">→</span><b>AI</b><span class="arrow">→</span><b>CRM</b><span class="arrow">→</span><b>Done</b></div>
-            <div class="progress"><div class="progress-fill" id="dashProgress"></div></div>
-            <div class="progress-label"><span>Resueltos sin humano</span><b>94 %</b></div>
+          <!-- Sección 3 — caso real verificable -->
+          <div class="ht-case">
+            <div class="ht-case-head">
+              <span class="ht-emoji" aria-hidden="true">🍣</span>
+              <h2 class="ht-case-name">Bambu Sushi Córdoba</h2>
+              <span class="ht-badge"><span class="ht-dot"></span> Activo desde mayo 2026</span>
+            </div>
+            <p class="ht-case-desc">Reservas y pedidos gestionados 24/7 sin perder una llamada.</p>
+            <div class="ht-case-pack">Pack: <b>Core</b></div>
           </div>
         </div>
       </div>
@@ -978,65 +979,6 @@
 
   </div>
 
-  <script>
-  // CountUp animado del dashboard simulado del hero.
-  // Estrategia robusta: el HTML inicial ya muestra el valor final (no '0')
-  // como fallback noscript. El JS sobrescribe a '0' al disparar la animación
-  // y anima hasta target con ease-out cubic.
-  (function(){
-    var dash = document.querySelector('.hero-dash');
-    if(!dash) return;
-    var animated = false;
-
-    function fmt(n){ return Math.round(n).toLocaleString('es-ES'); }
-
-    function countUp(el, target, duration){
-      el.textContent = '0';
-      var start = null;
-      function step(ts){
-        if(!start) start = ts;
-        var p = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - p, 3);
-        el.textContent = fmt(target * eased);
-        if(p < 1) requestAnimationFrame(step);
-        else el.textContent = fmt(target);
-      }
-      requestAnimationFrame(step);
-    }
-
-    function runDashboard(){
-      if(animated) return;
-      animated = true;
-      dash.querySelectorAll('[data-target]').forEach(function(el){
-        var t = parseInt(el.getAttribute('data-target'), 10) || 0;
-        countUp(el, t, 1500);
-      });
-      var pf = document.getElementById('dashProgress');
-      if(pf) setTimeout(function(){ pf.classList.add('go'); }, 200);
-    }
-
-    // IntersectionObserver: dispara cuando el dashboard entra al viewport
-    // (above-the-fold ya cuenta, pero garantiza disparo correcto).
-    function init(){
-      if('IntersectionObserver' in window){
-        var io = new IntersectionObserver(function(entries){
-          entries.forEach(function(en){
-            if(en.isIntersecting){ runDashboard(); io.disconnect(); }
-          });
-        }, { threshold: 0.2 });
-        io.observe(dash);
-      } else {
-        // Fallback browsers antiguos: ejecutar directo
-        runDashboard();
-      }
-      // Safety net: ejecutar en cualquier caso al cabo de 500ms
-      setTimeout(runDashboard, 500);
-    }
-
-    if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
-    else init();
-  })();
-  </script>
 </section>
 
 <!-- TECH STACK TICKER -->
@@ -1048,10 +990,10 @@
     .tt-track{display:flex;width:max-content;animation:ttScroll 34s linear infinite}
     .tt-marquee:hover .tt-track{animation-play-state:paused}
     .tt-group{display:flex;flex:0 0 auto}
-    .tt-logo{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;padding:0 46px;font-family:'Inter',sans-serif;font-weight:600;font-size:1.35rem;letter-spacing:-.01em;color:#E8E8F0;opacity:.55;white-space:nowrap;transition:opacity .2s ease}
-    .tt-logo:hover{opacity:.92}
+    .tt-logo{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;margin:0 12px;padding:11px 24px;border:1px solid rgba(124,77,255,.3);border-radius:99px;background:rgba(124,77,255,.04);font-family:'Inter',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;color:#E8E8F0;opacity:.72;white-space:nowrap;transition:opacity .2s ease,border-color .2s ease}
+    .tt-logo:hover{opacity:1;border-color:rgba(124,77,255,.55)}
     @keyframes ttScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    @media(max-width:560px){.tt-logo{font-size:1.15rem;padding:0 30px}}
+    @media(max-width:560px){.tt-logo{font-size:.9rem;padding:9px 18px;margin:0 8px}}
     @media(prefers-reduced-motion:reduce){.tt-track{animation:none;flex-wrap:wrap;justify-content:center;width:auto}.tt-group--dup{display:none}}
   </style>
   <span class="tt-eyebrow">Tecnología que usamos</span>
@@ -1059,19 +1001,19 @@
     <div class="tt-track">
       <div class="tt-group">
         <span class="tt-logo">Anthropic</span>
-        <span class="tt-logo">Retell</span>
+        <span class="tt-logo">Retell AI</span>
         <span class="tt-logo">ElevenLabs</span>
         <span class="tt-logo">Supabase</span>
+        <span class="tt-logo">Cal.com</span>
         <span class="tt-logo">GitHub</span>
-        <span class="tt-logo">Vercel</span>
       </div>
       <div class="tt-group tt-group--dup" aria-hidden="true">
         <span class="tt-logo">Anthropic</span>
-        <span class="tt-logo">Retell</span>
+        <span class="tt-logo">Retell AI</span>
         <span class="tt-logo">ElevenLabs</span>
         <span class="tt-logo">Supabase</span>
+        <span class="tt-logo">Cal.com</span>
         <span class="tt-logo">GitHub</span>
-        <span class="tt-logo">Vercel</span>
       </div>
     </div>
   </div>
