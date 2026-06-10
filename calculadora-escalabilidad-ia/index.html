@@ -26,7 +26,7 @@
 {"@type":"Question","name":"¿Por qué escalar con IA en vez de contratar más personas?","acceptedAnswer":{"@type":"Answer","text":"Tres razones operativas: 1) Coste marginal cercano a cero - añadir 1.000 consultas más al mes no aumenta la cuota de Orion IA; en cambio, contratar un agente nuevo cuesta 1.800-2.200€/mes en SS incluida. 2) Velocidad - la IA está activa el mismo día; un nuevo empleado tarda 4-8 semanas en estar operativo. 3) Continuidad - la IA no se va de vacaciones, no se pone enferma, no rota. La principal ventaja es la previsibilidad del coste."}},
 {"@type":"Question","name":"¿Cuándo necesito contratar más personal?","acceptedAnswer":{"@type":"Answer","text":"Cuando tu volumen de consultas/operaciones supera la capacidad efectiva de tu plantilla actual. En atención al cliente, eso significa que la tasa de respuesta cae por debajo del SLA objetivo (típicamente 80% en menos de 5 min en horario, o 95% en menos de 24h). En procesos backoffice, cuando aumentan los errores y los retrasos. La fórmula: si el crecimiento esperado mensual supera el 5-10% sin ajuste de plantilla, llegarás a saturación en 6-12 meses."}},
 {"@type":"Question","name":"¿Cuánto cuesta contratar un agente adicional en España 2026?","acceptedAnswer":{"@type":"Answer","text":"Coste total empresa de un agente medio en España: 1.800-2.500€/mes (salario bruto 1.350-1.850€ + SS 32% + costes indirectos). Hay que sumar: proceso de selección 800-1.500€, formación inicial 1.500-3.000€ en horas internas perdidas, equipamiento 500-1.000€ y curva de aprendizaje 2-4 meses con productividad reducida. Coste total año 1: ~30.000-35.000€."}},
-{"@type":"Question","name":"¿Y si necesito ampliar más adelante?","acceptedAnswer":{"@type":"Answer","text":"La IA escala instantáneamente: pasar de 1.500 a 5.000 consultas/mes no requiere cambios técnicos ni aumento de cuota en planes hasta cierto volumen (Spark/Orion Agent: hasta 5.000 consultas, Core RAG: hasta 25.000). Para volúmenes superiores hay planes Scale (5.000-50.000 consultas) y Elite (ilimitado). El ahorro frente a contratar crece de forma no lineal: a partir del segundo agente añadido, la diferencia mensual con IA supera los 3.500-4.000€/mes."}}
+{"@type":"Question","name":"¿Y si necesito ampliar más adelante?","acceptedAnswer":{"@type":"Answer","text":"La IA escala instantáneamente: pasar de 1.500 a 5.000 consultas/mes no requiere cambios técnicos ni aumento de cuota en planes hasta cierto volumen (Spark/Orion Agent: hasta 5.000 consultas, Core RAG: hasta 25.000). El ahorro frente a contratar crece de forma no lineal: a partir del segundo agente añadido, la diferencia mensual con IA supera los 3.500-4.000€/mes."}}
 ]}
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -87,7 +87,6 @@
         <select id="es-orion" class="calc-select" onchange="calcEscalabilidad()">
           <option value="199" selected>Spark / Orion Agent · 199€/mes</option>
           <option value="349">Core RAG · 349€/mes (hasta 25.000)</option>
-          <option value="449">Scale · 449€/mes (hasta 50.000)</option>
         </select>
       </div>
     </div>
@@ -100,7 +99,7 @@
 
     <div class="calc-detail" id="es-explain">Mes saturación = log(capacidad/actual) / log(1+crecimiento). Coste humanos = sumatorio de agentes adicionales necesarios × coste/agente × meses restantes. Coste IA = cuota mensual × 12. Ahorro IA = coste humanos − coste IA.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo asumiendo crecimiento compuesto. La IA escala sin coste marginal hasta el límite del plan (Spark 5.000, Core RAG 25.000, Scale 50.000 consultas/mes).</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo asumiendo crecimiento compuesto. La IA escala sin coste marginal hasta el límite del plan (Spark 5.000, Core RAG 25.000 consultas/mes).</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
@@ -109,7 +108,7 @@
     <div class="faq-item"><div class="faq-q">¿Por qué escalar con IA?</div><div class="faq-a">1) Coste marginal ~0: +1.000 consultas no suben cuota. Nuevo agente cuesta 1.800-2.200€/mes. 2) Velocidad: IA activa ese día, humano 4-8 semanas. 3) Sin bajas, vacaciones, rotación. Coste previsible.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuándo necesito contratar?</div><div class="faq-a">Cuando volumen supera capacidad efectiva. Atención: SLA &lt;80% en 5min cae. Backoffice: errores y retrasos suben. Crecimiento &gt;5-10%/mes → saturación en 6-12 meses sin ajuste.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuánto cuesta un agente nuevo en 2026?</div><div class="faq-a">Total empresa 1.800-2.500€/mes (bruto 1.350-1.850 + SS 32% + indirectos). Selección 800-1.500€. Formación 1.500-3.000€. Equipamiento 500-1.000€. Año 1: ~30.000-35.000€.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Cómo escala la IA?</div><div class="faq-a">Sin cambios técnicos. Spark/Agent hasta 5.000 consultas. Core RAG 25.000. Scale 50.000. Elite ilimitado. A partir del 2º agente añadido, ahorro vs humanos &gt; 3.500€/mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo escala la IA?</div><div class="faq-a">Sin cambios técnicos. Spark/Agent hasta 5.000 consultas. Core RAG 25.000 y más. A partir del 2º agente añadido, ahorro vs humanos &gt; 3.500€/mes.</div></div>
   </div></div></section>
 
   <section class="sec"><div class="wrap" style="text-align:center">
