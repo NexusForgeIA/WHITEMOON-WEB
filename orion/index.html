@@ -36,7 +36,7 @@
 <script defer src="/assets/cookie-consent.js?v=2026060302"></script>
 <script defer src="/assets/wm-track.js?v=2026060302"></script>
 <style>
-  :root{--bg:#0B0F17;--text:#E8E8F0;--muted:#6B7280;--p:#7c4dff;--p2:#9d70ff;--border:rgba(124,77,255,.22);--border-soft:rgba(124,77,255,.10);--card:#111118}
+  :root{--bg:#0B0F17;--text:#E8E8F0;--muted:#6B7280;--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--border:rgba(124,77,255,.22);--border-soft:rgba(124,77,255,.10);--card:#111118}
   html,body{background:#0B0F17;color:#E8E8F0}
   body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-weight:400;line-height:1.6;font-feature-settings:'cv11','ss01';-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
   .navbar{background:rgba(11,15,23,.85)!important;border-bottom:1px solid var(--border-soft)!important}
@@ -60,25 +60,19 @@
   section.hub-sec h2 .num{font-family:'Inter',sans-serif;font-size:.86rem;font-weight:500;color:#6B7280;letter-spacing:.04em;font-variant-numeric:tabular-nums}
   section.hub-sec .lead{margin:0 0 24px;max-width:780px}
 
-  /* Dashboard simulado */
-  .dash{margin-top:36px;padding:32px;background:linear-gradient(180deg,rgba(124,77,255,.06),var(--card));border:1px solid rgba(124,77,255,.22);border-radius:18px;box-shadow:0 20px 60px rgba(124,77,255,.12)}
-  .dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border-soft)}
-  .dash-title{font-family:'Inter',sans-serif;font-size:.78rem;font-weight:600;color:#E8E8F0;letter-spacing:.04em;text-transform:uppercase}
-  .dash-status{display:inline-flex;align-items:center;gap:8px;padding:5px 12px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.32);border-radius:999px;font-size:.74rem;font-weight:500;color:#00d4aa;letter-spacing:.02em}
-  .dash-status::before{content:"";width:6px;height:6px;border-radius:50%;background:#00d4aa;box-shadow:0 0 8px rgba(0,212,170,.7);animation:pulseDot 2s ease-in-out infinite}
-  @keyframes pulseDot{0%,100%{opacity:1}50%{opacity:.5}}
-  .dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:24px}
-  @media(max-width:780px){.dash-grid{grid-template-columns:repeat(2,1fr)}}
-  .dash-stat{padding:18px;background:rgba(11,15,23,.5);border:1px solid var(--border-soft);border-radius:12px}
-  .dash-stat .l{font-size:.7rem;font-weight:500;color:#9CA3AF;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
-  .dash-stat .v{font-family:'Inter',sans-serif;font-size:1.7rem;font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums}
-  .dash-stat .d{font-size:.74rem;color:#6B7280;margin-top:6px}
-  .dash-bar{padding:18px;background:rgba(11,15,23,.5);border:1px solid var(--border-soft);border-radius:12px}
-  .dash-bar-l{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-  .dash-bar-l .t{font-size:.82rem;font-weight:600;color:#E8E8F0}
-  .dash-bar-l .p{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:#9d70ff;font-variant-numeric:tabular-nums}
-  .dash-bar-track{height:10px;background:rgba(124,77,255,.08);border-radius:999px;overflow:hidden}
-  .dash-bar-fill{height:100%;width:94%;background:linear-gradient(90deg,#7c4dff,#9d70ff);border-radius:999px;box-shadow:0 0 16px rgba(124,77,255,.4)}
+  /* Bloques de valor */
+  .ht-values{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
+  .ht-card{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:16px;padding:22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.02) inset;transition:transform .2s ease,border-color .2s ease}
+  .ht-card:hover{transform:translateY(-2px);border-color:rgba(124,77,255,.45)}
+  .ht-card .ht-ico{display:block;line-height:1;margin-bottom:12px}
+  .ht-card .ht-ico svg{width:32px;height:32px;display:block}
+  .ht-card .ht-ico.is-p{color:var(--p,#7c4dff)}
+  .ht-card .ht-ico.is-g{color:var(--g,#00d4aa)}
+  .ht-card .ht-t{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;color:#E8E8F0}
+  .ht-card .ht-t.is-p{color:#7c4dff}
+  .ht-card .ht-t.is-g{color:#00d4aa}
+  .ht-card .ht-s{font-size:.8rem;color:var(--muted,#6B7280);line-height:1.5;margin:0}
+  @media(max-width:600px){.ht-values{grid-template-columns:1fr}}
 
   /* Pipeline cómo funciona */
   .pipeline-flow{display:flex;align-items:stretch;justify-content:center;gap:0;flex-wrap:wrap;margin:24px 0}
@@ -158,60 +152,28 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
 
-      <!-- Dashboard simulado -->
-      <div class="dash" aria-label="Panel de actividad Orion IA en tiempo real">
-        <div class="dash-header">
-          <div class="dash-title">Orion IA · Panel en tiempo real</div>
-          <div class="dash-status">Activo · 24/7</div>
+      <!-- 4 bloques de valor -->
+      <div class="ht-values">
+        <div class="ht-card">
+          <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></span>
+          <p class="ht-t is-p">Voz 24/7 en español natural</p>
+          <p class="ht-s">Atiende a los visitantes de tu web con voz</p>
         </div>
-        <div class="dash-grid">
-          <div class="dash-stat">
-            <div class="l">Conversaciones</div>
-            <div class="v">247</div>
-            <div class="d">últimas 24 h</div>
-          </div>
-          <div class="dash-stat">
-            <div class="l">Leads cualificados</div>
-            <div class="v">18</div>
-            <div class="d">enviados al CRM</div>
-          </div>
-          <div class="dash-stat">
-            <div class="l">Ahorro estimado</div>
-            <div class="v">3.840 €</div>
-            <div class="d">mensual</div>
-          </div>
-          <div class="dash-stat">
-            <div class="l">Sin humano</div>
-            <div class="v">94 %</div>
-            <div class="d">tasa de resolución</div>
-          </div>
+        <div class="ht-card">
+          <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+          <p class="ht-t is-g">Operativo en 7 días</p>
+          <p class="ht-s">Desde la firma hasta tu primer lead</p>
         </div>
-        <div class="dash-bar">
-          <div class="dash-bar-l"><span class="t">Consultas resueltas sin intervención humana</span><span class="p">94 %</span></div>
-          <div class="dash-bar-track"><div class="dash-bar-fill"></div></div>
+        <div class="ht-card">
+          <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7a7 7 0 1 0 0 10"/><line x1="3" y1="10" x2="13" y2="10"/><line x1="3" y1="14" x2="11" y2="14"/></svg></span>
+          <p class="ht-t is-p">Desde 999€ setup</p>
+          <p class="ht-s">+ 199€/mes, sin permanencia</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 00 MÉTRICAS ENTERPRISE -->
-  <section class="hub-sec">
-    <div class="wrap">
-      <h2><span class="num">00</span>Métricas Orion AI</h2>
-      <p class="lead">Cifras agregadas de despliegues Orion AI System en producción.</p>
-      <style>
-        .om-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px;padding:28px;background:linear-gradient(180deg,rgba(124,77,255,.06),var(--card,#111118));border:1px solid rgba(124,77,255,.22);border-radius:16px}
-        @media(max-width:880px){.om-grid{grid-template-columns:repeat(2,1fr);padding:20px}}
-        @media(max-width:480px){.om-grid{grid-template-columns:1fr}}
-        .om-cell{padding:18px;background:rgba(11,15,23,.55);border:1px solid rgba(124,77,255,.14);border-radius:12px;display:flex;flex-direction:column;gap:10px}
-        .om-cell .v{font-family:'Inter',sans-serif;font-size:1.9rem;font-weight:700;background:linear-gradient(135deg,#9d70ff,#c4b3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums}
-        .om-cell .l{font-size:.84rem;color:#9CA3AF;line-height:1.45;letter-spacing:-.005em}
-      </style>
-      <div class="om-grid" role="list">
-        <div class="om-cell" role="listitem"><div class="v">94 %</div><div class="l">Resueltas sin humano</div></div>
-        <div class="om-cell" role="listitem"><div class="v">−87 %</div><div class="l">Coste vs recepcionista jornada completa</div></div>
-        <div class="om-cell" role="listitem"><div class="v">7 días</div><div class="l">Implementación end-to-end</div></div>
-        <div class="om-cell" role="listitem"><div class="v">24/7</div><div class="l">Disponibilidad continua sin descansos</div></div>
+        <div class="ht-card">
+          <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>
+          <p class="ht-t is-g">Sin permanencia</p>
+          <p class="ht-s">Cancela cuando quieras, sin letra pequeña</p>
+        </div>
       </div>
     </div>
   </section>
