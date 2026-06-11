@@ -4,3 +4,6 @@
 .git-commit-msg-tmp.txt
 .pr-body-tmp.md
 .scripts-tmp/
+
+# SEO Guardian generated report (CI artifact)
+seo-guardian-report.md
