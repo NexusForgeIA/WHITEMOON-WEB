@@ -3,7 +3,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // auditoria-geo-notify — notifica por WhatsApp una nueva solicitud de
 // Auditoría GEO IA enviada desde la landing /auditoria-geo-ia/.
 //
-// Recibe (POST JSON): { nombre, empresa, url, sector }
+// Recibe (POST JSON): { nombre, empresa, url, telefono, sector }
 // El lead ya se inserta en leads_web desde el cliente (origen='auditoria-geo-ia');
 // esta función SOLO envía la notificación WhatsApp vía CallMeBot, manteniendo
 // la apikey EXCLUSIVAMENTE en server-side (Deno.env.get).
@@ -44,11 +44,12 @@ Deno.serve(async (req: Request) => {
   const nombre = String(data.nombre ?? "").trim();
   const empresa = String(data.empresa ?? "").trim();
   const url = String(data.url ?? "").trim();
+  const telefono = String(data.telefono ?? "").trim();
   const sector = String(data.sector ?? "").trim();
 
   const message =
     `🔍 Nueva solicitud Auditoría GEO IA: ` +
-    `${nombre} · ${empresa} · ${url} · ${sector}`;
+    `${nombre} · ${empresa} · ${url} · ${telefono} · ${sector}`;
 
   let notified = false;
   try {

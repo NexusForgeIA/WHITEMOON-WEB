@@ -303,6 +303,10 @@
               <input type="email" id="g_email" name="email" placeholder="tu@email.com" autocomplete="email">
             </div>
             <div class="field">
+              <label for="g_telefono">Teléfono<span class="req">*</span></label>
+              <input type="tel" id="g_telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel">
+            </div>
+            <div class="field">
               <label for="g_sector">Sector<span class="req">*</span></label>
               <select id="g_sector" name="sector">
                 <option value="" selected disabled>Selecciona tu sector</option>
@@ -383,7 +387,7 @@
     var btn = document.getElementById('geoSubmit');
     clearMsg();
 
-    var required = ['nombre','empresa','url','email','sector'];
+    var required = ['nombre','empresa','url','email','telefono','sector'];
     var missing = [];
     for(var i=0;i<required.length;i++){ if(!val(form, required[i])) missing.push(required[i]); }
     if(missing.length){
@@ -397,6 +401,7 @@
     var empresa = val(form,'empresa');
     var url = val(form,'url');
     var email = val(form,'email');
+    var telefono = val(form,'telefono');
     var sector = val(form,'sector');
 
     var btnHTML = btn ? btn.innerHTML : '';
@@ -414,7 +419,7 @@
     var payload = {
       nombre: nombre,
       empresa: empresa,
-      telefono: '',
+      telefono: telefono,
       sector: sector,
       interes: 'Auditoría GEO IA',
       mensaje: 'Web: ' + url + ' | Empresa: ' + empresa + ' | Email: ' + email,
@@ -440,7 +445,7 @@
           fetch(NOTIFY_FN, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre: nombre, empresa: empresa, url: url, sector: sector })
+            body: JSON.stringify({ nombre: nombre, empresa: empresa, url: url, telefono: telefono, sector: sector })
           }).catch(function(err){ console.warn('[auditoria-geo-ia] WhatsApp notify falló', err); });
         } catch(e){ console.warn('[auditoria-geo-ia] WhatsApp notify error', e); }
         try {
