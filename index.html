@@ -1021,7 +1021,13 @@
       <p class="sec-sub">Nuestros planes destacados para empezar. <a href="/precios/" style="color:var(--p2);text-decoration:underline;text-underline-offset:3px">Ver catálogo completo →</a></p>
     </div>
 
-    <div class="precios-grid-3">
+    <style>
+      .home-precios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;max-width:1200px;margin:0 auto}
+      .home-precios-grid > div{height:100%;display:flex;flex-direction:column;justify-content:space-between}
+      @media(max-width:900px){.home-precios-grid{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:600px){.home-precios-grid{grid-template-columns:1fr}}
+    </style>
+    <div class="home-precios-grid">
       <!-- SPARK · compacto -->
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em">⭐ MÁS POPULAR</div>
@@ -1032,6 +1038,8 @@
         <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente IA conversacional 24/7</li>
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Captura de leads con notificación WhatsApp</li>
+          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Responde preguntas frecuentes de tu sector</li>
+          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Operativo en 5-7 días · Sin permanencia</li>
         </ul>
         <a href="/spark/" style="display:block;text-align:center;padding:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Pack Spark →</a>
       </div>
@@ -1062,20 +1070,6 @@
           <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Cualifica, recoge datos y agenda</li>
         </ul>
         <a href="/orion-agent/" style="display:block;text-align:center;padding:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Orion IA Agent →</a>
-      </div>
-
-      <!-- AUDITORÍA GEO IA · compacto -->
-      <div style="background:var(--card,#0d0d1a);border:1px solid rgba(245,158,11,.4);border-radius:18px;padding:28px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:#f59e0b;color:#1a1a1a;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em">INFORME 48H</div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fbbf24;margin-bottom:6px">Visibilidad en IA</div>
-        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Auditoría GEO IA</div>
-        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">899€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> pago único</span></div>
-        <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">Entrega en 48h · Sin permanencia</div>
-        <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>¿Apareces en ChatGPT, Grok y Perplexity?</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Informe PDF listo para tu programador</li>
-        </ul>
-        <a href="/auditoria-geo-ia/" style="display:block;text-align:center;padding:11px;background:#f59e0b;color:#1a1a1a;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Auditoría GEO IA →</a>
       </div>
 
     </div>
