@@ -20,8 +20,16 @@ from bs4 import BeautifulSoup, Comment
 BASE_URL = "https://whitemoon.es"
 REPORT_FILE = "seo-guardian-report.md"
 
-# Directorios que son redirects, no páginas reales.
-IGNORED_DIRS = {"scale", "elite", "orion-calls"}
+# Directorios que son redirects (meta-refresh), no páginas reales.
+IGNORED_DIRS = {
+    "scale", "elite", "orion-calls",
+    # Antiguas URLs que ahora redirigen a su slug canónico.
+    "chatbot-abogados-madrid",
+    "chatbot-clinicas-dentales-madrid",
+    "chatbot-ia-abogados-madrid",
+    "chatbot-peluquerias-madrid",
+    "chatbot-talleres-mecanicos-madrid",
+}
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
 # Páginas que legítimamente no van en el sitemap (solo para el check 10 inverso).
@@ -144,7 +152,7 @@ def run_checks():
         8: {"title": "Precios incorrectos en páginas de packs", "sev": "critico", "items": []},
         9: {"title": "Productos retirados en texto visible", "sev": "critico", "items": []},
         10: {"title": "Sitemap vs archivos físicos", "sev": "warning", "items": []},
-        11: {"title": "URLs del sitemap ausentes en llms.txt", "sev": "warning", "items": []},
+        11: {"title": "Enlaces rotos en llms.txt (URLs sin archivo físico)", "sev": "critico", "items": []},
         12: {"title": "FAQPage en JSON-LD sin DOM visible", "sev": "warning", "items": []},
     }
 
@@ -254,12 +262,21 @@ def run_checks():
         if norm not in sitemap_url_set:
             checks[10]["items"].append(f"Archivo sin URL en sitemap: `{relpath}` → {url}")
 
-    # 11 · URLs del sitemap ausentes en llms.txt
+    # 11 · Enlaces rotos en llms.txt — URLs listadas que ya no existen en el repo.
+    # (Antes: URLs del sitemap ausentes en llms.txt → generaba ~150 warnings por
+    #  URLs que deliberadamente no se listan. Invertido para detectar lo realmente
+    #  problemático: enlaces muertos servidos a los LLMs.)
     llms = read_text("llms.txt")
     if llms:
-        for loc in locs:
-            if loc not in llms and loc.rstrip("/") not in llms:
-                checks[11]["items"].append(f"Ausente en llms.txt: {loc}")
+        seen = set()
+        for url in re.findall(r"https?://whitemoon\.es[^\s\"'<>)]*", llms):
+            url = url.rstrip(".,);:")
+            if url in seen:
+                continue
+            seen.add(url)
+            expected = url_to_file(url)
+            if not os.path.exists(expected):
+                checks[11]["items"].append(f"URL en llms.txt sin archivo: {url} → `{expected}`")
     else:
         checks[11]["items"].append("No se encontró llms.txt")
 
@@ -278,8 +295,8 @@ def build_report(checks, fecha):
     lines.append("")
     lines.append("## Resumen")
     lines.append("")
-    lines.append(f"- 🔴 **{critical}** errores críticos (checks 1-9)")
-    lines.append(f"- 🟡 **{warnings}** warnings (checks 10-12)")
+    lines.append(f"- 🔴 **{critical}** errores críticos")
+    lines.append(f"- 🟡 **{warnings}** warnings")
     lines.append("")
 
     if critical == 0 and warnings == 0:
