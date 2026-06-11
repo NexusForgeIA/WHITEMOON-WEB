@@ -22,7 +22,7 @@ REPORT_FILE = "seo-guardian-report.md"
 
 # Directorios que son redirects (meta-refresh), no páginas reales.
 IGNORED_DIRS = {
-    "scale", "elite", "orion-calls",
+    "scale", "elite", "orion-calls", "auditoria-ia",
     # Antiguas URLs que ahora redirigen a su slug canónico.
     "chatbot-abogados-madrid",
     "chatbot-clinicas-dentales-madrid",
