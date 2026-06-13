@@ -233,11 +233,6 @@
   // Endpoint del motor de auditoría (NUNCA se muestra al usuario).
   var AUDIT_ENDPOINT = 'https://whitemoon-seo-geo-ia.onrender.com/audit-public';
 
-  // Captura de lead en Supabase leads_web (regla fija del proyecto:
-  // best-effort, nunca bloquea el flujo del usuario).
-  var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
-  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
-
   var form    = document.getElementById('auditForm');
   var panel   = document.getElementById('auditPanel');
   var loading = document.getElementById('auditLoading');
@@ -249,30 +244,8 @@
   function clearMsg(){ if(msg){ msg.textContent = ''; msg.style.display = 'none'; } }
   function val(name){ var el = form.elements[name]; return el ? (el.value||'').trim() : ''; }
 
-  // --- Helpers de parseo defensivo de la respuesta del motor ---
-  function getPath(obj, path){
-    return path.split('.').reduce(function(o,k){ return (o && o[k] !== undefined) ? o[k] : undefined; }, obj);
-  }
-  function pickNum(obj, keys){
-    for(var i=0;i<keys.length;i++){
-      var v = getPath(obj, keys[i]);
-      if(v !== undefined && v !== null && v !== '' && !isNaN(Number(v))) return Math.round(Number(v));
-    }
-    return null;
-  }
-  function pickArr(obj, keys){
-    for(var i=0;i<keys.length;i++){
-      var v = getPath(obj, keys[i]);
-      if(Array.isArray(v) && v.length) return v;
-    }
-    return [];
-  }
-  function pickStr(obj, keys){
-    for(var i=0;i<keys.length;i++){
-      var v = getPath(obj, keys[i]);
-      if(typeof v === 'string' && v.trim()) return v.trim();
-    }
-    return '';
+  function numOrNull(v){
+    return (v !== undefined && v !== null && v !== '' && !isNaN(Number(v))) ? Math.round(Number(v)) : null;
   }
   function scoreColor(n){
     if(n === null) return 'var(--muted)';
@@ -281,38 +254,13 @@
     return 'var(--bad)';
   }
 
-  function saveLead(nombre, telefono, url){
-    try{
-      var payload = {
-        nombre: nombre,
-        telefono: telefono,
-        sector: 'No especificado',
-        interes: 'Auditoría GEO/SEO gratis',
-        mensaje: 'Web auditada: ' + url,
-        origen: 'auditoria-geo-seo',
-        fecha: new Date().toISOString(),
-        atendido: false
-      };
-      fetch(SUPABASE_URL + '/rest/v1/leads_web', {
-        method: 'POST',
-        headers: {
-          'apikey': SUPABASE_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_KEY,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify(payload)
-      }).catch(function(err){ console.warn('[auditoria-geo-seo] leads_web falló', err); });
-    } catch(e){ console.warn('[auditoria-geo-seo] saveLead error', e); }
-  }
-
   function renderResult(data){
     data = data || {};
-    // Mapeo flexible: si el motor cambia los nombres de campo, ajustar estas listas.
-    var global  = pickNum(data, ['scoreGlobal','score_global','score','global','overall','overallScore','puntuacion','total','scores.global','result.score','data.score']);
-    var tecnico = pickNum(data, ['scoreTecnico','score_tecnico','technical','technicalScore','seo','seoScore','scoreSEO','tecnico','scores.technical','scores.seo']);
-    var ia      = pickNum(data, ['scoreControlIA','score_control_ia','controlIA','aiControl','geo','geoScore','aeo','iaScore','ai','scores.geo','scores.controlIA','scores.ai']);
-    var probs   = pickArr(data, ['problemasCriticos','problemas_criticos','criticalIssues','critical_issues','problemas','issues','problems','errores','errors','criticos','data.issues','result.issues']);
+    // Campos exactos del motor de auditoría.
+    var global  = numOrNull(data.score);
+    var tecnico = numOrNull(data.score_tecnico);
+    var ia      = numOrNull(data.score_control_ia);
+    var probs   = Array.isArray(data.top3_problemas) ? data.top3_problemas : [];
 
     var gEl = document.getElementById('r-global');
     gEl.innerHTML = (global !== null ? global : '—') + '<small>/100</small>';
@@ -332,13 +280,8 @@
     var shown = 0;
     for(var i=0; i<probs.length && shown<3; i++){
       var p = probs[i];
-      var titulo, desc;
-      if(typeof p === 'string'){ titulo = p; desc = ''; }
-      else {
-        titulo = pickStr(p, ['titulo','title','nombre','name','problema','issue','heading','label']);
-        desc   = pickStr(p, ['descripcion','description','detalle','detail','texto','text','recomendacion','recomendación','solucion','fix','impact','impacto']);
-        if(!titulo && desc){ titulo = desc; desc = ''; }
-      }
+      var titulo = (typeof p === 'string') ? p.trim() : (p != null ? String(p).trim() : '');
+      var desc = '';
       if(!titulo) continue;
       shown++;
       var card = document.createElement('div');
@@ -382,8 +325,6 @@
     }
     url = normalizeUrl(url);
 
-    // Captura del lead (best-effort, nunca bloquea).
-    saveLead(nombre, telefono, url);
     try { if(typeof wmTrack === 'function') wmTrack('submit_auditoria_geo_seo', {}); } catch(e){}
 
     btn.disabled = true;
@@ -404,6 +345,7 @@
       if(!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
     }).then(function(data){
+      if(!data || data.ok === false){ showError(); return; }
       renderResult(data);
     }).catch(function(err){
       clearTimeout(timeout);
