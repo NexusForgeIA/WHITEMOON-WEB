@@ -52,10 +52,20 @@
 <link rel="preload" as="font" href="/assets/fonts/inter-latin.woff2" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/site.css">
+<style>
+  /* Sticky help bar (solo página de precios) */
+  #precios-sticky{position:fixed;top:0;left:0;width:100%;z-index:999;background:var(--p);color:#fff;font-size:14px;line-height:1.3;text-align:center;padding:10px;border:0;cursor:pointer;font-family:inherit;font-weight:600}
+  #precios-sticky:hover{filter:brightness(1.08)}
+  /* La navbar fija baja la altura del sticky bar para no quedar tapada (scoped: no afecta a site.css) */
+  .navbar{top:40px}
+  @media(max-width:480px){#precios-sticky{font-size:13px;padding:9px 8px}}
+</style>
 <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
 </head>
 <body>
+
+<button id="precios-sticky" type="button" onclick="wmTrack&amp;&amp;wmTrack('click_precios_sticky',{action:'abrir-orion'});document.getElementById('luna-btn')?.click()">¿Tienes dudas? Orion te ayuda a elegir →</button>
 
 <nav class="navbar">
   <div class="wrap">
@@ -73,7 +83,7 @@
 </nav>
 
 <main>
-  <div class="wrap" style="padding-top:90px">
+  <div class="wrap" style="padding-top:130px">
     <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:18px">
       <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Precios
     </div>
