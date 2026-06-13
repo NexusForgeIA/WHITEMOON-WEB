@@ -89,12 +89,12 @@
 
 <nav>
   <div class="wrap nav-in">
-    <a href="https://whitemoon.es/" onclick="return false;" style="cursor:pointer">
+    <a href="https://whitemoon.es/" style="cursor:pointer">
       <img class="nav-logo" src="/logo.png" alt="WhiteMoon Agencia de IA" width="140" height="52">
     </a>
     <div style="display:flex;align-items:center;gap:16px;">
       <a href="https://whitemoon.es/" class="nav-back">← Ver todos los servicios</a>
-      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="nav-cta" target="_blank" rel="noopener">Contactar →</a>
+      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="nav-cta" target="_blank" rel="noopener" onclick="wmTrack&amp;&amp;wmTrack('click_whatsapp',{source:'core',placement:'navbar'})">Contactar →</a>
     </div>
   </div>
 </nav>
@@ -115,8 +115,8 @@
       <h1>Pack Core<br><span>Web + Orion IA voz 1.800€+199€/mes</span></h1>
       <p class="hero-sub">Web profesional + Orion IA voz + SEO técnico y GEO/AEO — tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1. Operativo en 5-7 días.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="btn-prim" target="_blank" rel="noopener">Contratar Core por WhatsApp →</a>
-        <a href="https://whitemoon.es/#precios" class="btn-sec">Ver todos los packs</a>
+        <button type="button" class="btn-prim" onclick="wmTrack&amp;&amp;wmTrack('click_open_orion',{source:'core',placement:'hero'});document.getElementById('luna-btn')?.click()" style="border:0;font-family:inherit;cursor:pointer">Habla con Orion →</button>
+        <a href="https://whitemoon.es/#precios" class="btn-sec" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'core',action:'ver-packs'})">Ver todos los packs</a>
       </div>
     </div>
   </section>
@@ -164,7 +164,7 @@
         <div class="pack-price">1.800€ + 199€/mes</div>
         <div class="pack-period">setup único · cuota mensual sin permanencia</div>
         <div class="pack-setup">Web + dominio + Orion IA voz + reservas + SEO técnico + GEO/AEO + soporte</div>
-        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;width:100%;text-align:center;">Solicitar información →</a>
+        <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="btn-prim" target="_blank" rel="noopener" onclick="wmTrack&amp;&amp;wmTrack('click_whatsapp',{source:'core',placement:'pack-box'})" style="display:inline-block;width:100%;text-align:center;">Solicitar información →</a>
         <div class="pack-iva">* IVA no incluido · Sin permanencia · Operativa en 5-7 días</div>
       </div>
     </div>
@@ -201,7 +201,7 @@
     <div class="wrap">
       <h2>¿Lanzamos tu web Core?</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Demo gratuita sin compromiso · Operativa en 5-7 días · Sin permanencia</p>
-      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="btn-prim" target="_blank" rel="noopener" style="display:inline-block;margin-top:16px;">Contratar Core por WhatsApp →</a>
+      <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20quiero%20el%20Pack%20Core" class="btn-prim" target="_blank" rel="noopener" onclick="wmTrack&amp;&amp;wmTrack('click_whatsapp',{source:'core',placement:'cta-final'})" style="display:inline-block;margin-top:16px;">Contratar Core por WhatsApp →</a>
       <span class="cta-tel">☎ 643 199 580</span>
       <p style="font-size:.8rem;color:#5a5a70;">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
     </div>
