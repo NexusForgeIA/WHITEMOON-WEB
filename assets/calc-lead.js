@@ -75,4 +75,65 @@
 
     return false;
   };
+
+  // -------------------------------------------------------------
+  // Captura de email OPCIONAL tras el resultado de la calculadora.
+  //   <form class="calc-email-form"
+  //         onsubmit="return wmCalcEmailSubmit(event,this,'calculadora-X','Nómina')">
+  //     <input type="email" name="email"> <button>Enviar</button>
+  //     <div class="calc-email-ok"></div>
+  //   </form>
+  // No bloquea el resultado. leads_web no tiene columna email: se
+  // incrusta en `mensaje` (mismo criterio que las landings de auditoría).
+  // -------------------------------------------------------------
+  function showEmailOk(form){
+    var ok = form.querySelector('.calc-email-ok');
+    if(ok){
+      ok.textContent = '✅ Enviado. Te contactaremos si tienes dudas.';
+      ok.style.display = 'block';
+    }
+    form.querySelectorAll('input, button').forEach(function(el){ el.style.display = 'none'; });
+  }
+
+  window.wmCalcEmailSubmit = function(event, form, source, label){
+    if(event && event.preventDefault) event.preventDefault();
+    var email = (form.querySelector('input[name="email"]') || {}).value;
+    email = (email || '').trim();
+    if(!email){ return false; }
+
+    var btn = form.querySelector('button[type="submit"]');
+    if(btn){ btn.disabled = true; btn.textContent = 'Enviando...'; }
+    form.querySelectorAll('input').forEach(function(i){ i.disabled = true; });
+
+    if(typeof window.wmTrack === 'function'){
+      var slug = source.replace(/^calculadora-/, '').replace(/-/g, '_');
+      window.wmTrack('click_calculadora_email_' + slug, { source: source });
+    }
+
+    var payload = {
+      nombre: 'Solicitud por email',
+      telefono: '',
+      sector: 'calculadora',
+      interes: 'Resultado calculadora ' + label,
+      mensaje: 'Solicitó resultado de calculadora ' + label + ' · Email: ' + email,
+      preferencia: 'email',
+      origen: source,
+      fecha: new Date().toISOString()
+    };
+
+    fetch(SUPABASE_URL + '/rest/v1/leads_web', {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(function(r){ if(!r.ok){ console.warn('calc_email HTTP ' + r.status); } showEmailOk(form); })
+    .catch(function(err){ console.warn('calc_email error:', err); showEmailOk(form); });
+
+    return false;
+  };
 })();

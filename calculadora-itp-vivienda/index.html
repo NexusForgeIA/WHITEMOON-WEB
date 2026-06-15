@@ -164,6 +164,18 @@
             <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
             <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
           </form>
+          <!-- Captura de email OPCIONAL (no bloquea el resultado) -->
+          <div class="calc-email-block" style="max-width:420px;margin:16px auto 0;padding:14px 16px;background:rgba(124,77,255,.05);border:1px solid var(--border,rgba(124,77,255,.18));border-radius:12px;text-align:center">
+            <form class="calc-email-form" onsubmit="return wmCalcEmailSubmit(event,this,'calculadora-itp-vivienda','ITP Vivienda')">
+              <div style="font-size:13px;color:#c0c0d0;margin-bottom:10px">📧 Recibe este cálculo en tu email <span style="color:#8888a0">(opcional)</span></div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <input type="email" name="email" placeholder="tu@email.com" required style="flex:1;min-width:160px;padding:11px 13px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+                <button type="submit" style="padding:11px 20px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Enviar</button>
+              </div>
+              <div class="calc-email-ok" role="status" aria-live="polite" style="display:none;margin-top:10px;padding:11px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;font-size:14px"></div>
+            </form>
+          </div>
+
         </div>
       </div>
     </div>
