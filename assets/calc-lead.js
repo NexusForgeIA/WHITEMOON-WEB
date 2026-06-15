@@ -83,8 +83,8 @@
   //     <input type="email" name="email"> <button>Enviar</button>
   //     <div class="calc-email-ok"></div>
   //   </form>
-  // No bloquea el resultado. leads_web no tiene columna email: se
-  // incrusta en `mensaje` (mismo criterio que las landings de auditoría).
+  // No bloquea el resultado. El email se guarda en la columna dedicada
+  // `email` de leads_web. Best-effort: si falla -> console.warn.
   // -------------------------------------------------------------
   function showEmailOk(form){
     var ok = form.querySelector('.calc-email-ok');
@@ -113,9 +113,10 @@
     var payload = {
       nombre: 'Solicitud por email',
       telefono: '',
+      email: email,
       sector: 'calculadora',
       interes: 'Resultado calculadora ' + label,
-      mensaje: 'Solicitó resultado de calculadora ' + label + ' · Email: ' + email,
+      mensaje: 'Solicitó resultado de calculadora ' + label,
       preferencia: 'email',
       origen: source,
       fecha: new Date().toISOString()
