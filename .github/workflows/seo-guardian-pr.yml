@@ -1,0 +1,89 @@
+name: SEO Guardian (PR)
+
+# Ejecuta el SEO Guardian en cada Pull Request a main.
+# - Errores críticos  -> exit 1  -> el check falla -> PR bloqueado (no se puede mergear).
+# - Solo warnings      -> exit 0  -> PR mergeable, pero los warnings se muestran en el summary.
+# Los errores críticos exactos se publican como anotaciones del check para que se sepa qué corregir.
+on:
+  pull_request:
+    branches: [main]
+
+# Fuerza el runtime Node.js 24 en las JavaScript actions, igual que el workflow semanal.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+permissions:
+  contents: read
+
+jobs:
+  seo-guardian-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install beautifulsoup4 requests
+
+      # Mismo script que el workflow semanal. No se pasa CALLMEBOT_API_KEY:
+      # en PRs no enviamos notificación de WhatsApp (la omite el script).
+      - name: Run SEO Guardian
+        run: python seo_guardian.py
+
+      # Publica el informe en el summary del check, emite anotaciones con los
+      # errores críticos/warnings exactos y bloquea el PR solo si hay críticos.
+      - name: Publish results and gate PR
+        if: always()
+        run: |
+          python3 <<'PY'
+          import os, re, sys
+
+          try:
+              report = open("seo-guardian-report.md", encoding="utf-8").read()
+          except FileNotFoundError:
+              print("::error::No se generó seo-guardian-report.md (el script falló antes de escribirlo).")
+              sys.exit(1)
+
+          def count(label):
+              m = re.search(r"\*\*(\d+)\*\* " + label, report)
+              return int(m.group(1)) if m else 0
+
+          critical = count("errores")
+          warnings = count("warnings")
+
+          # Items por severidad: 🔴 = crítico, 🟡 = warning (según el heading del check).
+          crit_items, warn_items = [], []
+          current = None
+          for line in report.splitlines():
+              h = re.match(r"### (🔴|🟡) (Check .+)", line)
+              if h:
+                  current = "crit" if h.group(1) == "🔴" else "warn"
+                  current_title = h.group(2).strip()
+                  continue
+              if current and line.startswith("- "):
+                  (crit_items if current == "crit" else warn_items).append((current_title, line[2:].strip()))
+
+          # Anotaciones en el check del PR (visibles en Files changed / Checks).
+          for title, item in crit_items:
+              print(f"::error title=SEO Guardian · {title}::{item}")
+          for title, item in warn_items:
+              print(f"::warning title=SEO Guardian · {title}::{item}")
+
+          # Informe completo en el summary del check.
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a", encoding="utf-8") as fh:
+                  fh.write(report + "\n")
+
+          # Gate: solo los críticos bloquean el PR.
+          if critical > 0:
+              print(f"::error::SEO Guardian: {critical} errores críticos — PR bloqueado hasta corregirlos.")
+              sys.exit(1)
+
+          print(f"SEO Guardian OK: 0 errores críticos, {warnings} warnings (los warnings no bloquean el merge).")
+          PY
