@@ -38,3 +38,21 @@ jobs:
           name: seo-guardian-report
           path: seo-guardian-report.md
           retention-days: 30
+
+      # Falla el job SOLO si hay errores críticos (los warnings no fallan).
+      # Va después de subir el report para que el artefacto se conserve aunque falle.
+      - name: Fail on critical errors
+        if: always()
+        run: |
+          if [ ! -f seo-guardian-report.md ]; then
+            echo "No se generó seo-guardian-report.md (fallo previo); nada que evaluar."
+            exit 0
+          fi
+          crit=$(grep -oE '\*\*[0-9]+\*\* errores' seo-guardian-report.md | grep -oE '[0-9]+' | head -1)
+          crit=${crit:-0}
+          echo "Errores críticos detectados: $crit"
+          if [ "$crit" -gt 0 ]; then
+            echo "::error::SEO Guardian detectó $crit errores críticos."
+            exit 1
+          fi
+          echo "Sin errores críticos. Los warnings no fallan el job."
