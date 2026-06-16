@@ -1338,7 +1338,24 @@
     #wm-sticky-cta.wm-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
   }
 </style>
-<script src="/orion-widget.js?v=2026060801" defer></script>
+<!-- orion-widget.js (SDK de voz Retell, pesado): carga diferida al primer
+     scroll/interacción o a los 3 s, para no competir con el LCP del hero. -->
+<script>
+(function(){
+  var done = false;
+  function loadOrion(){
+    if(done) return; done = true;
+    var s = document.createElement('script');
+    s.src = '/orion-widget.js?v=2026060801';
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+  ['scroll','pointerdown','keydown','touchstart'].forEach(function(ev){
+    window.addEventListener(ev, loadOrion, { once:true, passive:true });
+  });
+  setTimeout(loadOrion, 3000);
+})();
+</script>
 <script src="/assets/orion-voz-live.js?v=2026061501" defer></script>
 
 </body>
