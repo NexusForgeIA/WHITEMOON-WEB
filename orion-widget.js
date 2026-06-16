@@ -39,14 +39,15 @@
   if (document.getElementById("luna-widget")) return;
 
   // -----------------------------------------------------------
-  // 2) Preconnects (perf) — esm.sh para el SDK + Supabase edge.
+  // 2) Preconnect (perf) — solo Supabase edge (el SDK de esm.sh solo se
+  //    usa al iniciar la llamada). Se evita duplicar si ya existe.
   // -----------------------------------------------------------
-  ["https://esm.sh", "https://mlaqtniujnvfxcvcourm.supabase.co"].forEach((href) => {
+  if (!document.querySelector('link[rel="preconnect"][href="https://mlaqtniujnvfxcvcourm.supabase.co"]')) {
     const l = document.createElement("link");
     l.rel = "preconnect";
-    l.href = href;
+    l.href = "https://mlaqtniujnvfxcvcourm.supabase.co";
     document.head.appendChild(l);
-  });
+  }
 
   // -----------------------------------------------------------
   // 3) CSS — copia fiel del bloque inline en index.html.
@@ -110,7 +111,7 @@
   widget.setAttribute("aria-label", "Asistente de voz Orion IA");
   widget.innerHTML = `
     <div class="luna-avatar">
-      <img src="/assets/images/icono.jpg" alt="WhiteMoon IA" width="72" height="72" decoding="async" loading="lazy" style="border-radius:50%;object-fit:cover;border:2px solid rgba(124,77,255,0.4);">
+      <img src="/assets/images/icono.webp" alt="WhiteMoon IA" width="72" height="72" decoding="async" loading="lazy" style="border-radius:50%;object-fit:cover;border:2px solid rgba(124,77,255,0.4);">
     </div>
     <div class="luna-info">
       <div class="luna-name">Orion IA</div>

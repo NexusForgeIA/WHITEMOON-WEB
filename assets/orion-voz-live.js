@@ -28,13 +28,13 @@
   );
   if (!buttons.length) return;
 
-  // Preconnects (perf): esm.sh para el SDK + Supabase edge.
-  ["https://esm.sh", "https://mlaqtniujnvfxcvcourm.supabase.co"].forEach((href) => {
+  // Preconnect (perf): solo Supabase edge; se evita duplicar si ya existe.
+  if (!document.querySelector('link[rel="preconnect"][href="https://mlaqtniujnvfxcvcourm.supabase.co"]')) {
     const l = document.createElement("link");
     l.rel = "preconnect";
-    l.href = href;
+    l.href = "https://mlaqtniujnvfxcvcourm.supabase.co";
     document.head.appendChild(l);
-  });
+  }
 
   // CSS del botón (verde · diferenciado del CTA de chat púrpura).
   const css = `
