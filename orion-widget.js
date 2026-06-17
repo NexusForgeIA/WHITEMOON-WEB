@@ -39,17 +39,6 @@
   if (document.getElementById("luna-widget")) return;
 
   // -----------------------------------------------------------
-  // 2) Preconnect (perf) — solo Supabase edge (el SDK de esm.sh solo se
-  //    usa al iniciar la llamada). Se evita duplicar si ya existe.
-  // -----------------------------------------------------------
-  if (!document.querySelector('link[rel="preconnect"][href="https://mlaqtniujnvfxcvcourm.supabase.co"]')) {
-    const l = document.createElement("link");
-    l.rel = "preconnect";
-    l.href = "https://mlaqtniujnvfxcvcourm.supabase.co";
-    document.head.appendChild(l);
-  }
-
-  // -----------------------------------------------------------
   // 3) CSS — copia fiel del bloque inline en index.html.
   // -----------------------------------------------------------
   const css = `
