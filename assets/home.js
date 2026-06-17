@@ -227,8 +227,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 
 // === Bloque 4 ===
 function calcROIHome(){
-  var leads=parseInt(document.getElementById('h-sl-leads').value);
-  var valor=parseInt(document.getElementById('h-sl-valor').value);
+  var slLeads=document.getElementById('h-sl-leads');
+  var slValor=document.getElementById('h-sl-valor');
+  if(!slLeads || !slValor) return; // guard: la calculadora ROI puede no estar en el DOM
+  var leads=parseInt(slLeads.value);
+  var valor=parseInt(slValor.value);
   var conv=0.30;
   var coste=199;
   var perdida=Math.round(leads*valor*conv);
