@@ -28,14 +28,6 @@
   );
   if (!buttons.length) return;
 
-  // Preconnect (perf): solo Supabase edge; se evita duplicar si ya existe.
-  if (!document.querySelector('link[rel="preconnect"][href="https://mlaqtniujnvfxcvcourm.supabase.co"]')) {
-    const l = document.createElement("link");
-    l.rel = "preconnect";
-    l.href = "https://mlaqtniujnvfxcvcourm.supabase.co";
-    document.head.appendChild(l);
-  }
-
   // CSS del botón (verde · diferenciado del CTA de chat púrpura).
   const css = `
     .orion-voz-live-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;

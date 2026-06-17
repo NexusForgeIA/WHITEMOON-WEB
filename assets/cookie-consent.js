@@ -1,11 +1,11 @@
 /* WhiteMoon — consentimiento de cookies (RGPD/LOPD-GDD)
-   Consent Mode V2 de Google (modo Advanced):
-   · gtag.js se carga SIEMPRE, también para usuarios sin decisión o
-     que rechazan analítica.
-   · Estado de consentimiento por defecto: 'denied' (analytics_storage
-     y ad_storage). Con denied, Google NO usa cookies; sólo envía
-     pings sin identificadores para conversion modeling.
-   · Si el usuario acepta -> gtag('consent','update', granted).
+   Consentimiento previo (opt-in) para Google Analytics 4:
+   · gtag.js NO se inyecta hasta que el usuario acepta la analítica.
+   · Primera visita o "Solo esenciales" -> no se carga GA4 ni se hace
+     ninguna petición a Google.
+   · Al aceptar -> gtag('consent','update', granted) + se inyecta gtag.js.
+   · Visitante recurrente que ya aceptó ('all') -> GA4 se carga al inicio.
+   · Se mantiene el bootstrap de Consent Mode V2 (default 'denied').
    · Decisión persistida en localStorage (clave wm_cookie_consent). */
 (function () {
   'use strict';
@@ -49,9 +49,9 @@
     'wait_for_update':   500
   });
 
-  // Carga única de Google Analytics 4 (siempre, modo Advanced).
-  // Con consent denied envía pings sin cookies; con granted, hits
-  // completos. La transición denied->granted no requiere recarga.
+  // Carga de Google Analytics 4. SOLO se invoca tras aceptar la analítica
+  // ('all') o para visitantes recurrentes que ya aceptaron (ver init()).
+  // No se llama en la carga inicial: sin consentimiento, ninguna petición a Google.
   function loadGA() {
     if (window.__wmGALoaded) return;
     window.__wmGALoaded = true;
@@ -62,7 +62,6 @@
     gtag('js', new Date());
     gtag('config', GA_ID, { 'send_page_view': true, 'transport_type': 'beacon' });
   }
-  loadGA();
 
   // ---------- UI del banner ----------
 
@@ -129,6 +128,7 @@
       'analytics_storage': 'granted',
       'ad_storage':        'granted'
     });
+    loadGA(); // inyecta GA4 solo ahora, tras el consentimiento del usuario
     removeBanner();
   }
   function essentialOnly() {
@@ -140,9 +140,11 @@
 
   function init() {
     var consent = getConsent();
-    if (consent === 'all' || consent === 'essential') {
-      // Decisión previa ya aplicada vía el 'default' configurado
-      // antes de cargar gtag.js. No mostrar banner.
+    if (consent === 'all') {
+      // Visitante recurrente que ya aceptó -> cargar GA4 (sin banner).
+      loadGA();
+    } else if (consent === 'essential') {
+      // Rechazó la analítica: NO se carga GA4. Sin banner.
     } else {
       showBanner();
     }
