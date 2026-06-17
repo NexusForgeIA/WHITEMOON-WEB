@@ -1,0 +1,5 @@
+# Redirecciones 301 — WhiteMoon
+# La landing del CRM legal se renombró /justucia/ → /justicia/.
+# Mantiene el enlace antiguo funcionando (incluye subrutas).
+/justucia        /justicia        301
+/justucia/*      /justicia/:splat 301
