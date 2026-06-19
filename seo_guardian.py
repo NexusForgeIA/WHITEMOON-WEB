@@ -57,6 +57,10 @@ RETIRED_PATTERNS = {
     "Scale": re.compile(r"\bScale\b"),
     "Elite": re.compile(r"\bElite\b"),
 }
+# Prefijos exentos del check 9: líneas de producto distintas donde estos nombres
+# son legítimos (ej.: JusticIA usa "Elite" como nombre de un plan de precios,
+# no como el pack retirado de la agencia).
+RETIRED_EXEMPT_PREFIXES = ("justicia/",)
 
 PHONE = "34643199580"
 
@@ -227,8 +231,11 @@ def run_checks():
             if found_prices:
                 checks[8]["items"].append(f"`{relpath}` — {', '.join(found_prices)}")
 
-        # 9 · productos retirados
-        found_retired = [name for name, rx in RETIRED_PATTERNS.items() if rx.search(visible_text)]
+        # 9 · productos retirados (omitiendo líneas de producto exentas)
+        if relpath.startswith(RETIRED_EXEMPT_PREFIXES):
+            found_retired = []
+        else:
+            found_retired = [name for name, rx in RETIRED_PATTERNS.items() if rx.search(visible_text)]
         if found_retired:
             checks[9]["items"].append(f"`{relpath}` — {', '.join(found_retired)}")
 
