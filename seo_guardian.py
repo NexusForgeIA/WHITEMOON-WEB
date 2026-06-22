@@ -57,10 +57,9 @@ RETIRED_PATTERNS = {
     "Scale": re.compile(r"\bScale\b"),
     "Elite": re.compile(r"\bElite\b"),
 }
-# Prefijos exentos del check 9: líneas de producto distintas donde estos nombres
-# son legítimos (ej.: JusticIA usa "Elite" como nombre de un plan de precios,
-# no como el pack retirado de la agencia).
-RETIRED_EXEMPT_PREFIXES = ("justicia/",)
+# Prefijos exentos del check 9: líneas de producto distintas donde los nombres
+# de packs retirados son legítimos. Sin exenciones activas.
+RETIRED_EXEMPT_PREFIXES = ()
 
 PHONE = "34643199580"
 
