@@ -1,0 +1,122 @@
+name: IndexNow
+
+# Notifica a los buscadores (Bing, Yandex, Seznam, Naver…) vía IndexNow cuando
+# cambian páginas. https://www.indexnow.org/
+#
+# - push a main  -> envía solo las URLs de los HTML añadidos/modificados en el push
+#                   (omite redirect stubs noindex).
+# - cron semanal -> reenvía todas las URLs del sitemap.xml como respaldo.
+# - manual       -> workflow_dispatch reenvía todo el sitemap.
+#
+# La clave IndexNow es pública por diseño: se sirve en
+# https://whitemoon.es/a56d9ee0d604484ab352f663195bd14a.txt y se referencia
+# como keyLocation. No es un secreto, por eso va en el propio workflow.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.html'
+  schedule:
+    - cron: '0 6 * * 1'   # Lunes 06:00 UTC — respaldo semanal con todo el sitemap
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HOST: whitemoon.es
+  KEY: a56d9ee0d604484ab352f663195bd14a
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Historial completo para poder diferenciar el rango del push.
+          fetch-depth: 0
+
+      - name: Construir lista de URLs
+        id: build
+        run: |
+          set -euo pipefail
+
+          file_to_url() {
+            local f="${1#./}"
+            if [ "$f" = "index.html" ]; then
+              echo "https://${HOST}/"
+            elif [[ "$f" == */index.html ]]; then
+              echo "https://${HOST}/${f%index.html}"
+            elif [[ "$f" == *.html ]]; then
+              echo "https://${HOST}/${f}"
+            fi
+          }
+
+          urls=()
+
+          if [ "${{ github.event_name }}" = "push" ]; then
+            base="${{ github.event.before }}"
+            head="${{ github.sha }}"
+            if [ -z "$base" ] || [[ "$base" =~ ^0+$ ]] || ! git cat-file -e "$base^{commit}" 2>/dev/null; then
+              changed="$(git diff-tree --no-commit-id --name-only -r "$head")"
+            else
+              changed="$(git diff --name-only "$base" "$head")"
+            fi
+            while IFS= read -r f; do
+              [ -n "$f" ] || continue
+              [[ "$f" == *.html ]] || continue
+              # El archivo puede haberse borrado en el push: solo enviamos los que existen.
+              [ -f "$f" ] || continue
+              # Omitimos páginas noindex (redirect stubs): no deben indexarse.
+              if grep -qi 'name="robots"[^>]*noindex' "$f"; then
+                echo "skip noindex: $f"
+                continue
+              fi
+              u="$(file_to_url "$f")"
+              [ -n "$u" ] && urls+=("$u")
+            done <<< "$changed"
+          else
+            # schedule / manual: todas las URLs del sitemap.
+            while IFS= read -r loc; do
+              [ -n "$loc" ] && urls+=("$loc")
+            done < <(grep -oP '(?<=<loc>)[^<]+(?=</loc>)' sitemap.xml | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+          fi
+
+          if [ "${#urls[@]}" -eq 0 ]; then
+            echo "No hay URLs que enviar."
+            echo "count=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Dedupe y orden estable.
+          mapfile -t urls < <(printf '%s\n' "${urls[@]}" | awk 'NF' | sort -u)
+
+          echo "URLs a enviar (${#urls[@]}):"
+          printf '  %s\n' "${urls[@]}"
+
+          jq -n \
+            --arg host "$HOST" \
+            --arg key "$KEY" \
+            --arg kl "https://${HOST}/${KEY}.txt" \
+            '{host:$host, key:$key, keyLocation:$kl, urlList:$ARGS.positional}' \
+            --args "${urls[@]}" > payload.json
+
+          echo "count=${#urls[@]}" >> "$GITHUB_OUTPUT"
+
+      - name: Enviar a IndexNow
+        if: steps.build.outputs.count != '0'
+        run: |
+          set -euo pipefail
+          code="$(curl -sS -o resp.txt -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data @payload.json)"
+          echo "HTTP $code"
+          cat resp.txt || true
+          # IndexNow responde 200 (OK) o 202 (Accepted) en caso de éxito.
+          if [ "$code" != "200" ] && [ "$code" != "202" ]; then
+            echo "::error::IndexNow devolvió HTTP $code"
+            exit 1
+          fi
