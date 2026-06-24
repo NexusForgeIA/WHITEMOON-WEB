@@ -130,8 +130,19 @@
 
       <style>
         .pg-clean{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;max-width:1200px;margin:0 auto}
-        .pg-clean > div{height:100%}
+        /* Cada card = columna flex a altura completa de su fila */
+        .pg-clean > div{height:100%;display:flex;flex-direction:column}
+        /* La imagen superior no se comprime */
+        .pg-clean > div > div:first-child{flex-shrink:0}
+        /* El bloque de contenido crece para llenar la card */
+        .pg-clean > div > div:last-child{flex:1 1 auto;display:flex;flex-direction:column}
+        /* La lista de características empuja los CTA siempre al fondo */
+        .pg-clean > div > div:last-child > div:last-of-type{flex:1 1 auto}
         .pg-extra{display:flex;justify-content:center;max-width:1200px;margin:24px auto 0}
+        .pg-extra > div{display:flex;flex-direction:column}
+        .pg-extra > div > div:first-child{flex-shrink:0}
+        .pg-extra > div > div:last-child{flex:1 1 auto;display:flex;flex-direction:column}
+        .pg-extra > div > div:last-child > div:last-of-type{flex:1 1 auto}
         @media(max-width:900px){.pg-clean{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:600px){.pg-clean{grid-template-columns:1fr}}
       </style>
