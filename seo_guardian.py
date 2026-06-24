@@ -29,6 +29,9 @@ IGNORED_DIRS = {
     "chatbot-ia-abogados-madrid",
     "chatbot-peluquerias-madrid",
     "chatbot-talleres-mecanicos-madrid",
+    # URLs con 404 en Search Console reconvertidas en stubs meta-refresh.
+    "chatbot-ia-abogados-majadahonda",
+    "n8n-claude-api-automatizacion",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
