@@ -2,3 +2,7 @@
 # Orion IA Calls retirado del catálogo → Orion IA Agent.
 /orion-calls     /orion-agent/    301
 /orion-calls/*   /orion-agent/    301
+
+# URLs con 404 en Search Console → destino correcto.
+/chatbot-ia-abogados-majadahonda/    /chatbot-abogados-ia-majadahonda/    301
+/blog/n8n-claude-api-automatizacion/    /blog/    301
