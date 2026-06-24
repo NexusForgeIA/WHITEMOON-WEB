@@ -15,7 +15,8 @@ Orion IA — agente de voz conversacional en la WEB que atiende a los visitantes
 ## Productos y precios (catálogo vigente)
 - Spark: 499€ setup + 199€/mes — agente IA conversacional 24/7 en tu web
 - Orion IA Agent: 999€ setup + 199€/mes — agente de voz en tu web
-- Core: 1.800€ setup + 199€/mes — web profesional + agente IA + SEO/GEO/AEO
+- Core Spark Web: 1.800€ setup + 199€/mes — web profesional + dominio + Agente Spark conversacional 24/7 + SEO/GEO/AEO
+- Core Orion: 2.899€ setup + 199€/mes — web profesional + dominio + Orion IA voz 24/7 + SEO/GEO/AEO
 - Core RAG: 3.200€ setup + 349€/mes — agente IA entrenado con tus documentos (100 docs, 1.000 consultas/mes)
 - Auditoría IA: 899€ pago único — diagnóstico + auditoría GEO/AEO
 - Calculadora ITP Pro: 599€ setup + 99€/mes — herramienta para gestorías
