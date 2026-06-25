@@ -12,23 +12,25 @@
   - Fixes críticos de producción (chatbot roto, leads sin capturar, web caída) → commit directo a main permitido
   - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
   - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
-- Catálogo vigente: SOLO 4 packs → Spark · Orion IA Agent · Core · Core RAG. Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
-- Plazos: "5-7 días laborables" para Spark, Orion IA Agent, Core y Core RAG.
+- Catálogo vigente: SOLO 5 packs → Spark · Orion IA Agent · Core Spark Web · Core Orion · Core RAG. Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
+- Plazos: "5-7 días laborables" para Spark, Orion IA Agent, Core Spark Web, Core Orion y Core RAG.
 - Precios actuales:
-  - Spark: 499€ setup + 199€/mes · Sin permanencia · Laura IA en web existente
-  - Orion IA Agent: 999€ setup + 199€/mes · Sin permanencia · Agente IA conversacional 24/7 embebido en tu web
-  - Core: 1.800€ setup + 199€/mes · Sin permanencia · Web nueva + Laura IA (para quien NO tiene web)
-  - Core RAG: 3.200€ setup + 349€/mes · Sin permanencia · Laura IA con docs propios (100 docs, 1.000 consultas/mes) — SIN web
+  - Spark: 499€ setup + 199€/mes · Sin permanencia · Agente conversacional por texto en web existente
+  - Orion IA Agent: 999€ setup + 199€/mes · Sin permanencia · Agente de voz 24/7 en español natural, embebido en tu web actual
+  - Core Spark Web: 1.800€ setup + 199€/mes · Sin permanencia · Web nueva + agente de texto + SEO/GEO (para quien NO tiene web)
+  - Core Orion: 2.899€ setup + 199€/mes · Sin permanencia · Web nueva + agente de voz + SEO/GEO desde el día 1 (para quien NO tiene web)
+  - Core RAG: 3.200€ setup + 349€/mes · Sin permanencia · Agente de voz con docs propios (100 docs, 1.000 consultas/mes) — SIN web
   - Auditoría: 899€ pago único
 - Permanencia: ningún pack tiene permanencia. 30 días de aviso para cancelar.
 - Core RAG: SIN diseño web incluido — solo agente IA RAG
-- Laura IA NUNCA recomienda Core si el cliente ya tiene web (→ Spark)
+- Laura IA NUNCA recomienda Core Spark Web ni Core Orion si el cliente ya tiene web (→ Spark u Orion IA Agent)
 - Laura IA NUNCA recomienda RAG sin documentos propios del cliente
 - Oferta Spark: primer mes GRATIS hasta el 26 mayo
 - Sin testimonios ficticios
 - Sin menciones a Orbit o packs obsoletos
 - Fundada en 2025
-- Descripción del Pack Core: "Web profesional + chatbot IA + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." (incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp, responsive; 1.800€ setup + 199€/mes, operativo en 5-7 días, sin permanencia)
+- Descripción del Pack Core Spark Web: "Web profesional + chatbot IA por texto + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." (incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7 por texto, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp, responsive; 1.800€ setup + 199€/mes, operativo en 5-7 días, sin permanencia)
+- Descripción del Pack Core Orion: igual que Core Spark Web pero con agente de voz 24/7 en español natural en lugar de chatbot por texto (2.899€ setup + 199€/mes, operativo en 5-7 días, sin permanencia)
 
 ## Captación de leads (chatbot · Supabase `leads_web`) — REGLA FIJA
 Aplica a todos los flujos, presentes y futuros:
