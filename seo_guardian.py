@@ -39,7 +39,11 @@ IGNORED_FILES = {"google0f366eade019ef7a.html"}
 SKIP_SITEMAP_FILES = {"404.html"}
 
 # Precios incorrectos / obsoletos a vigilar en texto visible.
-BAD_PRICES = ["4.500€", "8.500€", "1.499€"]
+# 4.500€/8.500€ = packs Scale/Elite retirados.
+# 2.899€/1.800€/3.200€/999€ = precios de packs anteriores a la tarifa 2026
+# (Core Orion, Core Spark Web, Core RAG, Orion IA Agent). 1.499€ ya NO es
+# obsoleto: es el nuevo setup de Core Orion.
+BAD_PRICES = ["4.500€", "8.500€", "2.899€", "1.800€", "3.200€", "999€"]
 # El check 8 solo aplica a páginas de packs / precios: ahí un precio obsoleto
 # es un error real. En las calculadoras estas cifras son ejemplos legítimos.
 PACK_PAGES = {
