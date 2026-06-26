@@ -43,46 +43,46 @@
   // -----------------------------------------------------------
   const css = `
     #luna-widget{
-      position:fixed; bottom:24px; right:24px; z-index:9998;
-      width:280px; box-sizing:border-box;
-      background:#111118; border:1px solid rgba(124,77,255,.4);
-      border-radius:16px; box-shadow:0 8px 32px rgba(124,77,255,.28),0 4px 16px rgba(0,0,0,.4);
-      padding:20px; font-family:'Sora',sans-serif;
-      display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center;
+      position:fixed; bottom:28px; right:28px; z-index:9999;
+      font-family:'Sora',sans-serif;
     }
-    #luna-widget .luna-avatar{ width:84px; height:84px; flex:none;
-      transform-origin:center; animation:luna-breathe 3s ease-in-out infinite; }
-    #luna-widget .luna-avatar img{ width:100%; height:100%; display:block; }
-    @keyframes luna-breathe{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.02)} }
-    #luna-widget .luna-name{ font-weight:600; font-size:18px; color:#f0f0f5; line-height:1.15; }
-    #luna-widget .luna-sub{ font-weight:300; font-size:13px; color:#8888a0; line-height:1.2; }
     #luna-widget .luna-btn{
-      width:100%; background:#7c4dff; color:#fff; border:none; border-radius:10px;
-      padding:12px 24px; font-family:'Sora',sans-serif; font-weight:600; font-size:15px;
-      cursor:pointer; transition:background .2s;
+      position:relative; width:60px; height:60px; border-radius:50%;
+      background:#7c4dff; color:#fff; border:none; padding:0; cursor:pointer;
+      display:grid; place-items:center;
+      box-shadow:0 8px 28px rgba(124,77,255,.45),0 4px 14px rgba(0,0,0,.4);
+      transition:background .2s, transform .2s, box-shadow .2s;
     }
-    #luna-widget .luna-btn:hover{ background:#9d70ff; }
+    #luna-widget .luna-btn:hover{ background:#9d70ff; transform:translateY(-2px); box-shadow:0 12px 34px rgba(124,77,255,.55),0 4px 14px rgba(0,0,0,.4); }
     #luna-widget .luna-btn:disabled{ opacity:.7; cursor:default; }
     #luna-widget .luna-btn.luna-btn--end{ background:#ff4444; }
     #luna-widget .luna-btn.luna-btn--end:hover{ background:#ff6666; }
-    #luna-widget .luna-bars{ display:none; height:24px; gap:4px; align-items:flex-end; justify-content:center; }
+    #luna-widget .luna-ic{ width:26px; height:26px; color:#fff; }
+    #luna-widget .luna-btn.luna-btn--end .luna-ic{ display:none; }
+    /* dot verde pulsante */
+    #luna-widget .luna-dot{
+      position:absolute; top:3px; right:3px; width:13px; height:13px;
+      border-radius:50%; background:#00d4aa; border:2px solid #111118;
+      animation:luna-pulse 2s ease-in-out infinite;
+    }
+    #luna-widget .luna-btn.luna-btn--end .luna-dot{ display:none; }
+    @keyframes luna-pulse{ 0%{box-shadow:0 0 0 0 rgba(0,212,170,.6)} 70%{box-shadow:0 0 0 9px rgba(0,212,170,0)} 100%{box-shadow:0 0 0 0 rgba(0,212,170,0)} }
+    /* barras durante la llamada */
+    #luna-widget .luna-bars{ display:none; position:absolute; inset:0; align-items:center; justify-content:center; gap:3px; }
+    #luna-widget .luna-btn.luna-btn--end .luna-bars,
     #luna-widget .luna-bars.is-active{ display:flex; }
-    #luna-widget .luna-bars span{ width:5px; height:6px; background:#00d4aa; border-radius:3px; }
+    #luna-widget .luna-bars span{ width:4px; height:8px; background:#fff; border-radius:2px; }
+    #luna-widget .luna-btn.luna-btn--end .luna-bars span,
     #luna-widget .luna-bars.is-speaking span{ animation:luna-eq .9s ease-in-out infinite; }
-    #luna-widget .luna-bars.is-speaking span:nth-child(2){ animation-delay:.15s; }
-    #luna-widget .luna-bars.is-speaking span:nth-child(3){ animation-delay:.3s; }
-    @keyframes luna-eq{ 0%,100%{height:6px} 50%{height:22px} }
+    #luna-widget .luna-bars span:nth-child(2){ animation-delay:.15s; }
+    #luna-widget .luna-bars span:nth-child(3){ animation-delay:.3s; }
+    @keyframes luna-eq{ 0%,100%{height:8px} 50%{height:22px} }
     @media (max-width:599px){
-      #luna-widget{ width:auto; bottom:80px; right:12px; padding:8px 10px;
-        flex-direction:row; gap:8px; border-radius:30px; }
-      #luna-widget .luna-avatar{ width:36px; height:36px; }
-      #luna-widget .luna-info{ display:none; }
-      #luna-widget .luna-btn{ width:auto; padding:8px 14px; font-size:13px; border-radius:20px; }
-      #luna-widget .luna-bars{ height:18px; }
-      #luna-widget .luna-bars span{ width:4px; }
+      #luna-widget{ bottom:20px; right:16px; }
     }
     @media (prefers-reduced-motion:reduce){
-      #luna-widget .luna-avatar,
+      #luna-widget .luna-dot,
+      #luna-widget .luna-btn.luna-btn--end .luna-bars span,
       #luna-widget .luna-bars.is-speaking span{ animation:none; }
     }
   `;
@@ -98,17 +98,7 @@
   widget.id = "luna-widget";
   widget.setAttribute("role", "complementary");
   widget.setAttribute("aria-label", "Asistente de voz Orion IA");
-  widget.innerHTML = `
-    <div class="luna-avatar">
-      <img src="/assets/images/icono.webp" alt="WhiteMoon IA" width="72" height="72" decoding="async" loading="lazy" style="border-radius:50%;object-fit:cover;border:2px solid rgba(124,77,255,0.4);">
-    </div>
-    <div class="luna-info">
-      <div class="luna-name">Orion IA</div>
-      <div class="luna-sub">Agente de voz WhiteMoon</div>
-    </div>
-    <div class="luna-bars" id="luna-bars" aria-hidden="true"><span></span><span></span><span></span></div>
-    <button type="button" id="luna-btn" class="luna-btn">🎙️ Hablar con Orion</button>
-  `;
+  widget.innerHTML = `<button type="button" id="luna-btn" class="luna-btn" aria-label="Hablar con Orion, agente de voz IA"><span class="luna-dot" aria-hidden="true"></span><svg class="luna-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg><span class="luna-bars" id="luna-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>`;
   document.body.appendChild(widget);
 
   // GA4: el widget flotante se ha inyectado y es visible por primera
@@ -134,12 +124,12 @@
 
   function render() {
     if (callActive) {
-      btn.textContent = isMobile() ? "🔴 Finalizar" : "🔴 Finalizar llamada";
       btn.classList.add("luna-btn--end");
+      btn.setAttribute("aria-label", "Finalizar llamada con Orion");
       bars.classList.add("is-active");
     } else {
-      btn.textContent = isMobile() ? "🎙️ Orion" : "🎙️ Hablar con Orion";
       btn.classList.remove("luna-btn--end");
+      btn.setAttribute("aria-label", "Hablar con Orion, agente de voz IA");
       bars.classList.remove("is-active", "is-speaking");
     }
   }
