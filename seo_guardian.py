@@ -270,6 +270,10 @@ def run_checks():
     for relpath in html_files:
         if relpath.split("/")[-1] in SKIP_SITEMAP_FILES:
             continue
+        # Las páginas noindex (landings de captación, etc.) no deben estar en el
+        # sitemap: las excluimos para no generar un warning falso.
+        if re.search(r'name=["\']robots["\'][^>]*noindex', read_text(relpath), re.I):
+            continue
         url = file_to_url(relpath)
         norm = url if url.endswith(".html") else url.rstrip("/") + "/"
         if norm not in sitemap_url_set:
