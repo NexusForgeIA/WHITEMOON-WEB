@@ -27,7 +27,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"¿Cuánto reducen los recordatorios IA los no-shows?","acceptedAnswer":{"@type":"Answer","text":"Los recordatorios automáticos por SMS o WhatsApp envíados 24h y 2h antes de la cita reducen la tasa de no-show en un 35-50% según el sector. En clínicas dentales y estéticas se observa una reducción media del 40%, pasando del 18-22% de no-shows al 7-10%. La clave es el doble recordatorio + confirmación 1-click + opción de reprogramar."}},
 {"@type":"Question","name":"¿Por qué los SMS manuales no funcionan igual?","acceptedAnswer":{"@type":"Answer","text":"Los SMS manuales tienen tres problemas: 1) Coste por SMS (0,03-0,08€ × volumen elevado), 2) Tiempo del personal en enviarlos individualmente o programarlos, 3) Sin lógica condicional (no se reenvía si no se confirma, no se ofrece reprogramación automática). Los recordatorios IA cuestan céntimos por interacción, son enviados automáticamente con lógica condicional y gestionan reprogramaciones."}},
-{"@type":"Question","name":"¿Cuál es el ROI típico?","acceptedAnswer":{"@type":"Answer","text":"Para una clínica con 500 citas/mes, 20% no-shows y ticket medio 60€: pierde 6.000€/mes en no-shows. Reduciendo al 12% (recordatorios IA -40% relativo), recupera 2.400€/mes. Coste cuota Orion IA Agent: 199€/mes. ROI mensual neto: 2.201€/mes (1.106% sobre la cuota). Setup 999€ se amortiza en menos de 1 mes."}},
+{"@type":"Question","name":"¿Cuál es el ROI típico?","acceptedAnswer":{"@type":"Answer","text":"Para una clínica con 500 citas/mes, 20% no-shows y ticket medio 60€: pierde 6.000€/mes en no-shows. Reduciendo al 12% (recordatorios IA -40% relativo), recupera 2.400€/mes. Coste cuota Orion IA Agent: 99€/mes. ROI mensual neto: 2.201€/mes (1.106% sobre la cuota). Setup 799€ se amortiza en menos de 1 mes."}},
 {"@type":"Question","name":"¿Funciona en todos los sectores médicos?","acceptedAnswer":{"@type":"Answer","text":"Sí, con matices. Clínicas dentales, estéticas y odontológicas: reducción 40% típica. Fisioterapia y rehabilitación: 30-35% (los pacientes acuden con menos olvidos por el dolor activo). Psicología y psiquiatría: 25-30% (más complejo por sensibilidad del recordatorio). Medicina general y especialidades: 35-45%."}}
 ]}
 </script>
@@ -93,8 +93,8 @@
       </div>
       <div class="calc-row"><label class="calc-label" for="rr-cuota">Cuota mensual Orion IA (€)</label>
         <select id="rr-cuota" class="calc-select" onchange="calcRecordatorios()">
-          <option value="199" selected>199 €/mes (Spark + Orion Agent)</option>
-          <option value="349">349 €/mes (Core RAG)</option>
+          <option value="199" selected>99 €/mes (Spark + Orion Agent)</option>
+          <option value="349">199 €/mes (Core RAG)</option>
         </select>
       </div>
     </div>
@@ -106,9 +106,9 @@
       <div class="calc-out-card"><div class="calc-out-num" id="rr-payback">—</div><div class="calc-out-lbl">Payback setup</div></div>
     </div>
 
-    <div class="calc-detail" id="rr-explain">No-shows actuales = citas × % no-shows. Coste no-shows = no-shows × precio consulta + coste recordatorios manuales. Ahorro = (no-shows × precio × reducción) + ahorro recordatorios − cuota IA. Payback = setup 999€ / ahorro neto mensual.</div>
+    <div class="calc-detail" id="rr-explain">No-shows actuales = citas × % no-shows. Coste no-shows = no-shows × precio consulta + coste recordatorios manuales. Ahorro = (no-shows × precio × reducción) + ahorro recordatorios − cuota IA. Payback = setup 799€ / ahorro neto mensual.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El ahorro real depende de la elasticidad de tu demanda y la calidad del seguimiento post-cancelación. Setup Spark 499€, Orion Agent 999€, ambos sin permanencia.</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El ahorro real depende de la elasticidad de tu demanda y la calidad del seguimiento post-cancelación. Setup Spark 499€, Orion Agent 799€, ambos sin permanencia.</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
@@ -116,7 +116,7 @@
     <h2 class="sec-h" style="margin-bottom:24px">FAQ Recordatorios IA</h2>
     <div class="faq-item"><div class="faq-q">¿Cuánto reducen los recordatorios IA los no-shows?</div><div class="faq-a">35-50% según sector. Clínicas dentales y estéticas: media 40% (del 18-22% al 7-10%). Clave: doble recordatorio (24h + 2h) + confirmación 1-click + opción reprogramar.</div></div>
     <div class="faq-item"><div class="faq-q">¿Por qué los SMS manuales no funcionan igual?</div><div class="faq-a">1) Coste alto (0,03-0,08€ × volumen), 2) Tiempo del personal enviándolos, 3) Sin lógica condicional. Los recordatorios IA cuestan céntimos por interacción y gestionan reprogramaciones automáticamente.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Cuál es el ROI típico?</div><div class="faq-a">Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Cuota 199€/mes. ROI neto 2.201€/mes. Setup 999€ amortizado en &lt;1 mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuál es el ROI típico?</div><div class="faq-a">Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Cuota 99€/mes. ROI neto 2.201€/mes. Setup 799€ amortizado en &lt;1 mes.</div></div>
     <div class="faq-item"><div class="faq-q">¿Funciona en todos los sectores médicos?</div><div class="faq-a">Dental, estética, odontología: 40%. Fisio y rehabilitación: 30-35%. Psicología: 25-30%. Medicina general y especialidades: 35-45%.</div></div>
   </div></div></section>
 
