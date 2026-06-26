@@ -98,7 +98,7 @@
   widget.id = "luna-widget";
   widget.setAttribute("role", "complementary");
   widget.setAttribute("aria-label", "Asistente de voz Orion IA");
-  widget.innerHTML = `<button type="button" id="luna-btn" class="luna-btn" aria-label="Hablar con Orion, agente de voz IA"><span class="luna-dot" aria-hidden="true"></span><img class="luna-ic" src="/assets/images/icono.webp" alt="WhiteMoon" width="32" height="32" aria-hidden="true" style="border-radius:50%;object-fit:contain"><span class="luna-bars" id="luna-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>`;
+  widget.innerHTML = `<button type="button" id="luna-btn" class="luna-btn" aria-label="Hablar con Orion, agente de voz IA"><span class="luna-dot" aria-hidden="true"></span><img class="luna-ic" src="/assets/images/icono.webp" alt="WhiteMoon" width="32" height="32" aria-hidden="true" loading="lazy" decoding="async" style="border-radius:50%;object-fit:contain"><span class="luna-bars" id="luna-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>`;
   document.body.appendChild(widget);
 
   // GA4: el widget flotante se ha inyectado y es visible por primera
