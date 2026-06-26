@@ -501,6 +501,12 @@
     .navbar.nav-ent .nav-cta-ent .label{display:none}
     .navbar.nav-ent .nav-row{grid-template-columns:auto 1fr auto auto;gap:12px}
   }
+  /* En móvil el botón "Agendar reunión" del nav se oculta:
+     ya está disponible dentro del drawer hamburguesa. Así el
+     burger no se desplaza fuera de pantalla. */
+  @media (max-width:768px){
+    .nav-cta-cal{display:none !important}
+  }
   /* Mobile drawer */
   .nav-drawer-ent{position:fixed;inset:0;background:#0B0F17;z-index:300;display:none;flex-direction:column;padding:80px 28px 28px}
   .nav-drawer-ent.open{display:flex}
