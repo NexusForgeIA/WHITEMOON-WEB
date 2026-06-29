@@ -48,7 +48,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type":"Question","name":"¿Cómo se calcula el ITP de un vehículo usado?","acceptedAnswer":{"@type":"Answer","text":"Se parte del valor venal según las tablas oficiales de precios medios de vehículos publicadas anualmente en el BOE. Se aplica un porcentaje de depreciación según los años de antigüedad (tabla Anexo IV BOE 2026) y sobre el resultado se aplica el tipo impositivo de la CCAA del comprador (entre el 4% y el 8%). Algunas comunidades sustituyen el porcentaje por una cuota fija según la cilindrada."}},
+    {"@type":"Question","name":"¿Cómo se calcula el ITP de un vehículo usado?","acceptedAnswer":{"@type":"Answer","text":"Se parte del valor venal según las tablas oficiales de precios medios de vehículos publicadas anualmente en el BOE. Se aplica un porcentaje de depreciación según los años de antigüedad (tabla Anexo IV BOE 2026) y sobre el resultado se aplica el tipo impositivo de la CCAA del comprador (entre el 3% y el 8%). Algunas comunidades sustituyen el porcentaje por una cuota fija según la cilindrada."}},
     {"@type":"Question","name":"¿Qué CCAA aplican cuotas fijas en lugar de porcentaje?","acceptedAnswer":{"@type":"Answer","text":"Comunidad Valenciana, Aragón, Cantabria, Canarias, Galicia y Murcia aplican cuotas fijas en función de la cilindrada del vehículo (motos y turismos hasta cierta cilindrada). Para cilindradas o valores superiores vuelve a aplicarse el porcentaje general."}},
     {"@type":"Question","name":"¿Qué vehículos tienen reducción del 70% en el ITP?","acceptedAnswer":{"@type":"Answer","text":"Los vehículos dedicados a uso profesional regulado: taxis, autoescuelas y alquiler con o sin conductor (VTC y rent-a-car) tienen una reducción del 70% en la base imponible del ITP, según la normativa estatal. La reducción debe acreditarse con la licencia o autorización correspondiente."}},
     {"@type":"Question","name":"¿Cuándo hay que pagar el ITP del vehículo?","acceptedAnswer":{"@type":"Answer","text":"El comprador tiene 30 días hábiles desde la fecha del contrato de compraventa para liquidar el modelo 620/621 ante la Hacienda autonómica. Sin la carta de pago, la DGT no realiza el cambio de titularidad del vehículo en el Registro de Tráfico."}}
@@ -130,23 +130,25 @@
           <div class="calc-row">
             <label class="calc-label" for="v-ccaa">Comunidad Autónoma</label>
             <select id="v-ccaa" class="calc-select" onchange="calcITPVeh()">
-              <option value="madrid" data-tipo="4" data-cuota-fija="0" selected>Comunidad de Madrid · 4%</option>
-              <option value="andalucia" data-tipo="4" data-cuota-fija="0">Andalucía · 4%</option>
-              <option value="asturias" data-tipo="4" data-cuota-fija="0">Asturias · 4%</option>
-              <option value="baleares" data-tipo="4" data-cuota-fija="0">Illes Balears · 4%</option>
-              <option value="navarra" data-tipo="4" data-cuota-fija="0">Navarra · 4%</option>
-              <option value="rioja" data-tipo="4" data-cuota-fija="0">La Rioja · 4%</option>
-              <option value="pais-vasco" data-tipo="4" data-cuota-fija="0">País Vasco · 4%</option>
-              <option value="castilla-leon" data-tipo="5" data-cuota-fija="0">Castilla y León · 5%</option>
-              <option value="cataluna" data-tipo="5" data-cuota-fija="0">Catalunya · 5%</option>
-              <option value="castilla-mancha" data-tipo="6" data-cuota-fija="0">Castilla-La Mancha · 6%</option>
-              <option value="extremadura" data-tipo="6" data-cuota-fija="0">Extremadura · 6%</option>
-              <option value="valencia" data-tipo="6" data-cuota-fija="1">Comunitat Valenciana · cuota fija + 6%</option>
-              <option value="aragon" data-tipo="6" data-cuota-fija="1">Aragón · cuota fija + 6%</option>
-              <option value="cantabria" data-tipo="8" data-cuota-fija="1">Cantabria · cuota fija + 8%</option>
-              <option value="canarias" data-tipo="5.5" data-cuota-fija="1">Canarias · cuota fija + 5,5%</option>
-              <option value="galicia" data-tipo="8" data-cuota-fija="1">Galicia · cuota fija + 8%</option>
-              <option value="murcia" data-tipo="8" data-cuota-fija="1">Murcia · cuota fija + 8%</option>
+              <option value="madrid" selected>Comunidad de Madrid · 4%</option>
+              <option value="andalucia">Andalucía · 4%</option>
+              <option value="aragon">Aragón · 4%</option>
+              <option value="asturias">Asturias · 4%</option>
+              <option value="baleares">Illes Balears · 4%</option>
+              <option value="canarias">Canarias · 5,5% (IGIC)</option>
+              <option value="cantabria">Cantabria · 6%</option>
+              <option value="castilla-mancha">Castilla-La Mancha · 6%</option>
+              <option value="castilla-leon">Castilla y León · 5%</option>
+              <option value="cataluna">Catalunya · 5%</option>
+              <option value="ceuta">Ceuta · 4%</option>
+              <option value="valencia">Comunitat Valenciana · 6%</option>
+              <option value="extremadura">Extremadura · 6%</option>
+              <option value="galicia">Galicia · 3%</option>
+              <option value="rioja">La Rioja · 4%</option>
+              <option value="melilla">Melilla · 4%</option>
+              <option value="murcia">Murcia · 4%</option>
+              <option value="navarra">Navarra · 4%</option>
+              <option value="pais-vasco">País Vasco · 4%</option>
             </select>
           </div>
         </div>
@@ -205,6 +207,10 @@
           <strong style="color:#5eead4">Etiqueta DGT estimada:</strong> <span id="v-etiqueta-dgt">Verde C (matriculación 2006+)</span>
         </div>
 
+        <div class="calc-detail" style="background:rgba(255,193,7,.07);border:1px solid rgba(255,193,7,.3);color:#f0d98a;margin-top:14px">
+          <strong>⚠️ Tipos orientativos 2026.</strong> Verifica siempre con la Agencia Tributaria de tu comunidad. Algunas CCAA aplican cuotas fijas para vehículos antiguos y reducciones por etiqueta 0 emisiones, uso comercial o residencia en Ceuta/Melilla que pueden variar el importe final.
+        </div>
+
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 18px">
           Cálculo orientativo. La base oficial es el valor de las tablas de precios medios publicadas anualmente en el BOE (Orden HFP del año en curso). Confirma siempre con tu gestoría antes de presentar el modelo 620/621.
         </p>
@@ -243,7 +249,7 @@
         <ol style="color:#e0e0f4;font-size:.92rem;line-height:1.8;padding-left:20px">
           <li><strong>Valor venal de partida:</strong> precio medio del modelo cuando era nuevo, publicado en el BOE (Orden HFP anual).</li>
           <li><strong>Depreciación Anexo IV BOE 2026:</strong> se aplica un coeficiente porcentual según los años de antigüedad. Hasta 1 año retiene el 100%, 2 años el 84%, 5 años el 47%, 10 años el 19%, y a partir de 12 años el valor mínimo (10%).</li>
-          <li><strong>Tipo autonómico o cuota fija:</strong> 12 comunidades aplican un porcentaje fijo (entre 4% y 8%). En C. Valenciana, Aragón, Cantabria, Canarias, Galicia y Murcia se aplican cuotas fijas según la cilindrada para motos y turismos pequeños.</li>
+          <li><strong>Tipo autonómico o cuota fija:</strong> cada comunidad aplica un porcentaje general (entre el 3% y el 8%). En Aragón, Cantabria, Canarias, C. Valenciana, Galicia y Murcia se aplican cuotas fijas para vehículos antiguos (a partir de 10, 12 o 14 años según la comunidad).</li>
           <li><strong>Reducción 70% por uso especial:</strong> si el vehículo se destina a taxi, autoescuela o alquiler con/sin conductor, la base imponible se reduce un 70% (acreditando licencia o autorización).</li>
           <li><strong>Liquidación:</strong> modelo 620/621 ante la Hacienda autonómica en 30 días hábiles desde la firma del contrato.</li>
         </ol>
@@ -266,7 +272,7 @@
         </div>
         <div class="faq-item">
           <div class="faq-q">¿Las motos pagan el mismo ITP que un coche?</div>
-          <div class="faq-a">No siempre. En C. Valenciana, Aragón, Cantabria, Canarias, Galicia y Murcia hay cuotas fijas reducidas para motos de cilindrada baja (≤125 cc, 125-250 cc, etc.). En el resto de comunidades se aplica el tipo general (4% al 8%) sobre el valor venal depreciado.</div>
+          <div class="faq-a">No siempre. En C. Valenciana, Aragón, Cantabria, Canarias, Galicia y Murcia hay cuotas fijas reducidas para motos de cilindrada baja (≤125 cc, 125-250 cc, etc.). En el resto de comunidades se aplica el tipo general (del 3% al 8%) sobre el valor venal depreciado.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q">¿La reducción del 70% para taxi y autoescuela es automática?</div>
@@ -340,66 +346,37 @@ var DEPRECIACION = [
   {edad:99, pct:10}  // 12 años o más: valor mínimo 10%
 ];
 
-// Cuotas fijas autonómicas por cilindrada (orientativas — turismos)
-// Devuelve 0 si la cilindrada supera el rango fijo y se aplica %
-var CUOTAS_FIJAS = {
-  valencia: function(cc, tipo){
-    if(tipo === 'moto'){
-      if(cc <= 125) return 8;
-      if(cc <= 250) return 15;
-      if(cc <= 750) return 25;
-      if(cc <= 1000) return 35;
-      return null;
-    }
-    if(cc <= 1199) return 40;
-    if(cc <= 1599) return 55;
-    return null;
-  },
-  aragon: function(cc, tipo){
-    if(tipo === 'moto'){
-      if(cc <= 250) return 20;
-      if(cc <= 550) return 55;
-      if(cc <= 750) return 90;
-      return null;
-    }
-    if(cc <= 1000) return 30;
-    if(cc <= 1500) return 50;
-    if(cc <= 2000) return 90;
-    return null;
-  },
-  cantabria: function(cc, tipo){
-    if(tipo === 'moto'){
-      if(cc <= 250) return 15;
-      if(cc <= 550) return 50;
-      return null;
-    }
-    if(cc <= 1000) return 25;
-    return null;
-  },
-  canarias: function(cc, tipo){
-    if(tipo === 'moto' && cc <= 250) return 12;
-    if(cc <= 1000) return 25;
-    return null;
-  },
-  galicia: function(cc, tipo){
-    if(tipo === 'moto'){
-      if(cc <= 250) return 18;
-      if(cc <= 550) return 60;
-      return null;
-    }
-    if(cc <= 1000) return 30;
-    return null;
-  },
-  murcia: function(cc, tipo){
-    if(tipo === 'moto'){
-      if(cc <= 250) return 15;
-      if(cc <= 750) return 45;
-      return null;
-    }
-    if(cc <= 1000) return 25;
-    return null;
-  }
+// Tipos ITP por CCAA verificados BOE 2026 (Orden HAC/1501/2025 + normativa autonómica).
+// Solo datos de la tabla verificada — no se infieren cifras no publicadas.
+//   tipo          → tipo general aplicable (%)
+//   cvf15         → true si >15 CVf tributa al 8%
+//   exentoAntiguo → exención si antigüedad > anios Y valor original < valorMax €
+//   cuotaAragon   → cuota fija totalmente especificada (>10 años, turismos, según cc)
+//   cuotaConsultar→ a partir de `anios` aplica cuota fija autonómica no detallada en la tabla
+//                   → se deriva a "Consultar normativa autonómica" en lugar de inventar importes
+var CCAA = {
+  'madrid':          {nombre:'Comunidad de Madrid', tipo:4},
+  'andalucia':       {nombre:'Andalucía', tipo:4, cvf15:true},
+  'aragon':          {nombre:'Aragón', tipo:4, cuotaAragon:{anios:10, brackets:[[1000,0],[1500,20],[2000,30]]}},
+  'asturias':        {nombre:'Asturias', tipo:4, cvf15:true},
+  'baleares':        {nombre:'Illes Balears', tipo:4, cvf15:true},
+  'canarias':        {nombre:'Canarias', tipo:5.5, cuotaConsultar:{anios:10}},
+  'cantabria':       {nombre:'Cantabria', tipo:6, cuotaConsultar:{anios:10}},
+  'castilla-mancha': {nombre:'Castilla-La Mancha', tipo:6},
+  'castilla-leon':   {nombre:'Castilla y León', tipo:5, cvf15:true},
+  'cataluna':        {nombre:'Catalunya', tipo:5, exentoAntiguo:{anios:10, valorMax:40000}},
+  'ceuta':           {nombre:'Ceuta', tipo:4},
+  'valencia':        {nombre:'Comunitat Valenciana', tipo:6, cuotaConsultar:{anios:12}},
+  'extremadura':     {nombre:'Extremadura', tipo:6},
+  'galicia':         {nombre:'Galicia', tipo:3, cuotaConsultar:{anios:14}},
+  'rioja':           {nombre:'La Rioja', tipo:4},
+  'melilla':         {nombre:'Melilla', tipo:4},
+  'murcia':          {nombre:'Murcia', tipo:4, cuotaConsultar:{anios:12}},
+  'navarra':         {nombre:'Navarra', tipo:4, exentoAntiguo:{anios:10, valorMax:40000}},
+  'pais-vasco':      {nombre:'País Vasco', tipo:4}
 };
+
+function fmtPct(p){ return (''+p).replace('.', ','); }
 
 function getDepreciacion(years){
   for(var i=0; i<DEPRECIACION.length; i++){
@@ -421,44 +398,65 @@ function getEtiquetaDGT(years, tipo){
 function calcITPVeh(){
   var tipo = document.getElementById('v-tipo').value;
   var sel = document.getElementById('v-ccaa');
-  var opt = sel.options[sel.selectedIndex];
-  var pctTipo = parseFloat(opt.getAttribute('data-tipo'));
-  var hasCuotaFija = opt.getAttribute('data-cuota-fija') === '1';
+  var cfg = CCAA[sel.value] || {nombre:'', tipo:4};
   var valorNuevo = parseFloat(document.getElementById('v-valor').value) || 0;
   var antiguedad = parseInt(document.getElementById('v-antiguedad').value, 10) || 0;
   var cilindrada = parseInt(document.getElementById('v-cilindrada').value, 10) || 0;
+  var cvf = parseInt(document.getElementById('v-potencia').value, 10) || 0;
   var taxi = document.getElementById('v-taxi').checked;
   var autoescuela = document.getElementById('v-autoescuela').checked;
   var alquiler = document.getElementById('v-alquiler').checked;
   var reduccion70 = taxi || autoescuela || alquiler;
 
-  // Paso 1: aplicar depreciación
+  // Paso 1: depreciación Anexo IV
   var pctDep = getDepreciacion(antiguedad);
   var valorFiscal = valorNuevo * (pctDep / 100);
 
-  // Paso 2: aplicar reducción 70% si uso especial
+  // Paso 2: reducción 70% por uso profesional
   var baseImponible = reduccion70 ? valorFiscal * 0.30 : valorFiscal;
 
-  // Paso 3: cuota fija o porcentual
-  var ccaaKey = opt.value;
-  var cuotaFija = null;
-  if(hasCuotaFija && CUOTAS_FIJAS[ccaaKey]){
-    cuotaFija = CUOTAS_FIJAS[ccaaKey](cilindrada, tipo);
+  // Paso 3: tipo / cuota / excepción según CCAA verificada
+  var pagar = null;          // null + consultar=true → no se muestra importe
+  var tipoAplicado = '';
+  var consultar = false;
+  var notaExcep = '';
+
+  if(cfg.exentoAntiguo && antiguedad > cfg.exentoAntiguo.anios && valorNuevo < cfg.exentoAntiguo.valorMax){
+    // Cataluña / Navarra: exención por antigüedad + valor original
+    pagar = 0;
+    tipoAplicado = 'Exento';
+    notaExcep = cfg.nombre + ': exento por vehículo de más de ' + cfg.exentoAntiguo.anios + ' años y valor original inferior a ' + cfg.exentoAntiguo.valorMax.toLocaleString('es-ES') + ' €';
+  } else if(cfg.cuotaAragon && tipo === 'turismo' && antiguedad > cfg.cuotaAragon.anios){
+    // Aragón: cuota fija totalmente especificada para turismos >10 años
+    var cf = null, br = cfg.cuotaAragon.brackets;
+    for(var i=0; i<br.length; i++){ if(cilindrada <= br[i][0]){ cf = br[i][1]; break; } }
+    if(cf !== null){
+      pagar = reduccion70 ? cf * 0.30 : cf;
+      tipoAplicado = cf + ' € fijos';
+      notaExcep = cfg.nombre + ': cuota fija de ' + cf + ' € (turismo de más de ' + cfg.cuotaAragon.anios + ' años, ' + cilindrada + ' cc)';
+    }
+    // >2000 cc → sin cuota fija publicada: se aplica el tipo general más abajo
+  } else if(cfg.cuotaConsultar && antiguedad > cfg.cuotaConsultar.anios){
+    // Canarias/Cantabria/Valencia/Galicia/Murcia: cuota fija por antigüedad no detallada en la tabla
+    consultar = true;
+    tipoAplicado = 'Consultar';
+    notaExcep = cfg.nombre + ': los vehículos de más de ' + cfg.cuotaConsultar.anios + ' años tributan por cuota fija autonómica según cilindrada. Consultar normativa autonómica';
   }
 
-  var pagar, tipoAplicado;
-  if(cuotaFija !== null){
-    pagar = cuotaFija;
-    if(reduccion70) pagar = pagar * 0.30;
-    tipoAplicado = cuotaFija + ' € fijos';
-  } else {
-    pagar = baseImponible * (pctTipo / 100);
-    tipoAplicado = pctTipo + ' %';
+  if(pagar === null && !consultar){
+    // Vía porcentual (tipo general o incremento por potencia fiscal)
+    var pct = cfg.tipo;
+    if(cfg.cvf15 && cvf > 15){
+      pct = 8;
+      notaExcep = cfg.nombre + ': tipo incrementado al 8% por potencia fiscal superior a 15 CVf';
+    }
+    pagar = baseImponible * (pct / 100);
+    tipoAplicado = fmtPct(pct) + ' %';
   }
 
   document.getElementById('v-valor-fiscal').textContent = Math.round(valorFiscal).toLocaleString('es-ES') + ' €';
-  document.getElementById('v-tipo-aplicado').textContent = tipoAplicado;
-  document.getElementById('v-pagar').textContent = Math.round(pagar).toLocaleString('es-ES') + ' €';
+  document.getElementById('v-tipo-aplicado').textContent = consultar ? 'Consultar' : tipoAplicado;
+  document.getElementById('v-pagar').textContent = consultar ? 'Consultar' : (Math.round(pagar).toLocaleString('es-ES') + ' €');
   document.getElementById('v-etiqueta-dgt').textContent = getEtiquetaDGT(antiguedad, tipo);
 
   var partes = [];
@@ -466,12 +464,14 @@ function calcITPVeh(){
   if(reduccion70){
     partes.push('Reducción 70% por uso profesional (taxi/autoescuela/alquiler): base imponible reducida a ' + Math.round(baseImponible).toLocaleString('es-ES') + ' €');
   }
-  if(cuotaFija !== null){
-    partes.push(opt.textContent + ': cuota fija ' + cuotaFija + ' € según cilindrada ' + cilindrada + ' cc');
-  } else {
-    partes.push(opt.textContent + ': tipo ' + pctTipo + '% aplicado sobre base ' + Math.round(baseImponible).toLocaleString('es-ES') + ' €');
+  if(notaExcep){
+    partes.push(notaExcep);
   }
-  partes.push('Resultado: ' + Math.round(pagar).toLocaleString('es-ES') + ' € de ITP');
+  if(consultar){
+    partes.push('Importe no estimable automáticamente: consulta la Agencia Tributaria de ' + cfg.nombre);
+  } else {
+    partes.push('Resultado: ' + Math.round(pagar).toLocaleString('es-ES') + ' € de ITP');
+  }
   document.getElementById('v-explain').innerHTML = partes.join('. ') + '.';
 }
 calcITPVeh();
