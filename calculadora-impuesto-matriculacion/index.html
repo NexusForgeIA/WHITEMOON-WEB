@@ -104,27 +104,11 @@
           </div>
         </div>
         <div class="calc-row">
-          <label class="calc-label" for="im-territorio">Comunidad Autónoma / Ciudad de matriculación</label>
+          <label class="calc-label" for="im-territorio">Territorio fiscal</label>
           <select id="im-territorio" class="calc-select" onchange="calcIM()">
-            <option value="andalucia" data-factor="1">Andalucía · tipo estatal</option>
-            <option value="aragon" data-factor="1">Aragón · tipo estatal</option>
-            <option value="asturias" data-factor="1">Asturias · tipo estatal</option>
-            <option value="baleares" data-factor="1">Illes Balears · tipo estatal</option>
-            <option value="canarias" data-factor="0.5">Canarias · 50% del tipo</option>
-            <option value="cantabria" data-factor="1">Cantabria · tipo estatal</option>
-            <option value="castilla-mancha" data-factor="1">Castilla-La Mancha · tipo estatal</option>
-            <option value="castilla-leon" data-factor="1">Castilla y León · tipo estatal</option>
-            <option value="cataluna" data-factor="1">Catalunya · tipo estatal</option>
-            <option value="ceuta" data-factor="0">Ceuta · exento</option>
-            <option value="madrid" data-factor="1" selected>Comunidad de Madrid · tipo estatal</option>
-            <option value="valencia" data-factor="1">Comunitat Valenciana · tipo estatal</option>
-            <option value="extremadura" data-factor="1">Extremadura · tipo estatal</option>
-            <option value="galicia" data-factor="1">Galicia · tipo estatal</option>
-            <option value="rioja" data-factor="1">La Rioja · tipo estatal</option>
-            <option value="melilla" data-factor="0">Melilla · exento</option>
-            <option value="murcia" data-factor="1">Murcia · tipo estatal</option>
-            <option value="navarra" data-factor="1">Navarra · tipo estatal</option>
-            <option value="pais-vasco" data-factor="1">País Vasco · tipo estatal</option>
+            <option value="peninsula" data-factor="1" selected>Península + Baleares (tipo completo)</option>
+            <option value="canarias" data-factor="0.5">Canarias (50% del tipo)</option>
+            <option value="ceuta-melilla" data-factor="0">Ceuta / Melilla (exento)</option>
           </select>
         </div>
 
@@ -142,10 +126,6 @@
         </div>
 
         <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px" id="im-detail">130 g/km CO2 → tramo 2 (4,75%) × 20.000€ base × factor territorio 1.0 = 950€ de IEDMT (modelo 576 AEAT). Lo paga el comprador antes de matricular en la DGT.</div>
-
-        <div style="font-size:12px;color:#f0d98a;background:rgba(255,193,7,.07);border:1px solid rgba(255,193,7,.3);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px">
-          <strong>⚠️ Dato orientativo según normativa vigente a 2026.</strong> El IEDMT es un impuesto estatal (modelo 576, AEAT): los tramos por CO2 son iguales en toda España y solo cambia el régimen territorial (Canarias al 50% del tipo · Ceuta y Melilla exentas). Verifica siempre con la Agencia Tributaria antes de matricular.
-        </div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Emisiones según ciclo WLTP (no NEDC). Vehículos eléctricos puros, híbridos enchufables muy eficientes y la mayoría de motos quedan en el tramo 0%. Confirma siempre los datos con la ficha técnica oficial del vehículo.</p>
       </div>
