@@ -329,7 +329,7 @@ footer{background:#000;border-top:1px solid var(--border2);padding:60px 52px 36p
     <h1>
       Tu reforma<br>
       en manos<br>
-      <span class="accent">expertas</span>
+      <span class="accent" id="h1-rot">expertas</span>
     </h1>
     <p class="hero-sub">Cocina, bano, pintura e integral. Visita gratuita y presupuesto cerrado en menos de 24 horas. Sin sorpresas, sin obra eterna.</p>
     <div class="hero-cta-row">
@@ -1011,6 +1011,38 @@ function nextStep(v){
     fetch(NOTIFY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(function(){});
   }
 }
+
+// H1 dinámico: rota la última palabra entre municipios cada 2.5s con fade.
+(function(){
+  var palabras=[
+    'expertas',
+    'en Majadahonda',
+    'en Las Rozas',
+    'en Pozuelo',
+    'en Boadilla',
+    'en Leganés',
+    'en Getafe',
+    'en Alcorcón',
+    'en Fuenlabrada',
+    'en Móstoles',
+    'en Galapagar',
+    'en Torrelodones',
+    'en Parla',
+    'en Pinto'
+  ];
+  var el=document.getElementById('h1-rot');
+  if(!el)return;
+  var i=0;
+  el.style.transition='opacity 0.4s ease';
+  setInterval(function(){
+    el.style.opacity='0';
+    setTimeout(function(){
+      i=(i+1)%palabras.length;
+      el.textContent=palabras[i];
+      el.style.opacity='1';
+    },400);
+  },2500);
+})();
 </script>
 </body>
 </html>
