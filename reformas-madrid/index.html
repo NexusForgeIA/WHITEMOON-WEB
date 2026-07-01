@@ -114,16 +114,12 @@ button{font-family:'Sora',sans-serif}
 
 /* HERO SLIDER */
 .hero{position:relative;height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:110px 52px 72px}
-.hero-slides{position:absolute;inset:0;z-index:0}
-.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
-.hero-slide.active{opacity:1}
-.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center}
-.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(6,8,12,.97) 0%,rgba(6,8,12,.65) 50%,rgba(6,8,12,.3) 100%)}
-
-/* dots */
-.hero-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(57,255,20,.3);border:none;cursor:pointer;transition:all .3s;padding:0}
-.hero-dot.active{background:var(--lime);width:20px;border-radius:3px}
+.hero-bg{position:absolute;inset:0;z-index:0;background:#060810 url('assets/hero-poster.jpg') center/cover no-repeat}
+.hero-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+/* Overlay oscuro (mismo gradient que antes), sobre el vídeo y bajo el contenido */
+.hero-bg::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(6,8,12,.97) 0%,rgba(6,8,12,.65) 50%,rgba(6,8,12,.3) 100%)}
+/* Vídeo oculto en móvil (PageSpeed); queda el poster como fondo de .hero-bg */
+@media(max-width:768px){.hero-bg video{display:none}}
 
 .hero-in{position:relative;z-index:2;max-width:1200px;margin:0 auto;width:100%}
 .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--lime);border-radius:6px;font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);margin-bottom:24px;background:var(--lime-dim2)}
@@ -364,24 +360,15 @@ footer{background:#000;border-top:1px solid var(--border2);padding:60px 52px 36p
 
 <!-- HERO SLIDER -->
 <section class="hero" id="top" style="border:none;padding:110px 52px 80px">
-  <div class="hero-slides" id="slides">
-    <div class="hero-slide active">
-      <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?fm=jpg&q=85&w=1800&auto=format&fit=crop" alt="Bano reformado moderno en Madrid" width="1800" height="1200" loading="eager">
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?fm=jpg&q=85&w=1800&auto=format&fit=crop" alt="Bano minimalista reformado Madrid" width="1800" height="1200" loading="lazy">
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?fm=jpg&q=85&w=1800&auto=format&fit=crop" alt="Plato de ducha reforma Madrid" width="1800" height="1200" loading="lazy">
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1552308995-2baac1ad5490?fm=jpg&q=85&w=1800&auto=format&fit=crop" alt="Bano con banuera exenta reforma Madrid" width="1800" height="1200" loading="lazy">
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?fm=jpg&q=85&w=1800&auto=format&fit=crop" alt="Ducha de obra reformada Madrid" width="1800" height="1200" loading="lazy">
-    </div>
+  <div class="hero-bg">
+    <video
+      autoplay muted loop playsinline
+      preload="none"
+      poster="assets/hero-poster.jpg"
+      style="width:100%;height:100%;object-fit:cover">
+      <source src="https://assets.mixkit.co/videos/34237/34237-720.mp4" type="video/mp4">
+    </video>
   </div>
-  <div class="hero-dots" id="dots"></div>
   <div class="hero-in">
     <div class="hero-tag"><span class="dot"></span>Especialistas en cocinas y banos · Madrid</div>
     <h1>
@@ -1000,32 +987,14 @@ window.addEventListener('scroll',function(){
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
 });
 
-/* ===== HERO SLIDER ===== */
+/* ===== HERO VIDEO — respeta prefers-reduced-motion ===== */
 (function(){
-  var slides=document.querySelectorAll('.hero-slide');
-  var dotsWrap=document.getElementById('dots');
-  var cur=0;
-  var timer;
-
-  slides.forEach(function(_,i){
-    var d=document.createElement('button');
-    d.className='hero-dot'+(i===0?' active':'');
-    d.setAttribute('aria-label','Slide '+(i+1));
-    d.onclick=function(){go(i);};
-    dotsWrap.appendChild(d);
-  });
-
-  function go(n){
-    slides[cur].classList.remove('active');
-    dotsWrap.children[cur].classList.remove('active');
-    cur=(n+slides.length)%slides.length;
-    slides[cur].classList.add('active');
-    dotsWrap.children[cur].classList.add('active');
-    clearInterval(timer);
-    timer=setInterval(function(){go(cur+1);},4500);
+  var v=document.querySelector('.hero-bg video');
+  if(!v) return;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    v.removeAttribute('autoplay');
+    try{ v.pause(); }catch(e){}
   }
-
-  timer=setInterval(function(){go(cur+1);},4500);
 })();
 
 /* ===== TABS ===== */
