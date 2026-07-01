@@ -1003,6 +1003,10 @@ function showTab(id,el){
   document.querySelectorAll('.tab-btn').forEach(function(t){t.classList.remove('active')});
   document.getElementById('tab-'+id).classList.add('active');
   el.classList.add('active');
+  if(typeof gtag === 'function') gtag('event', 'tab_servicio', {
+    'event_category': 'engagement',
+    'event_label': id
+  });
 }
 
 /* ===== FAQ ===== */
@@ -1011,6 +1015,10 @@ function toggleFaq(btn){
   var isOpen=item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open')});
   if(!isOpen)item.classList.add('open');
+  if(!isOpen && typeof gtag === 'function') gtag('event', 'faq_abierta', {
+    'event_category': 'engagement',
+    'event_label': btn.querySelector('.faq-q-text').textContent.trim().substring(0,50)
+  });
 }
 
 /* ===== CHATBOT TRIAJE ===== */
@@ -1021,6 +1029,10 @@ var d={tipo:'',metros:'',zona:'',nombre:'',telefono:''};
 
 function openChat(){
   document.getElementById('cb-mod').classList.add('open');
+  if(typeof gtag === 'function') gtag('event', 'abrir_chat_presupuesto', {
+    'event_category': 'chatbot',
+    'event_label': 'reformas-madrid'
+  });
   document.getElementById('cb-fab').style.display='none';
   if(!greeted){
     greeted=true;
@@ -1110,6 +1122,11 @@ function nextStep(v){
     botSay('Solicitud recibida. Un tecnico se pondra en contacto contigo para la reforma de '+d.tipo+' en '+d.zona+'. Un tecnico se pondra en contacto contigo en menos de 24 horas. Muchas gracias.');
     document.getElementById('cb-input').disabled=true;
     document.getElementById('cb-send').disabled=true;
+    if(typeof gtag === 'function') gtag('event', 'lead_enviado', {
+      'event_category': 'conversion',
+      'event_label': d.tipo,
+      'value': 1
+    });
     fetch(NOTIFY,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).catch(function(){});
   }
 }
