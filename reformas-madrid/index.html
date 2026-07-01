@@ -16,7 +16,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hero-poster.jpg" fetchpriority="high">
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap">
+</noscript>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","name":"WhiteMoon Reformas Madrid","description":"Especialistas en reforma de cocina, bano, pintura y reforma integral en Madrid.","url":"https://whitemoon.es/reformas-madrid/","email":"comercial@whitemoon.es","address":{"@type":"PostalAddress","addressLocality":"Majadahonda","addressRegion":"Madrid","addressCountry":"ES"},"areaServed":["Las Rozas","Majadahonda","Pozuelo de Alarcon","Boadilla del Monte","Leganes","Getafe","Alcorcon","Fuenlabrada","Mostoles","Parla"],"serviceType":["Reforma de cocina","Reforma de bano","Reforma integral","Pintura interior","Alicatado","Fontaneria"]}
@@ -366,8 +373,11 @@ footer{background:#000;border-top:1px solid var(--border2);padding:60px 52px 36p
       autoplay muted loop playsinline
       preload="none"
       poster="assets/hero-poster.jpg"
+      fetchpriority="high"
       style="width:100%;height:100%;object-fit:cover">
-      <source src="https://assets.mixkit.co/videos/34237/34237-720.mp4" type="video/mp4">
+      <source src="https://assets.mixkit.co/videos/34237/34237-720.mp4"
+        type="video/mp4"
+        media="(min-width:769px)">
     </video>
   </div>
   <div class="hero-in">
