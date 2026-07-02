@@ -622,17 +622,8 @@
 
 <!-- HERO -->
 <section class="hero hero-enterprise" id="main-content">
-  <video
-    autoplay
-    loop
-    muted
-    playsinline
-    preload="none"
-    poster="/assets/images/og-home.jpg"
-    aria-hidden="true"
-    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none">
-    <source src="/assets/video/hero-network.mp4" type="video/mp4"/>
-  </video>
+  <!-- Hero vídeo inyectado por JS solo en desktop (ver final del body): en móvil
+       hero-network.mp4 (5.7 MB) NO se descarga. El poster/gradiente queda de fondo. -->
   <div class="wrap">
 
     <!-- Brand bar -->
@@ -1416,5 +1407,31 @@
     ]
   }
   </script>
+
+<!-- Hero vídeo: inyectado solo en desktop (>768px) y sin prefers-reduced-motion,
+     para que hero-network.mp4 (5.7 MB) nunca se descargue en móvil. -->
+<script>
+(function(){
+  if(window.innerWidth > 768 &&
+     !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)){
+    var hero = document.querySelector('.hero-video-wrap')
+            || document.querySelector('.hero-bg')
+            || document.querySelector('.hero');
+    if(hero){
+      var v=document.createElement('video');
+      v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;
+      v.preload='none';
+      v.setAttribute('aria-hidden','true');
+      v.poster='/assets/images/og-home.jpg';
+      v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none';
+      var s=document.createElement('source');
+      s.src='/assets/video/hero-network.mp4';
+      s.type='video/mp4';
+      v.appendChild(s);
+      hero.insertBefore(v,hero.firstChild);
+    }
+  }
+})();
+</script>
 </body>
 </html>
