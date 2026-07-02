@@ -623,7 +623,7 @@
 <!-- HERO -->
 <section class="hero hero-enterprise" id="main-content">
   <!-- Hero vídeo inyectado por JS solo en desktop (ver final del body): en móvil
-       hero-network.mp4 (5.7 MB) NO se descarga. El poster/gradiente queda de fondo. -->
+       el vídeo NO se descarga. El poster/gradiente queda de fondo. -->
   <div class="wrap">
 
     <!-- Brand bar -->
@@ -1409,7 +1409,7 @@
   </script>
 
 <!-- Hero vídeo: inyectado solo en desktop (>768px) y sin prefers-reduced-motion,
-     para que hero-network.mp4 (5.7 MB) nunca se descargue en móvil. -->
+     para que el vídeo (Mixkit data center) nunca se descargue en móvil. -->
 <script>
 (function(){
   if(window.innerWidth > 768 &&
@@ -1422,10 +1422,10 @@
       v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;
       v.preload='none';
       v.setAttribute('aria-hidden','true');
-      v.poster='/assets/images/og-home.jpg';
+      v.poster='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?fm=jpg&q=60&w=800&auto=format&fit=crop';
       v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none';
       var s=document.createElement('source');
-      s.src='/assets/video/hero-network.mp4';
+      s.src='https://assets.mixkit.co/videos/23219/23219-720.mp4';
       s.type='video/mp4';
       v.appendChild(s);
       hero.insertBefore(v,hero.firstChild);
