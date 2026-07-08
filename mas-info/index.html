@@ -75,6 +75,7 @@
       <div class="hero-sector"><span style="color:var(--g)">●</span> Respuesta en menos de 24h</div>
       <h1>Cuéntanos sobre tu negocio</h1>
       <p class="hero-sub">Nos ponemos en contacto contigo para explicarte cómo WhiteMoon puede ayudarte. Sin compromiso.</p>
+      <p class="mi-pack-label" id="miPackLabel" style="display:none;font-size:.85rem;color:var(--g);font-weight:600;margin-top:10px"></p>
     </div>
   </section>
 
@@ -157,6 +158,23 @@
   var MSG  = document.getElementById('masInfoMsg');
   if(!form) return;
 
+  // Parámetro ?pack= → etiqueta el lead con el producto de origen.
+  // Saneado: solo [a-z0-9-], máximo 40 chars.
+  var pack = (new URLSearchParams(location.search).get('pack') || '')
+    .toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 40);
+
+  function packLabel(p){
+    if(p === 'whitemoon-360') return 'WhiteMoon 360';
+    return p.split('-').filter(Boolean).map(function(w){
+      return w.charAt(0).toUpperCase() + w.slice(1);
+    }).join(' ');
+  }
+
+  if(pack){
+    var packEl = document.getElementById('miPackLabel');
+    if(packEl){ packEl.textContent = 'Interesado en: ' + packLabel(pack); packEl.style.display = ''; }
+  }
+
   function setMsg(kind, html){ MSG.className = 'mi-msg' + (kind ? ' is-' + kind : ''); MSG.innerHTML = html || ''; }
   function clearMsg(){ setMsg('', ''); }
   function val(name){ var el = form.elements[name]; return el ? (el.value || '').trim() : ''; }
@@ -199,9 +217,9 @@
       nombre: nombre,
       telefono: telefono,
       sector: sector,
-      interes: 'landing-mas-info',
+      interes: pack ? pack : 'landing-mas-info',
       mensaje: mensaje,
-      origen: 'hero-mas-info',
+      origen: pack ? ('precios-' + pack) : 'hero-mas-info',
       fecha: new Date().toISOString(),
       atendido: false
     };
@@ -217,7 +235,7 @@
         try {
           fetch(NOTIFY_FN, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ nombre: nombre, telefono: telefono, sector: sector, origen: 'hero-mas-info', mensaje: mensaje })
+            body: JSON.stringify({ nombre: nombre, telefono: telefono, sector: sector, origen: pack ? ('precios-' + pack) : 'hero-mas-info', mensaje: mensaje })
           }).catch(function(err){ console.warn('[mas-info] WhatsApp notify falló', err); });
         } catch(e){ console.warn('[mas-info] WhatsApp notify error', e); }
         try { if(typeof wmTrack === 'function') wmTrack('submit_mas_info', { sector: sector }); } catch(e){}
