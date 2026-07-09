@@ -30,7 +30,7 @@
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"¿Qué es el IEDMT (impuesto de matriculación)?","acceptedAnswer":{"@type":"Answer","text":"El Impuesto Especial sobre Determinados Medios de Transporte (IEDMT) grava la primera matriculación definitiva en España de vehículos nuevos. Lo gestiona la AEAT a través del modelo 576 y se calcula como un % sobre el precio del vehículo sin IVA, según los tramos de emisiones CO2 medidas con el ciclo WLTP. Vehículos eléctricos puros y muchos híbridos enchufables tributan al 0%."}},
 {"@type":"Question","name":"¿Qué tramos de emisiones CO2 hay en 2026?","acceptedAnswer":{"@type":"Answer","text":"Cuatro tramos según el RDL aplicable en 2026: 0-120 g/km de CO2 → 0% (eléctricos, híbridos eficientes, gasolina/diésel pequeños), 121-159 g/km → 4,75%, 160-199 g/km → 9,75%, y ≥200 g/km → 14,75%. Algunos vehículos tienen tramos especiales (autocaravanas, ciclomotores eléctricos) y Canarias, Ceuta y Melilla aplican tipos reducidos."}},
-{"@type":"Question","name":"¿En qué CCAA se paga menos impuesto de matriculación?","acceptedAnswer":{"@type":"Answer","text":"El IEDMT es un impuesto estatal y los tramos son iguales en toda la Península y Baleares. En Canarias se aplica al 50% del tipo. En Ceuta y Melilla los vehículos están exentos. La CCAA donde se matricula el vehículo NO altera el % aplicable, salvo en esas tres excepciones territoriales."}},
+{"@type":"Question","name":"¿En qué CCAA se paga menos impuesto de matriculación?","acceptedAnswer":{"@type":"Answer","text":"El IEDMT es un impuesto estatal y los tipos son iguales en toda la Península y Baleares: 0%, 4,75%, 9,75% y 14,75% según el tramo de CO2. Canarias no aplica la mitad del tipo, sino una tabla propia recogida en el artículo 70.2 de la Ley 38/1992: 0%, 3,75%, 8,75% y 13,75%. En Ceuta y Melilla todos los epígrafes tributan al 0%."}},
 {"@type":"Question","name":"¿Pagan impuesto de matriculación las motos de 125 cc?","acceptedAnswer":{"@type":"Answer","text":"No. El artículo 65.1.a).5º de la Ley 38/1992 declara no sujetas las motocicletas cuya cilindrada no exceda de 250 centímetros cúbicos, si se trata de motores de combustión interna, o cuya potencia máxima neta no exceda de 16 kW en el resto de motores. Una moto de 125 cc no está sujeta al IEDMT: se presenta el modelo 06 (declaración de no sujeción ante la AEAT) y no se paga el impuesto."}},
 {"@type":"Question","name":"¿Qué tipo de IEDMT paga una moto de más de 250 cc?","acceptedAnswer":{"@type":"Answer","text":"Según los epígrafes 6º a 9º del artículo 70 de la Ley 38/1992, en Península e Illes Balears: hasta 100 g/km de CO2 tributa al 0% (epígrafe 6º); más de 100 y hasta 120 g/km al 4,75% (epígrafe 7º); más de 120 y menos de 140 g/km al 9,75% (epígrafe 8º); y 140 g/km o más, emisiones no acreditadas o el supuesto 9.c, al 14,75% (epígrafe 9º). Varias comunidades autónomas han aprobado tipos propios para el epígrafe 9º."}},
 {"@type":"Question","name":"¿Qué es el supuesto 9.c de las motocicletas?","acceptedAnswer":{"@type":"Answer","text":"El epígrafe 9º.c) del artículo 70 incluye las motocicletas con una potencia CEE igual o superior a 74 kW (100 cv) y, a la vez, una relación potencia neta máxima / masa del vehículo en orden de marcha igual o superior a 0,66 kW/kg, cualesquiera que sean sus emisiones oficiales de CO2. Deben cumplirse las dos condiciones a la vez. Si se cumplen, la moto tributa en el epígrafe 9º aunque emita poco CO2."}}
@@ -138,9 +138,9 @@
         <div class="calc-row">
           <label class="calc-label" for="im-territorio">Territorio fiscal</label>
           <select id="im-territorio" class="calc-select" onchange="calcIM()">
-            <option value="peninsula" data-factor="1" selected>Península + Baleares (tipo completo)</option>
-            <option value="canarias" data-factor="0.5">Canarias (50% del tipo)</option>
-            <option value="ceuta-melilla" data-factor="0">Ceuta / Melilla (exento)</option>
+            <option value="peninsula" selected>Península + Baleares (tipos estatales)</option>
+            <option value="canarias">Canarias (tipos propios)</option>
+            <option value="ceuta-melilla">Ceuta / Melilla (exento)</option>
           </select>
         </div>
 
@@ -157,7 +157,7 @@
           <div class="tramo" data-tramo="4"><span>≥ 200 g/km</span><strong>14,75 %</strong></div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px" id="im-detail">130 g/km CO2 → tramo 2 (4,75%) × 20.000€ base × factor territorio 1.0 = 950€ de IEDMT (modelo 576 AEAT). Lo paga el comprador antes de matricular en la DGT.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px" id="im-detail">130 g/km CO2 → tramo 2 (4,75%) × 20.000€ base = 950€ de IEDMT (modelo 576 AEAT) con los tipos de Península e Illes Balears. Lo paga el comprador antes de matricular en la DGT.</div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Emisiones según ciclo WLTP (no NEDC). Vehículos eléctricos puros, híbridos enchufables muy eficientes y la mayoría de motos quedan en el tramo 0%. Confirma siempre los datos con la ficha técnica oficial del vehículo.</p>
         </div>
@@ -283,7 +283,7 @@
         <h2 class="sec-h" style="margin-bottom:24px">FAQ Impuesto Matriculación</h2>
         <div class="faq-item"><div class="faq-q">¿Qué es el IEDMT (impuesto de matriculación)?</div><div class="faq-a">Grava la primera matriculación definitiva en España de vehículos nuevos. Lo gestiona la AEAT a través del modelo 576 y se calcula como un % sobre el precio sin IVA, según los tramos de emisiones CO2 (WLTP). Eléctricos puros y muchos híbridos enchufables tributan al 0%.</div></div>
         <div class="faq-item"><div class="faq-q">¿Qué tramos hay en 2026?</div><div class="faq-a">Cuatro tramos: 0-120 g/km → 0%, 121-159 g/km → 4,75%, 160-199 g/km → 9,75%, ≥200 g/km → 14,75%. Algunos vehículos tienen tramos especiales (autocaravanas, ciclomotores eléctricos) y Canarias/Ceuta/Melilla aplican tipos reducidos o exención.</div></div>
-        <div class="faq-item"><div class="faq-q">¿En qué CCAA se paga menos?</div><div class="faq-a">El IEDMT es estatal: tramos iguales en Península y Baleares. Canarias al 50% del tipo. Ceuta y Melilla exentos. La CCAA donde se matricula NO altera el % salvo esas tres excepciones territoriales.</div></div>
+        <div class="faq-item"><div class="faq-q">¿En qué CCAA se paga menos impuesto de matriculación?</div><div class="faq-a">El IEDMT es un impuesto estatal y los tipos son iguales en toda la Península y Baleares: 0%, 4,75%, 9,75% y 14,75% según el tramo de CO2. Canarias no aplica la mitad del tipo, sino una tabla propia recogida en el artículo 70.2 de la Ley 38/1992: 0%, 3,75%, 8,75% y 13,75%. En Ceuta y Melilla todos los epígrafes tributan al 0%.</div></div>
         <div class="faq-item"><div class="faq-q">¿Pagan impuesto de matriculación las motos de 125 cc?</div><div class="faq-a">No. El artículo 65.1.a).5º de la Ley 38/1992 declara no sujetas las motocicletas cuya cilindrada no exceda de 250 centímetros cúbicos, si se trata de motores de combustión interna, o cuya potencia máxima neta no exceda de 16 kW en el resto de motores. Una moto de 125 cc no está sujeta al IEDMT: se presenta el modelo 06 (declaración de no sujeción ante la AEAT) y no se paga el impuesto.</div></div>
         <div class="faq-item"><div class="faq-q">¿Qué tipo de IEDMT paga una moto de más de 250 cc?</div><div class="faq-a">Según los epígrafes 6º a 9º del artículo 70 de la Ley 38/1992, en Península e Illes Balears: hasta 100 g/km de CO2 tributa al 0% (epígrafe 6º); más de 100 y hasta 120 g/km al 4,75% (epígrafe 7º); más de 120 y menos de 140 g/km al 9,75% (epígrafe 8º); y 140 g/km o más, emisiones no acreditadas o el supuesto 9.c, al 14,75% (epígrafe 9º). Varias comunidades autónomas han aprobado tipos propios para el epígrafe 9º.</div></div>
         <div class="faq-item"><div class="faq-q">¿Qué es el supuesto 9.c de las motocicletas?</div><div class="faq-a">El epígrafe 9º.c) del artículo 70 incluye las motocicletas con una potencia CEE igual o superior a 74 kW (100 cv) y, a la vez, una relación potencia neta máxima / masa del vehículo en orden de marcha igual o superior a 0,66 kW/kg, cualesquiera que sean sus emisiones oficiales de CO2. Deben cumplirse las dos condiciones a la vez. Si se cumplen, la moto tributa en el epígrafe 9º aunque emita poco CO2.</div></div>
@@ -346,34 +346,52 @@
 
 <script src="/orion-widget.js?v=2026060801" defer></script>
 <script>
+/* Tipos por territorio y epígrafe (art. 70.2 Ley 38/1992, versión vigente desde
+   2021-07-11; tabla "Tipos impositivos" de la AEAT, actualizada 03/03/2026).
+   Canarias NO es "la mitad del tipo estatal": tiene una columna de tipos propios.
+   Los tramos 1-4 de esta calculadora son los epígrafes 1º-4º (turismos).        */
+var IM_TIPOS = {
+  peninsula:       {1: 0, 2: 4.75, 3: 9.75, 4: 14.75},
+  canarias:        {1: 0, 2: 3.75, 3: 8.75, 4: 13.75},
+  'ceuta-melilla': {1: 0, 2: 0,    3: 0,    4: 0}
+};
+var IM_TERR_LBL = {
+  peninsula: 'Península e Illes Balears',
+  canarias: 'Canarias',
+  'ceuta-melilla': 'Ceuta / Melilla'
+};
+
 function calcIM(){
   var precio = parseFloat(document.getElementById('im-precio').value) || 0;
   var co2 = parseFloat(document.getElementById('im-co2').value) || 0;
-  var terr = document.getElementById('im-territorio');
-  var factor = parseFloat(terr.options[terr.selectedIndex].getAttribute('data-factor'));
+  var terr = document.getElementById('im-territorio').value;
 
-  var tipo, tramo;
-  if(co2 <= 120){ tipo = 0; tramo = 1; }
-  else if(co2 <= 159){ tipo = 4.75; tramo = 2; }
-  else if(co2 <= 199){ tipo = 9.75; tramo = 3; }
-  else { tipo = 14.75; tramo = 4; }
+  var tramo;
+  if(co2 <= 120){ tramo = 1; }
+  else if(co2 <= 159){ tramo = 2; }
+  else if(co2 <= 199){ tramo = 3; }
+  else { tramo = 4; }
 
-  var tipoEfectivo = tipo * factor;
-  var impuesto = precio * (tipoEfectivo / 100);
+  var tabla = IM_TIPOS[terr];
+  var tipo = tabla[tramo];
+  var impuesto = precio * (tipo / 100);
 
-  document.getElementById('im-tipo').textContent = tipoEfectivo.toString().replace('.', ',') + ' %';
+  document.getElementById('im-tipo').textContent = tipo.toString().replace('.', ',') + ' %';
   document.getElementById('im-base').textContent = Math.round(precio).toLocaleString('es-ES') + ' €';
   document.getElementById('im-pagar').textContent = Math.round(impuesto).toLocaleString('es-ES') + ' €';
 
-  // Marcar tramo activo
+  // Marcar tramo activo y mostrar los tipos del territorio elegido
   document.querySelectorAll('#im-tramos .tramo').forEach(function(el){
-    el.classList.toggle('active', parseInt(el.dataset.tramo, 10) === tramo);
+    var n = parseInt(el.dataset.tramo, 10);
+    el.classList.toggle('active', n === tramo);
+    el.querySelector('strong').textContent = tabla[n].toString().replace('.', ',') + ' %';
   });
 
   document.getElementById('im-detail').textContent = co2 + ' g/km CO2 → tramo ' + tramo + ' (' +
     tipo.toString().replace('.', ',') + '%) × ' + Math.round(precio).toLocaleString('es-ES') +
-    '€ base × factor territorio ' + factor + ' = ' + Math.round(impuesto).toLocaleString('es-ES') +
-    '€ de IEDMT (modelo 576 AEAT). Lo paga el comprador antes de matricular en la DGT.';
+    '€ base = ' + Math.round(impuesto).toLocaleString('es-ES') +
+    '€ de IEDMT (modelo 576 AEAT) con los tipos de ' + IM_TERR_LBL[terr] +
+    '. Lo paga el comprador antes de matricular en la DGT.';
 }
 calcIM();
 
