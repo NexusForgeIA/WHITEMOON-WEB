@@ -58,6 +58,10 @@
   .nav-links a{padding:8px 14px;border-radius:8px;font-size:.86rem;color:var(--muted);text-decoration:none;font-weight:500}
   .nav-links a:hover{color:var(--text)}
   .nav-cta{background:var(--p)!important;color:#fff!important}
+  /* El <a> de Cal.com lleva display:inline-flex inline, que gana a la hoja
+     de estilos: necesita !important para ocultarse. Sin esto desborda el nav
+     en móvil. Mismo breakpoint que en index.html y /demos/. */
+  @media(max-width:768px){.nav-cta-cal{display:none !important}}
   @media(max-width:600px){.nav-links a:not(.nav-cta){display:none}}
 
   /* Hero */
