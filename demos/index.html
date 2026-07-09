@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demos en vivo de agentes IA y CRM · WhiteMoon</title>
+<meta name="description" content="8 demos funcionales de agentes IA por sector: clínicas, podología, SAT, hostelería, abogados, veterinarios, plagas e inmobiliarias. Pruébalas tú mismo.">
+<meta name="keywords" content="demos agentes IA, demo chatbot sectorial, probar agente IA, demo agente IA Madrid, WhiteMoon demos">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/demos/">
+<meta property="og:title" content="Demos en vivo de agentes IA y CRM · WhiteMoon">
+<meta property="og:description" content="8 demos funcionales de agentes IA por sector: clínicas, podología, SAT, hostelería, abogados, veterinarios, plagas e inmobiliarias. Pruébalas tú mismo.">
+<meta property="og:url" content="https://whitemoon.es/demos/">
+<meta property="og:image" content="https://whitemoon.es/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="WhiteMoon Agencia de IA — demos en vivo de agentes IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/og-image.jpg">
+<meta name="twitter:title" content="Demos en vivo de agentes IA y CRM · WhiteMoon">
+<meta name="twitter:description" content="8 demos funcionales de agentes IA por sector: clínicas, podología, SAT, hostelería, abogados, veterinarios, plagas e inmobiliarias. Pruébalas tú mismo.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="WhiteMoon Agencia de IA">
+<meta name="geo.region" content="ES-MD">
+<meta name="geo.placename" content="Majadahonda, Madrid">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Inicio","item":"https://whitemoon.es/"},
+    {"@type":"ListItem","position":2,"name":"Agente IA","item":"https://whitemoon.es/agentes-ia/"},
+    {"@type":"ListItem","position":3,"name":"Demos","item":"https://whitemoon.es/demos/"}
+  ]
+}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/landing-generic.css">
+  <!-- Analytics (GA4) con consentimiento de cookies -->
+  <script defer src="/assets/cookie-consent.js?v=2026052702"></script>
+  <script defer src="/assets/wm-track.js?v=2026052801"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="dns-prefetch" href="//region1.google-analytics.com">
+<style>
+  /* Demos — grid de escaparate sobre landing-generic */
+  .dm-nav-links{display:flex;align-items:center;gap:4px;}
+  .dm-nav-links a{font-size:.82rem;color:var(--muted);padding:7px 12px;border-radius:8px;transition:color .15s,background .15s;}
+  .dm-nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04);}
+  .dm-nav-links a[aria-current="page"]{color:var(--text);background:rgba(124,77,255,.12);}
+  .dm-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.3);padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;color:var(--p2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
+  .dm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+  .dm-card{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;}
+  .dm-card:hover{transform:translateY(-3px);border-color:rgba(124,77,255,.45);box-shadow:0 16px 40px rgba(0,0,0,.35);}
+  .dm-shot{width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;display:block;border-bottom:1px solid var(--border);background:var(--bg2);}
+  .dm-body{display:flex;flex-direction:column;flex:1;padding:22px 24px 24px;}
+  .dm-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:10px;}
+  .dm-try{font-size:.87rem;color:var(--muted);line-height:1.6;margin:0 0 20px;flex:1;}
+  .dm-try b{color:var(--p2);font-weight:600;}
+  .dm-btn{align-self:flex-start;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;padding:11px 20px;border-radius:10px;font-weight:700;font-size:.85rem;transition:transform .2s,box-shadow .2s;}
+  .dm-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(124,77,255,.3);color:#fff;}
+  .dm-disclaimer{margin-top:40px;padding:18px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--muted);line-height:1.6;}
+  @media(max-width:900px){.dm-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){
+    .dm-grid{grid-template-columns:1fr;gap:20px;}
+    .dm-nav-links a{padding:7px 8px;font-size:.78rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="https://whitemoon.es/" style="cursor:pointer">
+      <img class="nav-logo" src="/logo.png" alt="WhiteMoon Agencia de IA" width="140" height="52" style="height:40px;width:auto;">
+    </a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="dm-nav-links">
+        <a href="/">Inicio</a>
+        <a href="/precios/">Precios</a>
+        <a href="/whitemoon-360/">WhiteMoon 360</a>
+        <a href="/demos/" aria-current="page">Demos</a>
+      </div>
+      <a href="https://cal.com/whitemoon" target="_blank" rel="noopener" class="nav-cta-cal" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;margin-right:10px;border-radius:8px;background:#7c4dff;color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;white-space:nowrap;transition:background .2s,transform .2s" onmouseover="this.style.background='#9d70ff'" onmouseout="this.style.background='#7c4dff'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar reunión</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="https://whitemoon.es/">Inicio</a><span>›</span>
+      <a href="https://whitemoon.es/agentes-ia/">Agente IA</a><span>›</span>
+      Demos
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="dm-eyebrow">🌙 8 demos funcionales · Pruébalas ahora</div>
+      <h1>Demos reales,<br><span>no vídeos</span></h1>
+      <p class="hero-sub">Todo lo que ves funciona: los agentes responden, las citas se reservan y los avisos llegan. Pruébalas como si fueras un cliente.</p>
+      <div class="hero-actions">
+        <a href="/precios/" class="btn-prim" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'ver-precios'})">¿Quieres esto en tu negocio? →</a>
+        <a href="/whitemoon-360/" class="btn-sec" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'whitemoon-360'})">Ver WhiteMoon 360</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE DEMOS -->
+  <section class="sec">
+    <div class="wrap">
+      <span class="sec-label">El escaparate</span>
+      <h2 class="sec-h">Ocho sectores, ocho agentes distintos</h2>
+      <p class="sec-sub">Cada demo tiene su propio agente con su nombre, su flujo y su forma de trabajar. Ábrelas y háblales.</p>
+
+      <div class="dm-grid">
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/clinicas-dentales.webp" alt="Demo de clínica dental con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Clínicas dentales</h3>
+            <p class="dm-try">Pídele a <b>Marcos</b>, el asistente dental, tu primera visita y elige hueco sin salir del chat.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-CLINICAS-DENTALES/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'clinicas-dentales'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/podologia.webp" alt="Demo de clínica de podología con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Podología</h3>
+            <p class="dm-try">Dile a <b>ANA</b>, la recepcionista virtual, qué tratamiento necesitas y te busca un hueco real en el chat.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-PODOLOGOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'podologia'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/servicios-tecnicos.webp" alt="Demo de servicio técnico SAT con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Servicios técnicos SAT</h3>
+            <p class="dm-try">Cuéntale la avería a <b>Alex</b> y verás cómo asigna el aviso al técnico de tu zona según el tipo de trabajo.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-WEBSERVICE-DEMO/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'servicios-tecnicos'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/hosteleria.webp" alt="Demo de hamburguesería con agente IA de pedidos — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Hostelería</h3>
+            <p class="dm-try">Monta tu pedido con el <b>Smash Bot</b>: elige burger, extras y bebida, y confírmalo desde el propio chat.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-BURGUER/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'hosteleria'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/abogados.webp" alt="Demo de despacho de abogados con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Abogados</h3>
+            <p class="dm-try">Cuéntale tu caso a <b>LEX</b> —civil, penal, laboral, mercantil o inmobiliario— y solicita la primera consulta.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-ABOGADOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'abogados'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/veterinarios.webp" alt="Demo de clínica veterinaria con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Veterinarios</h3>
+            <p class="dm-try">Pide cita con <b>NORA</b> para tu mascota o pregúntale por las urgencias 24h de la clínica.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'veterinarios'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/control-plagas.webp" alt="Demo de empresa de control de plagas con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Control de plagas</h3>
+            <p class="dm-try">Describe la plaga a <b>KAI</b>: identifica el problema contigo y te programa el diagnóstico.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-PLAGAS-CONTROL/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'control-plagas'})">Probar la demo →</a>
+          </div>
+        </article>
+
+        <article class="dm-card">
+          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/inmobiliarias.webp" alt="Demo de agencia inmobiliaria con agente IA — portada de la web" class="dm-shot">
+          <div class="dm-body">
+            <h3>Inmobiliarias</h3>
+            <p class="dm-try">Dile a <b>Carlos</b> que quieres vender tu vivienda y te lleva paso a paso hasta la valoración.</p>
+            <a href="https://nexusforgeia.github.io/WHITEMOON-INMOBILIARIAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'inmobiliarias'})">Probar la demo →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="dm-disclaimer">Entornos de demostración con datos ficticios. Los negocios mostrados no son clientes reales salvo indicación expresa.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-sec">
+    <div class="wrap">
+      <h2>¿Quieres esto en tu negocio?</h2>
+      <p style="color:var(--muted);margin-bottom:8px;">Tu sector, tu agente, tu flujo. Operativo en 5-7 días laborables y sin permanencia.</p>
+      <div class="hero-actions" style="margin-top:16px;">
+        <a href="/precios/" class="btn-prim" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'ver-precios',placement:'cta-final'})">Ver precios →</a>
+        <a href="/whitemoon-360/" class="btn-sec" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'whitemoon-360',placement:'cta-final'})">Ver WhiteMoon 360</a>
+      </div>
+      <p style="font-size:.8rem;color:#5a5a70;margin-top:14px;">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2025 <a href="https://whitemoon.es/">WhiteMoon Agencia de IA</a> · Majadahonda, Madrid · <a href="https://whitemoon.es/#precios">Ver precios</a> · <a href="https://wa.me/34643199580">WhatsApp</a> · <a href="/aviso-legal/">Aviso Legal</a> · <a href="/politica-privacidad/">Política de Privacidad</a> · <a href="/politica-cookies/">Política de Cookies</a></p>
+  </div>
+</footer>
+
+<script src="/orion-widget.js?v=2026060801" defer></script>
+</body>
+</html>
