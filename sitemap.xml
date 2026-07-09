@@ -506,6 +506,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://whitemoon.es/demos/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://whitemoon.es/core-rag/</loc>
     <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
