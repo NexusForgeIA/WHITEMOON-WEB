@@ -66,10 +66,15 @@
   .dm-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(124,77,255,.3);color:#fff;}
   .dm-disclaimer{margin-top:40px;padding:18px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--muted);line-height:1.6;}
   @media(max-width:900px){.dm-grid{grid-template-columns:repeat(2,1fr);}}
+  /* El botón "Agendar reunión" se oculta en móvil, igual que en el resto
+     del sitio: el nav no cabe con la fila de enlaces. */
+  @media(max-width:768px){.nav-cta-cal{display:none !important;}}
   @media(max-width:600px){
     .dm-grid{grid-template-columns:1fr;gap:20px;}
-    .dm-nav-links a{padding:7px 8px;font-size:.78rem;}
+    .dm-nav-links a{padding:7px 9px;font-size:.78rem;}
+    .dm-nav-links a[href="/whitemoon-360/"]{display:none;}
   }
+  @media(max-width:400px){.dm-nav-links a[href="/"]{display:none;}}
 </style>
 </head>
 <body>
