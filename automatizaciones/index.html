@@ -9,10 +9,10 @@
 <meta name="author" content="WhiteMoon Agencia IA">
 <meta name="theme-color" content="#08080d">
 
-<!-- Geo local (coordenadas del schema LocalBusiness de la home) -->
+<!-- Geo local (coordenadas de la ficha de Google Business, iguales que geo en el JSON-LD) -->
 <meta name="geo.region" content="ES-MD">
 <meta name="geo.placename" content="Majadahonda">
-<meta name="ICBM" content="40.4731, -3.872">
+<meta name="ICBM" content="40.4737104, -3.8715623">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -40,7 +40,11 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200..800&display=swap" rel="stylesheet">
+<!-- PERFORMANCE: NON-BLOCKING STYLES (preload + onload swap) — mismo patron que la home.
+     Misma fuente (Sora) y misma URL: solo cambia como se carga, para que la hoja
+     deje de bloquear el render del H1 (elemento LCP). -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@200..800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@200..800&display=swap"></noscript>
 
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -67,10 +71,18 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "40.4731",
-        "longitude": "-3.872"
+        "latitude": "40.4737104",
+        "longitude": "-3.8715623"
       },
       "hasMap": "https://maps.app.goo.gl/9L9i8K4i5hX4oYxi6",
+      "image": "https://whitemoon.es/og-image.jpg",
+      "priceRange": "€€",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      },
       "sameAs": [
         "https://whitemoon.es",
         "https://maps.app.goo.gl/9L9i8K4i5hX4oYxi6",
