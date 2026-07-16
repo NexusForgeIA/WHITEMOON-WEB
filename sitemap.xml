@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- AUTOMATIZACIONES CON IA -->
+  <url>
+    <loc>https://whitemoon.es/automatizaciones/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- HUB CENTRAL ABSOLUTO -->
   <url>
     <loc>https://whitemoon.es/costes-eficiencia-empresarial-ia/</loc>

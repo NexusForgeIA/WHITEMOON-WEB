@@ -22,6 +22,10 @@ Orion IA — agente de voz conversacional en la WEB que atiende a los visitantes
 - Calculadora ITP Pro: 599€ setup + 99€/mes — herramienta para gestorías
 Sin permanencia en todos los packs. Operativo en 5-7 días laborables.
 
+## Automatizaciones con IA
+Catálogo de automatizaciones con IA para empresas y pymes: agentes de IA, captación de leads 24/7, CRM con IA, atención al cliente 24/7, base de conocimiento IA (RAG), automatización de WhatsApp, ficha Google Business (GMB) y SEO/GEO. WhiteMoon 360 es la automatización integral que unifica todo en un único sistema. Sin permanencia.
+Página: https://whitemoon.es/automatizaciones/
+
 ## Sectores objetivo
 Clínicas dentales, gestorías, despachos de abogados, restaurantes, talleres mecánicos, inmobiliarias, peluquerías, gimnasios, veterinarias, academias.
 
