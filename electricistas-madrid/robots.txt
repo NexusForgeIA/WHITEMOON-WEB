@@ -1,4 +1,4 @@
-# robots.txt — Electricista Elecnow (demo WhiteMoon)
+# robots.txt — Electricista WhiteMoon (demo)
 # https://whitemoon.es/electricistas-madrid/
 
 User-agent: *
