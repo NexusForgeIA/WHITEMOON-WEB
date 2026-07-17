@@ -2,8 +2,8 @@
 """SEO Guardian — auditoría automática de SEO/GEO para whitemoon.es.
 
 Revisa todos los archivos HTML del repositorio, valida una serie de checks
-SEO/estructurales y genera el informe `seo-guardian-report.md`. Si detecta
-errores críticos (checks 1-9) envía una notificación por WhatsApp vía CallMeBot.
+SEO/estructurales y genera el informe `seo-guardian-report.md`. Envía el
+resultado (verde/rojo) como notificación por Telegram vía la Bot API.
 
 Dependencias: beautifulsoup4, requests.
 """
@@ -67,8 +67,6 @@ RETIRED_PATTERNS = {
 # Prefijos exentos del check 9: líneas de producto distintas donde los nombres
 # de packs retirados son legítimos. Sin exenciones activas.
 RETIRED_EXEMPT_PREFIXES = ()
-
-PHONE = "34643199580"
 
 
 # ── Utilidades de rutas ────────────────────────────────────────────────────
@@ -342,11 +340,12 @@ def build_report(checks, fecha):
     return "\n".join(lines), critical, warnings
 
 
-# ── Notificación WhatsApp ──────────────────────────────────────────────────
-def notify_whatsapp(critical, fecha):
-    api_key = os.environ.get("CALLMEBOT_API_KEY")
-    if not api_key:
-        print("CALLMEBOT_API_KEY no configurada; se omite la notificación.")
+# ── Notificación Telegram ──────────────────────────────────────────────────
+def notify_telegram(critical, fecha):
+    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat_id:
+        print("TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID no configurados; se omite la notificación.")
         return
 
     if critical > 0:
@@ -358,14 +357,14 @@ def notify_whatsapp(critical, fecha):
         text = f"✅ SEO Guardian whitemoon.es — Todo correcto el {fecha}."
 
     try:
-        resp = requests.get(
-            "https://api.callmebot.com/whatsapp.php",
-            params={"phone": PHONE, "text": text, "apikey": api_key},
+        resp = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat_id, "text": text},
             timeout=30,
         )
-        print(f"Notificación WhatsApp enviada (HTTP {resp.status_code}).")
+        print(f"Notificación Telegram enviada (HTTP {resp.status_code}): {resp.text}")
     except requests.RequestException as exc:
-        print(f"Error al enviar la notificación WhatsApp: {exc}")
+        print(f"Error al enviar la notificación Telegram: {exc}")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────
@@ -386,7 +385,7 @@ def main():
     print(f"Informe generado: {REPORT_FILE}")
     print(f"Errores críticos: {critical} · Warnings: {warnings}")
 
-    notify_whatsapp(critical, fecha)
+    notify_telegram(critical, fecha)
 
 
 if __name__ == "__main__":

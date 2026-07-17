@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: pip install beautifulsoup4 requests
 
-      # Mismo script que el workflow semanal. No se pasa CALLMEBOT_API_KEY:
-      # en PRs no enviamos notificación de WhatsApp (la omite el script).
+      # Mismo script que el workflow semanal. No se pasan los secrets de Telegram:
+      # en PRs no enviamos notificación (la omite el script), solo hacemos de gate.
       - name: Run SEO Guardian
         run: python seo_guardian.py
 
