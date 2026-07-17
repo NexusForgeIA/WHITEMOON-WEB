@@ -376,7 +376,7 @@
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
   <link rel="dns-prefetch" href="https://region1.google-analytics.com">
-  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://assets.mixkit.co">
 
   <!-- ── SITEMAP Y VERIFICACIÓN ── -->
   <meta name="google-site-verification" content="0f366eade019ef7a">
@@ -1424,7 +1424,11 @@
   </script>
 
 <!-- Hero vídeo: inyectado solo en desktop (>768px) y sin prefers-reduced-motion,
-     para que el vídeo (Mixkit data center) nunca se descargue en móvil. -->
+     para que el vídeo (Mixkit 51214) nunca se descargue en móvil.
+     El scrim se inyecta junto al vídeo (z-index 1, entre vídeo y contenido): a
+     diferencia del data center anterior, este plano es muy luminoso en la zona
+     del H1, así que sin scrim el titular queda a 1,37:1. Va aquí y no en CSS
+     para que en móvil —sin vídeo— no se pinte nada encima del degradado. -->
 <script>
 (function(){
   if(window.innerWidth > 768 &&
@@ -1437,12 +1441,17 @@
       v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;
       v.preload='none';
       v.setAttribute('aria-hidden','true');
-      v.poster='https://images.unsplash.com/photo-1558494949-ef010cbdcc31?fm=jpg&q=60&w=800&auto=format&fit=crop';
+      v.poster='https://assets.mixkit.co/videos/51214/51214-thumb-720-0.jpg';
       v.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none';
       var s=document.createElement('source');
-      s.src='https://assets.mixkit.co/videos/23219/23219-720.mp4';
+      s.src='https://assets.mixkit.co/videos/51214/51214-720.mp4';
       s.type='video/mp4';
       v.appendChild(s);
+      var scrim=document.createElement('div');
+      scrim.setAttribute('aria-hidden','true');
+      scrim.style.cssText='position:absolute;inset:0;z-index:1;pointer-events:none;'+
+        'background:linear-gradient(90deg,rgba(11,15,23,.88) 0%,rgba(11,15,23,.72) 45%,rgba(11,15,23,.35) 70%,rgba(11,15,23,.15) 100%)';
+      hero.insertBefore(scrim,hero.firstChild);
       hero.insertBefore(v,hero.firstChild);
     }
   }
