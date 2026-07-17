@@ -206,6 +206,20 @@
       ]
     },
     {
+      "@type": "VideoObject",
+      "@id": "https://whitemoon.es/automatizaciones/#video-conocenos",
+      "name": "No vendemos productos ofrecemos resultados , no vendemos servicios ofrecemos soluciones .",
+      "description": "Somos una agencia de IA con base en Majadahonda. Mira quiénes somos y cómo trabajamos.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/yWCuHmOX6K4/oardefault.jpg",
+      "uploadDate": "2026-07-17T03:36:18-07:00",
+      "duration": "PT18S",
+      "embedUrl": "https://www.youtube.com/embed/yWCuHmOX6K4",
+      "contentUrl": "https://www.youtube.com/shorts/yWCuHmOX6K4",
+      "inLanguage": "es-ES",
+      "publisher": { "@id": "https://whitemoon.es/#org" },
+      "isPartOf": { "@id": "https://whitemoon.es/automatizaciones/#webpage" }
+    },
+    {
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://whitemoon.es/" },
@@ -648,6 +662,49 @@ body.menu-open .overlay-cta-wrap{animation:ovIn .7s var(--ease) .43s forwards}
 @media (max-width:600px){
   .mf-claim{margin-bottom:.7rem}
   .mf-close-line{max-width:18ch}
+}
+
+/* ============ CONÓCENOS (vídeo corporativo) ============ */
+/* minmax(0,..) en la columna de texto: su min-content (el h2) no puede
+   empujar el grid y desbordar en anchos intermedios. */
+.cnc-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);
+  gap:clamp(28px,5vw,72px);align-items:center;
+}
+.cnc-media{display:flex;justify-content:center;min-width:0}
+/* marco 9:16 tipo movil: aspect-ratio manda el alto, asi el poster no
+   deforma ni provoca salto de layout mientras carga. */
+.cnc-phone{
+  position:relative;width:100%;max-width:360px;aspect-ratio:9/16;
+  border-radius:26px;overflow:hidden;border:1px solid var(--border);
+  background:var(--card);box-shadow:0 30px 80px -30px rgba(124,77,255,.55);
+}
+.cnc-facade{
+  position:absolute;inset:0;width:100%;height:100%;
+  padding:0;border:0;background:none;cursor:pointer;display:block;
+}
+.cnc-poster{width:100%;height:100%;object-fit:cover}
+/* tinte inferior: integra el frame en el look dark y da contraste al play */
+.cnc-facade::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(8,8,13,.55) 0%,rgba(8,8,13,.04) 55%);
+}
+.cnc-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;
+  width:68px;height:68px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(120deg,var(--p),var(--p2));
+  box-shadow:0 10px 34px -8px rgba(124,77,255,.85);
+  transition:transform .4s var(--ease);
+}
+.cnc-play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
+@media (hover:hover){.cnc-facade:hover .cnc-play{transform:translate(-50%,-50%) scale(1.09)}}
+.cnc-facade:focus-visible{outline:2px solid var(--p2);outline-offset:3px}
+/* el iframe solo existe tras el click; hereda el marco 9:16 del contenedor */
+.cnc-frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+@media (prefers-reduced-motion:reduce){.cnc-play{transition:none}}
+@media (max-width:900px){
+  .cnc-grid{grid-template-columns:minmax(0,1fr);gap:clamp(24px,5vw,36px)}
+  .cnc-phone{max-width:340px}
 }
 
 /* ============ HORIZONTAL SCROLL (Cómo trabajamos) ============ */
@@ -1176,6 +1233,40 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
         Cuéntanos tu caso
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONÓCENOS (vídeo corporativo) ============ -->
+<section id="conocenos" class="block">
+  <div class="wrap">
+    <div class="cnc-grid">
+      <div data-reveal>
+        <span class="eyebrow">Conócenos</span>
+        <h2 class="sec-title">Detrás de WhiteMoon hay <span class="grad-text">un equipo real</span></h2>
+        <p class="sec-lead">Somos una agencia de IA con base en Majadahonda. Mira quiénes somos y cómo trabajamos.</p>
+      </div>
+      <div class="cnc-media" data-reveal>
+        <div class="cnc-phone" id="cncPhone">
+          <!-- Facade: al cargar la pagina solo hay una <img>. El iframe de
+               YouTube se inyecta en el click (ver JS), para no meter el Short
+               en el LCP ni arrastrar el player en la carga inicial. -->
+          <!-- <a> y no <button>: sin JS el click abre el vídeo en YouTube en
+               vez de no hacer nada, y deja un enlace real al vídeo. Con JS se
+               intercepta el click y se reproduce aqui mismo. -->
+          <a class="cnc-facade" id="cncPlay"
+             href="https://www.youtube.com/shorts/yWCuHmOX6K4"
+             aria-label="Reproducir el vídeo: No vendemos productos ofrecemos resultados , no vendemos servicios ofrecemos soluciones .">
+            <img class="cnc-poster"
+                 src="https://i.ytimg.com/vi/yWCuHmOX6K4/oardefault.jpg"
+                 alt="Fotograma del vídeo corporativo de WhiteMoon Agencia IA"
+                 loading="lazy" decoding="async" width="720" height="1280">
+            <span class="cnc-play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2104,6 +2195,42 @@ else { initScrollFX(); }
     el.addEventListener('click',(e)=>{ e.preventDefault(); openOrion(el.dataset.service||''); });
   });
   window.orionOpen=openOrion;
+})();
+
+/* ============ CONÓCENOS · facade del vídeo ============ */
+/* El iframe de YouTube NO se carga al abrir la pagina: hasta el click solo hay
+   una <img> lazy. Evita ~1MB de player de terceros en la carga y deja el LCP
+   intacto. El preconnect se dispara en hover/focus, no al cargar. */
+(function(){
+  const btn=document.getElementById('cncPlay'), phone=document.getElementById('cncPhone');
+  if(!btn||!phone) return;
+  const VID='yWCuHmOX6K4';
+  const TITLE='No vendemos productos ofrecemos resultados , no vendemos servicios ofrecemos soluciones .';
+
+  let warmed=false;
+  const warm=()=>{
+    if(warmed) return; warmed=true;
+    ['https://www.youtube.com','https://i.ytimg.com'].forEach(h=>{
+      const l=document.createElement('link');
+      l.rel='preconnect'; l.href=h; document.head.appendChild(l);
+    });
+  };
+  btn.addEventListener('pointerenter',warm,{once:true});
+  btn.addEventListener('focus',warm,{once:true});
+
+  btn.addEventListener('click',(e)=>{
+    e.preventDefault(); // hay JS: se reproduce inline en vez de ir a YouTube
+    const f=document.createElement('iframe');
+    f.className='cnc-frame';
+    // autoplay solo aqui: es respuesta al click del usuario, nunca en la carga
+    f.src=`https://www.youtube.com/embed/${VID}?autoplay=1&rel=0&playsinline=1`;
+    f.title=TITLE;
+    f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy='strict-origin-when-cross-origin';
+    f.allowFullscreen=true;
+    phone.replaceChildren(f);
+    f.focus();
+  },{once:true});
 })();
 </script>
 </body>
