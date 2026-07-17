@@ -417,8 +417,8 @@
           fetch(NOTIFY_FN,{
             method:'POST', headers:{'Content-Type':'application/json'},
             body:JSON.stringify({ nombre:nombre, telefono:telefono, sector:sector, origen:'pack-ads-landing', mensaje:mensaje })
-          }).catch(function(err){ console.warn('[pack-ads] WhatsApp notify falló', err); });
-        } catch(e){ console.warn('[pack-ads] WhatsApp notify error', e); }
+          }).catch(function(err){ console.warn('[pack-ads] Lead notify falló', err); });
+        } catch(e){ console.warn('[pack-ads] Lead notify error', e); }
         try { if(typeof wmTrack==='function') wmTrack('submit_pack_ads',{sector:sector,inversion:inversion}); } catch(e){}
         showSuccess(nombre);
       } else {
