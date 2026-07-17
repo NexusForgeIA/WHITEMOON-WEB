@@ -231,13 +231,13 @@
     }).then(function(r){
       if(r.ok){
         console.log('[mas-info] Lead enviado correctamente ✓');
-        // 3 · Notificación WhatsApp vía Edge Function (CALLMEBOT_APIKEY en Supabase Secrets, nunca en frontend)
+        // 3 · Notificación de lead vía Edge Function (apikey en Supabase Secrets, nunca en frontend)
         try {
           fetch(NOTIFY_FN, {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre: nombre, telefono: telefono, sector: sector, origen: pack ? ('precios-' + pack) : 'hero-mas-info', mensaje: mensaje })
-          }).catch(function(err){ console.warn('[mas-info] WhatsApp notify falló', err); });
-        } catch(e){ console.warn('[mas-info] WhatsApp notify error', e); }
+          }).catch(function(err){ console.warn('[mas-info] Lead notify falló', err); });
+        } catch(e){ console.warn('[mas-info] Lead notify error', e); }
         try { if(typeof wmTrack === 'function') wmTrack('submit_mas_info', { sector: sector }); } catch(e){}
         // 4 · Mensaje de éxito
         showSuccess();

@@ -351,7 +351,7 @@
 (function(){
   var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
-  // Edge function que envía la notificación WhatsApp (CallMeBot) con la apikey
+  // Edge function que envía la notificación de lead con la apikey
   // guardada SOLO server-side. Si no está desplegada, el lead igualmente se
   // captura en leads_web; la notificación es best-effort (nunca bloquea).
   var NOTIFY_FN = SUPABASE_URL + '/functions/v1/auditoria-geo-notify';
@@ -441,14 +441,14 @@
     }).then(function(r){
       if(r.ok){
         console.log('[auditoria-geo-ia] Lead enviado correctamente ✓');
-        // Notificación WhatsApp (best-effort, server-side key). Nunca bloquea.
+        // Notificación de lead (best-effort, server-side key). Nunca bloquea.
         try {
           fetch(NOTIFY_FN, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ nombre: nombre, empresa: empresa, url: url, telefono: telefono, sector: sector })
-          }).catch(function(err){ console.warn('[auditoria-geo-ia] WhatsApp notify falló', err); });
-        } catch(e){ console.warn('[auditoria-geo-ia] WhatsApp notify error', e); }
+          }).catch(function(err){ console.warn('[auditoria-geo-ia] Lead notify falló', err); });
+        } catch(e){ console.warn('[auditoria-geo-ia] Lead notify error', e); }
         try {
           if(typeof wmTrack === 'function'){
             wmTrack('submit_auditoria_geo_ia', { sector: sector });
