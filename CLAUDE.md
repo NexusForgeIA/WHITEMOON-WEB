@@ -12,7 +12,7 @@
   - Fixes críticos de producción (chatbot roto, leads sin capturar, web caída) → commit directo a main permitido
   - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
   - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
-- Catálogo vigente: SOLO 5 packs → Spark · Orion IA Agent · Core Spark Web · Core Orion · Core RAG. Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
+- Catálogo vigente: SOLO 6 packs → Pack Mini Core · Spark · Orion IA Agent · Core Spark Web · Core Orion · Core RAG. Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
 - Plazos: "5-7 días laborables" para Spark, Orion IA Agent, Core Spark Web, Core Orion y Core RAG.
 - Precios actuales:
   - Spark: 499€ setup + 199€/mes · Sin permanencia · Agente conversacional por texto en web existente
