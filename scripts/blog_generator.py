@@ -524,12 +524,12 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
 
 
 # ── Actualizacion de sitemap e indice ───────────────────────────────────────
-def update_sitemap(entries, date_iso):
-    """entries: lista de slugs. Inserta <url> antes de </urlset> si no existe."""
+def update_sitemap(entries):
+    """entries: lista de (slug, date_iso). Inserta <url> antes de </urlset> si no existe."""
     with open(SITEMAP_FILE, encoding="utf-8") as fh:
         xml = fh.read()
     blocks = []
-    for slug in entries:
+    for slug, date_iso in entries:
         loc = f"{BASE_URL}/blog/{slug}/"
         if loc in xml:
             continue
@@ -605,19 +605,29 @@ def main():
     pending = [t for t in temas if t["id"] not in usados][:count]
 
     now = now_madrid()
-    date_iso = now.strftime("%Y-%m-%d")
-    date_human = f"{now.day} {MESES[now.month]} {now.year}"
+    run_date = now.strftime("%Y-%m-%d")
+
+    # Fechas por articulo (opcional): env BLOG_DATES = fechas ISO separadas por coma,
+    # una por tema en el orden en que se cogen del banco. Si falta, todos = fecha de hoy.
+    raw_dates = os.environ.get("BLOG_DATES", "").strip()
+    date_list = [d.strip() for d in raw_dates.split(",") if d.strip()]
+
+    def date_human_of(iso):
+        dt = datetime.strptime(iso, "%Y-%m-%d")
+        return f"{dt.day} {MESES[dt.month]} {dt.year}"
 
     published, errors = [], []
-    sitemap_slugs, index_items = [], []
+    sitemap_entries, index_items = [], []
 
     if not pending:
         print("No hay temas nuevos que publicar.")
-        save_json(LASTRUN_FILE, {"fecha": date_iso, "selftest": selftest, "published": [], "errors": []})
+        save_json(LASTRUN_FILE, {"fecha": run_date, "selftest": selftest, "published": [], "errors": []})
         return 0
 
     for idx, tema in enumerate(pending):
         try:
+            date_iso = date_list[idx] if idx < len(date_list) else run_date
+            date_human = date_human_of(date_iso)
             data = canned_content(tema) if selftest else generate_content(tema, model)
             words = word_count(data)
             read_min = max(3, round(words / 200))
@@ -634,7 +644,7 @@ def main():
             if len(title) > 65:
                 title = clamp(data["titulo_seo"], 65 - len(" · WhiteMoon")) + " · WhiteMoon"
 
-            sitemap_slugs.append(tema["slug"])
+            sitemap_entries.append((tema["slug"], date_iso))
             index_items.append({
                 "slug": tema["slug"], "title": title,
                 "title_short": clamp(data["h1"], 70),
@@ -645,25 +655,25 @@ def main():
             })
             usados.add(tema["id"])
             published.append({"id": tema["id"], "slug": tema["slug"], "titulo": title,
-                              "url": f"{BASE_URL}/blog/{tema['slug']}/"})
+                              "fecha": date_iso, "url": f"{BASE_URL}/blog/{tema['slug']}/"})
             print(f"OK  {tema['slug']}  ({words} palabras, {read_min} min)")
         except Exception as exc:  # noqa: BLE001 — un fallo no debe tumbar el resto
             errors.append({"id": tema["id"], "slug": tema["slug"], "error": f"{type(exc).__name__}: {exc}"})
             print(f"ERR {tema['slug']}: {exc}", file=sys.stderr)
 
     if index_items:
-        update_sitemap(sitemap_slugs, date_iso)
+        update_sitemap(sitemap_entries)
         update_blog_index(index_items)
 
     # ledger
     ledger["usados"] = sorted(usados)
     if published:
         ledger.setdefault("publicaciones", []).append(
-            {"fecha": date_iso, "ids": [p["id"] for p in published], "slugs": [p["slug"] for p in published]}
+            {"fecha": run_date, "ids": [p["id"] for p in published], "slugs": [p["slug"] for p in published]}
         )
     save_json(LEDGER_FILE, ledger)
 
-    save_json(LASTRUN_FILE, {"fecha": date_iso, "selftest": selftest,
+    save_json(LASTRUN_FILE, {"fecha": run_date, "selftest": selftest,
                              "published": published, "errors": errors})
 
     print(f"\nPublicados: {len(published)}  ·  Errores: {len(errors)}")
