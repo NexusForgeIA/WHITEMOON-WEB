@@ -1,5 +1,29 @@
 {
   "_descripcion": "Registro de temas ya publicados por el generador de blog. No editar a mano salvo para forzar/omitir un tema (anadiendo su 'id' a 'usados').",
-  "usados": [],
-  "publicaciones": []
+  "usados": [
+    "t001",
+    "t002",
+    "t003",
+    "t004",
+    "t005"
+  ],
+  "publicaciones": [
+    {
+      "fecha": "2026-07-20",
+      "ids": [
+        "t001",
+        "t002",
+        "t003",
+        "t004",
+        "t005"
+      ],
+      "slugs": [
+        "agente-ia-tareas-automatizar-pyme",
+        "agente-voz-ia-como-funciona-negocio",
+        "agente-ia-captar-leads-web-24-7",
+        "seo-geo-aeo-guia-pymes-2026",
+        "agente-ia-clinica-dental-citas-recordatorios"
+      ]
+    }
+  ]
 }
