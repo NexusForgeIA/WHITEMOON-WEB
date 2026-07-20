@@ -35,7 +35,67 @@
     if (b) b.click();
   });
 
-  // Si el widget ya está en el DOM, no inyectamos nada más.
+  // -----------------------------------------------------------
+  // 2) CTA flotante "Habla con Orion ahora" — pill de alta
+  //    visibilidad, presente en TODAS las páginas. Al pulsar
+  //    dispara `orion-open`, que arranca la llamada Retell
+  //    reutilizando el botón de voz (#luna-btn). Se apila encima
+  //    del botón redondo sin solaparlo y se oculta durante la
+  //    llamada (ver render()). Se inyecta ANTES del early-return
+  //    del widget de voz para que aparezca aunque este venga
+  //    renderizado inline.
+  // -----------------------------------------------------------
+  let ctaFab = null;
+  (function injectCtaFab() {
+    if (document.getElementById("orion-cta-fab")) return;
+    const ctaCss = `
+      #orion-cta-fab{
+        position:fixed; right:24px; bottom:96px; z-index:9998;
+        display:inline-flex; align-items:center; gap:9px;
+        padding:13px 20px; border:0; border-radius:999px; cursor:pointer;
+        font-family:'Sora',sans-serif; font-size:.92rem; font-weight:600;
+        color:#fff; background:#7c4dff; line-height:1;
+        box-shadow:0 10px 30px rgba(124,77,255,.5),0 4px 12px rgba(0,0,0,.4);
+        transition:background .2s, transform .2s, box-shadow .2s, opacity .25s, visibility .25s;
+      }
+      #orion-cta-fab:hover{ background:#9d70ff; transform:translateY(-2px); box-shadow:0 14px 38px rgba(124,77,255,.6),0 4px 12px rgba(0,0,0,.4); }
+      #orion-cta-fab:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
+      #orion-cta-fab .ocf-ic{ width:18px; height:18px; flex:0 0 auto; }
+      #orion-cta-fab .ocf-arrow{ transition:transform .2s; }
+      #orion-cta-fab:hover .ocf-arrow{ transform:translateX(3px); }
+      #orion-cta-fab.is-hidden{ opacity:0; visibility:hidden; transform:translateY(8px); pointer-events:none; }
+      @media (max-width:599px){
+        #orion-cta-fab{ right:16px; bottom:88px; padding:12px 16px; font-size:.85rem; }
+      }
+      @media (prefers-reduced-motion:reduce){
+        #orion-cta-fab, #orion-cta-fab:hover{ transition:none; transform:none; }
+        #orion-cta-fab:hover .ocf-arrow{ transform:none; }
+      }
+    `;
+    const st = document.createElement("style");
+    st.id = "orion-cta-fab-styles";
+    st.textContent = ctaCss;
+    document.head.appendChild(st);
+
+    ctaFab = document.createElement("button");
+    ctaFab.type = "button";
+    ctaFab.id = "orion-cta-fab";
+    ctaFab.setAttribute("aria-label", "Habla con Orion ahora, agente de voz IA en directo");
+    ctaFab.innerHTML =
+      '<svg class="ocf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>' +
+      '<span>Habla con Orion ahora</span><span class="ocf-arrow" aria-hidden="true">→</span>';
+
+    ctaFab.addEventListener("click", () => {
+      document.dispatchEvent(new CustomEvent("orion-open", { detail: { source: "cta-flotante" } }));
+    });
+
+    const place = () => (document.body || document.documentElement).appendChild(ctaFab);
+    if (document.body) place();
+    else document.addEventListener("DOMContentLoaded", place, { once: true });
+  })();
+
+  // Si el widget de voz ya está en el DOM, no inyectamos el resto.
   if (document.getElementById("luna-widget")) return;
 
   // -----------------------------------------------------------
@@ -132,6 +192,9 @@
       btn.setAttribute("aria-label", "Hablar con Orion, agente de voz IA");
       bars.classList.remove("is-active", "is-speaking");
     }
+    // Durante la llamada, el pill flotante se oculta: el botón redondo
+    // pasa a ser el control de "finalizar" y evita CTAs redundantes.
+    if (ctaFab) ctaFab.classList.toggle("is-hidden", callActive);
   }
   window.addEventListener("resize", render);
   render();
