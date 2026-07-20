@@ -1,17 +1,5 @@
 {
   "_descripcion": "Registro de temas ya publicados por el generador de blog. No editar a mano salvo para forzar/omitir un tema (anadiendo su 'id' a 'usados').",
-  "usados": [
-    "t001"
-  ],
-  "publicaciones": [
-    {
-      "fecha": "2026-07-20",
-      "ids": [
-        "t001"
-      ],
-      "slugs": [
-        "agente-ia-tareas-automatizar-pyme"
-      ]
-    }
-  ]
+  "usados": [],
+  "publicaciones": []
 }
