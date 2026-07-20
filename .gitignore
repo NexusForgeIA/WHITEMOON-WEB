@@ -7,3 +7,6 @@
 
 # SEO Guardian generated report (CI artifact)
 seo-guardian-report.md
+
+# Blog generator run summary (transient; leido por blog_notify.py en el mismo job)
+scripts/last-run.json

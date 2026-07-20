@@ -1,0 +1,5 @@
+{
+  "_descripcion": "Registro de temas ya publicados por el generador de blog. No editar a mano salvo para forzar/omitir un tema (anadiendo su 'id' a 'usados').",
+  "usados": [],
+  "publicaciones": []
+}
