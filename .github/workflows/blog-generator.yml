@@ -1,0 +1,171 @@
+name: Blog Generator
+
+# Genera automaticamente articulos de blog SEO y los publica respetando la
+# proteccion de rama: rama bot/blog-AAAA-MM-DD -> PR -> check seo-guardian-pr ->
+# auto-merge --squash si pasa en verde. Si el guardian falla, deja el PR abierto.
+#
+# El PR se abre con un PAT (secret GH_PAT) porque GitHub NO dispara el workflow
+# pull_request para PRs creados con el GITHUB_TOKEN por defecto: sin PAT, el check
+# seo-guardian-pr nunca correria y el PR quedaria bloqueado para siempre.
+
+on:
+  schedule:
+    # Lunes 05:00 UTC (~06:00-07:00 Europe/Madrid), ANTES del SEO Guardian semanal (07:00 UTC).
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'Numero de articulos a generar (usa 1-2 para pruebas)'
+        required: false
+        default: '5'
+
+# El GITHUB_TOKEN por defecto no necesita permisos amplios: usamos GH_PAT para
+# empujar la rama y abrir/fusionar el PR. Dejamos read por defecto.
+permissions:
+  contents: read
+
+concurrency:
+  group: blog-generator
+  cancel-in-progress: false
+
+jobs:
+  generate-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_PAT }}
+    steps:
+      - name: Checkout (con PAT para que el PR dispare el SEO Guardian)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic beautifulsoup4 requests
+
+      - name: Generate articles
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          BLOG_COUNT: ${{ github.event.inputs.count || '5' }}
+          # ANTHROPIC_MODEL opcional: por defecto claude-opus-4-8. Para abaratar,
+          # define el secret/var ANTHROPIC_MODEL=claude-haiku-4-5.
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || '' }}
+        run: |
+          set +e
+          if [ -n "$ANTHROPIC_MODEL" ]; then export ANTHROPIC_MODEL; else unset ANTHROPIC_MODEL; fi
+          python scripts/blog_generator.py
+          echo "gen_rc=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Detectar articulos publicados
+        id: diff
+        run: |
+          PUB=$(python -c 'import json;print(len(json.load(open("scripts/last-run.json"))["published"]))')
+          echo "published_count=$PUB"
+          if [ "$PUB" -gt 0 ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Aviso si no hay articulos nuevos
+        if: steps.diff.outputs.changed == 'false'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ steps.gen.outputs.gen_rc }}" != "0" ]; then
+            python scripts/blog_notify.py --status error
+          else
+            python scripts/blog_notify.py --status nothing
+          fi
+
+      - name: Crear rama, commit y PR
+        id: pr
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          DATE=$(date -u +%Y-%m-%d)
+          BRANCH="bot/blog-${DATE}"
+          echo "branch=$BRANCH" >> "$GITHUB_OUTPUT"
+
+          git config user.name "whitemoon-bot"
+          git config user.email "comercial@whitemoon.es"
+
+          # Limpia una posible rama previa con el mismo nombre (reintentos el mismo dia).
+          git push origin --delete "$BRANCH" 2>/dev/null || true
+
+          git checkout -b "$BRANCH"
+          git add -A
+          NPUB=$(python -c 'import json;print(len(json.load(open("scripts/last-run.json"))["published"]))')
+          git commit -m "feat(blog): ${NPUB} articulos SEO automaticos (${DATE})"
+          git push -u origin "$BRANCH"
+
+          BODY=$(python - <<'PY'
+          import json
+          d = json.load(open("scripts/last-run.json"))
+          lines = ["Publicacion automatica del generador de blog (bot).", ""]
+          for p in d["published"]:
+              lines.append(f"- [{p['titulo']}]({p['url']})")
+          if d.get("errors"):
+              lines += ["", "Temas que fallaron y NO se publican:"]
+              for e in d["errors"]:
+                  lines.append(f"- {e['slug']}: {e['error']}")
+          lines += ["", "Se fusionara automaticamente en cuanto el check `seo-guardian-pr` pase en verde."]
+          print("\n".join(lines))
+          PY
+          )
+          PR_URL=$(gh pr create --base main --head "$BRANCH" \
+            --title "feat(blog): articulos SEO automaticos ($DATE)" \
+            --body "$BODY")
+          echo "url=$PR_URL" >> "$GITHUB_OUTPUT"
+          echo "PR creado: $PR_URL"
+
+      - name: Esperar al SEO Guardian y auto-merge
+        id: gate
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          set +e
+          BRANCH="${{ steps.pr.outputs.branch }}"
+
+          # Espera a que el check seo-guardian-pr aparezca (el PR lo crea el PAT,
+          # asi que el workflow pull_request se dispara).
+          for i in $(seq 1 12); do
+            if gh pr checks "$BRANCH" 2>/dev/null | grep -qi "seo-guardian-pr"; then
+              echo "Check detectado."
+              break
+            fi
+            echo "Esperando a que aparezca seo-guardian-pr... ($i/12)"
+            sleep 15
+          done
+
+          # Espera al resultado (0 = todos verde, distinto de 0 = alguno fallo).
+          gh pr checks "$BRANCH" --watch --interval 20
+          RC=$?
+          echo "gate_rc=$RC" >> "$GITHUB_OUTPUT"
+
+          if [ "$RC" = "0" ]; then
+            echo "SEO Guardian OK -> fusionando (squash)."
+            gh pr merge "$BRANCH" --squash --delete-branch
+            echo "result=merged" >> "$GITHUB_OUTPUT"
+          else
+            echo "SEO Guardian fallo o el check no concluyo -> el PR queda abierto."
+            echo "result=blocked" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notificar resultado por Telegram
+        if: steps.diff.outputs.changed == 'true'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if [ "${{ steps.gate.outputs.result }}" = "merged" ]; then
+            python scripts/blog_notify.py --status success --pr "${{ steps.pr.outputs.url }}"
+          else
+            python scripts/blog_notify.py --status guardian-failed --pr "${{ steps.pr.outputs.url }}"
+          fi
