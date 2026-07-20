@@ -18,6 +18,10 @@ on:
         description: 'Numero de articulos a generar (usa 1-2 para pruebas)'
         required: false
         default: '5'
+      dates:
+        description: 'Opcional: fechas ISO separadas por coma, una por articulo (p.ej. 2026-07-09,2026-07-11,...). Vacio = fecha de hoy para todos.'
+        required: false
+        default: ''
 
 # El GITHUB_TOKEN por defecto no necesita permisos amplios: usamos GH_PAT para
 # empujar la rama y abrir/fusionar el PR. Dejamos read por defecto.
@@ -53,6 +57,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           BLOG_COUNT: ${{ github.event.inputs.count || '5' }}
+          BLOG_DATES: ${{ github.event.inputs.dates || '' }}
           # ANTHROPIC_MODEL opcional: por defecto claude-opus-4-8. Para abaratar,
           # define el secret/var ANTHROPIC_MODEL=claude-haiku-4-5.
           ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL || '' }}

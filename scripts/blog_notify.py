@@ -33,7 +33,10 @@ def build_message(status, pr_url, data):
     fecha = data.get("fecha", "?")
     published = data.get("published", [])
     errors = data.get("errors", [])
-    titulos = "\n".join(f"  - {p['titulo']}\n    {p['url']}" for p in published)
+    titulos = "\n".join(
+        f"  - {p['titulo']}" + (f" ({p['fecha']})" if p.get('fecha') else "") + f"\n    {p['url']}"
+        for p in published
+    )
 
     if status == "success":
         msg = f"Blog WhiteMoon — {len(published)} articulos publicados el {fecha}:\n{titulos}"
