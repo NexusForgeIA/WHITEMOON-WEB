@@ -49,23 +49,40 @@
   (function injectCtaFab() {
     if (document.getElementById("orion-cta-fab")) return;
     const ctaCss = `
+      /* Geometría compartida de los dos flotantes. El pill se coloca a
+         partir de la posición y el tamaño de la burbuja, así que el
+         hueco entre ambos está garantizado por construcción: cambiar
+         un offset mueve los dos a la vez y nunca pueden solaparse. */
+      :root{
+        --orion-right:28px;   /* separación al borde derecho */
+        --orion-bottom:28px;  /* separación al borde inferior */
+        --orion-btn:60px;     /* diámetro de la burbuja */
+        --orion-gap:22px;     /* hueco libre entre burbuja y pill */
+      }
+      @media (max-width:599px){
+        :root{ --orion-right:16px; --orion-bottom:20px; }
+      }
       #orion-cta-fab{
-        position:fixed; right:24px; bottom:96px; z-index:9998;
+        position:fixed; right:var(--orion-right); z-index:9998;
+        bottom:calc(var(--orion-bottom) + var(--orion-btn) + var(--orion-gap));
         display:inline-flex; align-items:center; gap:9px;
         padding:13px 20px; border:0; border-radius:999px; cursor:pointer;
         font-family:'Sora',sans-serif; font-size:.92rem; font-weight:600;
         color:#fff; background:#7c4dff; line-height:1;
-        box-shadow:0 10px 30px rgba(124,77,255,.5),0 4px 12px rgba(0,0,0,.4);
+        /* Sombra contenida: con blur 20 y offset 8 el halo baja 18px,
+           por debajo de los 22px de hueco, así que no invade la burbuja. */
+        box-shadow:0 8px 20px rgba(124,77,255,.38),0 2px 8px rgba(0,0,0,.35);
         transition:background .2s, transform .2s, box-shadow .2s, opacity .25s, visibility .25s;
       }
-      #orion-cta-fab:hover{ background:#9d70ff; transform:translateY(-2px); box-shadow:0 14px 38px rgba(124,77,255,.6),0 4px 12px rgba(0,0,0,.4); }
+      #orion-cta-fab:hover{ background:#9d70ff; transform:translateY(-2px); box-shadow:0 10px 22px rgba(124,77,255,.5),0 2px 8px rgba(0,0,0,.35); }
       #orion-cta-fab:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
       #orion-cta-fab .ocf-ic{ width:18px; height:18px; flex:0 0 auto; }
       #orion-cta-fab .ocf-arrow{ transition:transform .2s; }
       #orion-cta-fab:hover .ocf-arrow{ transform:translateX(3px); }
       #orion-cta-fab.is-hidden{ opacity:0; visibility:hidden; transform:translateY(8px); pointer-events:none; }
       @media (max-width:599px){
-        #orion-cta-fab{ right:16px; bottom:88px; padding:12px 16px; font-size:.85rem; }
+        /* Solo tipografía: right/bottom ya salen de las variables. */
+        #orion-cta-fab{ padding:12px 16px; font-size:.85rem; }
       }
       @media (prefers-reduced-motion:reduce){
         #orion-cta-fab, #orion-cta-fab:hover{ transition:none; transform:none; }
@@ -103,11 +120,11 @@
   // -----------------------------------------------------------
   const css = `
     #luna-widget{
-      position:fixed; bottom:28px; right:28px; z-index:9999;
+      position:fixed; bottom:var(--orion-bottom,28px); right:var(--orion-right,28px); z-index:9999;
       font-family:'Sora',sans-serif;
     }
     #luna-widget .luna-btn{
-      position:relative; width:60px; height:60px; border-radius:50%;
+      position:relative; width:var(--orion-btn,60px); height:var(--orion-btn,60px); border-radius:50%;
       background:#7c4dff; color:#fff; border:none; padding:0; cursor:pointer;
       display:grid; place-items:center;
       box-shadow:0 8px 28px rgba(124,77,255,.45),0 4px 14px rgba(0,0,0,.4);
@@ -137,9 +154,7 @@
     #luna-widget .luna-bars span:nth-child(2){ animation-delay:.15s; }
     #luna-widget .luna-bars span:nth-child(3){ animation-delay:.3s; }
     @keyframes luna-eq{ 0%,100%{height:8px} 50%{height:22px} }
-    @media (max-width:599px){
-      #luna-widget{ bottom:20px; right:16px; }
-    }
+    /* En móvil los offsets los cubren --orion-bottom/--orion-right. */
     @media (prefers-reduced-motion:reduce){
       #luna-widget .luna-dot,
       #luna-widget .luna-btn.luna-btn--end .luna-bars span,
