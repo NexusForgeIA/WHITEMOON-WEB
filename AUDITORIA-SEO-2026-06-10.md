@@ -91,7 +91,15 @@ Documentada también en `TECH-DEBT.md`.
 
 ## A confirmar (recomendación, no bloqueante)
 
-- **Host de producción:** si es GitHub Pages, el archivo `_headers` (`Cache-Control: immutable`) se ignora y el caché lo gobiernan los `?v=` de los assets (ya presentes). Un host como Cloudflare Pages / Netlify aplicaría las cabeceras y permitiría redirecciones **301** reales en lugar de los `meta-refresh` actuales de `scale/`, `elite/`, `orion-calls/`.
+- **Host de producción (confirmado 2026-07-21):** el sitio está en GitHub Pages
+  detrás de Cloudflare. El archivo `_headers` es formato Netlify/Cloudflare Pages
+  y **GitHub Pages lo ignora**: no se aplica `immutable` ni `max-age=31536000`.
+  Medido en producción: HTML, `/assets/*`, `/*.js`, imágenes y hasta un 404
+  devuelven **todos** `Cache-Control: max-age=14400` (4 h) con `server: cloudflare`.
+  El caché **no** lo gobiernan los `?v=`, lo gobierna ese TTL uniforme de 4 h.
+  Migrar a Cloudflare Pages / Netlify sí aplicaría las cabeceras del `_headers` y
+  permitiría redirecciones **301** reales en lugar de los `meta-refresh` actuales
+  de `scale/`, `elite/`, `orion-calls/`.
 
 ---
 

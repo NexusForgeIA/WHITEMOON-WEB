@@ -1,3 +1,18 @@
+# AVISO — ESTE FICHERO NO TIENE EFECTO EN PRODUCCION
+#
+# Formato Netlify / Cloudflare Pages. whitemoon.es esta en GitHub Pages, que
+# IGNORA este fichero por completo. Medido en produccion (2026-07-21): todo
+# (HTML, /assets/*, /*.js, imagenes y hasta un 404) se sirve con
+# Cache-Control: max-age=14400 (4 h) por Cloudflare. NO se aplica ni
+# `immutable` ni `max-age=31536000` de las reglas de abajo.
+#
+# Consecuencia practica: un reemplazo in-place se propaga solo en <=4 h; NO hay
+# que bumpear el ?v= de las ~229 paginas. Para propagacion inmediata, purgar
+# cache en Cloudflare o cache-bust puntual con ?x=. Ver TECH-DEBT.md.
+#
+# Se conserva para que las cabeceras ya esten listas si se migra a
+# Cloudflare Pages / Netlify.
+
 # Seguridad — cabeceras aplicadas a todas las rutas
 /*
   X-Frame-Options: DENY
