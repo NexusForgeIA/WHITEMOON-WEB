@@ -1301,6 +1301,88 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
   </div>
 </section>
 
+<!-- ============ CASOS DE USO ============ -->
+<style>
+  #casos-uso .casos-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch;margin-top:8px}
+  #casos-uso .caso-card{display:flex;flex-direction:column;gap:16px;height:100%;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:clamp(22px,2.4vw,30px);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+  @media (hover:hover){#casos-uso .caso-card:hover{border-color:rgba(124,77,255,.45);transform:translateY(-4px)}}
+  #casos-uso .caso-ico{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;flex:none;color:var(--p2);background:rgba(124,77,255,.10);border:1px solid rgba(124,77,255,.4);box-shadow:inset 0 0 14px rgba(124,77,255,.12)}
+  #casos-uso .caso-ico svg{width:24px;height:24px}
+  #casos-uso .caso-title{font-size:1.2rem;font-weight:700;color:var(--text);margin:0;line-height:1.2}
+  #casos-uso .caso-block{display:flex;flex-direction:column;gap:5px}
+  #casos-uso .caso-label{display:inline-flex;align-items:center;gap:.55em;width:max-content;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  #casos-uso .caso-label::before{content:'';width:14px;height:2px;border-radius:2px;background:currentColor}
+  #casos-uso .caso-label.reto{color:#ff6b6b}
+  #casos-uso .caso-label.sol{color:var(--p2)}
+  #casos-uso .caso-label.res{color:var(--g)}
+  #casos-uso .caso-block p{color:var(--muted);font-size:.94rem;line-height:1.6;margin:0}
+  #casos-uso .casos-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;text-align:center;margin-top:52px}
+  #casos-uso .casos-cta p{width:100%;margin:0 0 6px;color:var(--muted);font-size:clamp(1rem,2vw,1.12rem)}
+  @media (max-width:900px){#casos-uso .casos-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (max-width:600px){#casos-uso .casos-grid{grid-template-columns:minmax(0,1fr);max-width:520px;margin-left:auto;margin-right:auto}}
+</style>
+<section id="casos-uso" class="block">
+  <div class="wrap">
+    <div class="head-row" data-reveal>
+      <span class="eyebrow">Casos de uso</span>
+      <h2 class="sec-title">Automatización con IA <span class="grad-text">aplicada a tu sector</span></h2>
+      <p class="sec-lead">Cómo un Agente IA resuelve problemas reales en pymes del noroeste de Madrid. En cada caso: el reto, la solución y el resultado.</p>
+    </div>
+    <div class="casos-grid">
+
+      <article class="caso-card" data-reveal>
+        <div class="caso-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3 class="caso-title">Clínicas y consultas</h3>
+        <div class="caso-block"><span class="caso-label reto">El reto</span><p>En hora punta, las llamadas y los WhatsApp se acumulan y algunos se quedan sin respuesta. A eso se suman las ausencias de última hora y una recepción desbordada.</p></div>
+        <div class="caso-block"><span class="caso-label sol">La solución</span><p>Un Agente IA en tu web resuelve las dudas frecuentes, capta el lead (nombre y teléfono), te avisa al móvil al instante las 24 horas y ayuda a recordar las citas.</p></div>
+        <div class="caso-block"><span class="caso-label res">El resultado</span><p>Menos llamadas perdidas, una agenda más llena y una recepción liberada para atender a quien tiene delante.</p></div>
+      </article>
+
+      <article class="caso-card" data-reveal>
+        <div class="caso-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3 class="caso-title">Gestorías y despachos</h3>
+        <div class="caso-block"><span class="caso-label reto">El reto</span><p>Las mismas consultas se repiten un día sí y otro también, y la documentación entra por correo, WhatsApp y teléfono sin un orden claro.</p></div>
+        <div class="caso-block"><span class="caso-label sol">La solución</span><p>Un Agente IA responde las preguntas frecuentes con la base de conocimiento del despacho y ayuda a recoger y clasificar la documentación de cada cliente.</p></div>
+        <div class="caso-block"><span class="caso-label res">El resultado</span><p>Horas administrativas ahorradas, menos errores de traspapeleo y más tiempo para el trabajo que de verdad aporta valor.</p></div>
+      </article>
+
+      <article class="caso-card" data-reveal>
+        <div class="caso-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+        <h3 class="caso-title">Talleres, electricistas y gremios</h3>
+        <div class="caso-block"><span class="caso-label reto">El reto</span><p>La llamada que no puedes coger con las manos ocupadas se la lleva la competencia, y muchos presupuestos enviados se quedan sin respuesta.</p></div>
+        <div class="caso-block"><span class="caso-label sol">La solución</span><p>Una landing con un Agente IA capta la urgencia las 24 horas, te pasa el contacto al móvil y hace el seguimiento de los presupuestos enviados.</p></div>
+        <div class="caso-block"><span class="caso-label res">El resultado</span><p>Menos trabajos perdidos por no llegar a tiempo y más presupuestos que acaban cerrándose.</p></div>
+      </article>
+
+      <article class="caso-card" data-reveal>
+        <div class="caso-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3 class="caso-title">Inmobiliaria</h3>
+        <div class="caso-block"><span class="caso-label reto">El reto</span><p>Los leads de los portales se enfrían si tardas en contestar, y buena parte de las visitas son de simples curiosos.</p></div>
+        <div class="caso-block"><span class="caso-label sol">La solución</span><p>Un Agente IA responde al instante, cualifica el interés real y pasa al comercial solo los contactos que merecen una visita.</p></div>
+        <div class="caso-block"><span class="caso-label res">El resultado</span><p>Respuestas mucho más rápidas y visitas más cualificadas para tu equipo.</p></div>
+      </article>
+
+      <article class="caso-card" data-reveal>
+        <div class="caso-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></div>
+        <h3 class="caso-title">Ventas y seguimiento</h3>
+        <div class="caso-block"><span class="caso-label reto">El reto</span><p>Los leads se quedan sin seguimiento y las propuestas tardan en salir, así que las oportunidades se enfrían.</p></div>
+        <div class="caso-block"><span class="caso-label sol">La solución</span><p>Captación, generación de propuestas y secuencias de seguimiento asistidas por un Agente IA, conectadas a tus herramientas.</p></div>
+        <div class="caso-block"><span class="caso-label res">El resultado</span><p>Una respuesta comercial más rápida y un seguimiento mucho más constante.</p></div>
+      </article>
+
+    </div>
+
+    <div class="casos-cta" data-reveal>
+      <p>¿Tu sector no está en la lista? Cuéntanos tu caso y te decimos qué automatizar primero.</p>
+      <button type="button" class="btn btn-primary" onclick="document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'automatizaciones-casos'}}))">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+        Habla con Orion
+      </button>
+      <a href="#planes" class="btn btn-ghost">Ver planes</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PLANES ============ -->
 <section id="planes" class="block">
   <div class="wrap">
