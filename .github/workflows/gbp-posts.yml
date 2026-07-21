@@ -1,0 +1,46 @@
+name: GBP Posts (manual)
+
+# Genera publicaciones para Google Business Profile a partir del ULTIMO lote de
+# articulos del blog (lee scripts/blog-ledger.json, no necesita last-run.json) y
+# las envia por Telegram, listas para copiar y pegar. NO usa la API de Google.
+#
+# Uso: pestana Actions -> "GBP Posts (manual)" -> Run workflow. Sirve para
+# probar el formato/tono y para reenviar las publicaciones del ultimo lunes.
+# El paso automatico (cada lunes, tras publicar el blog) vive en blog-generator.yml.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Nº de publicaciones GBP a generar (0 = todas las del último lote)'
+        required: false
+        default: '2'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gbp-posts
+  cancel-in-progress: false
+
+jobs:
+  gbp:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generar y enviar publicaciones GBP
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GBP_LIMIT: ${{ github.event.inputs.limit || '2' }}
+        run: python scripts/gbp_generator.py --source ledger

@@ -11,7 +11,9 @@ publica respetando la proteccion de rama (rama -> PR -> SEO Guardian -> auto-mer
 | `blog-ledger.json` | Temas ya publicados (`usados`) para no repetir. |
 | `blog_generator.py` | Genera el contenido (Claude API, JSON estructurado), renderiza el HTML replicando el articulo de referencia, actualiza `sitemap.xml` y `blog/index.html`, marca el ledger. |
 | `blog_notify.py` | Aviso por Telegram (titulos publicados / guardian fallido / error). |
-| `../.github/workflows/blog-generator.yml` | Orquesta: cron lunes 05:00 UTC (antes del SEO Guardian de las 07:00) + `workflow_dispatch`. |
+| `gbp_generator.py` | Por cada articulo del lote genera una publicacion para **Google Business Profile** (formato "novedad": titulo <=58, texto local honesto, CTA + enlace real, idea de imagen, zona) y la envia por Telegram. **Sin API de Google**, sin cifras inventadas. |
+| `../.github/workflows/blog-generator.yml` | Orquesta: cron lunes 05:00 UTC (antes del SEO Guardian de las 07:00) + `workflow_dispatch`. Ejecuta `gbp_generator.py` como paso final si el blog se fusiona. |
+| `../.github/workflows/gbp-posts.yml` | `workflow_dispatch` manual: genera/reenvia las publicaciones GBP del ultimo lote (lee el ledger). Util para probar tono y formato. |
 
 ## Como funciona
 
@@ -52,6 +54,17 @@ BLOG_COUNT=1 python scripts/blog_generator.py
 ```
 
 Desde GitHub: pestaa **Actions -> Blog Generator -> Run workflow** (input `count`).
+
+### Publicaciones GBP
+
+```bash
+# Prueba local (imprime, no envia) del ultimo lote publicado:
+python scripts/gbp_generator.py --source ledger --limit 2 --dry-run
+```
+
+Desde GitHub: **Actions -> GBP Posts (manual) -> Run workflow** (input `limit`).
+Envia por Telegram (usa `TELEGRAM_BOT_TOKEN` / `TELEGRAM_CHAT_ID`). Cada lunes se
+ejecuta solo tras publicarse el blog.
 
 ## Anadir temas
 
