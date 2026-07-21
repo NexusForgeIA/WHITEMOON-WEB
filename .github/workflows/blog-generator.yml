@@ -174,3 +174,14 @@ jobs:
           else
             python scripts/blog_notify.py --status guardian-failed --pr "${{ steps.pr.outputs.url }}"
           fi
+
+      # Solo si los articulos se han fusionado (URLs ya validas): genera una
+      # publicacion de Google Business Profile por cada articulo del lote y la
+      # envia por Telegram, lista para copiar y pegar. Lee scripts/last-run.json
+      # (presente en el workspace de este job). No usa la API de Google.
+      - name: Publicaciones Google Business Profile (Telegram)
+        if: steps.gate.outputs.result == 'merged'
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/gbp_generator.py
