@@ -12,15 +12,20 @@
 ## Producto principal
 Orion IA — agente de voz conversacional en la WEB que atiende a los visitantes con voz natural en castellano, gestiona citas y captura leads 24/7 sin intervención humana. No hace ni recibe llamadas telefónicas.
 
-## Productos y precios (catálogo vigente)
-- Spark: 499€ setup + 199€/mes — agente IA conversacional 24/7 en tu web
-- Orion IA Agent: 999€ setup + 199€/mes — agente de voz en tu web
-- Core Spark Web: 1.800€ setup + 199€/mes — web profesional + dominio + Agente Spark conversacional 24/7 + SEO/GEO/AEO
-- Core Orion: 2.899€ setup + 199€/mes — web profesional + dominio + Orion IA voz 24/7 + SEO/GEO/AEO
-- Core RAG: 3.200€ setup + 349€/mes — agente IA entrenado con tus documentos (100 docs, 1.000 consultas/mes)
-- Auditoría IA: 899€ pago único — diagnóstico + auditoría GEO/AEO
-- Calculadora ITP Pro: 599€ setup + 99€/mes — herramienta para gestorías
-Sin permanencia en todos los packs. Operativo en 5-7 días laborables.
+## Productos y precios (catálogo vigente — tarifa 2026)
+Fuente de verdad de precios: https://whitemoon.es/precios/
+- Mini Core: 599€ setup + 99€/mes — landing profesional + agente IA para autónomos sin presencia online
+- Spark: 499€ setup + 99€/mes — agente IA conversacional por texto 24/7 en tu web existente
+- Orion IA Agent: 799€ setup + 99€/mes — agente de voz 24/7 en español natural, embebido en tu web actual
+- Core Spark Web: 899€ setup + 99€/mes — web profesional nueva + dominio + agente de texto 24/7 + SEO/GEO/AEO
+- Core Orion: 1.499€ setup + 99€/mes — web profesional nueva + dominio + Orion IA voz 24/7 + SEO/GEO/AEO
+- WhiteMoon 360: 1.899€ setup + 199€/mes — web + agente IA de chat 24/7 + CRM de gestión (reparto automático, avisos al móvil, agenda, historial)
+- Core RAG: 2.499€ setup + 199€/mes — agente IA entrenado con los documentos propios del cliente (SIN web incluida)
+- Auditoría GEO IA: 899€ pago único — informe de diagnóstico + auditoría GEO/AEO en 48h
+- Pack Ads: 599€/mes SIN setup — gestión de Meta Ads (Facebook + Instagram) con creatividades incluidas (la inversión publicitaria en plataforma va aparte)
+- Calculadora ITP Pro: 599€ setup + 99€/mes — SaaS de calculadora ITP oficial BOE 2026 para gestorías y administradores de fincas
+Ningún pack tiene permanencia (30 días de aviso para cancelar). Operativo en 5-7 días laborables.
+Productos retirados (NO ofrecer): Scale, Elite, Gestoría IA, Orion IA Calls, Orbit.
 
 ## Automatizaciones con IA
 Catálogo de automatizaciones con IA para empresas y pymes: agentes de IA, captación de leads 24/7, CRM con IA, atención al cliente 24/7, base de conocimiento IA (RAG), automatización de WhatsApp, ficha Google Business (GMB) y SEO/GEO. WhiteMoon 360 es la automatización integral que unifica todo en un único sistema. Sin permanencia.

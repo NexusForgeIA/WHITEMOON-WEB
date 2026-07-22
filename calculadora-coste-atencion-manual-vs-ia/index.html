@@ -87,9 +87,9 @@
       <div class="calc-row"><label class="calc-label" for="am-dias">Días laborables al mes</label><input type="number" id="am-dias" class="calc-input" value="22" min="1" max="31" step="1" oninput="calcManualIA()"></div>
       <div class="calc-row"><label class="calc-label" for="am-orion">Plan Orion IA</label>
         <select id="am-orion" class="calc-select" onchange="calcManualIA()">
-          <option value="199" data-setup="499" selected>Spark · 499€ + 99€/mes</option>
-          <option value="199" data-setup="999">Orion IA Agent · 799€ + 99€/mes</option>
-          <option value="349" data-setup="3200">Core RAG · 2.499€ + 199€/mes</option>
+          <option value="99" data-setup="499" selected>Spark · 499€ + 99€/mes</option>
+          <option value="99" data-setup="799">Orion IA Agent · 799€ + 99€/mes</option>
+          <option value="199" data-setup="2499">Core RAG · 2.499€ + 199€/mes</option>
         </select>
       </div>
     </div>
@@ -101,7 +101,7 @@
       <div class="calc-out-card"><div class="calc-out-num" id="am-roi">—</div><div class="calc-out-lbl">ROI (payback setup)</div></div>
     </div>
 
-    <div class="calc-detail" id="am-explain">Atención manual/mes = consultas × minutos / 60 × coste hora × días. Coste Orion IA = cuota mensual (199-349€). Ahorro = manual − Orion. ROI = setup / ahorro mensual neto.</div>
+    <div class="calc-detail" id="am-explain">Atención manual/mes = consultas × minutos / 60 × coste hora × días. Coste Orion IA = cuota mensual (99-199€). Ahorro = manual − Orion. ROI = setup / ahorro mensual neto.</div>
 
     <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. No incluye el coste del agente humano residual para casos complejos (10-25% del volumen) ni el aumento de ingresos por atención 24/7.</p>
   </div></div></section>
