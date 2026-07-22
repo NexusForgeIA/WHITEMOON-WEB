@@ -12,7 +12,7 @@
   - Fixes críticos de producción (chatbot roto, leads sin capturar, web caída) → commit directo a main permitido
   - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
   - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
-- Catálogo vigente: Pack Mini Core · Spark · Orion IA Agent · Core Spark Web · Core Orion · WhiteMoon 360 · Core RAG, más dos productos sueltos (Auditoría GEO IA y Calculadora ITP Pro). Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
+- Catálogo vigente: Pack Mini Core · Spark · Orion IA Agent · Core Spark Web · Core Orion · WhiteMoon 360 · Core RAG, más tres productos sueltos (Auditoría GEO IA, Pack Ads y Calculadora ITP Pro). Scale y Elite están RETIRADOS (no mencionar como productos; /scale/ y /elite/ redirigen a /precios/). Orion IA Calls también retirado (/orion-calls/ redirige a /orion-agent/).
 - Plazos: "5-7 días laborables" para Spark, Orion IA Agent, Core Spark Web, Core Orion y Core RAG.
 - Precios actuales (tarifa 2026 — la fuente de verdad es `/precios/`; verificar ahí antes de citar precios):
   - Mini Core: 599€ setup + 99€/mes · Sin permanencia · Landing profesional + agente IA para autónomos sin presencia online
@@ -23,6 +23,7 @@
   - WhiteMoon 360: 1.899€ setup + 199€/mes · Sin permanencia · Web + agente IA de chat 24/7 + CRM de gestión (reparto automático de trabajo, avisos al móvil, agenda, historial)
   - Core RAG: 2.499€ setup + 199€/mes · Sin permanencia · Agente IA entrenado con documentos propios del cliente — SIN web
   - Auditoría GEO IA: 899€ pago único · informe en 48h
+  - Pack Ads: 599€/mes SIN setup · Sin permanencia · Gestión de Meta Ads (Facebook + Instagram) con creatividades incluidas. La inversión publicitaria en plataforma va APARTE, no incluida en la cuota
   - Calculadora ITP Pro: 599€ setup + 99€/mes · SaaS para gestorías y administradores de fincas
 - Precios OBSOLETOS que el SEO Guardian bloquea en páginas de packs (check 8, `BAD_PRICES` en `seo_guardian.py`): 4.500€, 8.500€, 2.899€, 1.800€, 3.200€, 999€. No reintroducirlos.
 - Permanencia: ningún pack tiene permanencia. 30 días de aviso para cancelar.
