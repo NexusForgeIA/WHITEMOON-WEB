@@ -8,18 +8,21 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 // La propuesta generada se guarda en upsell_oportunidades.notas.
 //
 // Triggers (cliente con onboarding completado):
-//   Spark→Core +60d · Core→Scale +90d · Scale→Elite +120d
+//   Spark→Core Spark Web +60d · Core Spark Web→WhiteMoon 360 +90d · WhiteMoon 360→Core RAG +120d
 //
 // Disparo: cron diario (08:15 UTC) o manual.
 // Despliegue: verify_jwt = false · usa CALLMEBOT_APIKEY + ANTHROPIC_API_KEY.
 
 const NOTIFY_PHONE = "+34643199580";
 
+// Las claves (spark/core/scale/elite) son los valores historicos de la BD
+// (CHECK en upsell_oportunidades/onboarding_clientes); las etiquetas y precios
+// reflejan el catalogo vigente 2026 sin permanencia (fuente de verdad: /precios/).
 const PACKS: Record<string, { label: string; setup: number; mensual: number }> = {
-  spark: { label: "Spark", setup: 499,  mensual: 199 },
-  core:  { label: "Core",  setup: 1800, mensual: 199 },
-  scale: { label: "Scale", setup: 4500, mensual: 449 },
-  elite: { label: "Elite", setup: 8500, mensual: 599 },
+  spark: { label: "Spark",          setup: 499,  mensual: 99  },
+  core:  { label: "Core Spark Web", setup: 899,  mensual: 99  },
+  scale: { label: "WhiteMoon 360",  setup: 1899, mensual: 199 },
+  elite: { label: "Core RAG",       setup: 2499, mensual: 199 },
 };
 
 const corsHeaders = {

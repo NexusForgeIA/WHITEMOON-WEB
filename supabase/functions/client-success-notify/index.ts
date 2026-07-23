@@ -18,8 +18,9 @@ const NOTIFY_PHONE = "+34643199580"; // Cristobal
 const REVISADO_SILENCIA_DIAS = 7;    // no reenviar si se revisó hace <7 días (modo automático)
 const DAY_MS = 86400000;
 
+// Claves = valores historicos de la BD; etiquetas = catalogo vigente 2026.
 const PACK_LABEL: Record<string, string> = {
-  spark: "Spark", core: "Core", scale: "Scale", elite: "Elite",
+  spark: "Spark", core: "Core Spark Web", scale: "WhiteMoon 360", elite: "Core RAG",
 };
 
 const corsHeaders = {
