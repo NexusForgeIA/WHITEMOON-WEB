@@ -8,21 +8,19 @@ import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 const WA = '643199580';
 const WEB = 'whitemoon.es';
 
-// Precios por pack (brief Modulo 2)
+// Precios por pack — catalogo vigente 2026 (fuente de verdad: /precios/). Sin permanencia.
 const PACKS: Record<string, { label: string; setup: number; mensual: number; cap: string }> = {
-  spark: { label: 'Spark', setup: 499,  mensual: 199, cap: 'hasta 1 agente IA · flujos basicos' },
-  core:  { label: 'Core',  setup: 1800, mensual: 199, cap: 'hasta 3 agentes IA · RAG con tus documentos' },
-  scale: { label: 'Scale', setup: 4500, mensual: 449, cap: 'hasta 10 agentes IA · integraciones CRM' },
-  elite: { label: 'Elite', setup: 8500, mensual: 799, cap: 'agentes ilimitados · infraestructura dedicada' },
+  'mini-core':   { label: 'Mini Core',      setup: 599,  mensual: 99,  cap: 'landing profesional + agente IA · para autonomos sin web' },
+  spark:         { label: 'Spark',          setup: 499,  mensual: 99,  cap: 'agente IA de texto en tu web actual · leads 24/7' },
+  'orion-agent': { label: 'Orion IA Agent', setup: 799,  mensual: 99,  cap: 'agente de voz 24/7 en tu web actual' },
+  core:          { label: 'Core Spark Web', setup: 899,  mensual: 99,  cap: 'web nueva + dominio + agente de texto + SEO/GEO/AEO' },
+  'core-orion':  { label: 'Core Orion',     setup: 1499, mensual: 99,  cap: 'web nueva + dominio + agente de voz + SEO/GEO/AEO' },
+  wm360:         { label: 'WhiteMoon 360',  setup: 1899, mensual: 199, cap: 'web + chat 24/7 + CRM de gestion del negocio' },
+  'core-rag':    { label: 'Core RAG',       setup: 2499, mensual: 199, cap: 'agente IA entrenado con tus documentos · sin web' },
 };
 
-// Plazo y permanencia por pack (regla CLAUDE.md: Scale/Elite plazo segun proyecto + 12 meses)
-const TERMS: Record<string, { plazo: string; permanencia: string }> = {
-  spark: { plazo: '5-7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' },
-  core:  { plazo: '5-7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' },
-  scale: { plazo: 'Plazo segun proyecto', permanencia: 'Permanencia minima 12 meses' },
-  elite: { plazo: 'Plazo segun proyecto', permanencia: 'Permanencia minima 12 meses' },
-};
+// Plazo y permanencia — ningun pack tiene permanencia (30 dias de aviso para cancelar).
+const TERMS = { plazo: '5-7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' };
 
 // ROI por sector (brief) — horas/semana ahorradas + metrica destacada
 const ROI: Record<string, { metric: string; horas: number }> = {
@@ -69,7 +67,7 @@ Deno.serve(async (req: Request) => {
 
     const packKey = String(pack).toLowerCase();
     const P = PACKS[packKey] ?? PACKS.core;
-    const T = TERMS[packKey] ?? TERMS.core;
+    const T = TERMS;
     const R = ROI[String(sector).toLowerCase()] ?? ROI_DEFAULT;
 
     const ahorroMes = Math.round((R.horas * 4.33 * 20) / 10) * 10; // ~20€/h
