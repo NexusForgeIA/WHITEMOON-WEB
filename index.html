@@ -910,23 +910,128 @@
   </div>
 </section>
 
-<!-- CASOS DE USO -->
-<section class="sec-alt">
+<!-- NUESTROS AGENTES IA -->
+<section id="agentes-ia" class="sec-alt" aria-labelledby="agentes-ia-h">
+  <style>
+    #agentes-ia{--agc:#131A2A;--agb:rgba(255,255,255,.07)}
+    #agentes-ia .ag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch;max-width:1140px;margin:0 auto}
+    @media(max-width:900px){#agentes-ia .ag-grid{grid-template-columns:1fr;max-width:520px;gap:22px}}
+    #agentes-ia .ag-card{--ac:var(--p2,#9d70ff);display:flex;flex-direction:column;background:var(--agc);border:1px solid var(--agb);border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.42);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+    #agentes-ia .ag-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--ac) 42%,transparent);box-shadow:0 26px 64px rgba(0,0,0,.55)}
+    #agentes-ia .ag-card--gold{--ac:var(--gold,#f5c842)}
+    #agentes-ia .ag-card--green{--ac:var(--g,#00d4aa)}
+
+    #agentes-ia .ag-media{position:relative;height:184px;overflow:hidden;background:#0B0F17}
+    #agentes-ia .ag-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
+    #agentes-ia .ag-card:hover .ag-media img{transform:scale(1.045)}
+    #agentes-ia .ag-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,42,0) 0%,rgba(19,26,42,.35) 45%,rgba(19,26,42,.88) 78%,#131A2A 100%);pointer-events:none}
+    #agentes-ia .ag-badge{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;background:rgba(11,15,23,.82);border:1px solid color-mix(in srgb,var(--ac) 45%,transparent);color:var(--ac);font-family:'Sora',sans-serif;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(6px)}
+    #agentes-ia .ag-badge svg{width:12px;height:12px;flex-shrink:0}
+    #agentes-ia .ag-icon{position:absolute;left:24px;bottom:-1px;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;background:rgba(11,15,23,.9);border:1px solid color-mix(in srgb,var(--ac) 38%,transparent);color:var(--ac)}
+    #agentes-ia .ag-icon svg{width:22px;height:22px}
+
+    #agentes-ia .ag-body{display:flex;flex-direction:column;flex:1;padding:36px 24px 26px}
+    #agentes-ia .ag-title{font-family:'Sora',sans-serif;font-size:1.32rem;font-weight:700;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
+    #agentes-ia .ag-lead{font-size:.9rem;line-height:1.6;color:#B9B9CE;margin:0 0 20px}
+    #agentes-ia .ag-list{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:10px}
+    #agentes-ia .ag-list li{display:flex;align-items:flex-start;gap:9px;font-size:.855rem;line-height:1.45;color:#DCDCEA}
+    #agentes-ia .ag-list svg{width:15px;height:15px;margin-top:2px;flex-shrink:0;color:var(--ac)}
+    #agentes-ia .ag-price{margin-top:auto;padding-top:18px;border-top:1px solid var(--agb);font-size:.86rem;color:#9999b5;line-height:1.5}
+    #agentes-ia .ag-price strong{display:block;font-family:'Sora',sans-serif;font-size:1.42rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:2px}
+    #agentes-ia .ag-cta{display:block;margin-top:18px;padding:13px 18px;border-radius:12px;text-align:center;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:-.005em;transition:filter .2s ease,transform .2s ease}
+    #agentes-ia .ag-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+    #agentes-ia .ag-cta--p{background:linear-gradient(135deg,#5c35cc,#7c4dff);color:#fff}
+    #agentes-ia .ag-cta--gold{background:var(--gold,#f5c842);color:#0B0F17}
+    #agentes-ia .ag-cta--green{background:var(--g,#00d4aa);color:#05221C}
+
+    #agentes-ia .ag-foot{text-align:center;margin-top:38px}
+    #agentes-ia .ag-foot a{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(124,77,255,.3);border-radius:99px;color:#E8E8F0;text-decoration:none;font-size:.86rem;font-weight:500;transition:border-color .15s ease,background .15s ease}
+    #agentes-ia .ag-foot a:hover{border-color:#7c4dff;background:rgba(124,77,255,.08)}
+    @media(prefers-reduced-motion:reduce){#agentes-ia .ag-card,#agentes-ia .ag-media img,#agentes-ia .ag-cta{transition:none}#agentes-ia .ag-card:hover{transform:none}#agentes-ia .ag-card:hover .ag-media img{transform:none}}
+  </style>
+
   <div class="wrap">
     <div class="hdr c">
-      <span class="sec-lbl">Casos de uso</span>
-      <h2 class="sec-h">Soluciones reales para cada sector</h2>
-      <p class="sec-sub">Así aplican nuestros clientes la automatización con IA en su día a día.</p>
+      <span class="sec-lbl">Nuestros agentes IA</span>
+      <h2 class="sec-h" id="agentes-ia-h">Elige tu agente. Deja de perder clientes.</h2>
+      <p class="sec-sub">Tres formas de que tu negocio atienda, capte y cierre — sin ampliar tu equipo.</p>
     </div>
-    <div class="usecase-grid">
-      <div class="usecase-card"><div class="usecase-sector">Clínicas y Salud</div><h3>Tu clínica atiende consultas las 24 horas</h3><p>El chatbot responde al instante, recoge los datos del paciente y deriva al equipo para confirmar la cita. Sin llamadas perdidas, sin pacientes sin respuesta.</p><span class="usecase-result">↑ Hasta un 60% más de citas captadas</span></div>
-      <div class="usecase-card"><div class="usecase-sector">Restaurantes y Hostelería</div><h3>Reservas y pedidos sin coger el teléfono</h3><p>El chatbot gestiona reservas, responde sobre la carta y recoge pedidos para llevar. El equipo solo interviene para confirmar. Funciona mientras estáis en servicio.</p><span class="usecase-result">↑ Sin llamadas perdidas en hora punta</span></div>
-      <div class="usecase-card"><div class="usecase-sector">Comercio y Servicios Locales</div><h3>Leads captados fuera de tu horario</h3><p>Cuando cierras, el chatbot sigue atendiendo consultas, recogiendo datos de clientes interesados y notificando al equipo para contactarles al día siguiente.</p><span class="usecase-result">↑ Leads 24h sin esfuerzo extra</span></div>
+
+    <div class="ag-grid">
+
+      <!-- ORION IA -->
+      <article class="ag-card">
+        <div class="ag-media">
+          <img src="/assets/img/orion-ia-agent.webp" width="800" height="500" loading="lazy" decoding="async"
+            alt="Orion IA — agente de voz que atiende llamadas y agenda citas 24/7">
+          <div class="ag-fade"></div>
+          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/></svg> Voz 24/7</span>
+          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></span>
+        </div>
+        <div class="ag-body">
+          <h3 class="ag-title">Orion IA</h3>
+          <p class="ag-lead">El agente de voz que atiende como un recepcionista, día y noche.</p>
+          <ul class="ag-list">
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Voz natural en español, 24/7</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Atiende y agenda citas él solo</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Capta cada lead con nombre y teléfono</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Se integra en tu web actual</li>
+          </ul>
+          <div class="ag-price"><strong>Desde 799€</strong>+ 99€/mes · sin permanencia</div>
+          <a class="ag-cta ag-cta--p" href="/orion-agent/" onclick="wmTrack('click_home_agente',{agente:'orion-ia'})">Ver Orion IA →</a>
+        </div>
+      </article>
+
+      <!-- SPARK -->
+      <article class="ag-card ag-card--gold">
+        <div class="ag-media">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format" width="800" height="600" loading="lazy" decoding="async"
+            alt="Spark — chatbot IA conversacional que capta clientes en tu web 24/7">
+          <div class="ag-fade"></div>
+          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2.8 14.9 9 21.4 9.8 16.6 14.2 17.9 20.7 12 17.5 6.1 20.7 7.4 14.2 2.6 9.8 9.1 9"/></svg> Más popular</span>
+          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
+        </div>
+        <div class="ag-body">
+          <h3 class="ag-title">Spark</h3>
+          <p class="ag-lead">El chatbot conversacional que capta clientes en tu web, 24/7.</p>
+          <ul class="ag-list">
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Conversa con lenguaje natural</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Capta y cualifica leads solo</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Responde las dudas de tu sector</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Aviso al móvil al instante</li>
+          </ul>
+          <div class="ag-price"><strong>Desde 499€</strong>+ 99€/mes · sin permanencia</div>
+          <a class="ag-cta ag-cta--gold" href="/spark/" onclick="wmTrack('click_home_agente',{agente:'spark'})">Ver Spark →</a>
+        </div>
+      </article>
+
+      <!-- CORE RAG -->
+      <article class="ag-card ag-card--green">
+        <div class="ag-media">
+          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format" width="800" height="600" loading="lazy" decoding="async"
+            alt="Core RAG — agente IA entrenado con los documentos propios de tu negocio">
+          <div class="ag-fade"></div>
+          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2.5 14 7.5 19 7.5"/></svg> Con tus documentos</span>
+          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2.5 14 7.5 19 7.5"/><line x1="8.5" y1="12.5" x2="14" y2="12.5"/><line x1="8.5" y1="16.5" x2="15.5" y2="16.5"/></svg></span>
+        </div>
+        <div class="ag-body">
+          <h3 class="ag-title">Core RAG</h3>
+          <p class="ag-lead">La IA que responde con TU documentación, sin inventar.</p>
+          <ul class="ag-list">
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Entrenada con tus documentos</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Responde citando la fuente</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Para despachos, gestorías y clínicas</li>
+            <li><svg aria-hidden="true"><use href="#check"/></svg>Widget + panel de documentos</li>
+          </ul>
+          <div class="ag-price"><strong>Desde 2.499€</strong>+ 199€/mes · sin permanencia</div>
+          <a class="ag-cta ag-cta--green" href="/core-rag/" onclick="wmTrack('click_home_agente',{agente:'core-rag'})">Ver Core RAG →</a>
+        </div>
+      </article>
+
     </div>
-    <div style="text-align:center;margin-top:36px">
-      <a href="/casos/" onclick="wmTrack('click_home_ver_casos',{destination:'casos'})" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:transparent;color:#E8E8F0;border:1px solid rgba(124,77,255,.3);border-radius:99px;text-decoration:none;font-family:'Inter',sans-serif;font-weight:500;font-size:.86rem;letter-spacing:-.005em;transition:all .15s ease" onmouseover="this.style.borderColor='#7c4dff';this.style.background='rgba(124,77,255,.06)'" onmouseout="this.style.borderColor='rgba(124,77,255,.3)';this.style.background='transparent'">
-        Ver los 15 casos de uso →
-      </a>
+
+    <div class="ag-foot">
+      <a href="/casos/" onclick="wmTrack('click_home_ver_casos',{destination:'casos'})">Ver casos de uso por sector →</a>
     </div>
   </div>
 </section>
