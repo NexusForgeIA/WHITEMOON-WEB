@@ -5,7 +5,12 @@
     "t002",
     "t003",
     "t004",
-    "t005"
+    "t005",
+    "t006",
+    "t007",
+    "t008",
+    "t009",
+    "t010"
   ],
   "publicaciones": [
     {
@@ -23,6 +28,23 @@
         "agente-ia-captar-leads-web-24-7",
         "seo-geo-aeo-guia-pymes-2026",
         "agente-ia-clinica-dental-citas-recordatorios"
+      ]
+    },
+    {
+      "fecha": "2026-07-27",
+      "ids": [
+        "t006",
+        "t007",
+        "t008",
+        "t009",
+        "t010"
+      ],
+      "slugs": [
+        "agente-ia-gestoria-clasificar-correo-documentos",
+        "agente-ia-taller-avisos-seguimiento-reparaciones",
+        "agente-ia-centro-estetica-reservas-reactivacion",
+        "agente-ia-inmobiliaria-cualificar-compradores",
+        "agente-ia-restaurante-reservas-sin-llamadas"
       ]
     }
   ]
