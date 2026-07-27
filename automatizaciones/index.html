@@ -149,6 +149,7 @@
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Integraciones y flujos a medida", "description": "Conectamos tus herramientas y automatizamos lo que te hace perder tiempo." } },
           { "@type": "Offer", "name": "Basic Esencial", "price": "2499", "priceCurrency": "EUR", "description": "Autónomos y negocios locales que quieren automatizar un solo proceso — clínicas y consultas individuales, peluquerías y estética, talleres, gestorías pequeñas, abogados y psicólogos, tiendas locales.", "itemOffered": { "@type": "Service", "name": "Basic Esencial", "description": "1 automatización a elegir, integración con 1 canal, avisos a tu móvil y panel de control. Hasta 500 operaciones/mes. 2.499 € de setup + 199 €/mes, sin permanencia." } },
           { "@type": "Offer", "name": "Pro Esencial", "price": "5999", "priceCurrency": "EUR", "description": "Pymes con equipo comercial y varios procesos que automatizar — reformas, inmobiliarias, energía solar, asesorías medianas, concesionarios, seguros, clínicas con varias sedes.", "itemOffered": { "@type": "Service", "name": "Pro Esencial", "description": "Hasta 3 automatizaciones combinadas, CRM + mensajería + email, scoring de leads con IA, seguimiento automático y panel de ROI. Hasta 2.000 operaciones/mes. 5.999 € de setup + 349 €/mes, sin permanencia." } },
+          { "@type": "Offer", "name": "GestoTrafic — CRM para gestorías de tráfico", "price": "4899", "priceCurrency": "EUR", "description": "Producto vertical para gestorías de tráfico: CRM completo con calculadora de ITP del BOE y el agente Gest-IA. 4.899 € de setup + 499 €/mes, sin permanencia. Migración de datos desde otro CRM desde 299 €, opcional según volumen.", "itemOffered": { "@type": "SoftwareApplication", "name": "GestoTrafic con Gest-IA", "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "description": "CRM multiusuario para gestorías de tráfico: transferencias, matriculaciones, bajas, duplicados y notificación de venta; calculadora de ITP automática con precios oficiales del BOE; Gest-IA, que da de alta el expediente leyendo la documentación del vehículo con validación humana; buscador por matrícula o DNI; contrato de compraventa y mandato de representación; gestión documental segura.", "offers": { "@type": "Offer", "price": "4899", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://whitemoon.es/automatizaciones/#planes" } } },
           { "@type": "Offer", "name": "Enterprise Esencial", "price": "11999", "priceCurrency": "EUR", "description": "Empresas con sistemas propios y gran volumen — constructoras, logística y distribución, franquicias y multi-sede, industria, grandes despachos.", "itemOffered": { "@type": "Service", "name": "Enterprise Esencial", "description": "Automatizaciones ilimitadas y flujos a medida, integración con tu ERP vía API, agente IA con tus documentos (RAG) y consultor asignado con SLA. Desde 11.999 € + 599 €/mes, a presupuesto." } }
         ]
       }
@@ -766,21 +767,40 @@ body.menu-open .overlay-cta-wrap{animation:ovIn .7s var(--ease) .43s forwards}
 /* etiqueta superior, encima del titulo. En purpura y no en verde para no
    confundirla con .plan-sub, y sin usar .tag: esa pastilla es la de "Popular"
    de la destacada y perderia su peso si la llevara otra card. */
-.plan .plan-eyebrow{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--p2);font-weight:700;margin-bottom:.5rem}
+.plan .plan-eyebrow,.vert .plan-eyebrow{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--p2);font-weight:700;margin-bottom:.5rem}
 /* subtexto bajo el precio: el margen negativo compensa el margin-bottom de
    .once, para que quede pegado al precio y no flotando */
 .plan .plan-note{color:var(--muted);font-size:.82rem;margin:-.72rem 0 1rem}
-.plan .price{font-size:2.1rem;font-weight:700;margin:.5rem 0 .1rem;letter-spacing:-.02em}
+.plan .price,.vert .price{font-size:2.1rem;font-weight:700;margin:.5rem 0 .1rem;letter-spacing:-.02em}
 .plan.feat .price{font-size:2.5rem}
-.plan .once{color:var(--muted);font-size:.86rem;margin-bottom:1rem}
-.plan .once .noperm{color:var(--g);font-weight:600}
-.plan .plan-desc{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0 0 1.1rem}
-.plan ul{list-style:none;margin:.3rem 0 1.3rem;display:flex;flex-direction:column;gap:.62em}
-.plan ul li{display:flex;gap:.6em;align-items:flex-start;color:var(--text);font-size:.9rem;opacity:.86}
+.plan .once,.vert .once{color:var(--muted);font-size:.86rem;margin-bottom:1rem}
+.plan .once .noperm,.vert .once .noperm{color:var(--g);font-weight:600}
+.plan .plan-desc,.vert .plan-desc{color:var(--muted);font-size:.9rem;line-height:1.55;margin:0 0 1.1rem}
+.plan ul,.vert ul{list-style:none;margin:.3rem 0 1.3rem;display:flex;flex-direction:column;gap:.62em}
+.plan ul li,.vert ul li{display:flex;gap:.6em;align-items:flex-start;color:var(--text);font-size:.9rem;opacity:.86}
 .plan.feat ul li{opacity:1}
-.plan ul li svg{width:16px;height:16px;color:var(--g);flex:0 0 16px;margin-top:.22em}
-.plan .plan-foot{color:var(--p2);font-size:.82rem;font-weight:500;margin-bottom:1.1rem;padding-top:.95rem;border-top:1px solid var(--border)}
+.plan ul li svg,.vert ul li svg{width:16px;height:16px;color:var(--g);flex:0 0 16px;margin-top:.22em}
+.vert ul{margin-bottom:0}
+.plan .plan-foot,.vert .plan-foot{color:var(--p2);font-size:.82rem;font-weight:500;margin-bottom:1.1rem;padding-top:.95rem;border-top:1px solid var(--border)}
 .plan .btn{margin-top:auto;justify-content:center}
+/* ---- PRODUCTO VERTICAL (GestoTrafic) ----
+   Banda ancha bajo las tres cards genéricas. Reutiliza los tokens de .plan
+   (borde, fondo, hover, precio, lista, foot) y sólo cambia el layout: no es
+   una cuarta columna porque el grid es de 3 y un huérfano en segunda fila
+   rompe la lectura de precios ascendentes. La pastilla va en outline y no en
+   relleno: la rellena es la de "Popular" y perdería peso si la copiara. */
+.vert{position:relative;margin-top:38px;border-radius:22px;border:1px solid var(--border);background:var(--card);transition:transform .4s var(--ease),border-color .4s}
+.vert:hover{transform:translateY(-6px);border-color:var(--p)}
+.vert-tag{position:absolute;top:-13px;left:32px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--p2);background:var(--bg);border:1px solid var(--p);padding:.42em 1em;border-radius:100px}
+.vert-main{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:36px;padding:34px 32px 32px}
+.vert h3{font-size:1.5rem;margin-bottom:.55rem}
+.vert .vert-buy{display:flex;flex-direction:column;padding-left:36px;border-left:1px solid var(--border)}
+/* el margen negativo pega la línea de migración al bloque de precio, igual
+   que hace .plan-note en las cards de arriba */
+.vert .vert-mig{color:var(--muted);font-size:.84rem;line-height:1.5;margin:-.4rem 0 1.15rem;padding-bottom:1.15rem;border-bottom:1px solid var(--border)}
+.vert .vert-mig b{color:var(--text);font-weight:600}
+.vert .vert-cta{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.vert .vert-cta .btn{justify-content:center}
 .no-perm{text-align:center;color:var(--muted);font-size:.9rem;margin-top:26px;display:flex;align-items:center;justify-content:center;gap:.5em}
 .no-perm svg{width:16px;height:16px;color:var(--g)}
 
@@ -1002,6 +1022,12 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
   .porque-grid{grid-template-columns:1fr;gap:30px}
   .porque-stage{min-height:auto;padding:20px 0}
   .grid-plans{grid-template-columns:1fr;gap:26px;max-width:520px;margin:0 auto}
+  /* misma caja que el grid de planes: si la banda siguiera a ancho completo
+     quedaría desalineada bajo las cards ya estrechadas */
+  .vert{max-width:520px;margin:38px auto 0}
+  .vert-main{grid-template-columns:1fr;gap:24px;padding:30px 28px 32px}
+  /* apilado: el separador pasa de vertical a horizontal */
+  .vert .vert-buy{padding:24px 0 0;border-left:0;border-top:1px solid var(--border)}
   /* minmax(0,1fr): "1fr" es minmax(auto,1fr) y su minimo auto impide que la
      columna baje del min-content de la tarjeta -> desbordaba el viewport */
   .contact-grid{grid-template-columns:minmax(0,1fr);gap:30px}
@@ -1015,6 +1041,10 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
   .brand span{font-size:1rem}
   .grid-auto{grid-template-columns:1fr}
   .grid-plans{grid-template-columns:1fr}
+  .vert-main{padding:30px 20px 28px}
+  /* a 360px el título a 1.5rem parte "gestorías" en dos líneas feas */
+  .vert h3{font-size:1.3rem}
+  .vert-tag{left:20px;font-size:.62rem;letter-spacing:.1em}
   .hero-cta{flex-direction:column;align-items:stretch}
   .hero-cta .btn{justify-content:center}
   /* apilado y centrado; las redes van al final con aire, sin amontonarse */
@@ -1417,6 +1447,7 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
       <p class="sec-lead">Empieza por donde tenga más sentido para tu empresa. Escala cuando quieras.</p>
     </div>
     <div class="grid-plans" id="plansGrid"></div>
+    <div id="vertGrid"></div>
     <p class="no-perm">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 6 9.5 15 6 11.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Todos los planes son sin permanencia.
@@ -1690,6 +1721,32 @@ const PLANS = [
   }
 ];
 
+/* Productos verticales: software cerrado para un sector concreto, no packs de
+   agente IA. Van aparte de PLANS para que no entren en el grid de 3 columnas y
+   se lean como lo que son. 'orionInfo' igual que en PLANS_AUTO: sin él,
+   serviceInfo() cae a fallback() y el lead se guarda sin producto. */
+const VERTICALS = [
+  {
+    service:'gestotrafic', eyebrow:'Vertical · Gestorías de tráfico',
+    name:'GestoTrafic — CRM para gestorías de tráfico',
+    desc:'CRM completo con calculadora de ITP del BOE integrada y Gest-IA, el agente que monta el expediente leyendo la documentación del vehículo. Sin permanencia.',
+    items:[
+      'CRM multiusuario (admin + gestores, cada uno ve lo suyo)',
+      'Todos los trámites: transferencias, matriculaciones, bajas, duplicados, notificación de venta',
+      'Calculadora ITP automática con precios oficiales del BOE (turismos, autocaravanas, motos…)',
+      'Gest-IA: alta automática de expedientes leyendo la documentación, con validación humana',
+      'Buscador de expedientes por matrícula o DNI',
+      'Generación de contrato de compraventa y mandato de representación',
+      'Gestión documental segura'
+    ],
+    price:'4.899€', unit:'setup · +499€/mes', note:'Sin permanencia',
+    mig:'Migración de datos de tu CRM actual: <b>desde 299€</b> (opcional, según volumen).',
+    cta:'Habla con Orion',
+    orionInfo:'GestoTrafic es nuestro CRM para gestorías de tráfico: 4.899€ de setup + 499€/mes, sin permanencia. Cubre todos los trámites (transferencias, matriculaciones, bajas, duplicados y notificación de venta) con CRM multiusuario, calculadora de ITP automática con los precios oficiales del BOE, buscador de expedientes por matrícula o DNI, generación de contrato de compraventa y mandato de representación, y gestión documental segura. Incluye Gest-IA, el agente que da de alta el expediente leyendo la documentación del vehículo, siempre con validación humana. Si vienes de otro CRM, la migración de datos va aparte: desde 299€ según volumen.'
+  }
+];
+const VERTICAL_MAP = Object.fromEntries(VERTICALS.map(v=>[v.service,{key:v.service,title:v.name,info:v.orionInfo}]));
+
 /* Planes de Automatización. 'orionInfo' es lo que cuenta Orion al pinchar el
    CTA: sin registrarlos, serviceInfo() no los encuentra, cae a fallback() y el
    lead se queda SIN saber que plan pidieron (state.lead.service vacio). */
@@ -1874,6 +1931,31 @@ const BRANDS = [
         <button class="btn ${p.feat?'btn-primary':'btn-ghost'}" data-orion data-service="${p.service}">${p.cta} ${ICON.arrow}</button>
       </div>
     </div>`).join('');
+})();
+
+/* ---------- RENDER: productos verticales ---------- */
+(function(){
+  $('#vertGrid').innerHTML = VERTICALS.map(v=>`
+    <article class="vert" data-reveal data-key="${v.service}">
+      <span class="vert-tag">${v.eyebrow}</span>
+      <div class="vert-main">
+        <div class="vert-info">
+          <h3>${v.name}</h3>
+          <p class="plan-desc">${v.desc}</p>
+          <ul>${v.items.map(i=>`<li>${ICON.check}${i}</li>`).join('')}</ul>
+        </div>
+        <aside class="vert-buy">
+          <div class="price">${v.price}</div>
+          <div class="once">${v.unit} · <span class="noperm">${v.note}</span></div>
+          <div class="vert-mig">${v.mig}</div>
+          <div class="vert-cta">
+            <button class="btn btn-primary" data-orion data-service="${v.service}">${v.cta} ${ICON.arrow}</button>
+            <a class="btn btn-ghost" href="https://wa.me/34643199580" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-ghost" href="#contacto">Contacto</a>
+          </div>
+        </aside>
+      </div>
+    </article>`).join('');
 })();
 
 /* ---------- RENDER: planes de automatización (acordeón) ---------- */
@@ -2169,7 +2251,7 @@ else { initScrollFX(); }
 
   // SERVICE_INFO block
   async function serviceInfo(key){
-    const svc = key==='wm360'?WM360:(AUTO_MAP[key]||PLAN_AUTO_MAP[key]);
+    const svc = key==='wm360'?WM360:(AUTO_MAP[key]||PLAN_AUTO_MAP[key]||VERTICAL_MAP[key]);
     if(!svc){ return fallback(); }
     state.lead.service=svc.key; state.lead.interes=svc.title;
     addMsg(svc.title,'user');
