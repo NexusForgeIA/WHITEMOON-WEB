@@ -1,16 +1,20 @@
 /* WhiteMoon — consentimiento de cookies (RGPD/LOPD-GDD)
-   Consentimiento previo (opt-in) para Google Analytics 4:
-   · gtag.js NO se inyecta hasta que el usuario acepta la analítica.
-   · Primera visita o "Solo esenciales" -> no se carga GA4 ni se hace
-     ninguna petición a Google.
-   · Al aceptar -> gtag('consent','update', granted) + se inyecta gtag.js.
-   · Visitante recurrente que ya aceptó ('all') -> GA4 se carga al inicio.
+   Consentimiento previo (opt-in) para la analítica (Google Analytics 4 y
+   Microsoft Clarity):
+   · gtag.js y clarity.ms NO se inyectan hasta que el usuario acepta la
+     analítica.
+   · Primera visita o "Solo esenciales" -> no se carga GA4 ni Clarity, y no se
+     hace ninguna petición a Google ni a Microsoft.
+   · Al aceptar -> gtag('consent','update', granted) + se inyectan gtag.js y
+     el tag de Clarity.
+   · Visitante recurrente que ya aceptó ('all') -> ambos cargan al inicio.
    · Se mantiene el bootstrap de Consent Mode V2 (default 'denied').
    · Decisión persistida en localStorage (clave wm_cookie_consent). */
 (function () {
   'use strict';
 
   var GA_ID = 'G-D3BQ7674RX';
+  var CLARITY_ID = 'xtj268o8wi';
   var STORAGE_KEY = 'wm_cookie_consent'; // valores: 'all' | 'essential'
 
   function getConsent() {
@@ -63,6 +67,21 @@
     gtag('config', GA_ID, { 'send_page_view': true, 'transport_type': 'beacon' });
   }
 
+  // Carga de Microsoft Clarity (mapas de calor + grabación de sesión).
+  // Mismas reglas que loadGA(): SOLO tras aceptar la analítica ('all') o para
+  // visitantes recurrentes que ya aceptaron. Sin consentimiento no se hace
+  // ninguna petición a clarity.ms ni se escriben las cookies _clck/_clsk.
+  // El tag es async: no bloquea el render ni afecta a Core Web Vitals.
+  function loadClarity() {
+    if (window.__wmClarityLoaded) return;
+    window.__wmClarityLoaded = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', CLARITY_ID);
+  }
+
   // ---------- UI del banner ----------
 
   function injectStyles() {
@@ -109,8 +128,9 @@
     banner.innerHTML =
       '<div class="wm-cookie-inner">'
       + '<p class="wm-cookie-text">Usamos cookies técnicas necesarias y, con tu permiso, cookies de analítica '
-      + '(Google Analytics 4) para entender cómo se usa la web. Puedes aceptarlas todas o continuar solo con las '
-      + 'esenciales. Más información en nuestra <a href="/politica-cookies/">Política de Cookies</a>.</p>'
+      + '(Google Analytics 4 y Microsoft Clarity) para entender cómo se usa la web. Puedes aceptarlas todas o '
+      + 'continuar solo con las esenciales. Más información en nuestra '
+      + '<a href="/politica-cookies/">Política de Cookies</a>.</p>'
       + '<div class="wm-cookie-actions">'
       + '<button type="button" class="wm-cookie-btn wm-cookie-essential" id="wm-cookie-essential">Solo esenciales</button>'
       + '<button type="button" class="wm-cookie-btn wm-cookie-accept" id="wm-cookie-accept">Aceptar todas</button>'
@@ -128,23 +148,36 @@
       'analytics_storage': 'granted',
       'ad_storage':        'granted'
     });
-    loadGA(); // inyecta GA4 solo ahora, tras el consentimiento del usuario
+    loadGA();      // inyecta GA4 solo ahora, tras el consentimiento del usuario
+    loadClarity(); // ídem Clarity
     removeBanner();
   }
+  // Revoca el consentimiento en Clarity si ya estaba cargado en esta página
+  // (sólo ocurre al cambiar de opinión sin recargar). Un <script> ya inyectado
+  // no se puede "desinyectar": la API de Clarity es la vía para que deje de
+  // usar cookies. No-op si Clarity nunca se cargó.
+  function revokeClarity() {
+    if (typeof window.clarity === 'function') {
+      try { window.clarity('consent', false); } catch (e) { /* no romper la UI */ }
+    }
+  }
+
   function essentialOnly() {
     setConsent('essential');
     // analytics_storage y ad_storage permanecen 'denied':
     // GA sigue activo en modo cookieless (sólo modeling).
+    revokeClarity();
     removeBanner();
   }
 
   function init() {
     var consent = getConsent();
     if (consent === 'all') {
-      // Visitante recurrente que ya aceptó -> cargar GA4 (sin banner).
+      // Visitante recurrente que ya aceptó -> cargar GA4 y Clarity (sin banner).
       loadGA();
+      loadClarity();
     } else if (consent === 'essential') {
-      // Rechazó la analítica: NO se carga GA4. Sin banner.
+      // Rechazó la analítica: NO se carga GA4 ni Clarity. Sin banner.
     } else {
       showBanner();
     }
@@ -161,6 +194,7 @@
         'analytics_storage': 'denied',
         'ad_storage':        'denied'
       });
+      revokeClarity();
       removeBanner();
       showBanner();
     }
