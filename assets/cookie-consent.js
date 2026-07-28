@@ -104,8 +104,25 @@
       + '.wm-cookie-essential:hover{border-color:rgba(255,255,255,.45);color:#fff}'
       + '.wm-cookie-accept{background:#7c4dff;color:#fff}'
       + '.wm-cookie-accept:hover{opacity:.88}'
-      + '@media(max-width:600px){.wm-cookie-inner{flex-direction:column;align-items:stretch;'
-      + 'gap:14px;padding:16px}.wm-cookie-actions{justify-content:stretch}.wm-cookie-btn{flex:1}}';
+      // El texto corto solo se usa en movil; en escritorio se muestra el largo.
+      + '.wm-cookie-short{display:none}'
+      // --- Movil: barra baja y compacta -------------------------------------
+      // Clave: .wm-cookie-text lleva 'flex:1 1 420px', pensado para el layout
+      // en fila. Al pasar el contenedor a 'column' esos 420px dejan de ser
+      // ancho y pasan a ser ALTO, lo que inflaba el banner a ~524px (62% de
+      // una pantalla de 844px) y tapaba los CTA de la pagina. Se resetea.
+      + '@media(max-width:600px){'
+      + '.wm-cookie-inner{flex-direction:column;align-items:stretch;gap:8px;'
+      + 'padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px))}'
+      + '.wm-cookie-text{flex:0 1 auto;font-size:.72rem;line-height:1.45}'
+      + '.wm-cookie-actions{gap:8px;flex-wrap:nowrap}'
+      + '.wm-cookie-btn{flex:1 1 0;padding:10px 8px;font-size:.78rem;border-radius:8px;'
+      + 'white-space:nowrap}'
+      // Rechazar con borde mas visible: debe pesar lo mismo que aceptar.
+      + '.wm-cookie-essential{border-color:rgba(255,255,255,.38)}'
+      + '.wm-cookie-long{display:none}'
+      + '.wm-cookie-short{display:inline}'
+      + '}';
     var st = document.createElement('style');
     st.id = 'wm-cookie-styles';
     st.textContent = css;
@@ -127,10 +144,15 @@
     banner.setAttribute('aria-label', 'Aviso de cookies');
     banner.innerHTML =
       '<div class="wm-cookie-inner">'
-      + '<p class="wm-cookie-text">Usamos cookies técnicas necesarias y, con tu permiso, cookies de analítica '
+      + '<p class="wm-cookie-text">'
+      + '<span class="wm-cookie-long">Usamos cookies técnicas necesarias y, con tu permiso, cookies de analítica '
       + '(Google Analytics 4 y Microsoft Clarity) para entender cómo se usa la web. Puedes aceptarlas todas o '
       + 'continuar solo con las esenciales. Más información en nuestra '
-      + '<a href="/politica-cookies/">Política de Cookies</a>.</p>'
+      + '<a href="/politica-cookies/">Política de Cookies</a>.</span>'
+      + '<span class="wm-cookie-short">Cookies técnicas y, con tu permiso, de analítica '
+      + '(Google Analytics 4 y Microsoft Clarity). '
+      + '<a href="/politica-cookies/">Política de Cookies</a>.</span>'
+      + '</p>'
       + '<div class="wm-cookie-actions">'
       + '<button type="button" class="wm-cookie-btn wm-cookie-essential" id="wm-cookie-essential">Solo esenciales</button>'
       + '<button type="button" class="wm-cookie-btn wm-cookie-accept" id="wm-cookie-accept">Aceptar todas</button>'
