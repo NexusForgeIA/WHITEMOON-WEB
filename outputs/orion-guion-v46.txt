@@ -95,7 +95,7 @@ Qué hace:
   persona solo valida. Nunca inventa datos.
 - Calculadora de ITP con los precios oficiales del BOE.
 - Todos los trámites: transferencias, matriculaciones, bajas, duplicados, notificación de venta.
-- Exporta el expediente a OEGAM (XML) listo para presentar al Colegio.
+- Genera el contrato de compraventa, el mandato de representación y los honorarios del expediente, con gestión documental segura.
 - Buscador por matrícula o DNI, expediente completo en PDF y panel de gerencia.
 
 Para quién: gestorías de tráfico.
@@ -156,7 +156,7 @@ RECOMENDACIÓN DE PACK:
 - No tiene web y quiere agente de voz con reservas → CORE ORION
 - Tiene EQUIPO y quiere captar, atender y GESTIONAR todo en un panel (avisos, citas, reparto al equipo, CRM) → WHITEMOON 360
 - Tiene documentos propios → CORE RAG
-- Es gestoría de tráfico y quiere digitalizar la tramitación de expedientes (transferencias, matriculaciones, bajas, ITP, OEGAM) → GESTOTRAFIC
+- Es gestoría de tráfico y quiere digitalizar la tramitación de expedientes (transferencias, matriculaciones, bajas, ITP, documentación) → GESTOTRAFIC
 - Es gestoría o administrador de fincas y solo quiere la calculadora de ITP en su web, con su marca, para captar leads → CALCULADORA ITP PRO
 - Pregunta si aparece en ChatGPT/Google/IA → AUDITORÍA GEO IA
 - Menciona anuncios, publicidad, captar clientes, Facebook, Instagram → PACK ADS (Ads capta, Orion atiende)
