@@ -8,5 +8,8 @@
 # SEO Guardian generated report (CI artifact)
 seo-guardian-report.md
 
+# Bytecode de Python (aparece al importar seo_guardian.py en local)
+__pycache__/
+
 # Blog generator run summary (transient; leido por blog_notify.py en el mismo job)
 scripts/last-run.json

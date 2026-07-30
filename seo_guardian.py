@@ -59,14 +59,80 @@ PACK_PAGES = {
     "orion/index.html",
 }
 # Productos retirados (texto visible, case-sensitive para evitar falsos positivos).
-RETIRED_PATTERNS = {
+# Los checks 9 y 13 ya recorren el texto visible de TODAS las páginas, /blog/
+# incluido: para retirar un producto basta con añadirlo aquí.
+#
+# "Gestoría IA" va capitalizado a propósito. En minúscula ("autónomos con
+# gestoría IA…") es prosa descriptiva legítima, no una mención al pack.
+RETIRED_PRODUCTS = {
     "Orion IA Calls": re.compile(r"Orion\s+IA\s+Calls"),
     "Scale": re.compile(r"\bScale\b"),
     "Elite": re.compile(r"\bElite\b"),
+    "Orbit": re.compile(r"\bOrbit\b"),
+    "Gestoría IA": re.compile(r"\bGestor[ií]a\s+IA\b"),
 }
+# Alias retrocompatible: el nombre viejo seguía usándose en scripts externos.
+RETIRED_PATTERNS = RETIRED_PRODUCTS
 # Prefijos exentos del check 9: líneas de producto distintas donde los nombres
 # de packs retirados son legítimos. Sin exenciones activas.
 RETIRED_EXEMPT_PREFIXES = ()
+
+# ── Check 13 · precios muertos en la prosa ─────────────────────────────────
+# El check 8 solo mira las 10 páginas de PACK_PAGES. El 13 recorre TODAS las
+# páginas (blog incluido), que es por donde se colaron los tramos inventados
+# de 4.500/8.500€ de setup y las cuotas de 249/449€/mes.
+CATALOG_FILE = "precios/index.html"
+
+# Número COMPLETO: los lookarounds impiden que 999 case dentro de 5.999 o que
+# 4.500 case dentro de 14.500 — el falso positivo que más ruido daba.
+NUMBER_RX = re.compile(r"(?<![\d.,])(\d{1,3}(?:\.\d{3})+|\d+)(?![\d.,]*\d)")
+# El número va acompañado de € o de una palabra que lo convierte en precio.
+PRICE_CONTEXT_RX = re.compile(
+    r"€|\bEUR\b|\bsetup\b|/\s*mes|\bal mes\b|\bdesde\b|\bprecio|\bcuota|\btarifa"
+    r"|\bpago único\b|\binversión\b|\bmantenimiento\b",
+    re.I,
+)
+# Señal FUERTE de que la cifra es el precio de un pack nuestro → crítico.
+# Deliberadamente NO incluye "/mes" ni "cuota": un sueldo de 1.800€/mes en una
+# calculadora los dispara, y la regla es que la ambigüedad sea warning.
+PACK_STRONG_RX = re.compile(
+    r"\bsetup\b|\bpermanencia\b|\bpack\b|\bplan(es)?\b|\btarifa"
+    r"|\bSpark\b|\bOrion\b|\bCore\b|\bMini Core\b|\bWhiteMoon\b|\bRAG\b",
+    re.I,
+)
+# Veto de la allowlist: solo un nombre de pack PEGADO a la cifra la levanta.
+# Se mira en una ventana estrecha a propósito — con la ventana ancha, un
+# "Setup amortizado en 1-3 meses" de la frase siguiente levantaba el permiso
+# de un "recupera 1.800-2.400€" que no es un precio.
+PACK_NAME_RX = re.compile(
+    r"\bSpark\b|\bOrion\b|\bCore\b|\bMini Core\b|\bWhiteMoon\b|\bRAG\b"
+    r"|\bpack\b|\bplan(es)?\b",
+    re.I,
+)
+VETO_BEFORE, VETO_AFTER = 35, 20
+
+# Falsos positivos ya documentados por el barrido manual. Si la página y el
+# valor encajan (y el contexto, cuando se exige), no se marca.
+#
+# Excepción: la allowlist NUNCA tapa una cifra que lleve al lado el nombre de
+# un pack. Así una calculadora puede seguir usando 4.500€ como deducción de
+# IRPF, pero si alguien escribe "Spark 4.500€ setup" en esa misma página, salta.
+PRICE_ALLOWLIST = (
+    {
+        # Las calculadoras son herramientas fiscales/ROI: estas cifras son
+        # importes de ejemplo (deducción por hijo, coste de un empleado…).
+        "paths": ("calculadora-",),
+        "prices": {4500, 8500, 1800, 3200, 2899, 999},
+        "context": None,
+        "motivo": "cifra fiscal/laboral de ejemplo, no un precio de pack",
+    },
+    {
+        "paths": ("automatizaciones/",),
+        "prices": {999, 2899, 3200, 4500, 8500, 1800},
+        "context": None,
+        "motivo": "catálogo Esencial/GestoTrafic, línea de producto distinta",
+    },
+)
 
 
 # ── Utilidades de rutas ────────────────────────────────────────────────────
@@ -146,6 +212,95 @@ def sitemap_locs():
     return re.findall(r"<loc>\s*([^<]+?)\s*</loc>", raw)
 
 
+# ── Precios vigentes (leídos del catálogo, no hardcodeados) ────────────────
+def normalize_price(raw):
+    """'4.500' → 4500. None si no es un entero limpio."""
+    txt = str(raw).replace(".", "").replace("€", "").strip()
+    return int(txt) if txt.isdigit() else None
+
+
+def _collect_prices(node, out):
+    """Recoge precios de un OfferCatalog: campos `price` y cifras con € en los textos."""
+    if isinstance(node, dict):
+        for key, value in node.items():
+            if key == "price" and isinstance(value, (str, int, float)):
+                val = normalize_price(value)
+                if val is not None:
+                    out.add(val)
+            elif isinstance(value, str):
+                for m in re.finditer(r"(\d{1,3}(?:\.\d{3})+|\d+)\s*€", value):
+                    val = normalize_price(m.group(1))
+                    if val is not None:
+                        out.add(val)
+            else:
+                _collect_prices(value, out)
+    elif isinstance(node, list):
+        for item in node:
+            _collect_prices(item, out)
+
+
+def catalog_prices():
+    """Precios vigentes del OfferCatalog de /precios/ (setup y cuotas).
+
+    Se leen del catálogo para que el check no se quede viejo: si un día un
+    precio de BAD_PRICES vuelve a la tarifa, deja de marcarse solo.
+    """
+    html = read_text(CATALOG_FILE)
+    prices = set()
+    if not html:
+        return prices
+    for payload in re.findall(
+        r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S
+    ):
+        if "OfferCatalog" not in payload:
+            continue
+        try:
+            _collect_prices(json.loads(payload), prices)
+        except (ValueError, json.JSONDecodeError):
+            continue
+    return prices
+
+
+def price_allowlisted(relpath, value, context):
+    """Motivo por el que esta cifra está permitida en esta página, o None."""
+    for rule in PRICE_ALLOWLIST:
+        if not relpath.startswith(rule["paths"]):
+            continue
+        if value not in rule["prices"]:
+            continue
+        rx = rule["context"]
+        if rx is None or rx.search(context):
+            return rule["motivo"]
+    return None
+
+
+def scan_dead_prices(relpath, text, dead_values):
+    """Busca precios retirados usados COMO precio. Devuelve (criticos, warnings)."""
+    criticos, warnings = [], []
+    for m in NUMBER_RX.finditer(text):
+        value = normalize_price(m.group(1))
+        if value is None or value not in dead_values:
+            continue
+        before = text[max(0, m.start() - 70):m.start()]
+        after = text[m.end():m.end() + 30]
+        # ¿Es un precio, o solo un número suelto?
+        if not (re.match(r"\s*(€|EUR\b)", after) or PRICE_CONTEXT_RX.search(before + " " + after)):
+            continue
+        context = before + " " + after
+        strong = PACK_STRONG_RX.search(context)
+        # La allowlist no tapa una cifra que lleve un nombre de pack PEGADO.
+        near = text[max(0, m.start() - VETO_BEFORE):m.start()] + " " + text[m.end():m.end() + VETO_AFTER]
+        if not PACK_NAME_RX.search(near) and price_allowlisted(relpath, value, context):
+            continue
+        snippet = " ".join((before[-45:] + m.group(0) + after[:20]).split())
+        entry = f"`{relpath}` — {m.group(1)}€ en «…{snippet}…»"
+        if strong:
+            criticos.append(entry)
+        else:
+            warnings.append(entry)
+    return criticos, warnings
+
+
 # ── Ejecución de checks ────────────────────────────────────────────────────
 def run_checks():
     """Ejecuta todos los checks y devuelve un dict {num: {"title","sev","items"}}."""
@@ -162,9 +317,18 @@ def run_checks():
         10: {"title": "Sitemap vs archivos físicos", "sev": "warning", "items": []},
         11: {"title": "Enlaces rotos en llms.txt (URLs sin archivo físico)", "sev": "critico", "items": []},
         12: {"title": "FAQPage en JSON-LD sin DOM visible", "sev": "warning", "items": []},
+        13: {"title": "Precios retirados en texto visible (todas las páginas)", "sev": "critico", "items": []},
+        14: {"title": "Cifras ambiguas que podrían ser precios retirados", "sev": "warning", "items": []},
     }
 
     html_files = find_html_files()
+
+    # Precios muertos efectivos = BAD_PRICES que NO estén en el catálogo vigente.
+    vigentes = catalog_prices()
+    dead_values = {
+        v for v in (normalize_price(p) for p in BAD_PRICES)
+        if v is not None and v not in vigentes
+    }
 
     for relpath in html_files:
         html = read_text(relpath)
@@ -239,9 +403,14 @@ def run_checks():
         if relpath.startswith(RETIRED_EXEMPT_PREFIXES):
             found_retired = []
         else:
-            found_retired = [name for name, rx in RETIRED_PATTERNS.items() if rx.search(visible_text)]
+            found_retired = [name for name, rx in RETIRED_PRODUCTS.items() if rx.search(visible_text)]
         if found_retired:
             checks[9]["items"].append(f"`{relpath}` — {', '.join(found_retired)}")
+
+        # 13/14 · precios retirados en la prosa de CUALQUIER página
+        criticos, warns = scan_dead_prices(relpath, visible_text, dead_values)
+        checks[13]["items"].extend(criticos)
+        checks[14]["items"].extend(warns)
 
         # 12 · FAQPage sin DOM (reutiliza el soup sin script/style; re-parseamos para JSON-LD)
         if re.search(r'"@type"\s*:\s*("FAQPage"|\[[^\]]*"FAQPage")', html):
@@ -317,7 +486,7 @@ def build_report(checks, fecha):
     if critical == 0 and warnings == 0:
         lines.append("## ✅ TODO OK")
         lines.append("")
-        lines.append("No se han detectado incidencias en ninguno de los 12 checks.")
+        lines.append(f"No se han detectado incidencias en ninguno de los {len(checks)} checks.")
         lines.append("")
         return "\n".join(lines), critical, warnings
 
