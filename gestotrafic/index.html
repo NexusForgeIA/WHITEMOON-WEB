@@ -180,13 +180,14 @@
       "provider": {
         "@id": "https://whitemoon.es/#org"
       },
-      "description": "CRM multiusuario para gestorías de tráfico: transferencias, matriculaciones, bajas, duplicados y notificación de venta; calculadora de ITP automática con los precios oficiales del BOE; gestión documental segura con contrato de compraventa, mandato de representación y honorarios; y Gest-IA, el agente que da de alta el expediente leyendo la documentación del vehículo con validación humana. Buscador por matrícula o DNI, expediente completo en PDF y panel de gerencia.",
+      "description": "CRM multiusuario para gestorías de tráfico: transferencias, matriculaciones, bajas, duplicados y notificación de venta; calculadora de ITP automática con los precios oficiales del BOE; gestión documental segura con generación del contrato de compraventa, y gestión de honorarios con su IVA separados de las tasas oficiales para calcular el total a cobrar al cliente; y Gest-IA, el agente que da de alta el expediente leyendo la documentación del vehículo con validación humana. Buscador por matrícula o DNI, expediente completo en PDF y panel de gerencia.",
       "featureList": [
         "CRM multiusuario (admin + gestores, cada uno ve lo suyo)",
         "Transferencias, matriculaciones, bajas, duplicados y notificación de venta",
         "Calculadora de ITP automática con precios oficiales del BOE",
         "Gest-IA: alta de expedientes leyendo la documentación, con validación humana",
-        "Gestión documental segura: contrato de compraventa, mandato de representación y honorarios",
+        "Generación del contrato de compraventa y gestión documental segura",
+        "Honorarios con su IVA, separados de las tasas oficiales, y total a cobrar al cliente",
         "Buscador de expedientes por matrícula o DNI",
         "Expediente completo en PDF",
         "Panel de gerencia"
@@ -253,7 +254,7 @@
           "@type": "HowToStep",
           "position": 4,
           "name": "Cierras el expediente",
-          "text": "GestoTrafic genera el contrato de compraventa, el mandato de representación y los honorarios, y archiva el expediente con toda su documentación, listo para presentar por tu vía habitual."
+          "text": "GestoTrafic genera el contrato de compraventa y gestiona los honorarios con su IVA, separados de las tasas oficiales, y calcula el total a cobrar al cliente. El expediente queda archivado con toda su documentación, listo para presentar por tu vía habitual."
         }
       ]
     },
@@ -298,7 +299,7 @@
           "name": "¿Qué documentación genera GestoTrafic?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "El contrato de compraventa, el mandato de representación y los honorarios del expediente, ya rellenados con los datos que Gest-IA ha extraído y tú has validado. Todo queda archivado en el expediente y puedes descargarlo completo en PDF cuando quieras."
+            "text": "El contrato de compraventa, ya rellenado con los datos que Gest-IA ha extraído y tú has validado. Además gestiona los honorarios con su IVA, separados de las tasas oficiales, y calcula el total a cobrar al cliente, para que sepas exactamente qué facturar. Todo queda archivado en el expediente y puedes descargarlo completo en PDF cuando quieras."
           }
         },
         {
@@ -1291,7 +1292,7 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
             <span class="mf-t1">GestoTrafic lo hace por ti.</span>
             <span class="mf-t2">Tú solo <em class="mf-key">validas</em>.</span>
           </p>
-          <p class="mf-note">Subes la documentación y Gest-IA la lee: rellena el vehículo, las partes y el ITP con los precios oficiales del BOE. Tú revisas la pantalla de validación y confirmas. El expediente queda guardado, buscable por matrícula o DNI, con su contrato, su mandato y sus honorarios generados.</p>
+          <p class="mf-note">Subes la documentación y Gest-IA la lee: rellena el vehículo, las partes y el ITP con los precios oficiales del BOE. Tú revisas la pantalla de validación y confirmas. El expediente queda guardado, buscable por matrícula o DNI, con su contrato de compraventa generado y sus honorarios calculados.</p>
         </div>
         <figure class="mf-media">
           <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
@@ -1413,7 +1414,7 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
       </details>
       <details class="faq-item" name="faq">
         <summary>¿Qué documentación genera GestoTrafic?</summary>
-        <div class="faq-a">El contrato de compraventa, el mandato de representación y los honorarios del expediente, ya rellenados con los datos que Gest-IA ha extraído y tú has validado. Todo queda archivado en el expediente y puedes descargarlo completo en PDF cuando quieras.</div>
+        <div class="faq-a">El contrato de compraventa, ya rellenado con los datos que Gest-IA ha extraído y tú has validado. Además gestiona los honorarios con su IVA, separados de las tasas oficiales, y calcula el total a cobrar al cliente, para que sepas exactamente qué facturar. Todo queda archivado en el expediente y puedes descargarlo completo en PDF cuando quieras.</div>
       </details>
       <details class="faq-item" name="faq">
         <summary>¿Cuánto cuesta GestoTrafic?</summary>
@@ -1561,10 +1562,10 @@ const AUTOS = [
    info:'Subes el permiso de circulación, la ficha técnica y el contrato, y Gest-IA los lee: saca matrícula, bastidor, fecha de matriculación y los datos del comprador y del vendedor, da de alta el expediente y calcula el ITP. Después te lo presenta para que lo valides. La IA propone, tú confirmas: nada se cierra sin tu visto bueno.'},
   {key:'documental', title:'Documentación y honorarios', img:U+'photo-1454165804606-c3d57bc86b40'+PHOTO_Q,
    alt:'Contrato de compraventa y documentación de un expediente de vehículo',
-   info:'Con el expediente validado, GestoTrafic genera el contrato de compraventa, el mandato de representación y los honorarios, ya rellenados con los datos que has confirmado. Todo queda archivado en el expediente, con gestión documental segura y descarga completa en PDF.'},
+   info:'Con el expediente validado, GestoTrafic genera el contrato de compraventa ya rellenado con los datos que has confirmado, y gestiona los honorarios con su IVA, separados de las tasas oficiales, y calcula el total a cobrar al cliente: ves de un vistazo qué es tuyo y qué es del organismo. Todo queda archivado en el expediente, con gestión documental segura y descarga completa en PDF.'},
   {key:'panel', title:'Buscador, expedientes y gerencia', img:U+'photo-1551288049-bebda4e38f71'+PHOTO_Q,
    alt:'Panel de indicadores de gestión con gráficas',
-   info:'Buscador por matrícula o DNI que encuentra el expediente al instante, expediente completo descargable en PDF con toda su documentación, y un panel de gerencia para ver el volumen de trámites, en qué estado está cada uno y cómo va el mes. Incluye la generación del contrato de compraventa y del mandato de representación.'}
+   info:'Buscador por matrícula o DNI que encuentra el expediente al instante, expediente completo descargable en PDF con toda su documentación, y un panel de gerencia para ver el volumen de trámites, en qué estado está cada uno y cómo va el mes. Incluye la generación del contrato de compraventa.'}
 ];
 const AUTO_MAP = Object.fromEntries(AUTOS.map(a=>[a.key,a]));
 
@@ -1572,7 +1573,7 @@ const STEPS = [
   {n:'01', ico:ICON.tramites, t:'Subes la documentación', d:'Arrastras el permiso de circulación, la ficha técnica y el contrato al expediente. No hay que teclear nada.'},
   {n:'02', ico:ICON.gestia,   t:'Gest-IA extrae y calcula', d:'Lee los documentos, rellena los datos del vehículo y de las partes, y calcula el ITP con los precios oficiales del BOE.'},
   {n:'03', ico:ICON.check,    t:'Validas tú', d:'Revisas lo que ha montado la IA en una pantalla de validación y corriges lo que haga falta. Nada se cierra sin tu visto bueno.'},
-  {n:'04', ico:ICON.documental, t:'Cierras el expediente', d:'GestoTrafic genera el contrato, el mandato y los honorarios, y lo archiva con toda su documentación, listo para presentar por tu vía habitual.'}
+  {n:'04', ico:ICON.documental, t:'Cierras el expediente', d:'GestoTrafic genera el contrato de compraventa y calcula los honorarios con su IVA, aparte de las tasas, y archiva el expediente con toda su documentación.'}
 ];
 
 /* Producto único. Un solo plan a propósito: no hay versión reducida. */
@@ -1588,13 +1589,14 @@ const VERTICALS = [
       'Gest-IA: alta de expedientes leyendo la documentación, con validación humana',
       'Buscador de expedientes por matrícula o DNI',
       'Expediente completo descargable en PDF',
-      'Contrato de compraventa y mandato de representación',
+      'Generación del contrato de compraventa',
+      'Honorarios con su IVA, separados de las tasas oficiales, y total a cobrar al cliente',
       'Panel de gerencia y gestión documental segura'
     ],
     price:'4.899&euro;', unit:'setup &middot; +499&euro;/mes', note:'Sin permanencia',
     mig:'Migración de datos de tu CRM actual: <b>desde 299&euro;</b> (opcional, según volumen). IVA no incluido.',
     cta:'Solicitar demo',
-    orionInfo:'GestoTrafic con Gest-IA son 4.899€ de puesta en marcha más 499€/mes, sin permanencia e IVA no incluido. Incluye el CRM multiusuario, todos los trámites (transferencias, matriculaciones, bajas, duplicados y notificación de venta), la calculadora de ITP automática con los precios oficiales del BOE, la generación del contrato de compraventa, del mandato de representación y de los honorarios, el buscador de expedientes por matrícula o DNI, el expediente completo en PDF, la generación del contrato de compraventa y del mandato de representación, el panel de gerencia y la gestión documental segura. Y sobre todo Gest-IA: subes la documentación del vehículo y monta el expediente con el ITP ya calculado, siempre con validación humana. Si vienes de otro CRM, la migración de datos va aparte: desde 299€ según volumen.'
+    orionInfo:'GestoTrafic con Gest-IA son 4.899€ de puesta en marcha más 499€/mes, sin permanencia e IVA no incluido. Incluye el CRM multiusuario, todos los trámites (transferencias, matriculaciones, bajas, duplicados y notificación de venta), la calculadora de ITP automática con los precios oficiales del BOE, la generación del contrato de compraventa, la gestión de los honorarios con su IVA separados de las tasas oficiales y el cálculo del total a cobrar al cliente, el buscador de expedientes por matrícula o DNI, el expediente completo en PDF, el panel de gerencia y la gestión documental segura. Y sobre todo Gest-IA: subes la documentación del vehículo y monta el expediente con el ITP ya calculado, siempre con validación humana. Si vienes de otro CRM, la migración de datos va aparte: desde 299€ según volumen.'
   }
 ];
 const VERTICAL_MAP = Object.fromEntries(VERTICALS.map(v=>[v.service,{key:v.service,title:v.name,info:v.orionInfo}]));
@@ -1886,10 +1888,10 @@ else { initScrollFX(); }
   const INTENT=[
     {k:'gestia',w:['gest-ia','gestia','ia','inteligencia','lee','leer','documentacion','documentación','extrae','automat','escane','ocr']},
     {k:'itp',w:['itp','impuesto','boe','valor','tabla','precio medio','transmision','transmisión','deprecia','tipo autonomic']},
-    {k:'documental',w:['document','contrato','mandato','honorario','factur','archiv','pdf']},
+    {k:'documental',w:['document','contrato','honorario','iva','tasa','factur','cobrar','total','archiv','pdf']},
     {k:'tramites',w:['transferencia','matricula','matrícula','baja','duplicado','notificacion de venta','notificación de venta','tramite','trámite']},
     {k:'crm',w:['crm','usuario','gestor','rol','permiso','equipo','multiusuario']},
-    {k:'panel',w:['buscador','buscar','dni','pdf','expediente','gerencia','panel','informe','kpi','contrato','mandato']},
+    {k:'panel',w:['buscador','buscar','dni','pdf','expediente','gerencia','panel','informe','kpi']},
     {k:'gestotrafic',w:['gestotrafic','producto','todo','completo','que incluye','qué incluye','migra','dgt']}
   ];
   const LEAD_WORDS=['presupuesto','precio','cuesta','contratar','contrata','contacto','contactar','hablar','equipo','llam','telefono','teléfono','reunion','reunión','demo','empezar ya','quiero','me interesa','probar','prueba'];

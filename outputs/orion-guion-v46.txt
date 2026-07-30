@@ -95,7 +95,8 @@ Qué hace:
   persona solo valida. Nunca inventa datos.
 - Calculadora de ITP con los precios oficiales del BOE.
 - Todos los trámites: transferencias, matriculaciones, bajas, duplicados, notificación de venta.
-- Genera el contrato de compraventa, el mandato de representación y los honorarios del expediente, con gestión documental segura.
+- Genera el contrato de compraventa del expediente, con gestión documental segura.
+- Gestiona los honorarios con su IVA, separados de las tasas oficiales, y calcula el total a cobrar al cliente.
 - Buscador por matrícula o DNI, expediente completo en PDF y panel de gerencia.
 
 Para quién: gestorías de tráfico.
