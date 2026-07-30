@@ -72,6 +72,14 @@ def comprueba_guion(texto):
         raise SystemExit("[guion] falta el precio de GestoTrafic en letra")
     if "4.899" in texto:
         raise SystemExit("[guion] precio de GestoTrafic en cifras; debe ir en letra")
+    # GestoTrafic NO esta homologado por el Colegio (ICOGAM): no se anuncia la
+    # exportacion a OEGAM hasta tenerla. Que Orion no lo diga en una llamada.
+    for termino in ("OEGAM", "XML"):
+        if termino in texto:
+            raise SystemExit(
+                f"[guion] menciona {termino}: la exportacion no esta homologada "
+                "y no se puede anunciar"
+            )
     print(f"[guion] OK · {len(texto)} chars · {len(texto.splitlines())} líneas · 0 packs retirados")
 
 
