@@ -752,17 +752,24 @@ body.menu-open .overlay-cta-wrap{animation:ovIn .7s var(--ease) .43s forwards}
 /* ============ CONÓCENOS (vídeo corporativo) ============ */
 /* minmax(0,..) en la columna de texto: su min-content (el h2) no puede
    empujar el grid y desbordar en anchos intermedios. */
+/* La columna del video pasa de 380px a 620px: el marco ya no es vertical
+   tipo movil, es horizontal, y a 380px se quedaba diminuto. */
 .cnc-grid{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,620px);
   gap:clamp(28px,5vw,72px);align-items:center;
 }
-.cnc-media{display:flex;justify-content:center;min-width:0}
-/* marco 9:16 tipo movil: aspect-ratio manda el alto, asi el poster no
-   deforma ni provoca salto de layout mientras carga. */
-.cnc-phone{
-  position:relative;width:100%;max-width:360px;aspect-ratio:9/16;
-  border-radius:26px;overflow:hidden;border:1px solid var(--border);
-  background:var(--card);box-shadow:0 30px 80px -30px rgba(124,77,255,.55);
+.cnc-media{display:flex;flex-direction:column;align-items:center;min-width:0}
+/* Marco HORIZONTAL del video de producto.
+   El master subido a YouTube es un Short de 1080x1920, pero el contenido real
+   es una banda horizontal de 1080x696 centrada entre dos barras de 612px
+   (medido sobre el fotograma oficial). El marco usa el ratio REAL de esa
+   banda — 1080/696 = 1.55 — para que el video se vea horizontal y la llene
+   de borde a borde. aspect-ratio manda el alto: el poster no deforma ni
+   provoca salto de layout mientras carga. */
+.cnc-wide{
+  position:relative;width:100%;max-width:620px;aspect-ratio:1080/696;
+  border-radius:18px;overflow:hidden;border:1px solid var(--border);
+  background:#000;box-shadow:0 30px 80px -30px rgba(124,77,255,.55);
 }
 .cnc-facade{
   position:absolute;inset:0;width:100%;height:100%;
@@ -784,12 +791,23 @@ body.menu-open .overlay-cta-wrap{animation:ovIn .7s var(--ease) .43s forwards}
 .cnc-play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
 @media (hover:hover){.cnc-facade:hover .cnc-play{transform:translate(-50%,-50%) scale(1.09)}}
 .cnc-facade:focus-visible{outline:2px solid var(--p2);outline-offset:3px}
-/* el iframe solo existe tras el click; hereda el marco 9:16 del contenedor */
-.cnc-frame{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+/* El iframe solo existe tras el click. Se escala para que la banda horizontal
+   del Short llene el marco: 1920/696 = 2.7589. Usamos 2.79 para dejar un ~1%
+   de sobre-recorte y que no asome ni un pixel de las barras por redondeo.
+   Al ser mas alto que el marco, el chrome del reproductor (barra de titulo
+   arriba, controles abajo) queda fuera de la ventana visible: por eso el
+   embed va con controls=0 y se ofrece un enlace "Ver en YouTube" al lado. */
+.cnc-frame{
+  position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:100%;height:279%;border:0;display:block;
+}
+.cnc-note{margin-top:14px;font-size:.82rem;color:var(--muted);text-align:center}
+.cnc-note a{color:var(--p2);text-decoration:none;border-bottom:1px solid rgba(157,112,255,.4)}
+.cnc-note a:hover{border-bottom-color:var(--p2)}
 @media (prefers-reduced-motion:reduce){.cnc-play{transition:none}}
 @media (max-width:900px){
   .cnc-grid{grid-template-columns:minmax(0,1fr);gap:clamp(24px,5vw,36px)}
-  .cnc-phone{max-width:340px}
+  .cnc-wide{max-width:560px}
 }
 
 /* ============ HORIZONTAL SCROLL (Cómo trabajamos) ============ */
@@ -1324,24 +1342,29 @@ body.orion-open .orion-win{opacity:1;visibility:visible;transform:translateY(0) 
         <p class="sec-lead">Un expediente real de principio a fin: subir la documentación, ver a Gest-IA rellenarlo, validar y exportar a OEGAM.</p>
       </div>
       <div class="cnc-media" data-reveal>
-        <div class="cnc-phone" id="cncPhone">
-          <!-- Hueco del vídeo de producto. Misma fachada que en /automatizaciones/:
-               al cargar solo hay una <img>; el iframe se inyecta en el click, para
-               no meter el reproductor en el LCP. Para publicarlo basta con poner
-               el ID del short en href y en el src del poster. -->
+        <div class="cnc-wide" id="cncPhone">
+          <!-- Fachada (lite embed): al cargar la pagina solo hay una <img>
+               SERVIDA DESDE ESTE DOMINIO. El iframe de YouTube se inyecta en el
+               click, asi que hasta que el usuario decide ver el video no se pide
+               nada a Google: ni cookies, ni siquiera la IP via i.ytimg.com.
+               El poster es el fotograma oficial recortado a la banda de
+               contenido, por eso se ve horizontal y sin barras. -->
           <a class="cnc-facade" id="cncPlay"
-             href="https://www.tiktok.com/@whitemoon_ia"
+             href="https://www.youtube.com/watch?v=ZfkbXa0NP_k"
              target="_blank" rel="noopener"
-             aria-label="Ver el vídeo de GestoTrafic en el perfil de WhiteMoon">
+             aria-label="Reproducir el vídeo de GestoTrafic: Gest-IA dando de alta una transferencia de vehículo">
             <img class="cnc-poster"
-                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=720&amp;q=80&amp;auto=format&amp;fit=crop"
-                 alt="Fotograma del vídeo de GestoTrafic funcionando"
-                 loading="lazy" decoding="async" width="720" height="1280">
+                 src="/gestotrafic/assets/video-poster.webp"
+                 alt="Gest-IA dando de alta una transferencia de vehículo en GestoTrafic"
+                 loading="lazy" decoding="async" width="1080" height="696">
             <span class="cnc-play" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </span>
           </a>
         </div>
+        <p class="cnc-note">El vídeo se carga solo al pulsar play ·
+          <a href="https://www.youtube.com/watch?v=ZfkbXa0NP_k" target="_blank" rel="noopener">verlo en YouTube</a>
+        </p>
       </div>
     </div>
   </div>
@@ -2046,16 +2069,17 @@ else { initScrollFX(); }
 (function(){
   const btn=document.getElementById('cncPlay'), phone=document.getElementById('cncPhone');
   if(!btn||!phone) return;
-  const VID='yWCuHmOX6K4';
-  const TITLE='No vendemos productos ofrecemos resultados , no vendemos servicios ofrecemos soluciones .';
+  const VID='ZfkbXa0NP_k';
+  const TITLE='GestoTrafic · Gest-IA dando de alta una transferencia de vehículo';
 
+  // El preconnect va al dominio sin cookies y solo en hover/focus, nunca en la
+  // carga: abrir la pagina no toca a Google.
   let warmed=false;
   const warm=()=>{
     if(warmed) return; warmed=true;
-    ['https://www.youtube.com','https://i.ytimg.com'].forEach(h=>{
-      const l=document.createElement('link');
-      l.rel='preconnect'; l.href=h; document.head.appendChild(l);
-    });
+    const l=document.createElement('link');
+    l.rel='preconnect'; l.href='https://www.youtube-nocookie.com';
+    document.head.appendChild(l);
   };
   btn.addEventListener('pointerenter',warm,{once:true});
   btn.addEventListener('focus',warm,{once:true});
@@ -2064,8 +2088,11 @@ else { initScrollFX(); }
     e.preventDefault(); // hay JS: se reproduce inline en vez de ir a YouTube
     const f=document.createElement('iframe');
     f.className='cnc-frame';
-    // autoplay solo aqui: es respuesta al click del usuario, nunca en la carga
-    f.src=`https://www.youtube.com/embed/${VID}?autoplay=1&rel=0&playsinline=1`;
+    // youtube-nocookie + autoplay solo aqui: es respuesta al click del usuario,
+    // nunca en la carga, asi que el iframe con cookies llega despues de que el
+    // usuario lo pida. controls=0 porque el reproductor va escalado 2.79x y su
+    // chrome cae fuera del marco; el enlace a YouTube queda debajo.
+    f.src=`https://www.youtube-nocookie.com/embed/${VID}?autoplay=1&rel=0&playsinline=1&modestbranding=1&controls=0`;
     f.title=TITLE;
     f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
     f.referrerPolicy='strict-origin-when-cross-origin';
