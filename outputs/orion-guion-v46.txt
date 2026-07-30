@@ -100,8 +100,9 @@ Qué hace:
 
 Para quién: gestorías de tráfico.
 
-Precio: GestoTrafic con Gest-IA, 4.899 € de puesta en marcha más 499 €/mes. Migración de datos
-desde 299 €. Sin permanencia.
+Precio: GestoTrafic con Gest-IA, cuatro mil ochocientos noventa y nueve euros de puesta en marcha
+más cuatrocientos noventa y nueve euros al mes; migración desde doscientos noventa y nueve euros.
+Sin permanencia.
 
 Cuándo ofrecerlo: si quien llama es una gestoría o menciona transferencias, ITP, tráfico o gestión
 de vehículos, háblale de GestoTrafic. Para otros negocios, ofrece Spark, Orion o Core RAG.

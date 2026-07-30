@@ -67,8 +67,11 @@ def comprueba_guion(texto):
         raise SystemExit("[guion] packs retirados en el texto: " + ", ".join(problemas))
     if "GestoTrafic" not in texto:
         raise SystemExit("[guion] no menciona GestoTrafic")
-    if "4.899" not in texto:
-        raise SystemExit("[guion] falta el precio de GestoTrafic (4.899)")
+    # El guion lo lee un TTS, asi que los precios van en letra, no en cifras.
+    if "cuatro mil ochocientos noventa y nueve euros" not in texto:
+        raise SystemExit("[guion] falta el precio de GestoTrafic en letra")
+    if "4.899" in texto:
+        raise SystemExit("[guion] precio de GestoTrafic en cifras; debe ir en letra")
     print(f"[guion] OK · {len(texto)} chars · {len(texto.splitlines())} líneas · 0 packs retirados")
 
 
