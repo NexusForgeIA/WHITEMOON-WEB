@@ -1,0 +1,4 @@
+# El guion de Orion se sube tal cual a la API de Retell: forzamos LF para que
+# un checkout en Windows no meta CRLF en el prompt publicado.
+outputs/*.txt text eol=lf
+scripts/*.py text eol=lf

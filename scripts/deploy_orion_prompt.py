@@ -87,8 +87,11 @@ def main():
             "ejecutar, y no lo dejes en ningún fichero del repo."
         )
 
-    with open(args.file, encoding="utf-8") as fh:
-        nuevo = fh.read()
+    # newline="" + normalizado a LF: en Windows el checkout deja CRLF y, sin
+    # esto, se subiria un prompt con \r\n que nunca coincidiria con el
+    # publicado y haria fallar la comparacion final en cada despliegue.
+    with open(args.file, encoding="utf-8", newline="") as fh:
+        nuevo = fh.read().replace("\r\n", "\n").replace("\r", "\n")
     comprueba_guion(nuevo)
 
     versiones = call("GET", f"/get-agent-versions/{AGENT_ID}", key)
