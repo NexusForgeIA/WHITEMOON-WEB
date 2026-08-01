@@ -53,7 +53,30 @@ nav{background:rgba(8,8,13,.95);border-bottom:1px solid var(--border);padding:14
 
 /* GRID 2col */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-@media(max-width:640px){.grid2{grid-template-columns:1fr;}}
+/* !important: /agentes-ia/ pide 3 columnas con un style en línea y eso ganaba
+   a esta regla, así que en móvil seguían siendo 3 y se salían de pantalla.
+   En móvil el colapso a una columna no es negociable. */
+@media(max-width:640px){.grid2{grid-template-columns:1fr!important;}}
+
+/* Rejilla en línea de la sección "por qué nos eligen" de las páginas de
+   localidad: son 37 páginas con grid-template-columns:1fr 1fr en el atributo
+   style, y "1fr" es minmax(auto,1fr) — su mínimo automático impide que la
+   columna baje del min-content de la tarjeta, así que con textos largos la
+   página se iba de ancho. */
+@media(max-width:640px){
+  .local-context>div{grid-template-columns:1fr!important;}
+}
+
+/* Tablas comparativas (whitemoon-vs-*, alternativa-*): tres columnas de texto
+   no caben en un móvil. Que scrolle la tabla, no la página. El display:block
+   va dentro de la media query a propósito: en escritorio sigue siendo tabla y
+   no cambia nada.
+   El !important es porque cada una de las 6 páginas declara la tabla con
+   overflow:hidden en su <style>, que va después de esta hoja y si no gana:
+   la tabla se quedaba recortada, con la tercera columna inalcanzable. */
+@media(max-width:640px){
+  .vs-table{display:block;overflow-x:auto!important;overflow-y:hidden;-webkit-overflow-scrolling:touch;}
+}
 
 /* CARDS */
 .card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:24px;}
