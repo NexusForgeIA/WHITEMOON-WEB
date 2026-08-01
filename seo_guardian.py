@@ -77,6 +77,20 @@ RETIRED_PATTERNS = RETIRED_PRODUCTS
 # de packs retirados son legítimos. Sin exenciones activas.
 RETIRED_EXEMPT_PREFIXES = ()
 
+# ── Check 15 · reseñas en datos estructurados ──────────────────────────────
+# Las 30 páginas de zona de /reformas-madrid/ llevaron durante meses un
+# aggregateRating de 5 estrellas con 47 reseñas que no existían: dato inventado
+# en el sitio, servido a Google, y contra sus propias políticas de reseñas.
+# Este check lo bloquea de raíz.
+#
+# La allowlist está vacía a propósito. Para meter una página hay que poder
+# enseñar de dónde salen las reseñas (perfil de Google Business, plataforma con
+# enlace público) y que el número case con la fuente. Si no se puede enseñar,
+# no se publica.
+RATING_RX = re.compile(r'"(aggregateRating|ratingValue|reviewCount|ratingCount)"')
+RATING_APPROVED = frozenset()
+
+
 # ── Check 13 · precios muertos en la prosa ─────────────────────────────────
 # El check 8 solo mira las 10 páginas de PACK_PAGES. El 13 recorre TODAS las
 # páginas (blog incluido), que es por donde se colaron los tramos inventados
@@ -319,6 +333,7 @@ def run_checks():
         12: {"title": "FAQPage en JSON-LD sin DOM visible", "sev": "warning", "items": []},
         13: {"title": "Precios retirados en texto visible (todas las páginas)", "sev": "critico", "items": []},
         14: {"title": "Cifras ambiguas que podrían ser precios retirados", "sev": "warning", "items": []},
+        15: {"title": "Reseñas en datos estructurados sin fuente aprobada", "sev": "critico", "items": []},
     }
 
     html_files = find_html_files()
@@ -360,6 +375,16 @@ def run_checks():
                 json.loads(payload)
             except (ValueError, json.JSONDecodeError) as exc:
                 checks[3]["items"].append(f"`{relpath}` — bloque JSON-LD #{i + 1}: {exc}")
+
+        # 15 · reseñas en datos estructurados: solo con fuente aprobada
+        if relpath not in RATING_APPROVED:
+            claves = sorted(set(m.group(1) for m in RATING_RX.finditer(html)))
+            if claves:
+                checks[15]["items"].append(
+                    f"`{relpath}` — {', '.join(claves)} sin fuente aprobada. "
+                    "Si las reseñas son reales, añade el archivo a RATING_APPROVED "
+                    "indicando de dónde salen; si no, quita el bloque."
+                )
 
         # 4 · og:image SVG
         og = soup.find("meta", attrs={"property": "og:image"})
