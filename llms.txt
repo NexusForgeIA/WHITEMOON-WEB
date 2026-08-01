@@ -14,7 +14,7 @@ Orion IA — agente de voz conversacional en la WEB que atiende a los visitantes
 
 ## Productos y precios (catálogo vigente — tarifa 2026)
 Fuente de verdad de precios: https://whitemoon.es/precios/
-- Mini Core: 599€ setup + 99€/mes — landing profesional + agente IA para autónomos sin presencia online
+- Mini Core: 599€ setup + 99€/mes — landing profesional + agente IA para autónomos sin presencia online (ficha: https://whitemoon.es/mini-core/)
 - Spark: 499€ setup + 99€/mes — agente IA conversacional por texto 24/7 en tu web existente
 - Orion IA Agent: 799€ setup + 99€/mes — agente de voz 24/7 en español natural, embebido en tu web actual
 - Core Spark Web: 899€ setup + 99€/mes — web profesional nueva + dominio + agente de texto 24/7 + SEO/GEO/AEO

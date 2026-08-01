@@ -8,6 +8,18 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/mas-info/">
+<!-- Mini Core tiene página propia desde 2026-08: los enlaces viejos y los
+     compartidos con ?pack=mini-core siguen funcionando redirigiendo allí.
+     Va aquí arriba a propósito, antes de pintar nada. -->
+<script>
+(function(){
+  try {
+    if (new URLSearchParams(location.search).get('pack') === 'mini-core') {
+      location.replace('/mini-core/');
+    }
+  } catch (e) { /* navegador sin URLSearchParams: se queda en /mas-info/ */ }
+})();
+</script>
 <meta property="og:title" content="Más información · WhiteMoon Agencia IA">
 <meta property="og:description" content="Cuéntanos sobre tu negocio y te explicamos cómo WhiteMoon puede ayudarte. Sin compromiso. Respuesta en 24h.">
 <meta property="og:url" content="https://whitemoon.es/mas-info/">
@@ -228,26 +240,10 @@
   // Para añadir uno nuevo basta con otra entrada: la clave es el valor de
   // ?pack= y `name` es lo que viaja con el lead. `accent` acepta
   // 'gold' o 'purple'. En cada feature, `quip` es opcional.
+  //
+  // 'mini-core' ya no vive aquí: tiene página propia en /mini-core/ y el
+  // redirect del <head> se dispara antes de llegar a este diccionario.
   var PACKS = {
-    'mini-core': {
-      name: 'Mini Core',
-      accent: 'gold',
-      badge: 'Novedad · Oferta autónomos',
-      badgeIcon: 'star',
-      title: 'Autónomo sin web: tus clientes te buscan y no te encuentran.',
-      subtitle: 'Pack Mini Core — tu presencia online lista en una semana, sin líos y sin arruinarte.',
-      price: '599€ setup + 99€/mes',
-      priceNote: 'Sin permanencia',
-      features: [
-        { icon:'globe',  title:'Tu dominio propio, primer año incluido', quip:'tunombre.es, no un perfil perdido en una red social.' },
-        { icon:'layout', title:'Landing profesional a medida',           quip:'una web que da confianza al que te busca en Google.' },
-        { icon:'chat',   title:'Agente IA en la web',                    quip:'responde las dudas por ti mientras tú estás currando.' },
-        { icon:'bell',   title:'Captura de leads (nombre y teléfono) con aviso al móvil al instante', quip:'no se te escapa ni uno.' },
-        { icon:'clock',  title:'Operativo en ~1 semana · Sin permanencia' }
-      ],
-      audience: 'Pensado para autónomos que aún no están en internet y quieren empezar bien, sin gastarse un dineral.',
-      closing: '¿Te encaja? Cuéntanos abajo cuatro cosas y te llamamos en menos de 24h.'
-    },
     'whitemoon-360': {
       name: 'WhiteMoon 360',
       accent: 'purple',
