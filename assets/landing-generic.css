@@ -13,6 +13,24 @@ nav{background:rgba(8,8,13,.95);border-bottom:1px solid var(--border);padding:14
 .nav-cta:hover{background:#5c35cc;color:#fff;}
 .nav-back{font-size:.8rem;color:var(--muted);}
 .nav-back:hover{color:var(--p2);}
+/* NAV en móvil — dos pasos, para no apagar nada antes de que estorbe.
+   El enlace de vuelta más los dos CTA suman ~500-550px y por debajo de
+   ~570px de viewport la nav se salía de pantalla, arrastrando scroll
+   horizontal a toda la página.
+   1) A partir de tablet se va el enlace de vuelta: el logo ya lleva a la
+      home, así que no se pierde nada. Mismo corte que la nav de la home.
+   2) Ya en móvil, "Agendar reunión" se queda en su icono — el mismo gesto
+      que usa la home al esconder la etiqueta de su CTA. Sin esto los dos
+      botones no caben juntos por debajo de ~510px.
+   Los !important son porque el botón de cal.com trae padding, fuente, gap
+   y margen en su atributo style, repetido en 93 páginas. */
+@media (max-width:768px){
+  .nav-in .nav-back{display:none;}
+}
+@media (max-width:620px){
+  .nav-in .nav-cta-cal{font-size:0!important;gap:0!important;padding:9px 11px!important;margin-right:0!important;}
+  .nav-in .nav-cta{padding:8px 14px;font-size:.8rem;}
+}
 
 /* HERO */
 .hero{padding:80px 0 60px;background:linear-gradient(180deg,rgba(124,77,255,.06) 0%,transparent 100%);text-align:center;}
