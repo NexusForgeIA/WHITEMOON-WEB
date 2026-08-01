@@ -10,7 +10,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 //
 // Proveedor de envío configurable por env (Project Settings → Edge Functions → Secrets):
 //   CALLMEBOT_APIKEY    → usa api.callmebot.com (GET phone+text+apikey)
-//   WHATSAPP_NOTIFY_URL → POST genérico { phone, message } (Twilio proxy, n8n, etc.)
+//   WHATSAPP_NOTIFY_URL → POST genérico { phone, message } (Twilio proxy, etc.)
 // Si no hay ninguno configurado, registra el mensaje en logs y devuelve ok
 // (nunca rompe el flujo de creación del onboarding).
 
