@@ -26,12 +26,16 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Rentabilidad Alquiler","item":"https://whitemoon.es/calculadora-rentabilidad-alquiler/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"¿Cómo se calcula la rentabilidad bruta del alquiler?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad bruta = (Renta anual / Inversión total) × 100. Renta anual = alquiler mensual × 12. Inversión total = precio + gastos compraventa (10-13%). Una vivienda comprada por 200.000€ con gastos 22.000€ que se alquila a 900€/mes da: (900 × 12) / 222.000 = 4.86% bruto anual. Sirve como métrica de comparación rápida entre inversiones."}},
-{"@type":"Question","name":"¿Y la rentabilidad neta?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad neta = ((Renta anual − Gastos anuales) / Inversión) × 100. Hay que restar: IBI (~0.5% valor catastral/año), comunidad (~600-1.200€/año), mantenimiento (~1% valor/año), seguro hogar (~250€/año), eventual gestoría de alquiler (8-10% renta), periodos sin inquilino (1 mes/año conservador). La rentabilidad neta suele estar 1.5-2.5 pp por debajo de la bruta."}},
-{"@type":"Question","name":"¿Qué se considera buena rentabilidad inmobiliaria en España?","acceptedAnswer":{"@type":"Answer","text":"En 2026, una rentabilidad neta del 4-5% se considera estándar en ciudades grandes con poca volatilidad (Madrid, Barcelona). Por encima del 6% neto suele encontrarse en zonas con mayor riesgo (impago, vacante) o necesitan reforma. Por debajo del 3% neto se considera baja: la inversión depende de la revalorización futura más que del cash-flow."}},
-{"@type":"Question","name":"¿Qué es la TIR en una inversión de alquiler?","acceptedAnswer":{"@type":"Answer","text":"La TIR (Tasa Interna de Retorno) es el tipo de interés que hace que el valor actual neto de todos los flujos sea cero. Para alquiler incluye cobros mensuales + valor final de la vivienda al venderla. Una TIR del 6-8% (con revalorización del 2-3% anual) es típica de inversión inmobiliaria a 10-15 años en España. Permite comparar con otros activos (bolsa, depósitos, fondos)."}}
-]}
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cómo se calcula la rentabilidad bruta del alquiler?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad bruta = (Renta anual / Inversión total) × 100. Renta anual = alquiler mensual × 12. Inversión total = precio + gastos compraventa (10-13%). Una vivienda de 200.000€ con gastos 22.000€ alquilada a 900€/mes da: (900 × 12) / 222.000 = 4.86% bruto anual."}},
+    {"@type":"Question","name":"¿Y la rentabilidad neta?","acceptedAnswer":{"@type":"Answer","text":"Rentabilidad neta resta gastos anuales: IBI, comunidad, mantenimiento (~1% valor/año), seguro hogar, gestoría alquiler (8-10% renta) y periodos sin inquilino. Suele estar 1.5-2.5 pp por debajo de la bruta."}},
+    {"@type":"Question","name":"¿Qué se considera buena rentabilidad inmobiliaria en España?","acceptedAnswer":{"@type":"Answer","text":"En 2026, rentabilidad neta del 4-5% es estándar en ciudades grandes con poca volatilidad. Por encima del 6% neto suele encontrarse en zonas con mayor riesgo o que necesitan reforma. Por debajo del 3% neto se considera baja."}},
+    {"@type":"Question","name":"¿Qué es la TIR en una inversión de alquiler?","acceptedAnswer":{"@type":"Answer","text":"La TIR es el tipo de interés que hace cero el valor actual neto de todos los flujos. Para alquiler incluye cobros mensuales + valor final de venta. Una TIR del 6-8% (con revalorización 2-3%) es típica a 10-15 años en España. Permite comparar con bolsa, depósitos, fondos."}}
+  ]
+}
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">

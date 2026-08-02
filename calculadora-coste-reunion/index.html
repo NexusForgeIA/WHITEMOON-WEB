@@ -26,12 +26,16 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Coste Reunión","item":"https://whitemoon.es/calculadora-coste-reunion/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"¿Cómo se calcula el coste de una reunión?","acceptedAnswer":{"@type":"Answer","text":"Coste reunión = número de asistentes × coste hora medio × duración (horas). El coste hora se obtiene de: salario anual bruto / (52 semanas × 40 horas) × 1.30 (estimación SS empresa + indirectos). Para 5 asistentes a 18€/hora reales en una reunión de 1 hora, el coste es 90€. A 4 reuniones de 1 hora a la semana, son 360€/semana y ~18.700€/año."}},
-{"@type":"Question","name":"¿Cuánto tiempo dedica una empresa a reuniones?","acceptedAnswer":{"@type":"Answer","text":"Según estudios de Atlassian y Harvard Business Review, los profesionales dedican entre el 23% y el 35% de su jornada a reuniones (incluyendo preparación). En perfiles directivos sube al 50-60%. Las reuniones de status sin agenda definida y sin output documentado son consideradas el mayor desperdicio: 30-50% de las reuniones podrían ser un email."}},
-{"@type":"Question","name":"¿Cómo reducir el coste de reuniones?","acceptedAnswer":{"@type":"Answer","text":"Buenas prácticas: (1) regla 'no agenda, no meeting'; (2) duraciones por defecto de 25 o 50 min en lugar de 30/60; (3) máximo 5 asistentes para reuniones de decisión; (4) horarios bloqueados sin reuniones (focus time); (5) revisar recurrentes cada 3 meses; (6) sustituir status por documentos asíncronos. Pueden recortar 20-40% del tiempo total en reuniones sin perder coordinación."}},
-{"@type":"Question","name":"¿La IA puede sustituir reuniones?","acceptedAnswer":{"@type":"Answer","text":"Parcialmente. La IA conversacional automatiza muchas comunicaciones que hoy generan reuniones: actualizaciones de status, FAQs internas, distribución de información, recordatorios de tareas y resúmenes. Un Agente IA bien implementado reduce el 15-25% de las reuniones recurrentes informativas, liberando horas para reuniones de decisión real."}}
-]}
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cómo se calcula el coste de una reunión?","acceptedAnswer":{"@type":"Answer","text":"Coste reunión = asistentes × coste hora medio × duración. Coste hora = salario anual / (52 × 40) × 1.30 (SS + indirectos). Para 5 asistentes a 18€/h reales en 1h: 90€/reunión. A 4 reuniones/semana: 360€/sem y ~18.700€/año."}},
+    {"@type":"Question","name":"¿Cuánto tiempo dedica una empresa a reuniones?","acceptedAnswer":{"@type":"Answer","text":"Según Atlassian y HBR, los profesionales dedican 23-35% de su jornada a reuniones (con preparación). Directivos: 50-60%. Las reuniones de status sin agenda son el mayor desperdicio: 30-50% podrían ser un email."}},
+    {"@type":"Question","name":"¿Cómo reducir el coste de reuniones?","acceptedAnswer":{"@type":"Answer","text":"Buenas prácticas: 'no agenda, no meeting', duraciones por defecto 25/50 min, máximo 5 asistentes para decisión, horarios bloqueados sin reuniones, revisar recurrentes cada 3 meses, sustituir status por documentos asíncronos. Recortan 20-40% del tiempo total."}},
+    {"@type":"Question","name":"¿La IA puede sustituir reuniones?","acceptedAnswer":{"@type":"Answer","text":"Parcialmente. La IA conversacional automatiza actualizaciones de status, FAQs internas, distribución de información y resúmenes. Un Agente IA reduce el 15-25% de las reuniones recurrentes informativas, liberando horas para reuniones de decisión real."}}
+  ]
+}
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
