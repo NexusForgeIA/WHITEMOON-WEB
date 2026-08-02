@@ -14,7 +14,7 @@ import re
 from datetime import datetime, timezone
 
 import requests
-from bs4 import BeautifulSoup, Comment
+from bs4 import BeautifulSoup, Comment, NavigableString, Tag
 
 # ── Configuración ──────────────────────────────────────────────────────────
 BASE_URL = "https://whitemoon.es"
@@ -89,6 +89,114 @@ RETIRED_EXEMPT_PREFIXES = ()
 # no se publica.
 RATING_RX = re.compile(r'"(aggregateRating|ratingValue|reviewCount|ratingCount)"')
 RATING_APPROVED = frozenset()
+
+
+# ── Check 16 · el FAQPage tiene que decir lo que la página enseña ──────────
+# Google descarta el rich result si el texto declarado no está visible tal cual.
+#
+# El PR #622 regeneró 104 schemas desde el DOM con `get_text(" ")` y coló dos
+# clases de basura que nadie vio hasta dos PRs después: un espacio al cerrar
+# cada etiqueta inline ("Madrid capital ." donde la página decía "Madrid
+# capital.") y el "+" del acordeón dentro del name de 154 preguntas. Se
+# corrigió en el #628; este check existe para que no vuelva a mergear en verde.
+#
+# La extracción de aquí es DELIBERADAMENTE independiente de cualquier
+# generador: si alguna vez se escribe un script que produzca estos schemas, no
+# debe compartir código con esto. Un generador comparado consigo mismo siempre
+# da verde — que fue exactamente el fallo del #622.
+
+# Etiquetas que NO introducen separación al renderizar: <a>x</a>. es "x.".
+INLINE_TAGS = frozenset({
+    "a", "strong", "em", "b", "i", "span", "code", "small", "u", "mark",
+    "abbr", "sub", "sup", "s", "q", "cite", "time", "label", "bdi", "var", "kbd",
+})
+# Nada de esto es contenido: no debe acabar dentro de una pregunta ni de una
+# respuesta.
+SKIP_TAGS = frozenset({"script", "style", "svg", "noscript", "template"})
+ICON_CLASS_HINTS = ("faq-icon", "icon", "chevron", "arrow", "caret", "toggle")
+
+
+def _is_decorative(tag):
+    """True si el nodo es adorno de interfaz y no contenido."""
+    if tag.name in SKIP_TAGS:
+        return True
+    if tag.get("aria-hidden") == "true":
+        return True
+    classes = " ".join(tag.get("class") or [])
+    return any(hint in classes for hint in ICON_CLASS_HINTS)
+
+
+def _render_walk(node):
+    if isinstance(node, NavigableString):
+        return "" if isinstance(node, Comment) else str(node)
+    if not isinstance(node, Tag):
+        return ""
+    if _is_decorative(node):
+        return ""
+    if node.name == "br":
+        return " "
+    inner = "".join(_render_walk(child) for child in node.children)
+    # Los bloques separan; los inline, no.
+    return inner if node.name in INLINE_TAGS else " " + inner + " "
+
+
+def render_text(node):
+    """Texto tal y como lo ve el usuario, con el whitespace colapsado."""
+    return " ".join(_render_walk(node).split())
+
+
+def faq_pairs_dom(soup):
+    """(pregunta, respuesta) del acordeón visible. Cubre los 4 markups del sitio."""
+    pares = []
+    for det in soup.find_all("details"):
+        summary = det.find("summary")
+        if not summary:
+            continue
+        cuerpo = "".join(
+            _render_walk(c) for c in det.children
+            if not (isinstance(c, Tag) and c.name == "summary")
+        )
+        pares.append((render_text(summary), " ".join(cuerpo.split())))
+    if pares:
+        return pares
+    for sel_q, sel_a in ((".faq-q", ".faq-a"), ("h4", "p"), ("button", ".faq-a"), ("h3", "p")):
+        pares = []
+        for item in soup.select(".faq-item"):
+            q, a = item.select_one(sel_q), item.select_one(sel_a)
+            if q and a:
+                pares.append((render_text(q), render_text(a)))
+        if pares:
+            return pares
+    preguntas, respuestas = soup.select(".faq-q"), soup.select(".faq-a")
+    if preguntas and len(preguntas) == len(respuestas):
+        return [(render_text(q), render_text(a)) for q, a in zip(preguntas, respuestas)]
+    return []
+
+
+def faq_pairs_schema(html):
+    """(pregunta, respuesta) declaradas en el JSON-LD, o None si no hay FAQPage."""
+    norm = lambda s: " ".join((s or "").split())  # noqa: E731
+    for payload in re.findall(
+        r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S
+    ):
+        try:
+            data = json.loads(payload)
+        except (ValueError, json.JSONDecodeError):
+            continue
+        if isinstance(data, dict):
+            nodos = data.get("@graph") or [data]
+        elif isinstance(data, list):
+            nodos = data
+        else:
+            continue
+        for nodo in nodos:
+            if isinstance(nodo, dict) and "FAQPage" in str(nodo.get("@type")):
+                return [
+                    (norm(q.get("name")),
+                     norm((q.get("acceptedAnswer") or {}).get("text")))
+                    for q in nodo.get("mainEntity", [])
+                ]
+    return None
 
 
 # ── Check 13 · precios muertos en la prosa ─────────────────────────────────
@@ -334,6 +442,7 @@ def run_checks():
         13: {"title": "Precios retirados en texto visible (todas las páginas)", "sev": "critico", "items": []},
         14: {"title": "Cifras ambiguas que podrían ser precios retirados", "sev": "warning", "items": []},
         15: {"title": "Reseñas en datos estructurados sin fuente aprobada", "sev": "critico", "items": []},
+        16: {"title": "FAQPage que no coincide con el DOM visible", "sev": "critico", "items": []},
     }
 
     html_files = find_html_files()
@@ -385,6 +494,35 @@ def run_checks():
                     "Si las reseñas son reales, añade el archivo a RATING_APPROVED "
                     "indicando de dónde salen; si no, quita el bloque."
                 )
+
+        # 16 · el FAQPage tiene que coincidir con el acordeón, carácter a carácter
+        schema_faq = faq_pairs_schema(html)
+        if schema_faq is not None:
+            dom_faq = faq_pairs_dom(soup)
+            if not dom_faq:
+                checks[16]["items"].append(
+                    f"`{relpath}` — hay FAQPage pero no se localiza el acordeón en el DOM. "
+                    "O la FAQ no es visible (Google descarta el rich result), o el markup "
+                    "es nuevo y hay que enseñárselo a faq_pairs_dom()."
+                )
+            elif len(schema_faq) != len(dom_faq):
+                checks[16]["items"].append(
+                    f"`{relpath}` — el FAQPage declara {len(schema_faq)} preguntas y el DOM "
+                    f"enseña {len(dom_faq)}."
+                )
+            else:
+                for i, (esq, edom) in enumerate(zip(schema_faq, dom_faq), 1):
+                    if esq == edom:
+                        continue
+                    campo = "pregunta" if esq[0] != edom[0] else "respuesta"
+                    a, b = (esq[0], edom[0]) if campo == "pregunta" else (esq[1], edom[1])
+                    j = next((k for k in range(min(len(a), len(b))) if a[k] != b[k]),
+                             min(len(a), len(b)))
+                    checks[16]["items"].append(
+                        f"`{relpath}` — Q{i}, la {campo} no coincide. "
+                        f"schema: «…{a[max(0, j - 30):j + 25]}…» · "
+                        f"DOM: «…{b[max(0, j - 30):j + 25]}…»"
+                    )
 
         # 4 · og:image SVG
         og = soup.find("meta", attrs={"property": "og:image"})
