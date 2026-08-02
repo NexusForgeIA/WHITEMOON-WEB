@@ -50,24 +50,15 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Puede el chatbot dar presupuestos de reparación?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El chatbot puede dar rangos orientativos para servicios estándar (cambio de aceite, ITV, frenos). Para presupuestos detallados recoge los datos y los envía al mecánico." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Funciona para taller de chapa y pintura también?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Se configura para cualquier tipo de taller: mecánica, chapa, electricidad del vehículo o neumáticos." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿El cliente puede enviar foto de la avería?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. El cliente describe la avería libremente y el chatbot recoge toda la información. La foto se gestiona directamente desde el móvil." }
-      }
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Puede el chatbot dar presupuestos de reparación?","acceptedAnswer":{"@type":"Answer","text":"El chatbot puede dar rangos orientativos para servicios estándar (cambio de aceite, ITV, frenos). Para presupuestos detallados recoge los datos y los envía al mecánico."}},
+    {"@type":"Question","name":"¿Funciona para taller de chapa y pintura también?","acceptedAnswer":{"@type":"Answer","text":"Sí. Se configura para cualquier tipo de taller: mecánica, chapa, electricidad del vehículo o neumáticos."}},
+    {"@type":"Question","name":"¿El cliente puede enviar foto de la avería?","acceptedAnswer":{"@type":"Answer","text":"Sí. El cliente describe la avería libremente y el chatbot recoge toda la información. La foto se gestiona directamente desde el móvil."}},
+    {"@type":"Question","name":"¿Da presupuestos orientativos por matrícula y problema descrito?","acceptedAnswer":{"@type":"Answer","text":"Sí, da rangos orientativos para servicios estándar según los precios reales de tu taller: cambio de aceite mineral/sintético, ITV con/sin pre-revisión, juego de frenos delantero/trasero, neumáticos por marca. Para diagnósticos complejos (avería motor, embrague, electrónica) captura matrícula, marca, modelo, año y descripción detallada y deriva al mecánico para presupuesto cerrado."}},
+    {"@type":"Question","name":"¿Gestiona recordatorios automáticos de ITV?","acceptedAnswer":{"@type":"Answer","text":"Sí. Si el cliente comparte su matrícula y fecha de última ITV, el agente programa un recordatorio automático al móvil 30 días antes del vencimiento. Para flotas o talleres con base de clientes recurrentes, esto suele aumentar las citas de ITV programadas."}},
+    {"@type":"Question","name":"¿Cómo recoge fotos de averías de los clientes?","acceptedAnswer":{"@type":"Answer","text":"El cliente puede enviar fotos o vídeo directamente por el chat de la web, que deriva al móvil del taller. Tu mecánico recibe la imagen + descripción + matrícula en un solo mensaje y puede dar diagnóstico previo, ahorrando una primera visita y dando un presupuesto más cerrado."}}
   ]
 }
 </script>
@@ -271,6 +262,20 @@
   </div>
 </section>
 
+
+<section style="padding:46px 6%;border-top:1px solid rgba(124,77,255,.14)">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#B39DFF;margin-bottom:12px">También te puede servir</div>
+    <h2 style="font-size:1.15rem;color:#fff;margin:0 0 18px;font-weight:700">Talleres por zonas de Madrid</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="/chatbot-ia-talleres-boadilla/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Talleres en Boadilla</a>
+      <a href="/chatbot-ia-talleres-las-rozas/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Chatbot para talleres de Las Rozas</a>
+      <a href="/chatbot-ia-talleres-madrid/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Talleres de Madrid</a>
+      <a href="/chatbot-ia-talleres-majadahonda/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">IA para talleres en Majadahonda</a>
+      <a href="/chatbot-ia-talleres-pozuelo/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Talleres en Pozuelo</a>
+    </div>
+  </div>
+</section>
 </main>
 
 

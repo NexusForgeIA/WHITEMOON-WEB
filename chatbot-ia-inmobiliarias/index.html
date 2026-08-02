@@ -50,24 +50,15 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Puede el chatbot mostrar propiedades de mi portal?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El chatbot puede informar sobre zonas, rangos de precio y tipos de inmueble. Para mostrar fichas de propiedades en tiempo real recomendamos el pack Core Spark Web o Core RAG con integración avanzada." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Funciona para alquiler y para venta?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Se configura para ambas operaciones y puede hacer preguntas distintas según si el usuario quiere comprar, alquilar o vender." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿El agente recibe la información del lead al móvil?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. El agente recibe nombre, teléfono, tipo de operación, zona de interés y presupuesto en un único mensaje al móvil." }
-      }
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Puede el chatbot mostrar propiedades de mi portal?","acceptedAnswer":{"@type":"Answer","text":"El chatbot puede informar sobre zonas, rangos de precio y tipos de inmueble. Para mostrar fichas de propiedades en tiempo real recomendamos el pack Core Spark Web o Core RAG con integración avanzada."}},
+    {"@type":"Question","name":"¿Funciona para alquiler y para venta?","acceptedAnswer":{"@type":"Answer","text":"Sí. Se configura para ambas operaciones y puede hacer preguntas distintas según si el usuario quiere comprar, alquilar o vender."}},
+    {"@type":"Question","name":"¿El agente recibe la información del lead al móvil?","acceptedAnswer":{"@type":"Answer","text":"Sí. El agente recibe nombre, teléfono, tipo de operación, zona de interés y presupuesto en un único mensaje al móvil."}},
+    {"@type":"Question","name":"¿Cualifica al comprador antes de agendar visita?","acceptedAnswer":{"@type":"Answer","text":"Sí. El agente pregunta presupuesto real (no rango ideal), zona objetivo, tipo de inmueble, número de dormitorios mínimo, plazo de compra y si tiene financiación pre-aprobada o necesita estudio bancario. El comercial recibe sólo compradores viables en agenda, sin visitas a 700.000€ con presupuesto real de 350.000€."}},
+    {"@type":"Question","name":"¿Capta también vendedores que quieren valorar su inmueble?","acceptedAnswer":{"@type":"Answer","text":"Sí. Para vendedores el agente capta dirección o zona, metros cuadrados, número de habitaciones, año del edificio, estado de conservación, motivo de venta (mudanza, herencia, inversión) y plazo objetivo. Agenda valoración presencial del comercial con todo el contexto recogido."}},
+    {"@type":"Question","name":"¿Da información de propiedades en tiempo real?","acceptedAnswer":{"@type":"Answer","text":"En Pack Spark informa sobre rangos de precio por zona, tipos de inmueble disponibles y características generales. Para fichas en tiempo real con stock real, precio actualizado y disponibilidad de visitas se necesita integración API con tu CRM o portal — se valora en Pack Core Spark Web o Core RAG según el sistema (Idealista, Fotocasa, ITAA, CRM propio)."}}
   ]
 }
 </script>
