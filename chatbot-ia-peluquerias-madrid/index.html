@@ -61,24 +61,15 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿Puede el chatbot reservar la cita directamente?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. El chatbot recoge servicio, fecha y datos de la clienta, comprueba la disponibilidad y confirma la cita al móvil con un mensaje automático." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Funciona también para barberías y centros de estética avanzada?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Se configura para cualquier negocio del sector belleza: peluquería unisex, barbería, uñas, depilación láser, tratamientos faciales o centro de estética integral." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Envía recordatorio antes de la cita?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Manda un aviso al móvil 24 horas antes con el detalle de la reserva. Reduce los no-shows entre un 30% y un 50% respecto a no recordar nada." }
-      }
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Puede el chatbot reservar la cita directamente?","acceptedAnswer":{"@type":"Answer","text":"Sí. El chatbot recoge servicio, fecha y datos de la clienta, comprueba la disponibilidad y confirma la cita al móvil con un mensaje automático."}},
+    {"@type":"Question","name":"¿Funciona también para barberías y centros de estética avanzada?","acceptedAnswer":{"@type":"Answer","text":"Sí. Se configura para cualquier negocio del sector belleza: peluquería unisex, barbería, uñas, depilación láser, tratamientos faciales o centro de estética integral."}},
+    {"@type":"Question","name":"¿Envía recordatorio antes de la cita?","acceptedAnswer":{"@type":"Answer","text":"Sí. Manda un aviso al móvil 24 horas antes con el detalle de la reserva. Reduce los no-shows entre un 30% y un 50% respecto a no recordar nada."}},
+    {"@type":"Question","name":"¿Reserva servicios con duración variable (corte vs color)?","acceptedAnswer":{"@type":"Answer","text":"Sí. Configuramos cada servicio con su duración real: corte hombre 30 min, corte mujer 45 min, color raíz 1h, mechas 2-2.5h, alisado 2.5-3h, peinado evento 1h. El agente reserva el bloque correcto en el calendario sin solapar con otros servicios largos."}},
+    {"@type":"Question","name":"¿Informa precios reales y descuentos disponibles?","acceptedAnswer":{"@type":"Answer","text":"Sí. Configuramos tu lista de precios real con servicios, modificadores (cabello largo +5€, pelo rizado +10€) y promociones recurrentes (descuento martes/miércoles, paquete novia, primera visita). Si actualizas precios, el agente responde con la tarifa nueva al instante."}},
+    {"@type":"Question","name":"¿Envía recordatorio 24h antes para reducir no-shows?","acceptedAnswer":{"@type":"Answer","text":"Sí. aviso automático al móvil 24 horas antes con detalle (servicio, estilista, duración, dirección, opción de cancelar o reagendar). En sector belleza los recordatorios automáticos suelen reducir no-shows entre un 30% y un 50% — un hueco vacío en agenda de tarde son ~40-60€ no facturados."}}
   ]
 }
 </script>
@@ -267,6 +258,22 @@
   </div>
 </section>
 
+
+<section style="padding:46px 6%;border-top:1px solid rgba(124,77,255,.14)">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#B39DFF;margin-bottom:12px">También te puede servir</div>
+    <h2 style="font-size:1.15rem;color:#fff;margin:0 0 18px;font-weight:700">Otros negocios de Madrid y más peluquerías por la zona</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="/chatbot-ia-clinicas-madrid/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Clínicas dentales en Madrid</a>
+      <a href="/chatbot-ia-talleres-madrid/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Chatbot para talleres de Madrid</a>
+      <a href="/chatbot-ia-peluquerias-boadilla/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Peluquerías, Boadilla</a>
+      <a href="/chatbot-ia-peluquerias-las-rozas/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Las Rozas</a>
+      <a href="/chatbot-ia-peluquerias-majadahonda/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Peluquerías en Majadahonda</a>
+      <a href="/chatbot-ia-peluquerias-pozuelo/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">También en Pozuelo</a>
+      <a href="/chatbot-ia-estetica-belleza/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Todo sobre chatbots para peluquerías</a>
+    </div>
+  </div>
+</section>
 </main>
 
 

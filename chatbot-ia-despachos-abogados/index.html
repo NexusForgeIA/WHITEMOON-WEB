@@ -50,24 +50,15 @@
 </script>
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "¿El chatbot puede hablar de derecho bancario y revolving?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Incluye área de Derecho Bancario con preguntas específicas para tarjetas revolving, financiación de vehículos y microcréditos de empresas como MyKredit, Vivus o MoneyMan." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cómo funciona el sistema de triage?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El chatbot hace 3 preguntas clave según el área legal. En función de las respuestas clasifica el caso como urgente (rojo), importante (amarillo) o planificado (verde). El abogado recibe el nivel de urgencia en el móvil." }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Es confidencial la información que recoge?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Toda la información se transmite directamente al abogado al móvil cifrado. El chatbot no almacena datos en servidores externos." }
-      }
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿El chatbot puede hablar de derecho bancario y revolving?","acceptedAnswer":{"@type":"Answer","text":"Sí. Incluye área de Derecho Bancario con preguntas específicas para tarjetas revolving, financiación de vehículos y microcréditos de empresas como MyKredit, Vivus o MoneyMan."}},
+    {"@type":"Question","name":"¿Cómo funciona el sistema de triage?","acceptedAnswer":{"@type":"Answer","text":"El chatbot hace 3 preguntas clave según el área legal. En función de las respuestas clasifica el caso como urgente (rojo), importante (amarillo) o planificado (verde). El abogado recibe el nivel de urgencia en el móvil."}},
+    {"@type":"Question","name":"¿Es confidencial la información que recoge?","acceptedAnswer":{"@type":"Answer","text":"Toda la información se transmite directamente al abogado al móvil cifrado. El chatbot no almacena datos en servidores externos."}},
+    {"@type":"Question","name":"¿Cómo cualifica el chatbot un caso de tarjeta revolving?","acceptedAnswer":{"@type":"Answer","text":"El agente pregunta entidad (WiZink, Carrefour Pass, Cofidis, Cetelem, otros), número de productos contratados, importes totales, TAE declarada, fechas de contratación y si ha habido refinanciaciones. Con esos datos el abogado puede valorar viabilidad de reclamación antes de la primera llamada."}},
+    {"@type":"Question","name":"¿Cubre casos de extranjería y herencias?","acceptedAnswer":{"@type":"Answer","text":"Sí. Para extranjería recoge nacionalidad, situación migratoria actual, tipo de procedimiento (NIE, arraigo, nacionalidad, reagrupación) y plazos. Para herencias pregunta número de herederos, tipo de bienes (inmuebles, cuentas, empresa familiar), si hay testamento y si hay conflicto previsible."}},
+    {"@type":"Question","name":"¿Es confidencial la información que recoge?","acceptedAnswer":{"@type":"Answer","text":"Sí. Toda la información se transmite directamente al abogado al móvil cifrado. No se almacena en servidores externos ni se usa para entrenar modelos generales. Servidores europeos (Supabase EU). Cumplimiento RGPD y secreto profesional preservado."}}
   ]
 }
 </script>
@@ -271,6 +262,19 @@
   </div>
 </section>
 
+
+<section style="padding:46px 6%;border-top:1px solid rgba(124,77,255,.14)">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#B39DFF;margin-bottom:12px">También te puede servir</div>
+    <h2 style="font-size:1.15rem;color:#fff;margin:0 0 18px;font-weight:700">Despachos de abogados por zonas de Madrid</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a href="/chatbot-ia-abogados-boadilla/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Despachos de abogados en Boadilla</a>
+      <a href="/chatbot-ia-abogados-las-rozas/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Chatbot para despachos de abogados de Las Rozas</a>
+      <a href="/chatbot-abogados-ia-majadahonda/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">Despachos de abogados de Majadahonda</a>
+      <a href="/chatbot-ia-abogados-pozuelo/" style="background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:50px;padding:9px 17px;font-size:.86rem;color:#E8E4FF;text-decoration:none;display:inline-block">IA para despachos de abogados en Pozuelo</a>
+    </div>
+  </div>
+</section>
 </main>
 
 
