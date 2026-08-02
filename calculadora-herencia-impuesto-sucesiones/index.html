@@ -26,12 +26,16 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Impuesto Sucesiones","item":"https://whitemoon.es/calculadora-herencia-impuesto-sucesiones/"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"¿Cómo se calcula el impuesto de sucesiones?","acceptedAnswer":{"@type":"Answer","text":"Se calcula sobre la base liquidable (valor heredado menos reducciones por parentesco). Sobre esa base se aplica la tarifa estatal progresiva (del 7,65% al 34%). Después se multiplica por el coeficiente multiplicador (1,0 a 2,4) según parentesco y patrimonio previo. Finalmente, cada CCAA aplica bonificaciones que pueden llegar al 99% en Madrid, Andalucía, Galicia, Cantabria, La Rioja o Murcia."}},
-{"@type":"Question","name":"¿Qué reducción me corresponde por parentesco?","acceptedAnswer":{"@type":"Answer","text":"Grupo I (descendientes menores de 21 años): 15.957 € + 3.991 € por año menos de 21 (máx 47.859 €). Grupo II (cónyuge, descendientes mayores y ascendientes): 15.957 €. Grupo III (hermanos, sobrinos, tíos): 7.993 €. Grupo IV (sin parentesco): sin reducción estatal. Muchas CCAA mejoran estas reducciones."}},
-{"@type":"Question","name":"¿Qué es el coeficiente multiplicador?","acceptedAnswer":{"@type":"Answer","text":"Es un coeficiente que multiplica la cuota íntegra según parentesco y patrimonio previo del heredero. Grupo I-II: 1,00 a 1,20 según patrimonio. Grupo III: 1,5882 a 1,9059. Grupo IV (extraños): 2,00 a 2,40. A mayor patrimonio previo del heredero, mayor el coeficiente."}},
-{"@type":"Question","name":"¿En qué CCAA se paga menos por sucesiones?","acceptedAnswer":{"@type":"Answer","text":"Madrid, Andalucía, Galicia, Cantabria, La Rioja, Murcia y País Vasco aplican bonificación del 99% para Grupos I-II (descendientes, cónyuge, ascendientes), lo que reduce el impuesto a casi cero. Cataluña y Asturias tienen bonificaciones decrecientes según patrimonio. Aragón, Castilla y León y Comunidad Valenciana tienen sistemas mixtos."}}
-]}
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"¿Cómo se calcula el impuesto de sucesiones?","acceptedAnswer":{"@type":"Answer","text":"Base liquidable (valor - reducción por parentesco) × escala estatal progresiva (7,65% - 34%) × coeficiente multiplicador (1,0 - 2,4) según patrimonio previo, menos bonificación autonómica."}},
+    {"@type":"Question","name":"¿Qué reducción por parentesco me corresponde?","acceptedAnswer":{"@type":"Answer","text":"Grupo I (descendientes menores 21): 15.957 € + 3.991 €/año menos de 21 (máx 47.859 €). Grupo II: 15.957 €. Grupo III: 7.993 €. Grupo IV: sin reducción estatal."}},
+    {"@type":"Question","name":"¿Qué es el coeficiente multiplicador?","acceptedAnswer":{"@type":"Answer","text":"Multiplica la cuota íntegra según parentesco y patrimonio previo del heredero. Grupo I-II: 1,00-1,20. Grupo III: 1,5882-1,9059. Grupo IV: 2,00-2,40."}},
+    {"@type":"Question","name":"¿En qué CCAA se paga menos?","acceptedAnswer":{"@type":"Answer","text":"Madrid, Andalucía, Galicia, Cantabria, La Rioja, Murcia y País Vasco aplican bonificación del 99% para Grupos I-II. Cataluña y Asturias tienen bonificaciones decrecientes."}}
+  ]
+}
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
