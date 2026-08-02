@@ -408,8 +408,11 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
     body_html = "\n".join(body_parts)
 
     # ── FAQ visible (acordeon) ──
+    # .strip() igual que en el FAQPage de arriba: los dos lados tienen que salir
+    # del mismo string exacto o el check 16 del SEO Guardian bloquea el PR.
     faq_items = "\n".join(
-        f'      <details><summary>{esc(f["pregunta"])}</summary><p>{esc(f["respuesta"])}</p></details>'
+        f'      <details><summary>{esc(f["pregunta"].strip())}</summary>'
+        f'<p>{esc(f["respuesta"].strip())}</p></details>'
         for f in data["faqs"]
     )
     faq_html = (
