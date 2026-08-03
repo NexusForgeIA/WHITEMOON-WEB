@@ -10,7 +10,12 @@
     "t007",
     "t008",
     "t009",
-    "t010"
+    "t010",
+    "t011",
+    "t012",
+    "t013",
+    "t014",
+    "t015"
   ],
   "publicaciones": [
     {
@@ -45,6 +50,23 @@
         "agente-ia-centro-estetica-reservas-reactivacion",
         "agente-ia-inmobiliaria-cualificar-compradores",
         "agente-ia-restaurante-reservas-sin-llamadas"
+      ]
+    },
+    {
+      "fecha": "2026-08-03",
+      "ids": [
+        "t011",
+        "t012",
+        "t013",
+        "t014",
+        "t015"
+      ],
+      "slugs": [
+        "agente-ia-electricistas-no-perder-avisos",
+        "agente-ia-fisioterapia-llenar-agenda",
+        "agente-ia-abogados-filtrar-primeras-consultas",
+        "agente-ia-reformas-seguimiento-presupuestos",
+        "agente-ia-autonomos-recuperar-horas-semana"
       ]
     }
   ]
