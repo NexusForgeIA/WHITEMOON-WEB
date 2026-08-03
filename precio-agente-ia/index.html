@@ -118,6 +118,7 @@
   .roi-result-row .label{color:#c0c0d0;font-size:.88rem}
   .roi-result-row .value{color:#fff;font-weight:800;font-family:'Syne',sans-serif;font-size:1.15rem}
   .roi-result-row.highlight .value{color:#22c55e;font-size:1.4rem}
+  .roi-hint{font-size:.8rem;color:var(--muted);line-height:1.65;margin-top:10px}
   .hero-actions button.btn-prim{border:0;font-family:inherit;cursor:pointer}
 
   /* Cuándo NO sale a cuenta */
@@ -295,7 +296,7 @@
     <div class="wrap">
       <span class="sec-label">Calculadora ROI</span>
       <h2 class="sec-h">Calcula cuánto te ahorra (o te genera) un Agente IA</h2>
-      <p class="sec-sub" style="text-align:center;max-width:700px;margin:0 auto">Modelo con un supuesto de mejora del 68% en conversión. Es la hipótesis de trabajo que usamos para dimensionar, no un resultado medido: cambia tus cifras y quédate con el orden de magnitud, no con el decimal.</p>
+      <p class="sec-sub" style="text-align:center;max-width:700px;margin:0 auto">Las cuatro cifras las pones tú, incluida la mejora de conversión que esperas. No traemos una media del sector ni un resultado nuestro: el euro que sale es el de tu supuesto, así que quédate con el orden de magnitud y no con el decimal.</p>
       <div class="roi-calc">
         <div class="roi-row">
           <label for="visitas">Visitas mensuales a tu web</label>
@@ -312,6 +313,12 @@
           <input type="number" id="conv-num" class="roi-input" value="2" min="0.1" max="20" step="0.1">
         </div>
         <input type="range" id="conv" class="roi-slider" min="0.1" max="20" value="2" step="0.1">
+        <div class="roi-row" style="margin-top:24px">
+          <label for="mejora">Mejora en conversión que esperas (%)</label>
+          <input type="number" id="mejora-num" class="roi-input" value="15" min="0" max="100" step="1">
+        </div>
+        <input type="range" id="mejora" class="roi-slider" min="0" max="100" value="15" step="1">
+        <p class="roi-hint">Tu estimación, ajústala a tu caso. Lo dejamos en un 15% de partida porque es un supuesto prudente, no porque sea una media medida: no tenemos una cifra verificada que ofrecerte y preferimos no inventarla. Ponlo a 0 y verás lo que pasa si el agente no mueve la aguja.</p>
 
         <div class="roi-result">
           <div class="roi-result-row">
@@ -319,16 +326,16 @@
             <span class="value" id="r-base">20</span>
           </div>
           <div class="roi-result-row">
-            <span class="label">Conversiones estimadas con Agente IA (+68%)</span>
-            <span class="value" id="r-nuevas">34</span>
+            <span class="label">Conversiones con tu supuesto de mejora (<span id="r-pct">+15%</span>)</span>
+            <span class="value" id="r-nuevas">23</span>
           </div>
           <div class="roi-result-row highlight">
-            <span class="label">Ingresos adicionales/mes</span>
-            <span class="value" id="r-ingresos">+1.632 €</span>
+            <span class="label">Ingresos adicionales/mes según tu supuesto</span>
+            <span class="value" id="r-ingresos">+360 €</span>
           </div>
           <div class="roi-result-row">
             <span class="label">Meses para recuperar el setup de entrada (499€)</span>
-            <span class="value" id="r-meses">&lt; 1 mes</span>
+            <span class="value" id="r-meses">1.4 meses</span>
           </div>
         </div>
       </div>
@@ -340,7 +347,7 @@
     <div class="wrap">
       <span class="sec-label">Cuándo NO sale a cuenta</span>
       <h2 class="sec-h">El cálculo, con supuestos deliberadamente cortos</h2>
-      <p class="sec-sub" style="max-width:760px">La calculadora de arriba es optimista por diseño: supone que el agente mejora tu conversión. Este de aquí no supone nada de eso. Es aritmética con supuestos bajos, para que veas el mecanismo y lo rehagas con tus números. Si el cálculo solo funciona inflando las cifras, no funciona.</p>
+      <p class="sec-sub" style="max-width:760px">La calculadora de arriba parte de la mejora de conversión que tú le pongas. Este de aquí no supone ninguna mejora de conversión: solo cuenta consultas que hoy se pierden fuera de horario. Es aritmética con supuestos bajos, para que veas el mecanismo y lo rehagas con tus números. Si el cálculo solo funciona inflando las cifras, no funciona.</p>
       <div class="contra">
         <div class="contra-tabla">
           <div class="contra-fila"><span>Consultas fuera de horario que hoy se pierden y el agente recupera</span><span>4 al mes</span></div>
@@ -461,21 +468,33 @@
   var visEl=document.getElementById('visitas'), visNum=document.getElementById('visitas-num');
   var ticEl=document.getElementById('ticket'), ticNum=document.getElementById('ticket-num');
   var conEl=document.getElementById('conv'), conNum=document.getElementById('conv-num');
+  var mejEl=document.getElementById('mejora'), mejNum=document.getElementById('mejora-num');
   var rBase=document.getElementById('r-base'), rNuevas=document.getElementById('r-nuevas');
   var rIngresos=document.getElementById('r-ingresos'), rMeses=document.getElementById('r-meses');
+  var rPct=document.getElementById('r-pct');
+  // Setup del pack de entrada (Spark). Fuente: /precios/, tarifa 2026.
+  var SETUP_ENTRADA=499;
   var fmt=function(n){return n.toLocaleString('es-ES');};
   function calc(){
     var v=Math.max(100,Math.min(50000,Number(visNum.value)||0));
     var t=Math.max(10,Math.min(50000,Number(ticNum.value)||0));
     var c=Math.max(0.1,Math.min(20,Number(conNum.value)||0));
+    // La mejora de conversion la decide el usuario: no hay multiplicador fijo.
+    var m=Math.max(0,Math.min(100,Number(mejNum.value)||0));
     var base=Math.round(v*c/100);
-    var nuevas=Math.round(base*1.68);
+    var nuevas=Math.round(base*(1+m/100));
     var delta=nuevas-base;
     var ingresos=delta*t;
-    var meses=ingresos>0?(499/ingresos):0;
+    rPct.textContent='+'+fmt(m)+'%';
     rBase.textContent=fmt(base);
     rNuevas.textContent=fmt(nuevas);
-    rIngresos.textContent='+'+fmt(ingresos)+' €';
+    rIngresos.textContent=ingresos>0?('+'+fmt(ingresos)+' €'):'0 €';
+    if(ingresos<=0){
+      // Con mejora 0 (o sin ganancia entera) no hay retorno que calcular.
+      rMeses.textContent='—';
+      return;
+    }
+    var meses=SETUP_ENTRADA/ingresos;
     rMeses.textContent=meses<1?'< 1 mes':(meses<6?meses.toFixed(1)+' meses':'> 6 meses');
   }
   function syncSlider(slider,num){
@@ -489,6 +508,7 @@
   syncSlider(visEl,visNum);
   syncSlider(ticEl,ticNum);
   syncSlider(conEl,conNum);
+  syncSlider(mejEl,mejNum);
   calc();
 })();
 </script>

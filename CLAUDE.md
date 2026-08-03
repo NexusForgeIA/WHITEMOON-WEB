@@ -30,8 +30,8 @@
 - Core RAG: SIN diseño web incluido — solo agente IA RAG
 - Laura IA NUNCA recomienda Core Spark Web ni Core Orion si el cliente ya tiene web (→ Spark u Orion IA Agent)
 - Laura IA NUNCA recomienda RAG sin documentos propios del cliente
-- Oferta Spark "primer mes GRATIS hasta el 26 mayo": CADUCADA. No usarla en copy nuevo. Sigue viva en `/precio-agente-ia/` (línea de `.precios-note`) — pendiente de retirar.
 - Sin testimonios ficticios
+- Sin cifras de rendimiento inventadas: nada de "+X% de conversión", "recuperan la inversión en X días" ni "media de nuestros clientes" si no hay una fuente que se pueda enseñar. Si el dato no existe, el número lo pone el usuario en un input y se etiqueta como supuesto suyo (así funciona la calculadora de `/precio-agente-ia/`).
 - Sin menciones a Orbit o packs obsoletos
 - Fundada en 2025
 - Descripción del Pack Core Spark Web: "Web profesional + chatbot IA por texto + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." (incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7 por texto, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp, responsive; 899€ setup + 99€/mes, operativo en 5-7 días, sin permanencia)
