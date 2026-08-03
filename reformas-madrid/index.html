@@ -1211,7 +1211,7 @@ function nextStep(v){
     botSay('Solicitud recibida. Un tecnico se pondra en contacto contigo para la reforma de '+d.tipo+' en '+d.zona+'. Un tecnico se pondra en contacto contigo en menos de 24 horas. Muchas gracias.');
     document.getElementById('cb-input').disabled=true;
     document.getElementById('cb-send').disabled=true;
-    if(typeof gtag === 'function') gtag('event', 'lead_enviado', {
+    if(typeof gtag === 'function') gtag('event', 'lead_captured', {
       'event_category': 'conversion',
       'event_label': d.tipo,
       'value': 1
