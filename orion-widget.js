@@ -200,7 +200,7 @@
   function render() {
     if (callActive) {
       btn.classList.add("luna-btn--end");
-      btn.setAttribute("aria-label", "Finalizar llamada con Orion");
+      btn.setAttribute("aria-label", "Finalizar conversación con Orion");
       bars.classList.add("is-active");
     } else {
       btn.classList.remove("luna-btn--end");
