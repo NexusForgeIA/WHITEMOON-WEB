@@ -13,7 +13,9 @@ Flujo (endpoints verificados en docs.retellai.com):
   1. GET  /get-agent-versions/{agent_id}      → localiza la versión publicada
   2. POST /create-agent-version/{agent_id}    → crea un draft desde esa base
   3. PATCH /update-retell-llm/{llm_id}?version=N → escribe `general_prompt`
-  4. POST /publish-agent/{agent_id}           → publica el draft
+  4. POST /publish-agent-version/{agent_id}   → publica el draft (agent_id en la
+     ruta, {"version": N} en el body). Sustituye a POST /publish-agent/{agent_id},
+     deprecado por Retell el 2026-07-20 junto a /publish-chat-agent/.
   5. GET  /get-retell-llm/{llm_id}?version=N  → relee y compara
 
 La API key NUNCA va en el repo: se lee de la variable de entorno
@@ -136,7 +138,10 @@ def main():
          {"general_prompt": nuevo})
     print(f"[retell] general_prompt escrito en v{nueva}")
 
-    call("POST", f"/publish-agent/{AGENT_ID}", key, {"version": nueva})
+    # version_title deja rastro en el dashboard de Retell: sin él, las versiones
+    # publicadas por este script no se distinguen de las hechas a mano.
+    call("POST", f"/publish-agent-version/{AGENT_ID}", key,
+         {"version": nueva, "version_title": "deploy_orion_prompt"})
     print(f"[retell] v{nueva} publicada")
 
     releido = call("GET", f"/get-retell-llm/{LLM_ID}?version={nueva}", key)
