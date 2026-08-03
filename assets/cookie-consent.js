@@ -186,8 +186,9 @@
 
   function essentialOnly() {
     setConsent('essential');
-    // analytics_storage y ad_storage permanecen 'denied':
-    // GA sigue activo en modo cookieless (sólo modeling).
+    // analytics_storage y ad_storage permanecen 'denied'. Ni GA4 ni Clarity
+    // llegan a cargarse: loadGA() y loadClarity() solo se invocan desde
+    // acceptAll() y desde init() cuando el consentimiento guardado es 'all'.
     revokeClarity();
     removeBanner();
   }
