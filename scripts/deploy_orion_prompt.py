@@ -23,7 +23,7 @@ RETELL_API_KEY. En Supabase vive como secreto del proyecto y la usa
 Uso:
     export RETELL_API_KEY=...            # nunca commitear
     python scripts/deploy_orion_prompt.py                      # dry-run
-    python scripts/deploy_orion_prompt.py --file outputs/orion-guion-v46.txt --apply
+    python scripts/deploy_orion_prompt.py --file outputs/orion-guion-v47.txt --apply
 """
 
 import argparse
@@ -85,7 +85,7 @@ def comprueba_guion(texto):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--file", default="outputs/orion-guion-v46.txt")
+    ap.add_argument("--file", default="outputs/orion-guion-v47.txt")
     ap.add_argument("--apply", action="store_true",
                     help="sin este flag solo lee y compara (dry-run)")
     args = ap.parse_args()
