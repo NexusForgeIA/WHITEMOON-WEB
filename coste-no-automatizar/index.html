@@ -27,8 +27,8 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"¿Cuánto dinero pierde una pyme española por no automatizar?","acceptedAnswer":{"@type":"Answer","text":"Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: llamadas no atendidas (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes)."}},
-{"@type":"Question","name":"¿Cuál es el coste exacto de una llamada perdida?","acceptedAnswer":{"@type":"Answer","text":"Depende del ticket medio del negocio y la tasa de conversión llamada→cliente. Para un negocio con ticket medio 80€ y conversión 25%, cada llamada perdida cuesta 20€ de ingresos esperados. Con 4 llamadas perdidas/día durante 22 días laborables, son 1.760€/mes. Para tickets más altos (clínicas dentales, despachos, talleres), la pérdida mensual ronda los 4.000-6.000€."}},
+{"@type":"Question","name":"¿Cuánto dinero pierde una pyme española por no automatizar?","acceptedAnswer":{"@type":"Answer","text":"Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes)."}},
+{"@type":"Question","name":"¿Cuál es el coste exacto de una consulta perdida?","acceptedAnswer":{"@type":"Answer","text":"Depende del ticket medio del negocio y de la tasa de conversión de consulta a cliente. Para un negocio con ticket medio 80€ y conversión 25%, cada consulta perdida cuesta 20€ de ingresos esperados. Con 4 consultas perdidas al día durante 22 días laborables, son 1.760€/mes. Son supuestos de ejemplo, no una media medida: cambia los tuyos en la calculadora y el resultado se rehace."}},
 {"@type":"Question","name":"¿Por qué el 78% de los leads se pierden por respuesta lenta?","acceptedAnswer":{"@type":"Answer","text":"Estudios de Harvard Business Review y Lead Connect demuestran que la probabilidad de cualificar un lead cae 10× si la respuesta tarda más de 5 minutos, y 60× si pasa de 1 hora. Como la mayoría de leads B2C llegan fuera del horario comercial (tardes, noches, fines de semana), sin respuesta automática se pierden. La cifra 78% representa el porcentaje de leads que NO reciben respuesta en menos de 5 minutos en pymes sin automatización."}},
 {"@type":"Question","name":"¿Cuánto cuesta una hora de procesos manuales repetitivos?","acceptedAnswer":{"@type":"Answer","text":"El coste total empleado/hora en España (salario bruto + cotizaciones + seguros + costes indirectos) ronda los 15-22€/h para perfiles administrativos y atención al cliente. Si el equipo dedica 3h/día a tareas repetitivas (responder dudas frecuentes, gestionar agendas, enviar recordatorios), el coste mensual es 3h × 22 días × 18€ = 1.188€/mes. Automatizando ese tiempo, se libera para actividades de mayor valor."}},
 {"@type":"Question","name":"¿Cómo se calcula el coste de los no-shows?","acceptedAnswer":{"@type":"Answer","text":"Un no-show es una cita o reserva confirmada a la que el cliente no se presenta. Coste = (citas/mes × tasa no-show × ticket medio). Ejemplo clínica dental: 300 citas/mes × 20% no-show × 50€ ticket = 3.000€/mes en huecos vacíos no facturados. Los recordatorios automáticos por SMS 24h y 2h antes reducen el no-show del 20% al 7-10%, recuperando 1.500-2.000€/mes."}},
@@ -180,14 +180,14 @@
       <div class="costs-grid">
         <div class="cost-card">
           <div class="cost-head">
-            <div class="cost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/><line x1="3" y1="3" x2="21" y2="21"/></svg></div>
+            <div class="cost-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="3" y1="3" x2="21" y2="21"/></svg></div>
             <div>
-              <h3>Llamadas no atendidas</h3>
+              <h3>Consultas sin respuesta</h3>
             </div>
           </div>
           <div class="impact">~4.000 €<span class="unit"> / mes</span></div>
-          <p>3-5 llamadas perdidas al día se traducen en ingresos no capturados. Sin atención IA 24/7, cada consulta perdida es un cliente potencial que se va a la competencia.</p>
-          <div class="src">Fuente: medias agregadas Orion IA Agent + ticket medio 80-120€</div>
+          <p>Las consultas que entran en tu web fuera de horario y no reciben respuesta se traducen en ingresos no capturados. Sin atención IA 24/7, cada una es un cliente potencial que se va a la competencia.</p>
+          <div class="src">Supuesto de ejemplo con ticket medio de 80-120€. Ajusta tus cifras en la calculadora de abajo.</div>
         </div>
 
         <div class="cost-card">
@@ -273,9 +273,9 @@
               </select>
             </div>
             <div class="calc-field">
-              <label for="cn-llamadas">Llamadas o consultas al día</label>
+              <label for="cn-llamadas">Consultas al día</label>
               <input id="cn-llamadas" type="number" min="0" max="500" value="20" inputmode="numeric">
-              <span class="hint">Incluye llamadas, formularios y chats web.</span>
+              <span class="hint">Incluye formularios, chats web y consultas por voz.</span>
             </div>
             <div class="calc-field">
               <label for="cn-ticket">Ticket medio (€)</label>
@@ -316,8 +316,8 @@
 
       <div class="rel-grid">
         <a class="rel-card" href="/calculadora-coste-llamada-perdida/" onclick="wmTrack('click_related_calc',{from:'cna',calc:'llamada-perdida'})">
-          <svg class="rel-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
-          <div class="rel-title">Coste de Llamada Perdida</div>
+          <svg class="rel-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div class="rel-title">Consultas web perdidas</div>
           <span class="rel-arrow">Calcular →</span>
         </a>
         <a class="rel-card" href="/calculadora-coste-lead-perdido/" onclick="wmTrack('click_related_calc',{from:'cna',calc:'lead-perdido'})">
@@ -373,11 +373,11 @@
       <h2 style="font-family:'Sora','Inter',sans-serif;font-size:1.6rem;font-weight:700;color:#E8E8F0;letter-spacing:-.02em;margin:0 0 24px;text-align:center">Preguntas frecuentes</h2>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuánto dinero pierde una pyme española por no automatizar?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: llamadas no atendidas (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes).</div>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes).</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
-        <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuál es el coste exacto de una llamada perdida?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Depende del ticket medio del negocio y la tasa de conversión llamada→cliente. Para un negocio con ticket medio 80€ y conversión 25%, cada llamada perdida cuesta 20€ de ingresos esperados. Con 4 llamadas perdidas/día durante 22 días laborables, son 1.760€/mes. Para tickets más altos (clínicas dentales, despachos, talleres), la pérdida mensual ronda los 4.000-6.000€.</div>
+        <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuál es el coste exacto de una consulta perdida?</summary>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Depende del ticket medio del negocio y de la tasa de conversión de consulta a cliente. Para un negocio con ticket medio 80€ y conversión 25%, cada consulta perdida cuesta 20€ de ingresos esperados. Con 4 consultas perdidas al día durante 22 días laborables, son 1.760€/mes. Son supuestos de ejemplo, no una media medida: cambia los tuyos en la calculadora y el resultado se rehace.</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Por qué el 78% de los leads se pierden por respuesta lenta?</summary>
