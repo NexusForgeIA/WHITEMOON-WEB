@@ -449,10 +449,10 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L20 13l1 6H5A16 16 0 0 1 5 4Z" stroke-linejoin="round"/></svg>
               WhatsApp 643 199 580
             </a>
-            <a class="mc-btn mc-btn-s" href="mailto:comercial@whitemoon.es?subject=Pack%20Mini%20Core" onclick="wmTrack&amp;&amp;wmTrack('click_email',{source:'mini-core',placement:'contacto'})">
+            <!--email_off--><a class="mc-btn mc-btn-s" href="mailto:comercial@whitemoon.es?subject=Pack%20Mini%20Core" onclick="wmTrack&amp;&amp;wmTrack('click_email',{source:'mini-core',placement:'contacto'})">
               <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
               comercial@whitemoon.es
-            </a>
+            </a><!--/email_off-->
           </div>
 
           <ul class="mc-contact-list">
@@ -462,7 +462,7 @@
             </li>
             <li>
               <span class="mk"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6" stroke-linecap="round"/></svg></span>
-              <div><span>Email</span><a href="mailto:comercial@whitemoon.es?subject=Pack%20Mini%20Core" onclick="wmTrack&amp;&amp;wmTrack('click_email',{source:'mini-core',placement:'lista-contacto'})">comercial@whitemoon.es</a></div>
+              <div><span>Email</span><!--email_off--><a href="mailto:comercial@whitemoon.es?subject=Pack%20Mini%20Core" onclick="wmTrack&amp;&amp;wmTrack('click_email',{source:'mini-core',placement:'lista-contacto'})">comercial@whitemoon.es</a><!--/email_off--></div>
             </li>
             <li>
               <span class="mk"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
@@ -575,7 +575,7 @@
     function handleError() {
       setDisabled(false);
       if (btn) { btn.innerHTML = btnHTML; }
-      setMsg('error', 'No se pudo enviar. Inténtalo de nuevo o escríbenos a <a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>');
+      setMsg('error', 'No se pudo enviar. Inténtalo de nuevo o escríbenos a <!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off-->');
     }
 
     var mensaje = 'Lead desde la landing del Pack Mini Core';
