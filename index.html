@@ -426,6 +426,43 @@
     .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
     .hero-ctas .btn-ghost{background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2)}
     .hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
+    /* CRO · el CTA primario, la prueba social y el gancho de la auditoria
+       suben por encima del bloque "En 30 segundos" para que se vean sin
+       scroll tambien en movil. */
+    .hero-ctas .btn-primary{font-size:1rem;padding:16px 30px}
+    .hero-trustbar{display:inline-flex;align-items:center;gap:18px;flex-wrap:wrap;
+      background:rgba(124,77,255,.09);border:1px solid rgba(124,77,255,.32);
+      border-radius:12px;padding:12px 18px;margin:0 0 18px}
+    .hero-trustbar .tb{display:inline-flex;align-items:center;gap:8px;
+      font-size:.9rem;color:#c9c9de;line-height:1.3}
+    .hero-trustbar .tb b{color:#fff;font-weight:700;font-size:1.02rem}
+    .hero-trustbar .tb svg{width:17px;height:17px;flex-shrink:0}
+    .hero-trustbar .tb.is-star svg{color:#f5b301}
+    .hero-trustbar .tb.is-ai svg{color:#00d4aa}
+    .hero-trustbar .tb-sep{width:1px;height:20px;background:rgba(255,255,255,.16)}
+    .hero-audit{display:inline-flex;align-items:center;gap:9px;
+      padding:13px 22px;border-radius:10px;text-decoration:none;
+      background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.42);
+      color:#7ef2d8;font-family:'Sora',sans-serif;font-weight:600;font-size:.92rem;
+      transition:background .2s,border-color .2s,transform .15s}
+    .hero-audit:hover{background:rgba(0,212,170,.15);border-color:rgba(0,212,170,.7);
+      color:#a9f7e6;transform:translateY(-1px)}
+    .hero-audit svg{width:15px;height:15px;flex-shrink:0}
+    @media(max-width:900px){
+      .hero-trustbar{display:flex;width:100%;justify-content:center;gap:14px}
+      .hero-audit{width:100%;justify-content:center}
+    }
+    @media(max-width:600px){
+      .hero-enterprise{padding:40px 20px 44px}
+      .hero-brand{margin-bottom:16px}
+      .hero-left h1{margin-bottom:14px}
+      .hero-left .sub{font-size:.95rem;margin-bottom:18px}
+      .hero-ctas{gap:10px;margin-bottom:16px}
+      .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;justify-content:center}
+      .hero-trustbar{flex-direction:column;align-items:stretch;gap:10px;padding:12px 14px}
+      .hero-trustbar .tb{justify-content:center;font-size:.85rem}
+      .hero-trustbar .tb-sep{display:none}
+    }
     /* Hero trust block (valor real + caso verificable) */
     .hero-trust{display:flex;flex-direction:column;gap:16px}
     .ht-values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -646,12 +683,32 @@
         <div class="eyebrow">WhiteMoon · Agencia de IA en Majadahonda</div>
         <h1>Agencia de inteligencia artificial en <em>Majadahonda</em> y Madrid noroeste</h1>
         <p class="sub" style="margin-top:14px;font-size:1.05rem;color:#c9c9de"><strong style="color:#fff;font-weight:600">WhiteMoon es la agencia de inteligencia artificial en Majadahonda</strong> y el noroeste de Madrid: creamos agentes de voz IA, chatbots y automatización para pymes. Tu negocio atendido 24/7, operativo en 7 días.</p>
+        <div class="hero-ctas">
+          <button type="button" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'habla-con-orion',placement:'hero-primario'});document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'home-hero'}}))" aria-label="Habla con Orion en vivo, agente de voz IA">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
+            Habla con Orion en vivo
+          </button>
+          <a href="#precios" class="btn-ghost" onclick="smoothNav(event,'precios')">Ver planes</a>
+        </div>
+        <div class="hero-trustbar">
+          <span class="tb is-star">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>
+            <span><b>5,0</b> en Google</span>
+          </span>
+          <span class="tb-sep" aria-hidden="true"></span>
+          <span class="tb is-ai">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            <span><b>#1</b> en ChatGPT y Grok en Majadahonda</span>
+          </span>
+        </div>
+        <div style="margin:0 0 26px">
+          <a href="/auditoria-geo-seo/" class="hero-audit" onclick="wmTrack('click_hero_cta',{action:'auditoria-geo-seo',placement:'hero-secundario'})">
+            Auditoría GEO/SEO gratis: tu score en 60 segundos
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px">
           <span style="font-size:clamp(2rem,5vw,4rem);font-weight:800;color:#fff;line-height:1.05;text-shadow:0 0 40px rgba(157,112,255,.6)">desde 99€/mes</span>
-          <a href="/mas-info/" class="btn-mas-info" onclick="wmTrack('click_hero_cta',{action:'mas-info'})" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:#7c4dff;color:#fff;border-radius:8px;font-family:'Sora',sans-serif;font-weight:600;font-size:.9rem;text-decoration:none;transition:background .2s;white-space:nowrap" onmouseover="this.style.background='#9d70ff'" onmouseout="this.style.background='#7c4dff'">
-            Más info
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
         </div>
         <p class="sub">Operativo en 7 días. Sin permanencia. Sin contratar a nadie.</p>
         <!-- TL;DR — resumen para extracción por motores de IA -->
@@ -667,13 +724,6 @@
             </ul>
           </div>
         </section>
-        <div class="hero-ctas">
-          <button type="button" class="btn-primary" onclick="document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'home-hero'}}))" aria-label="Habla con Orion en vivo, agente de voz IA">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
-            Habla con Orion en vivo
-          </button>
-          <a href="#precios" class="btn-ghost" onclick="smoothNav(event,'precios')">Ver planes</a>
-        </div>
       </div>
 
       <!-- RIGHT: bloque de valor real + caso verificable -->
@@ -707,8 +757,9 @@
 
     </div>
 
-    <!-- SOCIAL PROOF -->
-    <p class="hero-social-proof" style="text-align:center;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12);font-size:.95rem;color:#9090b0;letter-spacing:.01em">Google Business verificado · 5⭐ · #1 ChatGPT y Grok Majadahonda</p>
+    <!-- SOCIAL PROOF · la valoración y el #1 en IA suben a la insignia del
+         hero (.hero-trustbar); aquí queda solo la verificación de la ficha. -->
+    <p class="hero-social-proof" style="text-align:center;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12);font-size:.95rem;color:#9090b0;letter-spacing:.01em">Ficha de Google Business verificada · Majadahonda, Madrid</p>
 
   </div>
 
