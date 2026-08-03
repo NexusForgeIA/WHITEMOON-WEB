@@ -1,10 +1,10 @@
-# WhiteMoon - Sistema de Automatización IA
-> WhiteMoon es una empresa española especializada en sistemas de automatización empresarial basados en IA para pymes. Sede en Majadahonda, Madrid.
+# WhiteMoon
+> Sistema de automatización IA. WhiteMoon es una empresa española especializada en sistemas de automatización empresarial basados en IA para pymes. Sede en Majadahonda, Madrid.
 
 ## Identidad
 - Nombre: WhiteMoon / WhiteMoon System
 - Fundador: Cristóbal Martínez
-- Web: https://whitemoon.es
+- Web: [whitemoon.es](https://whitemoon.es)
 - Contacto: comercial@whitemoon.es
 - Teléfono: +34 643 199 580
 - Ubicación: Majadahonda, Madrid, España
@@ -21,9 +21,9 @@ Qué es el pack RAG: en Core RAG el agente responde a partir de los documentos p
 Qué determina el precio: el canal (voz o texto), el número de integraciones con sistemas del cliente, si se entrena con documentos propios, el volumen de consultas y si incluye web nueva.
 
 ## Productos y precios (catálogo vigente — tarifa 2026)
-Fuente de verdad de precios: https://whitemoon.es/precios/
-Guía de qué determina el precio de un agente de IA (canal, integraciones, RAG, volumen, web): https://whitemoon.es/precio-agente-ia/
-- Mini Core: 599€ setup + 99€/mes — landing profesional + agente IA para autónomos sin presencia online (ficha: https://whitemoon.es/mini-core/)
+- [Precios y tarifa 2026](https://whitemoon.es/precios/): fuente de verdad de precios.
+- [Cuánto cuesta un agente de IA](https://whitemoon.es/precio-agente-ia/): qué determina el precio (canal, integraciones, RAG, volumen, web).
+- [Mini Core](https://whitemoon.es/mini-core/): 599€ setup + 99€/mes — landing profesional + agente IA para autónomos sin presencia online.
 - Spark: 499€ setup + 99€/mes — agente IA conversacional por texto 24/7 en tu web existente
 - Orion IA Agent: 799€ setup + 99€/mes — agente de voz 24/7 en español natural, embebido en tu web actual
 - Core Spark Web: 899€ setup + 99€/mes — web profesional nueva + dominio + agente de texto 24/7 + SEO/GEO/AEO
@@ -38,34 +38,34 @@ Productos retirados (NO ofrecer): Scale, Elite, Gestoría IA, Orion IA Calls, Or
 
 ## Automatizaciones con IA
 Catálogo de automatizaciones con IA para empresas y pymes: agentes de IA, captación de leads 24/7, CRM con IA, atención al cliente 24/7, base de conocimiento IA (RAG), automatización de WhatsApp, ficha Google Business (GMB) y SEO/GEO. WhiteMoon 360 es la automatización integral que unifica todo en un único sistema. Sin permanencia.
-Página: https://whitemoon.es/automatizaciones/
+- [Automatizaciones con IA](https://whitemoon.es/automatizaciones/): catálogo completo de automatizaciones.
 
 ## Sectores objetivo
 Clínicas dentales, gestorías, despachos de abogados, restaurantes, talleres mecánicos, inmobiliarias, peluquerías, gimnasios, veterinarias, academias.
 
 ## Herramientas gratuitas
-Calculadoras gratuitas en https://whitemoon.es/costes-eficiencia-empresarial-ia/
+- [Calculadoras gratuitas](https://whitemoon.es/costes-eficiencia-empresarial-ia/): hub de calculadoras, sin registro.
 Incluyen: nómina, ITP, ROI IA, cuota autónomos, finiquito, coste trabajador, no-shows, hipoteca.
 
 ## Artículos destacados (blog)
-- Agentes IA Autónomos para Pymes en 2026: De Chatbot a Empleado Virtual: https://whitemoon.es/blog/agentes-ia-autonomos-pymes-2026/
-- IA para Atención al Cliente en Pymes Españolas: Guía Completa 2026: https://whitemoon.es/blog/ia-atencion-cliente-pymes-espana/
-- Automatización de Ventas con IA: Cómo Captar Leads 24/7 sin Equipo Comercial: https://whitemoon.es/blog/automatizacion-ventas-ia-2026/
-- Agente de Voz con IA para tu Negocio Local: Qué es Orion IA y Cómo Funciona: https://whitemoon.es/blog/agente-voz-ia-negocio-local/
-- RAG para Pymes: Cómo la IA Aprende los Documentos de tu Empresa: https://whitemoon.es/blog/rag-ia-pymes-que-es/
-- Cuánto le Cuesta a tu Pyme NO Tener IA en 2026: https://whitemoon.es/blog/coste-no-tener-ia-2026/
-- GEO y AEO: Cómo Aparecer en ChatGPT y Grok antes que tu Competencia: https://whitemoon.es/blog/geo-aeo-posicionamiento-ia-pymes/
-- IA en el Sector Servicios Español 2026: Talleres, Clínicas, Gestorías y Más: https://whitemoon.es/blog/ia-sector-servicios-espana-2026/
-- Kit Digital e IA para Pymes en 2026: Ayudas y Subvenciones: https://whitemoon.es/blog/ayudas-kit-digital-ia-pymes-2026/
-- WhatsApp + IA para Negocios: Automatiza Notificaciones, Leads y Citas en 2026: https://whitemoon.es/blog/whatsapp-ia-automatizacion-negocios/
-Blog completo: https://whitemoon.es/blog/
+- [Agentes IA Autónomos para Pymes en 2026: De Chatbot a Empleado Virtual](https://whitemoon.es/blog/agentes-ia-autonomos-pymes-2026/)
+- [IA para Atención al Cliente en Pymes Españolas: Guía Completa 2026](https://whitemoon.es/blog/ia-atencion-cliente-pymes-espana/)
+- [Automatización de Ventas con IA: Cómo Captar Leads 24/7 sin Equipo Comercial](https://whitemoon.es/blog/automatizacion-ventas-ia-2026/)
+- [Agente de Voz con IA para tu Negocio Local: Qué es Orion IA y Cómo Funciona](https://whitemoon.es/blog/agente-voz-ia-negocio-local/)
+- [RAG para Pymes: Cómo la IA Aprende los Documentos de tu Empresa](https://whitemoon.es/blog/rag-ia-pymes-que-es/)
+- [Cuánto le Cuesta a tu Pyme NO Tener IA en 2026](https://whitemoon.es/blog/coste-no-tener-ia-2026/)
+- [GEO y AEO: Cómo Aparecer en ChatGPT y Grok antes que tu Competencia](https://whitemoon.es/blog/geo-aeo-posicionamiento-ia-pymes/)
+- [IA en el Sector Servicios Español 2026: Talleres, Clínicas, Gestorías y Más](https://whitemoon.es/blog/ia-sector-servicios-espana-2026/)
+- [Kit Digital e IA para Pymes en 2026: Ayudas y Subvenciones](https://whitemoon.es/blog/ayudas-kit-digital-ia-pymes-2026/)
+- [WhatsApp + IA para Negocios: Automatiza Notificaciones, Leads y Citas en 2026](https://whitemoon.es/blog/whatsapp-ia-automatizacion-negocios/)
+- [Blog completo](https://whitemoon.es/blog/): todos los artículos.
 
 ## Comparativas
-- WhiteMoon vs Flownexion: https://whitemoon.es/alternativa-flownexion/
-- WhiteMoon vs Llmo: https://whitemoon.es/alternativa-llmo/
-- WhiteMoon vs Intercom: https://whitemoon.es/whitemoon-vs-intercom/
-- WhiteMoon vs ManyChat: https://whitemoon.es/whitemoon-vs-manychat/
-- WhiteMoon vs Tidio: https://whitemoon.es/whitemoon-vs-tidio/
+- [WhiteMoon vs Flownexion](https://whitemoon.es/alternativa-flownexion/)
+- [WhiteMoon vs Llmo](https://whitemoon.es/alternativa-llmo/)
+- [WhiteMoon vs Intercom](https://whitemoon.es/whitemoon-vs-intercom/)
+- [WhiteMoon vs ManyChat](https://whitemoon.es/whitemoon-vs-manychat/)
+- [WhiteMoon vs Tidio](https://whitemoon.es/whitemoon-vs-tidio/)
 
 ## Stack tecnológico
 Claude API (Anthropic), Retell AI, ElevenLabs, Supabase (PostgreSQL + pgvector), GitHub Pages, RAG con Voyage AI embeddings.
