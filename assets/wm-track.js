@@ -1,6 +1,6 @@
 /* WhiteMoon — Helper global de tracking GA4
  * Uso:
- *   wmTrack('click_whatsapp', {source: 'spark', placement: 'hero'});
+ *   wmTrack('whatsapp_click', {source: 'spark', placement: 'hero'});
  *   wmTrack('click_solicitar_pack', {pack: 'spark'});
  *   wmTrack('click_open_orion', {source: 'home'});
  *   wmTrack('newsletter_signup');
@@ -11,10 +11,12 @@
  * en modo cookieless (modeling). Si ha aceptado, se envían completos.
  *
  * Convención de eventos:
- *   - click_whatsapp          → outbound a wa.me
+ *   - whatsapp_click          → outbound a wa.me
  *   - click_solicitar_pack    → CTA principal de pack (params: {pack})
  *   - click_open_orion        → apertura del widget Orion
- *   - lead_captured           → Orion captura nombre+teléfono
+ *   - lead_captured           → lead completo (nombre+teléfono) capturado por
+ *                               un agente conversacional: Orion en whitemoon.es
+ *                               y el chatbot de reformas-madrid
  *   - newsletter_signup       → suscripción al newsletter del blog
  *   - roi_calculator_used     → uso de la calculadora ROI
  *
