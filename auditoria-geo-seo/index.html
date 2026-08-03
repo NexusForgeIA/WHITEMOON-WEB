@@ -161,18 +161,23 @@
   <div class="wrap">
     <!-- FORM -->
     <div class="panel" id="auditPanel">
-      <form id="auditForm" novalidate>
+      <form id="auditForm" novalidate
+            toolname="auditoria_geo_seo_gratis"
+            tooldescription="Pide la auditoría GEO/SEO gratuita de una web: devuelve el score de visibilidad en Google y en asistentes de IA como ChatGPT, Grok y Perplexity. Rellena los campos y deja que la persona confirme el envío.">
         <div class="field">
           <label for="f_nombre">Nombre<span class="req">*</span></label>
-          <input type="text" id="f_nombre" name="nombre" placeholder="Tu nombre" autocomplete="name">
+          <input type="text" id="f_nombre" name="nombre" placeholder="Tu nombre" autocomplete="name"
+                 toolparamdescription="Nombre de la persona que pide la auditoría.">
         </div>
         <div class="field">
           <label for="f_telefono">Teléfono<span class="req">*</span></label>
-          <input type="tel" id="f_telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel">
+          <input type="tel" id="f_telefono" name="telefono" placeholder="+34 600 000 000" autocomplete="tel"
+                 toolparamdescription="Teléfono de contacto. Móvil español de 9 cifras, con o sin prefijo +34.">
         </div>
         <div class="field">
           <label for="f_url">URL de tu web<span class="req">*</span></label>
-          <input type="text" id="f_url" name="url" placeholder="https://tunegocio.es" autocomplete="url" inputmode="url">
+          <input type="text" id="f_url" name="url" placeholder="https://tunegocio.es" autocomplete="url" inputmode="url"
+                 toolparamdescription="URL de la web que se va a analizar, por ejemplo https://tunegocio.es">
         </div>
         <button type="submit" class="btn-go" id="auditSubmit">Analizar mi web gratis →</button>
         <div id="auditMsg" class="form-msg"></div>
@@ -357,5 +362,6 @@
   });
 })();
 </script>
+<script src="/assets/webmcp.js?v=2026080401" defer></script>
 </body>
 </html>
