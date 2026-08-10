@@ -15,7 +15,12 @@
     "t012",
     "t013",
     "t014",
-    "t015"
+    "t015",
+    "t016",
+    "t017",
+    "t018",
+    "t019",
+    "t020"
   ],
   "publicaciones": [
     {
@@ -67,6 +72,23 @@
         "agente-ia-abogados-filtrar-primeras-consultas",
         "agente-ia-reformas-seguimiento-presupuestos",
         "agente-ia-autonomos-recuperar-horas-semana"
+      ]
+    },
+    {
+      "fecha": "2026-08-10",
+      "ids": [
+        "t016",
+        "t017",
+        "t018",
+        "t019",
+        "t020"
+      ],
+      "slugs": [
+        "agente-ia-texto-o-voz-cual-elegir",
+        "agente-ia-whatsapp-negocio-local",
+        "agente-voz-ia-reducir-llamadas-perdidas",
+        "agente-ia-reactivar-clientes-dormidos",
+        "seo-local-pymes-madrid-noroeste-prioridades"
       ]
     }
   ]
