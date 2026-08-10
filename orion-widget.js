@@ -29,7 +29,7 @@
     var src = (e && e.detail && e.detail.source) ||
               (location.pathname.replace(/^\/+|\/+$/g, '').replace(/\//g, '-') || 'home');
     if (typeof window.wmTrack === 'function') {
-      window.wmTrack('click_open_orion', { source: src });
+      window.wmTrack('click_open_orion', { wm_source: src });
     }
     const b = document.getElementById("luna-btn");
     if (b) b.click();
@@ -179,9 +179,11 @@
   // GA4: el widget flotante se ha inyectado y es visible por primera
   // vez en esta carga (este punto solo se alcanza una vez gracias al
   // guard __orionWidgetLoaded + el early-return si #luna-widget existe).
+  // El parámetro va como `wm_source` a propósito: `source` es reservado
+  // en GA4 y reescribía la fuente de la sesión (ver assets/wm-track.js).
   if (typeof window.wmTrack === 'function') {
     window.wmTrack('chatbot_bubble_visible', {
-      source: 'widget-flotante'
+      wm_source: 'widget-flotante'
     });
   }
 
@@ -301,7 +303,7 @@
     // (los CTAs externos ya trackean vía el listener `orion-open`).
     if (typeof window.wmTrack === 'function') {
       window.wmTrack('click_open_orion', {
-        source: 'widget-flotante',
+        wm_source: 'widget-flotante',
         placement: 'bottom-right'
       });
     }
