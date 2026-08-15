@@ -925,25 +925,22 @@ body.menu-open .overlay-cta-wrap{animation:ovIn .7s var(--ease) .43s forwards}
 body.orion-open .orion-fab{transform:scale(.9) rotate(90deg)}
 
 /* ---- Esquina flotante: solo el CTA de voz ----
-   En esta landing la esquina la ocupan únicamente los CTAs de voz que
-   inyecta orion-widget.js: la burbuja (#luna-widget) y el pill
-   (#orion-cta-fab). El FAB de chat de texto se oculta para no competir
-   con ellos ni duplicar la misma acción.
+   En esta landing la esquina la ocupan únicamente los flotantes que
+   inyecta orion-widget.js: la burbuja de voz (#luna-widget) y la de
+   WhatsApp (#wm-wa-fab). El FAB de chat de texto se oculta para no
+   competir con ellos ni duplicar la misma acción.
    Se oculta por CSS y NO se borra del DOM a propósito: el script de la
    landing hace fab.addEventListener(...), así que quitar el botón
    rompería el resto del chat (los 13 CTAs [data-orion] del cuerpo y
    window.orionOpen).
-   Tampoco se tocan las variables --orion-*: al quedar solo dos
-   elementos, la pila vuelve a los valores por defecto del widget
-   (burbuja a 28px del borde y pill 22px por encima), los mismos que en
-   el resto del sitio. */
+   Tampoco se tocan las variables --orion-*: la pila usa los valores por
+   defecto del widget, los mismos que en el resto del sitio. */
 .orion-fab{display:none}
 
 /* La ventana del chat sigue abriéndose desde los CTAs del cuerpo. Con
-   el chat abierto los flotantes de voz se apartan: la ventana usa
-   z-index 131 y quedaría por debajo del widget (9998/9999). Es el mismo
+   el chat abierto el flotante de voz se aparta: la ventana usa
+   z-index 131 y quedaría por debajo del widget (9999). Es el mismo
    criterio que ya aplica el widget durante una llamada de voz. */
-body.orion-open #orion-cta-fab,
 body.orion-open #luna-widget{
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .3s var(--ease),visibility .3s;
