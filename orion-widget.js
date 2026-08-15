@@ -36,84 +36,7 @@
   });
 
   // -----------------------------------------------------------
-  // 2) CTA flotante "Habla con Orion ahora" — pill de alta
-  //    visibilidad, presente en TODAS las páginas. Al pulsar
-  //    dispara `orion-open`, que arranca la llamada Retell
-  //    reutilizando el botón de voz (#luna-btn). Se apila encima
-  //    del botón redondo sin solaparlo y se oculta durante la
-  //    llamada (ver render()). Se inyecta ANTES del early-return
-  //    del widget de voz para que aparezca aunque este venga
-  //    renderizado inline.
-  // -----------------------------------------------------------
-  let ctaFab = null;
-  (function injectCtaFab() {
-    if (document.getElementById("orion-cta-fab")) return;
-    const ctaCss = `
-      /* Geometría compartida de los dos flotantes. El pill se coloca a
-         partir de la posición y el tamaño de la burbuja, así que el
-         hueco entre ambos está garantizado por construcción: cambiar
-         un offset mueve los dos a la vez y nunca pueden solaparse. */
-      :root{
-        --orion-right:28px;   /* separación al borde derecho */
-        --orion-bottom:28px;  /* separación al borde inferior */
-        --orion-btn:60px;     /* diámetro de la burbuja */
-        --orion-gap:22px;     /* hueco libre entre burbuja y pill */
-      }
-      @media (max-width:599px){
-        :root{ --orion-right:16px; --orion-bottom:20px; }
-      }
-      #orion-cta-fab{
-        position:fixed; right:var(--orion-right); z-index:9998;
-        bottom:calc(var(--orion-bottom) + var(--orion-btn) + var(--orion-gap));
-        display:inline-flex; align-items:center; gap:9px;
-        padding:13px 20px; border:0; border-radius:999px; cursor:pointer;
-        font-family:'Sora',sans-serif; font-size:.92rem; font-weight:600;
-        color:#fff; background:#7c4dff; line-height:1;
-        /* Sombra contenida: con blur 20 y offset 8 el halo baja 18px,
-           por debajo de los 22px de hueco, así que no invade la burbuja. */
-        box-shadow:0 8px 20px rgba(124,77,255,.38),0 2px 8px rgba(0,0,0,.35);
-        transition:background .2s, transform .2s, box-shadow .2s, opacity .25s, visibility .25s;
-      }
-      #orion-cta-fab:hover{ background:#9d70ff; transform:translateY(-2px); box-shadow:0 10px 22px rgba(124,77,255,.5),0 2px 8px rgba(0,0,0,.35); }
-      #orion-cta-fab:focus-visible{ outline:3px solid #fff; outline-offset:2px; }
-      #orion-cta-fab .ocf-ic{ width:18px; height:18px; flex:0 0 auto; }
-      #orion-cta-fab .ocf-arrow{ transition:transform .2s; }
-      #orion-cta-fab:hover .ocf-arrow{ transform:translateX(3px); }
-      #orion-cta-fab.is-hidden{ opacity:0; visibility:hidden; transform:translateY(8px); pointer-events:none; }
-      @media (max-width:599px){
-        /* Solo tipografía: right/bottom ya salen de las variables. */
-        #orion-cta-fab{ padding:12px 16px; font-size:.85rem; }
-      }
-      @media (prefers-reduced-motion:reduce){
-        #orion-cta-fab, #orion-cta-fab:hover{ transition:none; transform:none; }
-        #orion-cta-fab:hover .ocf-arrow{ transform:none; }
-      }
-    `;
-    const st = document.createElement("style");
-    st.id = "orion-cta-fab-styles";
-    st.textContent = ctaCss;
-    document.head.appendChild(st);
-
-    ctaFab = document.createElement("button");
-    ctaFab.type = "button";
-    ctaFab.id = "orion-cta-fab";
-    ctaFab.setAttribute("aria-label", "Habla con Orion ahora, agente de voz IA en directo");
-    ctaFab.innerHTML =
-      '<svg class="ocf-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
-      '<rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>' +
-      '<span>Habla con Orion ahora</span><span class="ocf-arrow" aria-hidden="true">→</span>';
-
-    ctaFab.addEventListener("click", () => {
-      document.dispatchEvent(new CustomEvent("orion-open", { detail: { source: "cta-flotante" } }));
-    });
-
-    const place = () => (document.body || document.documentElement).appendChild(ctaFab);
-    if (document.body) place();
-    else document.addEventListener("DOMContentLoaded", place, { once: true });
-  })();
-
-  // -----------------------------------------------------------
-  // 2b) WhatsApp — SEGUNDA burbuja flotante.
+  // 2) WhatsApp — SEGUNDA burbuja flotante.
   //     Es un enlace wa.me normal y corriente: abre la conversación
   //     con el 643 199 580 en pestaña nueva. Nada de API, ningún SDK
   //     y ninguna petición extra: va aquí dentro justamente para no
@@ -121,13 +44,14 @@
   //     viene diferido (scroll/interacción o 3 s), así que no toca
   //     el LCP.
   //
-  //     Se coloca ENCIMA del pill de Orion. La posición sale de las
-  //     mismas variables (--orion-*) más la altura REAL del pill,
-  //     medida con ResizeObserver: si el pill cambia de tamaño, la
-  //     burbuja se aparta sola y no pueden solaparse.
+  //     Se coloca ENCIMA de la burbuja de Orion. La posición sale de
+  //     las mismas variables (--orion-*) que usa el widget de voz, así
+  //     que el hueco entre las dos burbujas está garantizado por
+  //     construcción: cambiar un offset las mueve a la vez.
   //
   //     Va ANTES del early-return para que también aparezca en las
-  //     páginas donde Orion venga renderizado inline.
+  //     páginas donde Orion venga renderizado inline; por eso las
+  //     variables --orion-* se declaran aquí y no en el CSS del widget.
   // -----------------------------------------------------------
   (function injectWhatsApp() {
     if (document.getElementById("wm-wa-fab")) return;
@@ -136,11 +60,21 @@
     const MENSAJE = "Hola, quiero información sobre...";
 
     const waCss = `
+      /* Geometría compartida de los dos flotantes de la esquina. */
+      :root{
+        --orion-right:28px;   /* separación al borde derecho */
+        --orion-bottom:28px;  /* separación al borde inferior */
+        --orion-btn:60px;     /* diámetro de las burbujas */
+        --orion-gap:22px;     /* hueco libre entre ambas */
+      }
+      @media (max-width:599px){
+        :root{ --orion-right:16px; --orion-bottom:20px; }
+      }
       #wm-wa-fab{
         position:fixed; z-index:9997;
         right:var(--orion-right,28px);
-        /* burbuja Orion + hueco + pill Orion (su alto lo pone el JS) */
-        bottom:calc(var(--orion-bottom,28px) + var(--orion-btn,60px) + var(--orion-gap,22px) + var(--wm-wa-offset,60px));
+        /* justo encima de la burbuja de Orion, con el hueco de rigor */
+        bottom:calc(var(--orion-bottom,28px) + var(--orion-btn,60px) + var(--orion-gap,22px));
         width:var(--orion-btn,60px); height:var(--orion-btn,60px);
         border-radius:50%; display:grid; place-items:center;
         background:#0B0F17; border:1px solid rgba(37,211,102,.5);
@@ -181,19 +115,7 @@
       }
     });
 
-    // La separación real respecto al pill: se mide en vez de fijarse,
-    // para que un cambio de tamaño del pill no junte las dos burbujas.
-    function sincronizarPila() {
-      const alto = ctaFab ? Math.round(ctaFab.getBoundingClientRect().height) : 0;
-      document.documentElement.style.setProperty("--wm-wa-offset", alto ? alto + 18 + "px" : "0px");
-    }
-
-    const place = () => {
-      (document.body || document.documentElement).appendChild(wa);
-      sincronizarPila();
-      window.addEventListener("resize", sincronizarPila, { passive: true });
-      if (ctaFab && window.ResizeObserver) new ResizeObserver(sincronizarPila).observe(ctaFab);
-    };
+    const place = () => (document.body || document.documentElement).appendChild(wa);
     if (document.body) place();
     else document.addEventListener("DOMContentLoaded", place, { once: true });
   })();
@@ -295,9 +217,6 @@
       btn.setAttribute("aria-label", "Hablar con Orion, agente de voz IA");
       bars.classList.remove("is-active", "is-speaking");
     }
-    // Durante la llamada, el pill flotante se oculta: el botón redondo
-    // pasa a ser el control de "finalizar" y evita CTAs redundantes.
-    if (ctaFab) ctaFab.classList.toggle("is-hidden", callActive);
   }
   window.addEventListener("resize", render);
   render();
