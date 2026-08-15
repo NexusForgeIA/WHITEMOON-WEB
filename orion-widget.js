@@ -112,6 +112,92 @@
     else document.addEventListener("DOMContentLoaded", place, { once: true });
   })();
 
+  // -----------------------------------------------------------
+  // 2b) WhatsApp — SEGUNDA burbuja flotante.
+  //     Es un enlace wa.me normal y corriente: abre la conversación
+  //     con el 643 199 580 en pestaña nueva. Nada de API, ningún SDK
+  //     y ninguna petición extra: va aquí dentro justamente para no
+  //     añadir un fichero más a las 250 páginas, y este script ya
+  //     viene diferido (scroll/interacción o 3 s), así que no toca
+  //     el LCP.
+  //
+  //     Se coloca ENCIMA del pill de Orion. La posición sale de las
+  //     mismas variables (--orion-*) más la altura REAL del pill,
+  //     medida con ResizeObserver: si el pill cambia de tamaño, la
+  //     burbuja se aparta sola y no pueden solaparse.
+  //
+  //     Va ANTES del early-return para que también aparezca en las
+  //     páginas donde Orion venga renderizado inline.
+  // -----------------------------------------------------------
+  (function injectWhatsApp() {
+    if (document.getElementById("wm-wa-fab")) return;
+
+    const TELEFONO = "34643199580";
+    const MENSAJE = "Hola, quiero información sobre...";
+
+    const waCss = `
+      #wm-wa-fab{
+        position:fixed; z-index:9997;
+        right:var(--orion-right,28px);
+        /* burbuja Orion + hueco + pill Orion (su alto lo pone el JS) */
+        bottom:calc(var(--orion-bottom,28px) + var(--orion-btn,60px) + var(--orion-gap,22px) + var(--wm-wa-offset,60px));
+        width:var(--orion-btn,60px); height:var(--orion-btn,60px);
+        border-radius:50%; display:grid; place-items:center;
+        background:#0B0F17; border:1px solid rgba(37,211,102,.5);
+        box-shadow:0 8px 28px rgba(0,0,0,.5);
+        transition:transform .2s, border-color .2s, box-shadow .2s;
+        -webkit-tap-highlight-color:transparent;
+      }
+      #wm-wa-fab:hover{ transform:translateY(-2px); border-color:#25D366; box-shadow:0 12px 32px rgba(0,0,0,.55),0 0 22px rgba(37,211,102,.3); }
+      #wm-wa-fab:focus-visible{ outline:3px solid #25D366; outline-offset:3px; }
+      #wm-wa-fab svg{ width:30px; height:30px; fill:#25D366; display:block; }
+      @media (prefers-reduced-motion:reduce){
+        #wm-wa-fab, #wm-wa-fab:hover{ transition:none; transform:none; }
+      }
+    `;
+    const waStyle = document.createElement("style");
+    waStyle.id = "wm-wa-fab-styles";
+    waStyle.textContent = waCss;
+    document.head.appendChild(waStyle);
+
+    const wa = document.createElement("a");
+    wa.id = "wm-wa-fab";
+    wa.href = "https://wa.me/" + TELEFONO + "?text=" + encodeURIComponent(MENSAJE);
+    wa.target = "_blank";
+    wa.rel = "noopener noreferrer";
+    wa.setAttribute("aria-label", "Escríbenos por WhatsApp al 643 199 580");
+    // Glifo oficial de WhatsApp.
+    wa.innerHTML =
+      '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+      '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>';
+
+    wa.addEventListener("click", () => {
+      // El parámetro va como `wm_source`: `source` es reservado en GA4 y
+      // reescribiría la fuente de la sesión (ver assets/wm-track.js).
+      if (typeof window.wmTrack === "function") {
+        window.wmTrack("click_whatsapp_widget", {
+          wm_source: location.pathname.replace(/^\/+|\/+$/g, "").replace(/\//g, "-") || "home",
+        });
+      }
+    });
+
+    // La separación real respecto al pill: se mide en vez de fijarse,
+    // para que un cambio de tamaño del pill no junte las dos burbujas.
+    function sincronizarPila() {
+      const alto = ctaFab ? Math.round(ctaFab.getBoundingClientRect().height) : 0;
+      document.documentElement.style.setProperty("--wm-wa-offset", alto ? alto + 18 + "px" : "0px");
+    }
+
+    const place = () => {
+      (document.body || document.documentElement).appendChild(wa);
+      sincronizarPila();
+      window.addEventListener("resize", sincronizarPila, { passive: true });
+      if (ctaFab && window.ResizeObserver) new ResizeObserver(sincronizarPila).observe(ctaFab);
+    };
+    if (document.body) place();
+    else document.addEventListener("DOMContentLoaded", place, { once: true });
+  })();
+
   // Si el widget de voz ya está en el DOM, no inyectamos el resto.
   if (document.getElementById("luna-widget")) return;
 
