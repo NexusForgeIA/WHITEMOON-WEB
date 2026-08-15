@@ -1,3 +1,7 @@
+> Otros agentes de este directorio: el chatbot de texto con RAG del sitio
+> está documentado en [`RAG-CHATBOT.md`](RAG-CHATBOT.md)
+> (`rag_ingest_whitemoon.py` + `wm-rag-*`).
+
 # Generador automatico de blog SEO
 
 Agente que cada **lunes temprano** genera artculos de blog con la Claude API y los

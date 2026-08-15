@@ -1,0 +1,62 @@
+name: RAG re-ingest (chatbot del sitio)
+
+# Mantiene al día el RAG del chatbot de texto de whitemoon.es.
+#
+# Se encadena al deploy de Pages en vez de dispararse con el push: la
+# Edge Function `wm-rag-ingest` descarga las páginas del sitio EN VIVO,
+# así que si corriera antes de publicar reindexaría la versión vieja.
+#
+# La pasada es incremental: la función guarda el hash del texto de cada
+# página, así que solo se re-embebe lo que cambió de verdad. Una pasada
+# sin cambios cuesta ~0.
+#
+# No necesita secretos: el script usa la anon key, que es pública.
+
+on:
+  workflow_run:
+    workflows: ["Deploy GitHub Pages"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Reindexar todo aunque no haya cambios"
+        type: boolean
+        default: false
+
+concurrency:
+  group: rag-reingest
+  cancel-in-progress: false
+
+jobs:
+  reingest:
+    # Si el deploy falló, el sitio no cambió: no hay nada que reindexar.
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Pages responde antes de que el edge de Cloudflare (max-age 14400)
+      # haya soltado los bytes viejos. Este margen evita indexar la
+      # versión anterior de las páginas que acaban de cambiar.
+      - name: Esperar propagación del CDN
+        if: ${{ github.event_name == 'workflow_run' }}
+        run: sleep 120
+
+      - name: Re-ingestar whitemoon.es
+        run: |
+          python scripts/rag_ingest_whitemoon.py \
+            ${{ github.event.inputs.force == 'true' && '--force' || '' }}
+
+      # Las páginas retiradas del sitemap salen también del RAG, para que
+      # el bot no cite una URL que ya no existe.
+      - name: Limpiar páginas retiradas
+        run: python scripts/rag_ingest_whitemoon.py --prune
+
+      - name: Estado del índice
+        run: python scripts/rag_ingest_whitemoon.py --stats

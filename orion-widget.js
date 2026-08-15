@@ -112,6 +112,27 @@
     else document.addEventListener("DOMContentLoaded", place, { once: true });
   })();
 
+  // -----------------------------------------------------------
+  // 2b) Chat IA de texto (RAG del sitio) — SEGUNDA burbuja.
+  //     Se encadena desde aquí en vez de añadir un <script> a las
+  //     250 páginas: este fichero ya es el punto de entrada único de
+  //     los flotantes y ya viene diferido (scroll/interacción o 3 s),
+  //     así que el chat hereda ese timing y la misma curación de
+  //     páginas sin tocar el LCP de ninguna.
+  //     Va ANTES del early-return para que también aparezca donde
+  //     Orion venga renderizado inline.
+  // -----------------------------------------------------------
+  (function loadChatWidget() {
+    if (window.__wmChatWidgetLoaded || document.getElementById("wm-chat-fab")) return;
+    const s = document.createElement("script");
+    s.src = "/wm-chat-widget.js?v=2026081501";
+    s.defer = true;
+    s.addEventListener("error", () => console.warn("[wm-chat] no se pudo cargar el widget de chat"));
+    const put = () => (document.body || document.documentElement).appendChild(s);
+    if (document.body) put();
+    else document.addEventListener("DOMContentLoaded", put, { once: true });
+  })();
+
   // Si el widget de voz ya está en el DOM, no inyectamos el resto.
   if (document.getElementById("luna-widget")) return;
 
