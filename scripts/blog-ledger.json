@@ -20,7 +20,12 @@
     "t017",
     "t018",
     "t019",
-    "t020"
+    "t020",
+    "t021",
+    "t022",
+    "t023",
+    "t024",
+    "t025"
   ],
   "publicaciones": [
     {
@@ -89,6 +94,23 @@
         "agente-voz-ia-reducir-llamadas-perdidas",
         "agente-ia-reactivar-clientes-dormidos",
         "seo-local-pymes-madrid-noroeste-prioridades"
+      ]
+    },
+    {
+      "fecha": "2026-08-17",
+      "ids": [
+        "t021",
+        "t022",
+        "t023",
+        "t024",
+        "t025"
+      ],
+      "slugs": [
+        "geo-aeo-aparecer-chatgpt-negocio",
+        "agente-ia-peluqueria-barberia-reservas",
+        "agente-ia-fontaneros-gestionar-urgencias",
+        "agente-ia-gestoria-altas-modelos-avisos",
+        "agente-ia-taller-recordar-revisiones-itv"
       ]
     }
   ]
