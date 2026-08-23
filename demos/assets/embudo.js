@@ -15,7 +15,7 @@
     {
       id:"spark", warranty:true, name:"Spark", forWho:"Ya tienes web",
       tag:"Chatbot conversacional completo con IA. Tu negocio atiende clientes 24/7 sin esfuerzo.",
-      big:"499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en una semana",
+      big:"499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
       desde:"499€ setup + 99€/mes",
       short:"Agente IA de chat 24/7 sobre tu web actual, que recoge los datos y te avisa al móvil.",
       url:"https://whitemoon.es/spark/",
@@ -23,8 +23,8 @@
     },
     {
       id:"mini-core", warranty:true, name:"Pack Mini Core", forWho:"Autónomos sin web",
-      tag:"Tu presencia online lista en una semana: landing profesional y un agente IA que atiende a cada cliente y te avisa al móvil.",
-      big:"599€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en ~1 semana",
+      tag:"Tu presencia online lista en 7 días laborables: landing profesional y un agente IA que atiende a cada cliente y te avisa al móvil.",
+      big:"599€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
       desde:"599€ setup + 99€/mes",
       short:"Landing profesional, dominio el primer año y chatbot básico que recoge el contacto y te avisa.",
       url:"https://whitemoon.es/mini-core/",
@@ -33,7 +33,7 @@
     {
       id:"orion-agent", warranty:true, name:"Orion IA Agent", forWho:"Gestión de citas",
       tag:"Agente de voz IA 24/7 sobre la web que ya tienes. Gestiona citas y recoge contactos sin que intervenga nadie.",
-      big:"799€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días",
+      big:"799€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
       desde:"799€ setup + 99€/mes",
       short:"Agente de voz 24/7 sobre tu web actual, con agenda automática vía Cal.com.",
       url:"https://whitemoon.es/orion-agent/",
@@ -42,7 +42,7 @@
     {
       id:"core", warranty:true, name:"Core Spark Web", forWho:"Web + chat IA",
       tag:"Web profesional + dominio + Agente Spark conversacional 24/7 + SEO/GEO/AEO completo desde el día 1.",
-      big:"899€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días",
+      big:"899€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
       desde:"899€ setup + 99€/mes",
       short:"Web profesional con dominio, agente de chat 24/7 y SEO/GEO/AEO desde el día 1.",
       url:"https://whitemoon.es/core/",
@@ -51,7 +51,7 @@
     {
       id:"core-orion", warranty:true, name:"Core Orion", forWho:"Web + voz IA",
       tag:"Web profesional + dominio + Orion IA voz 24/7 + SEO/GEO/AEO. Tu negocio online y automatizado con voz desde el día 1.",
-      big:"1.499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días",
+      big:"1.499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
       desde:"1.499€ setup + 99€/mes",
       short:"Web profesional con dominio, Orion IA de voz 24/7, reservas y SEO/GEO/AEO.",
       url:"https://whitemoon.es/core-orion/",
@@ -60,7 +60,7 @@
     {
       id:"wm360", warranty:true, name:"WhiteMoon 360", forWho:"Negocio con equipo",
       tag:"Tu negocio entero en un sistema: la web capta el aviso o la cita, el agente IA de chat lo clasifica, tu equipo lo recibe en su móvil y tú lo gestionas desde tu propio panel.",
-      big:"1.899€", small:"+ 199€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días",
+      big:"1.899€", small:"+ 199€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
       desde:"1.899€ setup + 199€/mes",
       short:"Web + agente IA de chat + CRM propio con reparto de trabajo, agenda y panel de KPIs.",
       url:"https://whitemoon.es/whitemoon-360/",
@@ -503,12 +503,12 @@
       +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>'
       +   '</span>'
       +   '<h3>¡Listo, ' + esc(nombre) + '!</h3>'
-      +   '<p>Hemos recibido tus datos. Nos ponemos con tu proyecto y en menos de una semana estará funcionando.</p>'
+      +   '<p>Hemos recibido tus datos. Nos ponemos con tu proyecto: en 7 días laborables estará funcionando, en las condiciones de la garantía.</p>'
       +   '<h4 class="next__title">Qué pasa ahora</h4>'
       +   '<ol class="next">'
       +     '<li><span class="next__n" aria-hidden="true">1</span>Te llamamos en menos de 24 h laborables</li>'
       +     '<li><span class="next__n" aria-hidden="true">2</span>Preparamos y configuramos tu agente</li>'
-      +     '<li><span class="next__n" aria-hidden="true">3</span>En menos de una semana, funcionando</li>'
+      +     '<li><span class="next__n" aria-hidden="true">3</span>En 7 días laborables, funcionando</li>'
       +   '</ol>'
       + '</div>';
     statusBox.focus();
