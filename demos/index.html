@@ -43,7 +43,7 @@
      así que el titular no se reajusta a media carga. -->
 <link rel="preload" href="/demos/assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css">
-<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082302">
+<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082303">
 <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
@@ -553,10 +553,24 @@
         <h2>Tu siguiente<br><span class="grad">paso</span></h2>
         <p class="lead" id="close-lead">Tu siguiente paso: tomamos tus datos y empezamos con tu proyecto. En menos de una semana lo tienes funcionando.</p>
 
-        <p class="pledge">
-          <span class="pledge__tag">Puesta en marcha garantizada</span>
-          Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. Y ningún pack tiene permanencia.
-        </p>
+        <!-- La promesa se mantiene en el titular; debajo van las condiciones que la
+             hacen exigible. Van en <div> y no en <p> porque ahora llevan un
+             encabezado y una lista dentro. -->
+        <div class="pledge">
+          <p class="pledge__claim">
+            <span class="pledge__tag">Puesta en marcha garantizada</span>
+            Tu agente operativo en <b>7 días laborables</b> — o la cuota mensual no empieza a contar hasta que lo esté.
+          </p>
+          <h3 class="pledge__how">Cómo funciona esta garantía</h3>
+          <ul class="pledge__terms">
+            <li>Aplica al producto que contrates (Spark, Orion IA Agent, Core o Core RAG).</li>
+            <li>El plazo de 7 días laborables empieza a contar cuando se abona el setup y nos entregas lo necesario para trabajar: la información de tu negocio, tu logotipo y textos, y los accesos que requiera tu pack.</li>
+            <li>“Operativo” significa que tu agente o página está publicado en una URL accesible, responde y capta leads según lo contratado. No incluye ampliaciones ni cambios fuera del alcance del pack.</li>
+            <li>Si por una causa que dependa de nosotros no está operativo en ese plazo, la cuota mensual no se factura hasta que lo esté. El pago único de setup no se ve afectado.</li>
+            <li>El plazo se pausa si se retrasa por falta de material o accesos por tu parte, por cambios de alcance que nos pidas, o por incidencias de terceros o plataformas ajenas a WhiteMoon.</li>
+            <li>Sin permanencia: puedes darte de baja cuando quieras.</li>
+          </ul>
+        </div>
 
         <!-- Los datos van a leads_web (Supabase) y el aviso sale por Telegram desde
              la Edge Function propuesta-notify. Aquí no vive ninguna clave secreta:
