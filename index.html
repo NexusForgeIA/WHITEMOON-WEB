@@ -363,16 +363,16 @@
   <!-- ── SCHEMA ABOUTPAGE ── -->
 
   <!-- ── SCHEMA PERSON · FOUNDER ── -->
-  <!-- ── PERFORMANCE: PRECONNECT (debe ir ANTES del link a fonts) ── -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <!-- ── PERFORMANCE: LOCAL FONT PRELOAD ── -->
+  <!-- ── PERFORMANCE: LAS DOS FUENTES SE SIRVEN DE AQUI ──
+       Inter y Sora estaban pidiendose a Google, y encima Inter llegaba dos
+       veces: 47 KiB del propio dominio mas otros 47 KiB de gstatic con la
+       misma tipografia. Los dos ficheros locales son variables (Inter
+       wght 100-900, Sora 100-800), asi que cubren todos los pesos que usa la
+       pagina sin pedir nada a terceros. Con esto se van dos origenes
+       externos, dos saltos de DNS+TLS y 72 KiB. -->
   <link rel="preload" as="font" href="/assets/fonts/inter-latin.woff2" type="font/woff2" crossorigin>
 
   <!-- ── PERFORMANCE: NON-BLOCKING STYLES (preload + onload swap) ── -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700&display=swap"></noscript>
   <link rel="preload" href="/assets/site.css?v=2026061001" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/assets/site.css?v=2026061001"></noscript>
   <link rel="dns-prefetch" href="https://wa.me">
@@ -386,6 +386,16 @@
 
   <!-- ── ENTERPRISE PALETTE + TYPOGRAPHY (Inter + paleta premium oscura) ── -->
   <style>
+    /* Las dos familias se declaran aqui, en el CSS critico, y no en site.css:
+       site.css se carga en diferido y hasta que llegaba no habia manera de
+       usar la fuente ya precargada. Un solo @font-face por familia porque
+       ambos ficheros son variables y cubren todo el rango de pesos. */
+    @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
+      src:url('/assets/fonts/inter-latin.woff2') format('woff2-variations'),
+          url('/assets/fonts/inter-latin.woff2') format('woff2');}
+    @font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;
+      src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),
+          url('/assets/fonts/sora-latin-var.woff2') format('woff2');}
     :root{
       --bg:#0B0F17;          /* Premium dark, frío azul-grisáceo (era #08080d) */
       --bg2:#0E1320;
@@ -549,7 +559,7 @@
 <nav class="navbar nav-ent" aria-label="Navegación principal">
   <div class="nav-row">
     <a href="/" class="nav-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}">
-      <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async"></picture>
+      <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="" width="28" height="28" loading="eager" decoding="async"></picture>
       <span><span class="light">WHITE</span><span class="acc">MOON</span></span>
     </a>
 
@@ -795,7 +805,7 @@
       <!-- SPARK · compacto -->
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>MÁS POPULAR</div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Para crecer</div>
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Para crecer</div>
         <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Spark</div>
         <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
@@ -811,7 +821,7 @@
       <!-- CORE · compacto -->
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:#10b981;color:#0a0a14;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em" style="display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c1 1 1.5 2 1.5 3.5h5c0-1.5.5-2.5 1.5-3.5A6 6 0 0 0 12 3z"/></svg> <span>INCLUYE WEB</span></div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Negocio nuevo o sin web</div>
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Negocio nuevo o sin web</div>
         <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Core Spark Web</div>
         <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">899€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
@@ -825,7 +835,7 @@
       <!-- ORION IA AGENT · compacto -->
       <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
         <div style="position:absolute;top:14px;right:14px;background:#7c4dff;color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg> <span>VOZ 24/7</span></div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8b5cf6;margin-bottom:6px">Atención por voz</div>
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Atención por voz</div>
         <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Orion IA Agent</div>
         <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">799€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
         <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
@@ -1163,7 +1173,7 @@
     <!-- Col 1 — Marca -->
     <div class="fc-brand">
       <a href="/" class="fc-logo" onclick="if(location.pathname==='/'||location.pathname.endsWith('/index.html')){window.scrollTo({top:0,behavior:'smooth'});return false;}" aria-label="WhiteMoon">
-        <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="WhiteMoon" width="32" height="32" loading="lazy" decoding="async"></picture>
+        <picture><source srcset="./logo.webp" type="image/webp"><img src="./logo.png" alt="" width="32" height="32" loading="lazy" decoding="async"></picture>
         <span><span class="light">WHITE</span><span class="acc">MOON</span></span>
       </a>
       <p>Sistemas de automatización IA para pymes españolas.<br>Operativo en 7 días, sin permanencia.</p>
