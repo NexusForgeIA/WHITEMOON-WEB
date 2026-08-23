@@ -95,7 +95,9 @@
       + '.wm-cookie-inner{max-width:1100px;margin:0 auto;padding:18px 22px;display:flex;'
       + 'align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between}'
       + '.wm-cookie-text{margin:0;color:#c8c8d8;font-size:.86rem;line-height:1.6;flex:1 1 420px}'
-      + '.wm-cookie-text a{color:#7c4dff;text-decoration:underline}'
+      // --p (#7c4dff) sobre el fondo oscuro se queda en 4.15:1. Como color de
+      // texto va --p2 (#9d70ff), que llega a 5.70:1 y cumple AA.
+      + '.wm-cookie-text a{color:#9d70ff;text-decoration:underline}'
       + '.wm-cookie-actions{display:flex;gap:10px;flex-wrap:wrap}'
       + '.wm-cookie-btn{font-family:inherit;font-size:.85rem;font-weight:600;padding:11px 20px;'
       + 'border-radius:10px;cursor:pointer;border:1px solid transparent;'

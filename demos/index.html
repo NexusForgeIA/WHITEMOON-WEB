@@ -2,28 +2,28 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demos en vivo de agentes IA y CRM · WhiteMoon</title>
-<meta name="description" content="20 demos de agentes IA: dental, psicología, estética, barbería, tatuajes, reformas, autoescuelas, talleres, abogados, veterinarios, mudanzas y más.">
-<meta name="keywords" content="demos agentes IA, demo chatbot sectorial, probar agente IA, demo agente IA Madrid, WhiteMoon demos">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Demo de agente IA para tu negocio, gratis · WhiteMoon</title>
+<meta name="description" content="Recorre en 9 pasos lo que un agente IA haría en tu negocio: demos reales de 20 sectores, tus dudas resueltas y el pack que encaja. Sin compromiso.">
+<meta name="keywords" content="demo agente IA, probar agente IA, demo chatbot sectorial, agente IA por sectores, demo agente IA Madrid, WhiteMoon demo">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/demos/">
-<meta property="og:title" content="Demos en vivo de agentes IA y CRM · WhiteMoon">
-<meta property="og:description" content="20 demos de agentes IA: dental, psicología, estética, barbería, tatuajes, reformas, autoescuelas, talleres, abogados, veterinarios, mudanzas y más.">
+<meta property="og:title" content="Demo de agente IA para tu negocio, gratis · WhiteMoon">
+<meta property="og:description" content="Recorre en 9 pasos lo que un agente IA haría en tu negocio: demos reales de 20 sectores, tus dudas resueltas y el pack que encaja. Sin compromiso.">
 <meta property="og:url" content="https://whitemoon.es/demos/">
 <meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:alt" content="WhiteMoon &middot; Agencia de IA">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
-<meta name="twitter:title" content="Demos en vivo de agentes IA y CRM · WhiteMoon">
-<meta name="twitter:description" content="20 demos de agentes IA: dental, psicología, estética, barbería, tatuajes, reformas, autoescuelas, talleres, abogados, veterinarios, mudanzas y más.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="WhiteMoon Agencia de IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Demo de agente IA para tu negocio, gratis · WhiteMoon">
+<meta name="twitter:description" content="Recorre en 9 pasos lo que un agente IA haría en tu negocio: demos reales de 20 sectores, tus dudas resueltas y el pack que encaja. Sin compromiso.">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
 <meta name="geo.region" content="ES-MD">
 <meta name="geo.placename" content="Majadahonda, Madrid">
 <meta name="theme-color" content="#7c4dff">
@@ -34,48 +34,37 @@
   "itemListElement": [
     {"@type":"ListItem","position":1,"name":"Inicio","item":"https://whitemoon.es/"},
     {"@type":"ListItem","position":2,"name":"Agente IA","item":"https://whitemoon.es/agentes-ia/"},
-    {"@type":"ListItem","position":3,"name":"Demos","item":"https://whitemoon.es/demos/"}
+    {"@type":"ListItem","position":3,"name":"Demo","item":"https://whitemoon.es/demos/"}
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- Sora se sirve desde el propio dominio: un solo archivo variable de 33 KB
+     cubre los pesos 300-800, no hay DNS ni TLS de terceros y se puede precargar,
+     así que el titular no se reajusta a media carga. -->
+<link rel="preload" href="/demos/assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css">
-  <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
-  <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
-  <script defer src="/assets/wm-track.js?v=2026052801"></script>
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="dns-prefetch" href="//region1.google-analytics.com">
+<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082302">
+<!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
+<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
+<script defer src="/demos/assets/embudo.js?v=2026082302"></script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="dns-prefetch" href="//region1.google-analytics.com">
+<link rel="preconnect" href="https://app.cal.com" crossorigin>
 <style>
-  /* Demos — grid de escaparate sobre landing-generic */
+  /* Enlaces del nav — mismos que en el resto del sitio. */
   .dm-nav-links{display:flex;align-items:center;gap:4px;}
   .dm-nav-links a{font-size:.82rem;color:var(--muted);padding:7px 12px;border-radius:8px;transition:color .15s,background .15s;}
   .dm-nav-links a:hover{color:var(--text);background:rgba(255,255,255,.04);}
   .dm-nav-links a[aria-current="page"]{color:var(--text);background:rgba(124,77,255,.12);}
-  .dm-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(124,77,255,.1);border:1px solid rgba(124,77,255,.3);padding:5px 14px;border-radius:50px;font-size:.72rem;font-weight:700;color:var(--p2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;}
-  .dm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
-  .dm-card{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:transform .2s,border-color .2s,box-shadow .2s;}
-  .dm-card:hover{transform:translateY(-3px);border-color:rgba(124,77,255,.45);box-shadow:0 16px 40px rgba(0,0,0,.35);}
-  .dm-shot{width:100%;height:auto;aspect-ratio:8/5;object-fit:cover;display:block;border-bottom:1px solid var(--border);background:var(--bg2);}
-  .dm-body{display:flex;flex-direction:column;flex:1;padding:22px 24px 24px;}
-  .dm-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;color:#fff;margin-bottom:10px;}
-  .dm-try{font-size:.87rem;color:var(--muted);line-height:1.6;margin:0 0 20px;flex:1;}
-  .dm-try b{color:var(--p2);font-weight:600;}
-  .dm-btn{align-self:flex-start;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;padding:11px 20px;border-radius:10px;font-weight:700;font-size:.85rem;transition:transform .2s,box-shadow .2s;}
-  .dm-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(124,77,255,.3);color:#fff;}
-  .dm-disclaimer{margin-top:40px;padding:18px 22px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);font-size:.82rem;color:var(--muted);line-height:1.6;}
-  @media(max-width:900px){.dm-grid{grid-template-columns:repeat(2,1fr);}}
-  /* El botón "Agendar reunión" se oculta en móvil, igual que en el resto
-     del sitio: el nav no cabe con la fila de enlaces. */
-  @media(max-width:768px){.nav-cta-cal{display:none !important;}}
-  @media(max-width:600px){
-    .dm-grid{grid-template-columns:1fr;gap:20px;}
-    .dm-nav-links a{padding:7px 9px;font-size:.78rem;}
-    .dm-nav-links a[href="/whitemoon-360/"]{display:none;}
-  }
-  @media(max-width:400px){.dm-nav-links a[href="/"]{display:none;}}
+  @media(max-width:720px){.dm-nav-links a{padding:7px 8px;font-size:.78rem;}}
+  /* Por debajo de ~484 px la fila de enlaces ya no cabe junto al logo y al
+     botón de agenda, y "Agendar reunión" se salía de pantalla. Se retira la
+     fila: el logo lleva a la home y el resto del sitio se alcanza desde el
+     pie, que es el mismo gesto que hace la nav de las demás páginas. */
+  @media(max-width:483px){.dm-nav-links{display:none;}}
 </style>
 </head>
 <body>
@@ -90,7 +79,7 @@
         <a href="/">Inicio</a>
         <a href="/precios/">Precios</a>
         <a href="/whitemoon-360/">WhiteMoon 360</a>
-        <a href="/demos/" aria-current="page">Demos</a>
+        <a href="/demos/" aria-current="page">Demo</a>
       </div>
       <a href="https://cal.com/whitemoon" target="_blank" rel="noopener" class="nav-cta-cal" style="display:inline-flex;align-items:center;gap:7px;padding:9px 16px;margin-right:10px;border-radius:8px;background:#7c4dff;color:#fff;font-weight:600;font-size:.92rem;text-decoration:none;white-space:nowrap;transition:background .2s,transform .2s" onmouseover="this.style.background='#9d70ff'" onmouseout="this.style.background='#7c4dff'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:15px;height:15px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Agendar reunión</a>
     </div>
@@ -98,234 +87,617 @@
 </nav>
 
 <main>
-  <div class="wrap">
-    <div class="breadcrumb">
-      <a href="https://whitemoon.es/">Inicio</a><span>›</span>
-      <a href="https://whitemoon.es/agentes-ia/">Agente IA</a><span>›</span>
-      Demos
+
+  <!-- ============================================================
+       Embudo de venta guiado. Todo cuelga de .wme: el CSS del embudo
+       vive dentro de ese envoltorio para no pisar el nav ni el footer,
+       que siguen usando landing-generic.css.
+       ============================================================ -->
+  <div class="wme">
+
+    <!-- Miga y barra de progreso comparten contenedor para que arranquen en la
+         misma vertical; la portada va más estrecha a propósito. -->
+    <div class="wrap wrap--wide">
+      <div class="breadcrumb">
+        <a href="https://whitemoon.es/">Inicio</a><span>›</span>
+        <a href="https://whitemoon.es/agentes-ia/">Agente IA</a><span>›</span>
+        Demo
+      </div>
+      <div class="topbar">
+        <nav class="dots" id="dots" aria-label="Progreso de la guía"></nav>
+        <p class="counter" id="counter">01<span aria-hidden="true">/09</span><span class="sr-only"> de 09</span></p>
+      </div>
     </div>
+
+    <noscript>
+      <div class="noscript">
+        <strong>Esta guía necesita JavaScript activado.</strong> Actívalo para recorrer los nueve pasos.
+        Mientras tanto puedes probar las demos desde los enlaces de esta página, escribirnos a
+        <a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>
+        o llamarnos al <a href="tel:+34643199580">643 199 580</a>.
+      </div>
+    </noscript>
+
+    <!-- ============ 1 · PORTADA ============ -->
+    <section class="step is-active" id="paso-1" data-title="Portada" tabindex="-1" aria-label="Paso 1 de 9: Portada">
+      <div class="wrap cover">
+        <span class="moon" aria-hidden="true"></span>
+        <p class="eyebrow reveal">WhiteMoon · Agencia de IA</p>
+        <h1 class="reveal"><span class="thin">Prueba lo que un</span> agente IA haría <span class="grad">en tu negocio</span></h1>
+        <p class="lead reveal">Nueve pasos, sin prisa y sin compromiso: demos reales de tu sector, tus dudas resueltas y el pack que encaja contigo.</p>
+        <div class="cover__cta reveal">
+          <button type="button" class="btn btn--cta" data-go="2" onclick="window.wmTrack&amp;&amp;wmTrack('click_hero_cta',{wm_source:'demos',accion:'empezar-embudo'})">
+            Quiero empezar ya <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
+        <ul class="cover__meta reveal">
+          <li>Sin compromiso</li>
+          <li>Sin permanencia</li>
+          <li>Majadahonda · Madrid</li>
+        </ul>
+        <!-- Texto real, no una nube de etiquetas: es lo que sostiene el long-tail
+             por sector de esta URL, y lo que va a leer quien llegue buscando
+             "demo agente IA para clínicas dentales" o "para talleres". -->
+        <p class="cover__sectors reveal">
+          Hay una demo montada para <strong>clínicas dentales</strong>, podología, psicología, veterinarios,
+          <strong>estética</strong>, barbería y tatuajes; para <strong>abogados</strong>, gestorías, asesorías e
+          <strong>inmobiliarias</strong>; para <strong>talleres de coches</strong>, autoescuelas, cerrajeros,
+          electricistas, reformas, servicios técnicos, control de plagas, limpiezas y mudanzas; y para
+          <strong>hostelería</strong> y chef privado a domicilio. Ábrela y háblale como lo haría un cliente tuyo.
+        </p>
+      </div>
+    </section>
+    <section class="step" id="paso-2" data-title="¿Te suena esto?" tabindex="-1" aria-label="Paso 2 de 9: ¿Te suena esto?" hidden>
+      <div class="wrap">
+        <span class="ghost" aria-hidden="true">02</span>
+        <p class="eyebrow eyebrow--p">¿Te suena esto?</p>
+        <h2>Tres cosas que<br>te están <span class="grad">costando dinero</span></h2>
+        <p class="lead">Sin estadísticas ni sustos. Léelas y decide tú si te suenan — y si te apetece, haz los números con tus propios datos.</p>
+
+        <div class="pains">
+          <article class="pain">
+            <p class="pain__label">01 · El tiempo</p>
+            <h3>Se te va el día en lo que no factura</h3>
+            <p>Explicar por vigésima vez el mismo horario, el mismo «¿dónde estáis?», el mismo precio orientativo. Y el papeleo, que acabas haciendo a las once de la noche porque durante el día no hay hueco.</p>
+            <p class="pain__count">
+              <b>Haz la cuenta</b>
+              <span>Piensa lo que vale una hora tuya. Ahora cuenta cuántas horas a la semana dedicas a cosas que resolvería cualquiera con la información delante. Multiplica por cuatro semanas. Eso es lo que te cuesta al mes hacerlo a mano.</span>
+            </p>
+          </article>
+
+          <article class="pain">
+            <p class="pain__label">02 · Las consultas</p>
+            <h3>Preguntan cuando no puedes contestar</h3>
+            <p>Estás con un cliente, conduciendo o cenando. El mensaje entra igual. Cuando lo ves han pasado tres horas — y quien preguntaba no se ha quedado esperando: ha seguido buscando y ha llamado al siguiente.</p>
+            <p class="pain__count">
+              <b>Haz la cuenta</b>
+              <span>No te fíes de ninguna estadística, mira las tuyas: abre las llamadas perdidas de la semana pasada. ¿A cuántas devolviste la llamada? ¿Y cuántas te cogieron ya? Cada una de las otras era un trabajo que hoy tiene otro.</span>
+            </p>
+          </article>
+
+          <article class="pain">
+            <p class="pain__label">03 · Los trámites</p>
+            <h3>Lo que se hace a mano se acaba olvidando</h3>
+            <p>El presupuesto que ibas a mandar «esta tarde». La cita apuntada en un papel encima del mostrador. El cliente al que dijiste que llamabas en dos semanas y ya van seis. No se pierden de golpe: se enfrían.</p>
+            <p class="pain__count">
+              <b>Haz la cuenta</b>
+              <span>Repasa los presupuestos que enviaste el mes pasado. ¿A cuántos les hiciste seguimiento? De los que no, muy pocos se cayeron por el precio: se cayeron porque nadie volvió a llamar.</span>
+            </p>
+          </article>
+        </div>
+
+        <p class="punch">No es culpa tuya: no puedes estar a todo. Lo que pasa es que hay cosas que ya no hace falta que hagas tú.</p>
+      </div>
+    </section>
+
+    <!-- ============ 3 · MÍRALO FUNCIONANDO ============ -->
+    <section class="step" id="paso-3" data-title="Así se vería en tu sector" tabindex="-1" aria-label="Paso 3 de 9: Así se vería en tu sector" hidden>
+      <div class="wrap wrap--wide">
+        <span class="ghost" aria-hidden="true">03</span>
+        <p class="eyebrow">Así se vería en tu sector</p>
+        <h2>No te lo contamos:<br><span class="grad">pruébalo tú</span></h2>
+        <p class="lead">Veinte sectores, veinte agentes distintos. Busca el tuyo, ábrelo y <strong>háblale como lo haría un cliente tuyo</strong>. Verás lo que vería él.</p>
+
+        <div class="searchbar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+          <label class="sr-only" for="demo-q">Busca tu sector</label>
+          <input id="demo-q" type="search" autocomplete="off" placeholder="Busca tu sector: dental, taller, abogados…">
+        </div>
+        <p class="count" id="demo-count" role="status">20 demos disponibles</p>
+
+        <div class="grid demos" id="demos">
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-CLINICAS-DENTALES/" target="_blank" rel="noopener" data-k="clinicas dentales marcos dental dentista clinica odontologia salud">
+            <span class="demo__top">
+              <h3>Clínicas dentales</h3>
+              <span class="demo__agent">Marcos</span>
+            </span>
+            <p>Pide la primera visita y elige hueco sin salir del chat.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Clínicas dentales (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-PODOLOGOS/" target="_blank" rel="noopener" data-k="podologia ana podologo podologia pies salud clinica">
+            <span class="demo__top">
+              <h3>Podología</h3>
+              <span class="demo__agent">ANA</span>
+            </span>
+            <p>Dile qué tratamiento necesitas y te busca un hueco real.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Podología (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-PSICOLOGIA/" target="_blank" rel="noopener" data-k="psicologia clara psicologia psicologo psicologa terapia terapeuta salud mental consulta ansiedad">
+            <span class="demo__top">
+              <h3>Psicología</h3>
+              <span class="demo__agent">Clara</span>
+            </span>
+            <p>Cuenta qué te preocupa y deja pedida la primera consulta, a tu ritmo.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Psicología (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/" target="_blank" rel="noopener" data-k="veterinarios nora veterinario mascotas animales clinica">
+            <span class="demo__top">
+              <h3>Veterinarios</h3>
+              <span class="demo__agent">NORA</span>
+            </span>
+            <p>Pide cita para tu mascota o pregunta por las urgencias 24 h.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Veterinarios (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-ESTETICA/" target="_blank" rel="noopener" data-k="estetica ana estetica belleza centro spa clinica">
+            <span class="demo__top">
+              <h3>Estética</h3>
+              <span class="demo__agent">Ana</span>
+            </span>
+            <p>Cuenta qué te quieres cuidar y deja la cita solicitada sin llamar.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Estética (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-BARBERIAS/" target="_blank" rel="noopener" data-k="barberia thiago barberia barbero peluqueria corte barba pelo">
+            <span class="demo__top">
+              <h3>Barbería</h3>
+              <span class="demo__agent">Thiago</span>
+            </span>
+            <p>Elige barbero y reserva corte o ritual de barba desde el propio chat.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Barbería (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-TATUAJES-DEMO/" target="_blank" rel="noopener" data-k="tatuajes neo tatuaje tatuajes tatuador tattoo estudio tinta piercing arte">
+            <span class="demo__top">
+              <h3>Tatuajes</h3>
+              <span class="demo__agent">Neo</span>
+            </span>
+            <p>Cuenta tu idea, el estilo y la zona, y te prepara el boceto sin compromiso.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Tatuajes (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-ABOGADOS/" target="_blank" rel="noopener" data-k="abogados lex abogado despacho legal juridico gestoria gestorias documentacion asesoria">
+            <span class="demo__top">
+              <h3>Abogados</h3>
+              <span class="demo__agent">LEX</span>
+            </span>
+            <p>Cuenta tu caso —civil, penal, laboral o mercantil— y pide consulta.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Abogados (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-INMOBILIARIAS/" target="_blank" rel="noopener" data-k="inmobiliarias carlos inmobiliaria inmobiliarias pisos vivienda casas agente">
+            <span class="demo__top">
+              <h3>Inmobiliarias</h3>
+              <span class="demo__agent">Carlos</span>
+            </span>
+            <p>Te lleva paso a paso hasta la valoración de la vivienda.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Inmobiliarias (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-TALLERES-COCHES/" target="_blank" rel="noopener" data-k="talleres de coches diego taller talleres coches mecanico automocion vehiculo">
+            <span class="demo__top">
+              <h3>Talleres de coches</h3>
+              <span class="demo__agent">Diego</span>
+            </span>
+            <p>Revisión, frenos, diagnosis o chapa: te reserva cita en el taller.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Talleres de coches (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-AUTOESCUELAS/" target="_blank" rel="noopener" data-k="autoescuelas marta autoescuela autoescuelas carnet carne conducir permiso coche moto practicas clases examen trafico">
+            <span class="demo__top">
+              <h3>Autoescuelas</h3>
+              <span class="demo__agent">Marta</span>
+            </span>
+            <p>Pregunta por el carnet que quieres —coche, moto o intensivo— y pide plaza.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Autoescuelas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-CERRAJEROS/" target="_blank" rel="noopener" data-k="cerrajeros asistente 24 h cerrajero cerrajeria urgencias puerta llaves">
+            <span class="demo__top">
+              <h3>Cerrajeros</h3>
+              <span class="demo__agent">Asistente 24 h</span>
+            </span>
+            <p>Distingue si es apertura, bombín o alta seguridad y avisa al cerrajero.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Cerrajeros (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-ELECTRICISTAS/" target="_blank" rel="noopener" data-k="electricistas watio electricista electricidad placas solares reformas obra">
+            <span class="demo__top">
+              <h3>Electricistas</h3>
+              <span class="demo__agent">Watio</span>
+            </span>
+            <p>Instalación, placas solares, recarga eléctrica o urgencia 24 h.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Electricistas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-REFORMAS-ELECTRICIDAD/" target="_blank" rel="noopener" data-k="reformas dani reforma reformas obra fontanero fontaneria averia agua electricidad albanil">
+            <span class="demo__top">
+              <h3>Reformas</h3>
+              <span class="demo__agent">Dani</span>
+            </span>
+            <p>Cuéntale tu reforma, avería eléctrica o fuga de agua y te deja el presupuesto solicitado.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Reformas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-WEBSERVICE-DEMO/" target="_blank" rel="noopener" data-k="servicios tecnicos sat alex sat servicio tecnico averias reparaciones mantenimiento reformas">
+            <span class="demo__top">
+              <h3>Servicios técnicos SAT</h3>
+              <span class="demo__agent">Alex</span>
+            </span>
+            <p>Asigna el aviso al técnico de tu zona según el tipo de trabajo.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Servicios técnicos SAT (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-PLAGAS-CONTROL/" target="_blank" rel="noopener" data-k="control de plagas kai plagas desinsectacion fumigacion control">
+            <span class="demo__top">
+              <h3>Control de plagas</h3>
+              <span class="demo__agent">KAI</span>
+            </span>
+            <p>Identifica el problema contigo y programa el diagnóstico.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Control de plagas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-LIMPIEZAS/" target="_blank" rel="noopener" data-k="limpiezas nita limpieza limpiezas hogar oficinas empresa">
+            <span class="demo__top">
+              <h3>Limpiezas</h3>
+              <span class="demo__agent">Nita</span>
+            </span>
+            <p>Di qué necesitas y deja el presupuesto solicitado sin llamar.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Limpiezas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-MUDANZAS/" target="_blank" rel="noopener" data-k="mudanzas bruno mudanzas transporte portes traslado">
+            <span class="demo__top">
+              <h3>Mudanzas</h3>
+              <span class="demo__agent">Bruno</span>
+            </span>
+            <p>Cuenta qué necesitas y te prepara el presupuesto en el chat.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Mudanzas (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-BURGUER/" target="_blank" rel="noopener" data-k="hosteleria smash bot hosteleria restaurante hamburgueseria bar pedidos comida">
+            <span class="demo__top">
+              <h3>Hostelería</h3>
+              <span class="demo__agent">Smash Bot</span>
+            </span>
+            <p>Monta el pedido —burger, extras y bebida— y confírmalo en el chat.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Hostelería (se abre en una pestaña nueva)</span></span>
+          </a>
+          <a class="demo" href="https://nexusforgeia.github.io/WHITEMOON-HOSTELERIA/" target="_blank" rel="noopener" data-k="chef privado a domicilio luna chef cocina eventos catering domicilio hosteleria">
+            <span class="demo__top">
+              <h3>Chef privado a domicilio</h3>
+              <span class="demo__agent">LUNA</span>
+            </span>
+            <p>Enseña menús, precios y disponibilidad para eventos en casa.</p>
+            <span class="demo__go">Probar la demo<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> de Chef privado a domicilio (se abre en una pestaña nueva)</span></span>
+          </a>
+        </div>
+        <p class="empty" id="demo-empty" hidden>No tenemos una demo con ese nombre. Prueba otra palabra, o bórrala para verlas todas: el de tu sector se monta a medida igual.</p>
+
+        <p class="note">Son entornos de demostración con datos inventados. Los negocios que aparecen no son clientes reales salvo que se indique.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4 · RESOLVEMOS TUS DUDAS ============ -->
+    <section class="step" id="paso-4" data-title="Resolvemos tus dudas" tabindex="-1" aria-label="Paso 4 de 9: Resolvemos tus dudas" hidden>
+      <div class="wrap">
+        <span class="ghost" aria-hidden="true">04</span>
+        <p class="eyebrow">Resolvemos tus dudas</p>
+        <h2>Lo que seguro<br><span class="grad">te estás preguntando</span></h2>
+        <p class="lead">Las dudas que salen siempre, contestadas sin rodeos. Abre la que te interese — y si te queda alguna, pregúntala en voz alta ahora mismo.</p>
+
+        <div class="faqs">
+          <details class="faq">
+            <summary><h3>¿Es caro para un negocio como el mío?</h3></summary>
+            <div class="faq__body">
+              <p>Hay opciones desde una landing con un chatbot sencillo hasta un sistema completo con CRM, así que no hace falta empezar por lo más grande: se empieza por lo que necesitas hoy y se amplía si algún día te hace falta. Todas se pagan igual: una puesta en marcha y una cuota mensual, sin permanencia.</p>
+              <p>Los importes los ves al final, todos juntos y con calma, para que compares sabiendo ya qué hace cada uno. Y si quieres hacer números por tu cuenta, en whitemoon.es tienes una <a href="/roi-inteligencia-artificial/">calculadora de ROI</a>.</p>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿Me ata a algo?</h3></summary>
+            <div class="faq__body">
+              <p>No. Ninguno de los packs tiene permanencia: la cuota mensual la cancelas cuando quieras.</p>
+              <p>La puesta en marcha es un pago único por montártelo todo, y en los packs que incluyen web el dominio propio va incluido el primer año.</p>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿Es complicado de instalar o de usar?</h3></summary>
+            <div class="faq__body">
+              <p>Tú no instalas nada. Lo montamos, lo configuramos con el flujo de tu sector y te lo dejamos funcionando.</p>
+              <p>Cuando alguien pregunta, el aviso te llega al móvil con el nombre, el teléfono y lo que necesita esa persona. Para eso no hay que aprenderse ningún programa.</p>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿De verdad funciona o es humo?</h3></summary>
+            <div class="faq__body">
+              <p>No hace falta que te fíes de nuestra palabra. Vuelve un paso atrás y habla tú con cualquiera de las veinte demos: son agentes reales funcionando, no vídeos ni maquetas.</p>
+              <p>Lo que veas ahí es exactamente lo que tendrías, con las preguntas y el flujo de tu sector.</p>
+              <button type="button" class="btn btn--ghost" data-go="3">Volver a las demos</button>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿Y si luego veo que no me sirve?</h3></summary>
+            <div class="faq__body">
+              <p>Lo dejas. No hay permanencia y la cuota se para cuando tú lo digas. La puesta en marcha sí es un pago único por el trabajo ya hecho, así que lo justo es que lo pruebes antes: para eso están las demos.</p>
+              <p class="pledge"><span class="pledge__tag">Puesta en marcha garantizada</span> Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual.</p>
+              <p>Y si por lo que nos cuentas vemos que hoy no te compensa, preferimos decírtelo a venderte algo que no vas a usar.</p>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿Cuánto tarda en estar funcionando?</h3></summary>
+            <div class="faq__body">
+              <p>Entre cinco y siete días laborables en la mayoría de los packs. El Mini Core y el WhiteMoon 360 rondan la semana, y la Auditoría GEO IA se entrega en 48 horas.</p>
+              <p>Y ese plazo no es un cálculo optimista: si a los <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. No son meses ni hay que rehacer nada de lo que ya tienes.</p>
+            </div>
+          </details>
+
+          <details class="faq">
+            <summary><h3>¿Y quién lo mantiene después?</h3></summary>
+            <div class="faq__body">
+              <p>Nosotros. En los packs con web, la cuota mensual incluye el hosting, el certificado SSL y el mantenimiento técnico.</p>
+              <p>No tienes que buscar a nadie cuando algo falle ni acordarte de renovar nada. Tú a lo tuyo.</p>
+            </div>
+          </details>
+        </div>
+
+        <p class="note">Si tienes una duda que no está aquí, es buen momento para soltarla. Preferimos resolverla ahora que dejarte con ella.</p>
+      </div>
+    </section>
+
+    <!-- ============ 5 · ENCONTREMOS LO QUE ENCAJA ============ -->
+    <section class="step" id="paso-5" data-title="Encontremos lo que encaja" tabindex="-1" aria-label="Paso 5 de 9: Encontremos lo que encaja contigo" hidden>
+      <div class="wrap">
+        <span class="ghost" aria-hidden="true">05</span>
+        <p class="eyebrow eyebrow--p">Encontremos lo que encaja</p>
+        <h2>Tres preguntas<br>y lo vemos <span class="grad">claro</span></h2>
+        <p class="lead">No hay respuestas buenas ni malas: responde lo que sea verdad en tu negocio. Puedes cambiarlas las veces que quieras.</p>
+
+        <form id="diag" novalidate>
+          <fieldset class="q" data-q="web">
+            <legend><span class="q__n">Pregunta 1</span>¿Tienes web?</legend>
+            <p class="q__hint">Una web tuya. El perfil de Google o de Instagram no cuenta como web.</p>
+            <div class="opts">
+              <button type="button" class="opt" data-q="web" data-v="si" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>Sí, ya tengo web</button>
+              <button type="button" class="opt" data-q="web" data-v="no" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>No, aún no tengo</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q" data-q="canal">
+            <legend><span class="q__n">Pregunta 2</span>¿Cómo prefieres que atienda a tu gente?</legend>
+            <p class="q__hint">La voz va bien para citas y llamadas; el chat, para consultas y presupuestos escritos.</p>
+            <div class="opts">
+              <button type="button" class="opt" data-q="canal" data-v="voz" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>Por voz</button>
+              <button type="button" class="opt" data-q="canal" data-v="chat" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>Por chat</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="q" data-q="docs">
+            <legend><span class="q__n">Pregunta 3</span>¿Trabajas con mucha documentación?</legend>
+            <p class="q__hint">Normativa, expedientes o procedimientos tuyos que hay que consultar para responder bien.</p>
+            <div class="opts">
+              <button type="button" class="opt" data-q="docs" data-v="si" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>Sí, mucha</button>
+              <button type="button" class="opt" data-q="docs" data-v="no" aria-pressed="false"><span class="opt__mark" aria-hidden="true"></span>No especialmente</button>
+            </div>
+          </fieldset>
+        </form>
+
+        <div id="diag-out" aria-live="polite">
+          <p class="pending" id="diag-pending">Responde las tres y aquí verás por dónde te encaja empezar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6 · PACKS ============ -->
+    <section class="step" id="paso-6" data-title="Los packs" tabindex="-1" aria-label="Paso 6 de 9: Los packs" hidden>
+      <div class="wrap wrap--wide">
+        <span class="ghost" aria-hidden="true">06</span>
+        <p class="eyebrow">Los packs</p>
+        <h2>Todo lo que<br><span class="grad">puedes montar</span></h2>
+        <p class="lead" id="packs-lead">De lo más sencillo a lo más completo. Mira qué hace cada uno y para quién es; los importes los vemos luego, con calma.</p>
+        <div class="grid packs" id="packs"></div>
+      </div>
+    </section>
+
+    <!-- ============ 7 · COMPARATIVA ============ -->
+    <section class="step" id="paso-7" data-title="De un vistazo" tabindex="-1" aria-label="Paso 7 de 9: De un vistazo" hidden>
+      <div class="wrap wrap--wide">
+        <span class="ghost" aria-hidden="true">07</span>
+        <p class="eyebrow eyebrow--p">De un vistazo</p>
+        <h2>Todo junto,<br><span class="grad">para comparar</span></h2>
+        <p class="lead">Lo mismo que acabas de ver, en una tabla, por si prefieres tenerlo todo delante de golpe.</p>
+        <div class="tablewrap">
+          <table>
+            <caption>Packs de WhiteMoon. Ninguno tiene permanencia. Los importes están en el paso siguiente.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Pack</th>
+                <th scope="col">Para quién</th>
+                <th scope="col">Qué incluye</th>
+              </tr>
+            </thead>
+            <tbody id="tabla"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8 · LOS PRECIOS ============ -->
+    <section class="step" id="paso-8" data-title="Los precios" tabindex="-1" aria-label="Paso 8 de 9: Los precios" hidden>
+      <div class="wrap wrap--wide">
+        <span class="ghost" aria-hidden="true">08</span>
+        <p class="eyebrow">Los precios</p>
+        <h2>¿Por cuál te<br>apetece <span class="grad">empezar?</span></h2>
+        <p class="lead" id="precios-lead">Ahora sí, los importes. Ya sabes qué hace cada uno, así que la cifra se lee sabiendo lo que hay detrás.</p>
+
+        <p class="pledge">
+          <span class="pledge__tag">Puesta en marcha garantizada</span>
+          Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. Y ningún pack tiene permanencia.
+        </p>
+
+        <div class="prices" id="precios"></div>
+
+        <p class="choose">
+          <b>Eliges tú.</b> No hay una respuesta correcta ni hace falta decidirlo hoy. Se puede empezar por lo más sencillo y ampliar más adelante, o quedarte pensándolo el tiempo que necesites — no se va a poner más caro por esperar.
+        </p>
+
+        <p class="note">Precios de la tarifa 2026, los mismos que están publicados en <a href="/precios/">whitemoon.es/precios</a>. El IVA no está incluido salvo que se indique.</p>
+      </div>
+    </section>
+
+    <!-- ============ 9 · TU SIGUIENTE PASO ============ -->
+    <section class="step" id="paso-9" data-title="Tu siguiente paso" tabindex="-1" aria-label="Paso 9 de 9: Tu siguiente paso, sin compromiso" hidden>
+      <div class="wrap">
+        <span class="ghost" aria-hidden="true">09</span>
+        <p class="eyebrow">Sin compromiso</p>
+        <h2>Tu siguiente<br><span class="grad">paso</span></h2>
+        <p class="lead" id="close-lead">Tu siguiente paso: tomamos tus datos y empezamos con tu proyecto. En menos de una semana lo tienes funcionando.</p>
+
+        <p class="pledge">
+          <span class="pledge__tag">Puesta en marcha garantizada</span>
+          Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. Y ningún pack tiene permanencia.
+        </p>
+
+        <!-- Los datos van a leads_web (Supabase) y el aviso sale por Telegram desde
+             la Edge Function propuesta-notify. Aquí no vive ninguna clave secreta:
+             la publishable key solo puede hacer INSERT, por RLS. -->
+        <form class="lead-form" id="lead-form" aria-labelledby="lead-form-title" novalidate>
+          <h3 class="lead-form__title" id="lead-form-title">Tus datos</h3>
+          <p class="lead-form__hint">Todos los campos son obligatorios: con esto ya podemos ponernos.</p>
+
+          <div class="lead-form__grid">
+            <div class="field">
+              <label for="f-nombre">Nombre de contacto</label>
+              <input id="f-nombre" name="nombre" type="text" autocomplete="name" autocapitalize="words" required aria-describedby="e-nombre">
+              <p class="field__err" id="e-nombre"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-empresa">Empresa</label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization" autocapitalize="words" required aria-describedby="e-empresa">
+              <p class="field__err" id="e-empresa"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-cif">CIF / NIF</label>
+              <input id="f-cif" name="cif" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required aria-describedby="e-cif">
+              <p class="field__err" id="e-cif"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-movil">Móvil</label>
+              <input id="f-movil" name="movil" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-movil">
+              <p class="field__err" id="e-movil"></p>
+            </div>
+
+            <div class="field field--wide">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" required aria-describedby="e-email">
+              <p class="field__err" id="e-email"></p>
+            </div>
+
+            <div class="field field--wide">
+              <label for="f-direccion">Dirección</label>
+              <input id="f-direccion" name="direccion" type="text" autocomplete="street-address" required aria-describedby="e-direccion">
+              <p class="field__err" id="e-direccion"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-cp">Código postal</label>
+              <input id="f-cp" name="cp" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required aria-describedby="e-cp">
+              <p class="field__err" id="e-cp"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-ciudad">Ciudad</label>
+              <input id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2" autocapitalize="words" required aria-describedby="e-ciudad">
+              <p class="field__err" id="e-ciudad"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-provincia">Provincia</label>
+              <input id="f-provincia" name="provincia" type="text" autocomplete="address-level1" autocapitalize="words" required aria-describedby="e-provincia">
+              <p class="field__err" id="e-provincia"></p>
+            </div>
+
+            <div class="field">
+              <label for="f-pack">Pack</label>
+              <!-- Las opciones se pintan desde PACKS y llega elegido el que encaja
+                   según el paso 5, pero decide el cliente. -->
+              <select id="f-pack" name="pack" required aria-describedby="e-pack"></select>
+              <p class="field__err" id="e-pack"></p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn--g btn--xl lead-form__go" id="lead-go">
+            <span id="lead-go-label">Empezar mi proyecto</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+
+          <ul class="trust">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Operativo en 7 días</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Puesta en marcha garantizada</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Sin permanencia</li>
+          </ul>
+
+          <p class="privacy">
+            Tus datos solo se usan para poner en marcha tu proyecto ·
+            <a href="/politica-privacidad/">Política de privacidad</a>
+          </p>
+        </form>
+
+        <div id="lead-status" role="status" aria-live="polite" tabindex="-1"></div>
+
+        <div class="alt">
+          <h3>Reserva tu reunión de contenidos</h3>
+          <p>Media hora para repasar los textos de tu web y coordinar la entrega de fotos. Eliges día y hora aquí mismo, sin salir de esta página.</p>
+
+          <!-- El calendario de Cal.com se monta aquí. El script no viene con la
+               página: se inyecta cuando este hueco se acerca a la pantalla, para
+               que los ocho pasos anteriores no lo paguen. -->
+          <div class="cal" id="cal-inline"></div>
+          <p class="cal__fallback" id="cal-fallback" hidden>
+            ¿No te carga el calendario?
+            <a href="https://cal.com/whitemoon/contenidos" target="_blank" rel="noopener">Ábrelo en una pestaña nueva</a>.
+          </p>
+
+          <h3 class="alt__directo">O escríbenos directamente</h3>
+          <div class="contact">
+            <a href="https://wa.me/34643199580" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 20.5l1.4-5.6A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+              <span>WhatsApp<em>Escribir ahora</em></span>
+            </a>
+            <a href="tel:+34643199580">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4h4l2 5-2.5 1.5a12 12 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1.1 1A16 16 0 0 1 4 5.1 1 1 0 0 1 5 4Z"/></svg>
+              <span>643 199 580<em>Llamar ahora</em></span>
+            </a>
+            <a href="mailto:comercial@whitemoon.es">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>
+              <span>comercial@whitemoon.es<em>Escribir un correo</em></span>
+            </a>
+          </div>
+        </div>
+
+        <p class="foot">
+          <b>WhiteMoon Agencia IA</b> · Majadahonda, Madrid<br>
+          Ningún pack tiene permanencia. Los precios son los publicados en <a href="/precios/">whitemoon.es/precios</a>.
+        </p>
+      </div>
+    </section>
+
+
+    <nav class="stepnav" id="stepnav" aria-label="Navegación de la guía" hidden>
+      <button type="button" class="btn btn--ghost" id="prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        <span class="sr-only">Atrás</span>
+      </button>
+      <button type="button" class="btn btn--p btn--next" id="next">
+        <span id="next-label">Siguiente</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </nav>
+
   </div>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="dm-eyebrow">🌙 20 demos funcionales · Pruébalas ahora</div>
-      <h1>Demos reales,<br><span>no vídeos</span></h1>
-      <p class="hero-sub">Todo lo que ves funciona: los agentes responden, las citas se reservan y los avisos llegan. Pruébalas como si fueras un cliente.</p>
-      <div class="hero-actions">
-        <a href="/precios/" class="btn-prim" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'ver-precios'})">¿Quieres esto en tu negocio? →</a>
-        <a href="/whitemoon-360/" class="btn-sec" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'whitemoon-360'})">Ver WhiteMoon 360</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GRID DE DEMOS -->
-  <section class="sec">
-    <div class="wrap">
-      <span class="sec-label">El escaparate</span>
-      <h2 class="sec-h">Veinte sectores, veinte agentes distintos</h2>
-      <p class="sec-sub">Cada demo tiene su propio agente con su nombre, su flujo y su forma de trabajar. Ábrelas y háblales.</p>
-
-      <div class="dm-grid">
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/clinicas-dentales.webp" alt="Demo de clínica dental con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Clínicas dentales</h3>
-            <p class="dm-try">Pídele a <b>Marcos</b>, el asistente dental, tu primera visita y elige hueco sin salir del chat.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-CLINICAS-DENTALES/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'clinicas-dentales'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/mudanzas.webp" alt="Demo de empresa de mudanzas con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Mudanzas</h3>
-            <p class="dm-try">Cuéntale a <b>Bruno</b>, el asistente de mudanzas, qué necesitas y te preparamos el presupuesto sin salir del chat.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-MUDANZAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'mudanzas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/limpiezas.webp" alt="Demo de empresa de limpieza con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Limpiezas</h3>
-            <p class="dm-try">Dile a <b>Nita</b>, la asistente de limpiezas, qué necesitas y te deja el presupuesto solicitado sin llamar.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-LIMPIEZAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'limpiezas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/podologia.webp" alt="Demo de clínica de podología con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Podología</h3>
-            <p class="dm-try">Dile a <b>ANA</b>, la recepcionista virtual, qué tratamiento necesitas y te busca un hueco real en el chat.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-PODOLOGOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'podologia'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/psicologia.webp" alt="Demo de consulta de psicología con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Psicología</h3>
-            <p class="dm-try">Cuéntale a <b>Clara</b>, de Claridad Psicología, qué te preocupa y te deja pedida la primera cita de valoración.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-PSICOLOGIA/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'psicologia'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/estetica.webp" alt="Demo de centro de estética con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Estética</h3>
-            <p class="dm-try">Cuéntale a <b>Ana</b>, del centro Selene, qué te quieres cuidar y te deja la cita solicitada sin llamar.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-ESTETICA/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'estetica'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/barberias.webp" alt="Demo de barbería con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Barbería</h3>
-            <p class="dm-try">Elige barbero —<b>Thiago</b>, Kimbo o Rodrigo— y reserva corte o ritual de barba desde el propio chat.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-BARBERIAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'barberias'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/tatuajes.webp" alt="Demo de estudio de tatuajes con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Tatuajes</h3>
-            <p class="dm-try">Dile a <b>Neo</b> qué te quieres tatuar —estilo, zona y tamaño— y te prepara la propuesta del estudio.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-TATUAJES-DEMO/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'tatuajes'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/servicios-tecnicos.webp" alt="Demo de servicio técnico SAT con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Servicios técnicos SAT</h3>
-            <p class="dm-try">Cuéntale la avería a <b>Alex</b> y verás cómo asigna el aviso al técnico de tu zona según el tipo de trabajo.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-WEBSERVICE-DEMO/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'servicios-tecnicos'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/cerrajeros.webp" alt="Demo de cerrajería 24h con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Cerrajeros</h3>
-            <p class="dm-try">Cuéntale tu urgencia al <b>asistente 24h</b> de Carlos: distingue si es apertura, bombín o alta seguridad y avisa al cerrajero.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-CERRAJEROS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'cerrajeros'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/electricistas.webp" alt="Demo de electricistas con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Electricistas</h3>
-            <p class="dm-try">Pídele presupuesto a <b>Watio</b>: instalación, placas solares, recarga de coche eléctrico o urgencia 24h.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-ELECTRICISTAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'electricistas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/reformas.webp" alt="Demo de empresa de reformas y oficios con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Reformas</h3>
-            <p class="dm-try">Cuéntale a <b>Dani</b> tu reforma, avería eléctrica o fuga de agua y te deja el presupuesto solicitado.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-REFORMAS-ELECTRICIDAD/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'reformas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/talleres.webp" alt="Demo de taller mecánico con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Talleres de coches</h3>
-            <p class="dm-try">Dile a <b>Diego</b> qué le pasa a tu coche —revisión, frenos, diagnosis o chapa— y te reserva cita en el taller.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-TALLERES-COCHES/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'talleres'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/autoescuelas.webp" alt="Demo de autoescuela con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Autoescuelas</h3>
-            <p class="dm-try">Pregúntale a <b>Marta</b> por el carnet que quieres —coche, moto, pesados o puntos— y pide plaza sin llamar.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-AUTOESCUELAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'autoescuelas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/hosteleria.webp" alt="Demo de hamburguesería con agente IA de pedidos — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Hostelería</h3>
-            <p class="dm-try">Monta tu pedido con el <b>Smash Bot</b>: elige burger, extras y bebida, y confírmalo desde el propio chat.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-BURGUER/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'hosteleria'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/chef-privado.webp" alt="Demo de chef privado a domicilio con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Chef privado a domicilio</h3>
-            <p class="dm-try">Cuéntale a <b>LUNA</b>, la asistente de reservas de Chef CMC, qué celebras en casa y te enseña menús, precios y disponibilidad.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-HOSTELERIA/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'chef-privado'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/abogados.webp" alt="Demo de despacho de abogados con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Abogados</h3>
-            <p class="dm-try">Cuéntale tu caso a <b>LEX</b> —civil, penal, laboral, mercantil o inmobiliario— y solicita la primera consulta.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-ABOGADOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'abogados'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/veterinarios.webp" alt="Demo de clínica veterinaria con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Veterinarios</h3>
-            <p class="dm-try">Pide cita con <b>NORA</b> para tu mascota o pregúntale por las urgencias 24h de la clínica.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'veterinarios'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/control-plagas.webp" alt="Demo de empresa de control de plagas con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Control de plagas</h3>
-            <p class="dm-try">Describe la plaga a <b>KAI</b>: identifica el problema contigo y te programa el diagnóstico.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-PLAGAS-CONTROL/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'control-plagas'})">Probar la demo →</a>
-          </div>
-        </article>
-
-        <article class="dm-card">
-          <img loading="lazy" decoding="async" width="800" height="500" src="/assets/img/demos/inmobiliarias.webp" alt="Demo de agencia inmobiliaria con agente IA — portada de la web" class="dm-shot">
-          <div class="dm-body">
-            <h3>Inmobiliarias</h3>
-            <p class="dm-try">Dile a <b>Carlos</b> que quieres vender tu vivienda y te lleva paso a paso hasta la valoración.</p>
-            <a href="https://nexusforgeia.github.io/WHITEMOON-INMOBILIARIAS/" target="_blank" rel="noopener" class="dm-btn" onclick="wmTrack&amp;&amp;wmTrack('click_demo',{sector:'inmobiliarias'})">Probar la demo →</a>
-          </div>
-        </article>
-
-      </div>
-
-      <p class="dm-disclaimer">Entornos de demostración con datos ficticios. Los negocios mostrados no son clientes reales salvo indicación expresa.</p>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="cta-sec">
-    <div class="wrap">
-      <h2>¿Quieres esto en tu negocio?</h2>
-      <p style="color:var(--muted);margin-bottom:8px;">Tu sector, tu agente, tu flujo. Operativo en 5-7 días laborables y sin permanencia.</p>
-      <div class="hero-actions" style="margin-top:16px;">
-        <a href="/precios/" class="btn-prim" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'ver-precios',placement:'cta-final'})">Ver precios →</a>
-        <a href="/whitemoon-360/" class="btn-sec" onclick="wmTrack&amp;&amp;wmTrack('click_hero_cta',{source:'demos',action:'whitemoon-360',placement:'cta-final'})">Ver WhiteMoon 360</a>
-      </div>
-      <p style="font-size:.8rem;color:#5a5a70;margin-top:14px;">Majadahonda · Las Rozas · Boadilla del Monte · Pozuelo · Madrid</p>
-    </div>
-  </section>
 </main>
 
 <footer>
@@ -334,6 +706,10 @@
   </div>
 </footer>
 
+<!-- Burbuja flotante de WhatsApp, igual que en el resto del sitio. Se sube por
+     encima de la barra de pasos con --orion-bottom (ver embudo.css): si no,
+     tapa la esquina derecha del botón "Siguiente". -->
 <script src="/orion-widget.js?v=2026072102" defer></script>
+
 </body>
 </html>
