@@ -349,7 +349,7 @@ html:root{--orion-bottom:100px}
 }
 /* Dentro del acordeón manda `.faq__body p`, más específico que `.pledge` a secas:
    se sube la especificidad en vez de recurrir a !important. */
-.wme .faq__body p.pledge{margin:12px 0 0;color:var(--text);font-size:.9rem;line-height:1.6}
+.wme .faq__body .pledge{margin:12px 0 0;color:var(--text);font-size:.9rem;line-height:1.6}
 .wme .pledge b{color:var(--g);font-weight:700}
 .wme .pledge__tag{
   display:block;margin-bottom:5px;
@@ -365,6 +365,22 @@ html:root{--orion-bottom:100px}
   font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
   color:var(--text);
 }
+/* Enlace a las condiciones desde las promesas cortas de los pasos 4 y 8: la
+   versión corta nunca se queda a la vista sin manera de llegar a la letra
+   pequeña. Subrayado y no solo color — --p2 sobre el panel da 5.28:1. */
+.wme .pledge__more{margin:6px 0 0;font-size:.82rem;line-height:1.5}
+/* El enlace crece hacia arriba y hacia abajo con padding para que el área de
+   toque no sea la altura de una línea; el margen del párrafo se recorta otro
+   tanto, así que a la vista queda donde estaba. */
+.wme .pledge__more a{
+  display:inline-block;padding:6px 0;
+  color:var(--p2);text-decoration:underline;
+}
+/* Dentro del acordeón, `.faq__body p` es más específico que las clases del
+   bloque y le robaba el color y el tamaño al titular: se reponen con la misma
+   prioridad para que la promesa se lea igual en los pasos 4, 8 y 9. */
+.wme .faq__body .pledge__claim{font-size:1rem;color:var(--text)}
+.wme .faq__body .pledge__more{font-size:.82rem}
 .wme .pledge__terms{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:9px}
 .wme .pledge__terms li{
   position:relative;padding-left:18px;
@@ -377,7 +393,8 @@ html:root{--orion-bottom:100px}
   background:var(--g);opacity:.8;
 }
 @media(max-width:599px){
-  .wme .pledge__claim{font-size:.95rem}
+  .wme .pledge__claim,
+  .wme .faq__body .pledge__claim{font-size:.95rem}
   .wme .pledge__terms li{font-size:.85rem;padding-left:16px}
 }
 /* Micro-sello junto al precio */

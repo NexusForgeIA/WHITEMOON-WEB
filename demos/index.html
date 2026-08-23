@@ -43,11 +43,11 @@
      así que el titular no se reajusta a media carga. -->
 <link rel="preload" href="/demos/assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css">
-<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082303">
+<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082305">
 <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
-<script defer src="/demos/assets/embudo.js?v=2026082302"></script>
+<script defer src="/demos/assets/embudo.js?v=2026082304"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -419,7 +419,13 @@
             <summary><h3>¿Y si luego veo que no me sirve?</h3></summary>
             <div class="faq__body">
               <p>Lo dejas. No hay permanencia y la cuota se para cuando tú lo digas. La puesta en marcha sí es un pago único por el trabajo ya hecho, así que lo justo es que lo pruebes antes: para eso están las demos.</p>
-              <p class="pledge"><span class="pledge__tag">Puesta en marcha garantizada</span> Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual.</p>
+              <div class="pledge">
+                <p class="pledge__claim">
+                  <span class="pledge__tag">Puesta en marcha garantizada</span>
+                  Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual.
+                </p>
+                <p class="pledge__more"><a href="#paso-9">Ver condiciones de la garantía</a></p>
+              </div>
               <p>Y si por lo que nos cuentas vemos que hoy no te compensa, preferimos decírtelo a venderte algo que no vas a usar.</p>
             </div>
           </details>
@@ -427,7 +433,7 @@
           <details class="faq">
             <summary><h3>¿Cuánto tarda en estar funcionando?</h3></summary>
             <div class="faq__body">
-              <p>Entre cinco y siete días laborables en la mayoría de los packs. El Mini Core y el WhiteMoon 360 rondan la semana, y la Auditoría GEO IA se entrega en 48 horas.</p>
+              <p>Como mucho <b>7 días laborables</b> en los packs que llevan puesta en marcha, y la mayoría están listos entre cinco y siete. La Auditoría GEO IA no lleva montaje: es un informe, y se entrega en 48 horas.</p>
               <p>Y ese plazo no es un cálculo optimista: si a los <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. No son meses ni hay que rehacer nada de lo que ya tienes.</p>
             </div>
           </details>
@@ -530,10 +536,13 @@
         <h2>¿Por cuál te<br>apetece <span class="grad">empezar?</span></h2>
         <p class="lead" id="precios-lead">Ahora sí, los importes. Ya sabes qué hace cada uno, así que la cifra se lee sabiendo lo que hay detrás.</p>
 
-        <p class="pledge">
-          <span class="pledge__tag">Puesta en marcha garantizada</span>
-          Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. Y ningún pack tiene permanencia.
-        </p>
+        <div class="pledge">
+          <p class="pledge__claim">
+            <span class="pledge__tag">Puesta en marcha garantizada</span>
+            Si en <b>7 días laborables</b> no lo tienes funcionando en tu web, no empiezas a pagar la cuota mensual. Y ningún pack tiene permanencia.
+          </p>
+          <p class="pledge__more"><a href="#paso-9">Ver condiciones de la garantía</a></p>
+        </div>
 
         <div class="prices" id="precios"></div>
 
@@ -551,7 +560,7 @@
         <span class="ghost" aria-hidden="true">09</span>
         <p class="eyebrow">Sin compromiso</p>
         <h2>Tu siguiente<br><span class="grad">paso</span></h2>
-        <p class="lead" id="close-lead">Tu siguiente paso: tomamos tus datos y empezamos con tu proyecto. En menos de una semana lo tienes funcionando.</p>
+        <p class="lead" id="close-lead">Tu siguiente paso: tomamos tus datos y empezamos con tu proyecto. En 7 días laborables lo tienes funcionando, en las condiciones de la garantía que tienes aquí debajo.</p>
 
         <!-- La promesa se mantiene en el titular; debajo van las condiciones que la
              hacen exigible. Van en <div> y no en <p> porque ahora llevan un
@@ -649,7 +658,7 @@
           </button>
 
           <ul class="trust">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Operativo en 7 días</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Operativo en 7 días laborables</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Puesta en marcha garantizada</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>Sin permanencia</li>
           </ul>
