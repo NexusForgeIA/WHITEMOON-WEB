@@ -1,0 +1,656 @@
+/* ============================================================
+   WhiteMoon · sistema visual
+   ============================================================ */
+@font-face{
+  font-family:"Sora";
+  src:url("/demos/assets/fonts/sora-latin-var.woff2") format("woff2-variations"),
+      url("/demos/assets/fonts/sora-latin-var.woff2") format("woff2");
+  font-weight:300 800;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,
+                U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,
+                U+2212,U+2215,U+FEFF,U+FFFD;
+}
+.wme{
+  --bg:#08080d;
+  --bg2:#0e0e16;
+  --bg3:#13131e;
+  --line:rgba(255,255,255,.09);
+  --line2:rgba(255,255,255,.16);
+  --p:#7c4dff;
+  --p2:#9d70ff;
+  --g:#00d4aa;
+  --text:#f0f0f5;
+  --muted:#8888a0;
+  --field:rgba(255,255,255,.38);
+  --err:#ff8a94;
+  --hdr:60px;
+  --nav:78px;
+  --r:16px;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+/* La luna decorativa de la portada se sale a propósito por la derecha. Se recorta
+   en el borde de la pantalla para que no genere scroll horizontal: `clip` corta sin
+   crear un contenedor desplazable, y `hidden` queda de reserva para navegadores
+   antiguos. Hace falta en <html>, no solo en <body>. */
+html{-webkit-text-size-adjust:100%;overflow-x:hidden;overflow-x:clip}
+/* Hace falta en <html> y en <body>: con la regla solo en <html> la luna sigue
+   arrastrando la página 100 px a la derecha. */
+body{overflow-x:hidden;overflow-x:clip}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background:
+    radial-gradient(60vw 40vh at 84% -6%, rgba(124,77,255,.20), transparent 62%),
+    radial-gradient(52vw 36vh at -8% 104%, rgba(0,212,170,.11), transparent 60%);
+}
+main,footer{position:relative;z-index:1}
+/* La burbuja de WhatsApp vive pegada abajo a la derecha y aquí se topa con la
+   barra fija de pasos. Se levanta por encima de ella.
+   Va en `html:root` a propósito: el widget se pinta su `:root` en un <style>
+   que inyecta al cargar, después de esta hoja, y con la misma especificidad
+   ganaría él. */
+html:root{--orion-bottom:100px}
+@media(max-width:599px){html:root{--orion-bottom:96px}}
+.wme [hidden]{display:none !important}
+.wme a{color:var(--p2)}
+.wme :focus-visible{outline:3px solid var(--g);outline-offset:3px;border-radius:6px}
+.wme .sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+
+/* ---------- Cabecera + progreso ---------- */
+.wme .topbar{
+  display:flex;align-items:center;gap:14px;
+  min-height:var(--hdr);
+  margin:0 0 6px;padding:10px 0;
+  border-bottom:1px solid var(--line);
+}
+.wme .dots{display:flex;align-items:center;gap:0;margin-right:auto}
+/* El botón mide 24x24 (mínimo táctil accesible) aunque el punto se vea pequeño:
+   el área de toque es el botón entero, no el círculo pintado. */
+.wme .dot{
+  appearance:none;-webkit-appearance:none;border:0;padding:0;cursor:pointer;
+  width:24px;height:24px;flex:none;
+  background:none;border-radius:50%;position:relative;
+}
+.wme .dot::before{
+  content:"";position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,.22);
+  transition:width .3s var(--ease), background .3s var(--ease);
+}
+.wme .dot:hover::before{background:rgba(255,255,255,.5)}
+.wme .dot.is-done::before{background:var(--p2)}
+.wme .dot.is-now::before{width:20px;border-radius:5px;background:var(--g)}
+.wme .counter{
+  flex:none;font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  color:var(--muted);font-variant-numeric:tabular-nums;
+}
+
+/* ---------- Estructura de pasos ---------- */
+.wme{position:relative;z-index:1}
+.wme .step{position:relative;padding:26px 0 calc(var(--nav) + 44px)}
+.wme .step:focus{outline:none}
+.wme .wrap{max-width:720px;margin:0 auto;padding:0 20px;position:relative;z-index:2}
+.wme .wrap--wide{max-width:1120px}
+
+.wme .ghost{
+  position:absolute;
+  top:-24px;right:-12px;
+  z-index:0;
+  font-size:clamp(130px,36vw,250px);
+  font-weight:800;
+  line-height:.78;
+  letter-spacing:-.06em;
+  color:transparent;
+  -webkit-text-stroke:1.5px rgba(124,77,255,.26);
+  pointer-events:none;
+  user-select:none;-webkit-user-select:none;
+}
+
+.wme .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--g);margin:0 0 18px;
+}
+.wme .eyebrow::before{content:"";width:26px;height:2px;background:var(--g);border-radius:2px}
+.wme .eyebrow--p{color:var(--p2)}
+.wme .eyebrow--p::before{background:var(--p2)}
+
+.wme h1,.wme h2,.wme h3{letter-spacing:-.035em;line-height:1.06;margin:0;font-weight:700}
+/* El titular de portada es una frase larga: se pide algo menos de cuerpo que
+   un eslogan de dos palabras para que respire en móvil sin partirse mal. */
+.wme h1{font-size:clamp(2.1rem,9vw,4rem);font-weight:800;max-width:16ch}
+.wme h2{font-size:clamp(1.95rem,8vw,3.05rem)}
+.wme h3{font-size:1.05rem;line-height:1.3;letter-spacing:-.02em}
+.wme .lead{font-size:1.06rem;color:var(--muted);margin:18px 0 0;max-width:34em}
+.wme .lead strong{color:var(--text);font-weight:600}
+.wme .thin{font-weight:300}
+.wme .grad{
+  background:linear-gradient(96deg,var(--p2) 8%,var(--g) 92%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- Botones ---------- */
+.wme .btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:56px;padding:16px 26px;
+  border:0;border-radius:14px;cursor:pointer;
+  font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:-.01em;
+  text-decoration:none;
+  transition:transform .22s var(--ease), background .22s var(--ease);
+}
+.wme .btn--p{background:linear-gradient(120deg,var(--p) 0%,#6a3dff 100%);color:#fff;box-shadow:0 10px 30px -12px rgba(124,77,255,.9)}
+.wme .btn--g{background:var(--g);color:#06110e;box-shadow:0 10px 30px -12px rgba(0,212,170,.85)}
+.wme .btn--ghost{background:rgba(255,255,255,.05);color:var(--text);border:1px solid var(--line2)}
+.wme .btn:hover{transform:translateY(-2px)}
+.wme .btn:active{transform:translateY(0)}
+.wme .btn--xl{width:100%;min-height:62px;font-size:1.08rem}
+.wme .btn svg{width:19px;height:19px;flex:none}
+/* CTA primario del sistema WhiteMoon: púrpura sólido con texto blanco
+   (4.85:1, cumple AA), radio 8, padding 14/28 y Sora heredada del cuerpo.
+   No usa .btn--xl porque a partir de 600 px ese modificador reescribe el
+   padding lateral y aquí la medida es parte de la especificación. */
+.wme .btn--cta{
+  background:var(--p);color:#fff;border-radius:8px;
+  padding:14px 28px;min-height:62px;font-size:1.08rem;width:100%;
+  box-shadow:0 10px 30px -12px rgba(124,77,255,.9);
+}
+.wme .btn--cta:hover{background:var(--p2)}
+
+/* ---------- Navegación inferior ---------- */
+.wme .stepnav{
+  position:fixed;inset:auto 0 0 0;z-index:30;
+  display:flex;gap:10px;align-items:center;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(8,8,13,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--line);
+}
+.wme .stepnav .btn{min-height:52px;padding:14px 20px}
+.wme .stepnav .btn--ghost{flex:none;width:58px;padding:14px 0}
+.wme .stepnav .btn--next{flex:1}
+
+/* ---------- Portada ---------- */
+.wme .cover{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:22px 0 44px;
+}
+.wme .cover h1{margin:12px 0 0}
+.wme .cover .lead{font-size:1.06rem;margin-top:16px}
+.wme .cover__cta{margin-top:26px;max-width:430px}
+.wme .cover__meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.wme .cover__sectors{
+  margin:26px 0 0;max-width:52em;
+  font-size:.86rem;color:var(--muted);line-height:1.75;
+}
+.wme .cover__sectors strong{color:var(--text);font-weight:600}
+.wme .cover__meta li{
+  font-size:.75rem;font-weight:600;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:7px 14px;
+  background:rgba(255,255,255,.02);
+}
+.wme .moon{
+  position:absolute;z-index:0;pointer-events:none;
+  width:min(74vw,440px);aspect-ratio:1;
+  top:-4%;right:-26%;
+  border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, rgba(157,112,255,.34), rgba(124,77,255,.08) 46%, transparent 70%);
+}
+
+/* ---------- Problema ---------- */
+.wme .tl{list-style:none;margin:32px 0 0;padding:0;position:relative}
+.wme .tl::before{content:"";position:absolute;left:9px;top:10px;bottom:26px;width:1px;background:linear-gradient(180deg,var(--p),rgba(124,77,255,0))}
+.wme .tl li{position:relative;padding:0 0 22px 40px}
+.wme .tl li::before{
+  content:"";position:absolute;left:4px;top:8px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--p2);
+}
+.wme .tl time{display:block;font-size:.72rem;font-weight:700;letter-spacing:.14em;color:var(--p2);text-transform:uppercase}
+.wme .tl p{margin:4px 0 0;font-size:1rem;color:var(--text);line-height:1.45}
+.wme .tl p em{color:var(--muted);font-style:normal;font-size:.87rem;display:block;margin-top:3px}
+
+/* Tres bloques de dolor, cada uno con su "haz la cuenta" */
+.wme .pains{display:grid;gap:14px;margin:32px 0 0}
+.wme .pain{
+  position:relative;overflow:hidden;
+  background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px 20px 22px 23px;
+}
+.wme .pain::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--p),var(--g))}
+.wme .pain__label{margin:0 0 10px;font-size:.66rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--p2)}
+.wme .pain h3{font-size:1.2rem;font-weight:700;letter-spacing:-.025em;line-height:1.25}
+.wme .pain > p{margin:10px 0 0;font-size:.96rem;color:var(--muted);line-height:1.62}
+.wme .pain__count{
+  margin:16px 0 0;padding:14px 16px;border-radius:12px;
+  background:rgba(124,77,255,.12);border:1px solid rgba(124,77,255,.3);
+}
+.wme .pain__count b{display:block;margin-bottom:6px;font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--p2)}
+.wme .pain__count span{font-size:.93rem;color:var(--text);line-height:1.62}
+
+.wme .stats{display:grid;gap:12px;grid-template-columns:1fr 1fr;margin:32px 0 0}
+.wme .stat{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.wme .stat b{display:block;font-size:clamp(2.1rem,10vw,2.9rem);font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--g)}
+.wme .stat span{display:block;margin-top:8px;font-size:.82rem;color:var(--muted);line-height:1.45}
+.wme .punch{
+  margin:32px 0 0;padding:22px;
+  border-left:3px solid var(--g);
+  background:linear-gradient(90deg,rgba(0,212,170,.09),transparent 78%);
+  border-radius:0 var(--r) var(--r) 0;
+  font-size:1.15rem;font-weight:600;letter-spacing:-.02em;line-height:1.4;
+}
+
+/* ---------- Demos ---------- */
+.wme .searchbar{position:relative;margin:26px 0 0}
+.wme .searchbar input{
+  width:100%;min-height:54px;
+  background:var(--bg3);border:1px solid var(--line2);border-radius:14px;
+  color:var(--text);font-family:inherit;font-size:1rem;
+  padding:14px 16px 14px 46px;
+}
+.wme .searchbar input::placeholder{color:var(--muted)}
+.wme .searchbar svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:19px;height:19px;color:var(--muted)}
+.wme .count{font-size:.8rem;color:var(--muted);margin:14px 0 16px}
+.wme .grid{display:grid;gap:12px}
+.wme .demos{grid-template-columns:1fr}
+.wme .demo{
+  display:flex;flex-direction:column;gap:8px;
+  background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 18px 16px;
+  text-decoration:none;color:var(--text);
+  position:relative;overflow:hidden;
+  transition:border-color .22s var(--ease), transform .22s var(--ease), background .22s var(--ease);
+}
+.wme .demo::after{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--p),var(--g));
+  opacity:0;transition:opacity .22s var(--ease);
+}
+.wme .demo:hover{border-color:var(--line2);transform:translateY(-2px);background:#171724}
+.wme .demo:hover::after{opacity:1}
+.wme .demo__top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.wme .demo h3{font-size:1.1rem}
+.wme .demo__agent{
+  flex:none;font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--g);border:1px solid rgba(0,212,170,.35);border-radius:999px;padding:4px 10px;white-space:nowrap;
+}
+.wme .demo p{margin:0;font-size:.9rem;color:var(--muted);line-height:1.5}
+.wme .demo__go{margin-top:4px;font-size:.82rem;font-weight:700;color:var(--p2);display:inline-flex;align-items:center;gap:6px}
+.wme .note{margin:24px 0 0;font-size:.78rem;color:var(--muted);line-height:1.6;border-top:1px solid var(--line);padding-top:16px}
+.wme .empty{margin:20px 0 0;padding:26px;border:1px dashed var(--line2);border-radius:var(--r);color:var(--muted);text-align:center;font-size:.92rem}
+
+/* ---------- Dudas (acordeón) ----------
+   <details>/<summary> nativos: se abren con teclado y los lectores de pantalla
+   ya anuncian el estado, sin necesidad de aria-expanded a mano. */
+.wme .faqs{display:grid;gap:10px;margin-top:26px}
+.wme .faq{background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.wme .faq[open]{background:var(--bg2);border-color:rgba(124,77,255,.42)}
+.wme .faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;gap:14px;
+  min-height:64px;padding:16px 18px;
+  font-size:1rem;font-weight:600;letter-spacing:-.02em;line-height:1.35;color:var(--text);
+  transition:background .2s var(--ease);
+}
+.wme .faq summary::-webkit-details-marker{display:none}
+.wme .faq summary::marker{content:""}
+/* La pregunta es un h3 real dentro del summary (válido en HTML) para que un
+   lector de pantalla pueda saltar de duda en duda por encabezados. */
+.wme .faq summary h3{font:inherit;margin:0;letter-spacing:inherit}
+.wme .faq summary:hover{background:rgba(255,255,255,.035)}
+.wme .faq summary::after{
+  content:"";flex:none;margin-left:auto;
+  width:10px;height:10px;
+  border:solid var(--p2);border-width:0 2.5px 2.5px 0;
+  transform:translateY(-3px) rotate(45deg);
+  transition:transform .25s var(--ease);
+}
+.wme .faq[open] summary::after{transform:translateY(1px) rotate(225deg)}
+.wme .faq__body{padding:0 18px 18px}
+.wme .faq__body p{margin:0;font-size:.94rem;color:var(--muted);line-height:1.68}
+.wme .faq__body p + p{margin-top:10px}
+.wme .faq__body .btn{margin-top:14px;min-height:48px;padding:12px 20px;font-size:.9rem}
+
+/* ---------- Garantía de puesta en marcha ----------
+   Verde de acento sobre un fondo apenas teñido: destaca sin gritar y mantiene
+   contraste de sobra (8,2:1 el texto verde sobre el fondo compuesto). */
+.wme .pledge{
+  margin:26px 0 0;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid rgba(0,212,170,.34);
+  background:rgba(0,212,170,.10);
+  color:var(--text);
+  font-size:.9rem;
+  line-height:1.6;
+}
+/* Dentro del acordeón manda `.faq__body p`, más específico que `.pledge` a secas:
+   se sube la especificidad en vez de recurrir a !important. */
+.wme .faq__body p.pledge{margin:12px 0 0;color:var(--text);font-size:.9rem;line-height:1.6}
+.wme .pledge b{color:var(--g);font-weight:700}
+.wme .pledge__tag{
+  display:block;margin-bottom:5px;
+  font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--g);
+}
+/* Micro-sello junto al precio */
+.wme .seal{
+  display:inline-flex;align-items:center;gap:7px;
+  margin-top:12px;padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(0,212,170,.32);
+  background:rgba(0,212,170,.09);
+  color:var(--g);
+  font-size:.68rem;font-weight:700;letter-spacing:.04em;line-height:1.3;
+}
+.wme .seal svg{width:13px;height:13px;flex:none}
+.wme .seal--wide{display:flex;border-radius:12px;padding:12px 14px;font-size:.76rem;letter-spacing:0}
+
+/* ---------- Diagnóstico ---------- */
+.wme .q{border:1px solid var(--line);border-radius:var(--r);background:var(--bg2);padding:22px 20px;margin:0 0 14px}
+.wme .q.is-answered{border-color:rgba(0,212,170,.35)}
+.wme .q legend{padding:0;font-size:1.12rem;font-weight:600;letter-spacing:-.02em;line-height:1.35;color:var(--text)}
+.wme .q__n{display:block;font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--p2);text-transform:uppercase;margin-bottom:8px}
+.wme .q__hint{margin:10px 0 0;font-size:.85rem;color:var(--muted);line-height:1.5}
+.wme .opts{display:grid;gap:10px;margin-top:16px}
+.wme .opt{
+  appearance:none;-webkit-appearance:none;cursor:pointer;text-align:left;
+  display:flex;align-items:center;gap:12px;
+  min-height:60px;padding:14px 18px;
+  background:var(--bg3);border:1.5px solid var(--line2);border-radius:14px;
+  color:var(--text);font-family:inherit;font-size:1rem;font-weight:600;
+  transition:border-color .2s var(--ease), background .2s var(--ease);
+}
+.wme .opt:hover{border-color:var(--p2);background:#181826}
+.wme .opt[aria-pressed="true"]{border-color:var(--g);background:linear-gradient(100deg,rgba(0,212,170,.14),rgba(0,212,170,.03))}
+.wme .opt__mark{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line2);position:relative}
+.wme .opt[aria-pressed="true"] .opt__mark{border-color:var(--g);background:var(--g)}
+.wme .opt[aria-pressed="true"] .opt__mark::after{
+  content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid #06110e;border-width:0 2.5px 2.5px 0;transform:rotate(45deg);
+}
+.wme .result{
+  margin-top:26px;
+  border:1px solid rgba(0,212,170,.4);
+  border-radius:20px;
+  background:linear-gradient(150deg,rgba(0,212,170,.10),rgba(124,77,255,.10) 62%,var(--bg3) 100%);
+  padding:26px 22px;
+}
+.wme .result__tag{font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g);margin:0 0 12px}
+.wme .result h3{font-size:clamp(1.8rem,8vw,2.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.02}
+.wme .result__sub{margin:12px 0 0;font-size:.82rem;font-weight:600;color:var(--muted);line-height:1.5}
+.wme .result__why{margin:18px 0 0;font-size:1rem;color:var(--text);line-height:1.6}
+.wme .result__alt{
+  margin:18px 0 0;padding:14px 16px;border-radius:12px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line);
+  font-size:.86rem;color:var(--muted);line-height:1.55;
+}
+.wme .result__alt b{color:var(--text);font-weight:700}
+.wme .result__cta{margin-top:22px;display:grid;gap:10px}
+.wme .pending{margin-top:26px;padding:24px;border:1px dashed var(--line2);border-radius:var(--r);color:var(--muted);font-size:.92rem;text-align:center;line-height:1.6}
+
+/* ---------- Packs ---------- */
+.wme .packs{grid-template-columns:1fr;margin-top:26px}
+.wme .pack{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;position:relative}
+.wme .pack.is-reco{
+  border-color:var(--g);
+  background:linear-gradient(160deg,rgba(0,212,170,.10),var(--bg3) 58%);
+  box-shadow:0 0 0 1px rgba(0,212,170,.25), 0 20px 50px -30px rgba(0,212,170,.7);
+}
+.wme .pack__badge{
+  display:none;align-self:flex-start;margin-bottom:12px;
+  font-size:.65rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--g);color:#06110e;border-radius:999px;padding:6px 12px;
+}
+.wme .pack.is-reco .pack__badge{display:inline-block}
+.wme .pack__for{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p2);margin:0 0 8px}
+.wme .pack h3{font-size:1.32rem;font-weight:700}
+.wme .pack__tag{margin:8px 0 0;font-size:.9rem;color:var(--muted);line-height:1.5}
+.wme .pack__price{margin:16px 0 0;font-size:2.05rem;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text)}
+.wme .pack__price small{font-size:.85rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:8px}
+.wme .pack__sub{margin:8px 0 0;font-size:.78rem;color:var(--muted)}
+.wme .pack ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:9px}
+.wme .pack li{position:relative;padding-left:24px;font-size:.88rem;color:var(--muted);line-height:1.45}
+.wme .pack li::before{content:"";position:absolute;left:2px;top:6px;width:10px;height:6px;border:solid var(--g);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.wme .pack__link{margin-top:auto;padding-top:18px;font-size:.85rem;font-weight:700;color:var(--p2);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.wme .pack__link:hover{text-decoration:underline}
+
+/* ---------- Los precios (paso final de decisión) ---------- */
+.wme .prices{display:grid;gap:10px;margin-top:26px}
+.wme .price{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);
+  padding:18px 20px;
+}
+.wme .price.is-reco{
+  border-color:var(--g);
+  background:linear-gradient(120deg,rgba(0,212,170,.11),var(--bg3) 62%);
+  box-shadow:0 0 0 1px rgba(0,212,170,.22);
+}
+.wme .price__main{flex:1 1 12rem;min-width:0}
+.wme .price__for{margin:0 0 6px;font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--p2)}
+.wme .price__name{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.wme .price__note{margin:6px 0 0;font-size:.78rem;color:var(--muted);line-height:1.5}
+.wme .price__amount{flex:0 0 auto;text-align:right}
+.wme .price__big{font-size:1.7rem;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text)}
+.wme .price__big small{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:6px}
+.wme .price__tag{
+  display:inline-block;margin:0 0 8px;
+  font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--g);color:#06110e;border-radius:999px;padding:5px 11px;
+}
+.wme .price__link{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;font-size:.8rem;font-weight:700;color:var(--p2);text-decoration:none;
+}
+.wme .price__link:hover{text-decoration:underline}
+.wme .choose{
+  margin:26px 0 0;padding:20px;
+  border:1px solid var(--line2);border-radius:var(--r);
+  background:var(--bg2);
+  font-size:.95rem;color:var(--muted);line-height:1.65;
+}
+.wme .choose b{color:var(--text);font-weight:700}
+
+/* ---------- Comparativa ---------- */
+.wme .tablewrap{margin-top:26px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.wme table{width:100%;border-collapse:collapse;font-size:.88rem}
+.wme caption{text-align:left;color:var(--muted);font-size:.8rem;padding-bottom:14px;line-height:1.55}
+.wme th,.wme td{text-align:left;padding:14px;border-bottom:1px solid var(--line);vertical-align:top}
+.wme thead th{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2);border-bottom:1px solid var(--line2);white-space:nowrap}
+.wme tbody th{font-weight:700;color:var(--text);font-size:.95rem}
+.wme td{color:var(--muted)}
+.wme td.price{color:var(--text);font-weight:600}
+.wme tbody tr.is-reco th,.wme tbody tr.is-reco td{background:rgba(0,212,170,.08)}
+
+/* ---------- Tu siguiente paso ---------- */
+.wme .contact{margin-top:26px;display:grid;gap:10px}
+.wme .contact a{
+  display:flex;align-items:center;gap:12px;min-height:58px;
+  padding:14px 18px;border-radius:14px;
+  background:var(--bg3);border:1px solid var(--line);
+  color:var(--text);text-decoration:none;font-weight:600;font-size:.95rem;
+  transition:border-color .2s var(--ease);
+}
+.wme .contact a:hover{border-color:var(--line2)}
+.wme .contact svg{width:20px;height:20px;flex:none;color:var(--g)}
+.wme .contact em{color:var(--muted);font-weight:400;font-size:.8rem;display:block;font-style:normal;margin-top:2px}
+.wme .foot{margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted);line-height:1.75}
+.wme .foot b{color:var(--text);font-weight:700}
+/* ---------- Cierre con formulario ---------- */
+.wme .lead-form{margin-top:34px}
+.wme .lead-form__title{margin:0;font-size:1.15rem;color:var(--text)}
+.wme .lead-form__hint{margin:8px 0 0;font-size:.85rem;color:var(--muted);line-height:1.65}
+.wme .lead-form__grid{display:grid;gap:16px;margin-top:22px}
+/* `min-width:0` evita que un valor largo estire la celda del grid y saque
+   scroll horizontal en pantallas estrechas. */
+.wme .field{display:grid;gap:7px;min-width:0}
+.wme .field label{font-size:.82rem;font-weight:700;color:var(--text)}
+.wme .field input,.wme .field select{
+  width:100%;min-height:52px;
+  padding:13px 15px;
+  border:1px solid var(--field);
+  border-radius:12px;
+  background:var(--bg3);
+  color:var(--text);
+  /* 1rem = 16px: por debajo, iOS hace zoom al enfocar el campo. */
+  font-family:inherit;font-size:1rem;font-weight:500;line-height:1.4;
+  transition:border-color .2s var(--ease);
+}
+.wme .field input:hover,.wme .field select:hover{border-color:var(--p2)}
+/* El :focus-visible global redondea a 6px; aquí se mantiene el radio del campo
+   para que el borde no dé un salto al enfocarlo. */
+.wme .field input:focus-visible,.wme .field select:focus-visible{border-radius:12px;outline-offset:2px}
+.wme .field select{
+  appearance:none;-webkit-appearance:none;-moz-appearance:none;
+  padding-right:46px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238888a0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;background-size:18px;
+}
+/* Sin esto el desplegable nativo se abre en blanco sobre blanco en Windows. */
+.wme .field select option{background:#13131e;color:#f0f0f5}
+.wme .field.is-bad input,.wme .field.is-bad select{border-color:var(--err)}
+.wme .field__err{margin:0;font-size:.78rem;font-weight:600;color:var(--err);display:none;line-height:1.5}
+.wme .field.is-bad .field__err{display:block}
+.wme .lead-form__go{margin-top:24px}
+.wme .lead-form__go[disabled]{cursor:default;transform:none}
+/* Franja de confianza: solo repite lo que ya está publicado —el plazo, la
+   garantía de puesta en marcha y la ausencia de permanencia—, en verde. */
+.wme .trust{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.wme .trust li{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 14px;border-radius:999px;
+  border:1px solid rgba(0,212,170,.34);background:rgba(0,212,170,.08);
+  font-size:.78rem;font-weight:600;color:var(--g);line-height:1.3;
+}
+.wme .trust svg{width:14px;height:14px;flex:none}
+.wme .privacy{margin:14px 0 0;font-size:.78rem;color:var(--muted);line-height:1.65}
+.wme .privacy a{color:var(--p2)}
+.wme .lead-form.is-sent .lead-form__grid,.wme .lead-form.is-sent .lead-form__go{opacity:.5}
+
+/* Tarjeta de confirmación: el contenedor vive siempre en el DOM (vacío) para
+   que el lector de pantalla anuncie el texto al inyectarlo. */
+.wme .confirm{
+  margin-top:30px;padding:26px 22px;
+  display:grid;gap:14px;justify-items:start;
+  border:1px solid var(--g);border-radius:var(--r);
+  background:linear-gradient(150deg,rgba(0,212,170,.13),rgba(0,212,170,.03));
+}
+.wme .confirm__check{
+  width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--g);color:#06110e;
+}
+.wme .confirm__check svg{width:26px;height:26px}
+.wme .confirm h3{margin:0;font-size:1.2rem;color:var(--text)}
+.wme .confirm p{margin:0;font-size:.95rem;color:var(--muted);line-height:1.65}
+/* Qué pasa ahora: va en <ol>, así que el orden lo da el marcado y las bolitas
+   numeradas son puro adorno (aria-hidden). */
+.wme .next__title{
+  margin:4px 0 0;font-size:.68rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--g);
+}
+.wme .next{margin:0;padding:0;list-style:none;display:grid;gap:11px;width:100%}
+.wme .next li{display:flex;align-items:center;gap:11px;font-size:.9rem;color:var(--text);line-height:1.5}
+.wme .next__n{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(0,212,170,.16);border:1px solid rgba(0,212,170,.4);
+  color:var(--g);font-size:.75rem;font-weight:700;
+}
+
+/* Alternativa secundaria: para quien todavía no quiere dejar sus datos. */
+.wme .alt{margin-top:40px;padding-top:30px;border-top:1px solid var(--line)}
+.wme .alt h3{margin:0;font-size:1rem;color:var(--text)}
+.wme .alt p{margin:9px 0 0;font-size:.88rem;color:var(--muted);line-height:1.65}
+.wme .alt h3.alt__directo{margin-top:36px}
+.wme .alt__directo + .contact{margin-top:14px}
+
+/* Hueco del calendario. El `min-height` reserva el sitio antes de que el embed
+   monte el iframe, así no hay salto de maquetación al cargar. */
+.wme .cal{
+  margin-top:22px;min-height:520px;max-width:100%;
+  border:1px solid var(--line);border-radius:var(--r);
+  background:var(--bg2);overflow:hidden;
+}
+.wme .cal iframe{display:block;width:100%;max-width:100%;border:0}
+.wme .cal__fallback{margin:12px 0 0;font-size:.82rem;color:var(--muted);line-height:1.6}
+.wme .cal__fallback a{color:var(--p2)}
+
+.wme .noscript{margin:20px;padding:20px;border:1px solid var(--p);border-radius:var(--r);background:var(--bg3);color:var(--text)}
+
+/* ---------- Responsive ---------- */
+@media(min-width:600px){
+  .wme .demos{grid-template-columns:repeat(2,1fr)}
+  .wme .packs{grid-template-columns:repeat(2,1fr)}
+  .wme .stats{grid-template-columns:repeat(3,1fr)}
+  .wme .opts{grid-template-columns:repeat(2,1fr)}
+  .wme .lead-form__grid{grid-template-columns:repeat(2,1fr)}
+  .wme .field--wide{grid-column:1/-1}
+  .wme .result__cta{grid-template-columns:repeat(2,1fr)}
+  .wme .cover__cta{max-width:330px}
+  .wme .btn--xl{width:auto;padding-inline:44px}
+  .wme .btn--cta{width:auto}
+}
+@media(min-width:900px){
+  .wme{--hdr:68px}
+  .wme .demos{grid-template-columns:repeat(3,1fr)}
+  .wme .packs{grid-template-columns:repeat(3,1fr)}
+  .wme .wrap{padding:0 32px}
+  .wme .step{padding-top:48px}
+  .wme .ghost{right:1%;top:-42px}
+  .wme .contact{grid-template-columns:repeat(3,1fr)}
+  .wme .cal{min-height:640px}
+}
+/* Los 9 puntos ocupan 216 px fijos (24 px cada uno por accesibilidad táctil).
+   Por debajo de 480 px el nombre de la marca cede ese sitio: queda la luna como
+   identidad —y en la portada el nombre se ve a pantalla completa—, pero se sigue
+   anunciando a lectores de pantalla. Con el hueco y el margen más ajustados,
+   la cabecera cabe entera incluso a 320 px. */
+@media(max-width:479px){
+  .wme .topbar{gap:6px}
+}
+@media(max-width:599px){
+  .wme thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .wme tbody tr{display:block;margin-bottom:12px;padding:18px;background:var(--bg3);border:1px solid var(--line);border-radius:var(--r)}
+  .wme tbody tr.is-reco{border-color:var(--g);background:rgba(0,212,170,.07)}
+  .wme tbody th,.wme tbody td{display:block;border:0;padding:0}
+  .wme tbody th{font-size:1.15rem;margin-bottom:12px}
+  .wme tbody tr.is-reco th,.wme tbody tr.is-reco td{background:none}
+  .wme tbody td{padding:10px 0 0;border-top:1px solid var(--line);margin-top:10px}
+  .wme tbody td::before{
+    content:attr(data-label);
+    display:block;font-size:.64rem;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--p2);margin-bottom:5px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .wme .btn:hover,.wme .demo:hover{transform:none}
+}
+@media(prefers-reduced-motion:no-preference){
+  .wme .step.is-active .reveal{animation:rise .5s var(--ease) both}
+  .wme .step.is-active .reveal:nth-child(2){animation-delay:.05s}
+  .wme .step.is-active .reveal:nth-child(3){animation-delay:.1s}
+  .wme .step.is-active .reveal:nth-child(4){animation-delay:.15s}
+  /* El h1 es el elemento LCP: se mueve, pero nunca parte de opacity 0,
+     así pinta en el primer frame en vez de esperar a la animación. */
+  .wme .step.is-active h1.reveal{animation-name:riseFlat;animation-delay:0s}
+  @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  @keyframes riseFlat{from{transform:translateY(16px)}to{transform:none}}
+}
