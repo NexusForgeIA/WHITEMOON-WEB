@@ -59,6 +59,19 @@ html:root{--orion-bottom:100px}
 @media(max-width:599px){html:root{--orion-bottom:96px}}
 .wme [hidden]{display:none !important}
 .wme a{color:var(--p2)}
+/* Los enlaces dentro de un párrafo no pueden distinguirse solo por el color:
+   --p2 sobre --muted da 1.01:1 y axe pide 3:1 (link-in-text-block). Se subrayan.
+   Los enlaces que son tarjeta o botón entero (.demo, .contact, .pack__link)
+   quedan fuera: ahí el enlace es el bloque, no una palabra dentro del texto. */
+.wme .lead a,
+.wme .note a,
+.wme .privacy a,
+.wme .foot a,
+.wme .faq__body a,
+.wme .cal__fallback a,
+.wme .noscript a,
+.wme .choose a,
+.wme .pledge a{text-decoration:underline}
 .wme :focus-visible{outline:3px solid var(--g);outline-offset:3px;border-radius:6px}
 .wme .sr-only{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;
@@ -342,6 +355,30 @@ html:root{--orion-bottom:100px}
   display:block;margin-bottom:5px;
   font-size:.66rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
   color:var(--g);
+}
+/* Condiciones de la garantía. Van en texto normal y no destacado a propósito:
+   son la letra pequeña que hace exigible la promesa del titular, así que lo que
+   importa es que se lean enteras, no que griten. */
+.wme .pledge__claim{margin:0;font-size:1rem;font-weight:600;line-height:1.55;color:var(--text)}
+.wme .pledge__how{
+  margin:18px 0 0;
+  font-size:.72rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--text);
+}
+.wme .pledge__terms{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:9px}
+.wme .pledge__terms li{
+  position:relative;padding-left:18px;
+  font-size:.86rem;font-weight:400;line-height:1.65;color:var(--text);
+}
+/* El punto es adorno: la lista ya la anuncia el <ul>. */
+.wme .pledge__terms li::before{
+  content:"";position:absolute;left:0;top:.66em;
+  width:6px;height:6px;border-radius:50%;
+  background:var(--g);opacity:.8;
+}
+@media(max-width:599px){
+  .wme .pledge__claim{font-size:.95rem}
+  .wme .pledge__terms li{font-size:.85rem;padding-left:16px}
 }
 /* Micro-sello junto al precio */
 .wme .seal{
