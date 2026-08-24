@@ -201,6 +201,18 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 /* RESPONSIVE */
 @media(max-width:900px){.calc-grid{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr 1fr;}.faq-grid{grid-template-columns:1fr;}.cta-gestoria{grid-template-columns:1fr;}.cta-precio{text-align:left;}}
 @media(max-width:600px){nav{padding:0 4%;}.hero{padding:3rem 5% 2.5rem;}.calc-section{padding:2.5rem 5%;}.info-section{padding:2.5rem 5%;}.field-row{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr;}.cta-gestoria{padding:2rem;}.neto-amount{font-size:2.2rem;}footer{flex-direction:column;text-align:center;}}
+
+/* CTA calculadora -> embudo /demos/ (misma regla que assets/site.css) */
+.calc-cta{padding:0 6% 56px;}
+.calc-cta-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 30px;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:16px;}
+.calc-cta-txt{flex:1 1 320px;min-width:0;}
+.calc-cta-h{font-family:var(--sans);font-size:1.05rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:#fff;margin:0 0 6px;}
+.calc-cta-p{font-family:var(--sans);font-size:.9rem;line-height:1.6;color:var(--mid,#9A96B8);margin:0;}
+.calc-cta-btn{flex:0 0 auto;display:inline-block;padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border-radius:10px;font-family:var(--sans);font-size:.9rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .18s ease;}
+.calc-cta-btn:hover{background:var(--p-dark,#5c35cc);color:#fff;}
+.calc-cta-btn:focus-visible{outline:2px solid #9d70ff;outline-offset:3px;}
+@media(max-width:900px){.calc-cta-card{padding:24px;gap:18px;}}
+@media(max-width:600px){.calc-cta{padding:0 5% 40px;}.calc-cta-card{flex-direction:column;align-items:stretch;padding:22px 20px;gap:16px;}.calc-cta-txt{flex:0 0 auto;width:100%;}.calc-cta-btn{width:100%;text-align:center;}}
 </style>
   <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
@@ -477,6 +489,16 @@ footer a{color:var(--purple-soft);text-decoration:none;}
   </div>
 
 </section>
+  <section class="calc-cta">
+    <div class="calc-cta-card">
+      <div class="calc-cta-txt">
+        <h2 class="calc-cta-h">¿Gestoría o asesoría?</h2>
+        <p class="calc-cta-p">Un agente de IA atiende las consultas de tus clientes y capta leads 24/7. Míralo funcionando en la demo guiada.</p>
+      </div>
+      <a class="calc-cta-btn" href="/demos/" onclick="wmTrack('click_calc_to_demo',{from:'calc-nomina'})">Probar la demo guiada <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+
 
 <!-- INTERNAL LINKING — herramientas y landings relacionadas -->
 <section class="info-section" style="padding:60px 6% 80px">
