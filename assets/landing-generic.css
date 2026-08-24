@@ -118,3 +118,15 @@ footer a{color:var(--p2);}
 
 .skip-link{position:absolute;top:-40px;left:0;background:var(--p);color:#fff;padding:8px;z-index:9999}
 .skip-link:focus{top:0}
+
+/* CTA calculadora -> embudo /demos/ (bloque .calc-cta, ver scripts/add_calc_cta.py) */
+.calc-cta{padding:0 6% 56px;}
+.calc-cta-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 30px;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:16px;}
+.calc-cta-txt{flex:1 1 320px;min-width:0;}
+.calc-cta-h{font-family:'Sora','Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:1.05rem;font-weight:700;line-height:1.35;letter-spacing:-.01em;color:#fff;margin:0 0 6px;}
+.calc-cta-p{font-family:'Sora','Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:.9rem;line-height:1.6;color:var(--muted,#9999b5);margin:0;}
+.calc-cta-btn{flex:0 0 auto;display:inline-block;padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border-radius:10px;font-family:'Sora','Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:.9rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .18s ease;}
+.calc-cta-btn:hover{background:var(--p-dark,#5c35cc);color:#fff;}
+.calc-cta-btn:focus-visible{outline:2px solid #9d70ff;outline-offset:3px;}
+@media(max-width:900px){.calc-cta-card{padding:24px;gap:18px;}}
+@media(max-width:600px){.calc-cta{padding:0 5% 40px;}.calc-cta-card{flex-direction:column;align-items:stretch;padding:22px 20px;gap:16px;}.calc-cta-txt{flex:0 0 auto;width:100%;}.calc-cta-btn{width:100%;text-align:center;}}
