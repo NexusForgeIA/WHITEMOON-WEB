@@ -7,6 +7,12 @@ Idempotente: si la página ya tiene el bloque, la salta. Los estilos viven en
 `assets/site.css` y `assets/landing-generic.css`; las dos calculadoras con CSS
 propio (`calculadora-itp`, `calculadora-nomina`) los llevan en su <style> inline.
 
+El botón es SECUNDARIO a propósito (fondo transparente, borde `--p`, texto
+`--p2`): en estas páginas la acción primaria es la captura de teléfono
+("Quiero que me llamen"), y la demo no debe competir con ella. Una calculadora
+nueva hereda ese estilo con solo emitir la clase `.calc-cta-btn`; si nace con
+CSS propio, hay que copiarle también el bloque `.calc-cta*` inline.
+
 Colocación — siempre POR DEBAJO de la herramienta y del formulario de lead:
   · 62 páginas: justo tras el </section> que cierra el bloque de captura
     (`form.calc-lead-form`).
@@ -49,6 +55,7 @@ MENSAJES = {
 VEHICULOS = {
     "cambio-titularidad-vehiculo", "depreciacion-vehiculo",
     "gastos-compra-coche-segunda-mano", "impuesto-matriculacion",
+    "itp",  # ITP de vehículos: coche, moto, quad, autocaravana, embarcación.
     "seguro-coche-estimado", "transferencia-vehiculo",
 }
 LEGAL = {
@@ -59,7 +66,7 @@ FISCAL = {
     "beneficio-neto-autonomo", "cuota-autonomos", "donaciones", "finiquito",
     "gastos-compra-vivienda", "gastos-deducibles-autonomos",
     "herencia-impuesto-sucesiones", "horas-extra", "ingresos-reales-autonomo",
-    "irpf-autonomos", "itp", "itp-vivienda", "iva-autonomos", "nomina",
+    "irpf-autonomos", "itp-vivienda", "iva-autonomos", "nomina",
     "plusvalia-municipal", "prestacion-paro", "retencion-irpf",
     "sanciones-fiscales", "subida-salarial", "sueldo-neto",
     "vacaciones-pendientes",
