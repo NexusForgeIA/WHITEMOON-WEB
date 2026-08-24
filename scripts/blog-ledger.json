@@ -25,7 +25,12 @@
     "t022",
     "t023",
     "t024",
-    "t025"
+    "t025",
+    "t026",
+    "t027",
+    "t028",
+    "t029",
+    "t030"
   ],
   "publicaciones": [
     {
@@ -111,6 +116,23 @@
         "agente-ia-fontaneros-gestionar-urgencias",
         "agente-ia-gestoria-altas-modelos-avisos",
         "agente-ia-taller-recordar-revisiones-itv"
+      ]
+    },
+    {
+      "fecha": "2026-08-24",
+      "ids": [
+        "t026",
+        "t027",
+        "t028",
+        "t029",
+        "t030"
+      ],
+      "slugs": [
+        "agente-ia-dental-reducir-ausencias",
+        "cuanto-cuesta-agente-ia-negocio-local",
+        "agente-ia-inmobiliaria-coordinar-visitas",
+        "agente-ia-hosteleria-atender-fuera-horario",
+        "errores-implementar-agente-ia-pyme"
       ]
     }
   ]
