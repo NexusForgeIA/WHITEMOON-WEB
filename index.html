@@ -711,12 +711,26 @@
         <section aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
           <div style="background:var(--card,#0d0d1a);border:1px solid var(--border,rgba(124,77,255,.16));border-left:3px solid var(--p,#7c4dff);border-radius:14px;padding:20px 24px">
             <h2 style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin:0 0 12px">En 30 segundos</h2>
-            <ul style="list-style:none;padding:0;margin:0;font-size:.88rem;color:var(--muted,#9090b0);line-height:1.8">
-              <li><strong style="color:#e0e0f4;font-weight:600">Qué hacemos:</strong> automatización empresarial con agentes IA.</li>
-              <li><strong style="color:#e0e0f4;font-weight:600">Para quién:</strong> pymes y empresas que quieren reducir tareas manuales.</li>
-              <li><strong style="color:#e0e0f4;font-weight:600">Resultado:</strong> menos costes operativos, más capacidad comercial y atención 24/7.</li>
-              <li><strong style="color:#e0e0f4;font-weight:600">Punto de partida:</strong> Auditoría GEO IA — informe de visibilidad en 48h.</li>
-              <li><strong style="color:#e0e0f4;font-weight:600">Dónde:</strong> sede en Majadahonda y servicio en toda la Comunidad, también como <a href="/agencia-ia-madrid/" style="color:#9d70ff;text-decoration:underline;text-underline-offset:2px">agencia de IA en Madrid</a>.</li>
+            <style>
+              .tldr30{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+              .tldr30 li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
+              /* Marcador decorativo: --p vale aquí porque no es texto. */
+              .tldr30 li::before{content:"";grid-row:1 / span 2;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--p,#7c4dff)}
+              .tldr30 .t-lbl{grid-column:2;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#9090b0);line-height:1.3}
+              .tldr30 .t-key{grid-column:2;font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;line-height:1.4;color:var(--text,#f0f0f5);letter-spacing:-.01em}
+              .tldr30 .t-key a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+              @media(max-width:600px){
+                .tldr30{gap:16px}
+                .tldr30 li{column-gap:11px}
+                .tldr30 li::before{margin-top:7px}
+                .tldr30 .t-key{font-size:1.1rem;line-height:1.45}
+              }
+            </style>
+            <ul class="tldr30">
+              <li><span class="t-lbl">Qué hacemos</span><span class="t-key">Agentes de IA que automatizan tu empresa.</span></li>
+              <li><span class="t-lbl">Para quién</span><span class="t-key">Pymes que quieren quitarse tareas manuales de encima.</span></li>
+              <li><span class="t-lbl">Resultado</span><span class="t-key">Menos costes, más ventas y atención 24/7.</span></li>
+              <li><span class="t-lbl">Dónde</span><span class="t-key">Majadahonda y toda la Comunidad de Madrid, también como <a href="/agencia-ia-madrid/">agencia de IA en Madrid</a>.</span></li>
             </ul>
           </div>
         </section>
