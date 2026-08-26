@@ -43,7 +43,7 @@
      así que el titular no se reajusta a media carga. -->
 <link rel="preload" href="/demos/assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css">
-<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082305">
+<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026082601">
 <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
@@ -126,9 +126,10 @@
         <h1 class="reveal"><span class="thin">Prueba lo que un</span> agente IA haría <span class="grad">en tu negocio</span></h1>
         <p class="lead reveal">Nueve pasos, sin prisa y sin compromiso: demos reales de tu sector, tus dudas resueltas y el pack que encaja contigo.</p>
         <div class="cover__cta reveal">
-          <button type="button" class="btn btn--cta" data-go="2" onclick="window.wmTrack&amp;&amp;wmTrack('click_hero_cta',{wm_source:'demos',accion:'empezar-embudo'})">
-            Quiero empezar ya <span aria-hidden="true">&rarr;</span>
+          <button type="button" class="btn btn--cta" data-go="2" aria-label="Empezar el recorrido guiado de nueve pasos" onclick="window.wmTrack&amp;&amp;wmTrack('click_hero_cta',{wm_source:'demos',accion:'empezar-embudo'});window.wmTrack&amp;&amp;wmTrack('click_demogratis_to_embudo',{wm_source:'demos',placement:'hero',paso_destino:2})">
+            Empezar el recorrido <span aria-hidden="true">&rarr;</span>
           </button>
+          <p class="cover__note">9 pasos &middot; sin registro &middot; puedes salir cuando quieras</p>
         </div>
         <ul class="cover__meta reveal">
           <li>Sin compromiso</li>
@@ -145,6 +146,18 @@
           electricistas, reformas, servicios técnicos, control de plagas, limpiezas y mudanzas; y para
           <strong>hostelería</strong> y chef privado a domicilio. Ábrela y háblale como lo haría un cliente tuyo.
         </p>
+
+        <!-- Repetición del CTA al final de la portada: quien ha leído la lista de
+             sectores ya sabe que el suyo está ahí, y lo que quiere es la demo,
+             no el argumentario. Le mandamos directo al paso 3 (el escaparate)
+             en vez de obligarle a pasar por el 2. Mismo evento, distinto
+             `placement`, para poder separar en GA4 quién arranca arriba y
+             quién arranca aquí abajo. -->
+        <div class="cover__cta cover__cta--repeat reveal">
+          <button type="button" class="btn btn--cta" data-go="3" aria-label="Ver la demo de mi sector: ir al paso 3, el escaparate de demos" onclick="window.wmTrack&amp;&amp;wmTrack('click_demogratis_to_embudo',{wm_source:'demos',placement:'sectores',paso_destino:3})">
+            Ver la demo de mi sector <span aria-hidden="true">&rarr;</span>
+          </button>
+        </div>
       </div>
     </section>
     <section class="step" id="paso-2" data-title="¿Te suena esto?" tabindex="-1" aria-label="Paso 2 de 9: ¿Te suena esto?" hidden>

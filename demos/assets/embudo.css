@@ -201,6 +201,11 @@ html:root{--orion-bottom:100px}
 .wme .cover h1{margin:12px 0 0}
 .wme .cover .lead{font-size:1.06rem;margin-top:16px}
 .wme .cover__cta{margin-top:26px;max-width:430px}
+/* Qué cuesta pulsar el botón, dicho antes de pulsarlo: el rebote del paso 1
+   es de gente que no sabe si detrás hay un formulario. --muted sobre --bg
+   da 5.77:1, cumple AA. */
+.wme .cover__note{margin:12px 0 0;font-size:.8rem;color:var(--muted);line-height:1.6}
+.wme .cover__cta--repeat{margin-top:22px}
 .wme .cover__meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
 .wme .cover__sectors{
   margin:26px 0 0;max-width:52em;
