@@ -417,14 +417,20 @@
     .btn-prim,.btn-out,.btn-primary,.btn-ghost,.btn-tel,.nav-cta,.nav-link,button{font-family:inherit;font-weight:500}
   </style>
   <style>
-    .hero-enterprise{position:relative;padding:80px 24px 60px;overflow:hidden;background:linear-gradient(135deg,#0B0F17 0%,#0f1420 100%)}
+    .hero-enterprise{position:relative;padding:120px 24px 60px;overflow:hidden;background:linear-gradient(135deg,#0B0F17 0%,#0f1420 100%)}
     .hero-enterprise .wrap{max-width:1240px;margin:0 auto;position:relative;z-index:2}
     .hero-brand{display:flex;align-items:center;gap:14px;margin-bottom:48px}
     .hero-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 18px rgba(124,77,255,.4))}
     .hero-brand .name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;line-height:1;letter-spacing:-.01em}
     .hero-brand .name .light{color:#E8E8F0}.hero-brand .name .acc{color:#7c4dff}
-    .hero-cols{display:grid;grid-template-columns:6fr 4fr;gap:64px;align-items:center}
-    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-right,.hero-cols .hero-left .tldr-box{text-align:left}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
+    .hero-cols{display:grid;grid-template-columns:6fr 4fr;column-gap:64px;row-gap:36px;align-items:start}
+    /* Fila 1: solo el titular (la columna derecha queda libre y deja ver
+       el video). Fila 2: el TL;DR y las tarjetas, que asi arrancan a la
+       misma altura sea cual sea el alto del titular. */
+    .hero-cols>.hero-left{grid-column:1;grid-row:1}
+    .hero-cols>.tldr-box{grid-column:1;grid-row:2;text-align:left}
+    .hero-cols>.hero-right{grid-column:2;grid-row:2}
+    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-right,.hero-cols .tldr-box{text-align:left}.hero-cols>.hero-left,.hero-cols>.tldr-box,.hero-cols>.hero-right{grid-column:auto;grid-row:auto}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
     .hero-left{text-align:left}
     /* .hero{text-align:center} de site.css se hereda hasta las tarjetas:
        la columna derecha lo revierte igual que hace .hero-left. */
@@ -710,34 +716,35 @@
           <span style="font-size:clamp(2rem,5vw,4rem);font-weight:800;color:#fff;line-height:1.05;text-shadow:0 0 40px rgba(157,112,255,.6)">desde 99€/mes</span>
         </div>
         <p class="sub">Operativo en 7 días. Sin permanencia. Sin contratar a nadie.</p>
-        <!-- TL;DR — resumen para extracción por motores de IA -->
-        <section class="tldr-box" aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
-          <div style="background:var(--card,#0d0d1a);border:1px solid var(--border,rgba(124,77,255,.16));border-left:3px solid var(--p,#7c4dff);border-radius:14px;padding:20px 24px">
-            <h2 style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin:0 0 12px">En 30 segundos</h2>
-            <style>
-              .tldr30{list-style:none;padding:0;margin:0;display:grid;gap:18px}
-              .tldr30 li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
-              /* Marcador decorativo: --p vale aquí porque no es texto. */
-              .tldr30 li::before{content:"";grid-row:1 / span 2;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--p,#7c4dff)}
-              .tldr30 .t-lbl{grid-column:2;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#9090b0);line-height:1.3}
-              .tldr30 .t-key{grid-column:2;font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;line-height:1.4;color:var(--text,#f0f0f5);letter-spacing:-.01em}
-              .tldr30 .t-key a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
-              @media(max-width:600px){
-                .tldr30{gap:16px}
-                .tldr30 li{column-gap:11px}
-                .tldr30 li::before{margin-top:7px}
-                .tldr30 .t-key{font-size:1.1rem;line-height:1.45}
-              }
-            </style>
-            <ul class="tldr30">
-              <li><span class="t-lbl">Qué hacemos</span><span class="t-key">Agentes de IA que automatizan tu empresa.</span></li>
-              <li><span class="t-lbl">Para quién</span><span class="t-key">Pymes que quieren quitarse tareas manuales de encima.</span></li>
-              <li><span class="t-lbl">Resultado</span><span class="t-key">Menos costes, más ventas y atención 24/7.</span></li>
-              <li><span class="t-lbl">Dónde</span><span class="t-key">Majadahonda y toda la Comunidad de Madrid, también como <a href="/agencia-ia-madrid/">agencia de IA en Madrid</a>.</span></li>
-            </ul>
-          </div>
-        </section>
       </div>
+
+      <!-- TL;DR — resumen para extracción por motores de IA -->
+      <section class="tldr-box" aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
+        <div style="background:var(--card,#0d0d1a);border:1px solid var(--border,rgba(124,77,255,.16));border-left:3px solid var(--p,#7c4dff);border-radius:14px;padding:20px 24px">
+          <h2 style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin:0 0 12px">En 30 segundos</h2>
+          <style>
+            .tldr30{list-style:none;padding:0;margin:0;display:grid;gap:18px}
+            .tldr30 li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
+            /* Marcador decorativo: --p vale aquí porque no es texto. */
+            .tldr30 li::before{content:"";grid-row:1 / span 2;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--p,#7c4dff)}
+            .tldr30 .t-lbl{grid-column:2;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#9090b0);line-height:1.3}
+            .tldr30 .t-key{grid-column:2;font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;line-height:1.4;color:var(--text,#f0f0f5);letter-spacing:-.01em}
+            .tldr30 .t-key a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+            @media(max-width:600px){
+              .tldr30{gap:16px}
+              .tldr30 li{column-gap:11px}
+              .tldr30 li::before{margin-top:7px}
+              .tldr30 .t-key{font-size:1.1rem;line-height:1.45}
+            }
+          </style>
+          <ul class="tldr30">
+            <li><span class="t-lbl">Qué hacemos</span><span class="t-key">Agentes de IA que automatizan tu empresa.</span></li>
+            <li><span class="t-lbl">Para quién</span><span class="t-key">Pymes que quieren quitarse tareas manuales de encima.</span></li>
+            <li><span class="t-lbl">Resultado</span><span class="t-key">Menos costes, más ventas y atención 24/7.</span></li>
+            <li><span class="t-lbl">Dónde</span><span class="t-key">Majadahonda y toda la Comunidad de Madrid, también como <a href="/agencia-ia-madrid/">agencia de IA en Madrid</a>.</span></li>
+          </ul>
+        </div>
+      </section>
 
       <!-- RIGHT: bloque de valor real + caso verificable -->
       <div class="hero-right">
