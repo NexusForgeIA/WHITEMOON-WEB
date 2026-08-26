@@ -144,6 +144,12 @@ body{font-family:'Sora',sans-serif;background:var(--black);color:var(--white);li
   .calidad-opts{grid-template-columns:1fr 1fr 1fr}
   .calc-body{padding:20px}
 }
+
+/* Footer — mismas reglas que el resto de /reformas-madrid/ */
+footer{background:#000;border-top:1px solid var(--border2);padding:32px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{font-size:.65rem;color:var(--muted)}
+footer a{font-size:.65rem;color:rgba(57,255,20,.5)}
+@media(max-width:768px){footer{padding:24px 20px;flex-direction:column;text-align:center}}
 </style>
 <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
@@ -530,5 +536,10 @@ function abrirChatConDatos(){
 // INIT
 setTipo('integral');
 </script>
+<footer>
+  <a href="/reformas-madrid/" style="font-weight:700;font-size:.82rem;color:var(--white)">Reformas<span style="color:var(--lime)">Madrid</span></a>
+  <p>© 2026 Reformas Madrid · <a href="/reformas-madrid/">whitemoon.es/reformas-madrid/</a></p>
+  <a href="/reformas-madrid/">Volver a Reformas Madrid</a>
+</footer>
 </body>
 </html>
