@@ -424,8 +424,11 @@
     .hero-brand .name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;line-height:1;letter-spacing:-.01em}
     .hero-brand .name .light{color:#E8E8F0}.hero-brand .name .acc{color:#7c4dff}
     .hero-cols{display:grid;grid-template-columns:6fr 4fr;gap:64px;align-items:center}
-    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
+    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-right,.hero-cols .hero-left .tldr-box{text-align:left}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
     .hero-left{text-align:left}
+    /* .hero{text-align:center} de site.css se hereda hasta las tarjetas:
+       la columna derecha lo revierte igual que hace .hero-left. */
+    .hero-right{text-align:left}
     .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
     .hero-left .eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
     .hero-left h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#E8E8F0;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px;text-shadow:0 0 40px rgba(157,112,255,.6)}
@@ -708,7 +711,7 @@
         </div>
         <p class="sub">Operativo en 7 días. Sin permanencia. Sin contratar a nadie.</p>
         <!-- TL;DR — resumen para extracción por motores de IA -->
-        <section aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
+        <section class="tldr-box" aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
           <div style="background:var(--card,#0d0d1a);border:1px solid var(--border,rgba(124,77,255,.16));border-left:3px solid var(--p,#7c4dff);border-radius:14px;padding:20px 24px">
             <h2 style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin:0 0 12px">En 30 segundos</h2>
             <style>
