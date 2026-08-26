@@ -60,6 +60,9 @@ Incluyen: nómina, ITP, ROI IA, cuota autónomos, finiquito, coste trabajador, n
 - [WhatsApp + IA para Negocios: Automatiza Notificaciones, Leads y Citas en 2026](https://whitemoon.es/blog/whatsapp-ia-automatizacion-negocios/)
 - [Blog completo](https://whitemoon.es/blog/): todos los artículos.
 
+## Casos reales
+- [Bambu Sushi (Córdoba) — restaurante que toma pedidos y reservas con IA](https://whitemoon.es/casos-de-exito/bambu-sushi/): web propia, chatbot de pedidos y reservas por franja horaria con numero de pedido automatico, SEO local y medicion de eventos.
+
 ## Comparativas
 - [WhiteMoon vs Flownexion](https://whitemoon.es/alternativa-flownexion/)
 - [WhiteMoon vs Llmo](https://whitemoon.es/alternativa-llmo/)
