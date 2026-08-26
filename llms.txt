@@ -75,6 +75,7 @@ Claude API (Anthropic), Retell AI, ElevenLabs, Supabase (PostgreSQL + pgvector),
 - Sin permanencia
 - Agente de voz en español peninsular (en la web)
 - SEO/GEO/AEO optimizado para LLMs
+- Visibilidad en IA medida y publicada: consulta, motor, modelo, fecha y captura. No se promete una posición "#1" en ChatGPT porque esa posición no existe: [Cómo medimos la visibilidad en IA](https://whitemoon.es/metodologia-visibilidad-ia/)
 - Calculadoras gratuitas con datos BOE 2026
 
 ## Preguntas frecuentes
