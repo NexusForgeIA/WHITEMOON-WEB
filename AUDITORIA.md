@@ -141,11 +141,14 @@ Ninguno es un fallo evidente. Se dejan porque cambiarlos tiene coste de CTR en
 páginas que ya rankean, y el commit `a3e5f5a` ("rescate de CTR en 7 páginas de
 página 1") es reciente. Desglose:
 
-**a) Otra marca — 44 páginas. Recomendación: no tocar nunca.**
-43 de `reformas-madrid/` + `gestotrafic/`. Son marcas distintas dirigidas a
-otro público ("Reformas en Getafe | Presupuesto Gratis 24h"). Meterles
-"· WhiteMoon" sería un error de posicionamiento, no una corrección. Sus
-footers también se han dejado con `© 2026 Reformas Madrid`.
+**a) Otra marca — 1 página. Recomendación: no tocar nunca.**
+`gestotrafic/`. Es una marca distinta dirigida a otro público. Meterle
+"· WhiteMoon" sería un error de posicionamiento, no una corrección. Su
+footer también se ha dejado con su propio copyright.
+
+_Nota (2026-09-01): las 43 páginas de la sección de reformas que antes
+contaba este bloque se eliminaron del sitio por estar fuera del foco del
+dominio como agencia de IA._
 
 **b) Llevan la marca, con otro separador — 38 páginas. Decisión tuya.**
 Todas contienen "WhiteMoon"; lo que cambia es la forma:
@@ -167,7 +170,7 @@ y con qué criterio geográfico.**
 ### 2. Cinco páginas sin línea de copyright
 
 `blog/index.html` · `calculadora-itp/` · `calculadora-nomina/` ·
-`chatbot-abogados-ia-majadahonda/` · `reformas-madrid/calculadora/`
+`chatbot-abogados-ia-majadahonda/`
 
 Llevan la marca en el footer por otra vía (`<div class="footer-logo">`, o
 "Construido por WhiteMoon Agencia IA"). No se ha añadido copyright porque

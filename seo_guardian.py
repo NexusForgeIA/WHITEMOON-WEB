@@ -81,9 +81,9 @@ RETIRED_PATTERNS = RETIRED_PRODUCTS
 RETIRED_EXEMPT_PREFIXES = ()
 
 # ── Check 15 · reseñas en datos estructurados ──────────────────────────────
-# Las 30 páginas de zona de /reformas-madrid/ llevaron durante meses un
-# aggregateRating de 5 estrellas con 47 reseñas que no existían: dato inventado
-# en el sitio, servido a Google, y contra sus propias políticas de reseñas.
+# Una tanda de landings de zona llevó durante meses un aggregateRating de
+# 5 estrellas con 47 reseñas que no existían: dato inventado en el sitio,
+# servido a Google, y contra sus propias políticas de reseñas.
 # Este check lo bloquea de raíz.
 #
 # La allowlist está vacía a propósito. Para meter una página hay que poder
