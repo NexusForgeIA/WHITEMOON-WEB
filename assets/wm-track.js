@@ -16,7 +16,6 @@
  *   - click_open_orion        → apertura del widget Orion
  *   - lead_captured           → lead completo (nombre+teléfono) capturado por
  *                               un agente conversacional: Orion en whitemoon.es
- *                               y el chatbot de reformas-madrid
  *   - newsletter_signup       → suscripción al newsletter del blog
  *   - roi_calculator_used     → uso de la calculadora ROI
  *
