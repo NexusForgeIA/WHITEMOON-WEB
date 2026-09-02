@@ -46,6 +46,7 @@ Clínicas dentales, gestorías, despachos de abogados, restaurantes, talleres me
 ## Herramientas gratuitas
 - [Calculadoras gratuitas](https://whitemoon.es/costes-eficiencia-empresarial-ia/): hub de calculadoras, sin registro.
 Incluyen: nómina, ITP, ROI IA, cuota autónomos, finiquito, coste trabajador, no-shows, hipoteca.
+- [Prompts de IA para pymes](https://whitemoon.es/prompts-ia-pymes/): biblioteca de 18 prompts listos para copiar y pegar en ChatGPT, Claude o Gemini (atención al cliente, ventas, marketing y redes, email, operaciones y SEO/AEO). Sin registro.
 
 ## Artículos destacados (blog)
 - [Agentes IA Autónomos para Pymes en 2026: De Chatbot a Empleado Virtual](https://whitemoon.es/blog/agentes-ia-autonomos-pymes-2026/)
