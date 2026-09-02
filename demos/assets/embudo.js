@@ -165,7 +165,7 @@
   var demosBox  = $("#demos");
   var demoCount = $("#demo-count");
   var demoEmpty = $("#demo-empty");
-  /* Las tarjetas ya vienen escritas en el HTML: así el texto de los veinte
+  /* Las tarjetas ya vienen escritas en el HTML: así el texto de los veintiún
      sectores lo lee un buscador sin ejecutar nada. Aquí solo se enseñan y se
      esconden, y `data-k` trae el heno ya normalizado. */
   var demoCards = $$(".demo", demosBox);
