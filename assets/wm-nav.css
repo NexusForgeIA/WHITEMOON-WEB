@@ -1,0 +1,169 @@
+/* WhiteMoon · navbar unificada — fuente de verdad del header de todo el sitio.
+ *
+ * Menu: Servicios (desplegable corto) · Demos · Precios · Recursos
+ *       + un unico CTA destacado: Auditoria GEO/SEO Gratis.
+ * "Agendar reunion" queda como enlace de texto secundario.
+ *
+ * Todo lo que salio del top (Nosotros, Blog, Casos y los 8 enlaces del
+ * antiguo mega-desplegable "Soluciones") vive ahora en el bloque .wm-fnav
+ * del footer, que tambien se define aqui.
+ *
+ * Dos variantes de posicion:
+ *   .wm-nav          -> fixed (paginas cuyo header ya era fixed via site.css)
+ *   .wm-nav--flow    -> sticky (blog, /demos/, /pack-ads/: el header vivia en
+ *                       el flujo y el contenido no reserva hueco arriba)
+ *
+ * Los selectores llevan clase propia (.wm-nav*) para ganar a las reglas de
+ * elemento (`nav{...}`) que algunas paginas todavia declaran.
+ */
+
+/* ── Barra ─────────────────────────────────────────────────────────────── */
+.wm-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:block;
+  width:auto;height:64px;margin:0;padding:0;
+  background:rgba(11,15,23,.82);
+  backdrop-filter:blur(14px) saturate(140%);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.wm-nav--flow{position:sticky}
+
+.wm-nav__row{max-width:1240px;margin:0 auto;padding:0 24px;height:100%;
+  display:flex;align-items:center;gap:16px}
+
+/* ── Logo ──────────────────────────────────────────────────────────────── */
+.wm-nav__logo{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;
+  text-decoration:none;font-family:'Sora','Inter',sans-serif;font-size:1.02rem;
+  font-weight:700;letter-spacing:-.01em;line-height:1;white-space:nowrap}
+.wm-nav__logo img{width:28px;height:28px;border-radius:50%;object-fit:cover;
+  display:block;border:0;filter:drop-shadow(0 0 14px rgba(124,77,255,.35))}
+.wm-nav__logo .wm-l{color:#E8E8F0}
+.wm-nav__logo .wm-a{color:#9d70ff}
+
+/* ── Enlaces centrales ─────────────────────────────────────────────────── */
+.wm-nav__center{flex:1 1 auto;display:flex;justify-content:center;align-items:center;gap:2px}
+.wm-nav__center>a,.wm-nav__dd>button{padding:8px 14px;border-radius:8px;
+  font-family:inherit;font-size:.87rem;font-weight:500;letter-spacing:-.005em;
+  color:#9CA3AF;text-decoration:none;background:transparent;border:0;
+  cursor:pointer;white-space:nowrap;transition:color .15s ease,background .15s ease}
+.wm-nav__center>a:hover,.wm-nav__dd>button:hover{color:#E8E8F0;background:rgba(255,255,255,.05)}
+.wm-nav__center>a.is-current,.wm-nav__dd.is-current>button{color:#E8E8F0}
+
+/* ── Desplegable corto de Servicios ────────────────────────────────────── */
+.wm-nav__dd{position:relative}
+.wm-nav__dd>button{display:inline-flex;align-items:center;gap:5px}
+.wm-nav__dd>button svg{width:11px;height:11px;transition:transform .18s ease}
+.wm-nav__dd[aria-expanded="true"]>button{color:#E8E8F0;background:rgba(255,255,255,.05)}
+.wm-nav__dd[aria-expanded="true"]>button svg{transform:rotate(180deg)}
+.wm-nav__menu{position:absolute;top:calc(100% + 8px);left:50%;
+  transform:translateX(-50%) translateY(-4px);min-width:268px;padding:8px;
+  background:rgba(11,15,23,.97);
+  backdrop-filter:blur(16px) saturate(160%);
+  -webkit-backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid rgba(124,77,255,.22);border-radius:12px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s}
+.wm-nav__dd[aria-expanded="true"] .wm-nav__menu,
+.wm-nav__dd:hover .wm-nav__menu,
+.wm-nav__dd:focus-within .wm-nav__menu{opacity:1;visibility:visible;
+  pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.wm-nav__menu a{display:flex;flex-direction:column;gap:2px;padding:10px 14px;
+  border-radius:8px;text-decoration:none;font-family:inherit;font-size:.87rem;
+  font-weight:600;line-height:1.3;color:#E8E8F0;letter-spacing:-.005em;
+  transition:background .15s ease}
+.wm-nav__menu a:hover{background:rgba(124,77,255,.12)}
+.wm-nav__menu a .desc{font-size:.74rem;font-weight:400;color:#9CA3AF;letter-spacing:0}
+.wm-nav__menu .wm-nav__all{margin-top:4px;padding-top:12px;
+  border-top:1px solid rgba(255,255,255,.08);border-radius:0 0 8px 8px;
+  color:#9d70ff;font-size:.83rem}
+
+/* ── Zona derecha: enlace secundario + CTA unico + burger ──────────────── */
+.wm-nav__right{flex:0 0 auto;display:flex;align-items:center;gap:10px}
+.wm-nav__meet{font-family:inherit;font-size:.82rem;font-weight:500;color:#9CA3AF;
+  text-decoration:none;white-space:nowrap;padding:6px 2px;border-bottom:1px solid transparent;
+  transition:color .15s ease,border-color .15s ease}
+.wm-nav__meet:hover{color:#E8E8F0;border-bottom-color:rgba(157,112,255,.6)}
+.wm-nav__cta{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;
+  border:0;border-radius:8px;background:linear-gradient(135deg,#7c4dff,#9d70ff);
+  color:#fff;font-family:inherit;font-size:.88rem;font-weight:600;
+  letter-spacing:-.005em;white-space:nowrap;text-decoration:none;
+  box-shadow:0 6px 18px rgba(124,77,255,.32);
+  transition:transform .12s ease,box-shadow .2s ease}
+.wm-nav__cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(124,77,255,.42);color:#fff}
+.wm-nav__cta svg{width:14px;height:14px;transition:transform .15s ease}
+.wm-nav__cta:hover svg{transform:translateX(2px)}
+.wm-nav__cta .wm-short{display:none}
+.wm-nav__burger{display:none;padding:8px;border:0;border-radius:8px;
+  background:transparent;color:#E8E8F0;cursor:pointer}
+.wm-nav__burger:hover{background:rgba(255,255,255,.07)}
+.wm-nav__burger svg{width:20px;height:20px;display:block}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .wm-nav__center{display:none}
+  .wm-nav__meet{display:none}
+  .wm-nav__burger{display:inline-flex;align-items:center;justify-content:center}
+  .wm-nav__row{gap:12px;padding:0 16px;justify-content:space-between}
+  .wm-nav__cta .wm-long{display:none}
+  .wm-nav__cta .wm-short{display:inline}
+}
+@media(max-width:600px){
+  .wm-nav{height:60px}
+  .wm-nav__logo{font-size:.95rem}
+  .wm-nav__logo img{width:26px;height:26px}
+  .wm-nav__cta{padding:8px 13px;font-size:.82rem;gap:6px}
+}
+@media(max-width:400px){
+  .wm-nav__row{padding:0 12px;gap:8px}
+  .wm-nav__cta{padding:8px 10px;font-size:.78rem}
+  .wm-nav__cta svg{display:none}
+}
+/* Por debajo de ~340px (Galaxy Fold cerrado) el logotipo se queda en el icono:
+   con la palabra completa, logo + CTA + burger se salen de la barra. */
+@media(max-width:344px){
+  .wm-nav__logo>span{display:none}
+}
+
+/* ── Cajon movil ───────────────────────────────────────────────────────── */
+.wm-drawer{position:fixed;inset:0;z-index:300;display:none;flex-direction:column;
+  padding:76px 24px 28px;background:#0B0F17;overflow-y:auto;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.wm-drawer.is-open{display:flex}
+.wm-drawer__close{position:absolute;top:14px;right:14px;padding:8px;border:0;
+  border-radius:8px;background:transparent;color:#E8E8F0;cursor:pointer}
+.wm-drawer__close:hover{background:rgba(255,255,255,.07)}
+.wm-drawer__close svg{width:22px;height:22px;display:block}
+.wm-drawer__link{display:flex;align-items:center;padding:16px 4px;
+  font-size:1.08rem;font-weight:500;color:#E8E8F0;text-decoration:none;
+  letter-spacing:-.01em;border-bottom:1px solid rgba(255,255,255,.07)}
+.wm-drawer__link.is-current{color:#9d70ff}
+.wm-drawer__meet{display:block;margin-top:22px;padding:4px;font-size:.92rem;
+  font-weight:500;color:#9CA3AF;text-decoration:none;text-align:center}
+.wm-drawer__meet:hover{color:#E8E8F0}
+.wm-drawer__cta{display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-top:12px;padding:15px 24px;border-radius:10px;
+  background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;font-size:1rem;
+  font-weight:600;text-decoration:none;box-shadow:0 14px 36px rgba(124,77,255,.32)}
+.wm-drawer__cta:hover{color:#fff}
+.wm-drawer__cta svg{width:16px;height:16px}
+
+/* ── Bloque de navegacion del footer ───────────────────────────────────── */
+/* Recoge lo que ya no esta en el top: Servicios (los 8 antiguos enlaces del
+   desplegable), Casos, Blog y Sobre nosotros. */
+.wm-fnav{max-width:1140px;margin:0 auto 30px;padding:0 4px 28px;
+  border-bottom:1px solid rgba(124,77,255,.16);
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;
+  text-align:left;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+.wm-fnav h2{margin:0 0 12px;font-family:'Sora','Inter',sans-serif;font-size:.76rem;
+  font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#9d70ff}
+.wm-fnav ul{list-style:none;margin:0;padding:0}
+.wm-fnav li{margin:0 0 9px}
+.wm-fnav a{font-size:.86rem;line-height:1.45;color:#9CA3AF;text-decoration:none;
+  transition:color .15s ease}
+.wm-fnav a:hover{color:#E8E8F0;text-decoration:underline}
+@media(max-width:760px){
+  .wm-fnav{grid-template-columns:1fr 1fr;gap:22px}
+}
+@media(max-width:460px){
+  .wm-fnav{grid-template-columns:1fr;gap:20px;text-align:center}
+}

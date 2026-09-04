@@ -70,3 +70,36 @@ ejecuta solo tras publicarse el blog.
 
 Anade objetos al final de `temas` en `blog-temas.json` con `id`/`slug` nuevos (que no
 existan ya en `/blog/`). El generador los ira cogiendo por orden cuando se agoten los actuales.
+
+---
+
+# Navbar unificada (`nav_rebuild.py`)
+
+El header del sitio **no se edita a mano pagina a pagina**. La fuente de verdad es:
+
+| Archivo | Que es |
+|---|---|
+| `assets/wm-nav.css` | Estilos de la barra, del cajon movil y del bloque de navegacion del footer. |
+| `assets/wm-nav.js` | Desplegable de Servicios, cajon movil, enlace activo y tracking del CTA. Se carga con `defer` y no hay ningun `onclick` inline en el markup. |
+| `scripts/nav_rebuild.py` | Reescribe el `<nav>` de todas las paginas de paseo con el markup canonico e inyecta el bloque `.wm-fnav` en su footer. |
+
+Menu: **Servicios** (desplegable corto: Orion IA + "Ver todos los servicios") ·
+**Demos** · **Precios** · **Recursos**, mas un unico CTA destacado
+("Auditoria GEO/SEO Gratis"). "Agendar reunion" es un enlace de texto secundario.
+Nosotros, Blog, Casos y los 8 enlaces del antiguo desplegable "Soluciones" viven
+en el bloque del footer.
+
+```bash
+python scripts/nav_rebuild.py --check   # no escribe, solo informa
+python scripts/nav_rebuild.py           # aplica (es idempotente)
+python seo_guardian.py                  # 0 criticos
+```
+
+Universo: la casta 1 del repo (paginas con menu real). Quedan fuera, a proposito,
+las landings de conversion, el microsite `reformas-madrid/` y los micrositios con
+nav de anclas propias (`EXCLUDE` dentro del script). En esas paginas el script
+solo degrada el boton morado de cal.com a enlace de texto, para que no compita
+con su CTA propio.
+
+Para cambiar el menu se toca el script (`nav_html()` / `FOOTER_NAV`) y se
+reejecuta; nunca los HTML uno a uno.

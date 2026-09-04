@@ -56,20 +56,56 @@
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/blog.css">
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026090401">
 <style>
 :root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--bg2:#0e0e16;--bg3:#13131e;--text:#f0f0f5;--muted:#8888a0;--border:rgba(124,77,255,0.15);}
 body{background:var(--bg);color:var(--text);font-family:'Sora',sans-serif;}
 a{color:var(--p2);}
 </style>
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
+<script defer src="/assets/wm-nav.js?v=2026090401"></script>
 </head>
 <body>
 
-<nav style="position:sticky;top:0;z-index:100;background:rgba(7,7,14,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,77,255,0.2);padding:0 6%;height:62px;display:flex;align-items:center;justify-content:space-between;">
-  <a href="/blog/" style="font-size:.85rem;color:#8888a8;text-decoration:none;font-weight:700;">← Blog WhiteMoon</a>
-  <a href="/demos/" style="font-size:.85rem;color:#8888a8;text-decoration:none;font-weight:700;">Demo</a>
-  <a href="https://whitemoon.es/" style="font-size:.85rem;color:var(--p2);text-decoration:none;font-weight:700;">whitemoon.es</a>
+<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
+<nav class="wm-nav wm-nav--flow" aria-label="Navegación principal">
+  <div class="wm-nav__row">
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
+
+    <div class="wm-nav__center">
+      <div class="wm-nav__dd" aria-expanded="false">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Servicios<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="wm-nav__menu" role="menu">
+          <a href="/orion/" role="menuitem">Orion IA<span class="desc">Agente de voz en tu web, 24/7</span></a>
+          <a href="/servicios/" class="wm-nav__all" role="menuitem">Ver todos los servicios →</a>
+        </div>
+      </div>
+      <a href="/demos/">Demos</a>
+      <a href="/precios/">Precios</a>
+      <a href="/recursos/">Recursos</a>
+    </div>
+
+    <div class="wm-nav__right">
+      <a class="wm-nav__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
+      <a class="wm-nav__cta" href="/auditoria-geo-seo/">
+        <span class="wm-long">Auditoría GEO/SEO Gratis</span><span class="wm-short">Auditoría gratis</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    </div>
+  </div>
 </nav>
+<aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a class="wm-drawer__link" href="/servicios/">Servicios</a>
+  <a class="wm-drawer__link" href="/demos/">Demos</a>
+  <a class="wm-drawer__link" href="/precios/">Precios</a>
+  <a class="wm-drawer__link" href="/recursos/">Recursos</a>
+  <a class="wm-drawer__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
+  <a class="wm-drawer__cta" href="/auditoria-geo-seo/">Auditoría GEO/SEO Gratis<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</aside>
 
 <main>
   <section class="post-hero">
@@ -171,6 +207,44 @@ a{color:var(--p2);}
 </main>
 
 <footer style="padding:32px 24px;text-align:center;font-size:.82rem;color:#8888a8;border-top:1px solid rgba(180,77,255,0.2);background:#07070e;">
+  <div class="wm-fnav">
+    <div>
+      <h2>Servicios</h2>
+      <ul>
+        <li><a href="/white-moon-system/">WhiteMoon System</a></li>
+        <li><a href="/orion/">Orion IA</a></li>
+        <li><a href="/automatizacion-ventas/">Automatización de ventas</a></li>
+        <li><a href="/atencion-cliente-ia/">Atención al cliente IA</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/">Reducción de costes</a></li>
+        <li><a href="/coste-no-automatizar/">Coste de no automatizar</a></li>
+        <li><a href="/auditoria-geo-ia/">Auditoría GEO IA</a></li>
+        <li><a href="/automatizaciones/">Automatizaciones</a></li>
+        <li><a href="/servicios/">Ver todos los servicios</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Recursos</h2>
+      <ul>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/precios/">Precios</a></li>
+        <li><a href="/recursos/">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/blog/">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>WhiteMoon</h2>
+      <ul>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/auditoria-geo-seo/">Auditoría GEO/SEO gratis</a></li>
+        <li><a href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a></li>
+        <li><a href="https://wa.me/34643199580" target="_blank" rel="noopener">WhatsApp · 643 199 580</a></li>
+        <li><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></li>
+      </ul>
+    </div>
+  </div>
+
   © 2026 <a href="https://whitemoon.es/" style="color:var(--p2);text-decoration:none;">WhiteMoon · Agencia de IA</a> · Majadahonda, Madrid · <a href="/blog/" style="color:var(--p2);text-decoration:none;">Más artículos</a> · <a href="/aviso-legal/" style="color:var(--p2);text-decoration:none;">Aviso Legal</a> · <a href="/politica-privacidad/" style="color:var(--p2);text-decoration:none;">Política de Privacidad</a> · <a href="/politica-cookies/" style="color:var(--p2);text-decoration:none;">Política de Cookies</a>
 </footer>
 
