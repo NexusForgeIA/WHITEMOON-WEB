@@ -701,15 +701,19 @@
   #demos-sector .dm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1040px;margin:0 auto}
   @media(max-width:1040px){#demos-sector .dm-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:640px}}
   @media(max-width:520px){#demos-sector .dm-grid{grid-template-columns:1fr;max-width:420px}}
-  #demos-sector .dm{display:flex;flex-direction:column;gap:8px;min-width:0;padding:22px 20px;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;text-decoration:none;transition:border-color .15s ease,background .15s ease,transform .15s ease}
+  /* overflow:hidden recorta la captura al radio de la tarjeta: asi la imagen
+     hereda las esquinas superiores redondeadas sin un radio propio. */
+  #demos-sector .dm{display:flex;flex-direction:column;min-width:0;overflow:hidden;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;text-decoration:none;transition:border-color .15s ease,background .15s ease,transform .15s ease}
+  #demos-sector .dm-shot{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;background:var(--bg2,#0E1320);border-bottom:1px solid var(--border,rgba(124,77,255,.22))}
+  #demos-sector .dm-body{display:flex;flex-direction:column;flex:1 1 auto;gap:8px;min-width:0;padding:18px 20px 20px}
   #demos-sector .dm:hover{border-color:rgba(124,77,255,.55);background:rgba(124,77,255,.06);transform:translateY(-2px)}
   #demos-sector .dm:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:3px}
   #demos-sector .dm h3{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.015em;line-height:1.3;margin:0}
   #demos-sector .dm p{font-size:.85rem;color:var(--muted,#9999b5);line-height:1.55;margin:0}
   /* Sin overflow-wrap los nombres largos desbordan la tarjeta por debajo de 300px. */
-  #demos-sector .dm h3,#demos-sector .dm p{overflow-wrap:anywhere}
-  #demos-sector .dm .go{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--p2,#9d70ff)}
-  #demos-sector .dm .go svg{width:13px;height:13px;flex-shrink:0}
+  #demos-sector .dm-body h3,#demos-sector .dm-body p{overflow-wrap:anywhere}
+  #demos-sector .dm-body .go{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--p2,#9d70ff)}
+  #demos-sector .dm-body .go svg{width:13px;height:13px;flex-shrink:0}
   #demos-sector .dm-foot{text-align:center;margin-top:34px}
   #demos-sector .dm-foot .all{display:inline-block;padding:14px 32px;border-radius:12px;background:transparent;border:1px solid rgba(124,77,255,.42);color:#E8E8F0;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.94rem;transition:border-color .15s ease,background .15s ease}
   #demos-sector .dm-foot .all:hover{border-color:#7c4dff;background:rgba(124,77,255,.08)}
@@ -727,58 +731,98 @@
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-CLINICAS-DENTALES/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Clínicas dentales (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'clinicas-dentales',placement:'home-demos'})">
-        <h3>Clínicas dentales</h3>
-        <p>Pide la primera visita y elige hueco sin salir del chat.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/clinicas-dentales.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para clínicas dentales — WhiteMoon">
+        <div class="dm-body">
+          <h3>Clínicas dentales</h3>
+          <p>Pide la primera visita y elige hueco sin salir del chat.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-PELUQUERIAS/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Peluquería (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'peluquerias',placement:'home-demos'})">
-        <h3>Peluquería</h3>
-        <p>Di si vas a color, mechas o recogido y te reserva hueco sin llamar.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/peluquerias.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para peluquería — WhiteMoon">
+        <div class="dm-body">
+          <h3>Peluquería</h3>
+          <p>Di si vas a color, mechas o recogido y te reserva hueco sin llamar.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-ABOGADOS/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Abogados (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'abogados',placement:'home-demos'})">
-        <h3>Abogados</h3>
-        <p>Cuenta tu caso —civil, penal, laboral o mercantil— y pide consulta.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/abogados.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para abogados — WhiteMoon">
+        <div class="dm-body">
+          <h3>Abogados</h3>
+          <p>Cuenta tu caso —civil, penal, laboral o mercantil— y pide consulta.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-PODOLOGOS/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Podología (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'podologia',placement:'home-demos'})">
-        <h3>Podología</h3>
-        <p>Dile qué tratamiento necesitas y te busca un hueco real.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/podologia.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para podología — WhiteMoon">
+        <div class="dm-body">
+          <h3>Podología</h3>
+          <p>Dile qué tratamiento necesitas y te busca un hueco real.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-TALLERES-COCHES/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Talleres de coches (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'talleres-coches',placement:'home-demos'})">
-        <h3>Talleres de coches</h3>
-        <p>Revisión, frenos, diagnosis o chapa: te reserva cita en el taller.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/talleres-coches.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para talleres de coches — WhiteMoon">
+        <div class="dm-body">
+          <h3>Talleres de coches</h3>
+          <p>Revisión, frenos, diagnosis o chapa: te reserva cita en el taller.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-BURGUER/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Hostelería (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'hosteleria',placement:'home-demos'})">
-        <h3>Hostelería</h3>
-        <p>Monta el pedido —burger, extras y bebida— y confírmalo en el chat.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/hosteleria.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para hostelería — WhiteMoon">
+        <div class="dm-body">
+          <h3>Hostelería</h3>
+          <p>Monta el pedido —burger, extras y bebida— y confírmalo en el chat.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-INMOBILIARIAS/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Inmobiliarias (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'inmobiliarias',placement:'home-demos'})">
-        <h3>Inmobiliarias</h3>
-        <p>Te lleva paso a paso hasta la valoración de la vivienda.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/inmobiliarias.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para inmobiliarias — WhiteMoon">
+        <div class="dm-body">
+          <h3>Inmobiliarias</h3>
+          <p>Te lleva paso a paso hasta la valoración de la vivienda.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
       <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/" target="_blank" rel="noopener"
          aria-label="Ver la demo en vivo de Veterinarios (se abre en una pestaña nueva)"
          onclick="wmTrack('click_demo_sector',{sector:'veterinarios',placement:'home-demos'})">
-        <h3>Veterinarios</h3>
-        <p>Pide cita para tu mascota o pregunta por las urgencias 24 h.</p>
-        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        <img class="dm-shot" src="/assets/demos/veterinarios.webp" width="800" height="500"
+             loading="lazy" decoding="async"
+             alt="Demo de agente IA para veterinarios — WhiteMoon">
+        <div class="dm-body">
+          <h3>Veterinarios</h3>
+          <p>Pide cita para tu mascota o pregunta por las urgencias 24 h.</p>
+          <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+        </div>
       </a>
     </div>
     <div class="dm-foot">
