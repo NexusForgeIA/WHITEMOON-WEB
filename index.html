@@ -424,18 +424,12 @@
     .hero-brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;filter:drop-shadow(0 0 18px rgba(124,77,255,.4))}
     .hero-brand .name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.15rem;line-height:1;letter-spacing:-.01em}
     .hero-brand .name .light{color:#E8E8F0}.hero-brand .name .acc{color:#7c4dff}
-    .hero-cols{display:grid;grid-template-columns:6fr 4fr;column-gap:64px;row-gap:36px;align-items:start}
-    /* Fila 1: solo el titular (la columna derecha queda libre y deja ver
-       el video). Fila 2: el TL;DR y las tarjetas, que asi arrancan a la
-       misma altura sea cual sea el alto del titular. */
-    .hero-cols>.hero-left{grid-column:1;grid-row:1}
-    .hero-cols>.tldr-box{grid-column:1;grid-row:2;text-align:left}
-    .hero-cols>.hero-right{grid-column:2;grid-row:2}
-    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;gap:48px;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-right,.hero-cols .tldr-box{text-align:left}.hero-cols>.hero-left,.hero-cols>.tldr-box,.hero-cols>.hero-right{grid-column:auto;grid-row:auto}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
+    /* Solo el titular, en la columna izquierda: la derecha queda libre y
+       deja ver el video (el scrim del video oscurece justo ese lado). */
+    .hero-cols{display:grid;grid-template-columns:6fr 4fr;column-gap:64px;align-items:start}
+    .hero-cols>.hero-left{grid-column:1}
+    @media(max-width:980px){.hero-cols{grid-template-columns:1fr;text-align:center}.hero-cols .hero-left{text-align:center}.hero-cols .hero-left h1,.hero-cols .hero-left .sub{margin-left:auto;margin-right:auto}.hero-cols .hero-ctas{justify-content:center}}
     .hero-left{text-align:left}
-    /* .hero{text-align:center} de site.css se hereda hasta las tarjetas:
-       la columna derecha lo revierte igual que hace .hero-left. */
-    .hero-right{text-align:left}
     .hero-left .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;color:#c4b3ff;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px}
     .hero-left .eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
     .hero-left h1{font-size:clamp(2.2rem,4.6vw,3.6rem);font-weight:700;color:#E8E8F0;line-height:1.08;letter-spacing:-.025em;margin:0 0 22px;max-width:640px;text-shadow:0 0 40px rgba(157,112,255,.6)}
@@ -447,23 +441,12 @@
     .hero-ctas .btn-primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
     .hero-ctas .btn-ghost{background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2)}
     .hero-ctas .btn-ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
-    /* CRO · el CTA primario, la prueba social y el gancho de la auditoria
-       suben por encima del bloque "En 30 segundos" para que se vean sin
-       scroll tambien en movil. */
+    /* CTA secundario: enlace de texto, nunca un segundo boton compitiendo. */
+    .hero-ctas .hero-textlink{display:inline-flex;align-items:center;padding:14px 8px;font-size:.95rem;font-weight:500;color:#c9c9de;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s ease,border-color .15s ease}
+    .hero-ctas .hero-textlink:hover{color:#fff;border-bottom-color:rgba(157,112,255,.55)}
+    .hero-meta{font-size:.9rem;color:#9090b0;margin:0}
+    /* CRO · el CTA primario manda: es lo unico con peso visual del hero. */
     .hero-ctas .btn-primary{font-size:1rem;padding:16px 30px}
-    .hero-trustbar{display:inline-flex;align-items:center;gap:18px;flex-wrap:wrap;
-      background:rgba(124,77,255,.09);border:1px solid rgba(124,77,255,.32);
-      border-radius:12px;padding:12px 18px;margin:0 0 28px}
-    .hero-trustbar .tb{display:inline-flex;align-items:center;gap:8px;
-      font-size:.9rem;color:#c9c9de;line-height:1.3}
-    .hero-trustbar .tb b{color:#fff;font-weight:700;font-size:1.02rem}
-    .hero-trustbar .tb svg{width:17px;height:17px;flex-shrink:0}
-    .hero-trustbar .tb.is-star svg{color:#f5b301}
-    .hero-trustbar .tb.is-ai svg{color:#00d4aa}
-    .hero-trustbar .tb-sep{width:1px;height:20px;background:rgba(255,255,255,.16)}
-    @media(max-width:900px){
-      .hero-trustbar{display:flex;width:100%;justify-content:center;gap:14px}
-    }
     @media(max-width:600px){
       .hero-enterprise{padding:40px 20px 44px}
       .hero-brand{margin-bottom:16px}
@@ -471,32 +454,9 @@
       .hero-left .sub{font-size:.95rem;margin-bottom:18px}
       .hero-ctas{gap:10px;margin-bottom:16px}
       .hero-ctas .btn-primary,.hero-ctas .btn-ghost{width:100%;justify-content:center}
-      .hero-trustbar{flex-direction:column;align-items:stretch;gap:10px;padding:12px 14px}
-      .hero-trustbar .tb{justify-content:center;font-size:.85rem}
-      .hero-trustbar .tb-sep{display:none}
+      .hero-ctas .hero-textlink{width:100%;justify-content:center;padding:8px}
+      .hero-meta{font-size:.84rem}
     }
-    /* Hero trust block (valor real + caso verificable) */
-    .hero-trust{display:flex;flex-direction:column;gap:16px}
-    .ht-values{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .ht-card{background:linear-gradient(180deg,#0d1117 0%,#0a0d12 100%);border:1px solid rgba(124,77,255,.22);border-radius:16px;padding:22px 20px;box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.02) inset;transition:transform .2s ease,border-color .2s ease}
-    .ht-card:hover{transform:translateY(-2px);border-color:rgba(124,77,255,.45)}
-    .ht-card .ht-ico{display:block;line-height:1;margin-bottom:12px}
-    .ht-card .ht-ico svg{width:32px;height:32px;display:block}
-    .ht-card .ht-ico.is-p{color:var(--p,#7c4dff)}
-    .ht-card .ht-ico.is-g{color:var(--g,#00d4aa)}
-    .ht-card .ht-t{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.25;margin:0 0 6px;color:#E8E8F0}
-    .ht-card .ht-t.is-p{color:#9d70ff}
-    .ht-card .ht-t.is-g{color:#00d4aa}
-    .ht-card .ht-s{font-size:.8rem;color:var(--muted,#6B7280);line-height:1.5;margin:0}
-    @media(max-width:900px){.ht-card{padding:20px 18px}}
-    @media(max-width:600px){.ht-values{grid-template-columns:1fr}}
-    /* Stats row */
-    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12)}
-    @media(max-width:780px){.hero-stats{grid-template-columns:repeat(2,1fr);gap:20px}}
-    .hero-stat{display:flex;flex-direction:column;gap:6px}
-    .hero-stat .v{font-size:1.6rem;font-weight:700;color:#E8E8F0;letter-spacing:-.02em;line-height:1}
-    .hero-stat .v em{font-style:normal;color:#7c4dff}
-    .hero-stat .l{font-size:.78rem;color:#9090b0;letter-spacing:.02em;line-height:1.4}
     /* Hero vídeo — oculto en móvil para preservar PageSpeed móvil */
     @media (max-width: 768px) {
       .hero-enterprise video { display: none; }
@@ -557,18 +517,16 @@
   <a class="wm-drawer__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
   <a class="wm-drawer__cta" href="/auditoria-geo-seo/">Auditoría GEO/SEO Gratis<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </aside>
-<script>
-  // Desplazamiento suave a una seccion del home (usado por el CTA "Ver planes").
-  // El resto del comportamiento del header vive en /assets/wm-nav.js.
-  function smoothNav(e,id){
-    if(e&&e.preventDefault)e.preventDefault();
-    var el=document.getElementById(id);
-    if(el)el.scrollIntoView({behavior:'smooth'});
-    return false;
-  }
-</script>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HOME · EMBUDO WEB + IA
+     1 Hero · 2 Dolor · 3 Solucion · 4 Como funciona · 5 Confianza
+     6 Precios · 7 FAQ (SEO, sincronizada con el FAQPage) · 8 CTA final
+     El producto estrella es la web con agente de IA dentro. Los agentes
+     sueltos (Spark, Orion) quedan al margen: viven en /servicios/ y /precios/.
+     ═══════════════════════════════════════════════════════════════════ -->
+
+<!-- 1 · HERO -->
 <section class="hero hero-enterprise" id="main-content">
   <!-- Hero vídeo inyectado por JS solo en desktop (ver final del body): en móvil
        el vídeo NO se descarga. El poster/gradiente queda de fondo. -->
@@ -580,378 +538,286 @@
       <div class="name"><span class="light">WHITE</span><span class="acc">MOON</span></div>
     </div>
 
-    <!-- 60/40 layout -->
     <div class="hero-cols">
-
-      <!-- LEFT -->
       <div class="hero-left">
         <div class="eyebrow">WhiteMoon · Agencia de IA en Majadahonda</div>
         <h1>Agencia de inteligencia artificial en <em>Majadahonda</em> y Madrid noroeste</h1>
-        <p class="sub" style="margin-top:14px;font-size:1.05rem;color:#c9c9de"><strong style="color:#fff;font-weight:600">WhiteMoon es la agencia de inteligencia artificial en Majadahonda</strong> y el noroeste de Madrid: creamos agentes de voz IA, chatbots y automatización para pymes. Tu negocio atendido 24/7, operativo en 7 días.</p>
+        <p class="sub">Diseñamos tu <strong style="color:#fff;font-weight:600">web profesional con un agente de IA (chatbot) dentro</strong> que atiende, responde y capta clientes 24/7. Para pymes de Majadahonda y el noroeste de Madrid. Operativa en días, sin permanencia.</p>
         <div class="hero-ctas">
-          <button type="button" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'habla-con-orion',placement:'hero-primario'});document.dispatchEvent(new CustomEvent('orion-open',{detail:{source:'home-hero'}}))" aria-label="Habla con Orion en vivo, agente de voz IA">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg>
-            Habla con Orion en vivo
-          </button>
-          <a href="#precios" class="btn-ghost" onclick="smoothNav(event,'precios')">Ver planes</a>
+          <a href="/auditoria-geo-seo/" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'auditoria-gratis',placement:'hero-primario'})">
+            Auditoría gratis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="/precios/" class="hero-textlink" onclick="wmTrack('click_hero_cta',{action:'ver-planes',placement:'hero-secundario'})">Ver planes →</a>
         </div>
-        <div class="hero-trustbar">
-          <span class="tb is-star">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>
-            <span><b>5,0</b> en Google</span>
-          </span>
-          <span class="tb-sep" aria-hidden="true"></span>
-          <span class="tb is-ai">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-            <span><b>Entre las recomendaciones</b> de ChatGPT y Grok en Majadahonda</span>
-          </span>
-        </div>
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:8px">
-          <span style="font-size:clamp(2rem,5vw,4rem);font-weight:800;color:#fff;line-height:1.05;text-shadow:0 0 40px rgba(157,112,255,.6)">desde 99€/mes</span>
-        </div>
-        <p class="sub">Operativo en 7 días. Sin permanencia. Sin contratar a nadie.</p>
+        <p class="hero-meta">Operativa en días · Sin permanencia · Cancelas cuando quieras</p>
       </div>
-
-      <!-- TL;DR — resumen para extracción por motores de IA -->
-      <section class="tldr-box" aria-label="Resumen" style="max-width:760px;margin:0 0 22px;padding:0">
-        <div style="background:var(--card,#0d0d1a);border:1px solid var(--border,rgba(124,77,255,.16));border-left:3px solid var(--p,#7c4dff);border-radius:14px;padding:20px 24px">
-          <h2 style="font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin:0 0 12px">En 30 segundos</h2>
-          <style>
-            .tldr30{list-style:none;padding:0;margin:0;display:grid;gap:18px}
-            .tldr30 li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:start}
-            /* Marcador decorativo: --p vale aquí porque no es texto. */
-            .tldr30 li::before{content:"";grid-row:1 / span 2;width:8px;height:8px;margin-top:9px;border-radius:50%;background:var(--p,#7c4dff)}
-            .tldr30 .t-lbl{grid-column:2;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#9090b0);line-height:1.3}
-            .tldr30 .t-key{grid-column:2;font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;line-height:1.4;color:var(--text,#f0f0f5);letter-spacing:-.01em}
-            .tldr30 .t-key a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
-            @media(max-width:600px){
-              .tldr30{gap:16px}
-              .tldr30 li{column-gap:11px}
-              .tldr30 li::before{margin-top:7px}
-              .tldr30 .t-key{font-size:1.1rem;line-height:1.45}
-            }
-          </style>
-          <ul class="tldr30">
-            <li><span class="t-lbl">Qué hacemos</span><span class="t-key">Agentes de IA que automatizan tu empresa.</span></li>
-            <li><span class="t-lbl">Para quién</span><span class="t-key">Pymes que quieren quitarse tareas manuales de encima.</span></li>
-            <li><span class="t-lbl">Resultado</span><span class="t-key">Menos costes, más ventas y atención 24/7.</span></li>
-            <li><span class="t-lbl">Dónde</span><span class="t-key">Majadahonda y toda la Comunidad de Madrid, también como <a href="/agencia-ia-madrid/">agencia de IA en Madrid</a>.</span></li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- RIGHT: bloque de valor real + caso verificable -->
-      <div class="hero-right">
-        <div class="hero-trust">
-          <!-- Sección 1 — 4 bloques de valor -->
-          <div class="ht-values">
-            <div class="ht-card">
-              <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-3a8 8 0 0 1 16 0v3"/><rect x="2" y="12" width="5" height="7" rx="2"/><rect x="17" y="12" width="5" height="7" rx="2"/><path d="M19.5 19v.5a2.5 2.5 0 0 1-2.5 2.5h-3"/></svg></span>
-              <p class="ht-t is-p">Un recepcionista que nunca libra</p>
-              <p class="ht-s">Atiende a quien entra en tu web, resuelve dudas y te apunta cada cliente con su nombre y teléfono. Sin descansos.</p>
-            </div>
-            <div class="ht-card">
-              <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-              <p class="ht-t is-g">En una semana, funcionando</p>
-              <p class="ht-s">Ni meses de desarrollo ni excusas raras. En 7 días lo tienes atendiendo clientes.</p>
-            </div>
-            <div class="ht-card">
-              <span class="ht-ico is-p" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 7a7 7 0 1 0 0 10"/><line x1="3" y1="10" x2="13" y2="10"/><line x1="3" y1="14" x2="11" y2="14"/></svg></span>
-              <p class="ht-t is-p">Desde 99€/mes. Sí, has leído bien</p>
-              <p class="ht-s">Menos que un café al día, sin sustos ni ceros de más a fin de mes.</p>
-            </div>
-            <div class="ht-card">
-              <span class="ht-ico is-g" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg></span>
-              <p class="ht-t is-g">Si no te sirve, te vas</p>
-              <p class="ht-s">Cero ataduras y cero letra pequeña. Aunque, aviso: no vas a querer irte.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
 
-    <!-- SOCIAL PROOF · la valoración y la visibilidad en IA suben a la insignia
-         del hero (.hero-trustbar); aquí queda la verificación de la ficha y el
-         enlace a cómo medimos esa visibilidad (consulta, modelo, fecha). -->
-    <p class="hero-social-proof" style="text-align:center;margin-top:64px;padding-top:32px;border-top:1px solid rgba(124,77,255,.12);font-size:.95rem;color:#9090b0;letter-spacing:.01em">Ficha de Google Business verificada · Majadahonda, Madrid · <a href="/metodologia-visibilidad-ia/" style="color:#9d70ff;text-decoration:none;border-bottom:1px solid rgba(157,112,255,.35)">Ver metodología y capturas →</a></p>
-
-  </div>
-
-</section>
-
-<!-- TECNOLOGÍA QUE USAMOS — fila estática de logos oficiales -->
-<section class="tech-stack" aria-label="Tecnología que usamos">
-  <style>
-    .tech-stack{padding:42px 24px;border-top:1px solid rgba(124,77,255,.10);border-bottom:1px solid rgba(124,77,255,.10);background:transparent}
-    .tech-stack .ts-eyebrow{display:block;text-align:center;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:#9999b5;letter-spacing:2px;text-transform:uppercase;margin:0 0 26px}
-    .tech-stack .ts-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:48px;max-width:1000px;margin:0 auto}
-    .tech-stack .ts-logos img{height:26px;width:auto;filter:brightness(0) invert(1);opacity:.78;transition:opacity .2s ease}
-    .tech-stack .ts-logos img:hover{opacity:1}
-    .tech-stack .ts-logos .ts-text{font-family:'Sora',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:-.01em;color:#E8E8F0;opacity:.78;white-space:nowrap;transition:opacity .2s ease}
-    .tech-stack .ts-logos .ts-text:hover{opacity:1}
-    @media(max-width:600px){
-      .tech-stack .ts-logos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px 16px;justify-items:center}
-      .tech-stack .ts-logos img{height:22px}
-      .tech-stack .ts-logos .ts-text{font-size:.95rem}
-    }
-  </style>
-  <span class="ts-eyebrow">Tecnología que usamos</span>
-  <div class="ts-logos">
-    <span class="ts-text">Anthropic</span>
-    <span class="ts-text">Retell AI</span>
-    <span class="ts-text">ElevenLabs</span>
-    <span class="ts-text">Supabase</span>
-    <span class="ts-text">Cal.com</span>
-    <span class="ts-text">GitHub</span>
   </div>
 </section>
 
-<section id="precios" class="sec-alt">
+<!-- 2 · ¿TE SUENA ESTO? (dolor) -->
+<style>
+  #dolor .pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1040px;margin:0 auto}
+  @media(max-width:900px){#dolor .pain-grid{grid-template-columns:1fr;max-width:520px}}
+  #dolor .pain{background:var(--card,#111118);border:1px solid rgba(124,77,255,.18);border-radius:16px;padding:28px 24px;text-align:left}
+  #dolor .pain .ico{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:rgba(124,77,255,.12);color:var(--p,#7c4dff);margin-bottom:16px}
+  #dolor .pain .ico svg{width:21px;height:21px}
+  #dolor .pain h3{font-family:'Sora',sans-serif;font-size:1.08rem;font-weight:700;color:#fff;letter-spacing:-.015em;margin:0 0 8px;line-height:1.3}
+  #dolor .pain p{font-size:.9rem;color:var(--muted,#9999b5);line-height:1.65;margin:0}
+</style>
+<section id="dolor" class="sec">
+  <div class="wrap">
+    <div class="hdr c">
+      <span class="sec-lbl">Lo que nos cuentan</span>
+      <h2 class="sec-h">¿Te suena esto?</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
+        <h3>Pierdo clientes fuera de horario</h3>
+        <p>Quien entra en tu web a las once de la noche o un domingo no encuentra a nadie al otro lado. Y se va al siguiente resultado.</p>
+      </div>
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
+        <h3>Repito lo mismo mil veces</h3>
+        <p>Horarios, precios, dónde estáis, si hay hueco el jueves. Las mismas cinco preguntas, todos los días, quitándote tiempo de lo tuyo.</p>
+      </div>
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="19" x2="15" y2="19"/></svg></span>
+        <h3>Mi web no me trae clientes</h3>
+        <p>Es un folleto bonito: se ve, se lee y no pasa nada más. Nadie deja su teléfono y tú no te enteras de quién ha pasado por ahí.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · ESTO ES LO QUE HACEMOS POR TI (solución, con jerarquía)
+     El id="servicios" existe porque 31 páginas del sitio enlazan a
+     https://whitemoon.es/#servicios y hasta ahora caían en el top de la home. -->
+<style>
+  #servicios .sol-star{position:relative;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;max-width:1040px;margin:0 auto;padding:44px 40px;background:linear-gradient(135deg,rgba(124,77,255,.14) 0%,rgba(124,77,255,.04) 60%,transparent 100%),var(--card,#111118);border:1px solid rgba(124,77,255,.42);border-radius:22px;box-shadow:0 26px 70px rgba(124,77,255,.16)}
+  @media(max-width:860px){#servicios .sol-star{grid-template-columns:1fr;gap:26px;padding:32px 24px}}
+  #servicios .sol-badge{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:99px;background:rgba(124,77,255,.16);border:1px solid rgba(124,77,255,.45);color:var(--p2,#9d70ff);font-family:'Sora',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+  #servicios .sol-badge svg{width:12px;height:12px}
+  #servicios .sol-star h3{font-family:'Sora',sans-serif;font-size:clamp(1.6rem,3.2vw,2.15rem);font-weight:700;color:#fff;letter-spacing:-.025em;line-height:1.15;margin:0 0 14px}
+  #servicios .sol-star .sol-lead{font-size:1.04rem;color:#c9c9de;line-height:1.7;margin:0 0 22px}
+  #servicios .sol-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}
+  #servicios .sol-list li{display:flex;align-items:flex-start;gap:10px;font-size:.92rem;color:#DCDCEA;line-height:1.5}
+  #servicios .sol-list svg{width:16px;height:16px;margin-top:3px;flex-shrink:0;color:var(--p2,#9d70ff)}
+  #servicios .sol-cta{display:inline-flex;align-items:center;gap:9px;margin-top:26px;padding:15px 30px;border-radius:12px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.98rem;box-shadow:0 14px 36px rgba(124,77,255,.34);transition:transform .15s ease,box-shadow .2s ease}
+  #servicios .sol-cta:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.44)}
+  #servicios .sol-cta svg{width:16px;height:16px}
+  #servicios .sol-mini{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:1040px;margin:22px auto 0}
+  @media(max-width:700px){#servicios .sol-mini{grid-template-columns:1fr}}
+  #servicios .sol-mini a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:14px;text-decoration:none;transition:border-color .15s ease,background .15s ease}
+  #servicios .sol-mini a:hover{border-color:rgba(124,77,255,.4);background:rgba(124,77,255,.05)}
+  #servicios .sol-mini .t{font-family:'Inter',sans-serif;font-size:.92rem;font-weight:500;color:#E8E8F0;line-height:1.4}
+  #servicios .sol-mini .t span{display:block;font-size:.8rem;font-weight:400;color:var(--muted,#9999b5);margin-top:3px}
+  #servicios .sol-mini .arw{flex-shrink:0;color:var(--p2,#9d70ff);font-size:1.05rem}
+</style>
+<section id="servicios" class="sec-alt">
+  <div class="wrap">
+    <div class="hdr c">
+      <span class="sec-lbl">La solución</span>
+      <h2 class="sec-h">Esto es lo que hacemos por ti</h2>
+    </div>
+
+    <article class="sol-star">
+      <div>
+        <span class="sol-badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>Nuestro producto estrella</span>
+        <h3>Web con IA integrada</h3>
+        <p class="sol-lead">Diseñamos tu web profesional y montamos el chatbot que atiende y capta clientes por ti.</p>
+        <a class="sol-cta" href="/mini-core/" onclick="wmTrack('click_home_solucion',{producto:'web-con-ia'})">
+          Ver cómo funciona
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <ul class="sol-list">
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Web profesional a medida, con tu dominio</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Agente de IA dentro, atendiendo 24/7</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Cada lead, con nombre y teléfono, a tu móvil</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>SEO y visibilidad en buscadores e IA</li>
+        <li><svg aria-hidden="true"><use href="#check"/></svg>Operativa en días, sin permanencia</li>
+      </ul>
+    </article>
+
+    <div class="sol-mini">
+      <a href="/servicios/" onclick="wmTrack('click_home_solucion',{producto:'solo-agente'})">
+        <span class="t">¿Ya tienes web? Montamos solo el agente de IA<span>Se integra en la web que ya tienes.</span></span>
+        <span class="arw" aria-hidden="true">→</span>
+      </a>
+      <a href="/automatizaciones/" onclick="wmTrack('click_home_solucion',{producto:'automatizaciones'})">
+        <span class="t">Automatizamos tus procesos<span>Presupuestos, avisos y seguimiento en piloto automático.</span></span>
+        <span class="arw" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · CÓMO FUNCIONA — 3 pasos (sincronizado con el HowTo del final del body) -->
+<style>
+  #como-funciona{padding:64px 24px;border-top:1px solid var(--border-soft,rgba(124,77,255,.12))}
+  #como-funciona .hf-wrap{max-width:1080px;margin:0 auto}
+  #como-funciona .hf-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#c4b3ff;margin-bottom:14px}
+  #como-funciona .hf-eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
+  #como-funciona h2{font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:#fff;letter-spacing:-.02em;margin:0 0 8px}
+  #como-funciona .hf-lead{font-size:1rem;color:var(--muted,#9999b5);line-height:1.7;max-width:640px;margin:0}
+  #como-funciona .hf-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px}
+  @media(max-width:800px){#como-funciona .hf-steps{grid-template-columns:1fr}}
+  #como-funciona .hf-step{background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.18));border-radius:16px;padding:26px}
+  #como-funciona .hf-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(124,77,255,.12);color:#c4b3ff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:14px}
+  #como-funciona .hf-step h3{font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;margin:0 0 8px}
+  #como-funciona .hf-step p{font-size:.9rem;color:var(--muted,#9999b5);line-height:1.6;margin:0}
+  #como-funciona .hf-remate{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;margin-top:30px;padding-top:24px;border-top:1px solid rgba(124,77,255,.14);font-size:.92rem;color:#c9c9de}
+  #como-funciona .hf-remate span{display:inline-flex;align-items:center;gap:8px}
+  #como-funciona .hf-remate svg{width:15px;height:15px;color:var(--p2,#9d70ff);flex-shrink:0}
+</style>
+<section id="como-funciona" class="sec">
+  <div class="hf-wrap">
+    <div class="hf-eyebrow">Cómo funciona</div>
+    <h2>Cómo funciona</h2>
+    <p class="hf-lead">De la primera llamada a tu web atendiendo clientes sola, en días.</p>
+    <div class="hf-steps">
+      <div class="hf-step"><div class="hf-n">1</div><h3>Auditoría gratis</h3><p>Miramos tu negocio y te decimos qué te encaja. Sin compromiso.</p></div>
+      <div class="hf-step"><div class="hf-n">2</div><h3>Lo montamos en días</h3><p>Web y agente de IA listos y probados. No meses.</p></div>
+      <div class="hf-step"><div class="hf-n">3</div><h3>Funciona solo 24/7</h3><p>Atiende, responde y te pasa cada cliente al móvil, también de noche.</p></div>
+    </div>
+    <p class="hf-remate">
+      <span><svg aria-hidden="true"><use href="#check"/></svg>Operativo en días</span>
+      <span><svg aria-hidden="true"><use href="#check"/></svg>Sin permanencia</span>
+      <span><svg aria-hidden="true"><use href="#check"/></svg>Cancelas cuando quieras</span>
+    </p>
+  </div>
+</section>
+
+<!-- 5 · CONFIANZA — solo lo que se puede enseñar -->
+<style>
+  #confianza{padding:56px 24px;border-top:1px solid var(--border-soft,rgba(124,77,255,.12))}
+  #confianza .tr-wrap{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){#confianza .tr-wrap{grid-template-columns:1fr}}
+  #confianza .tr{display:flex;align-items:flex-start;gap:14px;padding:22px 24px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.24);border-radius:16px}
+  #confianza .tr .ico{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:rgba(124,77,255,.14);color:var(--p2,#9d70ff)}
+  #confianza .tr .ico svg{width:19px;height:19px}
+  #confianza .tr b{display:block;font-family:'Sora',sans-serif;font-size:.98rem;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:4px}
+  #confianza .tr .stars{color:#f5c842;letter-spacing:.12em;font-size:.9rem}
+  #confianza .tr p{font-size:.86rem;color:var(--muted,#9999b5);line-height:1.55;margin:6px 0 0}
+  #confianza .tr p a{color:var(--p2,#9d70ff);text-decoration:none;border-bottom:1px solid rgba(157,112,255,.35)}
+  /* Sin min-width:0 el hijo flexible no encoge y "recomendaciones" desborda
+     la tarjeta por debajo de ~300px. */
+  #confianza .tr>div{min-width:0}
+  #confianza .tr b,#confianza .tr p{overflow-wrap:anywhere}
+  @media(max-width:340px){#confianza .tr{padding:18px 16px;gap:10px}}
+</style>
+<section id="confianza" class="sec-alt" style="padding-top:56px;padding-bottom:56px">
+  <div class="wrap">
+    <div class="hdr c" style="margin-bottom:32px">
+      <span class="sec-lbl">Confianza</span>
+      <h2 class="sec-h" style="font-size:clamp(1.5rem,3vw,2rem)">Lo que sí podemos enseñarte</h2>
+    </div>
+    <div class="tr-wrap">
+      <div class="tr">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg></span>
+        <div>
+          <b>Ficha de Google Business verificada</b>
+          <span class="stars" aria-label="5 sobre 5 en Google">★★★★★</span>
+          <p>Majadahonda, Madrid. Puedes abrir la ficha y leer las reseñas tú mismo.</p>
+        </div>
+      </div>
+      <div class="tr">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>
+          <b>Entre las recomendaciones de ChatGPT y Grok en Majadahonda</b>
+          <p>Publicamos la consulta, el modelo y la fecha de cada comprobación. <a href="/metodologia-visibilidad-ia/">Ver metodología y capturas →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · PRECIOS — protagonismo a los packs que incluyen web
+     Importes leídos de /precios/ (fuente de verdad). -->
+<style>
+  #precios .pr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:900px;margin:0 auto;align-items:stretch}
+  @media(max-width:760px){#precios .pr-grid{grid-template-columns:1fr;max-width:460px}}
+  #precios .pr{position:relative;display:flex;flex-direction:column;background:var(--card,#111118);border:1px solid rgba(124,77,255,.3);border-radius:20px;padding:30px 28px}
+  #precios .pr--star{border-color:rgba(124,77,255,.55);background:linear-gradient(180deg,rgba(124,77,255,.1) 0%,var(--card,#111118) 55%);box-shadow:0 22px 60px rgba(124,77,255,.16)}
+  #precios .pr-tag{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:8px;background:rgba(124,77,255,.9);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em}
+  #precios .pr-tag svg{width:11px;height:11px;flex-shrink:0}
+  #precios .pr-kicker{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin-bottom:6px}
+  /* Por debajo de ~520px la etiqueta absoluta se comía el kicker: pasa a
+     ocupar su propia linea encima del nombre del pack. */
+  @media(max-width:520px){
+    #precios .pr-tag{position:static;margin-bottom:12px}
+    #precios .pr{padding-top:26px}
+  }
+  #precios .pr-name{font-family:'Sora',sans-serif;font-size:1.32rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:14px}
+  #precios .pr-price{font-family:'Sora',sans-serif;font-size:2.1rem;font-weight:800;color:#fff;line-height:1;letter-spacing:-.03em}
+  #precios .pr-price small{font-size:.88rem;font-weight:400;color:var(--muted,#9999b5)}
+  #precios .pr-cuota{font-size:.76rem;color:var(--muted,#9999b5);margin:6px 0 20px}
+  #precios .pr ul{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:9px}
+  #precios .pr li{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;color:#DCDCEA;line-height:1.5}
+  #precios .pr li svg{width:15px;height:15px;margin-top:2px;flex-shrink:0;color:var(--p2,#9d70ff)}
+  #precios .pr-cta{margin-top:auto;display:block;text-align:center;padding:13px;border-radius:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.9rem;transition:filter .2s ease}
+  #precios .pr-cta:hover{filter:brightness(1.08)}
+  #precios .pr-aside{max-width:900px;margin:20px auto 0;text-align:center;font-size:.88rem;color:var(--muted,#9999b5)}
+  #precios .pr-aside a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+  #precios .pr-foot{text-align:center;margin-top:34px}
+  #precios .pr-foot .all{display:inline-block;padding:14px 32px;border-radius:12px;background:transparent;border:1px solid rgba(124,77,255,.42);color:#E8E8F0;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.94rem;transition:border-color .15s ease,background .15s ease}
+  #precios .pr-foot .all:hover{border-color:#7c4dff;background:rgba(124,77,255,.08)}
+  #precios .pr-foot .note{font-size:.78rem;color:var(--muted,#9999b5);margin-top:14px}
+</style>
+<section id="precios" class="sec">
   <div class="wrap">
     <div class="hdr c">
       <span class="sec-lbl">Precios</span>
-      <h2 class="sec-h">Planes desde 499€</h2>
-      <p class="sec-sub">Nuestros planes destacados para empezar. <a href="/precios/" style="color:var(--p2);text-decoration:underline;text-underline-offset:3px">Ver catálogo completo →</a></p>
+      <h2 class="sec-h">Tu web con IA, desde 599€</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto;margin-bottom:44px">Los dos packs que incluyen web y agente de IA. Sin permanencia, ninguno.</p>
     </div>
 
-    <style>
-      .home-precios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch;max-width:1200px;margin:0 auto}
-      .home-precios-grid > div{height:100%;display:flex;flex-direction:column;justify-content:space-between}
-      @media(max-width:900px){.home-precios-grid{grid-template-columns:repeat(2,1fr)}}
-      @media(max-width:600px){.home-precios-grid{grid-template-columns:1fr}}
-    </style>
-    <div class="home-precios-grid">
-      <!-- SPARK · compacto -->
-      <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>MÁS POPULAR</div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Para crecer</div>
-        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Spark</div>
-        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">499€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
-        <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
-        <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente IA conversacional 24/7</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Captura de leads con aviso al instante a tu móvil</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Responde preguntas frecuentes de tu sector</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Operativo en 5-7 días · Sin permanencia</li>
+    <div class="pr-grid">
+      <div class="pr pr--star">
+        <span class="pr-tag"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg>EMPEZAR AQUÍ</span>
+        <div class="pr-kicker">Para autónomos sin web</div>
+        <div class="pr-name">Pack Mini Core</div>
+        <div class="pr-price">599€<small> setup</small></div>
+        <div class="pr-cuota">+ 99€/mes · Sin permanencia</div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Landing profesional a medida</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Dominio propio, primer año incluido</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Agente de IA en la landing</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Aviso de cada lead a tu móvil</li>
         </ul>
-        <a href="/spark/" style="display:block;text-align:center;padding:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Pack Spark →</a>
+        <a class="pr-cta" href="/mini-core/" onclick="wmTrack('click_home_pack',{pack:'mini-core'})">Ver Pack Mini Core →</a>
       </div>
 
-      <!-- CORE · compacto -->
-      <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:#10b981;color:#0a0a14;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em" style="display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10c1 1 1.5 2 1.5 3.5h5c0-1.5.5-2.5 1.5-3.5A6 6 0 0 0 12 3z"/></svg> <span>INCLUYE WEB</span></div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Negocio nuevo o sin web</div>
-        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Core Spark Web</div>
-        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">899€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
-        <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
-        <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Web profesional + dominio primer año</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente IA + SEO/GEO/AEO completo</li>
+      <div class="pr">
+        <span class="pr-tag" style="background:#10b981;color:#0a0a14"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>INCLUYE WEB</span>
+        <div class="pr-kicker">Negocio que quiere web completa</div>
+        <div class="pr-name">Core Spark Web</div>
+        <div class="pr-price">899€<small> setup</small></div>
+        <div class="pr-cuota">+ 99€/mes · Sin permanencia</div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Web profesional + dominio primer año</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Agente de IA conversacional 24/7</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>SEO técnico y GEO/AEO completo</li>
+          <li><svg aria-hidden="true"><use href="#check"/></svg>Operativo en 5-7 días laborables</li>
         </ul>
-        <a href="/core/" style="display:block;text-align:center;padding:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Pack Core Spark Web →</a>
+        <a class="pr-cta" href="/core/" onclick="wmTrack('click_home_pack',{pack:'core-spark-web'})">Ver Core Spark Web →</a>
       </div>
-
-      <!-- ORION IA AGENT · compacto -->
-      <div style="background:var(--card,#0d0d1a);border:1px solid rgba(139,92,246,.3);border-radius:18px;padding:28px;position:relative">
-        <div style="position:absolute;top:14px;right:14px;background:#7c4dff;color:#fff;font-size:.6rem;font-weight:700;padding:4px 10px;border-radius:8px;letter-spacing:.08em;display:inline-flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg> <span>VOZ 24/7</span></div>
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9d70ff;margin-bottom:6px">Atención por voz</div>
-        <div style="font-size:1.35rem;font-weight:800;color:#fff;margin-bottom:14px">Orion IA Agent</div>
-        <div style="font-size:2rem;font-weight:800;color:#fff;line-height:1">799€<span style="font-size:.9rem;color:#9090b0;font-weight:400"> setup</span></div>
-        <div style="font-size:.72rem;color:#9090b0;margin-bottom:18px">+ 99€/mes · Sin permanencia</div>
-        <ul style="list-style:none;padding:0;margin:0 0 18px;font-size:.82rem;color:#e0e0f4;line-height:1.7">
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Agente de voz IA 24/7 en tu web</li>
-          <li style="display:flex;align-items:center;gap:8px"><svg style="width:14px;height:14px;color:#22c55e;flex-shrink:0"><use href="#check"/></svg>Atiende, cualifica, agenda y capta leads</li>
-        </ul>
-        <a href="/orion-agent/" style="display:block;text-align:center;padding:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-weight:700;font-size:.82rem">Ver Orion IA Agent →</a>
-      </div>
-
     </div>
 
-    <div style="text-align:center;margin-top:32px">
-      <a href="/precios/" onclick="wmTrack('click_ver_precios',{source:'home',placement:'precios-compact'})"
-        style="display:inline-block;padding:14px 32px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:12px;text-decoration:none;font-weight:700;font-size:.94rem;box-shadow:0 8px 24px rgba(124,77,255,.3)">
-        Ver todos los planes →
-      </a>
-      <p style="font-size:.78rem;color:var(--muted);margin-top:14px">
-        Auditoría · Spark · Orion IA Agent · Core Spark Web · Core Orion · Core RAG · Calculadora ITP Pro
-      </p>
+    <p class="pr-aside">¿Solo el agente para tu web actual? Desde <strong style="color:#E8E8F0;font-weight:600">499€</strong> de setup + 99€/mes. <a href="/servicios/">Ver opciones →</a></p>
+
+    <div class="pr-foot">
+      <a class="all" href="/precios/" onclick="wmTrack('click_ver_precios',{source:'home',placement:'precios-embudo'})">Ver todos los planes →</a>
+      <p class="note">Todos sin permanencia.</p>
     </div>
   </div>
 </section>
 
-<!-- AUTOMATIZACIONES CON IA -->
-<section id="automatizaciones" class="sec">
-  <div class="wrap">
-    <div class="hdr c" style="margin-bottom:0">
-      <span class="sec-lbl">Automatizaciones con IA</span>
-      <h2 class="sec-h">Automatiza tu empresa con IA, sin permanencia</h2>
-      <p class="sec-sub" style="margin-bottom:34px">Captación de leads, presupuestos, gestión documental y seguimiento comercial en piloto automático. Elige tu plan y ponlo a funcionar en semanas.</p>
-      <a href="/automatizaciones/" onclick="wmTrack('click_home_automatizaciones',{destination:'automatizaciones'})" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:transparent;color:#E8E8F0;border:1px solid rgba(124,77,255,.3);border-radius:99px;text-decoration:none;font-family:'Inter',sans-serif;font-weight:500;font-size:.86rem;letter-spacing:-.005em;transition:all .15s ease" onmouseover="this.style.borderColor='#7c4dff';this.style.background='rgba(124,77,255,.06)'" onmouseout="this.style.borderColor='rgba(124,77,255,.3)';this.style.background='transparent'">
-        Ver automatizaciones →
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- HERRAMIENTAS GRATUITAS -->
-<!-- NUESTROS AGENTES IA -->
-<section id="agentes-ia" class="sec-alt" aria-labelledby="agentes-ia-h">
-  <style>
-    #agentes-ia{--agc:#131A2A;--agb:rgba(255,255,255,.07)}
-    #agentes-ia .ag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch;max-width:1140px;margin:0 auto}
-    @media(max-width:900px){#agentes-ia .ag-grid{grid-template-columns:1fr;max-width:520px;gap:22px}}
-    #agentes-ia .ag-card{--ac:var(--p2,#9d70ff);display:flex;flex-direction:column;background:var(--agc);border:1px solid var(--agb);border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(0,0,0,.42);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-    #agentes-ia .ag-card:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--ac) 42%,transparent);box-shadow:0 26px 64px rgba(0,0,0,.55)}
-    #agentes-ia .ag-card--gold{--ac:var(--gold,#f5c842)}
-    #agentes-ia .ag-card--green{--ac:var(--g,#00d4aa)}
-
-    #agentes-ia .ag-media{position:relative;height:184px;overflow:hidden;background:#0B0F17}
-    #agentes-ia .ag-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease}
-    #agentes-ia .ag-card:hover .ag-media img{transform:scale(1.045)}
-    #agentes-ia .ag-fade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(19,26,42,0) 0%,rgba(19,26,42,.35) 45%,rgba(19,26,42,.88) 78%,#131A2A 100%);pointer-events:none}
-    #agentes-ia .ag-badge{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:99px;background:rgba(11,15,23,.82);border:1px solid color-mix(in srgb,var(--ac) 45%,transparent);color:var(--ac);font-family:'Sora',sans-serif;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(6px)}
-    #agentes-ia .ag-badge svg{width:12px;height:12px;flex-shrink:0}
-    #agentes-ia .ag-icon{position:absolute;left:24px;bottom:-1px;display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;background:rgba(11,15,23,.9);border:1px solid color-mix(in srgb,var(--ac) 38%,transparent);color:var(--ac)}
-    #agentes-ia .ag-icon svg{width:22px;height:22px}
-
-    #agentes-ia .ag-body{display:flex;flex-direction:column;flex:1;padding:36px 24px 26px}
-    #agentes-ia .ag-title{font-family:'Sora',sans-serif;font-size:1.32rem;font-weight:700;letter-spacing:-.02em;color:#fff;margin:0 0 8px}
-    #agentes-ia .ag-lead{font-size:.9rem;line-height:1.6;color:#B9B9CE;margin:0 0 20px}
-    #agentes-ia .ag-list{list-style:none;padding:0;margin:0 0 22px;display:flex;flex-direction:column;gap:10px}
-    #agentes-ia .ag-list li{display:flex;align-items:flex-start;gap:9px;font-size:.855rem;line-height:1.45;color:#DCDCEA}
-    #agentes-ia .ag-list svg{width:15px;height:15px;margin-top:2px;flex-shrink:0;color:var(--ac)}
-    #agentes-ia .ag-price{margin-top:auto;padding-top:18px;border-top:1px solid var(--agb);font-size:.86rem;color:#9999b5;line-height:1.5}
-    #agentes-ia .ag-price strong{display:block;font-family:'Sora',sans-serif;font-size:1.42rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:2px}
-    #agentes-ia .ag-cta{display:block;margin-top:18px;padding:13px 18px;border-radius:12px;text-align:center;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:-.005em;transition:filter .2s ease,transform .2s ease}
-    #agentes-ia .ag-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
-    #agentes-ia .ag-cta--p{background:linear-gradient(135deg,#5c35cc,#7c4dff);color:#fff}
-    #agentes-ia .ag-cta--gold{background:var(--gold,#f5c842);color:#0B0F17}
-    #agentes-ia .ag-cta--green{background:var(--g,#00d4aa);color:#05221C}
-
-    #agentes-ia .ag-foot{text-align:center;margin-top:38px}
-    #agentes-ia .ag-foot a{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid rgba(124,77,255,.3);border-radius:99px;color:#E8E8F0;text-decoration:none;font-size:.86rem;font-weight:500;transition:border-color .15s ease,background .15s ease}
-    #agentes-ia .ag-foot a:hover{border-color:#7c4dff;background:rgba(124,77,255,.08)}
-    @media(prefers-reduced-motion:reduce){#agentes-ia .ag-card,#agentes-ia .ag-media img,#agentes-ia .ag-cta{transition:none}#agentes-ia .ag-card:hover{transform:none}#agentes-ia .ag-card:hover .ag-media img{transform:none}}
-  </style>
-
-  <div class="wrap">
-    <div class="hdr c">
-      <span class="sec-lbl">Nuestros agentes IA</span>
-      <h2 class="sec-h" id="agentes-ia-h">Elige tu agente. Deja de perder clientes.</h2>
-      <p class="sec-sub">Tres formas de que tu negocio atienda, capte y cierre — sin ampliar tu equipo.</p>
-    </div>
-
-    <div class="ag-grid">
-
-      <!-- ORION IA -->
-      <article class="ag-card">
-        <div class="ag-media">
-          <img src="/assets/img/orion-ia-agent.webp" width="800" height="500" loading="lazy" decoding="async"
-            alt="Orion IA — agente de voz que atiende en tu web y agenda citas 24/7">
-          <div class="ag-fade"></div>
-          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/></svg> Voz 24/7</span>
-          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></svg></span>
-        </div>
-        <div class="ag-body">
-          <h3 class="ag-title">Orion IA</h3>
-          <p class="ag-lead">El agente de voz que atiende como un recepcionista, día y noche.</p>
-          <ul class="ag-list">
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Voz natural en español, 24/7</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Atiende y agenda citas él solo</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Capta cada lead con nombre y teléfono</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Se integra en tu web actual</li>
-          </ul>
-          <div class="ag-price"><strong>Desde 799€</strong>+ 99€/mes · sin permanencia</div>
-          <a class="ag-cta ag-cta--p" href="/orion-agent/" onclick="wmTrack('click_home_agente',{agente:'orion-ia'})">Ver Orion IA →</a>
-        </div>
-      </article>
-
-      <!-- SPARK -->
-      <article class="ag-card ag-card--gold">
-        <div class="ag-media">
-          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80&auto=format" width="800" height="600" loading="lazy" decoding="async"
-            alt="Spark — chatbot IA conversacional que capta clientes en tu web 24/7">
-          <div class="ag-fade"></div>
-          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2.8 14.9 9 21.4 9.8 16.6 14.2 17.9 20.7 12 17.5 6.1 20.7 7.4 14.2 2.6 9.8 9.1 9"/></svg> Más popular</span>
-          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
-        </div>
-        <div class="ag-body">
-          <h3 class="ag-title">Spark</h3>
-          <p class="ag-lead">El chatbot conversacional que capta clientes en tu web, 24/7.</p>
-          <ul class="ag-list">
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Conversa con lenguaje natural</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Capta y cualifica leads solo</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Responde las dudas de tu sector</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Aviso al móvil al instante</li>
-          </ul>
-          <div class="ag-price"><strong>Desde 499€</strong>+ 99€/mes · sin permanencia</div>
-          <a class="ag-cta ag-cta--gold" href="/spark/" onclick="wmTrack('click_home_agente',{agente:'spark'})">Ver Spark →</a>
-        </div>
-      </article>
-
-      <!-- CORE RAG -->
-      <article class="ag-card ag-card--green">
-        <div class="ag-media">
-          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&q=80&auto=format" width="800" height="600" loading="lazy" decoding="async"
-            alt="Core RAG — agente IA entrenado con los documentos propios de tu negocio">
-          <div class="ag-fade"></div>
-          <span class="ag-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2.5 14 7.5 19 7.5"/></svg> Con tus documentos</span>
-          <span class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2.5H7a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.5z"/><polyline points="14 2.5 14 7.5 19 7.5"/><line x1="8.5" y1="12.5" x2="14" y2="12.5"/><line x1="8.5" y1="16.5" x2="15.5" y2="16.5"/></svg></span>
-        </div>
-        <div class="ag-body">
-          <h3 class="ag-title">Core RAG</h3>
-          <p class="ag-lead">La IA que responde con TU documentación, sin inventar.</p>
-          <ul class="ag-list">
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Entrenada con tus documentos</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Responde citando la fuente</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Para despachos, gestorías y clínicas</li>
-            <li><svg aria-hidden="true"><use href="#check"/></svg>Widget + panel de documentos</li>
-          </ul>
-          <div class="ag-price"><strong>Desde 2.499€</strong>+ 199€/mes · sin permanencia</div>
-          <a class="ag-cta ag-cta--green" href="/core-rag/" onclick="wmTrack('click_home_agente',{agente:'core-rag'})">Ver Core RAG →</a>
-        </div>
-      </article>
-
-    </div>
-
-    <div class="ag-foot">
-      <a href="/casos/" onclick="wmTrack('click_home_ver_casos',{destination:'casos'})">Ver casos de uso por sector →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ¿CÓMO FUNCIONA? — HowTo -->
-<section id="como-funciona" class="sec">
-  <style>
-    #como-funciona{padding:64px 24px;border-top:1px solid var(--border-soft,rgba(124,77,255,.12))}
-    #como-funciona .hf-wrap{max-width:1080px;margin:0 auto}
-    #como-funciona .hf-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#c4b3ff;margin-bottom:14px}
-    #como-funciona .hf-eyebrow::before{content:"";width:24px;height:1px;background:linear-gradient(90deg,transparent,#7c4dff)}
-    #como-funciona h2{font-family:'Sora',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:#fff;letter-spacing:-.02em;margin:0 0 8px}
-    #como-funciona .hf-lead{font-size:1rem;color:var(--muted,#9090b0);line-height:1.7;max-width:640px;margin:0}
-    #como-funciona .hf-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px}
-    @media(max-width:900px){#como-funciona .hf-steps{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:600px){#como-funciona .hf-steps{grid-template-columns:1fr}}
-    #como-funciona .hf-step{background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.18));border-radius:16px;padding:26px}
-    #como-funciona .hf-n{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(124,77,255,.12);color:#c4b3ff;font-family:'Sora',sans-serif;font-weight:800;font-size:1.1rem;margin-bottom:14px}
-    #como-funciona .hf-step h3{font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;margin:0 0 8px}
-    #como-funciona .hf-step p{font-size:.9rem;color:var(--muted,#9090b0);line-height:1.6;margin:0}
-  </style>
-  <div class="hf-wrap">
-    <div class="hf-eyebrow">Cómo funciona</div>
-    <h2>¿Cómo funciona?</h2>
-    <p class="hf-lead">De tu primera llamada a tu agente IA atendiendo clientes, en menos de una semana.</p>
-    <div class="hf-steps">
-        <div class="hf-step"><div class="hf-n">1</div><h3>Diagnóstico gratuito</h3><p>Analizamos tu negocio en una llamada de 20 minutos sin compromiso.</p></div>
-        <div class="hf-step"><div class="hf-n">2</div><h3>Propuesta personalizada</h3><p>Recibes tu propuesta con pack recomendado en 24-48 horas.</p></div>
-        <div class="hf-step"><div class="hf-n">3</div><h3>Desarrollo e integración</h3><p>Configuramos tu agente IA y lo integramos en tu web o sistema en 5-7 días.</p></div>
-        <div class="hf-step"><div class="hf-n">4</div><h3>Activo y optimizando</h3><p>Tu agente IA empieza a atender clientes. Monitorizamos y mejoramos.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ — sincronizado con FAQPage schema -->
+<!-- 7 · FAQ — sincronizado con FAQPage schema -->
 <section id="faq" class="sec">
   <style>
     #faq{padding:64px 24px;border-top:1px solid var(--border-soft,rgba(124,77,255,.12))}
@@ -1018,35 +884,242 @@
   </div>
 </section>
 
-<!-- CTA FINAL ENTERPRISE → /auditoria-ia/ -->
+<!-- 8 · CTA FINAL — dos vías: reunión o formulario corto -->
 <style>
-  .cta-final-ent{padding:90px 24px 110px;background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.05) 50%,transparent 100%);border-top:1px solid rgba(255,255,255,.06);text-align:center}
-  .cta-final-ent .wrap{max-width:680px;margin:0 auto}
-  .cta-final-ent h2{font-family:'Inter',sans-serif;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1.15;margin:0 0 14px}
-  .cta-final-ent p{font-size:1.02rem;color:#9CA3AF;line-height:1.65;margin:0 0 30px}
-  .cta-final-ent .actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .cta-final-ent .primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.96rem;letter-spacing:-.005em;box-shadow:0 14px 36px rgba(124,77,255,.32);transition:transform .15s ease,box-shadow .2s ease}
-  .cta-final-ent .primary:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
-  .cta-final-ent .primary svg{transition:transform .15s ease}
-  .cta-final-ent .primary:hover svg{transform:translateX(2px)}
-  .cta-final-ent .ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2);border-radius:10px;text-decoration:none;font-family:'Inter',sans-serif;font-weight:500;font-size:.96rem;letter-spacing:-.005em;transition:all .15s ease}
-  .cta-final-ent .ghost:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
-  .cta-final-ent .note{margin-top:16px;font-size:.74rem;color:#6B7280;letter-spacing:.04em}
+  .cta-final-ent{padding:90px 24px 110px;background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.05) 50%,transparent 100%);border-top:1px solid rgba(255,255,255,.06)}
+  .cta-final-ent .wrap{max-width:1000px;margin:0 auto}
+  .cta-final-ent .cf-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .cta-final-ent h2{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1.15;margin:0 0 14px}
+  .cta-final-ent .cf-head p{font-size:1.02rem;color:#9CA3AF;line-height:1.65;margin:0}
+  .cta-final-ent .cf-cols{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:stretch}
+  @media(max-width:820px){.cta-final-ent .cf-cols{grid-template-columns:1fr}}
+  .cta-final-ent .cf-card{display:flex;flex-direction:column;background:var(--card,#111118);border:1px solid rgba(124,77,255,.24);border-radius:20px;padding:32px 30px}
+  @media(max-width:480px){.cta-final-ent .cf-card{padding:26px 20px}}
+  .cta-final-ent .cf-via{display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin-bottom:14px}
+  .cta-final-ent .cf-card h3{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin:0 0 10px}
+  .cta-final-ent .cf-card > p{font-size:.92rem;color:#9CA3AF;line-height:1.6;margin:0 0 22px}
+  .cta-final-ent .cf-meet{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:12px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;box-shadow:0 14px 36px rgba(124,77,255,.32);transition:transform .15s ease,box-shadow .2s ease}
+  .cta-final-ent .cf-meet:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
+  .cta-final-ent .cf-meet svg{width:16px;height:16px}
+  .cta-final-ent .cf-alt{margin:14px 0 0;font-size:.8rem;color:#6B7280;text-align:center}
+  .cta-final-ent .cf-alt a{color:#9CA3AF;text-decoration:none;border-bottom:1px solid rgba(157,112,255,.3)}
+  .cta-final-ent .cf-field{margin-bottom:14px}
+  .cta-final-ent .cf-field label{display:block;font-size:.78rem;font-weight:500;color:#9CA3AF;letter-spacing:.02em;margin-bottom:6px}
+  .cta-final-ent .cf-field input{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#E8E8F0;font-family:'Inter',sans-serif;font-size:.94rem;line-height:1.4;transition:border-color .15s ease,background .15s ease}
+  .cta-final-ent .cf-field input::placeholder{color:#5f5f78}
+  .cta-final-ent .cf-field input:focus{outline:none;border-color:#7c4dff;background:rgba(124,77,255,.06)}
+  .cta-final-ent .cf-field input[aria-invalid="true"]{border-color:#f87171}
+  .cta-final-ent .cf-send{width:100%;margin-top:6px;padding:15px 26px;border:0;border-radius:12px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:0 14px 36px rgba(124,77,255,.32);transition:transform .15s ease,filter .2s ease}
+  .cta-final-ent .cf-send:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .cta-final-ent .cf-send:disabled{opacity:.6;cursor:default;transform:none}
+  .cta-final-ent .cf-msg{margin:12px 0 0;font-size:.84rem;line-height:1.55;min-height:1px}
+  .cta-final-ent .cf-msg.is-warn{color:#fbbf24}
+  .cta-final-ent .cf-msg.is-error{color:#f87171}
+  .cta-final-ent .cf-msg a{color:inherit}
+  .cta-final-ent .cf-ok{display:none;text-align:center;padding:26px 8px}
+  .cta-final-ent .cf-ok svg{width:38px;height:38px;color:#10b981;margin-bottom:12px}
+  .cta-final-ent .cf-ok b{display:block;font-family:'Sora',sans-serif;font-size:1.12rem;font-weight:700;color:#fff;margin-bottom:6px}
+  .cta-final-ent .cf-ok p{font-size:.9rem;color:#9CA3AF;line-height:1.6;margin:0}
+  .cta-final-ent .cf-legal{margin:14px 0 0;font-size:.74rem;color:#6B7280;line-height:1.5}
+  .cta-final-ent .cf-legal a{color:#9CA3AF}
 </style>
-<section class="cta-final-ent">
+<section class="cta-final-ent" id="hablamos">
   <div class="wrap">
-    <h2>¿Hablamos sobre <span style="background:linear-gradient(135deg,#9d70ff,#c4b3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">tu negocio</span>?</h2>
-    <p>Auditoría GEO IA: informe completo de tu visibilidad en ChatGPT, Grok y Perplexity en 48h. 899€ pago único, sin permanencia.</p>
-    <div class="actions">
-      <a href="/auditoria-geo-ia/" class="primary" onclick="wmTrack('click_home_cta_final',{destination:'auditoria-ia'})">
-        Solicitar Auditoría GEO IA
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-      <a href="/recursos/" class="ghost" onclick="wmTrack('click_home_cta_secondary',{destination:'recursos'})">Ver recursos →</a>
+    <div class="cf-head">
+      <h2>¿Hablamos? Te decimos gratis qué IA le encaja a <span style="background:linear-gradient(135deg,#9d70ff,#c4b3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">tu negocio</span>.</h2>
+      <p>Sin compromiso y sin tecnicismos. Elige por dónde prefieres empezar.</p>
     </div>
-    <p class="note">Sin compromiso · Te llamamos en &lt;24 h laborables · ¿Prefieres probar antes? La <a href="/auditoria-geo-seo/">Auditoría GEO/SEO es gratis</a>.</p>
+
+    <div class="cf-cols">
+
+      <!-- Vía 1 — reunión -->
+      <div class="cf-card">
+        <span class="cf-via"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:13px;height:13px"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Vía 1</span>
+        <h3>Agenda una reunión de 15 minutos</h3>
+        <p>Eliges hueco en el calendario y hablamos por videollamada. Lo que dure, sin guion de ventas.</p>
+        <a class="cf-meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_home_cta_final',{via:'reunion',destination:'cal.com'})">
+          Agendar reunión
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="cf-alt">¿Prefieres verlo por escrito? La <a href="/auditoria-geo-seo/">Auditoría GEO/SEO es gratis</a>.</p>
+      </div>
+
+      <!-- Vía 2 — formulario corto -->
+      <div class="cf-card">
+        <span class="cf-via"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:13px;height:13px"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 1.9.6 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.8 2z"/></svg>Vía 2</span>
+        <h3>Déjanos tres datos y te llamamos</h3>
+        <p>Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
+
+        <form id="homeLeadForm" novalidate>
+          <div class="cf-field">
+            <label for="hl-nombre">Nombre</label>
+            <input type="text" id="hl-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+          </div>
+          <div class="cf-field">
+            <label for="hl-telefono">Teléfono</label>
+            <input type="tel" id="hl-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
+          </div>
+          <div class="cf-field">
+            <label for="hl-sector">Sector <span style="color:#6B7280;font-weight:400">(opcional)</span></label>
+            <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
+          </div>
+          <button type="submit" class="cf-send" id="hl-send">Enviar</button>
+          <p class="cf-msg" id="hl-msg" role="status" aria-live="polite"></p>
+          <p class="cf-legal">Solo usamos tus datos para contactarte. <a href="/politica-privacidad/">Política de privacidad</a>.</p>
+        </form>
+
+        <div class="cf-ok" id="hl-ok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
+          <b>¡Recibido! Te llamamos enseguida.</b>
+          <p>Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener" style="color:#9d70ff;text-decoration:none">643 199 580</a>.</p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
+
+<script>
+/* ─────────────────────────────────────────────────────────────────────────
+   Formulario del CTA final — patrón estándar de captación WhiteMoon.
+   Los DOS envíos van EN PARALELO, nunca encadenados:
+     1. INSERT en leads_web con la publishable key, keepalive y UN reintento
+        a los 800 ms. Supabase devuelve 503 transitorios de forma esporádica
+        y sin reintento ese lead se pierde.
+     2. Aviso a Telegram por la Edge Function whitemoon-notify, con
+        navigator.sendBeacon y Blob 'text/plain;charset=UTF-8'. Con
+        'application/json' salta el preflight CORS, Chrome descarta el POST y
+        sendBeacon devuelve true igual: el aviso se pierde en silencio. El
+        body sigue siendo JSON y la función lo parsea igual.
+   La publishable key no es secreta: por RLS el rol anónimo solo puede
+   INSERT. El token de Telegram vive en los Secrets de la Edge Function.
+   ───────────────────────────────────────────────────────────────────────── */
+(function () {
+  var SB_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SB_KEY = 'sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV';
+  var NOTIFY_FN = SB_URL + '/functions/v1/whitemoon-notify';
+  var ORIGEN = 'home-cta';
+  var INTERES = 'Formulario home';
+
+  var form = document.getElementById('homeLeadForm');
+  if (!form) return;
+  var btn = document.getElementById('hl-send');
+  var msg = document.getElementById('hl-msg');
+  var ok = document.getElementById('hl-ok');
+
+  function val(name) {
+    var el = form.elements[name];
+    return el ? (el.value || '').trim() : '';
+  }
+  function setMsg(kind, text) {
+    msg.className = 'cf-msg' + (kind ? ' is-' + kind : '');
+    msg.textContent = text || '';
+  }
+
+  // 1 · leads_web, con UN reintento a los 800 ms. Devuelve una promesa que
+  //     resuelve true solo si el INSERT acabó entrando.
+  function postLead(lead) {
+    return fetch(SB_URL + '/rest/v1/leads_web', {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(lead)
+    }).then(function (r) {
+      if (!r.ok) console.warn('[home] leads_web ' + r.status);
+      return r.ok;
+    }).catch(function (err) {
+      console.warn('[home] leads_web error', err);
+      return false;
+    });
+  }
+  function insertLead(lead) {
+    return postLead(lead).then(function (ok) {
+      if (ok) return true;
+      return new Promise(function (res) {
+        setTimeout(function () { postLead(lead).then(res); }, 800);
+      });
+    });
+  }
+
+  // 2 · aviso a Telegram. sendBeacon con text/plain para no disparar preflight.
+  function avisar(aviso) {
+    var payload = JSON.stringify(aviso);
+    var sent = false;
+    try {
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon(NOTIFY_FN, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+      }
+    } catch (e) { /* sin sendBeacon usable, cae al fetch de abajo */ }
+    if (!sent) {
+      fetch(NOTIFY_FN, {
+        method: 'POST',
+        keepalive: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY
+        },
+        body: payload
+      }).catch(function () { /* silencioso: el cliente no tiene que ver esto */ });
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = val('nombre'), telefono = val('telefono'), sector = val('sector');
+
+    form.elements.nombre.removeAttribute('aria-invalid');
+    form.elements.telefono.removeAttribute('aria-invalid');
+    if (!nombre || !telefono) {
+      var falta = !nombre ? 'nombre' : 'telefono';
+      form.elements[falta].setAttribute('aria-invalid', 'true');
+      form.elements[falta].focus();
+      setMsg('warn', 'Necesitamos tu nombre y un teléfono para poder llamarte.');
+      return;
+    }
+
+    setMsg('', '');
+    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+    var mensaje = 'Lead formulario home';
+
+    // Los dos envíos arrancan a la vez; el aviso no espera al INSERT.
+    avisar({
+      nombre: nombre,
+      telefono: telefono,
+      interes: sector,
+      mensaje: mensaje
+    });
+    insertLead({
+      nombre: nombre,
+      telefono: telefono,
+      sector: sector,
+      interes: INTERES,
+      mensaje: mensaje,
+      origen: ORIGEN,
+      fecha: new Date().toISOString()
+    }).then(function (entro) {
+      if (!entro) {
+        if (btn) { btn.disabled = false; btn.textContent = 'Enviar'; }
+        msg.className = 'cf-msg is-error';
+        msg.innerHTML = 'No se pudo enviar. Prueba otra vez o escríbenos a ' +
+          '<!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off-->';
+        return;
+      }
+      if (typeof window.wmTrack === 'function') {
+        window.wmTrack('enviar_form_home', { placement: 'cta-final' });
+      }
+      form.style.display = 'none';
+      if (ok) ok.style.display = 'block';
+    });
+  });
+})();
+</script>
 
 <!-- FOOTER -->
 <!-- FOOTER ENTERPRISE — 4 columnas estilo Linear/Stripe -->
@@ -1283,60 +1356,9 @@
 
 
 <!-- JSON-LD secundario (movido al final del body para no retrasar el LCP) -->
-<!-- Orion IA — Service + SoftwareApplication (GEO/AEO): describe el agente de
-     voz para motores generativos. Precio coherente con /orion-agent/ y /precios/. -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Orion IA — Agente de voz IA 24/7",
-  "serviceType": "Agente de voz con inteligencia artificial",
-  "description": "Agente de voz IA en español natural que atiende por voz, resuelve consultas, cualifica leads y agenda citas 24/7, embebido en tu web actual. Operativo en 5-7 días, sin permanencia.",
-  "url": "https://whitemoon.es/orion-agent/",
-  "provider": {
-    "@type": "Organization",
-    "name": "WhiteMoon",
-    "url": "https://whitemoon.es",
-    "telephone": "+34643199580",
-    "email": "comercial@whitemoon.es"
-  },
-  "areaServed": [
-    {"@type": "City", "name": "Majadahonda"},
-    {"@type": "AdministrativeArea", "name": "Noroeste de Madrid"},
-    {"@type": "AdministrativeArea", "name": "Comunidad de Madrid"}
-  ],
-  "offers": {
-    "@type": "Offer",
-    "price": "799",
-    "priceCurrency": "EUR",
-    "description": "799€ setup + 99€/mes. Sin permanencia, 30 días de aviso para cancelar.",
-    "url": "https://whitemoon.es/orion-agent/",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Orion IA",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "description": "Agente de voz IA 24/7 en español natural para pymes: atiende por voz, cualifica leads y agenda citas. Se embebe en tu web actual y funciona sin contratar personal.",
-  "url": "https://whitemoon.es/orion-agent/",
-  "provider": {
-    "@type": "Organization",
-    "name": "WhiteMoon",
-    "url": "https://whitemoon.es"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "799",
-    "priceCurrency": "EUR",
-    "description": "799€ setup + 99€/mes. Sin permanencia."
-  }
-}
-</script>
+<!-- Orion IA ya no aparece en el contenido visible de la home: su Service y su
+     SoftwareApplication viven en /orion-agent/, que es la pagina que los describe.
+     Aqui serian marcado sin contenido y duplicado entre paginas. -->
 <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"WhiteMoon · Agencia IA Madrid | Agentes IA para Empresas","author":{"@type":"Person","name":"Cristóbal Martínez","url":"https://www.linkedin.com/in/cristobal-martinez-8b9b9951/"},"publisher":{"@type":"Organization","name":"WhiteMoon","url":"https://whitemoon.es"},"datePublished":"2025-01-01","dateModified":"2026-06-10"}
   </script>
@@ -1360,36 +1382,32 @@
   ]
 }
 </script>
-<script type="application/ld+json">
-{
+<script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "Cómo activar tu Agente IA con WhiteMoon",
-  "description": "Proceso en 4 pasos para tener tu agente IA operativo en menos de una semana",
+  "name": "Cómo funciona: tu web con agente de IA en días",
+  "description": "Los tres pasos de WhiteMoon para poner en marcha una web profesional con un agente de IA dentro: auditoría gratuita, montaje en días y funcionamiento autónomo 24/7.",
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Diagnóstico gratuito",
-      "text": "Analizamos tu negocio en una llamada de 20 minutos sin compromiso."
+      "position": 1,
+      "name": "Auditoría gratis",
+      "text": "Miramos tu negocio y te decimos qué te encaja. Sin compromiso."
     },
     {
       "@type": "HowToStep",
-      "name": "Propuesta personalizada",
-      "text": "Recibes tu propuesta con pack recomendado en 24-48 horas."
+      "position": 2,
+      "name": "Lo montamos en días",
+      "text": "Web y agente de IA listos y probados. No meses."
     },
     {
       "@type": "HowToStep",
-      "name": "Desarrollo e integración",
-      "text": "Configuramos tu agente IA y lo integramos en tu web o sistema en 5-7 días."
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Activo y optimizando",
-      "text": "Tu agente IA empieza a atender clientes. Monitorizamos y mejoramos."
+      "position": 3,
+      "name": "Funciona solo 24/7",
+      "text": "Atiende, responde y te pasa cada cliente al móvil, también de noche."
     }
   ]
-}
-  </script>
+}</script>
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
