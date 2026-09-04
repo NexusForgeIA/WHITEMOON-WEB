@@ -99,6 +99,21 @@
 .wm-nav__burger svg{width:20px;height:20px;display:block}
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
+/* Banda apretada: con cinco destinos en el centro (Servicios, Desarrollo web,
+   Demos, Precios y Recursos) el menu ya no cabe junto al logo y al CTA por
+   debajo de ~1080px — a 960px se salian 84px de la barra. En vez de esconder
+   el menu entero y mandar a burger un portatil de 1024, se recorta lo
+   prescindible: "Agendar reunion" (que sigue en el cajon, en el footer y en
+   cada CTA de pagina) y algo de padding entre enlaces. */
+/* Sin cota inferior a proposito: entre max-width:900px y min-width:901px queda
+   un hueco para los anchos fraccionarios (900.5px), y ahi el nav se quedaba sin
+   recortar y se salia. Por debajo de 900px estas tres reglas son inertes: el
+   menu central ya esta oculto. */
+@media(max-width:1080px){
+  .wm-nav__meet{display:none}
+  .wm-nav__center>a,.wm-nav__dd>button{padding:8px 9px}
+  .wm-nav__center{gap:0}
+}
 @media(max-width:900px){
   .wm-nav__center{display:none}
   .wm-nav__meet{display:none}

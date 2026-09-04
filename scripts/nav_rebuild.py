@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Aplica la navbar unificada de WhiteMoon al header de todas las paginas de paseo.
 
-Menu resultante:  Servicios (desplegable corto) · Demos · Precios · Recursos
-                  + un unico CTA: "Auditoria GEO/SEO Gratis".
+Menu resultante:  Servicios (desplegable corto) · Desarrollo web · Demos ·
+                  Precios · Recursos + un unico CTA: "Auditoria GEO/SEO Gratis".
 "Agendar reunion" baja a enlace de texto secundario.
 
 Lo que sale del top (Nosotros, Blog, Casos y los 8 enlaces del mega-desplegable
@@ -28,7 +28,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_V = "2026090401"
+ASSET_V = "2026090402"
 
 SKIP_DIRS = {
     ".git", ".github", ".claude", ".agents", "__pycache__", "node_modules",
@@ -93,6 +93,7 @@ def nav_html(flow: bool) -> str:
           <a href="/servicios/" class="wm-nav__all" role="menuitem">Ver todos los servicios →</a>
         </div>
       </div>
+      <a href="/diseno-web-con-ia/">Desarrollo web</a>
       <a href="/demos/">Demos</a>
       <a href="/precios/">Precios</a>
       <a href="/recursos/">Recursos</a>
@@ -110,6 +111,7 @@ def nav_html(flow: bool) -> str:
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
   <button class="wm-drawer__close" type="button" aria-label="Cerrar menú">{CLOSE}</button>
   <a class="wm-drawer__link" href="/servicios/">Servicios</a>
+  <a class="wm-drawer__link" href="/diseno-web-con-ia/">Desarrollo web</a>
   <a class="wm-drawer__link" href="/demos/">Demos</a>
   <a class="wm-drawer__link" href="/precios/">Precios</a>
   <a class="wm-drawer__link" href="/recursos/">Recursos</a>
