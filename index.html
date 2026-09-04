@@ -157,6 +157,26 @@
         "sameAs": "https://www.wikidata.org/wiki/Q1631897"
       },
       {
+        "@type": "City",
+        "name": "Torrelodones",
+        "sameAs": "https://www.wikidata.org/wiki/Q1637912"
+      },
+      {
+        "@type": "City",
+        "name": "Villanueva del Pardillo",
+        "sameAs": "https://www.wikidata.org/wiki/Q1636067"
+      },
+      {
+        "@type": "City",
+        "name": "Galapagar",
+        "sameAs": "https://www.wikidata.org/wiki/Q1637829"
+      },
+      {
+        "@type": "City",
+        "name": "Collado Villalba",
+        "sameAs": "https://www.wikidata.org/wiki/Q1637696"
+      },
+      {
         "@type": "Country",
         "name": "España",
         "sameAs": "https://www.wikidata.org/wiki/Q29"
@@ -992,6 +1012,48 @@
           <summary>¿Cuánto cuesta implantar un agente IA en mi negocio?</summary>
           <div>Desde 499€ de setup + 99€/mes con el pack Spark, sin permanencia. El precio final depende del pack que mejor encaje con tu negocio; te lo recomendamos en una auditoría gratuita sin compromiso.</div>
         </details>
+  </div>
+</section>
+
+<!-- 7b · ZONAS — 35 paginas de zona enlazan a https://whitemoon.es/#zonas y
+     hasta ahora caian en el top de la home. El id vive aqui. -->
+<style>
+  /* La navbar es fija (66px): sin scroll-margin el titular queda pegado a
+     ella al llegar por el ancla. */
+  #zonas{padding:64px 0;border-top:1px solid rgba(124,77,255,.12);scroll-margin-top:86px}
+  #zonas .zn-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:860px;margin:0 auto}
+  #zonas .zn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:99px;background:var(--card,#111118);border:1px solid rgba(124,77,255,.22);color:#DCDCEA;text-decoration:none;font-size:.88rem;line-height:1.3;transition:border-color .15s ease,background .15s ease,color .15s ease}
+  #zonas a.zn:hover{border-color:rgba(124,77,255,.55);background:rgba(124,77,255,.07);color:#fff}
+  #zonas a.zn:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:2px}
+  /* Villanueva del Pardillo no tiene pagina propia: va como texto, no como
+     enlace roto. */
+  #zonas .zn--plain{color:var(--muted,#9999b5);cursor:default}
+  #zonas .zn svg{width:15px;height:15px;flex-shrink:0;color:var(--p2,#9d70ff)}
+  #zonas .zn-foot{text-align:center;font-size:.88rem;color:var(--muted,#9999b5);margin:26px auto 0;max-width:640px}
+  #zonas .zn-foot a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:360px){#zonas .zn{padding:9px 13px;font-size:.83rem}}
+  @media(prefers-reduced-motion:reduce){#zonas .zn{transition:none}}
+</style>
+<section id="zonas" class="sec-alt">
+  <div class="wrap">
+    <div class="hdr c" style="margin-bottom:30px">
+      <span class="sec-lbl">Zonas</span>
+      <h2 class="sec-h" style="font-size:clamp(1.5rem,3vw,2rem)">Zonas donde trabajamos</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto;margin-bottom:0">Somos de Majadahonda y trabajamos en el noroeste de Madrid. El trabajo es en remoto y presencial cuando hace falta.</p>
+    </div>
+    <div class="zn-grid">
+        <a class="zn" href="/agencia-ia-majadahonda/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Majadahonda</a>
+        <a class="zn" href="/agencia-ia-las-rozas/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Las Rozas</a>
+        <a class="zn" href="/agencia-ia-pozuelo/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Pozuelo de Alarcón</a>
+        <a class="zn" href="/agencia-ia-boadilla/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Boadilla del Monte</a>
+        <a class="zn" href="/agencia-ia-torrelodones/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Torrelodones</a>
+        <a class="zn" href="/agencia-ia-villanueva-canada/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Villanueva de la Cañada</a>
+        <span class="zn zn--plain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Villanueva del Pardillo</span>
+        <a class="zn" href="/agencia-ia-galapagar/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Galapagar</a>
+        <a class="zn" href="/agencia-ia-collado-villalba/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Collado Villalba</a>
+        <a class="zn" href="/agencia-ia-madrid/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Madrid</a>
+    </div>
+    <p class="zn-foot">¿Tu municipio no está en la lista? Trabajamos en toda la Comunidad de Madrid: mira <a href="/agencia-ia-madrid/">la cobertura completa</a> o escríbenos y te lo confirmamos.</p>
   </div>
 </section>
 
