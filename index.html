@@ -520,7 +520,7 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      HOME · EMBUDO WEB + IA
-     1 Hero · 2 Dolor · 3 Solucion · 4 Como funciona · 5 Confianza
+     1 Hero · 2 Dolor · 3 Solucion · 4 Como funciona · 5 Demos por sector
      6 Precios · 7 FAQ (SEO, sincronizada con el FAQPage) · 8 CTA final
      El producto estrella es la web con agente de IA dentro. Los agentes
      sueltos (Spark, Orion) quedan al margen: viven en /servicios/ y /precios/.
@@ -692,46 +692,97 @@
   </div>
 </section>
 
-<!-- 5 · CONFIANZA — solo lo que se puede enseñar -->
+<!-- 5 · DEMOS POR SECTOR — agentes reales que cualquiera puede probar
+     Las demos completas viven en /demos/ (fuente de esta lista): aquí van
+     ocho de las más representativas y el resto se ven con el botón final.
+     El id="confianza" del bloque anterior se conserva como ancla legacy
+     por si algún enlace externo apuntaba a whitemoon.es/#confianza. -->
 <style>
-  #confianza{padding:56px 24px;border-top:1px solid var(--border-soft,rgba(124,77,255,.12))}
-  #confianza .tr-wrap{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:760px){#confianza .tr-wrap{grid-template-columns:1fr}}
-  #confianza .tr{display:flex;align-items:flex-start;gap:14px;padding:22px 24px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.24);border-radius:16px}
-  #confianza .tr .ico{flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:11px;background:rgba(124,77,255,.14);color:var(--p2,#9d70ff)}
-  #confianza .tr .ico svg{width:19px;height:19px}
-  #confianza .tr b{display:block;font-family:'Sora',sans-serif;font-size:.98rem;font-weight:700;color:#fff;letter-spacing:-.01em;margin-bottom:4px}
-  #confianza .tr .stars{color:#f5c842;letter-spacing:.12em;font-size:.9rem}
-  #confianza .tr p{font-size:.86rem;color:var(--muted,#9999b5);line-height:1.55;margin:6px 0 0}
-  #confianza .tr p a{color:var(--p2,#9d70ff);text-decoration:none;border-bottom:1px solid rgba(157,112,255,.35)}
-  /* Sin min-width:0 el hijo flexible no encoge y "recomendaciones" desborda
-     la tarjeta por debajo de ~300px. */
-  #confianza .tr>div{min-width:0}
-  #confianza .tr b,#confianza .tr p{overflow-wrap:anywhere}
-  @media(max-width:340px){#confianza .tr{padding:18px 16px;gap:10px}}
+  #demos-sector .dm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;max-width:1040px;margin:0 auto}
+  @media(max-width:1040px){#demos-sector .dm-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:640px}}
+  @media(max-width:520px){#demos-sector .dm-grid{grid-template-columns:1fr;max-width:420px}}
+  #demos-sector .dm{display:flex;flex-direction:column;gap:8px;min-width:0;padding:22px 20px;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;text-decoration:none;transition:border-color .15s ease,background .15s ease,transform .15s ease}
+  #demos-sector .dm:hover{border-color:rgba(124,77,255,.55);background:rgba(124,77,255,.06);transform:translateY(-2px)}
+  #demos-sector .dm:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:3px}
+  #demos-sector .dm h3{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:-.015em;line-height:1.3;margin:0}
+  #demos-sector .dm p{font-size:.85rem;color:var(--muted,#9999b5);line-height:1.55;margin:0}
+  /* Sin overflow-wrap los nombres largos desbordan la tarjeta por debajo de 300px. */
+  #demos-sector .dm h3,#demos-sector .dm p{overflow-wrap:anywhere}
+  #demos-sector .dm .go{margin-top:auto;padding-top:12px;display:inline-flex;align-items:center;gap:6px;font-family:'Sora',sans-serif;font-size:.82rem;font-weight:600;color:var(--p2,#9d70ff)}
+  #demos-sector .dm .go svg{width:13px;height:13px;flex-shrink:0}
+  #demos-sector .dm-foot{text-align:center;margin-top:34px}
+  #demos-sector .dm-foot .all{display:inline-block;padding:14px 32px;border-radius:12px;background:transparent;border:1px solid rgba(124,77,255,.42);color:#E8E8F0;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.94rem;transition:border-color .15s ease,background .15s ease}
+  #demos-sector .dm-foot .all:hover{border-color:#7c4dff;background:rgba(124,77,255,.08)}
+  @media(prefers-reduced-motion:reduce){#demos-sector .dm{transition:none}#demos-sector .dm:hover{transform:none}}
 </style>
-<section id="confianza" class="sec-alt" style="padding-top:56px;padding-bottom:56px">
+<section id="demos-sector" class="sec-alt" style="padding-top:56px;padding-bottom:56px">
+  <span id="confianza" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="hdr c" style="margin-bottom:32px">
-      <span class="sec-lbl">Confianza</span>
-      <h2 class="sec-h" style="font-size:clamp(1.5rem,3vw,2rem)">Lo que sí podemos enseñarte</h2>
+    <div class="hdr c">
+      <span class="sec-lbl">Pruebas reales</span>
+      <h2 class="sec-h" style="font-size:clamp(1.5rem,3vw,2rem)">Míralo funcionando · Demos por sector</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto;margin-bottom:36px">Elige tu sector y ve el agente de IA funcionando de verdad. Cada demo capta clientes sola.</p>
     </div>
-    <div class="tr-wrap">
-      <div class="tr">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.6l2.9 5.9 6.5.95-4.7 4.58 1.11 6.47L12 17.45l-5.81 3.05L7.3 14.03 2.6 9.45l6.5-.95L12 2.6z"/></svg></span>
-        <div>
-          <b>Ficha de Google Business verificada</b>
-          <span class="stars" aria-label="5 sobre 5 en Google">★★★★★</span>
-          <p>Majadahonda, Madrid. Puedes abrir la ficha y leer las reseñas tú mismo.</p>
-        </div>
-      </div>
-      <div class="tr">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <div>
-          <b>Entre las recomendaciones de ChatGPT y Grok en Majadahonda</b>
-          <p>Publicamos la consulta, el modelo y la fecha de cada comprobación. <a href="/metodologia-visibilidad-ia/">Ver metodología y capturas →</a></p>
-        </div>
-      </div>
+    <div class="dm-grid">
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-CLINICAS-DENTALES/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Clínicas dentales (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'clinicas-dentales',placement:'home-demos'})">
+        <h3>Clínicas dentales</h3>
+        <p>Pide la primera visita y elige hueco sin salir del chat.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-PELUQUERIAS/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Peluquería (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'peluquerias',placement:'home-demos'})">
+        <h3>Peluquería</h3>
+        <p>Di si vas a color, mechas o recogido y te reserva hueco sin llamar.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-ABOGADOS/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Abogados (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'abogados',placement:'home-demos'})">
+        <h3>Abogados</h3>
+        <p>Cuenta tu caso —civil, penal, laboral o mercantil— y pide consulta.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-PODOLOGOS/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Podología (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'podologia',placement:'home-demos'})">
+        <h3>Podología</h3>
+        <p>Dile qué tratamiento necesitas y te busca un hueco real.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-TALLERES-COCHES/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Talleres de coches (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'talleres-coches',placement:'home-demos'})">
+        <h3>Talleres de coches</h3>
+        <p>Revisión, frenos, diagnosis o chapa: te reserva cita en el taller.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-BURGUER/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Hostelería (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'hosteleria',placement:'home-demos'})">
+        <h3>Hostelería</h3>
+        <p>Monta el pedido —burger, extras y bebida— y confírmalo en el chat.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-INMOBILIARIAS/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Inmobiliarias (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'inmobiliarias',placement:'home-demos'})">
+        <h3>Inmobiliarias</h3>
+        <p>Te lleva paso a paso hasta la valoración de la vivienda.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="dm" href="https://nexusforgeia.github.io/WHITEMOON-VETERINARIOS/" target="_blank" rel="noopener"
+         aria-label="Ver la demo en vivo de Veterinarios (se abre en una pestaña nueva)"
+         onclick="wmTrack('click_demo_sector',{sector:'veterinarios',placement:'home-demos'})">
+        <h3>Veterinarios</h3>
+        <p>Pide cita para tu mascota o pregunta por las urgencias 24 h.</p>
+        <span class="go">Ver demo en vivo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+    <div class="dm-foot">
+      <a class="all" href="/demos/" onclick="wmTrack('click_demo_sector',{sector:'todas',placement:'home-demos-footer'})">Ver todas las demos →</a>
     </div>
   </div>
 </section>
