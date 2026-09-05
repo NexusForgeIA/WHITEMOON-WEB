@@ -2,7 +2,8 @@
 """Aplica la navbar unificada de WhiteMoon al header de todas las paginas de paseo.
 
 Menu resultante:  Servicios (desplegable corto) · Desarrollo web · Demos ·
-                  Precios · Recursos + un unico CTA: "Auditoria GEO/SEO Gratis".
+                  Precios · Recursos · Contacto + un unico CTA:
+                  "Auditoria GEO/SEO Gratis".
 "Agendar reunion" baja a enlace de texto secundario.
 
 Lo que sale del top (Nosotros, Blog, Casos y los 8 enlaces del mega-desplegable
@@ -28,7 +29,7 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_V = "2026090402"
+ASSET_V = "2026090501"
 
 SKIP_DIRS = {
     ".git", ".github", ".claude", ".agents", "__pycache__", "node_modules",
@@ -97,6 +98,7 @@ def nav_html(flow: bool) -> str:
       <a href="/demos/">Demos</a>
       <a href="/precios/">Precios</a>
       <a href="/recursos/">Recursos</a>
+      <a href="/contacto/">Contacto</a>
     </div>
 
     <div class="wm-nav__right">
@@ -115,6 +117,7 @@ def nav_html(flow: bool) -> str:
   <a class="wm-drawer__link" href="/demos/">Demos</a>
   <a class="wm-drawer__link" href="/precios/">Precios</a>
   <a class="wm-drawer__link" href="/recursos/">Recursos</a>
+  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
   <a class="wm-drawer__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
   <a class="wm-drawer__cta" href="/auditoria-geo-seo/">Auditoría GEO/SEO Gratis{ARROW}</a>
 </aside>"""

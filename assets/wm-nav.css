@@ -1,6 +1,7 @@
 /* WhiteMoon · navbar unificada — fuente de verdad del header de todo el sitio.
  *
- * Menu: Servicios (desplegable corto) · Demos · Precios · Recursos
+ * Menu: Servicios (desplegable corto) · Desarrollo web · Demos · Precios ·
+ *       Recursos · Contacto
  *       + un unico CTA destacado: Auditoria GEO/SEO Gratis.
  * "Agendar reunion" queda como enlace de texto secundario.
  *
@@ -99,22 +100,39 @@
 .wm-nav__burger svg{width:20px;height:20px;display:block}
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
-/* Banda apretada: con cinco destinos en el centro (Servicios, Desarrollo web,
-   Demos, Precios y Recursos) el menu ya no cabe junto al logo y al CTA por
-   debajo de ~1080px — a 960px se salian 84px de la barra. En vez de esconder
-   el menu entero y mandar a burger un portatil de 1024, se recorta lo
-   prescindible: "Agendar reunion" (que sigue en el cajon, en el footer y en
-   cada CTA de pagina) y algo de padding entre enlaces. */
-/* Sin cota inferior a proposito: entre max-width:900px y min-width:901px queda
-   un hueco para los anchos fraccionarios (900.5px), y ahi el nav se quedaba sin
-   recortar y se salia. Por debajo de 900px estas tres reglas son inertes: el
+/* Banda apretada: con SEIS destinos en el centro (Servicios, Desarrollo web,
+   Demos, Precios, Recursos y Contacto) el menu ya no cabe junto al logo y al
+   CTA por debajo de ~1200px. En vez de esconder el menu entero y mandar a
+   burger un portatil de 1024, se recorta en dos pasos lo prescindible:
+   "Agendar reunion" (que sigue en el cajon, en el footer y en cada CTA de
+   pagina) y el padding entre enlaces.
+
+   El umbral era 1080px con cinco destinos; "Contacto" añade ~76px al centro,
+   asi que sube a 1200px. Sin el segundo paso, entre 900 y 1000px el menu
+   volvia a salirse de la barra. */
+/* Sin cota inferior a proposito: entre max-width:920px y min-width:921px queda
+   un hueco para los anchos fraccionarios (920.5px), y ahi el nav se quedaba sin
+   recortar y se salia. Por debajo de 920px estas reglas son inertes: el
    menu central ya esta oculto. */
-@media(max-width:1080px){
+@media(max-width:1200px){
   .wm-nav__meet{display:none}
   .wm-nav__center>a,.wm-nav__dd>button{padding:8px 9px}
   .wm-nav__center{gap:0}
 }
-@media(max-width:900px){
+@media(max-width:1000px){
+  .wm-nav__center>a,.wm-nav__dd>button{padding:8px 6px;font-size:.84rem}
+  .wm-nav__row{gap:10px}
+  /* Entre 901 y ~955px los seis enlaces + el CTA largo se salian de la barra
+     (justo el hueco de anchos fraccionarios que describe el comentario de
+     arriba). El CTA pasa aqui a su etiqueta corta, que libera ~55px: es lo
+     unico prescindible que queda antes de mandarlo todo al burger. */
+  .wm-nav__cta .wm-long{display:none}
+  .wm-nav__cta .wm-short{display:inline}
+}
+/* El corte a burger sube de 900 a 920px: con seis destinos, entre 901 y ~915px
+   el CTA seguia saliendose de la barra aun con la etiqueta corta. Medido con
+   iframes a 900/901/905/920/940/955/960/980/1000/1024/1080/1100/1200/1440. */
+@media(max-width:920px){
   .wm-nav__center{display:none}
   .wm-nav__meet{display:none}
   .wm-nav__burger{display:inline-flex;align-items:center;justify-content:center}
