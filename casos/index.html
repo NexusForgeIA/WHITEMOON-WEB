@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casos de uso de IA por sector · WhiteMoon</title>
-<meta name="description" content="15 aplicaciones reales de IA agrupadas por sector: clínicas, despachos, gestorías, restaurantes, talleres, inmobiliarias, peluquerías y gimnasios.">
+<meta name="description" content="Qué resuelve la IA en cada sector: clínicas, despachos, gestorías, restaurantes, talleres, inmobiliarias, peluquerías y gimnasios. 15 aplicaciones.">
 <meta name="keywords" content="casos de uso ia, aplicaciones ia por sector, ia clinicas, ia restaurantes, ia despachos, ia talleres, ia inmobiliarias">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://whitemoon.es/casos/">
@@ -114,10 +114,10 @@
 
   .caso-body{padding:20px 24px 24px;display:flex;flex-direction:column;gap:13px;flex:1}
   .caso-title{font-family:'Inter',sans-serif;font-size:1.05rem;font-weight:600;color:#E8E8F0;letter-spacing:-.015em;line-height:1.3;margin:0}
-  .caso-desc{font-size:.86rem;color:#9CA3AF;line-height:1.6;margin:0;font-style:italic;border-left:2px solid rgba(124,77,255,.2);padding-left:12px}
+  .caso-desc{font-size:.86rem;color:#9CA3AF;line-height:1.6;margin:0;border-left:2px solid rgba(124,77,255,.2);padding-left:12px}
 
   .caso-metric{margin-top:auto;padding-top:16px;border-top:1px solid var(--border-soft)}
-  .caso-metric .v{font-family:'Sora','Inter',sans-serif;font-size:1.9rem;font-weight:700;color:var(--g);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+  .caso-metric .v{font-family:'Sora','Inter',sans-serif;font-size:1.02rem;font-weight:700;color:var(--g);letter-spacing:-.01em;line-height:1.35}
   .caso-metric .l{font-size:.72rem;color:#9CA3AF;letter-spacing:.02em;margin-top:4px;line-height:1.4}
 
   .caso-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
@@ -141,6 +141,24 @@
   .casos-footer{padding:32px 24px;text-align:center;font-size:.78rem;color:#6B7280;border-top:1px solid var(--border-soft)}
   .casos-footer a{color:#9d70ff;text-decoration:none}
   .casos-footer a:hover{text-decoration:underline}
+
+  /* CASO REAL (Bambu Sushi) · unico bloque con cifras, siempre atribuidas */
+  .casos-real{padding:8px 24px 64px}
+  .casos-real h2{font-family:'Inter',sans-serif;font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:700;color:#E8E8F0;letter-spacing:-.02em;margin:0 0 10px}
+  .casos-real > .casos-wrap > p{font-size:.94rem;color:#9CA3AF;line-height:1.65;margin:0 0 26px;max-width:640px}
+  .casos-real-card{background:var(--card);border:1px solid rgba(124,77,255,.18);border-radius:18px;padding:28px 30px;max-width:980px}
+  .casos-real-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .casos-real-head h3{font-family:'Sora','Inter',sans-serif;font-size:1.25rem;font-weight:700;color:#E8E8F0;margin:0;letter-spacing:-.02em}
+  .casos-real-head span{font-size:.86rem;color:#9CA3AF}
+  .casos-real-what{font-size:.92rem;color:#C7C7D6;line-height:1.65;margin:0 0 20px;max-width:70ch}
+  .casos-real-attr{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9d70ff;margin:0 0 12px}
+  .casos-real-metrics{display:flex;flex-wrap:wrap;gap:14px 40px;padding:16px 0 4px;border-top:1px solid var(--border-soft)}
+  .casos-real-metrics > div{display:flex;flex-direction:column;gap:3px}
+  .casos-real-metrics .v{font-family:'Sora','Inter',sans-serif;font-size:1.7rem;font-weight:700;color:var(--g);line-height:1;letter-spacing:-.03em}
+  .casos-real-metrics .l{font-size:.76rem;color:#9CA3AF;line-height:1.4}
+  .casos-real-note{font-size:.78rem;color:#8A8AA3;line-height:1.6;margin:18px 0 0;max-width:70ch}
+  .casos-real-cta{display:inline-block;margin-top:16px;font-size:.9rem;font-weight:600;color:#9d70ff;text-decoration:none}
+  .casos-real-cta:hover{text-decoration:underline;text-underline-offset:3px}
 </style>
 <script defer src="/assets/wm-nav.js?v=2026090501"></script>
 </head>
@@ -198,7 +216,7 @@
     <div class="casos-wrap">
       <div class="casos-eyebrow">Casos de uso</div>
       <h1 class="casos-h1">Lo que la IA puede hacer por tu negocio.</h1>
-      <p class="casos-sub">Aplicaciones reales agrupadas por sector. Si tu empresa se parece a alguna de estas, la IA puede aportarte exactamente esto.</p>
+      <p class="casos-sub">Qué resuelve la IA en cada sector, agrupado por tipo de negocio. Son capacidades del sistema, no resultados garantizados: las cifras solo las publicamos cuando un cliente nos las facilita.</p>
     </div>
   </section>
 
@@ -234,8 +252,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Reducción de no-shows con recordatorios IA</h3>
-          <p class="caso-desc">"Las citas perdidas generan huecos vacíos que el equipo no puede rellenar a tiempo."</p>
-          <div class="caso-metric"><div class="v">−40 %</div><div class="l">no-shows en 60 días</div></div>
+          <p class="caso-desc">Las citas que se pierden dejan huecos que el equipo no llega a rellenar a tiempo.</p>
+          <div class="caso-metric"><div class="v">Recuerda cada cita</div><div class="l">Confirmación y recordatorio automáticos antes de la visita</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Recordatorios</span><span class="caso-tag">Móvil</span></div>
         </div>
       </article>
@@ -252,8 +270,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Atención 24/7 para nuevos pacientes</h3>
-          <p class="caso-desc">"Fuera de horario, los pacientes llamaban y no encontraban respuesta."</p>
-          <div class="caso-metric"><div class="v">+28 %</div><div class="l">captación nuevos pacientes</div></div>
+          <p class="caso-desc">Fuera de horario, quien busca clínica no encuentra respuesta y sigue mirando.</p>
+          <div class="caso-metric"><div class="v">Responde a cualquier hora</div><div class="l">Resuelve dudas y recoge el contacto también de madrugada</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA Agent</span><span class="caso-tag">Atención 24/7</span></div>
         </div>
       </article>
@@ -270,8 +288,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Triaje automático de urgencias</h3>
-          <p class="caso-desc">"El equipo perdía tiempo clasificando consultas que no eran urgentes."</p>
-          <div class="caso-metric"><div class="v">−3 h/día</div><div class="l">gestión de llamadas</div></div>
+          <p class="caso-desc">El equipo dedica tiempo a clasificar consultas que no son urgentes.</p>
+          <div class="caso-metric"><div class="v">Ordena lo que entra</div><div class="l">Distingue la urgencia de la consulta rutinaria antes de pasarla</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Triaje</span><span class="caso-tag">Automatización</span></div>
         </div>
       </article>
@@ -288,8 +306,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Cualificación automática de consultas legales</h3>
-          <p class="caso-desc">"El 60% de consultas no encajaban con las áreas del despacho."</p>
-          <div class="caso-metric"><div class="v">×2,4</div><div class="l">consultas cualificadas/mes</div></div>
+          <p class="caso-desc">Llegan consultas que no encajan con las áreas del despacho.</p>
+          <div class="caso-metric"><div class="v">Filtra antes de tu tiempo</div><div class="l">Pregunta materia y situación, y descarta lo que no encaja</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">RAG</span><span class="caso-tag">Filtrado</span></div>
         </div>
       </article>
@@ -306,8 +324,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Base de conocimiento jurídico con RAG</h3>
-          <p class="caso-desc">"Buscar jurisprudencia interna tardaba horas por expediente."</p>
-          <div class="caso-metric"><div class="v">−4,5 h</div><div class="l">búsqueda / abogado / semana</div></div>
+          <p class="caso-desc">Buscar en la documentación interna se lleva media mañana por expediente.</p>
+          <div class="caso-metric"><div class="v">Responde con tus documentos</div><div class="l">Agente RAG entrenado con la base documental del despacho</div></div>
           <div class="caso-tags"><span class="caso-tag">Core RAG</span><span class="caso-tag">Knowledge</span><span class="caso-tag">Búsqueda semántica</span></div>
         </div>
       </article>
@@ -324,8 +342,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Atención a consultas ITP y transferencias</h3>
-          <p class="caso-desc">"Los clientes llamaban repetidamente con las mismas preguntas sobre ITP."</p>
-          <div class="caso-metric"><div class="v">−65 %</div><div class="l">llamadas repetitivas</div></div>
+          <p class="caso-desc">Las mismas preguntas sobre ITP y transferencias, una y otra vez.</p>
+          <div class="caso-metric"><div class="v">Contesta lo repetitivo</div><div class="l">Trámites, plazos y documentación, explicados al momento</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Calculadora ITP</span><span class="caso-tag">FAQ</span></div>
         </div>
       </article>
@@ -342,8 +360,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Automatización de respuestas fiscales frecuentes</h3>
-          <p class="caso-desc">"Modelo 303, cuotas autónomos, plazos — siempre las mismas preguntas."</p>
-          <div class="caso-metric"><div class="v">−2 h/día</div><div class="l">atención telefónica</div></div>
+          <p class="caso-desc">Modelo 303, cuotas de autónomos, plazos: siempre las mismas dudas.</p>
+          <div class="caso-metric"><div class="v">Resuelve las dudas frecuentes</div><div class="l">Y deriva al gestor solo lo que necesita criterio</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">RAG</span><span class="caso-tag">Fiscal</span></div>
         </div>
       </article>
@@ -360,8 +378,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Gestión de reservas sin consultas sin responder</h3>
-          <p class="caso-desc">"Los viernes por la noche el teléfono no paraba y se perdían reservas."</p>
-          <div class="caso-metric"><div class="v">+22 %</div><div class="l">reservas completadas</div></div>
+          <p class="caso-desc">El viernes por la noche entran más peticiones de las que se pueden atender.</p>
+          <div class="caso-metric"><div class="v">Toma la reserva sola</div><div class="l">Disponibilidad, confirmación y aviso al móvil del local</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA Agent</span><span class="caso-tag">Reservas</span><span class="caso-tag">24/7</span></div>
         </div>
       </article>
@@ -378,8 +396,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Reducción de mesas vacías por no-shows</h3>
-          <p class="caso-desc">"El 18% de las reservas no se presentaban sin avisar."</p>
-          <div class="caso-metric"><div class="v">−60 %</div><div class="l">no-shows con recordatorio</div></div>
+          <p class="caso-desc">Hay reservas que no se presentan y nadie avisa.</p>
+          <div class="caso-metric"><div class="v">Confirma antes del servicio</div><div class="l">Recordatorio automático y opción de cancelar sin llamar</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Recordatorios</span><span class="caso-tag">Móvil</span></div>
         </div>
       </article>
@@ -396,8 +414,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Recepción automática de averías</h3>
-          <p class="caso-desc">"Los lunes por la mañana la línea estaba colapsada."</p>
-          <div class="caso-metric"><div class="v">−80 %</div><div class="l">espera telefónica</div></div>
+          <p class="caso-desc">El lunes por la mañana entran todas las averías a la vez.</p>
+          <div class="caso-metric"><div class="v">Recoge la avería</div><div class="l">Matrícula, síntoma y datos del cliente, listos antes de abrir</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA Agent</span><span class="caso-tag">Averías</span><span class="caso-tag">Citas</span></div>
         </div>
       </article>
@@ -414,8 +432,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Seguimiento automático de presupuestos</h3>
-          <p class="caso-desc">"El 40% de presupuestos enviados no recibían respuesta."</p>
-          <div class="caso-metric"><div class="v">+28 %</div><div class="l">presupuestos confirmados</div></div>
+          <p class="caso-desc">Hay presupuestos enviados que se quedan sin respuesta.</p>
+          <div class="caso-metric"><div class="v">Hace el seguimiento</div><div class="l">Recuerda el presupuesto pendiente y recoge la decisión</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Seguimiento</span><span class="caso-tag">Móvil</span></div>
         </div>
       </article>
@@ -432,8 +450,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Cualificación automática de compradores</h3>
-          <p class="caso-desc">"El equipo visitaba pisos con clientes sin capacidad real de compra."</p>
-          <div class="caso-metric"><div class="v">×2,4</div><div class="l">conversión visita → oferta</div></div>
+          <p class="caso-desc">Se enseñan pisos a quien todavía no puede comprar.</p>
+          <div class="caso-metric"><div class="v">Cualifica antes de la visita</div><div class="l">Presupuesto, financiación y zona, preguntados de entrada</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Cualificación</span><span class="caso-tag">CRM</span></div>
         </div>
       </article>
@@ -450,8 +468,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Captación de vendedores 24/7</h3>
-          <p class="caso-desc">"Los propietarios que querían vender llamaban fuera de horario."</p>
-          <div class="caso-metric"><div class="v">+35 %</div><div class="l">captaciones nuevas</div></div>
+          <p class="caso-desc">Quien quiere vender contacta fuera de horario y no encuentra a nadie.</p>
+          <div class="caso-metric"><div class="v">Capta a cualquier hora</div><div class="l">Recoge inmueble, zona y contacto, y avisa al equipo</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA Agent</span><span class="caso-tag">Captación</span><span class="caso-tag">24/7</span></div>
         </div>
       </article>
@@ -468,8 +486,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Reservas automáticas y recordatorios</h3>
-          <p class="caso-desc">"El equipo pasaba 2h/día gestionando citas por teléfono y móvil."</p>
-          <div class="caso-metric"><div class="v">−70 %</div><div class="l">tiempo gestión de citas</div></div>
+          <p class="caso-desc">Gestionar las citas a mano se come un par de horas cada día.</p>
+          <div class="caso-metric"><div class="v">Agenda sin interrumpir</div><div class="l">Reserva, cambio y recordatorio, sin parar el servicio</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA Agent</span><span class="caso-tag">Reservas</span><span class="caso-tag">Recordatorios</span></div>
         </div>
       </article>
@@ -486,8 +504,8 @@
         </div>
         <div class="caso-body">
           <h3 class="caso-title">Atención a socios y captación de nuevos</h3>
-          <p class="caso-desc">"Las consultas de precio y horarios llegaban a todas horas."</p>
-          <div class="caso-metric"><div class="v">+18 %</div><div class="l">nuevas altas / mes</div></div>
+          <p class="caso-desc">Las consultas de precio y horarios llegan a todas horas.</p>
+          <div class="caso-metric"><div class="v">Atiende y capta socios</div><div class="l">Tarifas, horarios y alta, resueltos en la conversación</div></div>
           <div class="caso-tags"><span class="caso-tag">Orion IA</span><span class="caso-tag">Atención</span><span class="caso-tag">Captación</span></div>
         </div>
       </article>
@@ -496,6 +514,30 @@
 
     <div class="casos-empty" id="casosEmpty">
       <p>No hay casos para este sector. <button class="filtro is-active" onclick="filtrarCasos('todos')" style="margin-left:10px">Ver todos</button></p>
+    </div>
+  </section>
+
+
+  <!-- CASO REAL · unico bloque con cifras, y van atribuidas a su fuente -->
+  <section class="casos-real">
+    <div class="casos-wrap">
+      <h2>Un caso documentado</h2>
+      <p>El resto de la página son capacidades. Esto es lo único que tiene cifras, y no son nuestras: las facilita el cliente.</p>
+      <div class="casos-real-card">
+        <div class="casos-real-head">
+          <h3>Bambú Sushi</h3>
+          <span>· Córdoba · Restaurante japonés</span>
+        </div>
+        <p class="casos-real-what">Web premium, agente IA de pedidos y reservas 24/7 y SEO/GEO/AEO local. Proyecto en vivo y verificable: su web acredita a WhiteMoon en el footer.</p>
+        <p class="casos-real-attr">Resultados reportados por Bambú Sushi</p>
+        <div class="casos-real-metrics">
+          <div><span class="v">+30%</span><span class="l">ticket medio</span></div>
+          <div><span class="v">+45%</span><span class="l">reservas al mes</span></div>
+          <div><span class="v">+30%</span><span class="l">pedidos por el chatbot</span></div>
+        </div>
+        <p class="casos-real-note">Son cifras de su operativa, no una garantía. Iremos documentando el resto de clientes conforme nos autoricen a publicarlo.</p>
+        <a class="casos-real-cta" href="/casos-de-exito/">Ver el caso completo →</a>
+      </div>
     </div>
   </section>
 

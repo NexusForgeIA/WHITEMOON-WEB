@@ -33,7 +33,7 @@
     {"@type":"Question","name":"¿Cuánto cuesta gestionar las citas manualmente?","acceptedAnswer":{"@type":"Answer","text":"Clínica con 40 llamadas/día × 4 min = 2,67 h/día × 22 días = 58,7 h/mes. A 18€/h: ~1.060€/mes solo gestión telefónica. Con reprogramaciones y confirmaciones: 1.500-2.000€/mes."}},
     {"@type":"Question","name":"¿Qué ahorra Orion IA Agent en citas?","acceptedAnswer":{"@type":"Answer","text":"Absorbe el 75-85% del volumen: nuevas reservas, modificaciones, cancelaciones, confirmaciones. Recepcionista pasa de 30-40 llamadas/día rutinarias a tareas de mayor valor. Ahorro: 800-1.500€/mes."}},
     {"@type":"Question","name":"¿Funciona con cualquier software de agenda?","acceptedAnswer":{"@type":"Answer","text":"Integración API con Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, Google Calendar. Sin API: scraping autenticado o sync por exportación. Si tu software no está soportado lo evaluamos en auditoría."}},
-    {"@type":"Question","name":"¿En cuánto se amortiza?","acceptedAnswer":{"@type":"Answer","text":"Ahorro neto 1.000€/mes − cuota Orion 199€ = 801€/mes. Setup 799€ amortizado en mes 1. A 12 meses: 9.000€+ neto descontado el setup. ROI 400%."}}
+    {"@type":"Question","name":"¿En cuánto se amortiza?","acceptedAnswer":{"@type":"Answer","text":"Con los supuestos por defecto de la calculadora: 1.000€/mes recuperados − 99€ de cuota = 901€/mes netos. El setup de 799€ se cubre el primer mes. Cambia las horas y el coste/hora por los tuyos para ver tu propio número."}}
   ]
 }
 </script>
@@ -128,7 +128,7 @@
       <div class="calc-row"><label class="calc-label" for="cm-absorcion">% absorción por Orion IA</label>
         <select id="cm-absorcion" class="calc-select" onchange="calcCitasManual()">
           <option value="70">70% conservador</option>
-          <option value="80" selected>80% (media WhiteMoon)</option>
+          <option value="80" selected>80% (valor por defecto)</option>
           <option value="85">85% agresivo</option>
         </select>
       </div>
@@ -157,7 +157,7 @@
     <div class="faq-item"><div class="faq-q">¿Cuánto cuesta gestionar las citas manualmente?</div><div class="faq-a">Clínica con 40 llamadas/día × 4 min = 2,67 h/día × 22 días = 58,7 h/mes. A 18€/h: ~1.060€/mes solo gestión telefónica. Con reprogramaciones y confirmaciones: 1.500-2.000€/mes.</div></div>
     <div class="faq-item"><div class="faq-q">¿Qué ahorra Orion IA Agent en citas?</div><div class="faq-a">Absorbe el 75-85% del volumen: nuevas reservas, modificaciones, cancelaciones, confirmaciones. Recepcionista pasa de 30-40 llamadas/día rutinarias a tareas de mayor valor. Ahorro: 800-1.500€/mes.</div></div>
     <div class="faq-item"><div class="faq-q">¿Funciona con cualquier software de agenda?</div><div class="faq-a">Integración API con Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, Google Calendar. Sin API: scraping autenticado o sync por exportación. Si tu software no está soportado lo evaluamos en auditoría.</div></div>
-    <div class="faq-item"><div class="faq-q">¿En cuánto se amortiza?</div><div class="faq-a">Ahorro neto 1.000€/mes − cuota Orion 199€ = 801€/mes. Setup 799€ amortizado en mes 1. A 12 meses: 9.000€+ neto descontado el setup. ROI 400%.</div></div>
+    <div class="faq-item"><div class="faq-q">¿En cuánto se amortiza?</div><div class="faq-a">Con los supuestos por defecto de la calculadora: 1.000€/mes recuperados − 99€ de cuota = 901€/mes netos. El setup de 799€ se cubre el primer mes. Cambia las horas y el coste/hora por los tuyos para ver tu propio número.</div></div>
   </div></div></section>
 
   <section class="sec"><div class="wrap" style="text-align:center">
