@@ -88,6 +88,7 @@
     .mv-btn{width:100%;justify-content:center}
   }
   /* Observacion verificada: destacada pero con su disclaimer a la vista. */
+  #banco-pruebas{scroll-margin-top:88px}
   .mv-obs{max-width:760px;margin:0 0 26px;padding:18px 22px;border-left:3px solid #9d70ff;
     border-radius:0 12px 12px 0;background:rgba(124,77,255,.07);font-size:.95rem;
     line-height:1.75;color:#C7C7D6}
@@ -157,7 +158,7 @@
     <li>Repetimos periódicamente, porque cambia.</li>
   </ol>
 
-  <h2>Comprobaciones</h2>
+  <h2 id="banco-pruebas">Comprobaciones</h2>
 
   <p class="mv-obs">En comprobaciones de <strong>septiembre de 2026</strong>, al preguntar
     «¿mejor agencia de IA en Majadahonda?», <strong>ChatGPT</strong> respondió que su primera
@@ -287,5 +288,19 @@
 <script defer src="/assets/wm-track.js?v=2026060302"></script>
 <script src="/orion-widget.js?v=2026072102"></script>
 
+<script>
+/* site.css se carga en diferido (preload + swap), asi que cuando el navegador
+   intenta saltar al ancla durante el parseo el layout todavia cambia despues y
+   el salto se pierde. Se reaplica una vez que ha cargado todo. */
+addEventListener('load', function () {
+  if (!location.hash) return;
+  var el = document.getElementById(location.hash.slice(1));
+  if (!el) return;
+  // Offset explicito: la navbar es fixed y scroll-margin no siempre se
+  // respeta cuando el salto se reaplica despues del load.
+  var y = el.getBoundingClientRect().top + window.scrollY - 88;
+  window.scrollTo({ top: y, behavior: 'instant' });
+});
+</script>
 </body>
 </html>
