@@ -925,11 +925,7 @@
   #caso-bambu .cb-body p{font-size:.94rem;color:#DCDCEA;line-height:1.65;margin:0 0 22px}
   /* Los nombres de dominio no parten solos y desbordaban por debajo de 320px. */
   #caso-bambu .cb-body h2,#caso-bambu .cb-body p,#caso-bambu .cb-note{overflow-wrap:anywhere}
-  #caso-bambu .cb-geo{max-width:1240px;margin:26px auto 0;padding:16px 20px;border:1px solid rgba(124,77,255,.20);border-left:3px solid #9d70ff;border-radius:0 12px 12px 0;background:rgba(124,77,255,.05);font-size:.92rem;line-height:1.7;color:#9CA3AF}
-  .cb-geo strong{color:#E8E8F0}
-  .cb-geo a{color:#9d70ff;text-decoration:none;font-weight:600}
-  .cb-geo a:hover{text-decoration:underline;text-underline-offset:3px}
-  .cb-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:16px}
+  #caso-bambu .cb-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:16px}
   #caso-bambu .cb-go{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.9rem;transition:filter .2s ease}
   #caso-bambu .cb-go:hover{filter:brightness(1.08)}
   #caso-bambu .cb-more{font-family:'Sora',sans-serif;font-size:.86rem;font-weight:600;color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
@@ -947,6 +943,38 @@
     #caso-bambu .cb-go{width:100%;justify-content:center}
   }
   @media(prefers-reduced-motion:reduce){#caso-bambu .cb-go{transition:none}}
+  /* 5b · autoridad en buscadores de IA */
+  #autoridad-ia .ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  #autoridad-ia .ai-card{display:flex;flex-direction:column;gap:14px;margin:0;padding:26px 24px;
+    background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));
+    border-radius:var(--r,14px);transition:border-color .18s ease,transform .18s ease}
+  #autoridad-ia .ai-card:hover{border-color:rgba(124,77,255,.42);transform:translateY(-2px)}
+  #autoridad-ia .ai-ok{align-self:flex-start;padding:3px 9px;border-radius:6px;
+    background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.34);color:var(--g,#00d4aa);
+    font-family:'Sora','Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.04em;
+    white-space:nowrap}
+  #autoridad-ia .ai-quote{margin:0;font-size:1.02rem;line-height:1.6;color:var(--text,#E8E8F0);
+    font-style:italic;letter-spacing:-.005em}
+  #autoridad-ia .ai-src{margin-top:auto;font-family:'Sora','Inter',sans-serif;font-size:.82rem;
+    font-weight:700;color:var(--p2,#9d70ff);font-style:normal;letter-spacing:.02em}
+  #autoridad-ia .ai-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:14px 28px;margin-top:26px}
+  #autoridad-ia .ai-disc{margin:0;font-size:.8rem;line-height:1.6;color:var(--muted,#9999b5);
+    max-width:62ch}
+  #autoridad-ia .ai-cta{font-family:'Sora','Inter',sans-serif;font-size:.92rem;font-weight:700;
+    color:var(--p2,#9d70ff);text-decoration:none;white-space:nowrap}
+  #autoridad-ia .ai-cta:hover{text-decoration:underline;text-underline-offset:4px}
+  @media(max-width:900px){
+    #autoridad-ia .ai-grid{grid-template-columns:1fr 1fr}
+    #autoridad-ia .ai-grid > :last-child{grid-column:1 / -1}
+  }
+  @media(max-width:600px){
+    #autoridad-ia .ai-grid{grid-template-columns:1fr;gap:14px}
+    #autoridad-ia .ai-grid > :last-child{grid-column:auto}
+    #autoridad-ia .ai-card{padding:22px 20px}
+    #autoridad-ia .ai-quote{font-size:.97rem}
+    #autoridad-ia .ai-foot{flex-direction:column;align-items:flex-start;gap:12px}
+  }
 </style>
 <section id="caso-bambu" class="sec">
   <div class="wrap">
@@ -970,13 +998,44 @@
         <p class="cb-note">Cliente activo de WhiteMoon.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Prueba GEO · enlaza al banco de comprobaciones -->
-    <p class="cb-geo">
-      <strong>¿Y que te encuentre la IA?</strong> En septiembre de 2026 preguntamos a ChatGPT, Grok y Perplexity por una agencia de IA en Majadahonda y guardamos lo que respondieron.
-      <a href="/metodologia-visibilidad-ia/#banco-pruebas"
-         onclick="wmTrack('click_geo_pruebas',{placement:'home-caso'})">Ver las cuatro capturas y cómo lo medimos →</a>
-    </p>
+<!-- 5b · AUTORIDAD EN BUSCADORES DE IA
+     Las tres citas son textuales y estan respaldadas por las capturas del
+     banco de pruebas (/metodologia-visibilidad-ia/#banco-pruebas). Solo
+     texto: ni imagenes ni logos de terceros, para no cargar la home. -->
+<section class="sec-alt" id="autoridad-ia">
+  <div class="wrap">
+    <span class="sec-lbl">Visibilidad en IA</span>
+    <h2 class="sec-h">Cuando preguntan por IA en Majadahonda, la IA responde WhiteMoon</h2>
+    <p class="sec-sub">No lo decimos nosotros. Esto respondieron los buscadores de IA en septiembre de 2026:</p>
+
+    <div class="ai-grid">
+      <blockquote class="ai-card">
+        <span class="ai-ok">Verificado · sept 2026</span>
+        <p class="ai-quote">«mi primera opción sería: WhiteMoon Agencia IA Majadahonda»</p>
+        <cite class="ai-src">ChatGPT</cite>
+      </blockquote>
+
+      <blockquote class="ai-card">
+        <span class="ai-ok">Verificado · sept 2026</span>
+        <p class="ai-quote">«la opción local más sólida»</p>
+        <cite class="ai-src">Grok</cite>
+      </blockquote>
+
+      <blockquote class="ai-card">
+        <span class="ai-ok">Verificado · sept 2026</span>
+        <p class="ai-quote">Sitúa a WhiteMoon entre las «opciones destacadas» cerca de Majadahonda</p>
+        <cite class="ai-src">Perplexity</cite>
+      </blockquote>
+    </div>
+
+    <div class="ai-foot">
+      <p class="ai-disc">Observaciones puntuales; las respuestas de los modelos de IA varían. No es un ranking oficial.</p>
+      <a class="ai-cta" href="/metodologia-visibilidad-ia/#banco-pruebas"
+         onclick="wmTrack('click_geo_pruebas',{placement:'home-autoridad'})">Ver las capturas →</a>
+    </div>
   </div>
 </section>
 
