@@ -929,6 +929,70 @@
   </div>
 </section>
 
+<!-- 5c · ALCANCE DEL AGENTE — que si hace y que no hace.
+     Va justo antes de Precios a proposito: el visitante ya ha visto las
+     demos y el caso real, y antes de mirar el importe conviene que sepa
+     exactamente donde esta el limite. La columna de la derecha no es
+     un adorno: cada linea es una limitacion real del producto. -->
+<style>
+  #alcance .al-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:1000px;margin:0 auto;align-items:stretch}
+  @media(max-width:820px){#alcance .al-grid{grid-template-columns:1fr;max-width:560px}}
+  #alcance .al{display:flex;flex-direction:column;min-width:0;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;padding:28px 26px}
+  #alcance .al h3{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-.015em;margin:0 0 18px}
+  #alcance .al h3 svg{width:19px;height:19px;flex-shrink:0}
+  #alcance .al--si h3 svg{color:var(--g,#00d4aa)}
+  #alcance .al--no h3 svg{color:var(--p2,#9d70ff)}
+  #alcance .al ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:13px}
+  #alcance .al li{display:flex;align-items:flex-start;gap:11px;font-size:.9rem;color:#DCDCEA;line-height:1.55;min-width:0}
+  /* Sin overflow-wrap las frases largas desbordan la tarjeta por debajo de 300px. */
+  #alcance .al li span{min-width:0;overflow-wrap:anywhere}
+  #alcance .al li svg{width:15px;height:15px;flex-shrink:0;margin-top:4px}
+  #alcance .al--si li svg{color:var(--g,#00d4aa)}
+  #alcance .al--no li svg{color:var(--p2,#9d70ff)}
+  #alcance .al-foot{max-width:1000px;margin:26px auto 0;text-align:center;font-size:.85rem;color:var(--muted,#9999b5);line-height:1.6}
+  @media(max-width:420px){#alcance .al{padding:24px 20px}}
+</style>
+<section id="alcance" class="sec-alt" style="padding-top:56px;padding-bottom:56px">
+  <div class="wrap">
+    <div class="hdr c">
+      <span class="sec-lbl">Alcance</span>
+      <h2 class="sec-h" style="font-size:clamp(1.5rem,3vw,2rem)">Qué hace y qué no hace el agente</h2>
+      <p class="sec-sub" style="margin-left:auto;margin-right:auto;margin-bottom:36px">Preferimos que lo sepas antes de contratar y no después. Esto es lo que puedes esperar y lo que no.</p>
+    </div>
+    <div class="al-grid">
+
+      <div class="al al--si">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><polyline points="8.5 12.4 11 15 15.8 9.6"/></svg>
+          Qué sí hace
+        </h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Responde al instante las preguntas frecuentes de tu negocio: horarios, servicios, dónde estáis y las dudas de siempre.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Capta el nombre y el teléfono del interesado y te avisa al móvil.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Agenda citas o reservas según tu disponibilidad, en los packs que incluyen agenda.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Funciona 24/7 dentro de tu web y en español.</span></li>
+        </ul>
+      </div>
+
+      <div class="al al--no">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><line x1="8.6" y1="8.6" x2="15.4" y2="15.4"/><line x1="15.4" y1="8.6" x2="8.6" y2="15.4"/></svg>
+          Qué no hace
+        </h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No inventa datos. Si no sabe algo, lo dice y deriva a una persona.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No hace ni recibe llamadas telefónicas. Vive dentro de tu web —por texto o por voz, según el pack—, no es un call center.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No cierra ventas ni cobra por sí solo.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No sustituye a tu equipo en los casos complejos: recoge el contacto para que lo atendáis vosotros.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No accede a más datos que los que tú le indiques.</span></li>
+        </ul>
+      </div>
+
+    </div>
+    <p class="al-foot">¿Necesitas algo que aquí pone que no hace? Dínoslo y te decimos si se puede o no antes de que contrates nada.</p>
+  </div>
+</section>
+
 <!-- 6 · PRECIOS — protagonismo a los packs que incluyen web
      Importes leídos de /precios/ (fuente de verdad). -->
 <style>
@@ -1157,6 +1221,21 @@
   .cta-final-ent .cf-ok p{font-size:.9rem;color:#9CA3AF;line-height:1.6;margin:0}
   .cta-final-ent .cf-legal{margin:14px 0 0;font-size:.74rem;color:#6B7280;line-height:1.5}
   .cta-final-ent .cf-legal a{color:#9CA3AF}
+  /* Consentimiento RGPD. La casilla y el enlace a la politica son dos
+     zonas de clic distintas a proposito: el <label> cubre solo el texto,
+     asi pulsar el enlace abre la politica sin marcar la casilla de paso. */
+  .cta-final-ent .cf-consent{display:flex;align-items:flex-start;gap:10px;margin:4px 0 14px}
+  .cta-final-ent .cf-consent input{flex-shrink:0;width:18px;height:18px;margin:1px 0 0;accent-color:#7c4dff;cursor:pointer}
+  .cta-final-ent .cf-consent input:focus-visible{outline:2px solid #9d70ff;outline-offset:2px}
+  .cta-final-ent .cf-consent-txt{font-size:.82rem;color:#C7C7D6;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+  .cta-final-ent .cf-consent-txt label{display:inline;font-size:inherit;color:inherit;margin:0;cursor:pointer}
+  .cta-final-ent .cf-consent-txt a{color:#9d70ff;text-decoration:underline;text-underline-offset:3px}
+  .cta-final-ent .cf-consent-txt a:focus-visible{outline:2px solid #9d70ff;outline-offset:2px;border-radius:3px}
+  .cta-final-ent .cf-consent input[aria-invalid="true"]{outline:2px solid #f87171;outline-offset:2px}
+  .cta-final-ent .cf-note{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);font-size:.74rem;color:#8A8AA3;line-height:1.6}
+  .cta-final-ent .cf-note b{color:#B8B8CC;font-weight:600}
+  .cta-final-ent .cf-note a{color:#9d70ff;text-decoration:underline;text-underline-offset:2px}
+  .cta-final-ent .cf-reassure{margin:10px 0 0;font-size:.78rem;color:#9CA3AF;text-align:center;line-height:1.5}
 </style>
 <section class="cta-final-ent" id="hablamos">
   <div class="wrap">
@@ -1198,9 +1277,20 @@
             <label for="hl-sector">Sector <span style="color:#6B7280;font-weight:400">(opcional)</span></label>
             <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
           </div>
+          <div class="cf-consent">
+            <input type="checkbox" id="hl-consent" name="consent" required
+                   aria-label="He leído y acepto la política de privacidad">
+            <span class="cf-consent-txt"><label for="hl-consent">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+          </div>
           <button type="submit" class="cf-send" id="hl-send">Enviar</button>
+          <p class="cf-reassure">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
           <p class="cf-msg" id="hl-msg" role="status" aria-live="polite"></p>
-          <p class="cf-legal">Solo usamos tus datos para contactarte. <a href="/politica-privacidad/">Política de privacidad</a>.</p>
+          <p class="cf-note">
+            <b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon).
+            <b>Datos que pedimos:</b> nombre, teléfono y sector.
+            <b>Para qué:</b> contactarte sobre tu consulta. No se ceden a terceros salvo los proveedores necesarios para prestarte el servicio.
+            <b>Derechos y detalle:</b> <a href="/politica-privacidad/">política de privacidad</a>.
+          </p>
         </form>
 
         <div class="cf-ok" id="hl-ok">
@@ -1308,13 +1398,28 @@
     e.preventDefault();
     var nombre = val('nombre'), telefono = val('telefono'), sector = val('sector');
 
+    var consent = form.elements.consent;
+
     form.elements.nombre.removeAttribute('aria-invalid');
     form.elements.telefono.removeAttribute('aria-invalid');
+    if (consent) consent.removeAttribute('aria-invalid');
     if (!nombre || !telefono) {
       var falta = !nombre ? 'nombre' : 'telefono';
       form.elements[falta].setAttribute('aria-invalid', 'true');
       form.elements[falta].focus();
       setMsg('warn', 'Necesitamos tu nombre y un teléfono para poder llamarte.');
+      return;
+    }
+
+    // Gate de consentimiento RGPD: sin la casilla marcada no se avisa ni se
+    // inserta nada. Va DESPUES de validar nombre y telefono y ANTES de
+    // cualquier envio, asi que un return aqui deja el lead sin salir.
+    if (!consent || !consent.checked) {
+      if (consent) {
+        consent.setAttribute('aria-invalid', 'true');
+        consent.focus();
+      }
+      setMsg('warn', 'Para poder escribirte necesitamos que aceptes la política de privacidad.');
       return;
     }
 
