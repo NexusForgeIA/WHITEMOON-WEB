@@ -1333,6 +1333,172 @@
     </div>
   </section>
 
+  <!-- COMPARATIVA DE PACKS
+       Todos los importes, plazos y contenidos salen de las tarjetas de
+       arriba en esta misma pagina y de la FAQ de cada pack. La fila
+       "Que no incluye" no inventa exclusiones: o esta publicada (Orion se
+       embebe en tu web actual, el chatbot de Mini Core hace tres acciones
+       enumeradas, el widget RAG se instala en tu web y sus limites de 100
+       documentos y 1.000 consultas) o remite al pack que si lo cubre.
+       Los tres productos sueltos (Auditoria GEO IA, Pack Ads y Calculadora
+       ITP Pro) quedan fuera: no compiten con estos, resuelven otra cosa. -->
+  <style>
+    #comparativa{padding:64px 0}
+    #comparativa .cmp-head{text-align:center;max-width:680px;margin:0 auto 34px}
+    #comparativa .cmp-head h2{font-family:'Sora','Syne',sans-serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-.025em;line-height:1.2;color:#fff;margin:0 0 12px}
+    #comparativa .cmp-head p{font-size:.95rem;color:var(--muted,#9999b5);line-height:1.65;margin:0}
+    /* La tabla es ancha a proposito: siete packs no caben en un movil. El
+       scroll horizontal vive AQUI dentro, nunca en el documento. */
+    #comparativa .cmp-scroll{overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px;background:var(--card,#111118)}
+    #comparativa .cmp-scroll:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:3px}
+    #comparativa table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:.84rem}
+    #comparativa th,#comparativa td{padding:14px 16px;text-align:left;vertical-align:top;line-height:1.55;border-bottom:1px solid rgba(255,255,255,.06)}
+    #comparativa tbody tr:last-child th,#comparativa tbody tr:last-child td{border-bottom:0}
+    /* Primera columna anclada: sin esto pierdes de vista que fila estas leyendo. */
+    #comparativa .cmp-row{position:sticky;left:0;z-index:2;width:150px;min-width:150px;background:#15151f;font-family:'Sora','Syne',sans-serif;font-weight:600;font-size:.78rem;color:#B8B8CC;border-right:1px solid rgba(255,255,255,.08)}
+    #comparativa thead .cmp-row{z-index:3;background:#1a1a26}
+    /* max-width obliga a que el texto largo parta en varias lineas: sin el,
+       width:max-content estira la tabla hasta ~4400px y el scroll no acaba. */
+    #comparativa thead th{background:#1a1a26;border-bottom:1px solid rgba(124,77,255,.28)}
+    #comparativa thead th:not(.cmp-row),#comparativa tbody td{min-width:184px;max-width:212px}
+    #comparativa .cmp-pack{display:block;font-family:'Sora','Syne',sans-serif;font-size:.98rem;font-weight:700;color:#fff;letter-spacing:-.015em;margin-bottom:4px}
+    #comparativa .cmp-tag{display:inline-block;padding:3px 9px;border-radius:7px;background:rgba(124,77,255,.92);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:7px}
+    #comparativa .cmp-sub{display:block;font-size:.74rem;font-weight:400;color:var(--muted,#9999b5);line-height:1.45}
+    /* Columna destacada: un solo pack, con fondo y borde, sin mas etiquetas. */
+    #comparativa .is-star{background:rgba(124,77,255,.07)}
+    #comparativa thead th.is-star{background:linear-gradient(180deg,rgba(124,77,255,.22),#1a1a26)}
+    #comparativa td{color:#DCDCEA}
+    #comparativa .cmp-price{font-family:'Sora','Syne',sans-serif;font-size:1.02rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+    #comparativa .cmp-go{display:inline-block;padding:9px 16px;border-radius:9px;border:1px solid rgba(124,77,255,.42);color:#E8E8F0;text-decoration:none;font-family:'Sora','Syne',sans-serif;font-weight:600;font-size:.78rem;white-space:nowrap;transition:border-color .15s ease,background .15s ease}
+    #comparativa .cmp-go:hover{border-color:#7c4dff;background:rgba(124,77,255,.1)}
+    #comparativa .cmp-go:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:2px}
+    #comparativa .cmp-go--star{background:linear-gradient(135deg,#7c4dff,#9d70ff);border-color:transparent;color:#fff}
+    #comparativa .cmp-go--star:hover{filter:brightness(1.08);background:linear-gradient(135deg,#7c4dff,#9d70ff)}
+    #comparativa .cmp-hint{display:none;margin:12px 0 0;font-size:.78rem;color:var(--muted,#9999b5);text-align:center}
+    @media(max-width:1180px){#comparativa .cmp-hint{display:block}}
+    #comparativa .cmp-foot{max-width:820px;margin:20px auto 0;text-align:center;font-size:.83rem;color:var(--muted,#9999b5);line-height:1.65}
+    #comparativa .cmp-foot a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+    #comparativa .cmp-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+    @media(max-width:520px){
+      #comparativa{padding:48px 0}
+      #comparativa th,#comparativa td{padding:12px 13px}
+      #comparativa .cmp-row{width:124px;min-width:124px}
+      #comparativa thead th{min-width:172px}
+    }
+    @media(prefers-reduced-motion:reduce){#comparativa .cmp-go{transition:none}}
+  </style>
+  <section id="comparativa" class="sec">
+    <div class="wrap">
+      <div class="cmp-head">
+        <h2>Compara los packs de un vistazo</h2>
+        <p>La pregunta que decide casi siempre es la misma: ¿ya tienes web o todavía no? A partir de ahí, elige por lo que necesitas que haga el agente.</p>
+      </div>
+
+      <div class="cmp-scroll" tabindex="0" role="region" aria-labelledby="cmp-cap">
+        <table>
+          <caption id="cmp-cap" class="cmp-sr">Comparativa de los siete packs de WhiteMoon: para quién es cada uno, qué incluye, qué no incluye, plazo de puesta en marcha, coste inicial, cuota mensual y un ejemplo de uso.</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="cmp-row"><span class="cmp-sr">Característica</span></th>
+              <th scope="col"><span class="cmp-pack">Pack Mini Core</span><span class="cmp-sub">Landing + agente IA</span></th>
+              <th scope="col"><span class="cmp-pack">Spark</span><span class="cmp-sub">Agente de chat 24/7</span></th>
+              <th scope="col"><span class="cmp-pack">Orion IA Agent</span><span class="cmp-sub">Agente de voz en tu web</span></th>
+              <th scope="col" class="is-star"><span class="cmp-tag">Recomendado</span><span class="cmp-pack">Core Spark Web</span><span class="cmp-sub">Web + chat + SEO/GEO</span></th>
+              <th scope="col"><span class="cmp-pack">Core Orion</span><span class="cmp-sub">Web + voz + SEO/GEO</span></th>
+              <th scope="col"><span class="cmp-pack">WhiteMoon 360</span><span class="cmp-sub">Web + chat + CRM</span></th>
+              <th scope="col"><span class="cmp-pack">Core RAG</span><span class="cmp-sub">Agente con tus documentos</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="cmp-row">Para quién es</th>
+              <td>Autónomos que aún no están en internet.</td>
+              <td>Negocios que quieren atender por chat 24/7 sin esfuerzo.</td>
+              <td>Quien ya tiene web y quiere añadirle voz y gestión de citas.</td>
+              <td class="is-star">Quien no tiene web y la quiere con agente de chat y visibilidad desde el primer día.</td>
+              <td>Quien no tiene web y la quiere con agente de voz desde el primer día.</td>
+              <td>Negocios con equipo que además necesitan repartir y gestionar el trabajo.</td>
+              <td>Empresas con documentación propia: normativa, manuales, procedimientos.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Qué incluye</th>
+              <td>Landing a medida, dominio el primer año, agente IA básico y aviso de cada lead al móvil.</td>
+              <td>Agente conversacional 24/7, flujo del sector, detección del sector y leads con contexto.</td>
+              <td>Voz 24/7 en español, gestión de citas con Cal.com y captura de leads con aviso al móvil.</td>
+              <td class="is-star">Web y dominio, SSL y mantenimiento, agente de chat 24/7, reservas online y SEO/GEO/AEO.</td>
+              <td>Lo mismo que Core Spark Web, con Orion IA de voz en lugar del chat.</td>
+              <td>Web, agente de chat, CRM en tu dominio, reparto al equipo, agenda, historial y panel de KPIs.</td>
+              <td>Agente entrenado con tus documentos, búsqueda semántica, widget y URL pública, y Orion IA de voz.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Qué no incluye</th>
+              <td>El chatbot hace tres cosas —responde dudas, capta el lead y deriva a contacto—, no agenda citas.</td>
+              <td>Es agente de texto; la voz es Orion IA Agent.</td>
+              <td>No trae web nueva: se embebe en la que ya tienes.</td>
+              <td class="is-star">El agente es de chat; con voz es Core Orion.</td>
+              <td>Sin CRM de gestión de equipo; eso es WhiteMoon 360.</td>
+              <td>No se entrena con tus documentos; eso es Core RAG.</td>
+              <td>Sin web nueva: el widget se instala en la tuya. Hasta 100 documentos y 1.000 consultas al mes.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Puesta en marcha</th>
+              <td>~1 semana</td>
+              <td>5-7 días laborables</td>
+              <td>5-7 días laborables</td>
+              <td class="is-star">5-7 días laborables</td>
+              <td>5-7 días laborables</td>
+              <td>7 días</td>
+              <td>10-20 días laborables, según el volumen de documentos</td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Coste inicial</th>
+              <td><span class="cmp-price">599€</span></td>
+              <td><span class="cmp-price">499€</span></td>
+              <td><span class="cmp-price">799€</span></td>
+              <td class="is-star"><span class="cmp-price">899€</span></td>
+              <td><span class="cmp-price">1.499€</span></td>
+              <td><span class="cmp-price">1.899€</span></td>
+              <td><span class="cmp-price">2.499€</span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Cuota mensual</th>
+              <td><span class="cmp-price">99€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td><span class="cmp-price">99€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td><span class="cmp-price">99€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td class="is-star"><span class="cmp-price">99€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td><span class="cmp-price">99€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td><span class="cmp-price">199€</span><span class="cmp-sub">Sin permanencia</span></td>
+              <td><span class="cmp-price">199€</span><span class="cmp-sub">Sin permanencia</span></td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Ejemplo de uso</th>
+              <td>Un autónomo sin página que quiere estar online y que no se le escape ningún cliente.</td>
+              <td>Un negocio con web que quiere responder y captar leads también fuera de horario.</td>
+              <td>Un negocio de citas que ya tiene web y quiere que la agenda se llene sin llamadas.</td>
+              <td class="is-star">Un negocio nuevo que quiere web, agente de chat y salir en Google y en ChatGPT desde el primer día.</td>
+              <td>Lo mismo que el anterior, pero atendiendo por voz en lugar de por texto.</td>
+              <td>Un negocio con gente en la calle que reparte avisos y citas y lo sigue todo desde un panel.</td>
+              <td>Una empresa que quiere que el agente responda con su normativa y sus procedimientos, no en general.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="cmp-row">Verlo entero</th>
+              <td><a class="cmp-go" href="/mini-core/">Pack Mini Core</a></td>
+              <td><a class="cmp-go" href="/spark/">Spark</a></td>
+              <td><a class="cmp-go" href="/orion-agent/">Orion IA Agent</a></td>
+              <td class="is-star"><a class="cmp-go cmp-go--star" href="/core/">Core Spark Web</a></td>
+              <td><a class="cmp-go" href="/core-orion/">Core Orion</a></td>
+              <td><a class="cmp-go" href="/whitemoon-360/">WhiteMoon 360</a></td>
+              <td><a class="cmp-go" href="/core-rag/">Core RAG</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cmp-hint">Desliza la tabla para ver el resto de packs →</p>
+
+      <p class="cmp-foot">Ninguno tiene permanencia. Aparte de estos siete packs están la <a href="/auditoria-geo-ia/">Auditoría GEO IA</a>, el <a href="/pack-ads/">Pack Ads</a> y la <a href="/calculadora-itp/">Calculadora ITP Pro</a>, que resuelven cosas distintas y tienes más arriba.</p>
+    </div>
+  </section>
+
   <section class="cta-sec" style="padding:60px 0">
     <div class="wrap" style="text-align:center">
       <h2 class="sec-h">¿No sabes qué plan elegir?</h2>
