@@ -867,6 +867,68 @@
   </div>
 </section>
 
+<!-- 5b · CASO REAL — el primer cliente con nombre y web publica.
+     Va detras de las demos a proposito: arriba se ven ejemplos que
+     cualquiera puede probar, aqui se ve un negocio de verdad en produccion.
+     Solo hechos comprobables en bambusushi.es y en /casos-de-exito/bambu-sushi/:
+     sin metricas, sin valoraciones y sin datos estructurados de resena. -->
+<style>
+  #caso-bambu{padding-top:56px;padding-bottom:56px}
+  #caso-bambu .cb{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:stretch;max-width:1040px;margin:0 auto;overflow:hidden;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:14px}
+  #caso-bambu .cb-shot{display:block;width:100%;height:100%;min-height:220px;object-fit:cover;background:var(--bg2,#0e0e16)}
+  /* La captura solo lleva borde lateral en dos columnas; apilada pasa a
+     borde inferior o quedaria una linea suelta al costado. */
+  #caso-bambu .cb-media{border-right:1px solid var(--border,rgba(124,77,255,.22));min-width:0}
+  #caso-bambu .cb-body{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:34px 34px 32px}
+  #caso-bambu .cb-lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin-bottom:12px}
+  #caso-bambu .cb-body h2{font-family:'Sora',sans-serif;font-size:clamp(1.35rem,2.6vw,1.75rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;color:#fff;margin:0 0 14px}
+  #caso-bambu .cb-body p{font-size:.94rem;color:#DCDCEA;line-height:1.65;margin:0 0 22px}
+  /* Los nombres de dominio no parten solos y desbordaban por debajo de 320px. */
+  #caso-bambu .cb-body h2,#caso-bambu .cb-body p,#caso-bambu .cb-note{overflow-wrap:anywhere}
+  #caso-bambu .cb-actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:16px}
+  #caso-bambu .cb-go{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:11px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.9rem;transition:filter .2s ease}
+  #caso-bambu .cb-go:hover{filter:brightness(1.08)}
+  #caso-bambu .cb-more{font-family:'Sora',sans-serif;font-size:.86rem;font-weight:600;color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px}
+  #caso-bambu .cb-more:hover{color:#b596ff}
+  #caso-bambu .cb-go:focus-visible,#caso-bambu .cb-more:focus-visible{outline:2px solid var(--p2,#9d70ff);outline-offset:3px}
+  #caso-bambu .cb-note{font-size:.78rem;color:var(--muted,#9999b5);margin:0}
+  @media(max-width:860px){
+    #caso-bambu .cb{grid-template-columns:1fr;max-width:560px}
+    #caso-bambu .cb-media{border-right:0;border-bottom:1px solid var(--border,rgba(124,77,255,.22))}
+    #caso-bambu .cb-shot{height:auto;aspect-ratio:25/12;min-height:0}
+    #caso-bambu .cb-body{padding:28px 26px 26px}
+  }
+  @media(max-width:420px){
+    #caso-bambu .cb-body{padding:24px 20px 22px}
+    #caso-bambu .cb-go{width:100%;justify-content:center}
+  }
+  @media(prefers-reduced-motion:reduce){#caso-bambu .cb-go{transition:none}}
+</style>
+<section id="caso-bambu" class="sec">
+  <div class="wrap">
+    <div class="cb">
+      <div class="cb-media">
+        <img class="cb-shot" src="/casos-de-exito/assets/bambu-sushi-web.webp" width="1200" height="576"
+             loading="lazy" decoding="async"
+             alt="Web y chatbot de Bambu Sushi Córdoba por WhiteMoon">
+      </div>
+      <div class="cb-body">
+        <span class="cb-lbl">Caso real</span>
+        <h2>Bambu Sushi Córdoba confía en WhiteMoon</h2>
+        <p>Le diseñamos la web y le montamos un agente de IA que gestiona pedidos y reservas 24/7: guía al cliente según el horario del restaurante y cierra la conversación con su número de pedido. Está en producción y se puede probar.</p>
+        <div class="cb-actions">
+          <a class="cb-go" href="https://bambusushi.es" target="_blank" rel="noopener"
+             aria-label="Ver bambusushi.es en vivo (se abre en una pestaña nueva)"
+             onclick="wmTrack('click_caso_bambu',{destino:'bambusushi.es',placement:'home-caso'})">Ver bambusushi.es en vivo →</a>
+          <a class="cb-more" href="/casos-de-exito/bambu-sushi/"
+             onclick="wmTrack('click_caso_bambu',{destino:'caso-completo',placement:'home-caso'})">Ver el caso completo</a>
+        </div>
+        <p class="cb-note">Cliente activo de WhiteMoon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · PRECIOS — protagonismo a los packs que incluyen web
      Importes leídos de /precios/ (fuente de verdad). -->
 <style>
