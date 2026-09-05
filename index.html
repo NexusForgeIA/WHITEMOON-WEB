@@ -484,6 +484,16 @@
     /* El hero ya tiene position:relative — asegurar que el contenido queda encima */
     .hero-enterprise { position: relative; overflow: hidden; }
     .hero-enterprise .wrap { position: relative; z-index: 2; }
+    /* Sello de Google · autoverificable: enlaza a la ficha real. Sin numero
+       de resenas hardcodeado y sin valoracion agregada en el JSON-LD. */
+    .g-badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 14px;
+      border:1px solid rgba(245,200,66,.34);border-radius:99px;background:rgba(245,200,66,.07);
+      font-size:.86rem;color:#DCDCEA;text-decoration:none;line-height:1;
+      transition:border-color .15s ease,background .15s ease}
+    .g-badge:hover{border-color:rgba(245,200,66,.6);background:rgba(245,200,66,.12)}
+    .g-badge .g-star{width:15px;height:15px;flex:0 0 auto;fill:var(--gold,#f5c842)}
+    .g-badge strong{color:#fff;font-weight:700}
+    @media(max-width:600px){.g-badge{margin-top:12px;font-size:.82rem}}
   </style>
 
   <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
@@ -575,6 +585,12 @@
           <a href="/precios/" class="hero-textlink" onclick="wmTrack('click_hero_cta',{action:'ver-planes',placement:'hero-secundario'})">Ver planes →</a>
         </div>
         <p class="hero-meta">Operativa en días · Sin permanencia · Cancelas cuando quieras</p>
+        <a class="g-badge" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener"
+           aria-label="Ver el perfil de WhiteMoon en Google (valoración 5,0)"
+           onclick="wmTrack('click_google_perfil',{placement:'hero'})">
+          <svg class="g-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
+          <span><strong>5,0</strong> en Google</span>
+        </a>
       </div>
     </div>
 
@@ -1384,7 +1400,7 @@
             <input type="tel" id="hl-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
           </div>
           <div class="cf-field">
-            <label for="hl-sector">Sector <span style="color:#6B7280;font-weight:400">(opcional)</span></label>
+            <label for="hl-sector">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
             <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
           </div>
           <div class="cf-consent">
