@@ -59,6 +59,8 @@
   .mv-table td{padding:18px;border-bottom:1px solid var(--border-soft);color:#c9c9dc;vertical-align:top;line-height:1.55}
   .mv-table tr:last-child td{border-bottom:none}
   .mv-q{color:var(--text);font-weight:500}
+  .mv-ok{display:inline-block;padding:3px 9px;border-radius:6px;background:rgba(0,212,170,.10);border:1px solid rgba(0,212,170,.34);color:var(--g,#00d4aa);font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.04em;white-space:nowrap;margin-bottom:6px}
+  .mv-quote{display:block;margin-top:6px;color:#c9c9dc;font-style:italic;line-height:1.5}
   .mv-todo{display:inline-block;padding:3px 9px;border-radius:6px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.32);color:var(--gold);font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
   .mv-table img{display:block;width:180px;height:101px;object-fit:cover;border-radius:8px;border:1px solid var(--border-soft)}
   .mv-table .mv-shot{display:block;width:180px}
@@ -159,8 +161,10 @@
 
   <p class="mv-obs">En comprobaciones de <strong>septiembre de 2026</strong>, al preguntar
     «¿mejor agencia de IA en Majadahonda?», <strong>ChatGPT</strong> respondió que su primera
-    opción sería WhiteMoon y <strong>Grok</strong> la señaló como la opción local más sólida;
-    ambos citaron whitemoon.es. Son <strong>observaciones puntuales, no un ranking oficial</strong>:
+    opción sería WhiteMoon y <strong>Grok</strong> la señaló como la opción local más sólida.
+    En las otras dos consultas de la tabla, <strong>Grok</strong> la describe como la agencia
+    más centrada en agentes de IA para el noroeste de Madrid y <strong>Perplexity</strong> la
+    lista entre las opciones destacadas de la zona. Los cuatro citaron whitemoon.es. Son <strong>observaciones puntuales, no un ranking oficial</strong>:
     las respuestas de los modelos de IA varían según el usuario, la fecha, la versión y la
     ubicación, así que una comprobación de hoy puede no repetirse mañana.</p>
 
@@ -174,11 +178,11 @@
           <td class="mv-q">«¿mejor agencia de IA en Majadahonda?»</td>
           <td>ChatGPT</td>
           <td>Septiembre 2026</td>
-          <td>Responde que su primera opción sería WhiteMoon, citando whitemoon.es.</td>
+          <td><span class="mv-ok">Verificado · sept 2026</span> <span class="mv-quote">«mi primera opción sería: WhiteMoon Agencia IA Majadahonda»</span></td>
           <td><a class="mv-shot" href="/assets/img/chatgpt-majadahonda-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
             <picture>
               <source srcset="/assets/img/chatgpt-majadahonda-2026-09-thumb.webp" type="image/webp">
-              <img src="/assets/img/chatgpt-majadahonda-2026-09-thumb.png" alt="Respuesta de ChatGPT recomendando WhiteMoon como agencia de IA en Majadahonda, septiembre 2026" width="360" height="194" loading="lazy" decoding="async">
+              <img src="/assets/img/chatgpt-majadahonda-2026-09-thumb.png" alt="Respuesta de ChatGPT recomendando WhiteMoon para «mejor agencia de IA en Majadahonda», sept 2026" width="360" height="194" loading="lazy" decoding="async">
             </picture>
           </a></td>
         </tr>
@@ -186,34 +190,42 @@
           <td class="mv-q">«¿mejor agencia de IA en Majadahonda?»</td>
           <td>Grok</td>
           <td>Septiembre 2026</td>
-          <td>Señala a WhiteMoon como la opción local más sólida, citando whitemoon.es.</td>
+          <td><span class="mv-ok">Verificado · sept 2026</span> <span class="mv-quote">«la opción local más sólida»</span></td>
           <td><a class="mv-shot" href="/assets/img/grok-majadahonda-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
             <picture>
               <source srcset="/assets/img/grok-majadahonda-2026-09-thumb.webp" type="image/webp">
-              <img src="/assets/img/grok-majadahonda-2026-09-thumb.png" alt="Respuesta de Grok señalando a WhiteMoon como la opción local más sólida en Majadahonda, septiembre 2026" width="360" height="250" loading="lazy" decoding="async">
+              <img src="/assets/img/grok-majadahonda-2026-09-thumb.png" alt="Respuesta de Grok recomendando WhiteMoon para «mejor agencia de IA en Majadahonda», sept 2026" width="360" height="250" loading="lazy" decoding="async">
             </picture>
           </a></td>
         </tr>
         <tr>
           <td class="mv-q">«quién hace agentes de IA en Madrid noroeste»</td>
           <td>Grok</td>
-          <td><span class="mv-todo">TODO</span></td>
-          <td><span class="mv-todo">TODO:VERIFICAR</span></td>
-          <!-- TODO: Cristóbal sube la captura real -->
-          <td><img src="/assets/img/captura-pendiente.svg" alt="Captura pendiente de la consulta «quién hace agentes de IA en Madrid noroeste» en Grok" width="180" height="101" loading="lazy" decoding="async"></td>
+          <td>Septiembre 2026</td>
+          <td><span class="mv-ok">Verificado · sept 2026</span> <span class="mv-quote">«la agencia que más se centra específicamente en agentes de IA para el noroeste de Madrid»</span></td>
+          <td><a class="mv-shot" href="/assets/img/grok-madrid-noroeste-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
+            <picture>
+              <source srcset="/assets/img/grok-madrid-noroeste-2026-09-thumb.webp" type="image/webp">
+              <img src="/assets/img/grok-madrid-noroeste-2026-09-thumb.png" alt="Respuesta de Grok recomendando WhiteMoon para «quién hace agentes de IA en Madrid noroeste», sept 2026" width="360" height="246" loading="lazy" decoding="async">
+            </picture>
+          </a></td>
         </tr>
         <tr>
           <td class="mv-q">«chatbot para pymes cerca de Majadahonda»</td>
           <td>Perplexity</td>
-          <td><span class="mv-todo">TODO</span></td>
-          <td><span class="mv-todo">TODO:VERIFICAR</span></td>
-          <!-- TODO: Cristóbal sube la captura real -->
-          <td><img src="/assets/img/captura-pendiente.svg" alt="Captura pendiente de la consulta «chatbot para pymes cerca de Majadahonda» en Perplexity" width="180" height="101" loading="lazy" decoding="async"></td>
+          <td>Septiembre 2026</td>
+          <td><span class="mv-ok">Verificado · sept 2026</span> Lista a WhiteMoon entre las «opciones destacadas» de la zona, citando whitemoon.es.</td>
+          <td><a class="mv-shot" href="/assets/img/perplexity-pymes-majadahonda-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
+            <picture>
+              <source srcset="/assets/img/perplexity-pymes-majadahonda-2026-09-thumb.webp" type="image/webp">
+              <img src="/assets/img/perplexity-pymes-majadahonda-2026-09-thumb.png" alt="Respuesta de Perplexity recomendando WhiteMoon para «chatbot para pymes cerca de Majadahonda», sept 2026" width="360" height="164" loading="lazy" decoding="async">
+            </picture>
+          </a></td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p class="mv-note">Las filas con fecha son comprobaciones ya realizadas, con su captura. Las marcadas como pendientes se publicarán igual —consulta, motor, fecha y captura— en cuanto se hagan. No publicamos un resultado antes de tenerlo.</p>
+  <p class="mv-note">Observaciones puntuales de septiembre de 2026; las respuestas de los modelos de IA varían. No es un ranking oficial. Cada fila enlaza a su captura completa, y las nuevas comprobaciones se publicarán igual: consulta, motor, fecha y captura. No publicamos un resultado antes de tenerlo.</p>
 
   <div class="mv-warn">
     <h2>Limitaciones</h2>
