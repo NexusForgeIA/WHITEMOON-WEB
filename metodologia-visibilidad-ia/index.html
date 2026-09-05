@@ -22,10 +22,12 @@
 <meta name="twitter:title" content="Cómo medimos la visibilidad en IA · WhiteMoon">
 <meta name="twitter:description" content="Metodología honesta de WhiteMoon para comprobar si ChatGPT, Grok y Perplexity recomiendan tu negocio: consulta, modelo, fecha y capturas.">
 <meta name="theme-color" content="#7c4dff">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<!-- Fuentes autoalojadas: ni un origen externo. Mismo patron que la home. -->
+<link rel="preload" as="font" href="/assets/fonts/inter-latin.woff2" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="/assets/fonts/sora-latin-var.woff2" type="font/woff2" crossorigin>
+<!-- site.css sin bloquear el render (preload + swap en onload). -->
+<link rel="preload" href="/assets/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/assets/site.css"></noscript>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Article","headline":"Cómo medimos si la IA te recomienda","description":"Metodología de WhiteMoon para comprobar si ChatGPT, Grok y Perplexity recomiendan un negocio: consulta exacta, motor, modelo, fecha y captura, con repetición en el tiempo.","author":{"@type":"Organization","name":"WhiteMoon","url":"https://whitemoon.es/"},"publisher":{"@type":"Organization","name":"WhiteMoon","url":"https://whitemoon.es/","logo":{"@type":"ImageObject","url":"https://whitemoon.es/logo.png"}},"datePublished":"2026-08-26","dateModified":"2026-09-05","mainEntityOfPage":{"@type":"WebPage","@id":"https://whitemoon.es/metodologia-visibilidad-ia/"},"image":"https://whitemoon.es/assets/og/og-whitemoon.jpg","inLanguage":"es-ES"}
 </script>
@@ -34,6 +36,15 @@
 </script>
 <link rel="stylesheet" href="/assets/wm-nav.css?v=2026090501">
 <style>
+  /* Las dos familias se declaran aqui, en el CSS critico, y no en site.css:
+     site.css se carga en diferido y hasta que llega no hay forma de usar la
+     fuente ya precargada. */
+  @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
+    src:url('/assets/fonts/inter-latin.woff2') format('woff2-variations'),
+        url('/assets/fonts/inter-latin.woff2') format('woff2');}
+  @font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;
+    src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),
+        url('/assets/fonts/sora-latin-var.woff2') format('woff2');}
   .mv-main{max-width:860px;margin:0 auto;padding:120px 28px 80px}
   .mv-eyebrow{display:block;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--p2);margin:0 0 18px}
   .mv-main h1{font-family:'Sora',sans-serif;font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;line-height:1.12;color:var(--text);margin:0 0 26px;letter-spacing:-.02em}
@@ -50,6 +61,9 @@
   .mv-q{color:var(--text);font-weight:500}
   .mv-todo{display:inline-block;padding:3px 9px;border-radius:6px;background:rgba(245,200,66,.1);border:1px solid rgba(245,200,66,.32);color:var(--gold);font-family:'Sora',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.04em;white-space:nowrap}
   .mv-table img{display:block;width:180px;height:101px;object-fit:cover;border-radius:8px;border:1px solid var(--border-soft)}
+  .mv-table .mv-shot{display:block;width:180px}
+  .mv-table .mv-shot img{height:auto;object-fit:contain;transition:border-color .15s ease}
+  .mv-table .mv-shot:hover img{border-color:var(--p2)}
   .mv-note{margin:14px 0 0;font-size:.86rem;color:var(--muted2)}
   .mv-warn{margin:26px 0 0;padding:26px 28px;background:linear-gradient(180deg,rgba(124,77,255,.08),rgba(124,77,255,.03));border:1px solid var(--border);border-left:3px solid var(--p);border-radius:var(--r)}
   .mv-warn h2{margin:0 0 14px;font-size:1.16rem}
@@ -161,14 +175,24 @@
           <td>ChatGPT</td>
           <td>Septiembre 2026</td>
           <td>Responde que su primera opción sería WhiteMoon, citando whitemoon.es.</td>
-          <td><img src="/assets/pruebas-geo/chatgpt-majadahonda-2026-09.png" onerror="this.onerror=null;this.src='/assets/img/captura-pendiente.svg'" alt="Captura de ChatGPT en septiembre de 2026 respondiendo a «¿mejor agencia de IA en Majadahonda?» con WhiteMoon como primera opción" width="180" height="101" loading="lazy" decoding="async"></td>
+          <td><a class="mv-shot" href="/assets/img/chatgpt-majadahonda-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
+            <picture>
+              <source srcset="/assets/img/chatgpt-majadahonda-2026-09-thumb.webp" type="image/webp">
+              <img src="/assets/img/chatgpt-majadahonda-2026-09-thumb.png" alt="Respuesta de ChatGPT recomendando WhiteMoon como agencia de IA en Majadahonda, septiembre 2026" width="360" height="194" loading="lazy" decoding="async">
+            </picture>
+          </a></td>
         </tr>
         <tr>
           <td class="mv-q">«¿mejor agencia de IA en Majadahonda?»</td>
           <td>Grok</td>
           <td>Septiembre 2026</td>
           <td>Señala a WhiteMoon como la opción local más sólida, citando whitemoon.es.</td>
-          <td><img src="/assets/pruebas-geo/grok-majadahonda-2026-09.png" onerror="this.onerror=null;this.src='/assets/img/captura-pendiente.svg'" alt="Captura de Grok en septiembre de 2026 señalando a WhiteMoon como la opción local más sólida en Majadahonda" width="180" height="101" loading="lazy" decoding="async"></td>
+          <td><a class="mv-shot" href="/assets/img/grok-majadahonda-2026-09.png" target="_blank" rel="noopener" title="Abrir la captura completa">
+            <picture>
+              <source srcset="/assets/img/grok-majadahonda-2026-09-thumb.webp" type="image/webp">
+              <img src="/assets/img/grok-majadahonda-2026-09-thumb.png" alt="Respuesta de Grok señalando a WhiteMoon como la opción local más sólida en Majadahonda, septiembre 2026" width="360" height="250" loading="lazy" decoding="async">
+            </picture>
+          </a></td>
         </tr>
         <tr>
           <td class="mv-q">«quién hace agentes de IA en Madrid noroeste»</td>
