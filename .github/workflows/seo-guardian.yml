@@ -32,6 +32,18 @@ jobs:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python seo_guardian.py
 
+      # Aviso de caducidad del banco de pruebas GEO. Va SOLO en el run
+      # semanal: no esta en seo-guardian-pr.yml, asi que nunca bloquea un
+      # merge. `continue-on-error` ademas garantiza que un fallo de red al
+      # hablar con Telegram no tumbe el job.
+      - name: Aviso de frescura del banco de pruebas GEO
+        if: always()
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/geo_freshness.py
+
       - name: Upload report
         if: always()
         uses: actions/upload-artifact@v4
