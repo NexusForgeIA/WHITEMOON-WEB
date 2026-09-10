@@ -38,10 +38,9 @@ Qué determina el precio: el canal (voz o texto), el número de integraciones co
 - Core RAG: 2.499€ setup + 199€/mes — agente IA entrenado con los documentos propios del cliente (SIN web incluida)
 - Auditoría GEO IA: 899€ pago único — informe de diagnóstico + auditoría GEO/AEO en 24h
 - [Marketing y captación con IA](https://whitemoon.es/marketing/): packs puntuales de pago único, sin cuota ni permanencia — Auditoría IA (250€ pago único, diagnóstico en 24-48 h; la versión completa con análisis manual es la Auditoría GEO IA de 899€, que tiene su propia página), Pack Reels IA (450€, 5 Reels verticales 9:16 con guion, hook, subtítulos y CTA, entrega en 48-72 h) y Pack Lead (399€ pago único, sin permanencia: dominio propio incluido el primer año, landing profesional con formulario que recoge nombre y teléfono, configuración de la app de WhatsApp Business (perfil de empresa y respuestas rápidas), pipeline de leads con agenda y aviso de cada contacto al móvil). El Pack Lead no lleva IA. La app de WhatsApp se configura en el móvil del cliente y los mensajes los envía él: no incluye envíos masivos, bots ni respuestas automáticas.
-- Pack Ads: 599€/mes SIN setup — gestión de Meta Ads (Facebook + Instagram) con creatividades incluidas (la inversión publicitaria en plataforma va aparte)
 - Calculadora ITP Pro: 599€ setup + 99€/mes — SaaS de calculadora ITP oficial BOE 2026 para gestorías y administradores de fincas
 Ningún pack tiene permanencia (30 días de aviso para cancelar). Operativo en 5-7 días laborables.
-Productos retirados (NO ofrecer): Scale, Elite, Gestoría IA, Orion IA Calls, Orbit.
+Productos retirados (NO ofrecer): Scale, Elite, Gestoría IA, Orion IA Calls, Orbit, Pack Ads.
 
 ## Automatizaciones con IA
 Catálogo de automatizaciones con IA para empresas y pymes: agentes de IA, captación de leads 24/7, CRM con IA, atención al cliente 24/7, base de conocimiento IA (RAG), automatización de WhatsApp, ficha Google Business (GMB) y SEO/GEO. WhiteMoon 360 es la automatización integral que unifica todo en un único sistema. Sin permanencia.

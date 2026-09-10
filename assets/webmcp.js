@@ -99,8 +99,8 @@
         interes: {
           type: 'string',
           description: 'Qué producto o servicio le interesa, si lo ha dicho. '
-            + 'Por ejemplo: agente de voz en la web, chatbot, web nueva, '
-            + 'agente entrenado con documentos propios, o publicidad.'
+            + 'Por ejemplo: agente de voz en la web, chatbot, web nueva '
+            + 'o agente entrenado con documentos propios.'
         },
         sector: {
           type: 'string',
@@ -149,7 +149,7 @@
         + 'según el agente hable por voz, incluya una web nueva o se entrene '
         + 'con los documentos propios del negocio. Ningún pack tiene '
         + 'permanencia y la puesta en marcha es de 5 a 7 días laborables. '
-        + 'La tarifa completa y actualizada de los diez productos está en '
+        + 'La tarifa completa y actualizada de todo el catálogo está en '
         + 'https://whitemoon.es/precios/';
     }
   });

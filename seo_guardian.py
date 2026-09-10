@@ -35,6 +35,8 @@ IGNORED_DIRS = {
     # Canibalizaba "cuánto cuesta un agente de IA" con /precio-agente-ia/,
     # que ya rankeaba en página 1. Su contenido se fusionó allí.
     "precio-agente-ia-empresa",
+    # Pack Ads retirado: WhiteMoon ya no gestiona publicidad.
+    "pack-ads",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
@@ -73,6 +75,7 @@ RETIRED_PRODUCTS = {
     "Elite": re.compile(r"\bElite\b"),
     "Orbit": re.compile(r"\bOrbit\b"),
     "Gestoría IA": re.compile(r"\bGestor[ií]a\s+IA\b"),
+    "Pack Ads": re.compile(r"\bPack\s+Ads\b"),
 }
 # Alias retrocompatible: el nombre viejo seguía usándose en scripts externos.
 RETIRED_PATTERNS = RETIRED_PRODUCTS
