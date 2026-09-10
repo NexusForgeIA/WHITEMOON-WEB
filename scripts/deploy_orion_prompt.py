@@ -25,7 +25,8 @@ RETELL_API_KEY. En Supabase vive como secreto del proyecto y la usa
 Uso:
     export RETELL_API_KEY=...            # nunca commitear
     python scripts/deploy_orion_prompt.py                      # dry-run
-    python scripts/deploy_orion_prompt.py --file outputs/orion-guion-v47.txt --apply
+    python scripts/deploy_orion_prompt.py --volcar RUTA        # solo lee: guarda el prompt publicado
+    python scripts/deploy_orion_prompt.py --file outputs/orion-guion-v48.txt --apply
 """
 
 import argparse
@@ -62,6 +63,29 @@ def call(method, path, key, body=None):
         raise SystemExit(f"[retell] {method} {path} → HTTP {exc.code}\n{detail}")
 
 
+def version_publicada(key):
+    """Devuelve la versión publicada más alta del agente (dict de Retell)."""
+    versiones = call("GET", f"/get-agent-versions/{AGENT_ID}", key)
+    lista = versiones if isinstance(versiones, list) else versiones.get("versions", [])
+    publicadas = [v for v in lista if v.get("is_published")]
+    if not publicadas:
+        raise SystemExit("[retell] no se encontró ninguna versión publicada del agente")
+    return max(publicadas, key=lambda v: v["version"])
+
+
+def volcar(key, ruta):
+    """Solo lectura: guarda el prompt publicado en `ruta`. Es la vuelta atrás."""
+    v = version_publicada(key)
+    llm = call("GET", f"/get-retell-llm/{LLM_ID}?version={v['version']}", key)
+    prompt = llm.get("general_prompt") or ""
+    with open(ruta, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(prompt)
+    herramientas = [t.get("name") or t.get("type") for t in llm.get("general_tools") or []]
+    print(f"[volcar] versión publicada: v{v['version']} · título: {v.get('version_title') or '(sin título)'}")
+    print(f"[volcar] {len(prompt)} chars · {len(prompt.splitlines())} líneas → {ruta}")
+    print(f"[volcar] herramientas del LLM: {', '.join(map(str, herramientas)) or 'ninguna'}")
+
+
 def comprueba_guion(texto):
     """Aborta si el guion trae packs retirados o le falta GestoTrafic."""
     problemas = [n for n in RETIRADOS if n in texto]
@@ -87,7 +111,9 @@ def comprueba_guion(texto):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--file", default="outputs/orion-guion-v47.txt")
+    ap.add_argument("--file", default="outputs/orion-guion-v48.txt")
+    ap.add_argument("--volcar", metavar="RUTA",
+                    help="solo lectura: guarda el prompt publicado en RUTA y sale")
     ap.add_argument("--apply", action="store_true",
                     help="sin este flag solo lee y compara (dry-run)")
     args = ap.parse_args()
@@ -100,6 +126,10 @@ def main():
             "ejecutar, y no lo dejes en ningún fichero del repo."
         )
 
+    if args.volcar:
+        volcar(key, args.volcar)
+        return
+
     # newline="" + normalizado a LF: en Windows el checkout deja CRLF y, sin
     # esto, se subiria un prompt con \r\n que nunca coincidiria con el
     # publicado y haria fallar la comparacion final en cada despliegue.
@@ -107,12 +137,7 @@ def main():
         nuevo = fh.read().replace("\r\n", "\n").replace("\r", "\n")
     comprueba_guion(nuevo)
 
-    versiones = call("GET", f"/get-agent-versions/{AGENT_ID}", key)
-    lista = versiones if isinstance(versiones, list) else versiones.get("versions", [])
-    publicadas = [v for v in lista if v.get("is_published")]
-    base = max((v["version"] for v in publicadas), default=None)
-    if base is None:
-        raise SystemExit("[retell] no se encontró ninguna versión publicada del agente")
+    base = version_publicada(key)["version"]
     print(f"[retell] versión publicada actual: {base}")
 
     actual = call("GET", f"/get-retell-llm/{LLM_ID}?version={base}", key)
