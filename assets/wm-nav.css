@@ -11,7 +11,7 @@
  *
  * Dos variantes de posicion:
  *   .wm-nav          -> fixed (paginas cuyo header ya era fixed via site.css)
- *   .wm-nav--flow    -> sticky (blog, /demos/, /pack-ads/: el header vivia en
+ *   .wm-nav--flow    -> sticky (blog, /demos/: el header vivia en
  *                       el flujo y el contenido no reserva hueco arriba)
  *
  * Los selectores llevan clase propia (.wm-nav*) para ganar a las reglas de

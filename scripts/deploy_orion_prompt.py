@@ -40,7 +40,7 @@ AGENT_ID = "agent_4517db737b3b64d809a6a372d3"
 LLM_ID = "llm_969b91e48a3e16bdec0676a1b24e"
 
 # Nombres que no pueden reaparecer en el guion publicado.
-RETIRADOS = ("Scale", "Elite", "Orion IA Calls", "Gestoría IA", "Orbit", "Scout")
+RETIRADOS = ("Scale", "Elite", "Orion IA Calls", "Gestoría IA", "Orbit", "Scout", "Pack Ads")
 
 
 def call(method, path, key, body=None):

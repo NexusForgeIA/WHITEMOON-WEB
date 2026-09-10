@@ -46,7 +46,7 @@ EXCLUDE = {
 
 # Paginas cuyo header vivia en el flujo del documento (sticky). Ahi la navbar
 # tiene que seguir siendo sticky: si pasa a fixed, tapa el primer bloque.
-FLOW_PAGES_EXTRA = {"blog/index.html", "demos/index.html", "pack-ads/index.html"}
+FLOW_PAGES_EXTRA = {"blog/index.html", "demos/index.html"}
 
 NAV_RX = re.compile(r"<nav\b[^>]*>.*?</nav>", re.S | re.I)
 FOOTER_OPEN_RX = re.compile(r"<footer\b[^>]*>", re.I)

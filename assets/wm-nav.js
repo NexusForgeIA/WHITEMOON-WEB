@@ -90,7 +90,7 @@
     '/automatizacion-ventas/', '/atencion-cliente-ia/', '/coste-no-automatizar/',
     '/costes-eficiencia-empresarial-ia/', '/auditoria-geo-ia/', '/automatizaciones/',
     '/spark/', '/core/', '/core-orion/', '/core-rag/', '/mini-core/',
-    '/whitemoon-360/', '/pack-ads/'
+    '/whitemoon-360/'
   ];
   function markCurrent(a) {
     var href = a.getAttribute('href') || '';

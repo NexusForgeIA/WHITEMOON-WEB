@@ -76,15 +76,6 @@
       items:["Agente IA entrenado con hasta 100 documentos propios","Búsqueda semántica RAG sobre tu contenido real","1.000 consultas al mes incluidas","Widget + URL pública tipo ChatGPT","Orion IA — agente de voz web incluido"]
     },
     {
-      id:"pack-ads", name:"Pack Ads", forWho:"Publicidad digital",
-      tag:"Gestión completa de Meta Ads (Facebook + Instagram) para captar clientes en tu zona.",
-      big:"599€", small:"/mes", sub:"Sin setup · Sin permanencia · + inversión en plataforma",
-      desde:"599€/mes · sin setup",
-      short:"Gestión de Meta Ads con creatividades, segmentación por zona y test A/B. La inversión publicitaria va aparte.",
-      url:"https://whitemoon.es/pack-ads/",
-      items:["Gestión Meta Ads (Facebook + Instagram)","Creatividades incluidas (imágenes + copy)","Segmentación por zona geográfica y sector","Test A/B y optimización semanal","Informe mensual de resultados con métricas"]
-    },
-    {
       id:"auditoria", name:"Auditoría GEO IA", forWho:"Diagnóstico previo",
       tag:"Descubre si tu negocio aparece en ChatGPT, Grok y Perplexity.",
       big:"899€", small:"pago único", sub:"Entrega en 24 h · Sin permanencia",
@@ -131,8 +122,8 @@
      Utilidades
      ========================================================== */
   /* Sello de garantía. Solo lo llevan los packs con puesta en marcha y cuota:
-     en Pack Ads no hay setup que garantizar y la Auditoría GEO IA no tiene cuota
-     mensual que dejar de pagar, así que ahí la frase no querría decir nada. */
+     la Auditoría GEO IA no tiene cuota mensual que dejar de pagar, así que ahí
+     la frase no querría decir nada. */
   var SEAL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
     + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
     + '<path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6l7-3Z"/>'
