@@ -129,6 +129,99 @@
   .calc-card p{font-size:.82rem;color:#9CA3AF;line-height:1.55;margin:0;flex:1}
   .calc-card .arrow{font-size:.78rem;font-weight:600;color:#9d70ff;letter-spacing:-.005em}
 
+  /* ── DIAGNÓSTICO CON ORION ───────────────────────────────────────────────
+     Regla de color de todo el bloque: --p (#7c4dff) da 3.89:1 sobre este
+     fondo y NO pasa AA en texto. Va solo en bordes, iconos y rellenos de
+     botón; cualquier texto morado usa --p2 (#9d70ff, 5.70:1) y los grises
+     secundarios van a #9CA3AF (7.56:1), nunca más oscuros. */
+  .dg-wrap{max-width:1200px;margin:0 auto}
+  .dg-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+  .dg-grid>*{min-width:0}
+  @media(max-width:900px){.dg-grid{grid-template-columns:1fr;gap:36px}}
+  .dg-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  /* Columna izquierda · el argumento */
+  .dg-em{font-style:normal;color:#9CA3AF}
+  .dg-pitch>p{font-size:.96rem;color:#9CA3AF;line-height:1.65;margin:18px 0 0;max-width:38ch}
+  .dg-claims{list-style:none;margin:30px 0 0;padding:0}
+  .dg-claims li{padding:13px 0;border-top:1px solid rgba(255,255,255,.07);font-size:.9rem;display:flex;gap:12px;align-items:baseline}
+  .dg-claims li:last-child{border-bottom:1px solid rgba(255,255,255,.07)}
+  .dg-claims b{font-weight:600;color:#E8E8F0;flex:none;min-width:8.5ch}
+  .dg-claims span{color:#9CA3AF}
+
+  /* Columna derecha · la conversación */
+  .dg-chat{background:var(--card);border:1px solid var(--border-soft);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-height:430px}
+  .dg-head{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border-soft);background:#0E1320}
+  .dg-dot{width:9px;height:9px;border-radius:50%;background:var(--g);flex:none;box-shadow:0 0 0 3px rgba(0,212,170,.14)}
+  .dg-who{font-size:.92rem;font-weight:600;color:#E8E8F0}
+  .dg-st{font-size:.76rem;color:#9CA3AF;margin-left:auto}
+  .dg-stream{padding:22px 20px;display:flex;flex-direction:column;gap:16px;flex:1}
+  .dg-msg{max-width:88%;font-size:.93rem;line-height:1.62;overflow-wrap:anywhere}
+  .dg-msg--user{align-self:flex-end;background:var(--p-dark);color:#fff;padding:11px 16px;border-radius:12px 12px 3px 12px;max-width:78%}
+  .dg-body{background:#0E1320;border:1px solid var(--border-soft);color:#E8E8F0;padding:14px 16px;border-radius:12px 12px 12px 3px}
+
+  /* Las dos etiquetas son lo que sostiene el bloque: verde lo que se
+     automatiza, dorado lo que no. No suavizar el contraste entre ambas. */
+  .dg-verdict{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+  .dg-v{display:flex;gap:10px;align-items:flex-start;font-size:.87rem;line-height:1.5}
+  .dg-v p{margin:0;color:#9CA3AF}
+  .dg-tag{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:5px;flex:none;margin-top:2px;white-space:nowrap}
+  .dg-v--si .dg-tag{background:rgba(0,212,170,.12);color:var(--g);border:1px solid rgba(0,212,170,.3)}
+  .dg-v--no .dg-tag{background:rgba(245,200,66,.1);color:var(--gold);border:1px solid rgba(245,200,66,.28)}
+  .dg-ask{margin-top:12px;color:#E8E8F0}
+
+  .dg-num{margin-top:14px;padding:14px 16px;border-radius:10px;background:rgba(124,77,255,.09);border:1px solid var(--border)}
+  .dg-num-big{font-family:'Sora','Inter',sans-serif;font-size:clamp(1.3rem,4.2vw,1.85rem);font-weight:700;color:#E8E8F0;line-height:1.15;letter-spacing:-.02em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .dg-num-calc{font-size:.82rem;color:#9CA3AF;margin-top:6px}
+
+  .dg-opts{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+  .dg-opt{font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;line-height:1.3;cursor:pointer;border-radius:8px;padding:11px 18px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background .2s ease,border-color .2s ease,transform .15s ease}
+  .dg-opt--primary{background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border:1px solid transparent;box-shadow:0 10px 26px rgba(124,77,255,.26)}
+  .dg-opt--primary:hover{transform:translateY(-1px)}
+  .dg-opt--ghost{background:transparent;color:#E8E8F0;border:1px solid var(--border)}
+  .dg-opt--ghost:hover{border-color:#7c4dff;background:rgba(124,77,255,.06)}
+  .dg-opt[disabled]{opacity:.35;cursor:default;transform:none}
+
+  .dg-chips-label{padding:0 20px 10px;font-size:.76rem;color:#9CA3AF}
+  .dg-chips{padding:0 20px 18px;display:flex;flex-wrap:wrap;gap:9px}
+  .dg-chip{font-family:'Inter',sans-serif;font-size:.84rem;line-height:1.35;text-align:left;color:#E8E8F0;cursor:pointer;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:999px;padding:9px 15px;transition:background .2s ease,border-color .2s ease}
+  .dg-chip:hover{background:rgba(124,77,255,.14);border-color:#7c4dff}
+  .dg-chip[disabled]{opacity:.32;cursor:default}
+
+  .dg-composer{display:flex;gap:10px;padding:16px 20px;border-top:1px solid var(--border-soft)}
+  .dg-composer input{flex:1;min-width:0;font-family:'Inter',sans-serif;font-size:.9rem;color:#E8E8F0;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:12px 14px;transition:border-color .2s ease}
+  .dg-composer input::placeholder{color:var(--muted)}
+  .dg-composer input:focus{outline:none;border-color:#9d70ff}
+  .dg-send{font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;color:#fff;cursor:pointer;background:linear-gradient(135deg,#7c4dff,#9d70ff);border:0;border-radius:8px;padding:12px 22px;flex:none}
+  .dg-send[disabled]{opacity:.5;cursor:default}
+  @media(max-width:600px){.dg-composer{flex-direction:column}.dg-send{width:100%}}
+
+  .dg-typing{display:flex;gap:5px;padding:14px 16px;width:fit-content;background:#0E1320;border:1px solid var(--border-soft);border-radius:12px 12px 12px 3px}
+  .dg-typing i{width:6px;height:6px;border-radius:50%;background:#9CA3AF;animation:dgBlink 1.3s infinite}
+  .dg-typing i:nth-child(2){animation-delay:.18s}
+  .dg-typing i:nth-child(3){animation-delay:.36s}
+  @keyframes dgBlink{0%,60%,100%{opacity:.25}30%{opacity:1}}
+
+  /* Captación · único momento en que se piden datos, y solo si lo pide él */
+  .dg-lead{margin-top:14px;display:flex;flex-direction:column;gap:10px}
+  .dg-lead-row{display:flex;flex-wrap:wrap;gap:10px}
+  .dg-lead-row input{flex:1 1 148px;min-width:0;font-family:'Inter',sans-serif;font-size:.88rem;color:#E8E8F0;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:9px;padding:11px 13px;transition:border-color .2s ease}
+  .dg-lead-row input::placeholder{color:var(--muted)}
+  .dg-lead-row input:focus{outline:none;border-color:#9d70ff}
+  .dg-lead-row input[aria-invalid="true"]{border-color:#f87171}
+  .dg-consent{display:flex;align-items:flex-start;gap:9px;font-size:.76rem;color:#9CA3AF;line-height:1.5}
+  .dg-consent input{flex:none;width:16px;height:16px;margin:2px 0 0;accent-color:#7c4dff;cursor:pointer}
+  .dg-consent input[aria-invalid="true"]{outline:2px solid #f87171;outline-offset:2px}
+  .dg-consent a{color:#9d70ff;text-decoration:underline;text-underline-offset:3px}
+  .dg-err{font-size:.8rem;color:#fca5a5}
+  .dg-chat :focus-visible{outline:2px solid #9d70ff;outline-offset:3px}
+
+  @media(prefers-reduced-motion:reduce){
+    .dg-typing i{animation:none;opacity:.55}
+    .dg-opt,.dg-chip,.dg-composer input,.dg-lead-row input{transition:none}
+    .dg-opt--primary:hover{transform:none}
+  }
+
   /* CASOS GRID */
   .casos-grid-3{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
   @media(max-width:900px){.casos-grid-3{grid-template-columns:1fr}}
@@ -352,6 +445,59 @@
     <div class="sec-cta"><a href="/costes-eficiencia-empresarial-ia/" onclick="wmTrack('click_recurso_ver_todas',{seccion:'calculadoras'})">Ver todas las calculadoras →</a></div>
   </section>
 
+  <!-- DIAGNÓSTICO CON ORION
+       SIN número de sección a propósito: la numeración de esta página (01,
+       02, 03) es una secuencia de TIPOS DE RECURSO. Esto no es un cuarto
+       tipo, es una herramienta; ponerle un número rompería lo que la
+       numeración significa.
+       Los tres chips van en el HTML, no los pinta el JS: así el bloque se
+       puede usar desde el primer render, sin esperar a /assets/. -->
+  <section class="rec-section" id="sec-diagnostico" aria-labelledby="t-diagnostico">
+    <div class="dg-wrap">
+      <div class="dg-grid">
+
+        <div class="dg-pitch">
+          <div class="rec-eyebrow">Pregúntale a Orion</div>
+          <h2 class="sec-title" id="t-diagnostico">Cuéntame tu negocio y te digo qué se automatiza <em class="dg-em">y qué no.</em></h2>
+          <p>El mismo agente que atiende en la web, aquí en texto y con un trabajo distinto: no venderte nada, decirte si esto te sirve y cuánto te está costando no hacerlo.</p>
+          <ul class="dg-claims">
+            <li><b>Duele</b><span>Qué parte de tu día se automatiza y cuál no merece la pena.</span></li>
+            <li><b>Cuenta</b><span>Con un dato tuyo, el número que llevas perdiendo cada mes.</span></li>
+            <li><b>Enseña</b><span>Cómo suena atendiendo en tu sector, antes de hablar de nada.</span></li>
+          </ul>
+        </div>
+
+        <div class="dg-chat">
+          <div class="dg-head">
+            <span class="dg-dot" aria-hidden="true"></span>
+            <span class="dg-who">Orion</span>
+            <span class="dg-st">Responde al momento</span>
+          </div>
+
+          <div class="dg-stream" id="dgStream" aria-live="polite">
+            <div class="dg-msg">
+              <div class="dg-body">Dime en una frase a qué te dedicas y qué te está quitando tiempo. Te digo qué parte se puede automatizar y cuál no merece la pena.</div>
+            </div>
+          </div>
+
+          <div class="dg-chips-label" id="dgChipsLabel">O prueba con uno de estos:</div>
+          <div class="dg-chips" id="dgChips">
+            <button class="dg-chip" type="button" data-dg-caso="clinica-dental">Clínica dental, no paro de coger el teléfono</button>
+            <button class="dg-chip" type="button" data-dg-caso="gestoria">Gestoría, me llaman veinte veces por lo mismo</button>
+            <button class="dg-chip" type="button" data-dg-caso="taller">Taller, pierdo llamadas debajo de un coche</button>
+          </div>
+
+          <form class="dg-composer" id="dgComposer">
+            <label class="dg-sr" for="dgQ">Cuéntale a Orion a qué te dedicas y qué te quita tiempo</label>
+            <input id="dgQ" name="q" type="text" autocomplete="off" maxlength="500" placeholder="Tengo una peluquería y…">
+            <button class="dg-send" type="submit">Preguntar</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- 02 · CASOS DE USO -->
   <section class="rec-section" id="sec-casos" aria-labelledby="t-casos">
     <div class="sec-head">
@@ -498,6 +644,7 @@
 </footer>
 
 <script src="/orion-widget.js?v=2026072102" defer></script>
+<script src="/assets/recursos-diagnostico.js?v=2026091301" defer></script>
 <script>
 (function(){
   // Retrocompatibilidad: los antiguos enlaces /recursos/?cat=... llevaban a un
