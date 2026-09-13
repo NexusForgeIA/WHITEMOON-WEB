@@ -16,6 +16,13 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
    multiplica acaba enseñando una cifra falsa, y aquí la cifra es el
    argumento entero.
 
+   Lo que el navegador hace con esos rangos, porque es la otra mitad del
+   contrato: coge SIEMPRE el extremo bajo y lo rotula como cota ("al menos
+   220 al mes"), nunca promedia los bordes ni suma nada. Así que las
+   `opciones` pueden ser rangos abiertos o cerrados sin problema, pero cada
+   una TIENE que llevar una cifra dentro: sin cifra no hay número que
+   enseñar, y el paso 2 se lo salta antes que inventarlo.
+
    Contrato HTTP
    -------------
    POST  { mensaje: string }            (máx. 500 caracteres)

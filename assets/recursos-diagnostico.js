@@ -11,9 +11,11 @@
  *   · El texto libre llama a la Edge Function `recursos-diagnostico`.
  *
  * EL LLM NO CALCULA. Misma regla que Hugo en logistica-chat. El modelo devuelve
- * tres rangos en lenguaje natural ("2 o 3", "más de 10") y es porDiaDe() quien
- * saca la cifra; la multiplicación por 22 días laborables se hace aquí y se
- * enseña en pantalla. Nada de medias del sector ni cifras inventadas.
+ * tres rangos en lenguaje natural ("2 o 3", "más de 10") y es cotaDe() quien
+ * saca de ahí la única cifra defendible: SIEMPRE el extremo bajo del rango,
+ * nunca una media ni un ±1. La multiplicación por 22 días laborables se hace
+ * aquí y se enseña en pantalla, y el resultado se rotula como cota ("al menos
+ * 220 al mes"), jamás como dato exacto.
  *
  * SI LA FUNCIÓN SE CAE no se ve un error: se usa el mismo diagnóstico genérico
  * que devuelve la propia función cuando el modelo falla. Los chips siguen
@@ -111,17 +113,29 @@
   /* -------------------------------------------------------------- números */
 
   /*
-   * De un rango en lenguaje natural a una cifra por día. Es la única
-   * aritmética del bloque y vive aquí, nunca en el modelo.
-   *   "2 o 3"       → 2.5    (media de los dos extremos)
-   *   "8 o 10"      → 9
-   *   "más de 10"   → 11     (el rango abierto cuenta uno más que su borde)
-   *   "menos de 5"  → 4
-   *   "4"           → 4
+   * De un rango en lenguaje natural a la única cifra que se puede defender, y
+   * a qué clase de cota es.
+   *
+   * NUNCA se promedia y NUNCA se suma ni se resta nada. Las opciones son
+   * rangos ("entre 10 y 30 al día"), y cualquier número que no haya salido de
+   * la boca de quien responde es un número inventado. Este bloque entero se
+   * apoya en esa cifra: si la cifra es humo, el bloque es humo.
+   *
+   *   "2 o 3"          → {n:2,  cota:'min'}     "al menos"
+   *   "Entre 10 y 30"  → {n:10, cota:'min'}     "al menos"
+   *   "Más de 30"      → {n:30, cota:'min'}     "al menos"
+   *   "Menos de 10"    → {n:10, cota:'max'}     "hasta"
+   *   "4"              → {n:4,  cota:'exacta'}
+   *
+   * El caso "menos de N" es el que obliga a distinguir cota: ahí N es el
+   * TECHO, no el suelo. Tratarlo como mínimo diría que hace al menos lo que
+   * acaba de decir que no llega a hacer — el mismo número inventado, solo que
+   * hacia el otro lado.
+   *
    * Sin ninguna cifra devuelve null y el paso 2 se salta el número en lugar
    * de inventárselo.
    */
-  function porDiaDe(texto) {
+  function cotaDe(texto) {
     var t = String(texto || '').toLowerCase();
     var crudos = t.match(/\d+(?:[.,]\d+)?/g);
     if (!crudos) return null;
@@ -132,10 +146,12 @@
       if (isFinite(v) && v >= 0) n.push(v);
     }
     if (!n.length) return null;
-    if (n.length >= 2) return (n[0] + n[1]) / 2;
-    if (/\bm[áa]s\b|\+/.test(t)) return n[0] + 1;
-    if (/\bmenos\b/.test(t)) return Math.max(1, n[0] - 1);
-    return n[0];
+
+    /* Varias cifras: el extremo BAJO. El alto no lo ha afirmado nadie. */
+    if (n.length >= 2) return { n: Math.min(n[0], n[1]), cota: 'min' };
+    if (/\bmenos\b|\bhasta\b|\bpor debajo\b|</.test(t)) return { n: n[0], cota: 'max' };
+    if (/\bm[áa]s\b|\bsuperior\b|\+|>/.test(t)) return { n: n[0], cota: 'min' };
+    return { n: n[0], cota: 'exacta' };
   }
 
   function numES(n) {
@@ -228,7 +244,7 @@
           if (ocupado) return;
           apagar(opts);
           diceUsuario(texto);
-          paso2(d, sector, porDiaDe(texto));
+          paso2(d, sector, cotaDe(texto));
         });
         opts.appendChild(b);
       }(d.opciones[i]));
@@ -239,23 +255,43 @@
 
   /* ------------------------------------------------- paso 2 · cuenta ----- */
 
-  function paso2(d, sector, porDia) {
+  function paso2(d, sector, cota) {
     var body = cuerpoBot();
     var alMes = null;
+    var clase = null;
+    var resumen = null;
 
-    /* La cuenta se enseña entera: el número y de dónde sale. Si el rango no
-       traía cifra, no hay número — antes que inventarlo, no se pone. */
-    if (porDia != null) {
-      alMes = Math.round(porDia * DIAS_LABORABLES);
+    /* La cuenta se enseña entera: el número, de dónde sale y en qué dirección
+       es cota. Lo que se eligió es un RANGO, así que la cifra se rotula como
+       mínimo o como techo — nunca como dato exacto. Si el rango no traía
+       ninguna cifra, no hay número: antes que inventarlo, no se pone. */
+    if (cota) {
+      alMes = Math.round(cota.n * DIAS_LABORABLES);
+      clase = cota.cota;
+
+      var titulo, cuenta;
+      if (clase === 'min') {
+        titulo = 'Al menos ' + alMes + ' ' + d.unidad + ' al mes';
+        cuenta = 'Desde ' + numES(cota.n) + ' al día × ' + DIAS_LABORABLES +
+          ' días laborables. El extremo bajo de lo que has dicho, no una media del sector.';
+      } else if (clase === 'max') {
+        titulo = 'Hasta ' + alMes + ' ' + d.unidad + ' al mes';
+        cuenta = 'Menos de ' + numES(cota.n) + ' al día × ' + DIAS_LABORABLES +
+          ' días laborables. El techo de lo que has dicho, no una media del sector.';
+      } else {
+        titulo = alMes + ' ' + d.unidad + ' al mes';
+        cuenta = numES(cota.n) + ' al día × ' + DIAS_LABORABLES +
+          ' días laborables. Tus números, no una media del sector.';
+      }
+
+      resumen = titulo;
       var caja = el('div', 'dg-num');
-      caja.appendChild(el('div', 'dg-num-big', alMes + ' ' + d.unidad + ' al mes'));
-      caja.appendChild(el('div', 'dg-num-calc',
-        numES(porDia) + ' al día × ' + DIAS_LABORABLES +
-        ' días laborables. Tus números, no una media del sector.'));
+      caja.appendChild(el('div', 'dg-num-big', titulo));
+      caja.appendChild(el('div', 'dg-num-calc', cuenta));
       body.appendChild(caja);
     }
 
-    track('diagnostico_cantidad', { sector: sector, unidad: d.unidad, al_mes: alMes });
+    track('diagnostico_cantidad', { sector: sector, unidad: d.unidad, al_mes: alMes, cota: clase });
 
     body.appendChild(el('div', 'dg-ask', d.cierre || CIERRE_LIBRE));
 
@@ -276,7 +312,7 @@
       if (ocupado) return;
       apagar(opts);
       diceUsuario('Prefiero que me llamen');
-      pasoLead(sector, d, porDia, alMes);
+      pasoLead(sector, d, resumen);
     });
 
     opts.appendChild(demo);
@@ -287,7 +323,7 @@
 
   /* ------------------------------------------------- paso 3 · el lead ---- */
 
-  function pasoLead(sector, d, porDia, alMes) {
+  function pasoLead(sector, d, resumenCifra) {
     var body = cuerpoBot();
     body.appendChild(el('div', null,
       'Dime tu nombre y un teléfono y te llama alguien del equipo. Nada de formularios ni correos: solo eso.'));
@@ -398,7 +434,7 @@
       /* El diagnóstico entero cabe en el aviso: quien llame ya sabe de qué
          hablar antes de marcar. */
       var resumen = 'Diagnóstico Orion en /recursos/. ' +
-        (alMes != null ? alMes + ' ' + d.unidad + ' al mes (' + numES(porDia) + '/día × ' + DIAS_LABORABLES + '). ' : '') +
+        (resumenCifra ? resumenCifra + '. ' : '') +
         'Se automatiza: ' + d.si;
 
       var interes = 'Diagnóstico Orion · ' + sector;
