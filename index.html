@@ -341,6 +341,16 @@
     /* El hero ya tiene position:relative — asegurar que el contenido queda encima */
     .hero-enterprise { position: relative; overflow: hidden; }
     .hero-enterprise .wrap { position: relative; z-index: 2; }
+    /* Sello de Google · autoverificable: enlaza a la ficha real. Sin numero
+       de resenas hardcodeado y sin valoracion agregada en el JSON-LD. */
+    .g-badge{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:7px 14px;
+      border:1px solid rgba(245,200,66,.34);border-radius:99px;background:rgba(245,200,66,.07);
+      font-size:.86rem;color:#DCDCEA;text-decoration:none;line-height:1;
+      transition:border-color .15s ease,background .15s ease}
+    .g-badge:hover{border-color:rgba(245,200,66,.6);background:rgba(245,200,66,.12)}
+    .g-badge .g-star{width:15px;height:15px;flex:0 0 auto;fill:var(--gold,#f5c842)}
+    .g-badge strong{color:#fff;font-weight:700}
+    @media(max-width:600px){.g-badge{margin-top:12px;font-size:.82rem}}
   </style>
 
   <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
@@ -427,12 +437,18 @@
         <h1>Un agente de IA que responde, agenda y capta clientes 24/7 en tu web.</h1>
         <p class="sub">Se lo montamos a tu web actual, o te hacemos la web entera con el agente dentro. Operativo en 7 días. Sin permanencia.</p>
         <div class="hero-ctas">
-          <a href="/contacto/" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'pide-propuesta',placement:'hero-primario'})">
+          <a href="#pide-propuesta" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'pide-propuesta',placement:'hero-primario'})">
             Pide propuesta
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
           <a href="https://wa.me/34643199580" class="hero-textlink" target="_blank" rel="noopener" onclick="wmTrack('whatsapp_click',{placement:'hero-secundario'})">Escríbenos por WhatsApp</a>
         </div>
+        <a class="g-badge" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener"
+           aria-label="Ver el perfil de WhiteMoon en Google (valoración 5,0)"
+           onclick="wmTrack('click_google_perfil',{placement:'hero'})">
+          <svg class="g-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
+          <span><strong>5,0</strong> en Google</span>
+        </a>
       </div>
     </div>
 
@@ -517,7 +533,7 @@
         </div>
         <h3 class="wm-path__title">Ya tienes web. <span>Le metemos el agente IA.</span></h3>
         <p>Instalamos el agente en tu web actual: responde, agenda y capta leads 24 h. Si tu negocio maneja mucha información —catálogo, normativa, tarifas—, le añadimos RAG para que conteste con tus datos.</p>
-        <a class="wm-path__cta" href="/contacto/" onclick="wmTrack('click_home_camino',{producto:'spark'})">
+        <a class="wm-path__cta" href="#pide-propuesta" onclick="wmTrack('click_home_camino',{producto:'spark'})">
           Pide propuesta
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -530,7 +546,7 @@
         </div>
         <h3 class="wm-path__title">Quieres web nueva. <span>Web + agente + CRM, todo integrado.</span></h3>
         <p>Te hacemos la web completa con el agente dentro desde el primer día, y el panel para ver y gestionar cada lead. RAG si lo necesitas. Lo montamos entero; tú solo atiendes.</p>
-        <a class="wm-path__cta" href="/contacto/" onclick="wmTrack('click_home_camino',{producto:'core-spark-web'})">
+        <a class="wm-path__cta" href="#pide-propuesta" onclick="wmTrack('click_home_camino',{producto:'core-spark-web'})">
           Pide propuesta
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -799,49 +815,304 @@
   </div>
 </section>
 
-<!-- 9 · CIERRE -->
+<!-- 9 · CIERRE — formulario de leads (leads_web, origen home-cta, aviso a
+     Telegram) con la reunión y WhatsApp al lado. Todos los «Pide propuesta» de
+     la home apuntan a #pide-propuesta. -->
 <style>
-  .cta-final-ent{padding:96px 24px 104px;background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.05) 50%,transparent 100%);border-top:1px solid rgba(255,255,255,.06)}
-  .cta-final-ent .cf-head{text-align:center;max-width:680px;margin:0 auto}
-  .cta-final-ent h2{font-family:'Sora',sans-serif;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:700;color:#fff;letter-spacing:-.025em;line-height:1.15;margin:0 0 14px}
-  .cta-final-ent .cf-head p{font-size:1.04rem;color:#C9C9DE;line-height:1.65;margin:0}
-  .cta-final-ent .cf-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 14px;margin-top:34px}
-  .cta-final-ent .cf-prim,.cta-final-ent .cf-sec{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 28px;border-radius:12px;font-family:'Sora',sans-serif;font-weight:600;font-size:.98rem;text-decoration:none;transition:transform .15s ease,box-shadow .2s ease,background .15s ease,border-color .15s ease}
-  .cta-final-ent .cf-prim{background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;box-shadow:0 14px 36px rgba(124,77,255,.32)}
-  .cta-final-ent .cf-prim:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
-  .cta-final-ent .cf-prim svg{width:16px;height:16px}
-  .cta-final-ent .cf-sec{background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2)}
+  .cta-final-ent{padding:90px 24px 110px;background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.05) 50%,transparent 100%);border-top:1px solid rgba(255,255,255,.06)}
+  .cta-final-ent .wrap{max-width:1000px;margin:0 auto}
+  .cta-final-ent .cf-head{text-align:center;max-width:680px;margin:0 auto 44px}
+  .cta-final-ent h2{font-family:'Sora',sans-serif;font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1.15;margin:0 0 14px}
+  .cta-final-ent .cf-head p{font-size:1.02rem;color:#9CA3AF;line-height:1.65;margin:0}
+  .cta-final-ent .cf-cols{display:grid;grid-template-columns:1fr 1.15fr;gap:22px;align-items:stretch}
+  @media(max-width:820px){.cta-final-ent .cf-cols{grid-template-columns:1fr}}
+  .cta-final-ent .cf-card{display:flex;flex-direction:column;background:var(--card,#111118);border:1px solid rgba(124,77,255,.24);border-radius:20px;padding:32px 30px}
+  @media(max-width:480px){.cta-final-ent .cf-card{padding:26px 20px}}
+  .cta-final-ent .cf-via{display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2,#9d70ff);margin-bottom:14px}
+  .cta-final-ent .cf-card h3{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.02em;margin:0 0 10px}
+  .cta-final-ent .cf-card > p{font-size:.92rem;color:#9CA3AF;line-height:1.6;margin:0 0 22px}
+  .cta-final-ent .cf-meet{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:12px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;text-decoration:none;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;box-shadow:0 14px 36px rgba(124,77,255,.32);transition:transform .15s ease,box-shadow .2s ease}
+  .cta-final-ent .cf-meet:hover{transform:translateY(-1px);box-shadow:0 18px 44px rgba(124,77,255,.42)}
+  .cta-final-ent .cf-meet svg{width:16px;height:16px}
+  .cta-final-ent .cf-alt{margin:14px 0 0;font-size:.8rem;color:#6B7280;text-align:center}
+  .cta-final-ent .cf-alt a{color:#9CA3AF;text-decoration:none;border-bottom:1px solid rgba(157,112,255,.3)}
+  .cta-final-ent .cf-field{margin-bottom:14px}
+  .cta-final-ent .cf-field label{display:block;font-size:.78rem;font-weight:500;color:#9CA3AF;letter-spacing:.02em;margin-bottom:6px}
+  .cta-final-ent .cf-field input{width:100%;padding:13px 15px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#E8E8F0;font-family:'Inter',sans-serif;font-size:.94rem;line-height:1.4;transition:border-color .15s ease,background .15s ease}
+  .cta-final-ent .cf-field input::placeholder{color:#5f5f78}
+  .cta-final-ent .cf-field input:focus{outline:none;border-color:#7c4dff;background:rgba(124,77,255,.06)}
+  .cta-final-ent .cf-field input[aria-invalid="true"]{border-color:#f87171}
+  .cta-final-ent .cf-send{width:100%;margin-top:6px;padding:15px 26px;border:0;border-radius:12px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;cursor:pointer;box-shadow:0 14px 36px rgba(124,77,255,.32);transition:transform .15s ease,filter .2s ease}
+  .cta-final-ent .cf-send:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .cta-final-ent .cf-send:disabled{opacity:.6;cursor:default;transform:none}
+  .cta-final-ent .cf-msg{margin:12px 0 0;font-size:.84rem;line-height:1.55;min-height:1px}
+  .cta-final-ent .cf-msg.is-warn{color:#fbbf24}
+  .cta-final-ent .cf-msg.is-error{color:#f87171}
+  .cta-final-ent .cf-msg a{color:inherit}
+  .cta-final-ent .cf-ok{display:none;text-align:center;padding:26px 8px}
+  .cta-final-ent .cf-ok svg{width:38px;height:38px;color:#10b981;margin-bottom:12px}
+  .cta-final-ent .cf-ok b{display:block;font-family:'Sora',sans-serif;font-size:1.12rem;font-weight:700;color:#fff;margin-bottom:6px}
+  .cta-final-ent .cf-ok p{font-size:.9rem;color:#9CA3AF;line-height:1.6;margin:0}
+  .cta-final-ent .cf-legal{margin:14px 0 0;font-size:.74rem;color:#6B7280;line-height:1.5}
+  .cta-final-ent .cf-legal a{color:#9CA3AF}
+  /* Consentimiento RGPD. La casilla y el enlace a la politica son dos
+     zonas de clic distintas a proposito: el <label> cubre solo el texto,
+     asi pulsar el enlace abre la politica sin marcar la casilla de paso. */
+  .cta-final-ent .cf-consent{display:flex;align-items:flex-start;gap:10px;margin:4px 0 14px}
+  .cta-final-ent .cf-consent input{flex-shrink:0;width:18px;height:18px;margin:1px 0 0;accent-color:#7c4dff;cursor:pointer}
+  .cta-final-ent .cf-consent input:focus-visible{outline:2px solid #9d70ff;outline-offset:2px}
+  .cta-final-ent .cf-consent-txt{font-size:.82rem;color:#C7C7D6;line-height:1.5;min-width:0;overflow-wrap:anywhere}
+  .cta-final-ent .cf-consent-txt label{display:inline;font-size:inherit;color:inherit;margin:0;cursor:pointer}
+  .cta-final-ent .cf-consent-txt a{color:#9d70ff;text-decoration:underline;text-underline-offset:3px}
+  .cta-final-ent .cf-consent-txt a:focus-visible{outline:2px solid #9d70ff;outline-offset:2px;border-radius:3px}
+  .cta-final-ent .cf-consent input[aria-invalid="true"]{outline:2px solid #f87171;outline-offset:2px}
+  .cta-final-ent .cf-note{margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);font-size:.74rem;color:#8A8AA3;line-height:1.6}
+  .cta-final-ent .cf-note b{color:#B8B8CC;font-weight:600}
+  .cta-final-ent .cf-note a{color:#9d70ff;text-decoration:underline;text-underline-offset:2px}
+  .cta-final-ent .cf-reassure{margin:10px 0 0;font-size:.78rem;color:#9CA3AF;text-align:center;line-height:1.5}
+  /* El formulario manda: columna ancha a la izquierda. */
+  .cta-final-ent .cf-cols{grid-template-columns:1.15fr 1fr}
+  @media(max-width:820px){.cta-final-ent .cf-cols{grid-template-columns:1fr}}
+  .cta-final-ent #pide-propuesta{scroll-margin-top:86px}
+  .cta-final-ent .cf-side{display:flex;flex-direction:column;gap:10px;margin-top:auto}
+  .cta-final-ent .cf-sec{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 26px;border-radius:12px;background:transparent;color:#E8E8F0;border:1px solid rgba(255,255,255,.2);font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .15s ease,border-color .15s ease}
   .cta-final-ent .cf-sec:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.35)}
-  .cta-final-ent .cf-wa{padding:15px 10px;font-size:.98rem;font-weight:500;color:#C9C9DE;text-decoration:underline;text-decoration-color:rgba(157,112,255,.5);text-underline-offset:4px}
+  .cta-final-ent .cf-sec svg{width:16px;height:16px}
+  .cta-final-ent .cf-wa{display:block;text-align:center;padding:10px;font-size:.95rem;font-weight:500;color:#C9C9DE;text-decoration:underline;text-decoration-color:rgba(157,112,255,.5);text-underline-offset:4px}
   .cta-final-ent .cf-wa:hover{color:#fff}
   .cta-final-ent a:focus-visible{outline:2px solid #9d70ff;outline-offset:3px}
-  .cta-final-ent .cf-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;margin:40px 0 0;font-size:.88rem;color:var(--muted,#9999b5);line-height:1.6}
+  .cta-final-ent .cf-contact{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 10px;margin:36px 0 0;font-size:.88rem;color:var(--muted,#9999b5);line-height:1.6}
   .cta-final-ent .cf-contact a{color:#C9C9DE;text-decoration:none}
   .cta-final-ent .cf-contact a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
-  @media(max-width:520px){
-    .cta-final-ent{padding:72px 20px 80px}
-    .cta-final-ent .cf-prim,.cta-final-ent .cf-sec{width:100%}
-    .cta-final-ent .cf-wa{width:100%;text-align:center;padding:10px}
-  }
-  @media(prefers-reduced-motion:reduce){.cta-final-ent .cf-prim{transition:none}.cta-final-ent .cf-prim:hover{transform:none}}
+  @media(max-width:520px){.cta-final-ent{padding:72px 16px 80px}}
 </style>
 <section class="cta-final-ent" id="hablamos">
-  <div class="cf-head">
-    <h2>¿Hablamos?</h2>
-    <p>Cuéntanos tu caso y te preparamos una propuesta a medida en 24h. Sin compromiso, sin permanencia.</p>
+  <div class="wrap">
+    <div class="cf-head">
+      <h2>¿Hablamos?</h2>
+      <p>Cuéntanos tu caso y te preparamos una propuesta a medida en 24h. Sin compromiso, sin permanencia.</p>
+    </div>
+
+    <div class="cf-cols">
+
+      <!-- Formulario — destino de todos los «Pide propuesta» de la home -->
+      <div class="cf-card" id="pide-propuesta">
+        <h3>Pide propuesta</h3>
+        <p>Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
+
+        <form id="homeLeadForm" novalidate>
+          <div class="cf-field">
+            <label for="hl-nombre">Nombre</label>
+            <input type="text" id="hl-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+          </div>
+          <div class="cf-field">
+            <label for="hl-telefono">Teléfono</label>
+            <input type="tel" id="hl-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
+          </div>
+          <div class="cf-field">
+            <label for="hl-sector">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
+            <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
+          </div>
+          <div class="cf-consent">
+            <input type="checkbox" id="hl-consent" name="consent" required
+                   aria-label="He leído y acepto la política de privacidad">
+            <span class="cf-consent-txt"><label for="hl-consent">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+          </div>
+          <button type="submit" class="cf-send" id="hl-send">Pide propuesta</button>
+          <p class="cf-reassure">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
+          <p class="cf-msg" id="hl-msg" role="status" aria-live="polite"></p>
+          <p class="cf-note">
+            <b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon).
+            <b>Datos que pedimos:</b> nombre, teléfono y sector.
+            <b>Para qué:</b> contactarte sobre tu consulta. No se ceden a terceros salvo los proveedores necesarios para prestarte el servicio.
+            <b>Derechos y detalle:</b> <a href="/politica-privacidad/">política de privacidad</a>.
+          </p>
+        </form>
+
+        <div class="cf-ok" id="hl-ok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
+          <b>¡Recibido! Te llamamos enseguida.</b>
+          <p>Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener" style="color:#9d70ff;text-decoration:none">643 199 580</a>.</p>
+        </div>
+      </div>
+
+      <!-- Al lado — reunión o WhatsApp -->
+      <div class="cf-card">
+        <h3>¿Prefieres hablarlo ya?</h3>
+        <p>Elige hueco en el calendario y hablamos por videollamada, o escríbenos por WhatsApp. Sin guion de ventas.</p>
+        <div class="cf-side">
+          <a class="cf-sec" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_home_cta_final',{via:'reunion',destination:'cal.com'})">
+            Agendar reunión
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </a>
+          <a class="cf-wa" href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="wmTrack('whatsapp_click',{placement:'home-cierre'})">WhatsApp · 643 199 580</a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="cf-contact">
+      <span>WhiteMoon</span><span aria-hidden="true">·</span><span>Majadahonda, Madrid</span><span aria-hidden="true">·</span><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--><span aria-hidden="true">·</span><a href="tel:+34643199580">643 199 580</a>
+    </p>
   </div>
-  <div class="cf-actions">
-    <a class="cf-prim" href="/contacto/" onclick="wmTrack('click_home_cta_final',{via:'propuesta',destination:'contacto'})">
-      Pide propuesta
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-    <a class="cf-sec" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_home_cta_final',{via:'reunion',destination:'cal.com'})">Agendar reunión</a>
-    <a class="cf-wa" href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="wmTrack('whatsapp_click',{placement:'home-cierre'})">WhatsApp</a>
-  </div>
-  <p class="cf-contact">
-    <span>WhiteMoon</span><span aria-hidden="true">·</span><span>Majadahonda, Madrid</span><span aria-hidden="true">·</span><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--><span aria-hidden="true">·</span><a href="tel:+34643199580">643 199 580</a>
-  </p>
 </section>
+
+<script>
+/* ─────────────────────────────────────────────────────────────────────────
+   Formulario del CTA final — patrón estándar de captación WhiteMoon.
+   Los DOS envíos van EN PARALELO, nunca encadenados:
+     1. INSERT en leads_web con la publishable key, keepalive y UN reintento
+        a los 800 ms. Supabase devuelve 503 transitorios de forma esporádica
+        y sin reintento ese lead se pierde.
+     2. Aviso a Telegram por la Edge Function whitemoon-notify, con
+        navigator.sendBeacon y Blob 'text/plain;charset=UTF-8'. Con
+        'application/json' salta el preflight CORS, Chrome descarta el POST y
+        sendBeacon devuelve true igual: el aviso se pierde en silencio. El
+        body sigue siendo JSON y la función lo parsea igual.
+   La publishable key no es secreta: por RLS el rol anónimo solo puede
+   INSERT. El token de Telegram vive en los Secrets de la Edge Function.
+   ───────────────────────────────────────────────────────────────────────── */
+(function () {
+  var SB_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SB_KEY = 'sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV';
+  var NOTIFY_FN = SB_URL + '/functions/v1/whitemoon-notify';
+  var ORIGEN = 'home-cta';
+  var INTERES = 'Formulario home';
+
+  var form = document.getElementById('homeLeadForm');
+  if (!form) return;
+  var btn = document.getElementById('hl-send');
+  var msg = document.getElementById('hl-msg');
+  var ok = document.getElementById('hl-ok');
+
+  function val(name) {
+    var el = form.elements[name];
+    return el ? (el.value || '').trim() : '';
+  }
+  function setMsg(kind, text) {
+    msg.className = 'cf-msg' + (kind ? ' is-' + kind : '');
+    msg.textContent = text || '';
+  }
+
+  // 1 · leads_web, con UN reintento a los 800 ms. Devuelve una promesa que
+  //     resuelve true solo si el INSERT acabó entrando.
+  function postLead(lead) {
+    return fetch(SB_URL + '/rest/v1/leads_web', {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(lead)
+    }).then(function (r) {
+      if (!r.ok) console.warn('[home] leads_web ' + r.status);
+      return r.ok;
+    }).catch(function (err) {
+      console.warn('[home] leads_web error', err);
+      return false;
+    });
+  }
+  function insertLead(lead) {
+    return postLead(lead).then(function (ok) {
+      if (ok) return true;
+      return new Promise(function (res) {
+        setTimeout(function () { postLead(lead).then(res); }, 800);
+      });
+    });
+  }
+
+  // 2 · aviso a Telegram. sendBeacon con text/plain para no disparar preflight.
+  function avisar(aviso) {
+    var payload = JSON.stringify(aviso);
+    var sent = false;
+    try {
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon(NOTIFY_FN, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+      }
+    } catch (e) { /* sin sendBeacon usable, cae al fetch de abajo */ }
+    if (!sent) {
+      fetch(NOTIFY_FN, {
+        method: 'POST',
+        keepalive: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY
+        },
+        body: payload
+      }).catch(function () { /* silencioso: el cliente no tiene que ver esto */ });
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var nombre = val('nombre'), telefono = val('telefono'), sector = val('sector');
+
+    var consent = form.elements.consent;
+
+    form.elements.nombre.removeAttribute('aria-invalid');
+    form.elements.telefono.removeAttribute('aria-invalid');
+    if (consent) consent.removeAttribute('aria-invalid');
+    if (!nombre || !telefono) {
+      var falta = !nombre ? 'nombre' : 'telefono';
+      form.elements[falta].setAttribute('aria-invalid', 'true');
+      form.elements[falta].focus();
+      setMsg('warn', 'Necesitamos tu nombre y un teléfono para poder llamarte.');
+      return;
+    }
+
+    // Gate de consentimiento RGPD: sin la casilla marcada no se avisa ni se
+    // inserta nada. Va DESPUES de validar nombre y telefono y ANTES de
+    // cualquier envio, asi que un return aqui deja el lead sin salir.
+    if (!consent || !consent.checked) {
+      if (consent) {
+        consent.setAttribute('aria-invalid', 'true');
+        consent.focus();
+      }
+      setMsg('warn', 'Para poder escribirte necesitamos que aceptes la política de privacidad.');
+      return;
+    }
+
+    setMsg('', '');
+    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+    var mensaje = 'Lead formulario home';
+
+    // Los dos envíos arrancan a la vez; el aviso no espera al INSERT.
+    avisar({
+      nombre: nombre,
+      telefono: telefono,
+      interes: sector,
+      mensaje: mensaje
+    });
+    insertLead({
+      nombre: nombre,
+      telefono: telefono,
+      sector: sector,
+      interes: INTERES,
+      mensaje: mensaje,
+      origen: ORIGEN,
+      fecha: new Date().toISOString()
+    }).then(function (entro) {
+      if (!entro) {
+        if (btn) { btn.disabled = false; btn.textContent = 'Pide propuesta'; }
+        msg.className = 'cf-msg is-error';
+        msg.innerHTML = 'No se pudo enviar. Prueba otra vez o escríbenos a ' +
+          '<!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off-->';
+        return;
+      }
+      if (typeof window.wmTrack === 'function') {
+        window.wmTrack('enviar_form_home', { placement: 'cta-final' });
+      }
+      form.style.display = 'none';
+      if (ok) ok.style.display = 'block';
+    });
+  });
+})();
+</script>
 
 <!-- FOOTER -->
 <!-- FOOTER ENTERPRISE — 4 columnas estilo Linear/Stripe -->
