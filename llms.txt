@@ -37,7 +37,6 @@ Clínicas dentales, gestorías, despachos de abogados, restaurantes, talleres me
 - [Calculadoras gratuitas](https://whitemoon.es/costes-eficiencia-empresarial-ia/): hub de calculadoras para pymes y autónomos, sin registro.
 Incluyen: nómina, ITP, ROI IA, cuota autónomos, finiquito, coste trabajador, no-shows, hipoteca.
 - [Prompts de IA para pymes](https://whitemoon.es/prompts-ia-pymes/): biblioteca de prompts listos para copiar y pegar en ChatGPT, Claude o Gemini (atención al cliente, ventas, marketing y redes, email, operaciones y SEO/AEO). Sin registro.
-- [Auditoría GEO/SEO gratuita](https://whitemoon.es/auditoria-geo-seo/): score GEO/SEO de la web y si el negocio aparece en ChatGPT, Grok y Perplexity.
 
 ## Artículos destacados (blog)
 - [GEO y AEO: Cómo Aparecer en ChatGPT y Grok antes que tu Competencia](https://whitemoon.es/blog/geo-aeo-posicionamiento-ia-pymes/)
@@ -47,7 +46,7 @@ Incluyen: nómina, ITP, ROI IA, cuota autónomos, finiquito, coste trabajador, n
 - [Bambu Sushi (Córdoba) — restaurante que toma pedidos y reservas con IA](https://whitemoon.es/casos-de-exito/bambu-sushi/): web propia, chatbot de pedidos y reservas por franja horaria con numero de pedido automatico, SEO local y medicion de eventos.
 
 ## Stack tecnológico
-Claude API (Anthropic), Retell AI, ElevenLabs, Supabase (PostgreSQL + pgvector), GitHub Pages, RAG con Voyage AI embeddings.
+Claude API (Anthropic), Supabase (PostgreSQL + pgvector), GitHub Pages, RAG con Voyage AI embeddings.
 
 ## Diferenciadores
 - Operativo en 7 días
@@ -71,16 +70,13 @@ Depende del caso: si va sobre una web existente o dentro de una web nueva, las i
 En 7 días.
 
 ### ¿Hay permanencia?
-No. Ningún producto tiene permanencia; basta con avisar 30 días antes de cancelar.
+No. Ningún producto tiene permanencia.
 
 ### ¿Para qué sectores sirve?
 Clínicas dentales, gestorías, despachos de abogados, restaurantes, talleres mecánicos, inmobiliarias, peluquerías y estética, gimnasios, veterinarias y academias.
 
 ### ¿Hace falta tener web?
 No. Spark se instala en la web que el negocio ya tiene. Core Spark Web incluye la web nueva.
-
-### ¿De quién son los leads y las conversaciones?
-Del cliente. Al cancelar se le entregan el código fuente y los datos del agente para que pueda migrar.
 
 ### ¿Se puede probar antes de contratar?
 Sí. En https://whitemoon.es/spark/ hay demos por sector (clínica dental, peluquería, gestoría, restaurante y más) para pedir una cita de prueba.
