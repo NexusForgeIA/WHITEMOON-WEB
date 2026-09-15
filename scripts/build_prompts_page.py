@@ -561,7 +561,7 @@ HTML = """<!DOCTYPE html>
   pintar();
 }})();
 </script>
-<script src="/orion-widget.js?v=2026072102" defer></script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 </body>
 </html>
 """.format(

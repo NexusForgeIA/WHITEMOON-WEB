@@ -271,6 +271,8 @@ footer{background:#050509;border-top:1px solid var(--border2);padding:64px 52px 
 
 /* CHATBOT FAB */
 .cb-fab-wrap{position:fixed;bottom:26px;right:26px;z-index:500}
+/* Lanzador de contacto (assets/wm-launcher.js) encima de la burbuja del chat. */
+:root{--wml-base:100px;--wml-base-m:92px}
 .cb-fab{width:60px;height:60px;background:linear-gradient(135deg,var(--p),var(--p2));border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;position:relative;transition:transform .2s;box-shadow:0 10px 30px -8px var(--glow)}
 .cb-fab:hover{transform:scale(1.08)}
 .cb-fab svg{position:relative;z-index:2}
@@ -925,6 +927,6 @@ function saveLead(){
   }catch(e){console.warn('[electricistas-demo] notify error',e);}
 }
 </script>
-<script src="/orion-widget.js?v=2026072102" defer></script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 </body>
 </html>

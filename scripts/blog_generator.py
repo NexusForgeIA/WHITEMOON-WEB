@@ -520,7 +520,7 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
 
 {FOOTER_BLOCK}
 
-<script src="/orion-widget.js?v=2026060801" defer></script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 </body>
 </html>
 """
