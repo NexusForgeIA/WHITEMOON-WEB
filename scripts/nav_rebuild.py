@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
-Menu resultante:  Productos (desplegable: Spark · Core Spark Web) · Marketing ·
+Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web) · Marketing ·
                   Contacto + un unico CTA: "Agendar reunion" (cal.com).
 
 Footer: el de 5 columnas de la home (Marca · Servicios · Recursos · Comparativas
@@ -92,6 +92,7 @@ def nav_html(flow: bool) -> str:
     </a>
 
     <div class="wm-nav__center">
+      <a href="/inteligencia-artificial/">IA</a>
       <div class="wm-nav__dd" aria-expanded="false">
         <button type="button" aria-haspopup="true" aria-expanded="false">Productos{CARET}</button>
         <div class="wm-nav__menu" role="menu">
@@ -111,6 +112,7 @@ def nav_html(flow: bool) -> str:
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
   <button class="wm-drawer__close" type="button" aria-label="Cerrar menú">{CLOSE}</button>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
   <span class="wm-drawer__label">Productos</span>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
@@ -271,7 +273,13 @@ def menu_destinations(nav: str) -> set[str]:
 
 
 def target_pages() -> list[str]:
-    """Casta 1: paginas con menu real (>=2 destinos internos en el <nav>)."""
+    """Casta 1: paginas que ya llevan la navbar unificada (wm-nav__row).
+
+    Antes tambien entraban las de >=2 destinos internos en el <nav>, pero ese
+    censo arrastraba 52 landings de conversion (agencia-ia-*, comparativas,
+    agentes-ia...) cuyo nav minimo es intencional: no se tocan en barridos.
+    Una pagina de paseo nueva nace ya con el esqueleto wm-nav y entra sola.
+    """
     out = []
     for dirpath, dirnames, filenames in os.walk(ROOT):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS]
@@ -285,7 +293,7 @@ def target_pages() -> list[str]:
             nav = NAV_RX.search(html)
             if not nav:
                 continue
-            if "wm-nav__row" in html or len(menu_destinations(nav.group(0))) >= 2:
+            if "wm-nav__row" in html:
                 out.append(rel)
     return sorted(out)
 

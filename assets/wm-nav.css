@@ -1,7 +1,7 @@
 /* WhiteMoon · navbar y footer unificados — fuente de verdad del header y el
  * footer de todas las paginas de paseo (markup: scripts/nav_rebuild.py).
  *
- * Menu: Productos (desplegable: Spark · Core Spark Web) · Marketing · Contacto
+ * Menu: IA · Productos (desplegable: Spark · Core Spark Web) · Marketing · Contacto
  *       + un unico CTA destacado: Agendar reunion (cal.com).
  *
  * Footer: 5 columnas (Marca · Servicios · Recursos · Comparativas · Contacto)
@@ -111,7 +111,7 @@
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
 /* Los cortes se calcularon para el menu de seis destinos, que sigue vivo en
-   /precios/ (LEGACY). Con tres destinos el menu nuevo cabe de sobra en todos
+   /precios/ (LEGACY). Con cuatro destinos el menu nuevo cabe de sobra en todos
    ellos, asi que se mantienen tal cual: un solo juego de cortes para ambos. */
 /* Sin cota inferior a proposito: entre max-width:920px y min-width:921px queda
    un hueco para los anchos fraccionarios (920.5px), y ahi el nav se quedaba sin
