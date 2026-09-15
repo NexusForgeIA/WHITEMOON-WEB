@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora ROI Agente IA · WhiteMoon</title>
-<meta name="description" content="Calculadora ROI Agente IA gratis. Calcula tu retorno con un Agente IA según visitas, ticket medio y tasa de conversión. Pack Spark, Core Spark Web o Core RAG.">
+<meta name="description" content="Calculadora ROI Agente IA gratis. Calcula tu retorno según visitas, ticket medio, conversión y tus propios supuestos de mejora y coste.">
 <meta name="keywords" content="calculadora roi agente ia, roi chatbot, calculadora retorno inversion ia, ahorro agente ia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/calculadora-roi-agente-ia/">
 <meta property="og:title" content="Calculadora ROI Agente IA · WhiteMoon">
-<meta property="og:description" content="Calcula en 30 segundos cuánto te ahorras con un Agente IA. Sliders interactivos, resultado al instante.">
+<meta property="og:description" content="Calculadora ROI Agente IA gratis. Calcula tu retorno según visitas, ticket medio, conversión y tus propios supuestos de mejora y coste.">
 <meta property="og:url" content="https://whitemoon.es/calculadora-roi-agente-ia/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -103,31 +103,35 @@
           <input type="range" id="sl-conv" class="calc-slider" min="1" max="10" value="2" step="1" oninput="calcROI()">
         </div>
         <div class="calc-row">
-          <div class="calc-label"><span>Pack que quieres comparar</span></div>
-          <select id="sl-pack" class="calc-select" onchange="calcROI()">
-            <option value="spark" data-setup="499" data-monthly="99" data-conv-boost="2.5">Spark · 499€ setup + 99€/mes</option>
-            <option value="core" data-setup="899" data-monthly="99" data-conv-boost="3">Core Spark Web · 899€ setup + 99€/mes (incluye web)</option>
-            <option value="orion-agent" data-setup="799" data-monthly="99" data-conv-boost="3.5">Orion IA Agent · 799€ setup + 99€/mes</option>
-          </select>
+          <div class="calc-label"><span>Mejora de conversión que esperas · tu supuesto</span><span class="calc-val" id="r-boost">0 pts</span></div>
+          <input type="range" id="sl-boost" class="calc-slider" min="0" max="10" value="0" step="0.5" oninput="calcROI()">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><span>Cuota mensual de tu propuesta (€) · tu supuesto</span></div>
+          <input type="number" id="in-cuota" class="calc-select" min="0" step="1" placeholder="Tu cifra" oninput="calcROI()">
+        </div>
+        <div class="calc-row">
+          <div class="calc-label"><span>Puesta en marcha de tu propuesta (€) · tu supuesto</span></div>
+          <input type="number" id="in-setup" class="calc-select" min="0" step="10" placeholder="Tu cifra" oninput="calcROI()">
         </div>
 
         <div class="calc-out">
           <div class="calc-out-card">
-            <div class="calc-out-num" id="r-mensual">+450 €</div>
+            <div class="calc-out-num" id="r-mensual">—</div>
             <div class="calc-out-lbl">Ingresos extra/mes</div>
           </div>
           <div class="calc-out-card">
-            <div class="calc-out-num" id="r-anual">3.012 €</div>
-            <div class="calc-out-lbl">Ahorro/ingreso anual neto</div>
+            <div class="calc-out-num" id="r-anual">—</div>
+            <div class="calc-out-lbl">Ingreso anual neto (menos la cuota)</div>
           </div>
           <div class="calc-out-card">
-            <div class="calc-out-num" id="r-meses">2 meses</div>
-            <div class="calc-out-lbl">Recuperar setup</div>
+            <div class="calc-out-num" id="r-meses">—</div>
+            <div class="calc-out-lbl">Meses para recuperar la puesta en marcha</div>
           </div>
         </div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:8px 0 18px;">
-          Cálculo orientativo basado en conversión media observada en clientes WhiteMoon. El resultado real depende del sector, calidad del tráfico y tasa de conversión específica.
+          Cálculo orientativo con tus propios supuestos: no usamos medias ni resultados de clientes. El resultado real depende del sector, la calidad del tráfico y tu conversión.
         </p>
 
         <div style="text-align:center;">
@@ -170,7 +174,7 @@
     <div class="wrap" style="text-align:center;">
       <span class="sec-label">¿Cómo se calcula?</span>
       <h2 class="sec-h">Fórmula transparente, sin trucos</h2>
-      <p style="color:var(--muted);max-width:720px;margin:16px auto 0;line-height:1.7;">El Agente IA captura las visitas que llegan fuera de horario (el porcentaje lo pones tú arriba, mirando tu propia analítica) y aumenta la tasa de conversión sumando un suelo según el pack: Spark +2,5pts, Core Spark Web +3pts, Orion Agent +3,5pts, Core RAG +4pts. La diferencia mensual menos la cuota = ROI mensual. El setup se divide entre ROI mensual = meses para recuperar.</p>
+      <p style="color:var(--muted);max-width:720px;margin:16px auto 0;line-height:1.7;">La calculadora suma a tu conversión actual los puntos de mejora que tú supongas y calcula los ingresos extra al mes. A eso le resta la cuota que pongas: ese es tu resultado mensual. La puesta en marcha dividida entre ese resultado da los meses para recuperarla. Todas las cifras de abajo salen de lo que pones arriba.</p>
     </div>
   </section>
 
@@ -232,26 +236,28 @@ function calcROI(){
   var vis = parseInt(document.getElementById('sl-visitas').value, 10);
   var ticket = parseInt(document.getElementById('sl-ticket').value, 10);
   var conv = parseFloat(document.getElementById('sl-conv').value);
-  var pack = document.getElementById('sl-pack');
-  var opt = pack.options[pack.selectedIndex];
-  var setup = parseInt(opt.getAttribute('data-setup'), 10);
-  var monthly = parseInt(opt.getAttribute('data-monthly'), 10);
-  var convBoost = parseFloat(opt.getAttribute('data-conv-boost'));
+  // Mejora, cuota y puesta en marcha son supuestos del usuario: no hay cifras nuestras.
+  var boost = parseFloat(document.getElementById('sl-boost').value) || 0;
+  var monthly = parseFloat(document.getElementById('in-cuota').value) || 0;
+  var setup = parseFloat(document.getElementById('in-setup').value) || 0;
 
   document.getElementById('r-visitas').textContent = vis.toLocaleString('es-ES');
   document.getElementById('r-ticket').textContent = ticket.toLocaleString('es-ES') + ' €';
   document.getElementById('r-conv').textContent = conv + ' %';
+  document.getElementById('r-boost').textContent = boost.toLocaleString('es-ES') + ' pts';
 
-  var ingresosSin = vis * (conv / 100) * ticket;
-  var ingresosCon = vis * ((conv + convBoost) / 100) * ticket;
-  var extraMes = ingresosCon - ingresosSin;
-  var ahorroAnualNeto = (extraMes * 12) - (monthly * 12);
-  var roiMensual = extraMes - monthly;
-  var meses = roiMensual > 0 ? Math.ceil(setup / roiMensual) : 99;
-
-  document.getElementById('r-mensual').textContent = '+' + Math.round(extraMes).toLocaleString('es-ES') + ' €';
-  document.getElementById('r-anual').textContent = Math.round(ahorroAnualNeto).toLocaleString('es-ES') + ' €';
-  document.getElementById('r-meses').textContent = (meses <= 24 ? meses : '24+') + ' meses';
+  var extraMes = vis * (boost / 100) * ticket;
+  var netoMes = extraMes - monthly;
+  var rM = document.getElementById('r-mensual'), rA = document.getElementById('r-anual'), rS = document.getElementById('r-meses');
+  if (boost <= 0) { rM.textContent = '—'; rA.textContent = '—'; rS.textContent = '—'; return; }
+  rM.textContent = '+' + Math.round(extraMes).toLocaleString('es-ES') + ' €';
+  rA.textContent = Math.round(netoMes * 12).toLocaleString('es-ES') + ' €';
+  if (setup > 0 && netoMes > 0) {
+    var meses = Math.ceil(setup / netoMes);
+    rS.textContent = (meses <= 24 ? meses : '24+') + ' meses';
+  } else {
+    rS.textContent = '—';
+  }
 }
 calcROI();
 </script>
