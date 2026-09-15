@@ -53,20 +53,20 @@ SKIP_SITEMAP_FILES = {"404.html"}
 # (Core Orion, Core Spark Web, Core RAG, Orion IA Agent). 1.499€ ya NO es
 # obsoleto: es el nuevo setup de Core Orion.
 BAD_PRICES = ["4.500€", "8.500€", "2.899€", "1.800€", "3.200€", "999€"]
-# El check 8 solo aplica a páginas de packs / precios: ahí un precio obsoleto
-# es un error real. En las calculadoras estas cifras son ejemplos legítimos.
-PACK_PAGES = {
+# La web ya no publica tarifa: los productos se venden con propuesta a medida.
+# El check 8 exige CERO cifras de precio (texto visible, <meta> y JSON-LD) en las
+# páginas que antes las llevaban. En calculadoras y blog las cifras en € son
+# importes de ejemplo legítimos, por eso no se aplica a todo el sitio.
+PRICE_FREE_PAGES = {
     "index.html",
-    "precios/index.html",
     "spark/index.html",
-    "orion-agent/index.html",
     "core/index.html",
-    "core-rag/index.html",
-    "auditoria-ia/index.html",
-    "servicios/index.html",
-    "white-moon-system/index.html",
-    "orion/index.html",
+    "marketing/index.html",
+    "costes-eficiencia-empresarial-ia/index.html",
 }
+PRICE_FIGURE_RX = re.compile(r"\d[\d.,]*\s?€|€\s?\d[\d.,]*")
+META_PRICE_RX = re.compile(r'<meta[^>]+content="([^"]*\d[\d.,]*\s?€[^"]*)"', re.I)
+LD_PRICE_RX = re.compile(r'"(?:price|priceRange|lowPrice|highPrice)"\s*:\s*"?[^",}\]]*')
 # Productos retirados (texto visible, case-sensitive para evitar falsos positivos).
 # Los checks 9 y 13 ya recorren el texto visible de TODAS las páginas, /blog/
 # incluido: para retirar un producto basta con añadirlo aquí.
@@ -210,10 +210,9 @@ def faq_pairs_schema(html):
 
 
 # ── Check 13 · precios muertos en la prosa ─────────────────────────────────
-# El check 8 solo mira las 10 páginas de PACK_PAGES. El 13 recorre TODAS las
+# El check 8 solo mira las páginas de PRICE_FREE_PAGES. El 13 recorre TODAS las
 # páginas (blog incluido), que es por donde se colaron los tramos inventados
 # de 4.500/8.500€ de setup y las cuotas de 249/449€/mes.
-CATALOG_FILE = "precios/index.html"
 
 # Número COMPLETO: los lookarounds impiden que 999 case dentro de 5.999 o que
 # 4.500 case dentro de 14.500 — el falso positivo que más ruido daba.
@@ -344,53 +343,11 @@ def sitemap_locs():
     return re.findall(r"<loc>\s*([^<]+?)\s*</loc>", raw)
 
 
-# ── Precios vigentes (leídos del catálogo, no hardcodeados) ────────────────
+# ── Normalización de cifras ────────────────────────────────────────────────
 def normalize_price(raw):
     """'4.500' → 4500. None si no es un entero limpio."""
     txt = str(raw).replace(".", "").replace("€", "").strip()
     return int(txt) if txt.isdigit() else None
-
-
-def _collect_prices(node, out):
-    """Recoge precios de un OfferCatalog: campos `price` y cifras con € en los textos."""
-    if isinstance(node, dict):
-        for key, value in node.items():
-            if key == "price" and isinstance(value, (str, int, float)):
-                val = normalize_price(value)
-                if val is not None:
-                    out.add(val)
-            elif isinstance(value, str):
-                for m in re.finditer(r"(\d{1,3}(?:\.\d{3})+|\d+)\s*€", value):
-                    val = normalize_price(m.group(1))
-                    if val is not None:
-                        out.add(val)
-            else:
-                _collect_prices(value, out)
-    elif isinstance(node, list):
-        for item in node:
-            _collect_prices(item, out)
-
-
-def catalog_prices():
-    """Precios vigentes del OfferCatalog de /precios/ (setup y cuotas).
-
-    Se leen del catálogo para que el check no se quede viejo: si un día un
-    precio de BAD_PRICES vuelve a la tarifa, deja de marcarse solo.
-    """
-    html = read_text(CATALOG_FILE)
-    prices = set()
-    if not html:
-        return prices
-    for payload in re.findall(
-        r'<script[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', html, re.S
-    ):
-        if "OfferCatalog" not in payload:
-            continue
-        try:
-            _collect_prices(json.loads(payload), prices)
-        except (ValueError, json.JSONDecodeError):
-            continue
-    return prices
 
 
 def price_allowlisted(relpath, value, context):
@@ -444,7 +401,7 @@ def run_checks():
         5: {"title": "H1 único por página", "sev": "critico", "items": []},
         6: {"title": "Imágenes sin atributo alt", "sev": "critico", "items": []},
         7: {"title": "Imágenes sin width o height", "sev": "critico", "items": []},
-        8: {"title": "Precios incorrectos en páginas de packs", "sev": "critico", "items": []},
+        8: {"title": "Cifras de precio en páginas sin precios", "sev": "critico", "items": []},
         9: {"title": "Productos retirados en texto visible", "sev": "critico", "items": []},
         10: {"title": "Sitemap vs archivos físicos", "sev": "warning", "items": []},
         11: {"title": "Enlaces rotos en llms.txt (URLs sin archivo físico)", "sev": "critico", "items": []},
@@ -457,12 +414,9 @@ def run_checks():
 
     html_files = find_html_files()
 
-    # Precios muertos efectivos = BAD_PRICES que NO estén en el catálogo vigente.
-    vigentes = catalog_prices()
-    dead_values = {
-        v for v in (normalize_price(p) for p in BAD_PRICES)
-        if v is not None and v not in vigentes
-    }
+    # Precios retirados. Ya no hay tarifa publicada que pueda rehabilitar
+    # ninguno (antes se leía de /precios/, hoy una redirección): se vigilan tal cual.
+    dead_values = {v for v in (normalize_price(p) for p in BAD_PRICES) if v is not None}
 
     for relpath in html_files:
         html = read_text(relpath)
@@ -566,9 +520,11 @@ def run_checks():
             comment.extract()
         visible_text = soup.get_text(separator=" ")
 
-        # 8 · precios incorrectos (solo en páginas de packs/precios)
-        if relpath in PACK_PAGES:
-            found_prices = [p for p in BAD_PRICES if p in visible_text]
+        # 8 · cifras de precio en páginas que no publican precios
+        if relpath in PRICE_FREE_PAGES:
+            found_prices = sorted(set(PRICE_FIGURE_RX.findall(visible_text)))
+            found_prices += [f"meta «{m[:60]}»" for m in META_PRICE_RX.findall(html)]
+            found_prices += [f"JSON-LD {m}" for m in LD_PRICE_RX.findall(html)]
             if found_prices:
                 checks[8]["items"].append(f"`{relpath}` — {', '.join(found_prices)}")
 
