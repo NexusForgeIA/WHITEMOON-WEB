@@ -24,7 +24,7 @@
   - Core RAG: 2.499€ setup + 199€/mes · Sin permanencia · Agente IA entrenado con documentos propios del cliente — SIN web
   - Auditoría GEO IA: 899€ pago único · informe en 24h
   - Calculadora ITP Pro: 599€ setup + 99€/mes · SaaS para gestorías y administradores de fincas
-- Precios OBSOLETOS que el SEO Guardian bloquea en páginas de packs (check 8, `BAD_PRICES` en `seo_guardian.py`): 4.500€, 8.500€, 2.899€, 1.800€, 3.200€, 999€. No reintroducirlos.
+- Precios OBSOLETOS que el SEO Guardian bloquea en texto visible de cualquier página (check 13, `BAD_PRICES` en `seo_guardian.py`): 4.500€, 8.500€, 2.899€, 1.800€, 3.200€, 999€. No reintroducirlos.
 - Permanencia: ningún pack tiene permanencia. 30 días de aviso para cancelar.
 - Core RAG: SIN diseño web incluido — solo agente IA RAG
 - Laura IA NUNCA recomienda Core Spark Web ni Core Orion si el cliente ya tiene web (→ Spark u Orion IA Agent)
