@@ -27,13 +27,13 @@
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"¿Cuánto dinero pierde una pyme española por no automatizar?","acceptedAnswer":{"@type":"Answer","text":"Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes)."}},
+{"@type":"Question","name":"¿Cuánto dinero pierde una pyme española por no automatizar?","acceptedAnswer":{"@type":"Answer","text":"Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente la cuota mensual de una solución WhiteMoon, que se prepara a medida."}},
 {"@type":"Question","name":"¿Cuál es el coste exacto de una consulta perdida?","acceptedAnswer":{"@type":"Answer","text":"Depende del ticket medio del negocio y de la tasa de conversión de consulta a cliente. Para un negocio con ticket medio 80€ y conversión 25%, cada consulta perdida cuesta 20€ de ingresos esperados. Con 4 consultas perdidas al día durante 22 días laborables, son 1.760€/mes. Son supuestos de ejemplo, no una media medida: cambia los tuyos en la calculadora y el resultado se rehace."}},
 {"@type":"Question","name":"¿Por qué el 78% de los leads se pierden por respuesta lenta?","acceptedAnswer":{"@type":"Answer","text":"Estudios de Harvard Business Review y Lead Connect demuestran que la probabilidad de cualificar un lead cae 10× si la respuesta tarda más de 5 minutos, y 60× si pasa de 1 hora. Como la mayoría de leads B2C llegan fuera del horario comercial (tardes, noches, fines de semana), sin respuesta automática se pierden. La cifra 78% representa el porcentaje de leads que NO reciben respuesta en menos de 5 minutos en pymes sin automatización."}},
 {"@type":"Question","name":"¿Cuánto cuesta una hora de procesos manuales repetitivos?","acceptedAnswer":{"@type":"Answer","text":"El coste total empleado/hora en España (salario bruto + cotizaciones + seguros + costes indirectos) ronda los 15-22€/h para perfiles administrativos y atención al cliente. Si el equipo dedica 3h/día a tareas repetitivas (responder dudas frecuentes, gestionar agendas, enviar recordatorios), el coste mensual es 3h × 22 días × 18€ = 1.188€/mes. Automatizando ese tiempo, se libera para actividades de mayor valor."}},
 {"@type":"Question","name":"¿Cómo se calcula el coste de los no-shows?","acceptedAnswer":{"@type":"Answer","text":"Un no-show es una cita o reserva confirmada a la que el cliente no se presenta. Coste = (citas/mes × tasa no-show × ticket medio). Ejemplo clínica dental: 300 citas/mes × 20% no-show × 50€ ticket = 3.000€/mes en huecos vacíos no facturados. Los recordatorios automáticos por SMS 24h y 2h antes reducen el no-show del 20% al 7-10%, recuperando 1.500-2.000€/mes."}},
 {"@type":"Question","name":"¿Por qué se pierden clientes fuera de horario?","acceptedAnswer":{"@type":"Answer","text":"El 67% de las consultas B2C llegan fuera del horario comercial (de 19:00 a 9:00 en laborables y todo el fin de semana). Sin un sistema de atención 24/7, esos clientes contactan con la competencia que sí responde. En sectores como clínicas, talleres o restaurantes, eso representa entre el 30% y el 45% del potencial de captación mensual perdido."}},
-{"@type":"Question","name":"¿Cuánto cuesta implantar WhiteMoon para evitar todas estas pérdidas?","acceptedAnswer":{"@type":"Answer","text":"El plan Spark (499€ setup + 99€/mes, sin permanencia) cubre los 5 costes ocultos principales para una pyme tipo. Implementación en 7 días. Si el negocio necesita un agente conversacional 24/7 en su web, Orion IA Agent añade 799€ setup. Si tiene documentación propia (normativa, protocolos, contratos) que el agente debe conocer, Core RAG añade capacidad de búsqueda semántica. El ROI medio se alcanza en 1-3 meses."}},
+{"@type":"Question","name":"¿Cuánto cuesta implantar WhiteMoon para evitar todas estas pérdidas?","acceptedAnswer":{"@type":"Answer","text":"Depende de tu punto de partida. Si ya tienes web, Spark le añade un agente IA 24/7 que atiende consultas, hace seguimiento de leads y envía recordatorios. Si aún no tienes web, Core Spark Web te la monta con el agente dentro. Cada propuesta se prepara a medida, sin permanencia, y queda operativa en 7 días. Si trabajas con documentación propia (normativa, protocolos, contratos), el agente puede entrenarse con ella."}},
 {"@type":"Question","name":"¿Qué empresas se benefician más de automatizar?","acceptedAnswer":{"@type":"Answer","text":"Las pymes que cumplen estos criterios tienen ROI alto: ticket medio ≥80€, volumen de leads ≥10/día, atención al cliente repetitiva (FAQ similares), citas o reservas en su modelo de negocio, y dependencia del horario comercial. Sectores especialmente rentables: clínicas dentales y estéticas, despachos de abogados, gestorías, talleres mecánicos, restaurantes con reservas, inmobiliarias y formación."}}
 ]}
 </script>
@@ -302,7 +302,7 @@
             <div class="calc-field">
               <label for="cn-llamadas">Consultas al día</label>
               <input id="cn-llamadas" type="number" min="0" max="500" value="20" inputmode="numeric">
-              <span class="hint">Incluye formularios, chats web y consultas por voz.</span>
+              <span class="hint">Incluye formularios, chats web y llamadas.</span>
             </div>
             <div class="calc-field">
               <label for="cn-ticket">Ticket medio (€)</label>
@@ -378,16 +378,16 @@
       <p class="lead">Cuando los costes están cuantificados, la decisión deja de ser intuición: es matemática.</p>
 
       <div class="sol-grid">
-        <a class="sol-card" href="/orion-agent/" onclick="wmTrack('click_solucion',{from:'cna',to:'orion-agent'})">
+        <a class="sol-card" href="/spark/" onclick="wmTrack('click_solucion',{from:'cna',to:'spark'})">
           <span class="sol-tag">Producto · Agente IA</span>
-          <h3>Orion IA Agent</h3>
-          <p>Agente IA conversacional 24/7 embebido en tu web que atiende, cualifica y agenda sin intervención humana. Ataca directamente las consultas no atendidas y la atención fuera de horario.</p>
-          <span class="sol-cta">Ver Orion IA Agent <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+          <h3>Spark</h3>
+          <p>Agente IA conversacional 24/7 en la web que ya tienes: atiende, cualifica y agenda sin intervención humana. Ataca directamente las consultas no atendidas y la atención fuera de horario. Si aún no tienes web, Core Spark Web te la monta con el agente dentro.</p>
+          <span class="sol-cta">Ver Spark <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
         <a class="sol-card" href="/white-moon-system/" onclick="wmTrack('click_solucion',{from:'cna',to:'white-moon-system'})">
           <span class="sol-tag">Arquitectura · Sistema</span>
           <h3>WhiteMoon System</h3>
-          <p>Los 5 pilares completos: Orion AI, Core Spark Web AI, Spark, ROI Engine y Coste de no automatizar. Si quieres atacar los 5 costes ocultos a la vez con una sola plataforma, este es el punto de entrada.</p>
+          <p>Los 4 pilares completos: Spark, Core Spark Web, ROI Engine y Coste de no automatizar. Si quieres atacar los 5 costes ocultos a la vez con una sola plataforma, este es el punto de entrada.</p>
           <span class="sol-cta">Ver el sistema completo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </a>
       </div>
@@ -400,7 +400,7 @@
       <h2 style="font-family:'Sora','Inter',sans-serif;font-size:1.6rem;font-weight:700;color:#E8E8F0;letter-spacing:-.02em;margin:0 0 24px;text-align:center">Preguntas frecuentes</h2>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuánto dinero pierde una pyme española por no automatizar?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente el coste mensual de cualquier solución WhiteMoon (desde 99€/mes).</div>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Para una pyme tipo con 30-100 clientes/mes, el coste agregado de no automatizar suele superar los 9.000€/mes sumando los 5 costes ocultos principales: consultas sin respuesta (~4.000€), leads sin seguimiento rápido (~2.400€), procesos manuales repetitivos (~900€), no-shows sin recordatorio automático (~2.000€) y atención fuera de horario perdida a la competencia. Estas cifras superan ampliamente la cuota mensual de una solución WhiteMoon, que se prepara a medida.</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuál es el coste exacto de una consulta perdida?</summary>
@@ -424,7 +424,7 @@
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuánto cuesta implantar WhiteMoon para evitar todas estas pérdidas?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">El plan Spark (499€ setup + 99€/mes, sin permanencia) cubre los 5 costes ocultos principales para una pyme tipo. Implementación en 7 días. Si el negocio necesita un agente conversacional 24/7 en su web, Orion IA Agent añade 799€ setup. Si tiene documentación propia (normativa, protocolos, contratos) que el agente debe conocer, Core RAG añade capacidad de búsqueda semántica. El ROI medio se alcanza en 1-3 meses.</div>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Depende de tu punto de partida. Si ya tienes web, Spark le añade un agente IA 24/7 que atiende consultas, hace seguimiento de leads y envía recordatorios. Si aún no tienes web, Core Spark Web te la monta con el agente dentro. Cada propuesta se prepara a medida, sin permanencia, y queda operativa en 7 días. Si trabajas con documentación propia (normativa, protocolos, contratos), el agente puede entrenarse con ella.</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Qué empresas se benefician más de automatizar?</summary>

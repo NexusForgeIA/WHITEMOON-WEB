@@ -32,7 +32,7 @@
   "mainEntity":[
     {"@type":"Question","name":"¿Cuánto reducen los recordatorios IA los no-shows?","acceptedAnswer":{"@type":"Answer","text":"35-50% según sector. Clínicas dentales y estéticas: media 40% (del 18-22% al 7-10%). Clave: doble recordatorio (24h + 2h) + confirmación 1-click + opción reprogramar."}},
     {"@type":"Question","name":"¿Por qué los SMS manuales no funcionan igual?","acceptedAnswer":{"@type":"Answer","text":"1) Coste alto (0,03-0,08€ × volumen), 2) Tiempo del personal enviándolos, 3) Sin lógica condicional. Los recordatorios IA cuestan céntimos por interacción y gestionan reprogramaciones automáticamente."}},
-    {"@type":"Question","name":"¿Cuál es el ROI típico?","acceptedAnswer":{"@type":"Answer","text":"Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Cuota 99€/mes. ROI neto 2.201€/mes. Setup 799€ amortizado en <1 mes."}},
+    {"@type":"Question","name":"¿Cuál es el ROI típico?","acceptedAnswer":{"@type":"Answer","text":"Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Réstale la cuota de tu propuesta y divide la puesta en marcha entre lo que queda para ver el payback."}},
     {"@type":"Question","name":"¿Funciona en todos los sectores médicos?","acceptedAnswer":{"@type":"Answer","text":"Dental, estética, odontología: 40%. Fisio y rehabilitación: 30-35%. Psicología: 25-30%. Medicina general y especialidades: 35-45%."}}
   ]
 }
@@ -124,12 +124,16 @@
           <option value="50">−50% agresivo</option>
         </select>
       </div>
-      <div class="calc-row"><label class="calc-label" for="rr-cuota">Cuota mensual Orion IA (€)</label>
-        <select id="rr-cuota" class="calc-select" onchange="calcRecordatorios()">
-          <option value="99" selected>99 €/mes (Spark + Orion Agent)</option>
-          <option value="199">199 €/mes (Core RAG)</option>
+      <div class="calc-row"><label class="calc-label" for="rr-producto">Producto</label>
+        <select id="rr-producto" class="calc-select" onchange="calcRecordatorios()">
+          <option value="Spark" selected>Spark · ya tienes web</option>
+          <option value="Core Spark Web">Core Spark Web · aún no tienes web</option>
         </select>
       </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="rr-cuota">Cuota mensual de tu propuesta (€) · tu supuesto</label><input type="number" id="rr-cuota" class="calc-input" min="0" step="1" placeholder="Tu cifra" oninput="calcRecordatorios()"></div>
+      <div class="calc-row"><label class="calc-label" for="rr-setup">Puesta en marcha de tu propuesta (€) · tu supuesto</label><input type="number" id="rr-setup" class="calc-input" min="0" step="10" placeholder="Tu cifra" oninput="calcRecordatorios()"></div>
     </div>
 
     <div class="calc-out">
@@ -139,9 +143,9 @@
       <div class="calc-out-card"><div class="calc-out-num" id="rr-payback">—</div><div class="calc-out-lbl">Payback setup</div></div>
     </div>
 
-    <div class="calc-detail" id="rr-explain">No-shows actuales = citas × % no-shows. Coste no-shows = no-shows × precio consulta + coste recordatorios manuales. Ahorro = (no-shows × precio × reducción) + ahorro recordatorios − cuota IA. Payback = setup 799€ / ahorro neto mensual.</div>
+    <div class="calc-detail" id="rr-explain">No-shows actuales = citas × % no-shows. Coste no-shows = no-shows × precio consulta + coste recordatorios manuales. Ahorro = (no-shows × precio × reducción) + ahorro recordatorios − cuota IA. Payback = puesta en marcha de tu propuesta / ahorro neto mensual.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El ahorro real depende de la elasticidad de tu demanda y la calidad del seguimiento post-cancelación. Setup Spark 499€, Orion Agent 799€, ambos sin permanencia.</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El ahorro real depende de la elasticidad de tu demanda y la calidad del seguimiento post-cancelación. La cuota y la puesta en marcha son las de tu propuesta, sin permanencia.</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
@@ -149,7 +153,7 @@
     <h2 class="sec-h" style="margin-bottom:24px">FAQ Recordatorios IA</h2>
     <div class="faq-item"><div class="faq-q">¿Cuánto reducen los recordatorios IA los no-shows?</div><div class="faq-a">35-50% según sector. Clínicas dentales y estéticas: media 40% (del 18-22% al 7-10%). Clave: doble recordatorio (24h + 2h) + confirmación 1-click + opción reprogramar.</div></div>
     <div class="faq-item"><div class="faq-q">¿Por qué los SMS manuales no funcionan igual?</div><div class="faq-a">1) Coste alto (0,03-0,08€ × volumen), 2) Tiempo del personal enviándolos, 3) Sin lógica condicional. Los recordatorios IA cuestan céntimos por interacción y gestionan reprogramaciones automáticamente.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Cuál es el ROI típico?</div><div class="faq-a">Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Cuota 99€/mes. ROI neto 2.201€/mes. Setup 799€ amortizado en &lt;1 mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuál es el ROI típico?</div><div class="faq-a">Clínica 500 citas/mes × 20% no-shows × 60€ = 6.000€/mes en pérdidas. Reduciendo al 12% → recupera 2.400€/mes. Réstale la cuota de tu propuesta y divide la puesta en marcha entre lo que queda para ver el payback.</div></div>
     <div class="faq-item"><div class="faq-q">¿Funciona en todos los sectores médicos?</div><div class="faq-a">Dental, estética, odontología: 40%. Fisio y rehabilitación: 30-35%. Psicología: 25-30%. Medicina general y especialidades: 35-45%.</div></div>
   </div></div></section>
 
@@ -290,6 +294,8 @@ function calcRecordatorios(){
   var costeManual = Math.max(0, parseFloat(document.getElementById('rr-coste-manual').value)||0);
   var reduccion = Math.max(0, parseFloat(document.getElementById('rr-reduccion').value)||0) / 100;
   var cuota = Math.max(0, parseFloat(document.getElementById('rr-cuota').value)||0);
+  var setup = Math.max(0, parseFloat(document.getElementById('rr-setup').value)||0);
+  var producto = document.getElementById('rr-producto').value;
 
   var noshowsActuales = Math.round(citas * noshowsPct);
   var costePerdidas = noshowsActuales * precio;
@@ -301,8 +307,7 @@ function calcRecordatorios(){
   var ahorroRecordatorios = costeRecordatoriosManual * 0.85; // IA hace el 85% sin coste variable
   var ahorroNeto = ahorroNoshows + ahorroRecordatorios - cuota;
 
-  var setupSpark = 499;
-  var paybackMeses = ahorroNeto > 0 ? setupSpark / ahorroNeto : Infinity;
+  var paybackMeses = (setup > 0 && ahorroNeto > 0) ? setup / ahorroNeto : Infinity;
 
   document.getElementById('rr-actual').textContent = noshowsActuales.toLocaleString('es-ES');
   document.getElementById('rr-coste-mes').textContent = Math.round(costeTotalActual).toLocaleString('es-ES') + ' €';
@@ -316,7 +321,7 @@ function calcRecordatorios(){
   }
 
   document.getElementById('rr-explain').textContent =
-    'No-shows actuales = ' + Math.round(citas).toLocaleString('es-ES') + ' citas × ' + (noshowsPct*100).toFixed(0) + '% = ' + noshowsActuales.toLocaleString('es-ES') + '. Pérdida directa = ' + noshowsActuales.toLocaleString('es-ES') + ' × ' + Math.round(precio).toLocaleString('es-ES') + ' € = ' + Math.round(costePerdidas).toLocaleString('es-ES') + ' €/mes. Recordatorios manuales = ' + Math.round(costeRecordatoriosManual).toLocaleString('es-ES') + ' €/mes. Con IA: −' + (reduccion*100).toFixed(0) + '% no-shows (ahorro ' + Math.round(ahorroNoshows).toLocaleString('es-ES') + ' €) + ahorro recordatorios (' + Math.round(ahorroRecordatorios).toLocaleString('es-ES') + ' €) − cuota ' + Math.round(cuota).toLocaleString('es-ES') + ' € = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes. Setup Spark 499 €: payback ' + (isFinite(paybackMeses) ? paybackMeses.toFixed(1).replace('.', ',') + ' meses' : 'no aplicable') + '.';
+    'No-shows actuales = ' + Math.round(citas).toLocaleString('es-ES') + ' citas × ' + (noshowsPct*100).toFixed(0) + '% = ' + noshowsActuales.toLocaleString('es-ES') + '. Pérdida directa = ' + noshowsActuales.toLocaleString('es-ES') + ' × ' + Math.round(precio).toLocaleString('es-ES') + ' € = ' + Math.round(costePerdidas).toLocaleString('es-ES') + ' €/mes. Recordatorios manuales = ' + Math.round(costeRecordatoriosManual).toLocaleString('es-ES') + ' €/mes. Con IA: −' + (reduccion*100).toFixed(0) + '% no-shows (ahorro ' + Math.round(ahorroNoshows).toLocaleString('es-ES') + ' €) + ahorro recordatorios (' + Math.round(ahorroRecordatorios).toLocaleString('es-ES') + ' €) − cuota ' + Math.round(cuota).toLocaleString('es-ES') + ' € = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes. Puesta en marcha de ' + producto + ' ' + Math.round(setup).toLocaleString('es-ES') + ' €: payback ' + (isFinite(paybackMeses) ? paybackMeses.toFixed(1).replace('.', ',') + ' meses' : 'no aplicable') + '.';
 }
 calcRecordatorios();
 </script>
