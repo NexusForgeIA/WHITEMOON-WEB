@@ -4,8 +4,9 @@ import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 // Claude (haiku) redacta solo las secciones narrativas (JSON); la funcion
 // ensambla el HTML final con datos deterministas (producto, plazo, condiciones, CTA).
 // Modelo de 2 productos con propuesta a medida: la propuesta no lleva precios,
-// ni cifras de rendimiento, ni productos retirados. Si un texto de Claude
-// incumple esas reglas se descarta y se usa un texto fijo.
+// ni cifras de rendimiento, ni productos retirados, ni otro plazo que
+// "7 dias laborables", ni casos inventados. Si un texto de Claude incumple
+// esas reglas se le pide reescribir y, si reincide, se corrige o se descarta.
 
 const WA = '643199580';
 const WEB = 'whitemoon.es';
@@ -27,9 +28,57 @@ const PRODUCTOS: Record<string, { label: string; cap: string; features: string[]
 // Plazo y condiciones. Ningun producto tiene permanencia.
 const TERMS = { plazo: '7 dias laborables', permanencia: 'Sin permanencia' };
 
+// El unico caso real que puede aparecer: Bambu Sushi, y solo en restaurantes.
+// Lo escribe la plantilla, nunca Claude, para que no se inventen detalles.
+const SECTORES_BAMBU = ['restaurante', 'restaurantes'];
+const BAMBU_HTML =
+  "<p><strong>Bambu Sushi (Córdoba)</strong> es un restaurante que toma pedidos y reservas con IA: web propia, chatbot de pedidos y reservas por franja horaria con número de pedido automático, SEO local y medición de eventos.</p>" +
+  "<p><a href='https://whitemoon.es/casos-de-exito/bambu-sushi/' target='_blank' rel='noopener'>Ver el caso completo</a></p>";
+
+// <filtros>
 // Lo que una propuesta nunca puede decir: precios, porcentajes o cifras de
 // rendimiento, productos retirados, voz y preaviso de cancelacion.
 const PROHIBIDO = /€|\beur(?:os)?\b|%|[+\-−]\s?\d+\s?(?:h\b|x\b|veces)|\b\d+\s?(?:x|veces)\b|\bOrion\b|Core Orion|WhiteMoon 360|Core RAG|Mini Core|\bvoz\b|30 d[ií]as/i;
+
+// Casos o clientes presentados como reales. El unico caso lo pone la plantilla.
+const CASO = /casos?\s+de\s+[eé]xito|casos?\s+real(?:es)?\b|clientes?\s+real(?:es)?\b|nuestros\s+clientes|testimoni|Bambu/i;
+
+// Plazos de puesta en marcha distintos de "7 dias laborables".
+// PLAZO_SIEMPRE son plazo en cualquier frase; PLAZO_TIEMPO solo cuenta como
+// plazo si la frase habla de montar o poner en marcha el agente (DESPLIEGUE),
+// para no confundirlo con "responde de inmediato" o "citas en el dia".
+const PLAZO_SIEMPRE = /\ben\s+cuesti[oó]n\s+de\s+(?:horas|minutos|d[ií]as)\b|\bhoy\s+mismo\b|\ben\s+(?:unas|pocas|unos|pocos)\s+(?:horas|minutos)\b/gi;
+const PLAZO_TIEMPO = /(?:\ben\s+)?(?<!\d\s)(?<!\d)\b(?:horas|minutos)\b|\ben\s+el\s+(?:mismo\s+)?d[ií]a\b|\bde\s+inmediato\b|\binmediatamente\b|\ben\s+(?:24|48|72)\s?h(?:oras)?\b|\ben\s+(?:unos\s+|pocos\s+)?(?!7\s+d[ií]as\s+laborables)\d+\s+d[ií]as(?:\s+(?:laborables|h[aá]biles))?|\ben\s+(?:una|unas|pocas)\s+semanas?\b/gi;
+const DESPLIEGUE = /despl[ie]+g|instal|implant|implement|puesta\s+en\s+marcha|pone(?:r|mos)?\s+en\s+marcha|se\s+integra|integramos|integrarlo|configur|arranc|se\s+activa|activamos|activarlo|tenerlo\s+(?:operativo|listo|funcionando)|(?:est[aá]|estar[aá]|queda|quedar[aá])\s+(?:operativo|listo|funcionando)|listo\s+para\s+funcionar/i;
+const PLAZO_FIJO = 'en 7 días laborables';
+
+const sinG = (r: RegExp) => new RegExp(r.source, r.flags.replace('g', ''));
+const frases = (t: string) => t.split(/(?<=[.!?])\s+|(?=<\/?(?:p|li)\b)/);
+
+const plazoMal = (t: string) =>
+  sinG(PLAZO_SIEMPRE).test(t) || frases(t).some((f) => DESPLIEGUE.test(f) && sinG(PLAZO_TIEMPO).test(f));
+
+const arreglaPlazo = (t: string) =>
+  frases(t).map((f) => {
+    let g = f.replace(PLAZO_SIEMPRE, PLAZO_FIJO);
+    if (DESPLIEGUE.test(g)) g = g.replace(PLAZO_TIEMPO, PLAZO_FIJO);
+    return g;
+  }).join(' ').replace(/\s+(<\/?(?:p|li))/g, '$1');
+
+// Texto final de un campo de Claude: se descarta si trae algo prohibido o un
+// caso presentado como real; un plazo distinto se corrige a "7 dias laborables".
+const campo = (v: unknown) => {
+  let s = String(v ?? '');
+  if (!s || PROHIBIDO.test(s) || CASO.test(s)) return '';
+  if (plazoMal(s)) s = arreglaPlazo(s);
+  return plazoMal(s) ? '' : s;
+};
+
+const incumple = (ai: Record<string, unknown>) =>
+  [ai.resumen_ejecutivo, ai.problema, ai.solucion, ai.aplicacion, ...(Array.isArray(ai.features) ? ai.features : [])]
+    .map((v) => String(v ?? ''))
+    .some((s) => PROHIBIDO.test(s) || CASO.test(s) || plazoMal(s));
+// </filtros>
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -38,15 +87,6 @@ const corsHeaders = {
 
 const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }) as Record<string, string>)[c]);
-
-const limpio = (v: unknown) => {
-  const s = String(v ?? '');
-  return s && !PROHIBIDO.test(s) ? s : '';
-};
-
-const incumple = (ai: Record<string, unknown>) =>
-  [ai.resumen_ejecutivo, ai.problema, ai.solucion, ai.caso_exito, ...(Array.isArray(ai.features) ? ai.features : [])]
-    .some((v) => PROHIBIDO.test(String(v ?? '')));
 
 async function redactar(apiKey: string, system: string, user: string): Promise<{ ai?: Record<string, unknown>; error?: Response }> {
   const resp = await fetch('https://api.anthropic.com/v1/messages', {
@@ -97,6 +137,7 @@ Deno.serve(async (req: Request) => {
     const P = PRODUCTOS[packKey];
     if (!P) return json({ error: 'pack no valido', permitidos: Object.keys(PRODUCTOS) }, 400);
     const T = TERMS;
+    const conBambu = SECTORES_BAMBU.includes(String(sector).toLowerCase().trim());
 
     const apiKey = Deno.env.get('ANTHROPIC_API_KEY');
     if (!apiKey) return json({ error: 'ANTHROPIC_API_KEY no configurada' }, 500);
@@ -110,8 +151,11 @@ Deno.serve(async (req: Request) => {
       '- problema: 1-2 parrafos en HTML sobre el problema concreto de su sector, partiendo del dolor indicado.',
       '- solucion: 1-2 parrafos en HTML que presentan el producto recomendado aplicado a su sector.',
       '- features: array de 6 features concretas del sector y del producto (frases cortas).',
-      '- caso_exito: 1 parrafo en HTML. Si el sector es restaurante, usa el cliente real Bambu Sushi (Cordoba: web + SEO + chatbot de reservas y pedidos). Para CUALQUIER OTRO sector, explica de forma cualitativa como ayuda un agente IA a un negocio de ese sector, SIN nombres de clientes, SIN testimonios y SIN cifras.',
-      'Reglas estrictas: no escribas precios, importes ni el simbolo del euro; no escribas porcentajes, multiplicadores ni cifras de resultados o de ahorro (el retorno se calcula en la llamada con los numeros reales del cliente); no menciones canales distintos del texto en la web, llamadas telefonicas ni ningun otro producto; no menciones plazos de cancelacion; HTML simple (solo <p>, <strong>, <em>); todas las claves con comillas dobles JSON estandar.',
+      '- aplicacion: 1 parrafo en HTML con un escenario ILUSTRATIVO, en segunda persona (tu clinica, tu restaurante...), de como trabajaria el agente en el negocio del cliente. No es un cliente real: no uses nombres de negocios ni hables de otros clientes.',
+      'Reglas estrictas: no escribas precios, importes ni el simbolo del euro; no escribas porcentajes, multiplicadores ni cifras de resultados o de ahorro (el retorno se calcula en la llamada con los numeros reales del cliente); no menciones canales distintos del texto en la web, llamadas telefonicas ni ningun otro producto; no menciones plazos de cancelacion.',
+      'Plazo: el unico plazo de puesta en marcha que existe es 7 dias laborables. Mejor no menciones plazos; si lo haces, solo ese. Nunca digas que se instala o funciona en horas, en minutos, hoy mismo, en el dia, de inmediato ni en 24h o 48h.',
+      'Casos: no menciones clientes, casos de exito, casos reales ni testimonios, ni inventes ninguno.',
+      'Formato: HTML simple (solo <p>, <strong>, <em>); todas las claves con comillas dobles JSON estandar.',
     ].join('\n');
 
     const USER = [
@@ -129,22 +173,20 @@ Deno.serve(async (req: Request) => {
     let r = await redactar(apiKey, SYSTEM, USER);
     if (r.error) return r.error;
     if (incumple(r.ai!)) {
-      const r2 = await redactar(apiKey, SYSTEM, USER + '\nIMPORTANTE: tu respuesta anterior incluia precios, porcentajes, cifras de resultados o productos no permitidos. Reescribela sin ninguno.');
+      const r2 = await redactar(apiKey, SYSTEM, USER + '\nIMPORTANTE: tu respuesta anterior incluia precios, porcentajes, cifras de resultados, productos no permitidos, un plazo distinto de 7 dias laborables o casos de clientes. Reescribela sin ninguno.');
       if (!r2.error) r = r2;
     }
     const ai = r.ai ?? {};
 
-    const resumen = limpio(ai.resumen_ejecutivo) ||
+    const resumen = campo(ai.resumen_ejecutivo) ||
       ('<p>Propuesta para ' + esc(empresa || nombre_cliente || 'tu negocio') + ': un agente IA que atiende a tus clientes 24/7, responde con tu informacion y te pasa cada lead al momento.</p>');
-    const problema = limpio(ai.problema);
-    const solucion = limpio(ai.solucion) || ('<p>' + esc(P.label) + ': ' + esc(P.cap) + '.</p>');
-    const aiFeatures = Array.isArray(ai.features)
-      ? (ai.features as unknown[]).map((f) => String(f)).filter((f) => f && !PROHIBIDO.test(f))
-      : [];
+    const problema = campo(ai.problema);
+    const solucion = campo(ai.solucion) || ('<p>' + esc(P.label) + ': ' + esc(P.cap) + '.</p>');
+    const aiFeatures = Array.isArray(ai.features) ? (ai.features as unknown[]).map(campo).filter(Boolean) : [];
     const features = aiFeatures.length >= 4 ? aiFeatures.slice(0, 6) : P.features;
-    const caso = limpio(ai.caso_exito);
+    const aplicacion = campo(ai.aplicacion);
 
-    const html = assemble({ nombre_cliente, empresa, sector, P, T, resumen, problema, solucion, features, caso });
+    const html = assemble({ nombre_cliente, empresa, sector, P, T, resumen, problema, solucion, features, aplicacion, conBambu });
     return json({ html });
   } catch (err) {
     return json({ error: 'Error interno', details: String(err) }, 500);
@@ -179,6 +221,7 @@ function assemble(d: any): string {
     "h2{font-size:1.15rem;font-weight:700;color:#14141c;margin-bottom:12px;display:flex;align-items:center;gap:10px}",
     "h2::before{content:'';width:20px;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--purple),var(--accent))}",
     "p{margin-bottom:10px}",
+    ".nota{font-size:.82rem;color:#777;font-style:italic}",
     ".feat{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-top:6px}",
     ".feat li{position:relative;padding-left:24px;font-size:.92rem}",
     ".feat li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:800}",
@@ -218,6 +261,7 @@ function assemble(d: any): string {
     "<section><h2>Resumen ejecutivo</h2>" + d.resumen + "</section>",
     (d.problema ? "<section><h2>El reto de tu sector</h2>" + d.problema + "</section>" : ''),
     "<section><h2>La solucion: " + esc(P.label) + "</h2>" + d.solucion + "<ul class='feat'>" + featuresHtml + "</ul></section>",
+    (d.aplicacion ? "<section><h2>Cómo funcionaría en tu negocio</h2><p class='nota'>Ejemplo ilustrativo de cómo trabajaría el agente en un negocio como el tuyo. No describe a un cliente real.</p>" + d.aplicacion + "</section>" : ''),
     "<section><h2>Retorno de la inversion</h2><p>El retorno depende de tus numeros: las consultas que hoy se pierden fuera de horario, tu ticket medio y las horas que tu equipo dedica a responder lo mismo. En la llamada lo calculamos con tus numeros reales, sin estimaciones genericas.</p><div class='roi'>",
     "<div class='c'><div class='n'>Consultas</div><div class='l'>que hoy se pierden fuera de horario</div></div>",
     "<div class='c'><div class='n'>Horas</div><div class='l'>de tu equipo respondiendo lo mismo</div></div>",
@@ -226,7 +270,7 @@ function assemble(d: any): string {
     "<section><h2>Inversion</h2><div class='precio'>",
     "<div class='box'><div class='pk'>" + esc(P.label) + "</div><div class='big'>Propuesta a medida</div><div class='sub'>La cerramos en la llamada, sin compromiso.</div><div class='cap'>" + esc(P.cap) + "</div></div>",
     "</div></section>",
-    (d.caso ? "<section><h2>Casos de exito</h2>" + d.caso + "</section>" : ''),
+    (d.conBambu ? "<section><h2>Caso de éxito real</h2>" + BAMBU_HTML + "</section>" : ''),
     "<section><h2>Proximos pasos</h2><div class='pasos'>",
     "<div class='p'><b>1 · Activacion</b>" + esc(T.plazo) + "</div>",
     "<div class='p'><b>2 · Condiciones</b>" + esc(T.permanencia) + "</div>",
