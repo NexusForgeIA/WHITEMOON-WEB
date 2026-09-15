@@ -101,6 +101,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--p:#7c4dff;--p2:#9d70ff;--g:#00d4aa;--bg:#08080d;--bg2:#0e0e16;--bg3:#13131e;--text:#f0f0f5;--muted:#8888a0;--border:rgba(124,77,255,.15);--r:14px;}
@@ -109,7 +110,6 @@ a{color:var(--p2);text-decoration:none;}
 .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
 nav{background:rgba(8,8,13,.95);border-bottom:1px solid var(--border);padding:14px 0;position:sticky;top:0;z-index:100;}
 .nav-in{display:flex;align-items:center;justify-content:space-between;max-width:960px;margin:0 auto;padding:0 24px;}
-.nav-logo{height:34px;width:auto;object-fit:contain}
 .nav-cta{background:var(--p);color:#fff;padding:8px 16px;border-radius:8px;font-size:.8rem;font-weight:600;}
 .breadcrumb{font-size:.75rem;color:var(--muted);padding:14px 0;}
 .breadcrumb a{color:var(--p2);}
@@ -147,7 +147,10 @@ footer a{color:var(--p2);}
 
 <nav>
   <div class="nav-in">
-    <a href="https://whitemoon.es/"><img class="nav-logo" src="/logo.png" alt="WhiteMoon" width="75" height="34"></a>
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
     <div style="display:flex;align-items:center;gap:14px;">
       <a href="https://whitemoon.es/blog/" style="font-size:.78rem;color:var(--muted);">&larr; Blog</a>
       <a href="https://wa.me/34643199580" class="nav-cta" target="_blank" rel="noopener">Contactar &rarr;</a>
