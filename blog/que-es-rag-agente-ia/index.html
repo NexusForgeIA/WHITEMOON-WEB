@@ -10,7 +10,7 @@
 <meta name="author" content="WhiteMoon Agencia IA">
 <link rel="canonical" href="https://whitemoon.es/blog/que-es-rag-agente-ia/">
 <meta property="og:title" content="Qué es el RAG en un agente IA · WhiteMoon">
-<meta property="og:description" content="RAG explicado sin tecnicismos. Tu agente IA responde con tus documentos reales: catálogos, normativa, precios. Comparativa de los 5 packs WhiteMoon: Spark, Orion IA Agent, Core Spark Web, Core Orion y Core RAG. Cuál necesita RAG y cuál no.">
+<meta property="og:description" content="RAG explicado sin tecnicismos. Tu agente IA responde con tus documentos reales: catálogos, normativa, procedimientos. Una capacidad opcional en Spark y Core Spark Web.">
 <meta property="og:url" content="https://whitemoon.es/blog/que-es-rag-agente-ia/">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="es_ES">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="WhiteMoon &middot; Agencia de IA">
 <meta property="article:author" content="WhiteMoon Agencia IA">
 <meta property="article:published_time" content="2026-06-05T09:00:00+02:00">
-<meta property="article:modified_time" content="2026-06-05T09:00:00+02:00">
+<meta property="article:modified_time" content="2026-09-15T10:00:00+02:00">
 <meta property="article:section" content="RAG">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -36,7 +36,7 @@
   "author": {"@type": "Person", "name": "Cristobal Martinez", "jobTitle": "Fundador & CEO", "worksFor": {"@type": "Organization", "name": "WhiteMoon Agencia IA", "url": "https://whitemoon.es"}},
   "publisher": {"@type": "Organization", "name": "WhiteMoon Agencia IA", "url": "https://whitemoon.es", "logo": {"@type":"ImageObject","url":"https://whitemoon.es/logo.png"}},
   "datePublished": "2026-06-05",
-  "dateModified": "2026-06-05",
+  "dateModified": "2026-09-15",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://whitemoon.es/blog/que-es-rag-agente-ia/"},
   "url": "https://whitemoon.es/blog/que-es-rag-agente-ia/",
   "image": "https://whitemoon.es/assets/og/og-whitemoon.jpg",
@@ -78,10 +78,10 @@ a{color:var(--p2);}
     },
     {
       "@type": "Question",
-      "name": "¿En qué se diferencia el Pack Core Spark Web del Pack Core RAG?",
+      "name": "¿El RAG va en un producto aparte?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "WhiteMoon tiene cinco packs vigentes ordenados por automatización e inversión: Spark (499€ + 99€/mes), agente conversacional por texto en tu web actual; Orion IA Agent (799€ + 99€/mes), agente de voz 24/7 en tu web actual; Core Spark Web (899€ + 99€/mes), web profesional con agente de texto y SEO/GEO; Core Orion (1.499€ + 99€/mes), web profesional con agente de voz y SEO/GEO; y Core RAG (2.499€ + 199€/mes), agente que responde con tus documentos propios (hasta 100 documentos, 1.000 consultas/mes). Solo el Pack Core RAG incluye RAG."
+        "text": "No. En WhiteMoon el RAG es una capacidad opcional: tanto Spark (agente IA en la web que ya tienes) como Core Spark Web (web nueva con el agente dentro) pueden entrenar al agente con tus documentos cuando tu negocio lo necesita. Se incluye en la propuesta a medida."
       }
     },
     {
@@ -105,7 +105,7 @@ a{color:var(--p2);}
       "name": "¿Cuántos documentos admite un agente IA con RAG en WhiteMoon?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Desde 100 documentos con el Pack Core RAG. Para mayores volúmenes, consulta nuestro catálogo actualizado."
+        "text": "Depende del volumen y del tipo de documentación. Lo dimensionamos en la propuesta a partir de lo que necesitas que el agente conozca."
       }
     }
   ]
@@ -182,13 +182,13 @@ a{color:var(--p2);}
   <li><strong>La IA redacta la respuesta</strong> usando solo esos fragmentos. Cita la fuente.</li>
 </ol>
 
-<h2>Sin RAG vs con RAG: ejemplo real</h2>
+<h2>Sin RAG vs con RAG: un ejemplo</h2>
 <table class="precio-table">
   <thead><tr><th>Pregunta</th><th>Sin RAG (genérico)</th><th>Con RAG (tu negocio)</th></tr></thead>
   <tbody>
-    <tr><td>"¿Cuánto cuesta el cambio de aceite?"</td><td>"Entre 30€ y 80€ habitualmente"</td><td>"45€ con aceite mineral, 70€ con sintético 5W30. Incluye filtro. Tarifa actualizada"</td></tr>
-    <tr><td>"¿Cubre mi mutua la endodoncia?"</td><td>"Depende, consulta a tu mutua"</td><td>"Sí, Sanitas Élite cubre 80%. Adeslas Premium 70%. Otras mutuas confirmamos al llamar"</td></tr>
-    <tr><td>"Plazo modelo 303 IVA"</td><td>"Trimestral, hasta día 20"</td><td>"Trimestral. Próximo: 20 julio. Si domiciliado en banco, hasta 15 julio. Te recordamos 7 días antes"</td></tr>
+    <tr><td>"¿Cuánto cuesta el cambio de aceite?"</td><td>Una horquilla genérica que no es la tuya</td><td>El precio de tu tarifa vigente, con lo que incluye</td></tr>
+    <tr><td>"¿Cubre mi seguro este tratamiento?"</td><td>"Depende, consulta a tu aseguradora"</td><td>Lo que dicen tus condiciones con cada aseguradora, citando el documento</td></tr>
+    <tr><td>"¿Cuándo vence el modelo 303?"</td><td>Una respuesta general</td><td>El plazo concreto según tu calendario interno y el aviso que tengáis pactado</td></tr>
   </tbody>
 </table>
 
@@ -201,35 +201,28 @@ a{color:var(--p2);}
   <li><strong>FAQ extendida</strong>: pacientes preguntando sobre tratamientos específicos con nombres comerciales.</li>
 </ul>
 
-<h2>Diferencia entre los 5 packs WhiteMoon</h2>
-<p>WhiteMoon tiene cinco packs ordenados por nivel de automatización e inversión. Spark y Core Spark Web usan agente conversacional por texto. Orion IA Agent, Core Orion y Core RAG incluyen agente de voz 24/7. Si además necesitas que el agente responda con tus documentos reales, solo el Pack Core RAG incluye RAG completo.</p>
+<h2>El RAG en Spark y en Core Spark Web</h2>
+<p>En WhiteMoon el RAG no es un producto aparte, sino una capacidad que se añade al agente cuando tu negocio la necesita. Tienes dos puntos de partida:</p>
 <table class="precio-table">
-  <thead><tr><th></th><th>Spark</th><th>Orion IA Agent</th><th>Core Spark Web</th><th>Core Orion</th><th>Core RAG</th></tr></thead>
+  <thead><tr><th></th><th>Spark</th><th>Core Spark Web</th></tr></thead>
   <tbody>
-    <tr><td>Agente conversacional texto 24/7</td><td>✅</td><td>—</td><td>✅</td><td>—</td><td>—</td></tr>
-    <tr><td>Agente de voz 24/7 en español natural</td><td>—</td><td>✅</td><td>—</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Captura de leads + móvil</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Gestión de citas con Cal.com</td><td>—</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
-    <tr><td>Web profesional + dominio</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>—</td></tr>
-    <tr><td>SSL + hosting + mantenimiento</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>—</td></tr>
-    <tr><td>SEO técnico + GEO/AEO desde día 1</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>—</td></tr>
-    <tr><td>Visible en ChatGPT, Grok y Perplexity</td><td>—</td><td>—</td><td>✅</td><td>✅</td><td>—</td></tr>
-    <tr><td>Documentos propios indexados (RAG)</td><td>—</td><td>—</td><td>—</td><td>—</td><td>hasta 100</td></tr>
-    <tr><td>Búsqueda semántica</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✅</td></tr>
-    <tr><td>Widget URL pública tipo ChatGPT</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✅</td></tr>
-    <tr><td>Consultas/mes incluidas</td><td>ilimitadas</td><td>ilimitadas</td><td>ilimitadas</td><td>ilimitadas</td><td>1.000</td></tr>
-    <tr><td>Setup</td><td>499€</td><td>799€</td><td>899€</td><td>1.499€</td><td>2.499€</td></tr>
-    <tr><td>Mensual</td><td>99€/mes</td><td>99€/mes</td><td>99€/mes</td><td>99€/mes</td><td>199€/mes</td></tr>
-    <tr><td>Sin permanencia</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Para quién</td><td>Ya tienes web</td><td>No tienes web o quieres renovarla</td></tr>
+    <tr><td>Agente IA de chat 24/7</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Captura de leads + aviso al móvil</td><td>✅</td><td>✅</td></tr>
+    <tr><td>Web profesional + dominio</td><td>—</td><td>✅</td></tr>
+    <tr><td>SEO técnico + GEO/AEO</td><td>—</td><td>✅</td></tr>
+    <tr><td>Respuestas con tus documentos (RAG)</td><td>Opcional</td><td>Opcional</td></tr>
+    <tr><td>Sin permanencia</td><td>✅</td><td>✅</td></tr>
   </tbody>
 </table>
+<p>El importe va en una propuesta a medida y depende, entre otras cosas, de si el agente debe trabajar con tu documentación y de cuánta hay.</p>
 
 <h2>Cuándo necesitas RAG (y cuándo no)</h2>
 <p><strong>Necesitas RAG si:</strong></p>
 <!-- CTA mid-article · WhiteMoon -->
 <div class="post-mid-cta" style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,0.15));border-radius:14px;padding:24px 22px;margin:34px 0;text-align:center;">
-  <p style="margin:0 0 16px;color:var(--text,#f0f0f5);font-size:1rem;line-height:1.6;">&iquest;Te resulta &uacute;til este art&iacute;culo sobre <strong>Qué es el RAG y cómo permite a tu agente IA conocer tu negocio</strong>? Apl&iacute;calo en tu negocio con la ayuda de Orion, el agente de IA de WhiteMoon.</p>
-  <button type="button" onclick="wmTrack&amp;&amp;wmTrack('click_blog_mid_que_es_rag_agente_ia');document.getElementById('luna-btn')?.click()" style="display:inline-block;padding:13px 26px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con Orion &rarr;</button>
+  <p style="margin:0 0 16px;color:var(--text,#f0f0f5);font-size:1rem;line-height:1.6;">&iquest;Te resulta &uacute;til este art&iacute;culo sobre <strong>Qué es el RAG y cómo permite a tu agente IA conocer tu negocio</strong>? Apl&iacute;calo en tu negocio con la ayuda de WhiteMoon.</p>
+  <button type="button" data-wm-launcher style="display:inline-block;padding:13px 26px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con nosotros &rarr;</button>
 </div>
 
 <ul>
@@ -241,14 +234,14 @@ a{color:var(--p2);}
 <ul>
   <li>Tu chatbot solo agenda citas y resuelve FAQs básicas con info ya en tu web.</li>
   <li>No tienes documentación propia consolidada.</li>
-  <li>Tu volumen es bajo (&lt; 200 consultas/mes) — Pack Spark cubre.</li>
+  <li>Tu información es sencilla y ya está en tu web: un agente sin RAG basta.</li>
 </ul>
-<p>Para esos casos: el Pack Spark (499€ + 99€/mes) si ya tienes web y necesitas agente de texto, el Pack Orion IA Agent (799€ + 99€/mes) si quieres agente de voz en tu web actual, o el Pack Core Orion (1.499€ + 99€/mes) si necesitas web profesional con voz y SEO/GEO desde el día 1.</p>
+<p>Para esos casos basta el agente sin RAG: Spark si ya tienes web o Core Spark Web si necesitas una nueva con SEO/GEO desde el primer día.</p>
 
 <div style="background:rgba(124,77,255,0.06);border:1px solid rgba(124,77,255,0.18);border-left:3px solid #9d70ff;border-radius:12px;padding:20px 24px;margin:32px 0;">
   <div style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#9d70ff;font-weight:700;margin-bottom:14px">Lecturas relacionadas</div>
   <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
-    <li><a href="/core-rag/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">Pack Core RAG — Agente IA con tus documentos</a></li>
+    <li><a href="/spark/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">Spark — agente IA para la web que ya tienes</a></li>
     <li><a href="/chatbot-ia-despachos-abogados/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">Chatbot IA RAG para despachos de abogados</a></li>
     <li><a href="/agencia-ia-madrid/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">Agencia IA en Madrid</a></li>
   </ul>
@@ -264,8 +257,8 @@ a{color:var(--p2);}
         <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">RAG (Retrieval-Augmented Generation) permite a un agente IA responder usando tus documentos reales —catálogos, normativa, FAQs internas— en lugar de solo su conocimiento general, dando respuestas precisas y verificables.</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
-        <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿En qué se diferencia el Pack Core Spark Web del Pack Core RAG?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">WhiteMoon tiene cinco packs vigentes ordenados por automatización e inversión: Spark (499€ + 99€/mes), agente conversacional por texto en tu web actual; Orion IA Agent (799€ + 99€/mes), agente de voz 24/7 en tu web actual; Core Spark Web (899€ + 99€/mes), web profesional con agente de texto y SEO/GEO; Core Orion (1.499€ + 99€/mes), web profesional con agente de voz y SEO/GEO; y Core RAG (2.499€ + 199€/mes), agente que responde con tus documentos propios (hasta 100 documentos, 1.000 consultas/mes). Solo el Pack Core RAG incluye RAG.</div>
+        <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿El RAG va en un producto aparte?</summary>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">No. En WhiteMoon el RAG es una capacidad opcional: tanto Spark (agente IA en la web que ya tienes) como Core Spark Web (web nueva con el agente dentro) pueden entrenar al agente con tus documentos cuando tu negocio lo necesita. Se incluye en la propuesta a medida.</div>
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuándo necesita mi negocio un agente IA con RAG?</summary>
@@ -277,7 +270,7 @@ a{color:var(--p2);}
       </details>
       <details style="border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:0;margin-bottom:12px;background:rgba(124,77,255,.04)">
         <summary style="cursor:pointer;list-style:none;padding:18px 22px;font-weight:600;color:#E8E8F0;font-size:1rem;line-height:1.4">¿Cuántos documentos admite un agente IA con RAG en WhiteMoon?</summary>
-        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Desde 100 documentos con el Pack Core RAG. Para mayores volúmenes, consulta nuestro catálogo actualizado.</div>
+        <div style="padding:0 22px 20px;color:#9CA3AF;line-height:1.7;font-size:.94rem">Depende del volumen y del tipo de documentación. Lo dimensionamos en la propuesta a partir de lo que necesitas que el agente conozca.</div>
       </details>
     </div>
   </section>
@@ -296,8 +289,8 @@ a{color:var(--p2);}
 <!-- CTA final · WhiteMoon -->
 <div class="post-final-cta" style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,0.15));border-radius:14px;padding:28px 24px;margin:36px 0 8px;text-align:center;">
   <div style="font-size:1.25rem;font-weight:700;color:var(--text,#f0f0f5);margin-bottom:8px;">&iquest;Quieres implementar esto en tu negocio?</div>
-  <p style="margin:0 0 18px;color:var(--muted,#8888a0);font-size:.95rem;line-height:1.6;">Orion, el agente de IA de WhiteMoon, te explica c&oacute;mo aplicarlo paso a paso. Sin compromiso.</p>
-  <button type="button" onclick="wmTrack&amp;&amp;wmTrack('click_blog_final_que_es_rag_agente_ia');document.getElementById('luna-btn')?.click()" style="display:inline-block;padding:14px 28px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.97rem;cursor:pointer;">Habla con Orion &rarr;</button>
+  <p style="margin:0 0 18px;color:var(--muted,#8888a0);font-size:.95rem;line-height:1.6;">En WhiteMoon te explicamos c&oacute;mo aplicarlo paso a paso. Sin compromiso.</p>
+  <button type="button" data-wm-launcher style="display:inline-block;padding:14px 28px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.97rem;cursor:pointer;">Habla con nosotros &rarr;</button>
 </div>
 </article>
 </main>

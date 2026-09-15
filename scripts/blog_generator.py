@@ -55,7 +55,6 @@ RELATED_POOL = [
     ("Agente IA", "Agentes IA en 2026: que son y para que sirven", "/blog/agentes-ia-pymes-2026/"),
     ("Agente IA", "Que es un Agente IA: guia completa para empresas", "/blog/que-es-un-agente-ia/"),
     ("Comparativa", "Agente IA vs Chatbot: 6 diferencias reales", "/blog/agente-ia-vs-chatbot-diferencias/"),
-    ("Agente de voz", "Que es un agente de voz IA y por que lo necesitas", "/blog/que-es-agente-voz-ia-2026/"),
     ("SEO y GEO", "GEO/AEO: posicionamiento IA para pymes", "/blog/geo-aeo-posicionamiento-ia-pymes/"),
     ("Precios", "Cuanto cuesta implementar IA en tu negocio", "/blog/cuanto-cuesta-ia-negocio/"),
     ("Estrategia", "Automatizacion de procesos con IA para pymes", "/blog/automatizacion-procesos-ia-pymes/"),
