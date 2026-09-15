@@ -20,7 +20,7 @@ const PACKS: Record<string, { label: string; setup: number; mensual: number; cap
 };
 
 // Plazo y permanencia — ningun pack tiene permanencia (30 dias de aviso para cancelar).
-const TERMS = { plazo: '5-7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' };
+const TERMS = { plazo: '7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' };
 
 // ROI por sector (brief) — horas/semana ahorradas + metrica destacada
 const ROI: Record<string, { metric: string; horas: number }> = {
