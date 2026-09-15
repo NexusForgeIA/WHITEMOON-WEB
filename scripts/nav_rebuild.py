@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-"""Aplica la navbar unificada de WhiteMoon al header de todas las paginas de paseo.
+"""Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
-Menu resultante:  Servicios (desplegable corto) · Desarrollo web · Marketing ·
-                  Demos · Precios · Recursos · Contacto + un unico CTA:
-                  "Auditoria GEO/SEO Gratis".
-"Agendar reunion" baja a enlace de texto secundario.
+Menu resultante:  Productos (desplegable: Spark · Core Spark Web) · Marketing ·
+                  Contacto + un unico CTA: "Agendar reunion" (cal.com).
 
-Lo que sale del top (Nosotros, Blog, Casos y los 8 enlaces del mega-desplegable
-"Soluciones") entra en el bloque .wm-fnav del footer, que este script inyecta en
-las paginas cuyo footer es la barra minima de copyright. NINGUNA URL cambia:
-esto es jerarquia de navegacion, no arquitectura de contenido.
+Footer: el de 5 columnas de la home (Marca · Servicios · Recursos · Comparativas
+· Contacto + legales), identico en todo el universo. Su CSS vive en
+assets/wm-nav.css: ningun <style> de pagina depende de la posicion del footer.
 
 Universo (casta 1 del repo: paginas de paseo con menu real, >=2 destinos
 internos en el <nav>). Quedan fuera, por la regla ya fijada del repo:
   · las landings de conversion (nav minimo intencional),
   · el microsite reformas-madrid,
-  · los micrositios con nav de anclas propias (EXCLUDE).
+  · los micrositios con nav de anclas propias y /precios/ (EXCLUDE).
+
+Tras escribir, actualiza el <lastmod> del sitemap de las paginas modificadas.
 
 Uso:
     python scripts/nav_rebuild.py --check    # no escribe, solo informa
@@ -27,9 +26,10 @@ import argparse
 import os
 import re
 import sys
+from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_V = "2026090501"
+ASSET_V = "2026091501"
 
 SKIP_DIRS = {
     ".git", ".github", ".claude", ".agents", "__pycache__", "node_modules",
@@ -42,6 +42,10 @@ EXCLUDE = {
     "electricistas-madrid/index.html",   # microsite de cliente
     "gestotrafic/index.html",            # microsite de producto
     "automatizaciones/index.html",       # landing WhiteMoon 360, nav de anclas
+    # Se borra entera en su fase y se queda con el navbar y el footer viejos
+    # hasta entonces. Por eso wm-nav.css y wm-nav.js conservan las reglas
+    # antiguas (.wm-fnav, .wm-nav__meet, .wm-long/.wm-short).
+    "precios/index.html",
 }
 
 # Paginas cuyo header vivia en el flujo del documento (sticky). Ahi la navbar
@@ -49,7 +53,6 @@ EXCLUDE = {
 FLOW_PAGES_EXTRA = {"blog/index.html", "demos/index.html"}
 
 NAV_RX = re.compile(r"<nav\b[^>]*>.*?</nav>", re.S | re.I)
-FOOTER_OPEN_RX = re.compile(r"<footer\b[^>]*>", re.I)
 
 CARET = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
@@ -64,6 +67,8 @@ BURGER = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 CLOSE = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" '
          'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
          '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>')
+
+CAL = "https://cal.com/whitemoon"
 
 HEAD_CSS = '<link rel="stylesheet" href="/assets/wm-nav.css?v=%s">' % ASSET_V
 HEAD_JS = '<script defer src="/assets/wm-nav.js?v=%s"></script>' % ASSET_V
@@ -88,84 +93,130 @@ def nav_html(flow: bool) -> str:
 
     <div class="wm-nav__center">
       <div class="wm-nav__dd" aria-expanded="false">
-        <button type="button" aria-haspopup="true" aria-expanded="false">Servicios{CARET}</button>
+        <button type="button" aria-haspopup="true" aria-expanded="false">Productos{CARET}</button>
         <div class="wm-nav__menu" role="menu">
-          <a href="/orion/" role="menuitem">Orion IA<span class="desc">Agente de voz en tu web, 24/7</span></a>
-          <a href="/servicios/" class="wm-nav__all" role="menuitem">Ver todos los servicios →</a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
         </div>
       </div>
-      <a href="/diseno-web-con-ia/">Desarrollo web</a>
       <a href="/marketing/">Marketing</a>
-      <a href="/demos/">Demos</a>
-      <a href="/precios/">Precios</a>
-      <a href="/recursos/">Recursos</a>
       <a href="/contacto/">Contacto</a>
     </div>
 
     <div class="wm-nav__right">
-      <a class="wm-nav__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
-      <a class="wm-nav__cta" href="/auditoria-geo-seo/">
-        <span class="wm-long">Auditoría GEO/SEO Gratis</span><span class="wm-short">Auditoría gratis</span>{ARROW}
-      </a>
+      <a class="wm-nav__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
       <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer">{BURGER}</button>
     </div>
   </div>
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
   <button class="wm-drawer__close" type="button" aria-label="Cerrar menú">{CLOSE}</button>
-  <a class="wm-drawer__link" href="/servicios/">Servicios</a>
-  <a class="wm-drawer__link" href="/diseno-web-con-ia/">Desarrollo web</a>
+  <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/spark/">Spark</a>
+  <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/marketing/">Marketing</a>
-  <a class="wm-drawer__link" href="/demos/">Demos</a>
-  <a class="wm-drawer__link" href="/precios/">Precios</a>
-  <a class="wm-drawer__link" href="/recursos/">Recursos</a>
   <a class="wm-drawer__link" href="/contacto/">Contacto</a>
-  <a class="wm-drawer__meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a>
-  <a class="wm-drawer__cta" href="/auditoria-geo-seo/">Auditoría GEO/SEO Gratis{ARROW}</a>
+  <a class="wm-drawer__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
 </aside>"""
 
 
-# Bloque de footer: aqui aterriza todo lo que ya no esta en el top.
-FOOTER_NAV = """
-  <div class="wm-fnav">
-    <div>
-      <h2>Servicios</h2>
-      <ul>
-        <li><a href="/white-moon-system/">WhiteMoon System</a></li>
-        <li><a href="/orion/">Orion IA</a></li>
-        <li><a href="/automatizacion-ventas/">Automatización de ventas</a></li>
-        <li><a href="/atencion-cliente-ia/">Atención al cliente IA</a></li>
-        <li><a href="/costes-eficiencia-empresarial-ia/">Reducción de costes</a></li>
-        <li><a href="/coste-no-automatizar/">Coste de no automatizar</a></li>
-        <li><a href="/marketing/">Marketing con IA</a></li>
-        <li><a href="/auditoria-geo-ia/">Auditoría GEO IA</a></li>
-        <li><a href="/automatizaciones/">Automatizaciones</a></li>
-        <li><a href="/servicios/">Ver todos los servicios</a></li>
-      </ul>
+# ── Footer unificado ────────────────────────────────────────────────────────
+SOCIAL = [
+    ("https://www.instagram.com/whitemoon_agencia_ia", "Instagram",
+     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'),
+    ("https://www.tiktok.com/@whitemoon_ia", "TikTok",
+     '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>'),
+    ("https://wa.me/34643199580", "WhatsApp",
+     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>'),
+    ("https://www.linkedin.com/in/cristobal-martinez-8b9b9951", "LinkedIn",
+     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>'),
+    ("https://www.youtube.com/@whitemoonweb", "YouTube",
+     '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.1 2.7 12 2.7 12 2.7s-5.1 0-8.3.2c-.4.1-1.4.1-2.3 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5.1 0 8.3-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.7 13.5V7.9l6.2 2.8-6.2 2.8z"/></svg>'),
+]
+ICON_MAIL = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>'
+ICON_WA = SOCIAL[2][2]
+ICON_PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>'
+ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg>'
+
+FOOTER_COLS = [
+    ("Servicios", [
+        ("/spark/", "Spark"),
+        ("/core/", "Core Spark Web"),
+        ("/marketing/", "Marketing"),
+    ]),
+    ("Recursos", [
+        ("/demos/", "Demos"),
+        ("/costes-eficiencia-empresarial-ia/", "Calculadoras"),
+        ("/prompts-ia-pymes/", "Prompts de IA para pymes"),
+        ("/casos/", "Casos de uso"),
+        ("/casos-de-exito/bambu-sushi/", "Caso real: Bambu Sushi"),
+        ("/blog/", "Blog"),
+        # Texto exacto a proposito: la canonica del termino es /agencia-ia-madrid/.
+        ("/agencia-ia-madrid/", "Agencia de IA en Madrid"),
+        ("/sobre-nosotros/", "Sobre nosotros"),
+    ]),
+    ("Comparativas", [
+        ("/alternativa-flownexion/", "WhiteMoon vs Flownexion"),
+        ("/alternativa-llmo/", "WhiteMoon vs Llmo"),
+        ("/whitemoon-vs-intercom/", "WhiteMoon vs Intercom"),
+        ("/whitemoon-vs-manychat/", "WhiteMoon vs ManyChat"),
+        ("/whitemoon-vs-tidio/", "WhiteMoon vs Tidio"),
+    ]),
+]
+
+
+def footer_html(with_id: bool) -> str:
+    ident = ' id="contacto"' if with_id else ""
+    social = "\n".join(
+        f'        <a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{label}" title="{label}">{svg}</a>'
+        for href, label, svg in SOCIAL
+    )
+    social += f'\n        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email">{ICON_MAIL}</a><!--/email_off-->'
+    cols = "\n\n".join(
+        f'    <div>\n      <h3>{title}</h3>\n      <ul>\n'
+        + "\n".join(f'        <li><a href="{href}">{text}</a></li>' for href, text in links)
+        + "\n      </ul>\n    </div>"
+        for title, links in FOOTER_COLS
+    )
+    return f"""<!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
+<footer{ident} class="wm-foot">
+  <div class="wm-foot__grid">
+
+    <div class="wm-foot__brand">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+        <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
+        <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+      </a>
+      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <div class="wm-foot__social">
+{social}
+      </div>
     </div>
+
+{cols}
+
     <div>
-      <h2>Recursos</h2>
-      <ul>
-        <li><a href="/demos/">Demos</a></li>
-        <li><a href="/precios/">Precios</a></li>
-        <li><a href="/recursos/">Calculadoras</a></li>
-        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
-        <li><a href="/casos/">Casos de uso</a></li>
-        <li><a href="/blog/">Blog</a></li>
-      </ul>
+      <h3>Contacto</h3>
+      <div class="wm-foot__contact">
+        <div class="wm-foot__item">{ICON_MAIL}<div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
+        <div class="wm-foot__item">{ICON_WA}<div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
+        <div class="wm-foot__item">{ICON_PIN}<div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item">{ICON_CLOCK}<div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+      </div>
     </div>
-    <div>
-      <h2>WhiteMoon</h2>
-      <ul>
-        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
-        <li><a href="/auditoria-geo-seo/">Auditoría GEO/SEO gratis</a></li>
-        <li><a href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a></li>
-        <li><a href="https://wa.me/34643199580" target="_blank" rel="noopener">WhatsApp · 643 199 580</a></li>
-        <li><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></li>
-      </ul>
-    </div>
+
   </div>
-"""
+
+  <div class="wm-foot__bottom">
+    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div class="wm-foot__legal">
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
+    </div>
+    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+  </div>
+</footer>"""
 
 
 # ── "Agendar reunion" fuera de las paginas de paseo ────────────────────────
@@ -188,13 +239,20 @@ CAL_LINK = (
 
 
 def read(path: str) -> str:
-    with open(path, encoding="utf-8") as fh:
+    with open(path, encoding="utf-8", newline="") as fh:
         return fh.read()
 
 
 def write(path: str, text: str) -> None:
     with open(path, "w", encoding="utf-8", newline="") as fh:
         fh.write(text)
+
+
+def same_eol(before: str, after: str) -> str:
+    """Los bloques se generan con \\n: en ficheros CRLF no se mezclan finales de linea."""
+    if "\r\n" in before:
+        return after.replace("\r\n", "\n").replace("\n", "\r\n")
+    return after
 
 
 def menu_destinations(nav: str) -> set[str]:
@@ -289,19 +347,59 @@ def replace_nav(html: str, rel: str) -> str:
     return NAV_RX.sub(lambda m: block, html, count=1)
 
 
-# El bloque ya inyectado en pasadas anteriores. Se localiza para poder
-# SUSTITUIRLO: mientras esto solo insertaba, tocar FOOTER_NAV no cambiaba nada
-# en las 111 paginas que ya lo tenian, y la constante se iba quedando vieja.
-FOOTER_NAV_RX = re.compile(r'\n  <div class="wm-fnav">.*?\n  </div>\n', re.S)
+# Zonas donde un "<footer" NO es una etiqueta: comentarios, <style> y <script>.
+# /contacto/ menciona "<footer>" dentro de un comentario CSS; buscando a pelo,
+# el corte empezaba ahi y se llevaba media hoja de estilos.
+OPAQUE_RX = re.compile(r"<!--.*?-->|<style\b.*?</style>|<script\b.*?</script>", re.S | re.I)
+# El <style> propio del footer de la home: su CSS vive ahora en wm-nav.css.
+HOME_FOOT_STYLE_RX = re.compile(
+    r"[ \t]*<!-- FOOTER -->\s*<!-- FOOTER ENTERPRISE[^>]*-->\s*<style>\s*footer#contacto\.foot-ent.*?</style>\s*",
+    re.S,
+)
 
 
-def add_footer_nav(html: str) -> str:
-    if "wm-fnav" in html:
-        return FOOTER_NAV_RX.sub(lambda m: FOOTER_NAV, html, count=1)
-    m = FOOTER_OPEN_RX.search(html)
-    if not m:
+def _visible(html: str) -> str:
+    return OPAQUE_RX.sub(lambda m: " " * len(m.group(0)), html)
+
+
+def replace_footer(html: str) -> str:
+    html = HOME_FOOT_STYLE_RX.sub("", html)
+    html = re.sub(r'^[ \t]*<!-- WM-FOOT ·[^>]*-->[ \t]*\r?\n', "", html, flags=re.M)
+    vis = _visible(html)
+    opens = list(re.finditer(r"<footer\b[^>]*>", vis, re.I))
+    if not opens:
         return html
-    return html[: m.end()] + FOOTER_NAV + html[m.end():]
+    start = opens[-1].start()
+    end = vis.lower().find("</footer>", start)
+    if end == -1:
+        return html
+    end += len("</footer>")
+    # Si la pagina ya usa id="contacto" en su contenido, el footer va sin id.
+    rest = vis[:start] + vis[end:]
+    with_id = not re.search(r'\sid=["\']contacto["\']', rest)
+    return html[:start] + footer_html(with_id) + html[end:]
+
+
+def page_url(rel: str) -> str:
+    if rel == "index.html":
+        return "https://whitemoon.es/"
+    return "https://whitemoon.es/" + rel[: -len("index.html")]
+
+
+def touch_lastmod(rels: list[str], check: bool) -> list[str]:
+    """Pone el <lastmod> de hoy a las paginas modificadas. Devuelve las que no estan."""
+    path = os.path.join(ROOT, "sitemap.xml")
+    sm = read(path)
+    today = date.today().isoformat()
+    missing = []
+    for rel in rels:
+        rx = re.compile(r"(<loc>%s</loc>\s*<lastmod>)[^<]*(</lastmod>)" % re.escape(page_url(rel)))
+        sm, n = rx.subn(lambda m: m.group(1) + today + m.group(2), sm)
+        if n != 1:
+            missing.append(rel)
+    if not check:
+        write(path, sm)
+    return missing
 
 
 def main() -> int:
@@ -311,7 +409,7 @@ def main() -> int:
 
     pages = target_pages()
     page_set = set(pages)
-    changed, no_footer, demoted = [], [], []
+    changed, demoted = [], []
 
     # Paso 2 · el boton de cal.com deja de ser boton en el resto del sitio.
     for dirpath, dirnames, filenames in os.walk(ROOT):
@@ -320,7 +418,7 @@ def main() -> int:
             if not name.endswith(".html"):
                 continue
             rel = os.path.relpath(os.path.join(dirpath, name), ROOT).replace(os.sep, "/")
-            if rel in page_set:
+            if rel in page_set or rel in EXCLUDE:
                 continue
             path = os.path.join(ROOT, rel)
             before = read(path)
@@ -330,25 +428,28 @@ def main() -> int:
                 if not args.check:
                     write(path, after)
 
+    no_footer = []
     for rel in pages:
         path = os.path.join(ROOT, rel)
         before = read(path)
-        after = ensure_head(replace_nav(before, rel))
-        # El home ya tiene un footer completo con columnas propias.
-        if rel != "index.html":
-            after = add_footer_nav(after)
-            if "wm-fnav" not in after:
-                no_footer.append(rel)
+        after = replace_footer(ensure_head(replace_nav(before, rel)))
+        if 'class="wm-foot"' not in after:
+            no_footer.append(rel)
+        after = same_eol(before, after)
         if after != before:
             changed.append(rel)
             if not args.check:
                 write(path, after)
+
+    missing = touch_lastmod(changed, args.check) if changed else []
 
     print(f"paginas en el universo : {len(pages)}")
     print(f"paginas modificadas    : {len(changed)}")
     print(f"boton cal.com degradado: {len(demoted)} landings")
     if no_footer:
         print(f"SIN <footer> (revisar) : {no_footer}")
+    if missing:
+        print(f"sin <lastmod> en sitemap: {missing}")
     if args.check:
         print("(--check: no se ha escrito nada)")
     return 0

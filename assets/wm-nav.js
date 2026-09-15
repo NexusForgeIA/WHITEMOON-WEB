@@ -3,8 +3,12 @@
  * Se carga con `defer`, asi que el DOM ya existe cuando corre. No hay ningun
  * `onclick` inline en el markup del header: todo se engancha aqui, de forma
  * que si este archivo no llega (adblock, red) el header sigue siendo HTML
- * navegable — el desplegable de Servicios abre igual por :hover/:focus-within
- * en CSS y su primer enlace lleva a /servicios/.
+ * navegable — el desplegable de Productos abre igual por :hover/:focus-within
+ * en CSS.
+ *
+ * LEGACY: /precios/ conserva el navbar anterior (CTA a la auditoria + enlace
+ * secundario .wm-nav__meet) hasta que se borre en su fase. El tracking decide
+ * por el destino del enlace, asi que sirve para los dos markups.
  *
  * Tracking: usa window.wmTrack solo si existe (lo define wm-track.js, que
  * ademas renombra `source` a `wm_source` para no reescribir la atribucion
@@ -33,7 +37,7 @@
   var burger = nav.querySelector('.wm-nav__burger');
   var dd = nav.querySelector('.wm-nav__dd');
 
-  // ── Desplegable de Servicios ─────────────────────────────────────────
+  // ── Desplegable de Productos ─────────────────────────────────────────
   function closeDd() {
     if (dd) dd.setAttribute('aria-expanded', 'false');
   }
@@ -84,14 +88,6 @@
   // ── Enlace activo ────────────────────────────────────────────────────
   var here = (location.pathname || '/').replace(/index\.html$/, '');
   if (here.slice(-1) !== '/') here += '/';
-  // Rutas que cuelgan conceptualmente de "Servicios".
-  var SERVICE_PATHS = [
-    '/servicios/', '/orion/', '/orion-agent/', '/white-moon-system/',
-    '/automatizacion-ventas/', '/atencion-cliente-ia/', '/coste-no-automatizar/',
-    '/costes-eficiencia-empresarial-ia/', '/auditoria-geo-ia/', '/automatizaciones/',
-    '/spark/', '/core/', '/core-orion/', '/core-rag/', '/mini-core/',
-    '/whitemoon-360/'
-  ];
   function markCurrent(a) {
     var href = a.getAttribute('href') || '';
     if (href.charAt(0) !== '/') return false;
@@ -103,30 +99,34 @@
   Array.prototype.forEach.call(
     document.querySelectorAll('.wm-nav__center>a,.wm-drawer__link'), markCurrent
   );
-  if (dd && SERVICE_PATHS.indexOf(here) !== -1) dd.classList.add('is-current');
+  // El desplegable se marca si la pagina actual es uno de sus destinos.
+  if (dd) {
+    var inMenu = false;
+    Array.prototype.forEach.call(dd.querySelectorAll('.wm-nav__menu a'), function (a) {
+      if (markCurrent(a)) inMenu = true;
+    });
+    if (inMenu) dd.classList.add('is-current');
+  }
 
-  // ── Tracking del CTA unico y del enlace secundario ───────────────────
+  // ── Tracking del CTA y del enlace secundario ─────────────────────────
   var slug = pageSlug();
+  function isCal(el) {
+    return /cal\.com\//.test(el.getAttribute('href') || '');
+  }
   Array.prototype.forEach.call(
-    document.querySelectorAll('.wm-nav__cta,.wm-drawer__cta'),
+    document.querySelectorAll('.wm-nav__cta,.wm-drawer__cta,.wm-nav__meet,.wm-drawer__meet'),
     function (el) {
       el.addEventListener('click', function () {
-        track('click_nav_cta', {
-          source: slug,
-          placement: el.classList.contains('wm-drawer__cta') ? 'drawer' : 'navbar',
-          destination: 'auditoria-geo-seo'
-        });
-      });
-    }
-  );
-  Array.prototype.forEach.call(
-    document.querySelectorAll('.wm-nav__meet,.wm-drawer__meet'),
-    function (el) {
-      el.addEventListener('click', function () {
-        track('click_nav_meeting', {
-          source: slug,
-          placement: el.classList.contains('wm-drawer__meet') ? 'drawer' : 'navbar'
-        });
+        var inDrawer = el.classList.contains('wm-drawer__cta') || el.classList.contains('wm-drawer__meet');
+        if (isCal(el)) {
+          track('click_nav_meeting', { source: slug, placement: inDrawer ? 'drawer' : 'navbar' });
+        } else {
+          track('click_nav_cta', {
+            source: slug,
+            placement: inDrawer ? 'drawer' : 'navbar',
+            destination: 'auditoria-geo-seo'
+          });
+        }
       });
     }
   );

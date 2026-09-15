@@ -1,21 +1,25 @@
-/* WhiteMoon · navbar unificada — fuente de verdad del header de todo el sitio.
+/* WhiteMoon · navbar y footer unificados — fuente de verdad del header y el
+ * footer de todas las paginas de paseo (markup: scripts/nav_rebuild.py).
  *
- * Menu: Servicios (desplegable corto) · Desarrollo web · Demos · Precios ·
- *       Recursos · Contacto
- *       + un unico CTA destacado: Auditoria GEO/SEO Gratis.
- * "Agendar reunion" queda como enlace de texto secundario.
+ * Menu: Productos (desplegable: Spark · Core Spark Web) · Marketing · Contacto
+ *       + un unico CTA destacado: Agendar reunion (cal.com).
  *
- * Todo lo que salio del top (Nosotros, Blog, Casos y los 8 enlaces del
- * antiguo mega-desplegable "Soluciones") vive ahora en el bloque .wm-fnav
- * del footer, que tambien se define aqui.
+ * Footer: 5 columnas (Marca · Servicios · Recursos · Comparativas · Contacto)
+ * + barra de legales. Vive aqui y no en un <style> de pagina: asi ningun
+ * estilo depende de donde caiga el footer en el documento.
+ *
+ * LEGACY: /precios/ se queda con el navbar y el footer anteriores hasta que se
+ * borre en su fase, y carga esta misma hoja. Por eso siguen aqui .wm-nav__meet,
+ * .wm-nav__all, .wm-long/.wm-short y el bloque .wm-fnav. Se retiran con ella.
  *
  * Dos variantes de posicion:
  *   .wm-nav          -> fixed (paginas cuyo header ya era fixed via site.css)
  *   .wm-nav--flow    -> sticky (blog, /demos/: el header vivia en
  *                       el flujo y el contenido no reserva hueco arriba)
  *
- * Los selectores llevan clase propia (.wm-nav*) para ganar a las reglas de
- * elemento (`nav{...}`) que algunas paginas todavia declaran.
+ * Los selectores llevan clase propia (.wm-nav*, .wm-foot*) para ganar a las
+ * reglas de elemento (`nav{...}`, `footer{...}`, `footer a{...}`) que
+ * site.css y algunas paginas todavia declaran.
  */
 
 /* ── Barra ─────────────────────────────────────────────────────────────── */
@@ -49,7 +53,7 @@
 .wm-nav__center>a:hover,.wm-nav__dd>button:hover{color:#E8E8F0;background:rgba(255,255,255,.05)}
 .wm-nav__center>a.is-current,.wm-nav__dd.is-current>button{color:#E8E8F0}
 
-/* ── Desplegable corto de Servicios ────────────────────────────────────── */
+/* ── Desplegable de Productos ──────────────────────────────────────────── */
 .wm-nav__dd{position:relative}
 .wm-nav__dd>button{display:inline-flex;align-items:center;gap:5px}
 .wm-nav__dd>button svg{width:11px;height:11px;transition:transform .18s ease}
@@ -73,13 +77,16 @@
   font-weight:600;line-height:1.3;color:#E8E8F0;letter-spacing:-.005em;
   transition:background .15s ease}
 .wm-nav__menu a:hover{background:rgba(124,77,255,.12)}
+.wm-nav__menu a.is-current{background:rgba(124,77,255,.08)}
 .wm-nav__menu a .desc{font-size:.74rem;font-weight:400;color:#9CA3AF;letter-spacing:0}
+/* LEGACY (/precios/) */
 .wm-nav__menu .wm-nav__all{margin-top:4px;padding-top:12px;
   border-top:1px solid rgba(255,255,255,.08);border-radius:0 0 8px 8px;
   color:#9d70ff;font-size:.83rem}
 
-/* ── Zona derecha: enlace secundario + CTA unico + burger ──────────────── */
+/* ── Zona derecha: CTA unico + burger ──────────────────────────────────── */
 .wm-nav__right{flex:0 0 auto;display:flex;align-items:center;gap:10px}
+/* LEGACY (/precios/) */
 .wm-nav__meet{font-family:inherit;font-size:.82rem;font-weight:500;color:#9CA3AF;
   text-decoration:none;white-space:nowrap;padding:6px 2px;border-bottom:1px solid transparent;
   transition:color .15s ease,border-color .15s ease}
@@ -93,6 +100,9 @@
 .wm-nav__cta:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(124,77,255,.42);color:#fff}
 .wm-nav__cta svg{width:14px;height:14px;transition:transform .15s ease}
 .wm-nav__cta:hover svg{transform:translateX(2px)}
+.wm-nav__cta:focus-visible,.wm-nav__center>a:focus-visible,.wm-nav__dd>button:focus-visible,
+.wm-nav__menu a:focus-visible{outline:2px solid #9d70ff;outline-offset:2px}
+/* LEGACY (/precios/): etiqueta larga/corta del CTA de la auditoria */
 .wm-nav__cta .wm-short{display:none}
 .wm-nav__burger{display:none;padding:8px;border:0;border-radius:8px;
   background:transparent;color:#E8E8F0;cursor:pointer}
@@ -100,16 +110,9 @@
 .wm-nav__burger svg{width:20px;height:20px;display:block}
 
 /* ── Responsive ────────────────────────────────────────────────────────── */
-/* Banda apretada: con SEIS destinos en el centro (Servicios, Desarrollo web,
-   Demos, Precios, Recursos y Contacto) el menu ya no cabe junto al logo y al
-   CTA por debajo de ~1200px. En vez de esconder el menu entero y mandar a
-   burger un portatil de 1024, se recorta en dos pasos lo prescindible:
-   "Agendar reunion" (que sigue en el cajon, en el footer y en cada CTA de
-   pagina) y el padding entre enlaces.
-
-   El umbral era 1080px con cinco destinos; "Contacto" añade ~76px al centro,
-   asi que sube a 1200px. Sin el segundo paso, entre 900 y 1000px el menu
-   volvia a salirse de la barra. */
+/* Los cortes se calcularon para el menu de seis destinos, que sigue vivo en
+   /precios/ (LEGACY). Con tres destinos el menu nuevo cabe de sobra en todos
+   ellos, asi que se mantienen tal cual: un solo juego de cortes para ambos. */
 /* Sin cota inferior a proposito: entre max-width:920px y min-width:921px queda
    un hueco para los anchos fraccionarios (920.5px), y ahi el nav se quedaba sin
    recortar y se salia. Por debajo de 920px estas reglas son inertes: el
@@ -122,16 +125,9 @@
 @media(max-width:1000px){
   .wm-nav__center>a,.wm-nav__dd>button{padding:8px 6px;font-size:.84rem}
   .wm-nav__row{gap:10px}
-  /* Entre 901 y ~955px los seis enlaces + el CTA largo se salian de la barra
-     (justo el hueco de anchos fraccionarios que describe el comentario de
-     arriba). El CTA pasa aqui a su etiqueta corta, que libera ~55px: es lo
-     unico prescindible que queda antes de mandarlo todo al burger. */
   .wm-nav__cta .wm-long{display:none}
   .wm-nav__cta .wm-short{display:inline}
 }
-/* El corte a burger sube de 900 a 920px: con seis destinos, entre 901 y ~915px
-   el CTA seguia saliendose de la barra aun con la etiqueta corta. Medido con
-   iframes a 900/901/905/920/940/955/960/980/1000/1024/1080/1100/1200/1440. */
 @media(max-width:920px){
   .wm-nav__center{display:none}
   .wm-nav__meet{display:none}
@@ -166,23 +162,86 @@
   border-radius:8px;background:transparent;color:#E8E8F0;cursor:pointer}
 .wm-drawer__close:hover{background:rgba(255,255,255,.07)}
 .wm-drawer__close svg{width:22px;height:22px;display:block}
+.wm-drawer__label{display:block;padding:4px 4px 2px;font-size:.78rem;font-weight:600;
+  color:#9CA3AF;letter-spacing:.02em}
 .wm-drawer__link{display:flex;align-items:center;padding:16px 4px;
   font-size:1.08rem;font-weight:500;color:#E8E8F0;text-decoration:none;
   letter-spacing:-.01em;border-bottom:1px solid rgba(255,255,255,.07)}
 .wm-drawer__link.is-current{color:#9d70ff}
+/* LEGACY (/precios/) */
 .wm-drawer__meet{display:block;margin-top:22px;padding:4px;font-size:.92rem;
   font-weight:500;color:#9CA3AF;text-decoration:none;text-align:center}
 .wm-drawer__meet:hover{color:#E8E8F0}
 .wm-drawer__cta{display:flex;align-items:center;justify-content:center;gap:8px;
-  margin-top:12px;padding:15px 24px;border-radius:10px;
+  margin-top:24px;padding:15px 24px;border-radius:10px;
   background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;font-size:1rem;
   font-weight:600;text-decoration:none;box-shadow:0 14px 36px rgba(124,77,255,.32)}
 .wm-drawer__cta:hover{color:#fff}
 .wm-drawer__cta svg{width:16px;height:16px}
 
-/* ── Bloque de navegacion del footer ───────────────────────────────────── */
-/* Recoge lo que ya no esta en el top: Servicios (los 8 antiguos enlaces del
-   desplegable), Casos, Blog y Sobre nosotros. */
+/* ── Footer unificado ──────────────────────────────────────────────────── */
+/* Cada propiedad que site.css o un <style> de pagina toca en `footer{}` /
+   `footer a{}` (fondo, padding, text-align, color, borde inferior de los
+   enlaces) se fija aqui explicitamente: si no, se colaria. */
+footer.wm-foot{display:block;margin:80px 0 0;padding:80px 24px 0;
+  background:linear-gradient(180deg,transparent 0%,rgba(124,77,255,.03) 100%);
+  border:0;border-top:1px solid rgba(255,255,255,.06);
+  color:#9CA3AF;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:.86rem;font-weight:400;line-height:1.5;text-align:left}
+.wm-foot a{color:#9CA3AF;text-decoration:none;border:0;background:none;
+  transition:color .12s ease}
+.wm-foot a:hover{color:#E8E8F0;text-decoration:none}
+.wm-foot a:focus-visible{outline:2px solid #9d70ff;outline-offset:2px;border-radius:3px}
+.wm-foot p{margin:0}
+.wm-foot img{display:block;max-width:none}
+/* Servicios solo tiene tres enlaces cortos y Contacto lleva el email, que no
+   parte bien: el reparto le quita a una para darselo a la otra. Con fracciones
+   iguales el email se cortaba a 1440px ("comercial@whitemoon.e / s"). */
+.wm-foot__grid{max-width:1240px;margin:0 auto;display:grid;
+  grid-template-columns:1.3fr .75fr 1fr 1fr 1.3fr;gap:56px 40px;padding-bottom:64px}
+.wm-foot__logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:18px;
+  font-family:'Sora','Inter',sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:-.01em;line-height:1}
+.wm-foot__logo img{width:32px;height:32px;border-radius:50%;object-fit:cover;
+  filter:drop-shadow(0 0 14px rgba(124,77,255,.35))}
+.wm-foot .wm-foot__logo .wm-l{color:#E8E8F0}
+.wm-foot .wm-foot__logo .wm-a{color:#9d70ff}
+.wm-foot .wm-foot__brand p{margin:0 0 24px;max-width:320px;font-size:.88rem;line-height:1.65;color:#9CA3AF}
+.wm-foot__social{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.wm-foot .wm-foot__social a{display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border:1px solid rgba(255,255,255,.08);border-radius:8px;
+  color:#9CA3AF;transition:color .15s ease,border-color .15s ease,background .15s ease}
+.wm-foot .wm-foot__social a:hover{color:#E8E8F0;border-color:rgba(124,77,255,.4);background:rgba(124,77,255,.06)}
+.wm-foot__social svg{width:16px;height:16px}
+.wm-foot h3{margin:0 0 18px;padding:0;font-family:'Inter',sans-serif;font-size:.74rem;
+  font-weight:600;line-height:1.4;letter-spacing:.08em;text-transform:uppercase;color:#E8E8F0}
+.wm-foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.wm-foot li{margin:0;padding:0;list-style:none}
+.wm-foot li::before{content:none}
+.wm-foot ul a{font-size:.86rem;line-height:1.5;letter-spacing:-.005em}
+.wm-foot__contact{display:flex;flex-direction:column;gap:14px}
+.wm-foot__item{display:flex;align-items:flex-start;gap:11px}
+.wm-foot__item>svg{width:16px;height:16px;flex-shrink:0;margin-top:3px;color:#9d70ff}
+.wm-foot__item .meta{font-size:.86rem;line-height:1.5;color:#9CA3AF;min-width:0;overflow-wrap:break-word}
+.wm-foot__item .meta strong{display:block;margin-bottom:2px;font-size:.78rem;font-weight:500;
+  letter-spacing:.04em;color:#E8E8F0}
+.wm-foot__bottom{max-width:1240px;margin:0 auto;padding:24px 0 28px;
+  border-top:1px solid rgba(255,255,255,.06);display:flex;flex-wrap:wrap;
+  justify-content:space-between;align-items:center;gap:14px 24px;
+  font-size:.78rem;color:#9CA3AF}
+.wm-foot__legal{display:flex;flex-wrap:wrap;gap:18px}
+.wm-foot__tag{display:inline-flex;align-items:center;gap:6px}
+.wm-foot__tag img{width:14px;height:14px;border-radius:50%;object-fit:cover}
+/* Entre 980 y 1180px cinco columnas no dejan sitio al email: tres y en dos filas. */
+@media(max-width:1180px){.wm-foot__grid{grid-template-columns:1.2fr 1fr 1fr;gap:48px 36px}}
+@media(max-width:980px){.wm-foot__grid{grid-template-columns:1fr 1fr;gap:48px 32px}}
+@media(max-width:560px){
+  footer.wm-foot{margin-top:56px;padding:56px 16px 0}
+  .wm-foot__grid{grid-template-columns:1fr;gap:40px;padding-bottom:48px}
+}
+@media(prefers-reduced-motion:reduce){.wm-foot a,.wm-foot .wm-foot__social a{transition:none}}
+
+/* ── LEGACY (/precios/): bloque de navegacion del footer anterior ──────── */
 .wm-fnav{max-width:1140px;margin:0 auto 30px;padding:0 4px 28px;
   border-bottom:1px solid rgba(124,77,255,.16);
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;
