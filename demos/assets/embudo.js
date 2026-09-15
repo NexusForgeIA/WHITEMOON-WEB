@@ -7,123 +7,46 @@
   "use strict";
 
   /* ==========================================================
-     DATOS — fuente: https://whitemoon.es/precios/ y /demos/
-     Tarifa 2026. Ningún pack tiene permanencia.
+     DATOS — dos productos: Spark y Core Spark Web.
+     Sin importes: cada propuesta se prepara a medida.
+     Ninguno tiene permanencia.
      ========================================================== */
 
   var PACKS = [
     {
       id:"spark", warranty:true, name:"Spark", forWho:"Ya tienes web",
-      tag:"Chatbot conversacional completo con IA. Tu negocio atiende clientes 24/7 sin esfuerzo.",
-      big:"499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
-      desde:"499€ setup + 99€/mes",
+      tag:"Un agente IA en la web que ya tienes: atiende a tus clientes 24/7, recoge sus datos y te avisa al móvil.",
+      sub:"Propuesta a medida · Sin permanencia · Operativo en 7 días laborables",
       short:"Agente IA de chat 24/7 sobre tu web actual, que recoge los datos y te avisa al móvil.",
       url:"https://whitemoon.es/spark/",
       items:["Agente IA conversacional 24/7","Recoge solo los datos de quien pregunta","Aviso al móvil de cada persona interesada","Flujo conversacional específico del sector","Te llega quién es y qué necesita, con la conversación entera"]
     },
     {
-      id:"mini-core", warranty:true, name:"Pack Mini Core", forWho:"Autónomos sin web",
-      tag:"Tu presencia online lista en 7 días laborables: landing profesional y un agente IA que atiende a cada cliente y te avisa al móvil.",
-      big:"599€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
-      desde:"599€ setup + 99€/mes",
-      short:"Landing profesional, dominio el primer año y chatbot básico que recoge el contacto y te avisa.",
-      url:"https://whitemoon.es/mini-core/",
-      items:["Landing profesional a medida","Dominio propio incluido (primer año)","Agente IA básico (chatbot en la landing)","Chatbot de 3 acciones: responde dudas, recoge nombre y teléfono, y deriva al contacto","Aviso al instante en tu móvil de cada contacto"]
-    },
-    {
-      id:"orion-agent", warranty:true, name:"Orion IA Agent", forWho:"Gestión de citas",
-      tag:"Agente de voz IA 24/7 sobre la web que ya tienes. Gestiona citas y recoge contactos sin que intervenga nadie.",
-      big:"799€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
-      desde:"799€ setup + 99€/mes",
-      short:"Agente de voz 24/7 sobre tu web actual, con agenda automática vía Cal.com.",
-      url:"https://whitemoon.es/orion-agent/",
-      items:["Agente de voz 24/7 en español natural","Gestiona citas desde tu web sin intervención humana","Recoge nombre, teléfono y motivo de la consulta","Integración con Cal.com para agenda automática","Flujo conversacional específico de tu sector"]
-    },
-    {
-      id:"core", warranty:true, name:"Core Spark Web", forWho:"Web + chat IA",
-      tag:"Web profesional + dominio + Agente Spark conversacional 24/7 + SEO/GEO/AEO completo desde el día 1.",
-      big:"899€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
-      desde:"899€ setup + 99€/mes",
+      id:"core-spark-web", warranty:true, name:"Core Spark Web", forWho:"Aún no tienes web",
+      tag:"Web profesional + dominio + agente Spark conversacional 24/7 + SEO/GEO/AEO completo desde el día 1.",
+      sub:"Propuesta a medida · Sin permanencia · Operativo en 7 días laborables",
       short:"Web profesional con dominio, agente de chat 24/7 y SEO/GEO/AEO desde el día 1.",
       url:"https://whitemoon.es/core/",
       items:["Web profesional + dominio primer año incluido","SSL + hosting + mantenimiento técnico","Agente Spark conversacional 24/7","Sistema de reservas y citas online","SEO técnico + GEO/AEO · visible en ChatGPT, Grok y Perplexity"]
-    },
-    {
-      id:"core-orion", warranty:true, name:"Core Orion", forWho:"Web + voz IA",
-      tag:"Web profesional + dominio + Orion IA voz 24/7 + SEO/GEO/AEO. Tu negocio online y automatizado con voz desde el día 1.",
-      big:"1.499€", small:"+ 99€/mes", sub:"Setup único · Sin permanencia · Operativo en 5-7 días laborables",
-      desde:"1.499€ setup + 99€/mes",
-      short:"Web profesional con dominio, Orion IA de voz 24/7, reservas y SEO/GEO/AEO.",
-      url:"https://whitemoon.es/core-orion/",
-      items:["Web profesional + dominio primer año incluido","SSL + hosting + mantenimiento técnico","Orion IA — agente de voz 24/7 en tu web","Gestiona citas y llamadas sin intervención humana","SEO técnico + GEO/AEO · visible en ChatGPT, Grok y Perplexity"]
-    },
-    {
-      id:"wm360", warranty:true, name:"WhiteMoon 360", forWho:"Negocio con equipo",
-      tag:"Tu negocio entero en un sistema: la web capta el aviso o la cita, el agente IA de chat lo clasifica, tu equipo lo recibe en su móvil y tú lo gestionas desde tu propio panel.",
-      big:"1.899€", small:"+ 199€/mes", sub:"Setup único · Sin permanencia · Operativo en 7 días laborables",
-      desde:"1.899€ setup + 199€/mes",
-      short:"Web + agente IA de chat + CRM propio con reparto de trabajo, agenda y panel de KPIs.",
-      url:"https://whitemoon.es/whitemoon-360/",
-      items:["Web profesional completa + dominio primer año","Agente IA de chat 24/7 que atiende, clasifica y agenda","CRM de gestión en tu propio dominio","Reparto automático del trabajo por zona y especialidad","Panel de KPIs y enlace de reseña Google automático"]
-    },
-    {
-      id:"core-rag", warranty:true, name:"Core RAG", forWho:"Mucha documentación",
-      tag:"Agente IA entrenado con tus documentos, procedimientos y normativa. Responde como un experto de tu empresa.",
-      big:"2.499€", small:"+ 199€/mes", sub:"Setup único · Sin permanencia",
-      desde:"2.499€ setup + 199€/mes",
-      short:"Agente entrenado con hasta 100 documentos propios, búsqueda semántica y voz incluida.",
-      url:"https://whitemoon.es/core-rag/",
-      items:["Agente IA entrenado con hasta 100 documentos propios","Búsqueda semántica RAG sobre tu contenido real","1.000 consultas al mes incluidas","Widget + URL pública tipo ChatGPT","Orion IA — agente de voz web incluido"]
-    },
-    {
-      id:"auditoria", name:"Auditoría GEO IA", forWho:"Diagnóstico previo",
-      tag:"Descubre si tu negocio aparece en ChatGPT, Grok y Perplexity.",
-      big:"899€", small:"pago único", sub:"Entrega en 24 h · Sin permanencia",
-      desde:"899€ pago único",
-      short:"Análisis SEO/GEO/AEO de 35 checks con informe PDF profesional en 24 h.",
-      url:"https://whitemoon.es/auditoria-geo-ia/",
-      items:["Análisis completo SEO/GEO/AEO (35 checks)","Informe PDF profesional","Entrega en 24 h","Visibilidad en ChatGPT, Grok y Perplexity"]
-    },
-    {
-      id:"itp", warranty:true, name:"Calculadora ITP Pro", forWho:"Gestorías y administradores",
-      tag:"Instala la calculadora ITP oficial del BOE 2026 en tu web con un simple script.",
-      big:"599€", small:"+ 99€/mes", sub:"Por licencia · Sin permanencia",
-      desde:"599€ setup + 99€/mes por licencia",
-      short:"Calculadora ITP oficial BOE 2026 instalable en tu web, con todas las comunidades autónomas.",
-      url:"https://whitemoon.es/precios/#herramientas-pro",
-      items:["Todas las comunidades autónomas","Depreciación automática Anexo IV BOE","Casos especiales contemplados","Se instala con un script en tu web"]
     }
   ];
 
   var REASONS = {
-    "core-rag":{
-      why:"Como trabajas con mucha documentación tuya —normativa, expedientes, procedimientos—, lo que te encaja es un agente que se los haya leído. Core RAG se entrena con hasta 100 documentos tuyos, así que responde con tu criterio y tu letra pequeña, no con generalidades de internet.",
-      alt:"wm360", altWhy:"te añade además el CRM, el reparto de trabajo a tu equipo y el panel de KPIs."
-    },
-    "core-orion":{
-      why:"Como aún no tienes web y prefieres que te atiendan hablando, te hace falta empezar por las dos cosas a la vez. Core Orion te monta la web con tu dominio y le pone encima Orion IA: coge la conversación por voz, deja la cita puesta y te avisa al móvil.",
-      alt:"core", altWhy:"te sale más ajustado si al final ves que con el chat te vale."
-    },
-    "core":{
-      why:"Como aún no tienes web y te ves más cómodo con el chat, esto te deja las dos cosas resueltas: tu web con tu dominio, el agente Spark contestando a cualquier hora y el SEO/GEO/AEO puesto desde el primer día.",
-      alt:"core-orion", altWhy:"es lo mismo pero atendiendo por voz, si te tira más el teléfono."
-    },
-    "orion-agent":{
-      why:"Como ya tienes web, no hace falta que la rehagas. Orion IA se mete en la que tienes: atiende hablando, te deja las citas puestas en tu calendario y te avisa al móvil de cada persona que pregunta.",
-      alt:"core-orion", altWhy:"es la opción si algún día te apetece renovar también la web."
-    },
     "spark":{
-      why:"Como ya tienes web y prefieres el chat, con esto es suficiente. Spark le añade un agente que contesta a cualquier hora, se entera de lo que necesita cada persona y te lo pasa con toda la conversación detrás.",
-      alt:"orion-agent", altWhy:"es el paso natural si además quieres que atienda por voz y gestione citas."
+      why:"Como ya tienes web, no hace falta rehacerla. Spark le añade un agente que contesta a cualquier hora, se entera de lo que necesita cada persona y te lo pasa con toda la conversación detrás.",
+      alt:"core-spark-web", altWhy:"es la opción si algún día quieres renovar también la web, con el agente dentro."
+    },
+    "core-spark-web":{
+      why:"Como aún no tienes web, te conviene empezar por las dos cosas a la vez: tu web con tu dominio, el agente Spark contestando a cualquier hora y el SEO/GEO/AEO puesto desde el primer día.",
+      alt:"spark", altWhy:"te basta si más adelante ya tienes web propia: pone el agente en la que tengas, sin rehacerla."
     }
   };
 
   /* ==========================================================
      Utilidades
      ========================================================== */
-  /* Sello de garantía. Solo lo llevan los packs con puesta en marcha y cuota:
-     la Auditoría GEO IA no tiene cuota mensual que dejar de pagar, así que ahí
-     la frase no querría decir nada. */
+  /* Sello de garantía: lo llevan los productos con puesta en marcha y cuota
+     mensual (hoy, los dos). */
   var SEAL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
     + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'
     + '<path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6l7-3Z"/>'
@@ -216,9 +139,8 @@
             +   '<p class="pack__for">' + esc(p.forWho) + '</p>'
             +   '<h3>' + esc(p.name) + '</h3>'
             +   '<p class="pack__tag">' + esc(p.tag) + '</p>'
-            /* Sin importe: aquí se habla de qué hace y para quién. El precio se
-               revela entero en el paso 8, y `sub` no lleva cifras (plazo y
-               "sin permanencia"), así que puede quedarse. */
+            /* Sin importe: cada propuesta se prepara a medida. `sub` son
+               plazo y "sin permanencia", sin cifras. */
             +   '<p class="pack__sub">' + esc(p.sub) + '</p>'
             +   (p.warranty ? seal(false) : '')
             +   '<ul>' + items + '</ul>'
@@ -228,8 +150,8 @@
 
     var lead = $("#packs-lead");
     lead.textContent = recoId
-      ? "De lo más sencillo a lo más completo, y el que encaja contigo aparece primero, en verde. Los importes los vemos luego, con calma."
-      : "De lo más sencillo a lo más completo. Mira qué hace cada uno y para quién es; los importes los vemos luego, con calma.";
+      ? "Los dos productos, y el que encaja contigo aparece primero, en verde. El precio va en tu propuesta, hecha a medida."
+      : "Los dos productos: mira qué hace cada uno y para quién es. El precio va en tu propuesta, hecha a medida.";
   }
 
   function renderTabla(recoId){
@@ -246,51 +168,20 @@
     $("#tabla").innerHTML = html;
   }
 
-  /* Paso 8: aquí y solo aquí se enseñan los importes. Misma fuente (PACKS) que
-     las tarjetas y la tabla, así que no pueden desincronizarse. */
-  function renderPrecios(recoId){
-    var lista = PACKS.slice();
-    if(recoId){
-      lista.sort(function(a,b){ return (b.id === recoId) - (a.id === recoId); });
-    }
-
-    var html = "";
-    for(var i=0;i<lista.length;i++){
-      var p = lista[i];
-      var reco = p.id === recoId;
-      html += '<article class="price' + (reco ? ' is-reco' : '') + '">'
-            +   '<div class="price__main">'
-            +     (reco ? '<span class="price__tag">Encaja contigo</span>' : '')
-            +     '<p class="price__for">' + esc(p.forWho) + '</p>'
-            +     '<h3 class="price__name">' + esc(p.name) + '</h3>'
-            +     '<p class="price__note">' + esc(p.sub) + '</p>'
-            +     '<a class="price__link" href="' + esc(p.url) + '" target="_blank" rel="noopener">Ver detalles de ' + esc(p.name)
-            +       '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7M9 7h8v8"/></svg>'
-            +       '<span class="sr-only"> (se abre en una pestaña nueva)</span>'
-            +     '</a>'
-            +   '</div>'
-            +   '<p class="price__amount"><span class="price__big">' + esc(p.big)
-            +     '<small>' + esc(p.small) + '</small></span></p>'
-            + '</article>';
-    }
-    $("#precios").innerHTML = html;
-
-    $("#precios-lead").textContent = recoId
-      ? "Ahora sí, los importes. El que encaja contigo aparece primero y en verde, pero decides tú por cuál empezar."
-      : "Ahora sí, los importes. Ya sabes qué hace cada uno, así que la cifra se lee sabiendo lo que hay detrás.";
-  }
-
   /* ==========================================================
      Diagnóstico
      ========================================================== */
-  var answers = { web:null, canal:null, docs:null };
+  var answers = { web:null, docs:null };
   var recommendedId = null;
 
+  /* Dos productos: con web, Spark; sin web, Core Spark Web. La documentación
+     no cambia el producto: si hay mucha, se cuenta que el agente puede
+     entrenarse con esos documentos (RAG), como capacidad opcional. */
+  var DOCS_LINE = "Como trabajas con mucha documentación tuya, el agente se puede entrenar con tus documentos (RAG) para responder con tu criterio y no con generalidades. Es opcional: lo vemos en tu propuesta.";
+
   function decide(a){
-    if(a.web === null || a.canal === null || a.docs === null) return null;
-    if(a.docs === "si") return "core-rag";
-    if(a.web === "no") return a.canal === "voz" ? "core-orion" : "core";
-    return a.canal === "voz" ? "orion-agent" : "spark";
+    if(a.web === null || a.docs === null) return null;
+    return a.web === "si" ? "spark" : "core-spark-web";
   }
 
   function renderResult(){
@@ -301,16 +192,14 @@
     if(!id){
       var left = 0;
       if(answers.web === null) left++;
-      if(answers.canal === null) left++;
       if(answers.docs === null) left++;
       out.innerHTML = '<p class="pending" id="diag-pending">'
-        + (left === 3
-            ? "Responde las tres y aquí verás por dónde te encaja empezar."
-            : "Te falta " + left + (left === 1 ? " respuesta" : " respuestas") + " y lo vemos.")
+        + (left === 2
+            ? "Responde las dos y aquí verás por dónde te encaja empezar."
+            : "Te falta 1 respuesta y lo vemos.")
         + '</p>';
       renderPacks(null);
       renderTabla(null);
-      renderPrecios(null);
       return;
     }
 
@@ -327,15 +216,15 @@
       + '<p class="result__sub">' + esc(p.sub) + '</p>'
       + (p.warranty ? seal(true) : '')
       + '<p class="result__why">' + esc(r.why) + '</p>'
-      + '<p class="result__alt">Si algún día quieres ir un paso más allá: <b>' + esc(alt.name) + '</b> ' + esc(r.altWhy) + '</p>'
+      + (answers.docs === "si" ? '<p class="result__alt">' + esc(DOCS_LINE) + '</p>' : '')
+      + '<p class="result__alt">La otra opción: <b>' + esc(alt.name) + '</b> ' + esc(r.altWhy) + '</p>'
       + '<div class="result__cta">'
-      +   '<button type="button" class="btn btn--g" data-go="6">Ver todos los packs</button>'
+      +   '<button type="button" class="btn btn--g" data-go="6">Ver los dos productos</button>'
       + '</div>'
       + '</div>';
 
     renderPacks(id);
     renderTabla(id);
-    renderPrecios(id);
   }
 
   $$(".opt").forEach(function(btn){
@@ -404,7 +293,7 @@
     {id:"cp",        err:"El código postal son cinco cifras.", test:function(v){ return RE_CP.test(soloDigitos(v)); }},
     {id:"ciudad",    err:"Falta la ciudad."},
     {id:"provincia", err:"Falta la provincia."},
-    {id:"pack",      err:"Elige el pack por el que quieres empezar."}
+    {id:"pack",      err:"Elige el producto por el que quieres empezar."}
   ];
 
   function campoEl(c){ return $("#f-" + c.id); }
@@ -429,7 +318,7 @@
   }
 
   function pintaPacks(){
-    var html = '<option value="">Elige el pack</option>';
+    var html = '<option value="">Elige el producto</option>';
     for(var i=0;i<PACKS.length;i++){
       html += '<option value="' + esc(PACKS[i].id) + '">' + esc(PACKS[i].name) + '</option>';
     }
@@ -587,8 +476,8 @@
      Calendario de Cal.com — carga diferida
      ----------------------------------------------------------
      El script de Cal.com trae su propio runtime y no tiene por qué costarle
-     nada a los ocho pasos anteriores: no se inyecta con la página, sino cuando
-     el hueco del calendario se acerca a la pantalla. Como el paso 9 está
+     nada a los pasos anteriores: no se inyecta con la página, sino cuando
+     el hueco del calendario se acerca a la pantalla. Como el último paso está
      `hidden` hasta que se abre, el observador no dispara antes de llegar ahí.
      Si el navegador no trae IntersectionObserver, se carga al abrirse el paso.
      ========================================================== */
@@ -733,7 +622,7 @@
   }
 
   function reset(){
-    answers = { web:null, canal:null, docs:null };
+    answers = { web:null, docs:null };
     recommendedId = null;
     $$(".opt").forEach(function(o){ o.setAttribute("aria-pressed","false"); });
     $$(".q").forEach(function(f){ f.classList.remove("is-answered"); });
