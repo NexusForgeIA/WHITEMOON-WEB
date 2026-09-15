@@ -46,6 +46,8 @@ IGNORED_DIRS = {
     "agente-voz-ia-negocio-local", "que-es-agente-voz-ia-2026",
     "agente-voz-ia-como-funciona-negocio", "agente-voz-ia-reducir-llamadas-perdidas",
     "agente-ia-texto-o-voz-cual-elegir",
+    # Posts de funciones del CRM de WhiteMoon 360 que no se ofrecen (redirigen a /core/).
+    "reparto-automatico-trabajos-zonas-equipo", "conseguir-mas-resenas-google-negocio-local",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}

@@ -8,13 +8,14 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/mas-info/">
-<!-- Los enlaces viejos con ?pack=mini-core (pack retirado) redirigen a /spark/.
-     Va aquí arriba a propósito, antes de pintar nada. -->
+<!-- Enlaces viejos con ?pack= de packs retirados: mini-core va a /spark/ y
+     whitemoon-360 a /core/. Va aquí arriba a propósito, antes de pintar nada. -->
 <script>
 (function(){
   try {
-    if (new URLSearchParams(location.search).get('pack') === 'mini-core') {
-      location.replace('/spark/');
+    var dest = {'mini-core': '/spark/', 'whitemoon-360': '/core/'}[new URLSearchParams(location.search).get('pack')];
+    if (dest) {
+      location.replace(dest);
     }
   } catch (e) { /* navegador sin URLSearchParams: se queda en /mas-info/ */ }
 })();
@@ -241,34 +242,14 @@
   // ?pack= y `name` es lo que viaja con el lead. `accent` acepta
   // 'gold' o 'purple'. En cada feature, `quip` es opcional.
   //
-  // ?pack=mini-core (retirado) no llega aquí: el redirect del <head> lo manda a /spark/.
-  var PACKS = {
-    'whitemoon-360': {
-      name: 'WhiteMoon 360',
-      accent: 'purple',
-      badge: 'Negocios con equipo',
-      badgeIcon: 'users',
-      title: 'Tu equipo en la calle y tú apuntando avisos en un cuaderno.',
-      subtitle: 'WhiteMoon 360 — la web capta, el agente IA clasifica y tu equipo lo recibe en el móvil. Tú lo ves todo desde tu panel.',
-      price: '1.899€ setup + 199€/mes',
-      priceNote: 'Sin permanencia · Operativo en 7 días',
-      features: [
-        { icon:'layout', title:'Web profesional que capta avisos y citas', quip:'la puerta de entrada, abierta también de madrugada.' },
-        { icon:'chat',   title:'Agente IA de chat que clasifica lo que entra', quip:'separa la urgencia real del "solo preguntaba".' },
-        { icon:'bell',   title:'Reparto automático al equipo con aviso al móvil', quip:'cada trabajo llega a quien le toca, sin llamadas cruzadas.' },
-        { icon:'chart',  title:'Tu panel: agenda semanal, historial de clientes y KPIs', quip:'qué servicio deja más, qué horas se te quedan vacías.' },
-        { icon:'star',   title:'Seguimiento del cierre y reseñas en Google' }
-      ],
-      audience: 'Para negocios con equipo y agenda: servicios técnicos, clínicas con cita o gente trabajando en la calle.',
-      closing: '¿Te encaja? Cuéntanos abajo cuatro cosas y te llamamos en menos de 24h.'
-    }
-  };
+  // ?pack=mini-core y ?pack=whitemoon-360 (retirados) no llegan aquí: el redirect
+  // del <head> los manda a /spark/ y /core/.
+  var PACKS = {};
 
   var packData = PACKS[pack] || null;
 
   function packLabel(p){
     if(PACKS[p]) return PACKS[p].name;
-    if(p === 'whitemoon-360') return 'WhiteMoon 360';
     return p.split('-').filter(Boolean).map(function(w){
       return w.charAt(0).toUpperCase() + w.slice(1);
     }).join(' ');
