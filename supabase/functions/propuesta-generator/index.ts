@@ -49,21 +49,26 @@ const CASO = /casos?\s+de\s+[eé]xito|casos?\s+real(?:es)?\b|clientes?\s+real(?:
 // para no confundirlo con "responde de inmediato" o "citas en el dia".
 const PLAZO_SIEMPRE = /\ben\s+cuesti[oó]n\s+de\s+(?:horas|minutos|d[ií]as)\b|\bhoy\s+mismo\b|\ben\s+(?:unas|pocas|unos|pocos)\s+(?:horas|minutos)\b/gi;
 const PLAZO_TIEMPO = /(?:\ben\s+)?(?<!\d\s)(?<!\d)\b(?:horas|minutos)\b|\ben\s+el\s+(?:mismo\s+)?d[ií]a\b|\bde\s+inmediato\b|\binmediatamente\b|\ben\s+(?:24|48|72)\s?h(?:oras)?\b|\ben\s+(?:unos\s+|pocos\s+)?(?!7\s+d[ií]as\s+laborables)\d+\s+d[ií]as(?:\s+(?:laborables|h[aá]biles))?|\ben\s+(?:una|unas|pocas)\s+semanas?\b/gi;
-const DESPLIEGUE = /despl[ie]+g|instal|implant|implement|puesta\s+en\s+marcha|pone(?:r|mos)?\s+en\s+marcha|se\s+integra|integramos|integrarlo|configur|arranc|se\s+activa|activamos|activarlo|tenerlo\s+(?:operativo|listo|funcionando)|(?:est[aá]|estar[aá]|queda|quedar[aá])\s+(?:operativo|listo|funcionando)|listo\s+para\s+funcionar/i;
+const DESPLIEGUE = /despl[ie]+g|instal|implant|implement|puesta\s+en\s+marcha|pone(?:r|mos)?\s+en\s+marcha|se\s+integra|integramos|integrarlo|configur|arranc|se\s+activa|activamos|activarlo|empieza\s+a\s+trabajar|funciona(?:r|r[aá])?\b|tenerlo\s+(?:operativo|listo|funcionando)|(?:est[aá]|estar[aá]|queda|quedar[aá])\s+(?:operativo|listo|funcionando)|listo\s+para\s+funcionar/i;
+// Cualquier "dias laborables" que no sea "7 dias laborables" es un plazo a corregir,
+// con o sin cifra: "en dias laborables", "en 5 dias laborables", "10 dias laborables".
+const PLAZO_LABORABLES = /(?:\ben\s+)?(?:(?:unos|pocos|(?!7\s)\d+)\s+)?(?<!\b7\s)\bd[ií]as\s+laborables\b/gi;
 const PLAZO_FIJO = 'en 7 días laborables';
+const fijoLaborables = (m: string) => (/^en\s/i.test(m) ? PLAZO_FIJO : '7 días laborables');
 
 const sinG = (r: RegExp) => new RegExp(r.source, r.flags.replace('g', ''));
 const frases = (t: string) => t.split(/(?<=[.!?])\s+|(?=<\/?(?:p|li)\b)/);
 
 const plazoMal = (t: string) =>
-  sinG(PLAZO_SIEMPRE).test(t) || frases(t).some((f) => DESPLIEGUE.test(f) && sinG(PLAZO_TIEMPO).test(f));
+  sinG(PLAZO_SIEMPRE).test(t) || sinG(PLAZO_LABORABLES).test(t) ||
+  frases(t).some((f) => DESPLIEGUE.test(f) && sinG(PLAZO_TIEMPO).test(f));
 
 const arreglaPlazo = (t: string) =>
   frases(t).map((f) => {
-    let g = f.replace(PLAZO_SIEMPRE, PLAZO_FIJO);
+    let g = f.replace(PLAZO_SIEMPRE, PLAZO_FIJO).replace(PLAZO_LABORABLES, fijoLaborables);
     if (DESPLIEGUE.test(g)) g = g.replace(PLAZO_TIEMPO, PLAZO_FIJO);
     return g;
-  }).join(' ').replace(/\s+(<\/?(?:p|li))/g, '$1');
+  }).join(' ').replace(/\s+(<\/?(?:p|li)\b)/g, '$1');
 
 // Texto final de un campo de Claude: se descarta si trae algo prohibido o un
 // caso presentado como real; un plazo distinto se corrige a "7 dias laborables".
