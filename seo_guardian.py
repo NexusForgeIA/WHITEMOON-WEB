@@ -37,6 +37,10 @@ IGNORED_DIRS = {
     "precio-agente-ia-empresa",
     # Pack Ads retirado: WhiteMoon ya no gestiona publicidad.
     "pack-ads",
+    # Catálogo viejo: el modelo pasa a 2 productos (/spark/ y /core/).
+    "precios", "servicios", "recursos", "gestotrafic",
+    "orion", "orion-agent", "mini-core", "core-rag",
+    "core-orion", "whitemoon-360", "automatizaciones",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
