@@ -405,7 +405,7 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      HOME · MODELO DE 2 PRODUCTOS
-     1 Hero · 2 ¿Te suena esto? · 3 Tus 2 caminos · 4 Cómo funciona
+     1 Hero · 2 Tus 2 caminos · 3 ¿Te suena esto? · 4 Cómo funciona
      5 Qué hace y qué no · 6 Prueba · 7 FAQ (sincronizada con el FAQPage)
      8 Zonas · 9 Cierre
      Sin precios en la home: las tarifas viven en /precios/ y en cada pack.
@@ -447,43 +447,7 @@
   </div>
 </section>
 
-<!-- 2 · ¿TE SUENA ESTO? (dolor) -->
-<style>
-  #dolor .pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1040px;margin:0 auto}
-  @media(max-width:900px){#dolor .pain-grid{grid-template-columns:1fr;max-width:520px}}
-  #dolor .pain{background:var(--card,#111118);border:1px solid rgba(124,77,255,.18);border-radius:16px;padding:28px 24px;text-align:left}
-  #dolor .pain .ico{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:rgba(124,77,255,.12);color:var(--p,#7c4dff);margin-bottom:16px}
-  #dolor .pain .ico svg{width:21px;height:21px}
-  #dolor .pain h3{font-family:'Sora',sans-serif;font-size:1.08rem;font-weight:700;color:#fff;letter-spacing:-.015em;margin:0 0 8px;line-height:1.3}
-  #dolor .pain p{font-size:.9rem;color:var(--muted,#9999b5);line-height:1.65;margin:0}
-</style>
-<section id="dolor" class="sec">
-  <div class="wrap">
-    <div class="hdr c">
-      <span class="sec-lbl">Lo que nos cuentan</span>
-      <h2 class="sec-h">¿Te suena esto?</h2>
-    </div>
-    <div class="pain-grid">
-      <div class="pain">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
-        <h3>Pierdo clientes fuera de horario</h3>
-        <p>Quien entra en tu web a las once de la noche o un domingo no encuentra a nadie al otro lado. Y se va al siguiente resultado.</p>
-      </div>
-      <div class="pain">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
-        <h3>Repito lo mismo mil veces</h3>
-        <p>Horarios, precios, dónde estáis, si hay hueco el jueves. Las mismas cinco preguntas, todos los días, quitándote tiempo de lo tuyo.</p>
-      </div>
-      <div class="pain">
-        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="19" x2="15" y2="19"/></svg></span>
-        <h3>Mi web no me trae clientes</h3>
-        <p>Es un folleto bonito: se ve, se lee y no pasa nada más. Nadie deja su teléfono y tú no te enteras de quién ha pasado por ahí.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3 · TUS 2 CAMINOS — el corazón de la home.
+<!-- 2 · TUS 2 CAMINOS — el corazón de la home.
      .wm-path es un componente sin ids a propósito: la página "Productos" de la
      fase 2 lo reutiliza tal cual (entonces pasará a /assets/).
      Anclas legacy: 31 páginas enlazan a /#servicios y 121 a /#precios; las dos
@@ -510,7 +474,7 @@
   @media(prefers-reduced-motion:reduce){.wm-path,.wm-path__cta{transition:none}.wm-path__cta:hover{transform:none}}
   #servicios{scroll-margin-top:66px}
 </style>
-<section id="servicios" class="sec-alt">
+<section id="servicios" class="sec">
   <span id="precios" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hdr c">
@@ -546,6 +510,42 @@
     </div>
 
     <p class="wm-paths-foot">¿No sabes cuál? <a href="/contacto/" onclick="wmTrack('click_home_camino',{producto:'no-lo-se'})">Cuéntanos tu caso</a> y te lo decimos — sin compromiso.</p>
+  </div>
+</section>
+
+<!-- 3 · ¿TE SUENA ESTO? (dolor) -->
+<style>
+  #dolor .pain-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1040px;margin:0 auto}
+  @media(max-width:900px){#dolor .pain-grid{grid-template-columns:1fr;max-width:520px}}
+  #dolor .pain{background:var(--card,#111118);border:1px solid rgba(124,77,255,.18);border-radius:16px;padding:28px 24px;text-align:left}
+  #dolor .pain .ico{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:rgba(124,77,255,.12);color:var(--p,#7c4dff);margin-bottom:16px}
+  #dolor .pain .ico svg{width:21px;height:21px}
+  #dolor .pain h3{font-family:'Sora',sans-serif;font-size:1.08rem;font-weight:700;color:#fff;letter-spacing:-.015em;margin:0 0 8px;line-height:1.3}
+  #dolor .pain p{font-size:.9rem;color:var(--muted,#9999b5);line-height:1.65;margin:0}
+</style>
+<section id="dolor" class="sec-alt">
+  <div class="wrap">
+    <div class="hdr c">
+      <span class="sec-lbl">Lo que nos cuentan</span>
+      <h2 class="sec-h">¿Te suena esto?</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
+        <h3>Pierdo clientes fuera de horario</h3>
+        <p>Quien entra en tu web a las once de la noche o un domingo no encuentra a nadie al otro lado. Y se va al siguiente resultado.</p>
+      </div>
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
+        <h3>Repito lo mismo mil veces</h3>
+        <p>Horarios, precios, dónde estáis, si hay hueco el jueves. Las mismas cinco preguntas, todos los días, quitándote tiempo de lo tuyo.</p>
+      </div>
+      <div class="pain">
+        <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="19" x2="15" y2="19"/></svg></span>
+        <h3>Mi web no me trae clientes</h3>
+        <p>Es un folleto bonito: se ve, se lee y no pasa nada más. Nadie deja su teléfono y tú no te enteras de quién ha pasado por ahí.</p>
+      </div>
+    </div>
   </div>
 </section>
 
