@@ -50,13 +50,10 @@ body::before{
     radial-gradient(52vw 36vh at -8% 104%, rgba(0,212,170,.11), transparent 60%);
 }
 main,footer{position:relative;z-index:1}
-/* La burbuja de WhatsApp vive pegada abajo a la derecha y aquí se topa con la
-   barra fija de pasos. Se levanta por encima de ella.
-   Va en `html:root` a propósito: el widget se pinta su `:root` en un <style>
-   que inyecta al cargar, después de esta hoja, y con la misma especificidad
-   ganaría él. */
-html:root{--orion-bottom:100px}
-@media(max-width:599px){html:root{--orion-bottom:96px}}
+/* El lanzador de contacto (assets/wm-launcher.js) vive pegado abajo a la
+   derecha y aquí se topa con la barra fija de pasos (76px de alto). Se levanta
+   por encima de ella: --wml-base en escritorio, --wml-base-m hasta 600px. */
+html:root{--wml-base:100px;--wml-base-m:96px}
 .wme [hidden]{display:none !important}
 .wme a{color:var(--p2)}
 /* Los enlaces dentro de un párrafo no pueden distinguirse solo por el color:
@@ -484,43 +481,6 @@ html:root{--orion-bottom:100px}
 .wme .pack__link{margin-top:auto;padding-top:18px;font-size:.85rem;font-weight:700;color:var(--p2);text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .wme .pack__link:hover{text-decoration:underline}
 
-/* ---------- Los precios (paso final de decisión) ---------- */
-.wme .prices{display:grid;gap:10px;margin-top:26px}
-.wme .price{
-  display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  background:var(--bg3);border:1px solid var(--line);border-radius:var(--r);
-  padding:18px 20px;
-}
-.wme .price.is-reco{
-  border-color:var(--g);
-  background:linear-gradient(120deg,rgba(0,212,170,.11),var(--bg3) 62%);
-  box-shadow:0 0 0 1px rgba(0,212,170,.22);
-}
-.wme .price__main{flex:1 1 12rem;min-width:0}
-.wme .price__for{margin:0 0 6px;font-size:.66rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--p2)}
-.wme .price__name{font-size:1.15rem;font-weight:700;letter-spacing:-.02em;line-height:1.25}
-.wme .price__note{margin:6px 0 0;font-size:.78rem;color:var(--muted);line-height:1.5}
-.wme .price__amount{flex:0 0 auto;text-align:right}
-.wme .price__big{font-size:1.7rem;font-weight:800;letter-spacing:-.045em;line-height:1;color:var(--text)}
-.wme .price__big small{font-size:.8rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-left:6px}
-.wme .price__tag{
-  display:inline-block;margin:0 0 8px;
-  font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
-  background:var(--g);color:#06110e;border-radius:999px;padding:5px 11px;
-}
-.wme .price__link{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:10px;font-size:.8rem;font-weight:700;color:var(--p2);text-decoration:none;
-}
-.wme .price__link:hover{text-decoration:underline}
-.wme .choose{
-  margin:26px 0 0;padding:20px;
-  border:1px solid var(--line2);border-radius:var(--r);
-  background:var(--bg2);
-  font-size:.95rem;color:var(--muted);line-height:1.65;
-}
-.wme .choose b{color:var(--text);font-weight:700}
-
 /* ---------- Comparativa ---------- */
 .wme .tablewrap{margin-top:26px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .wme table{width:100%;border-collapse:collapse;font-size:.88rem}
@@ -529,7 +489,6 @@ html:root{--orion-bottom:100px}
 .wme thead th{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p2);border-bottom:1px solid var(--line2);white-space:nowrap}
 .wme tbody th{font-weight:700;color:var(--text);font-size:.95rem}
 .wme td{color:var(--muted)}
-.wme td.price{color:var(--text);font-weight:600}
 .wme tbody tr.is-reco th,.wme tbody tr.is-reco td{background:rgba(0,212,170,.08)}
 
 /* ---------- Tu siguiente paso ---------- */
@@ -664,7 +623,7 @@ html:root{--orion-bottom:100px}
 @media(min-width:900px){
   .wme{--hdr:68px}
   .wme .demos{grid-template-columns:repeat(3,1fr)}
-  .wme .packs{grid-template-columns:repeat(3,1fr)}
+  .wme .packs{grid-template-columns:repeat(2,1fr)}
   .wme .wrap{padding:0 32px}
   .wme .step{padding-top:48px}
   .wme .ghost{right:1%;top:-42px}
