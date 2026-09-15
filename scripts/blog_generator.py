@@ -55,8 +55,6 @@ RELATED_POOL = [
     ("Agente IA", "Agentes IA en 2026: que son y para que sirven", "/blog/agentes-ia-pymes-2026/"),
     ("Agente IA", "Que es un Agente IA: guia completa para empresas", "/blog/que-es-un-agente-ia/"),
     ("Comparativa", "Agente IA vs Chatbot: 6 diferencias reales", "/blog/agente-ia-vs-chatbot-diferencias/"),
-    ("Agente de voz", "Que es un agente de voz IA y por que lo necesitas", "/blog/que-es-agente-voz-ia-2026/"),
-    ("Agente de voz", "Orion IA: el agente de voz que atiende 24/7", "/blog/orion-ia-agente-voz-24-7/"),
     ("SEO y GEO", "GEO/AEO: posicionamiento IA para pymes", "/blog/geo-aeo-posicionamiento-ia-pymes/"),
     ("Precios", "Cuanto cuesta implementar IA en tu negocio", "/blog/cuanto-cuesta-ia-negocio/"),
     ("Estrategia", "Automatizacion de procesos con IA para pymes", "/blog/automatizacion-procesos-ia-pymes/"),
@@ -71,9 +69,11 @@ Escribes articulos de blog en ESPANOL DE ESPANA, tono profesional cercano, claro
 
 REGLAS ABSOLUTAS (el incumplimiento invalida el articulo):
 - PROHIBIDO inventar testimonios, casos de exito con nombre, cifras, porcentajes, estadisticas o resultados concretos. No escribas "un 28% mas" ni "reduccion del 35%" ni datos que no puedas verificar. Habla en terminos cualitativos y honestos ("suele reducir las llamadas perdidas", "muchos negocios recuperan horas"). Si mencionas un rango, deja claro que es orientativo.
-- Usa SIEMPRE el termino "Agente IA" (o "agente de voz IA" / "agente de texto"). NUNCA escribas "Chatbot IA" como producto; puedes mencionar la palabra "chatbot" solo para explicar la diferencia con un Agente IA.
+- Usa SIEMPRE el termino "Agente IA". NUNCA escribas "Chatbot IA" como producto; puedes mencionar la palabra "chatbot" solo para explicar la diferencia con un Agente IA.
 - Sin emojis en el texto.
-- No menciones packs retirados (Scale, Elite, Orion IA Calls). Packs vigentes: Spark, Orion IA Agent, Core Spark Web, Core Orion, Core RAG. Ningun pack tiene permanencia.
+- WhiteMoon tiene dos productos: Spark (agente IA en la web que ya tienes) y Core Spark Web (web nueva con el agente dentro). No menciones otros packs ni productos. Ninguno tiene permanencia.
+- PROHIBIDO escribir precios, importes o cuotas: el precio va siempre en una propuesta a medida.
+- El Agente IA atiende por escrito, en la web y en mensajeria. No escribas sobre atender por telefono ni sobre canales hablados.
 - No prometas integraciones que no sabes que existen. No menciones "WhatsApp Business API" como algo implementado salvo que el tema lo pida de forma generica.
 - Enlaza como maximo de forma natural; no inventes URLs (los enlaces los pone la plantilla).
 
@@ -226,7 +226,7 @@ def canned_content(tema):
                 "conversacion natural y realiza tareas, no solo suelta textos predefinidos.",
             ]},
             {"h2": "Como funciona en el dia a dia", "parrafos": [
-                "El Agente IA atiende por texto en la web o por voz al telefono, las 24 horas. "
+                "El Agente IA atiende por escrito en la web y en mensajeria, las 24 horas. "
                 "Cuando alguien pregunta por precios, disponibilidad o servicios, responde con la "
                 "informacion de tu negocio y recoge los datos de contacto.",
                 "Todo queda registrado, asi que puedes revisar cada conversacion y mejorar lo que "
@@ -238,8 +238,8 @@ def canned_content(tema):
                 "cada semana y que hoy consumen tiempo del equipo.",
             ]},
             {"h2": "Como se integra con tus herramientas", "parrafos": [
-                "No hace falta cambiarlo todo. El Agente IA se coloca sobre tu web actual o tu "
-                "telefono y puede conectarse con las herramientas que ya usas para agenda y contacto. "
+                "No hace falta cambiarlo todo. El Agente IA se coloca sobre tu web actual "
+                "y puede conectarse con las herramientas que ya usas para agenda y contacto. "
                 "Se empieza poco a poco y se amplia cuando ves el valor.",
             ]},
             {"h2": "Cuando conviene y cuando no", "parrafos": [
@@ -254,12 +254,12 @@ def canned_content(tema):
             ]},
         ],
         "faqs": [
-            {"pregunta": "Necesito cambiar mi web o mi telefono actual?",
-             "respuesta": "No. El Agente IA se integra sobre lo que ya tienes, tanto en la web como en la atencion telefonica."},
+            {"pregunta": "Necesito cambiar mi web actual?",
+             "respuesta": "No. El Agente IA se integra sobre la web que ya tienes."},
             {"pregunta": "El Agente IA suena natural?",
-             "respuesta": "El agente de voz habla en espanol natural. La idea es que el cliente tenga una conversacion fluida, no un menu de opciones."},
+             "respuesta": "El Agente IA conversa en espanol natural. La idea es que el cliente tenga una conversacion fluida, no un menu de opciones."},
             {"pregunta": "Tiene permanencia?",
-             "respuesta": "Ninguno de los packs de WhiteMoon tiene permanencia. Puedes cancelar avisando con 30 dias."},
+             "respuesta": "Ni Spark ni Core Spark Web tienen permanencia."},
             {"pregunta": "En cuanto tiempo esta operativo?",
              "respuesta": "Los packs habituales se ponen en marcha en 7 dias una vez tenemos la informacion de tu negocio."},
         ],
@@ -402,7 +402,7 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
             body_parts.append(
                 '<div class="post-mid-cta" style="background:#111118;border:1px solid rgba(124,77,255,0.15);border-radius:14px;padding:24px 22px;margin:34px 0;text-align:center;">\n'
                 f'  <p style="margin:0 0 16px;color:#f0f0f5;font-size:1rem;line-height:1.6;">{esc(data["cta_texto"])}</p>\n'
-                f'  <button type="button" onclick="wmTrack&amp;&amp;wmTrack(\'click_blog_mid_{event_slug}\');document.getElementById(\'luna-btn\')?.click()" style="display:inline-block;padding:13px 26px;background:#7c4dff;color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con Orion &rarr;</button>\n'
+                f'  <button type="button" data-wm-launcher style="display:inline-block;padding:13px 26px;background:#7c4dff;color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con nosotros &rarr;</button>\n'
                 '</div>'
             )
     body_html = "\n".join(body_parts)
@@ -504,7 +504,7 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
 
         <div class="cta-inline">
           <h3>Quieres aplicarlo a tu negocio?</h3>
-          <p>Demo gratuita sin compromiso. Operativo en 7 dias. Sin permanencia. 643 199 580</p>
+          <p>Sin compromiso. Operativo en 7 dias. Sin permanencia. 643 199 580</p>
           <a href="https://wa.me/34643199580?text=Hola%20quiero%20info%20sobre%20Agentes%20IA" class="btn-prim" target="_blank" rel="noopener">Consultar con WhiteMoon &rarr;</a>
         </div>
 

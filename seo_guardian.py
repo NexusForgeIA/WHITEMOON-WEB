@@ -41,6 +41,11 @@ IGNORED_DIRS = {
     "precios", "servicios", "recursos", "gestotrafic",
     "orion", "orion-agent", "mini-core", "core-rag",
     "core-orion", "whitemoon-360", "automatizaciones",
+    # Posts del blog sobre el agente de voz retirado (redirigen a /spark/).
+    "orion-ia-agente-voz-24-7", "orion-ia-vs-recepcionista",
+    "agente-voz-ia-negocio-local", "que-es-agente-voz-ia-2026",
+    "agente-voz-ia-como-funciona-negocio", "agente-voz-ia-reducir-llamadas-perdidas",
+    "agente-ia-texto-o-voz-cual-elegir",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
