@@ -28,10 +28,6 @@
 /assets/site.css
   Cache-Control: public, max-age=31536000, immutable
 
-# Widget de chatbot en raíz (no en /assets/)
-/orion-widget.js
-  Cache-Control: public, max-age=31536000, immutable
-
 /*.css
   Cache-Control: public, max-age=31536000, immutable
 

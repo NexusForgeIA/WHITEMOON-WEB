@@ -997,7 +997,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <!-- Calculadoras puente Orion IA -->
   <url>
     <loc>https://whitemoon.es/calculadora-coste-llamada-perdida/</loc>
     <lastmod>2026-09-15</lastmod>
@@ -1041,7 +1040,6 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Hubs de solución y producto Orion -->
   <url>
     <loc>https://whitemoon.es/automatizacion-ventas/</loc>
     <lastmod>2026-09-15</lastmod>

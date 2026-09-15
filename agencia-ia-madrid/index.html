@@ -147,16 +147,16 @@
   .step .step-when{display:inline-block;margin-top:12px;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g);}
 
   /* Producto estrella — Spark */
-  .orion{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start;margin-top:32px;}
-  @media(max-width:860px){.orion{grid-template-columns:1fr;}}
-  .orion-panel{background:var(--bg3);border:1px solid rgba(124,77,255,.3);border-radius:16px;padding:28px;position:relative;overflow:hidden;}
-  .orion-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),var(--g));}
-  .orion-panel h3{font-size:1.05rem;font-weight:700;margin-bottom:14px;}
-  .orion-live{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:14px;}
-  .orion-live .dot{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 rgba(0,212,170,.6);animation:pulso 2s infinite;}
+  .spark-block{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start;margin-top:32px;}
+  @media(max-width:860px){.spark-block{grid-template-columns:1fr;}}
+  .spark-panel{background:var(--bg3);border:1px solid rgba(124,77,255,.3);border-radius:16px;padding:28px;position:relative;overflow:hidden;}
+  .spark-panel::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),var(--g));}
+  .spark-panel h3{font-size:1.05rem;font-weight:700;margin-bottom:14px;}
+  .spark-live{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g);margin-bottom:14px;}
+  .spark-live .dot{width:8px;height:8px;border-radius:50%;background:var(--g);box-shadow:0 0 0 0 rgba(0,212,170,.6);animation:pulso 2s infinite;}
   @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(0,212,170,.5);}70%{box-shadow:0 0 0 10px rgba(0,212,170,0);}100%{box-shadow:0 0 0 0 rgba(0,212,170,0);}}
-  @media(prefers-reduced-motion:reduce){.orion-live .dot{animation:none;}}
-  .orion-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
+  @media(prefers-reduced-motion:reduce){.spark-live .dot{animation:none;}}
+  .spark-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;}
 
   /* Bloque de propuesta a medida */
   .entrada{margin-top:32px;}
@@ -248,13 +248,13 @@
     </div>
   </section>
 
-  <!-- PRODUCTO ESTRELLA · ORION -->
+  <!-- PRODUCTO ESTRELLA · SPARK -->
   <section class="sec-alt">
     <div class="wrap">
       <span class="sec-label">Producto estrella</span>
       <h2 class="sec-h">Spark, el agente IA que atiende cuando tú no puedes</h2>
       <p class="sec-sub" style="max-width:720px">Spark atiende en tu web, en español natural y a cualquier hora. No es un menú de opciones ni un formulario disfrazado: entiende lo que pide el cliente, resuelve la consulta, cualifica el lead y deja la cita cerrada en tu agenda.</p>
-      <div class="orion">
+      <div class="spark-block">
         <div class="card">
           <h3>Qué hace el agente en tu negocio</h3>
           <ul>
@@ -266,11 +266,11 @@
             <li>Se embebe en la web que ya tienes: no hay que rehacer nada</li>
           </ul>
         </div>
-        <div class="orion-panel">
-          <span class="orion-live"><span class="dot"></span>Demo con tu caso</span>
+        <div class="spark-panel">
+          <span class="spark-live"><span class="dot"></span>Demo con tu caso</span>
           <h3>Pruébalo tú mismo, sin dar tus datos</h3>
           <p style="font-size:.87rem;color:var(--muted);line-height:1.65">Cuéntanos tu caso y te enseñamos el agente funcionando con un negocio como el tuyo. Sin compromiso y con propuesta a medida en 24 horas. Es la forma más honesta de enseñarte qué compras.</p>
-          <div class="orion-actions">
+          <div class="spark-actions">
             <a href="/contacto/" class="btn-prim">Pide tu propuesta →</a>
             <a href="/spark/" class="btn-sec">Ver Spark</a>
           </div>
