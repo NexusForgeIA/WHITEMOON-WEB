@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Software de avisos para electricistas y fontaneros · WhiteMoon</title>
-<meta name="description" content="Cómo un sistema con agente IA reparte cada aviso al técnico correcto por zona, avisa al móvil y organiza la agenda del SAT.">
+<meta name="description" content="Cómo un agente IA en tu web recoge cada aviso con qué pasa, dónde y con qué urgencia, te lo pasa al momento y lo ordena para tu servicio técnico.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia IA">
 <link rel="canonical" href="https://whitemoon.es/blog/software-gestion-avisos-electricistas-fontaneros/">
 <meta property="og:title" content="Software de avisos para electricistas y fontaneros · WhiteMoon">
-<meta property="og:description" content="Cómo un sistema con agente IA reparte cada aviso al técnico correcto por zona, avisa al móvil y organiza la agenda del SAT.">
+<meta property="og:description" content="Cómo un agente IA en tu web recoge cada aviso con qué pasa, dónde y con qué urgencia, te lo pasa al momento y lo ordena para tu servicio técnico.">
 <meta property="og:url" content="https://whitemoon.es/blog/software-gestion-avisos-electricistas-fontaneros/">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="es_ES">
@@ -20,7 +20,7 @@
 <meta property="og:image:alt" content="WhiteMoon &middot; Agencia de IA">
 <meta property="article:author" content="WhiteMoon Agencia IA">
 <meta property="article:published_time" content="2026-07-08T09:00:00+02:00">
-<meta property="article:modified_time" content="2026-07-08T09:00:00+02:00">
+<meta property="article:modified_time" content="2026-09-15T10:00:00+02:00">
 <meta property="article:section" content="Agente IA">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -30,15 +30,15 @@
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Software de avisos para electricistas y fontaneros · WhiteMoon",
-  "description": "Cómo un sistema con agente IA reparte cada aviso al técnico correcto por zona, avisa al móvil y organiza la agenda del SAT.",
+  "description": "Cómo un agente IA en tu web recoge cada aviso con qué pasa, dónde y con qué urgencia, te lo pasa al momento y lo ordena para tu servicio técnico.",
   "articleSection": "Agente IA",
   "author": {"@type": "Person", "name": "Cristobal Martinez", "jobTitle": "Fundador & CEO", "worksFor": {"@type": "Organization", "name": "WhiteMoon Agencia IA", "url": "https://whitemoon.es"}},
   "publisher": {"@type": "Organization", "name": "WhiteMoon Agencia IA", "url": "https://whitemoon.es", "logo": {"@type":"ImageObject","url":"https://whitemoon.es/logo.png"}},
   "datePublished": "2026-07-08",
-  "dateModified": "2026-07-08",
+  "dateModified": "2026-09-15",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://whitemoon.es/blog/software-gestion-avisos-electricistas-fontaneros/"},
   "url": "https://whitemoon.es/blog/software-gestion-avisos-electricistas-fontaneros/",
-  "image": "https://whitemoon.es/assets/img/whitemoon-360-og.jpg",
+  "image": "https://whitemoon.es/assets/og/og-whitemoon.jpg",
   "inLanguage": "es-ES"
 }
 </script>
@@ -116,14 +116,9 @@ a{color:var(--p2);}
   </section>
 
   <article class="post-content">
-<div style="background:rgba(0,212,170,0.07);border:1px solid rgba(0,212,170,0.22);border-left:3px solid #00d4aa;border-radius:12px;padding:16px 20px;margin-bottom:24px;font-size:14px;line-height:1.6;color:#9fe9d6;">
-<strong style="color:#00d4aa;">📌 Nota Agente IA:</strong> WhiteMoon 360 combina una web, un <strong>Agente IA de chat</strong> — tecnología conversacional con razonamiento y acción autónoma — y un CRM de gestión. <a href="/whitemoon-360/" style="color:#00d4aa;">Ver cómo funciona WhiteMoon 360 →</a>
-</div>
-
-<img loading="lazy" decoding="async" width="900" height="563" src="/assets/img/whitemoon-360.webp" alt="WhiteMoon 360 — web + agente IA de chat + CRM de gestión" style="width:100%;height:auto;max-width:900px;border-radius:14px;border:1px solid var(--border);margin:8px 0 26px;display:block;">
 <p>Son las 9:40 de la mañana. Un electricista está subido a una escalera con un destornillador en una mano y un cable pelado en la otra. El móvil suena en el bolsillo. No puede cogerlo. Cuando baja, quince minutos después, tiene una llamada perdida de un número desconocido y ningún mensaje. Nunca sabrá si era un cliente nuevo con una urgencia o una llamada comercial. Ese aviso, sencillamente, se ha evaporado.</p>
 
-<p>Si tienes un servicio de asistencia técnica —electricidad, fontanería, climatización, instalaciones— este momento te suena. El problema no es que falten clientes: es que el sistema para recogerlos y repartirlos no existe. Vamos a ver qué es un software de gestión de avisos con agente IA y cómo cambia ese día a día.</p>
+<p>Si tienes un servicio de asistencia técnica —electricidad, fontanería, climatización, instalaciones— este momento te suena. El problema no es que falten clientes: es que no hay un sistema para recogerlos y ordenarlos. Vamos a ver qué cambia un agente IA en tu web en ese día a día, y también qué no hace.</p>
 
 <h2>El día a día de un SAT sin sistema</h2>
 <p>Sin una herramienta que ordene el flujo, la operativa de un servicio técnico se apoya en tres puntos frágiles:</p>
@@ -134,53 +129,58 @@ a{color:var(--p2);}
 </ul>
 <p>El resultado es previsible: avisos duplicados, técnicos cruzándose la ciudad para trabajos que tenía más a mano un compañero, y clientes que llaman dos veces porque nadie les confirmó nada.</p>
 
-<h2>Qué es un software de gestión de avisos con agente IA</h2>
-<p>Un software de gestión de avisos es la capa que se sitúa entre el cliente y tu equipo. Recoge cada solicitud, la ordena y la pone en manos de la persona correcta. Cuando ese software incorpora un <strong>agente IA de chat</strong>, la parte de recoger y clasificar deja de depender de que alguien esté libre para atender.</p>
-<p>Eso es exactamente lo que hace <a href="/whitemoon-360/">WhiteMoon 360</a>: una web que capta, un agente IA de chat que atiende y clasifica, y un CRM donde tú gestionas todo el trabajo del equipo. No es un agente que llama por teléfono —eso es otro pack—; aquí el cliente escribe en tu web y el sistema se encarga del resto.</p>
+<h2>Qué pone un agente IA entre el cliente y tu equipo</h2>
+<p>Un sistema de gestión de avisos es la capa que se sitúa entre el cliente y tu equipo: recoge cada solicitud, la ordena y deja claro a quién le toca. Cuando incorpora un <strong>agente IA de chat</strong>, la parte de recoger los datos deja de depender de que alguien esté libre para atender.</p>
+<p>Es lo que hacen los dos productos de WhiteMoon. <a href="/spark/">Spark</a> pone el agente en la web que ya tienes. <a href="/core/">Core Spark Web</a> te hace la web nueva con el agente dentro y un panel para gestionar cada aviso. No es un agente que llame por teléfono: aquí el cliente escribe en tu web.</p>
 
-<h2>El circuito, paso a paso, aplicado a servicios técnicos</h2>
+<h2>El circuito, paso a paso</h2>
 
-<h3>1. La web capta el aviso</h3>
-<p>Un cliente entra a tu web a las 22:00 porque se ha quedado sin luz en media casa. El agente IA de chat le atiende al momento: le pregunta qué le pasa, en qué zona está y con qué urgencia. No hay un formulario de diez campos que nadie rellena; es una conversación.</p>
+<h3>1. La web recoge el aviso</h3>
+<p>Un cliente entra a tu web a las 22:00 porque se ha quedado sin luz en media casa. El agente le atiende al momento: le pregunta qué le pasa, en qué zona está y con qué urgencia, y le pide nombre y teléfono. No hay un formulario de diez campos que nadie rellena; es una conversación. Y si el cliente pregunta algo que el agente no sabe, lo dice y lo deriva, en vez de prometer lo que no toca.</p>
 
-<h3>2. Se clasifica solo</h3>
-<p>El aviso no cae en un buzón genérico. Queda registrado ya etiquetado por tipo de servicio (avería eléctrica, fuga, avería de caldera) y por zona. Cuando por la mañana miras el panel, no ves "llamada perdida": ves "avería eléctrica · urgente · Majadahonda".</p>
-
-<h3>3. El técnico correcto lo recibe</h3>
-<p>Aquí está el cambio de fondo. El sistema asigna el trabajo al empleado adecuado <strong>por zona y por especialidad</strong>, y le llega un aviso instantáneo al móvil con los datos del cliente. El fontanero recibe las fugas de su zona; el electricista, las averías eléctricas de la suya. Nadie tiene que preguntar en el grupo quién lo coge. Si te interesa el detalle de cómo decide a quién asignar cada trabajo, lo explicamos en <a href="/blog/reparto-automatico-trabajos-zonas-equipo/">cómo funciona el reparto automático por zonas</a>.</p>
+<h3>2. Te llega al momento</h3>
+<p>El aviso no se queda en un buzón: te llega al instante por Telegram con los datos del cliente. Cuando bajas de la escalera no tienes una llamada perdida de un número desconocido; tienes el motivo, la zona, la urgencia y un teléfono al que llamar.</p>
 
 <div class="post-mid-cta" style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,0.15));border-radius:14px;padding:22px;margin:34px 0;text-align:center;">
-  <p style="margin:0 0 14px;color:var(--text,#f0f0f5);font-size:1rem;line-height:1.6;">¿Comparas WhiteMoon 360 con el resto de packs de WhiteMoon? Aquí están todos, con precios y sin permanencia.</p>
-  <a href="/precios/" onclick="wmTrack&amp;&amp;wmTrack('click_blog_mid_software_avisos')" style="display:inline-block;padding:12px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.92rem;text-decoration:none;">Comparar los packs →</a>
+  <p style="margin:0 0 14px;color:var(--text,#f0f0f5);font-size:1rem;line-height:1.6;">¿Tu servicio técnico ya tiene web? Ponemos el agente en ella sin rehacerla. Propuesta a medida y sin permanencia.</p>
+  <button type="button" data-wm-launcher style="display:inline-block;padding:13px 26px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con nosotros &rarr;</button>
 </div>
 
 
-<h3>4. Tú lo ves todo en el panel</h3>
-<p>Como responsable, entras a tu propio panel y tienes la agenda semanal del equipo, cada cita reprogramable, el historial de cada cliente y las observaciones que el técnico dejó en cada trabajo ("faltaba una pieza, hay que volver el jueves"). Todo en tu dominio, no en la libreta de nadie.</p>
+<h3>3. Cada aviso, a quien le toca</h3>
+<p>Con Core Spark Web, además, cada aviso entra en el panel y se asigna a la persona del equipo que le toca. Se acaba el "¿quién está por Las Rozas?" en el grupo: el trabajo tiene nombre desde que entra, y tú ves quién lleva qué.</p>
 
-<h3>5. El cierre y la reseña</h3>
-<p>Cuando un trabajo se marca como completado, el sistema genera el enlace de reseña de Google para ese cliente en el momento justo: recién terminado, cuando está contento porque le has resuelto el problema. Y los KPIs se actualizan solos: facturación estimada, qué servicios te salen más rentables y a qué horas se concentra el trabajo.</p>
+<h3>4. Tú lo ves todo en el panel</h3>
+<p>Como responsable, entras al panel y tienes los avisos en curso, la agenda y el historial de cada cliente: qué pidió, cuándo y en qué punto está. Todo en un sitio, no en la libreta ni en el móvil de nadie.</p>
+
+<h2>Lo que no hace</h2>
+<ul>
+  <li><strong>No es un planificador de rutas:</strong> no calcula recorridos ni reparte por kilómetros.</li>
+  <li><strong>No llama por teléfono ni contacta en frío:</strong> atiende a quien escribe en tu web.</li>
+  <li><strong>No sustituye tu criterio:</strong> te entrega el aviso ordenado y decides tú.</li>
+  <li><strong>No inventa:</strong> si no sabe algo, lo dice y lo deriva a una persona.</li>
+</ul>
 
 <h2>Un ejemplo hipotético para verlo claro</h2>
-<p>Imagina un taller de instalaciones con tres técnicos: uno cubre la zona norte, otro la sur y otro hace climatización en toda el área. Sin sistema, los tres reciben todos los avisos por el grupo y se pisan. Con el circuito anterior, cada aviso entra clasificado y aterriza en el móvil del técnico que corresponde por zona y especialidad. El de climatización no recibe fugas de agua; el de la zona sur no cruza la ciudad para un trabajo que tenía al lado el de la norte. Es un ejemplo inventado, pero describe con exactitud la lógica del reparto.</p>
+<p>Imagina un taller de instalaciones con tres técnicos. Un domingo por la noche entran dos avisos por la web: una fuga bajo el fregadero y un diferencial que salta. El agente recoge en cada uno qué pasa, dónde y con qué urgencia, y el lunes a primera hora los dos están en el panel, cada uno asignado a quien le toca y con un teléfono al que llamar. Nadie ha tenido que coger el móvil el domingo. Es un ejemplo inventado para ilustrar el circuito, no un caso real.</p>
 
 <h2>Qué necesitas para empezar</h2>
-<p>No hace falta que tengas ya una web ni que montes nada tú. WhiteMoon 360 incluye la web con dominio el primer año, el agente de chat y el CRM, y queda operativo en 7 días: se configuran tus zonas, tus servicios y tu equipo, y se prueba contigo antes de activarlo. Sin permanencia.</p>
-<p>Si solo quieres captar clientes y todavía no gestionas un equipo, quizá te baste con algo más ligero: en <a href="/precios/">la página de precios</a> están todos los packs para comparar. Y si quieres entender la diferencia entre poner un chatbot y montar un sistema de gestión completo, la desarrollamos en <a href="/blog/chatbot-web-vs-sistema-gestion-completo/">este artículo</a>.</p>
+<p>Si tu servicio técnico ya tiene web, empieza por <a href="/spark/">Spark</a>: el agente se instala en ella y los avisos te llegan por Telegram. Si no tienes web, o quieres el panel para repartir y seguir cada aviso, <a href="/core/">Core Spark Web</a> incluye la web, el agente y el panel. Los dos quedan operativos en 7 días, con propuesta a medida y sin permanencia.</p>
+<p>Y si quieres entender bien la diferencia entre los dos, la desarrollamos en <a href="/blog/chatbot-web-vs-sistema-gestion-completo/">este artículo</a>.</p>
 <div style="background:rgba(124,77,255,0.06);border:1px solid rgba(124,77,255,0.18);border-left:3px solid #9d70ff;border-radius:12px;padding:20px 24px;margin:32px 0;">
   <div style="font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:#9d70ff;font-weight:700;margin-bottom:14px">Sigue leyendo</div>
   <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;">
-    <li><a href="/blog/reparto-automatico-trabajos-zonas-equipo/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ Reparto automático de trabajos por zonas: cómo funciona</a></li>
-    <li><a href="/blog/chatbot-web-vs-sistema-gestion-completo/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ ¿Chatbot en la web o sistema de gestión completo?</a></li>
-    <li><a href="/whitemoon-360/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ WhiteMoon 360: web + agente IA + CRM de gestión</a></li>
+    <li><a href="/blog/reducir-no-shows-clinicas-agenda-ia/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ Cómo reducir los no-shows y llenar la agenda de tu clínica</a></li>
+    <li><a href="/spark/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ Spark: el agente IA para la web que ya tienes</a></li>
+    <li><a href="/core/" style="color:#b39dff;text-decoration:none;font-size:.95rem;">→ Core Spark Web: web nueva con el agente IA dentro</a></li>
   </ul>
 </div>
 
 <!-- CTA final · WhiteMoon -->
 <div class="post-final-cta" style="background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,0.15));border-radius:14px;padding:28px 24px;margin:36px 0 8px;text-align:center;">
   <div style="font-size:1.25rem;font-weight:700;color:var(--text,#f0f0f5);margin-bottom:8px;">¿Lo montamos en tu negocio?</div>
-  <p style="margin:0 0 18px;color:var(--muted,#8888a0);font-size:.95rem;line-height:1.6;">WhiteMoon 360: web + agente IA de chat + CRM de gestión. Sin permanencia, operativo en 7 días.</p>
-  <a href="/mas-info/?pack=whitemoon-360" onclick="wmTrack&amp;&amp;wmTrack('click_blog_final_software_avisos',{pack:'whitemoon-360'})" style="display:inline-block;padding:14px 28px;background:linear-gradient(135deg,#009c80,#00d4aa);color:#04120e;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.97rem;text-decoration:none;cursor:pointer;">Solicitar WhiteMoon 360 →</a>
+  <p style="margin:0 0 18px;color:var(--muted,#8888a0);font-size:.95rem;line-height:1.6;">Spark o Core Spark Web: propuesta a medida, sin permanencia y operativo en 7 días.</p>
+  <button type="button" data-wm-launcher style="display:inline-block;padding:13px 26px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con nosotros &rarr;</button>
 </div>
 
 </article>
