@@ -254,7 +254,7 @@ function calcROI(){
   rA.textContent = Math.round(netoMes * 12).toLocaleString('es-ES') + ' €';
   if (setup > 0 && netoMes > 0) {
     var meses = Math.ceil(setup / netoMes);
-    rS.textContent = (meses <= 24 ? meses : '24+') + ' meses';
+    rS.textContent = meses > 24 ? '24+ meses' : (meses === 1 ? '1 mes' : meses + ' meses');
   } else {
     rS.textContent = '—';
   }
