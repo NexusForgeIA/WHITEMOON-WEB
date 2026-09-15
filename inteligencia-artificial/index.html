@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inteligencia artificial para tu negocio · WhiteMoon</title>
+<meta name="description" content="Agentes de IA que atienden, agendan y captan clientes en tu web 24/7. Sin humo, sin permanencia y operativo en 7 días. Hechos en Majadahonda.">
+<meta name="keywords" content="inteligencia artificial para negocios, IA para pymes, agente de IA para empresas, inteligencia artificial Majadahonda, IA negocio local">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/inteligencia-artificial/">
+<meta name="theme-color" content="#08080d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WhiteMoon Agencia de IA">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Inteligencia artificial para tu negocio · WhiteMoon">
+<meta property="og:description" content="Agentes de IA que atienden, agendan y captan clientes en tu web 24/7. Sin humo, sin permanencia y operativo en 7 días. Hechos en Majadahonda.">
+<meta property="og:url" content="https://whitemoon.es/inteligencia-artificial/">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="WhiteMoon · Agencia de IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Inteligencia artificial para tu negocio · WhiteMoon">
+<meta name="twitter:description" content="Agentes de IA que atienden, agendan y captan clientes en tu web 24/7. Sin humo, sin permanencia y operativo en 7 días. Hechos en Majadahonda.">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta name="geo.region" content="ES-MD">
+<meta name="geo.placename" content="Majadahonda, Madrid">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-600-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sora-latin-var.woff2" crossorigin>
+<script>if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/assets/producto.css?v=2026091501">
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
+<style>
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/fraunces-600-latin.woff2') format('woff2')}
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),url('/assets/fonts/sora-latin-var.woff2') format('woff2')}
+html,body{background:#08080d}
+
+/* /inteligencia-artificial/ · base en producto.css. Todo lo propio va con
+   prefijo .ia- para no pisar la plantilla de producto. Contraste: texto en
+   --text/--ink/--muted o --p2; --p solo en fondos, iconos y bordes. */
+
+/* ---------- Hero ---------- */
+.ia-hero .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
+.ia-hero h1{font-size:clamp(2.5rem,5.2vw,4.2rem);max-width:none}
+.ia-hero h1 .l1{display:block}
+.ia-hero h1 .l2{display:block;margin-top:.3em;max-width:23ch;font-size:.55em;line-height:1.2;letter-spacing:-.015em;color:var(--ink)}
+.ia-v{position:relative;font-style:normal;color:var(--text);white-space:nowrap}
+.ia-v::after{content:"";position:absolute;left:0;right:0;bottom:-.1em;height:.1em;border-radius:3px;background:var(--g);transform:scaleX(0);transform-origin:left;animation:ia-line .8s cubic-bezier(.16,1,.3,1) forwards}
+.ia-v:nth-of-type(1)::after{animation-delay:.6s}
+.ia-v:nth-of-type(2)::after{animation-delay:1s}
+.ia-v:nth-of-type(3)::after{animation-delay:1.4s}
+.ia-where{display:flex;align-items:center;gap:8px;margin-top:24px;font-size:.9rem;color:var(--muted)}
+.ia-where svg{width:16px;height:16px;color:var(--p2);flex-shrink:0}
+.ia-hero .hero-visual{position:relative;padding-bottom:46px}
+.ia-chat .chat-body{display:flex;flex-direction:column;gap:10px;min-height:0;padding:18px 18px 14px}
+.ia-chat .msg{max-width:86%}
+.ia-chat .msg--me{align-self:flex-end;border-bottom-left-radius:16px;border-bottom-right-radius:5px;background:rgba(124,77,255,.16);border-color:rgba(157,112,255,.3);color:var(--text)}
+.chat .s3{animation-delay:2.7s}
+.chat .s4{animation-delay:3.3s}
+.ia-pop{position:absolute;left:-26px;bottom:0;z-index:2;display:flex;align-items:center;gap:12px;max-width:calc(100% - 10px);padding:12px 18px 12px 12px;border-radius:16px;border:1px solid rgba(0,212,170,.38);background:#0f1417;box-shadow:0 24px 50px -24px rgba(0,0,0,.9);opacity:0;animation:rise .6s cubic-bezier(.16,1,.3,1) 4s forwards}
+.ia-pop .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;background:rgba(0,212,170,.14);color:var(--g)}
+.ia-pop .ic svg{width:19px;height:19px}
+.ia-pop b{display:block;font-size:.92rem;line-height:1.25;color:var(--text)}
+.ia-pop span{display:block;margin-top:2px;font-size:.76rem;color:var(--muted)}
+
+/* ---------- Tarjeta base ---------- */
+.ia-card{position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--border);background:var(--card);transition:border-color .3s ease,transform .3s ease}
+a.ia-card{display:block;color:inherit}
+a.ia-card:hover{border-color:rgba(157,112,255,.45);transform:translateY(-4px)}
+.ia-more{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.94rem;color:var(--p2)}
+.ia-more svg{width:16px;height:16px;flex-shrink:0;transition:transform .2s ease}
+a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:translateX(3px)}
+
+/* ---------- Prueba real (bento) ---------- */
+.ia-proof{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px}
+.ia-case{grid-row:span 2;display:flex;flex-direction:column}
+.ia-case img{width:100%;height:auto;aspect-ratio:25/12;object-fit:cover;border-bottom:1px solid var(--line)}
+.ia-case .ia-body{display:flex;flex-direction:column;flex:1;padding:28px 30px 30px}
+.ia-tag{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:999px;border:1px solid rgba(0,212,170,.35);font-size:.76rem;font-weight:600;color:var(--g)}
+.ia-tag::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--g)}
+.ia-case h3{margin-top:16px;font-family:var(--display);font-weight:600;font-size:clamp(1.55rem,2.5vw,2.1rem);line-height:1.1;letter-spacing:-.02em}
+.ia-case p{margin-top:12px;max-width:54ch;color:var(--muted)}
+.ia-built{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:0;list-style:none}
+.ia-built li{padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.82rem;color:var(--text)}
+.ia-case .ia-more{margin-top:auto;padding-top:24px}
+.ia-ai{display:flex;flex-direction:column}
+.ia-ai .ia-shot{display:block;width:100%;height:auto;border-bottom:1px solid var(--line);background:#fff}
+.ia-ai .ia-body{padding:22px 26px 24px}
+.ia-q{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,1.9vw,1.5rem);line-height:1.2;letter-spacing:-.015em;color:var(--text)}
+.ia-src{margin-top:10px;font-size:.8rem;color:var(--muted)}
+.ia-also{margin-top:12px;font-size:.92rem;color:var(--ink)}
+.ia-ai .ia-more{margin-top:16px}
+.ia-g{display:grid!important;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center;padding:26px 28px}
+.ia-g__n{grid-row:span 3;font-family:var(--display);font-weight:600;font-size:clamp(3.6rem,6vw,4.8rem);line-height:.85;letter-spacing:-.04em;color:var(--gold)}
+.ia-stars{display:flex;gap:3px;color:var(--gold)}
+.ia-stars svg{width:18px;height:18px}
+.ia-g__t{font-size:.95rem;line-height:1.45;color:var(--text)}
+
+/* ---------- ¿Te suena? ---------- */
+.ia-pains{position:relative;z-index:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
+.ia-pain{grid-column:span 2;display:flex;flex-direction:column;min-width:0;padding:26px 24px 0;border-radius:20px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.ia-pain--lg{grid-column:span 4;padding:32px 32px 0;border-color:var(--border)}
+.ia-pain--full{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 36px;padding:30px 32px 0}
+.ia-pain h3{font-size:1.1rem;line-height:1.4;font-weight:600}
+.ia-pain--lg h3{max-width:28ch;margin-top:14px;font-family:var(--display);font-size:clamp(1.5rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.02em}
+.ia-time{display:flex;align-items:baseline;gap:12px;font-family:var(--display);font-weight:600;font-size:clamp(3.4rem,6vw,5rem);line-height:.9;letter-spacing:-.04em;color:var(--p2)}
+.ia-time small{font-family:var(--body);font-size:.8rem;font-weight:500;letter-spacing:0;color:var(--muted)}
+.ia-asks{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.ia-asks span{padding:5px 10px;border-radius:999px;border:1px dashed rgba(255,255,255,.18);font-size:.76rem;color:var(--muted)}
+.ia-fix{display:flex;align-items:flex-start;gap:10px;margin:22px -24px 0;margin-top:auto;padding:16px 24px 18px;border-top:1px solid rgba(0,212,170,.2);background:rgba(0,212,170,.05);font-size:.92rem;line-height:1.5;color:var(--ink)}
+.ia-pain h3+.ia-fix,.ia-asks+.ia-fix{margin-top:22px}
+.ia-pain--lg .ia-fix{margin-inline:-32px;padding-inline:32px}
+.ia-fix svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--g)}
+.ia-fix b{color:var(--text);font-weight:600}
+.ia-pain--full .ia-fix{grid-column:1/-1;margin-inline:-32px;padding-inline:32px}
+.ia-docs{display:flex;flex-wrap:wrap;align-content:flex-start;gap:8px;padding:0;margin:0;list-style:none}
+.ia-docs li{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;border-radius:12px;border:1px solid rgba(157,112,255,.28);background:rgba(124,77,255,.08);font-size:.86rem;color:var(--text)}
+.ia-docs svg{width:16px;height:16px;color:var(--p2)}
+
+/* ---------- Qué es ---------- */
+.ia-local{display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:.9rem;line-height:1.45;color:var(--ink)}
+.ia-local svg{width:18px;height:18px;flex-shrink:0;color:var(--g)}
+.ia-vs{border-radius:22px;border:1px solid var(--border);background:var(--card);overflow:hidden}
+.ia-vs table{width:100%;border-collapse:collapse;font-size:.92rem;line-height:1.45}
+.ia-vs thead th{padding:18px 18px 14px;text-align:left;font-size:.78rem;font-weight:600;color:var(--muted);border-bottom:1px solid var(--line)}
+.ia-vs thead th:last-child{color:var(--g);background:rgba(0,212,170,.06)}
+.ia-vs tbody th{padding:16px 18px;text-align:left;vertical-align:top;font-size:.84rem;font-weight:600;color:var(--text);width:24%}
+.ia-vs td{padding:16px 18px;vertical-align:top;color:var(--muted);border-left:1px solid var(--line)}
+.ia-vs td:last-child{color:var(--text);background:rgba(0,212,170,.06)}
+.ia-vs tbody tr+tr>*{border-top:1px solid var(--line)}
+
+/* ---------- Capacidades (bento con visuales) ---------- */
+.ia-caps{position:relative;z-index:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:20px}
+.ia-cap{grid-column:span 5;display:flex;flex-direction:column;min-width:0;padding:30px 28px 28px;border-radius:22px;border:1px solid var(--border);background:var(--card)}
+.ia-cap--w{grid-column:span 7}
+.ia-cap h3{font-size:1.28rem}
+.ia-cap p{margin-top:8px;max-width:46ch;font-size:.95rem;color:var(--muted)}
+.ia-viz{margin-top:auto;padding-top:26px}
+.ia-hours{display:grid;grid-template-columns:repeat(24,minmax(0,1fr));gap:4px;height:58px}
+.ia-hours i{display:block;border-radius:3px;background:rgba(0,212,170,.6);transform-origin:bottom;transition:transform .9s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 22ms)}
+.ia-hours i:nth-child(-n+9),.ia-hours i:nth-child(n+21){background:rgba(157,112,255,.62)}
+.js .reveal:not(.in) .ia-hours i{transform:scaleY(.12)}
+.ia-hours-l{display:flex;justify-content:space-between;margin-top:8px;font-size:.72rem;color:var(--muted)}
+.ia-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;font-size:.8rem;color:var(--ink)}
+.ia-key span{display:inline-flex;align-items:center;gap:7px}
+.ia-key span::before{content:"";width:10px;height:10px;border-radius:3px;background:rgba(0,212,170,.6)}
+.ia-key span+span::before{background:rgba(157,112,255,.62)}
+.ia-slots{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ia-slots span{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:.84rem;color:var(--text)}
+.ia-slots .on{border-color:rgba(0,212,170,.5);background:rgba(0,212,170,.12)}
+.ia-slots .on svg{width:16px;height:16px;color:var(--g)}
+.ia-slots .off{color:var(--muted);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.3)}
+.ia-lead{border-radius:16px;border:1px solid rgba(157,112,255,.3);background:var(--bg2);overflow:hidden}
+.ia-lead__h{display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--line);font-size:.84rem;font-weight:600;color:var(--text)}
+.ia-lead__h em{margin-left:auto;font-style:normal;font-size:.74rem;font-weight:500;color:var(--muted)}
+.ia-lead dl{margin:0;padding:10px 14px 14px;display:grid;gap:10px}
+.ia-lead dl div{display:grid;grid-template-columns:76px 1fr;align-items:center;gap:10px}
+.ia-lead dt{font-size:.74rem;color:var(--muted)}
+.ia-lead dd{margin:0;height:9px;border-radius:5px;background:rgba(255,255,255,.08)}
+.ia-lead dd i{display:block;height:100%;border-radius:5px;background:rgba(157,112,255,.45)}
+.ia-rag{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,.8fr);align-items:center;gap:14px}
+.ia-rag .arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--border);color:var(--p2)}
+.ia-rag .arrow svg{width:16px;height:16px}
+.ia-rag .out{padding:13px 15px;border-radius:14px 14px 14px 5px;border:1px solid var(--line);background:var(--bg2);font-size:.84rem;line-height:1.45;color:var(--ink)}
+.ia-opt{align-self:flex-start;margin-bottom:12px;padding:5px 10px;border-radius:8px;background:rgba(124,77,255,.14);font-size:.74rem;font-weight:600;color:var(--p2)}
+
+/* ---------- Caminos ---------- */
+.ia-paths{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:22px;align-items:stretch}
+.ia-path{display:flex;flex-direction:column;padding:36px 34px 34px;border-radius:26px;border:1px solid var(--border);background:var(--card)}
+.ia-path--core{border-color:rgba(157,112,255,.45);background:radial-gradient(560px 340px at 100% 0%,rgba(124,77,255,.28),transparent 70%),var(--card)}
+.ia-ans{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:.8rem;font-weight:600;color:var(--text)}
+.ia-ans svg{width:15px;height:15px;color:var(--g)}
+.ia-path--core .ia-ans svg{color:var(--p2)}
+.ia-path h3{margin-top:20px;font-family:var(--display);font-weight:600;font-size:clamp(2rem,3.4vw,2.7rem);line-height:1.02;letter-spacing:-.025em}
+.ia-path>p{margin-top:12px;max-width:44ch;color:var(--ink)}
+.ia-path ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:11px}
+.ia-path li{display:flex;align-items:flex-start;gap:11px;font-size:.95rem;line-height:1.5;color:var(--ink)}
+.ia-path li svg{width:17px;height:17px;flex-shrink:0;margin-top:3px;color:var(--g)}
+.ia-path .btn{align-self:flex-start;margin-top:auto}
+.ia-path ul+.btn{margin-top:30px}
+
+/* ---------- Sectores ---------- */
+.ia-sector{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:44px;align-items:center;padding:52px 48px;border-radius:30px;border:1px solid var(--border);background:radial-gradient(520px 300px at 0% 100%,rgba(0,212,170,.1),transparent 70%),linear-gradient(135deg,#13131d,#0c0c13);overflow:hidden}
+.ia-sector h2{font-size:clamp(1.9rem,3.8vw,2.8rem)}
+.ia-sector p{margin-top:14px;max-width:44ch;color:var(--ink)}
+.ia-sector .btn{margin-top:26px}
+.ia-marq{display:grid;gap:12px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.ia-marq__row{display:flex;gap:10px;width:max-content;animation:ia-marq 42s linear infinite}
+.ia-marq__row--r{animation-direction:reverse;animation-duration:48s}
+.ia-marq:hover .ia-marq__row{animation-play-state:paused}
+.ia-marq span{padding:11px 17px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.035);font-size:.9rem;white-space:nowrap;color:var(--text)}
+.ia-marq__row--r span{border-color:rgba(157,112,255,.28);background:rgba(124,77,255,.08)}
+
+/* ---------- Proceso (escalera: es una secuencia real) ---------- */
+.ia-steps{position:relative;z-index:1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;align-items:start;margin:0;padding:0;list-style:none}
+.ia-step{position:relative;min-width:0;padding:24px 22px 26px;border-radius:18px;border:1px solid var(--line);background:var(--bg)}
+.ia-step:nth-child(2){margin-top:22px}
+.ia-step:nth-child(3){margin-top:44px}
+.ia-step:nth-child(4){margin-top:66px}
+.ia-step:nth-child(5){margin-top:88px}
+.ia-step .n{display:block;font-family:var(--display);font-weight:600;font-size:2.5rem;line-height:1;letter-spacing:-.04em;color:var(--p2)}
+.ia-step h3{margin-top:14px;font-size:1.04rem}
+.ia-step p{margin-top:8px;font-size:.88rem;line-height:1.55;color:var(--muted)}
+.ia-step--hi{border-color:rgba(0,212,170,.42);background:linear-gradient(180deg,rgba(0,212,170,.1),rgba(0,212,170,0) 75%),var(--bg)}
+.ia-step--hi .n{color:var(--g)}
+
+/* ---------- Por qué ---------- */
+.ia-why{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
+.ia-why .sec-head{margin-bottom:0}
+.ia-rows{border-top:1px solid var(--line)}
+.ia-row{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+.ia-row b{font-family:var(--display);font-weight:600;font-size:clamp(1.55rem,2.6vw,2.05rem);line-height:1.05;letter-spacing:-.02em;color:var(--text)}
+.ia-row p{color:var(--ink)}
+.ia-cmp{margin-top:30px}
+.ia-cmp b{display:block;font-size:.9rem;font-weight:600;color:var(--text)}
+.ia-cmp ul{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+.ia-cmp a{display:inline-flex;padding:8px 13px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-size:.85rem;color:var(--text);transition:border-color .2s ease,background .2s ease}
+.ia-cmp a:hover{border-color:rgba(157,112,255,.5);background:rgba(124,77,255,.1)}
+
+/* ---------- CTA final ---------- */
+.ia-final{position:relative;overflow:hidden;padding:clamp(40px,6vw,76px);border-radius:32px;background:radial-gradient(620px 400px at 88% 8%,rgba(0,212,170,.24),transparent 64%),linear-gradient(150deg,#6a3df0 0%,#4b25b8 55%,#2a1670 100%)}
+.ia-final::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;background-image:radial-gradient(rgba(255,255,255,.22) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 50% 70% at 90% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse 50% 70% at 90% 50%,#000,transparent 75%)}
+.pp .ia-final h2{position:relative;max-width:15ch;font-size:clamp(2.3rem,5vw,3.9rem);color:#fff}
+.ia-final p{position:relative;margin-top:16px;max-width:50ch;font-size:1.08rem;color:rgba(255,255,255,.9)}
+.ia-acts{position:relative;display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn--w{background:#fff;color:#1d1150;box-shadow:0 16px 36px -16px rgba(0,0,0,.6)}
+.btn--w:hover{background:#f1ecff;transform:translateY(-2px)}
+.btn--line{background:transparent;color:#fff;border-color:rgba(255,255,255,.5)}
+.btn--line:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.ia-final .alt{position:relative;margin-top:20px;font-size:.96rem}
+.pp .ia-final .alt a{color:#fff;text-decoration:underline;text-underline-offset:4px}
+
+@keyframes ia-line{to{transform:scaleX(1)}}
+@keyframes ia-marq{to{transform:translateX(-50%)}}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1080px){
+  .ia-steps{grid-template-columns:1fr;gap:12px}
+  .ia-step:nth-child(n){margin-top:0}
+  .ia-step{display:grid;grid-template-columns:64px minmax(0,1fr);gap:0 14px;align-items:start}
+  .ia-step .n{grid-row:span 2;font-size:2.2rem}
+  .ia-step h3{margin-top:4px}
+}
+@media (max-width:1000px){
+  .ia-hero .hero-grid{grid-template-columns:1fr}
+  .ia-hero .hero-visual{max-width:460px}
+  .ia-pop{left:12px}
+}
+@media (max-width:900px){
+  .ia-proof,.ia-paths,.ia-why,.ia-sector{grid-template-columns:1fr}
+  .ia-case{grid-row:auto}
+  .ia-pains{grid-template-columns:1fr 1fr}
+  .ia-pain{grid-column:span 1}
+  .ia-pain--lg,.ia-pain--full{grid-column:1/-1}
+  .ia-caps{grid-template-columns:1fr}
+  .ia-cap,.ia-cap--w{grid-column:auto}
+  .ia-sector{gap:32px;padding:36px 28px}
+  .ia-why{gap:36px}
+}
+@media (max-width:620px){
+  .ia-pains{grid-template-columns:1fr}
+  .ia-pain{grid-column:auto}
+  .ia-pain,.ia-pain--lg,.ia-pain--full{padding:24px 20px 0}
+  .ia-fix,.ia-pain--lg .ia-fix,.ia-pain--full .ia-fix{margin-inline:-20px;padding-inline:20px}
+  .ia-pain--full{grid-template-columns:1fr;gap:18px}
+  .ia-case .ia-body,.ia-ai .ia-body,.ia-g,.ia-path,.ia-cap{padding-left:22px;padding-right:22px}
+  .ia-g{grid-template-columns:1fr}
+  .ia-g__n{grid-row:auto}
+  .ia-vs thead{display:none}
+  .ia-vs tbody tr{display:block;padding:14px 16px}
+  .ia-vs tbody tr+tr{border-top:1px solid var(--line)}
+  .ia-vs tbody tr+tr>*{border-top:0}
+  .ia-vs tbody th,.ia-vs td{display:block;width:auto;padding:0;border:0;background:none}
+  .ia-vs td{margin-top:8px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03)}
+  .ia-vs td:last-child{background:rgba(0,212,170,.08)}
+  .ia-vs td::before{content:attr(data-l);display:block;margin-bottom:2px;font-size:.72rem;font-weight:600;color:var(--muted)}
+  .ia-vs td:last-child::before{color:var(--g)}
+  .ia-row{grid-template-columns:1fr;gap:6px;padding:20px 0}
+  .ia-rag{grid-template-columns:1fr}
+  .ia-rag .arrow{transform:rotate(90deg)}
+  .ia-sector{padding:30px 20px;border-radius:24px}
+  .ia-acts .btn{flex:1 1 100%}
+  .ia-final{border-radius:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ia-v::after{animation:none;transform:none}
+  .ia-pop{opacity:1;animation:none}
+  .ia-marq{-webkit-mask-image:none;mask-image:none}
+  .ia-marq__row{animation:none;flex-wrap:wrap;width:auto}
+  .ia-marq__row .dup{display:none}
+  .ia-hours i{transition:none}
+  .ia-card,.ia-more svg,.ia-cmp a{transition:none}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ProfessionalService"],
+  "@id": "https://whitemoon.es/#negocio",
+  "name": "WhiteMoon Agencia IA",
+  "description": "Agencia de inteligencia artificial en Majadahonda: agentes de IA que atienden, agendan y captan clientes en la web de negocios locales y pymes. Operativo en 7 días, sin permanencia.",
+  "url": "https://whitemoon.es",
+  "logo": "https://whitemoon.es/logo.png",
+  "image": "https://whitemoon.es/assets/og/og-whitemoon.jpg",
+  "telephone": "+34643199580",
+  "email": "comercial@whitemoon.es",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle Madrid 9, 2ºB",
+    "addressLocality": "Majadahonda",
+    "addressRegion": "Madrid",
+    "postalCode": "28220",
+    "addressCountry": "ES"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "40.4737104",
+    "longitude": "-3.8715623"
+  },
+  "hasMap": "https://maps.app.goo.gl/9L9i8K4i5hX4oYxi6",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Majadahonda"},
+    {"@type": "City", "name": "Madrid"},
+    {"@type": "Country", "name": "España"}
+  ],
+  "sameAs": [
+    "https://www.instagram.com/whitemoon_agencia_ia",
+    "https://www.tiktok.com/@whitemoon_ia",
+    "https://www.linkedin.com/in/cristobal-martinez-8b9b9951/",
+    "https://www.youtube.com/@whitemoonweb",
+    "https://maps.app.goo.gl/9L9i8K4i5hX4oYxi6"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en estar funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Operativo en 7 días en cuanto tenemos la información de tu negocio: servicios, horarios y cómo trabajas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Si no te aporta, lo cancelas sin penalizaciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué datos necesitáis de mi negocio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo que le contarías a alguien que entra nuevo en tu equipo: qué servicios ofreces, tus horarios, cómo das cita, las preguntas que más te hacen y el tono en el que hablas. Si quieres que conteste con documentos, como un catálogo o una normativa, nos los pasas y le añadimos RAG."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se integra en la web que ya tengo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Spark se instala en la web que ya tienes, sin rehacerla. Si no tienes web o quieres empezar de cero, Core Spark Web te la hace con el agente dentro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y si mi negocio no encaja con un agente de IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te lo decimos antes de empezar. En el diagnóstico vemos qué se puede automatizar y qué no, y si un agente no te resuelve nada, no te lo proponemos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿El agente se inventa respuestas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Responde con la información de tu negocio; si no sabe algo, lo dice y te pasa la consulta."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://whitemoon.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Inteligencia artificial", "item": "https://whitemoon.es/inteligencia-artificial/"}
+  ]
+}
+</script>
+<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/wm-nav.js?v=2026091501"></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></symbol><symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol><symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol><symbol id="ic-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.6A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.8 9c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.3.4-.1.7a6 6 0 0 0 2.7 2.3c.3.1.5 0 .7-.2l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4a1.8 1.8 0 0 1-1.3 1.7 3.7 3.7 0 0 1-2.7-.5 10 10 0 0 1-4.5-4.4 3.5 3.5 0 0 1-.6-2.1c0-.4.3-.7.6-.8z"/></symbol><symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol><symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="ic-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="3.5"/><path d="M12 3.5v4M8.5 13h.01M15.5 13h.01M9.5 16.4h5"/></symbol><symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="ic-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></symbol><symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol><symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol><symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol><symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></symbol><symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="ic-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12"/></symbol><symbol id="ic-yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 5-5.5"/></symbol><symbol id="ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol><symbol id="ic-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/></symbol><symbol id="ic-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol><symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="ic-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4L12 17.4l-5.8 3 1.1-6.4-4.7-4.6 6.5-.9z"/></symbol></svg>
+<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
+<nav class="wm-nav" aria-label="Navegación principal">
+  <div class="wm-nav__row">
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
+
+    <div class="wm-nav__center">
+      <a href="/inteligencia-artificial/">IA</a>
+      <div class="wm-nav__dd" aria-expanded="false">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="wm-nav__menu" role="menu">
+          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
+        </div>
+      </div>
+      <a href="/marketing/">Marketing</a>
+      <a href="/contacto/">Contacto</a>
+    </div>
+
+    <div class="wm-nav__right">
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    </div>
+  </div>
+</nav>
+<aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
+  <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/spark/">Spark</a>
+  <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/marketing/">Marketing</a>
+  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</aside>
+<main id="main" class="pp">
+
+  <!-- 1 · HERO -->
+  <section class="hero ia-hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Inteligencia artificial para negocios</span>
+        <h1><span class="l1">Todo el mundo habla de IA.</span><span class="l2">Nosotros la ponemos a <em class="ia-v">atender</em>, <em class="ia-v">agendar</em> y <em class="ia-v">captar</em> en tu negocio.</span></h1>
+        <p class="hero-desc"><strong>Sin humo</strong>: antes de empezar te decimos qué se puede automatizar y qué no. <strong>Sin permanencia</strong> y <strong>operativo en 7 días</strong>.</p>
+        <div class="hero-actions">
+          <a class="btn btn--p" href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="window.wmTrack&&wmTrack('whatsapp_click',{wm_source:'inteligencia-artificial',placement:'hero'})"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="btn btn--ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&&wmTrack('click_calcom',{wm_source:'inteligencia-artificial',placement:'hero'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+        <p class="ia-where"><svg aria-hidden="true"><use href="#ic-pin"/></svg>Desde Majadahonda, Madrid · online en toda España</p>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="chat ia-chat" role="group" aria-label="Ejemplo de conversación con el agente">
+          <div class="chat-head">
+            <span class="av"><svg aria-hidden="true"><use href="#ic-bot"/></svg></span>
+            <div><b>Agente IA · tu negocio<span class="live-dot" aria-hidden="true"></span></b><small>En línea · responde al momento</small></div>
+          </div>
+          <div class="chat-body">
+            <p class="msg msg--me seq s1">¿Tenéis hueco el jueves por la tarde?</p>
+            <p class="msg seq s2">Sí: a las 17:30 o a las 18:15. ¿Cuál te viene mejor?</p>
+            <p class="msg msg--me seq s3">A las 17:30, perfecto.</p>
+            <p class="msg seq s4">Hecho. Déjame tu nombre y un teléfono y te la dejo reservada.</p>
+          </div>
+          <div class="chat-foot" aria-hidden="true"><span class="chat-input">Escribe tu mensaje…</span><span class="chat-send"><svg aria-hidden="true"><use href="#ic-send"/></svg></span></div>
+        </div>
+        <div class="ia-pop" aria-hidden="true"><span class="ic"><svg><use href="#ic-send"/></svg></span><div><b>Nuevo contacto con cita</b><span>Te llega al momento, con nombre y teléfono</span></div></div>
+        <p class="cap" style="margin-top:58px">Ejemplo del formato del agente</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · PRUEBA REAL -->
+  <section class="sec sec--alt" id="prueba">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Lo que contamos,<span class="accent">con enlace para comprobarlo.</span></h2>
+      </div>
+      <div class="ia-proof">
+        <a class="ia-card ia-case reveal" href="/casos-de-exito/bambu-sushi/" onclick="window.wmTrack&&wmTrack('click_caso_bambu',{destino:'caso',placement:'ia-prueba'})">
+          <img src="/casos-de-exito/assets/bambu-sushi-web.webp" width="1200" height="576" loading="lazy" decoding="async" alt="Web y agente de IA de Bambu Sushi Córdoba, hechos por WhiteMoon">
+          <div class="ia-body">
+            <span class="ia-tag">Cliente real</span>
+            <h3>Bambu Sushi atiende pedidos y reservas con su agente</h3>
+            <p>Restaurante de sushi en Córdoba. Su chatbot toma pedidos y reservas según la franja horaria, y está en vivo en bambusushi.es.</p>
+            <ul class="ia-built">
+              <li>Web propia a medida</li>
+              <li>Pedidos y reservas por chat</li>
+              <li>SEO local</li>
+            </ul>
+            <span class="ia-more">Ver el caso completo<svg aria-hidden="true"><use href="#ic-arrow"/></svg></span>
+          </div>
+        </a>
+        <article class="ia-card ia-ai reveal">
+          <img class="ia-shot" src="/assets/img/chatgpt-majadahonda-2026-09.webp" width="1033" height="556" loading="lazy" decoding="async" alt="Captura de ChatGPT respondiendo «mi primera opción sería: WhiteMoon Agencia IA Majadahonda», septiembre de 2026">
+          <div class="ia-body">
+            <p class="ia-q">«Mi primera opción sería: WhiteMoon Agencia IA Majadahonda».</p>
+            <p class="ia-src">ChatGPT, a la pregunta «¿mejor agencia de IA en Majadahonda?» · septiembre de 2026</p>
+            <p class="ia-also">Grok, en la misma consulta: «la opción local más sólida».</p>
+            <a class="ia-more" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="window.wmTrack&&wmTrack('click_geo_pruebas',{placement:'ia-prueba'})">Ver capturas y método<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+          </div>
+        </article>
+        <a class="ia-card ia-g reveal" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener" aria-label="Ver la ficha de WhiteMoon en Google, valoración 5,0 (se abre en una pestaña nueva)">
+          <span class="ia-g__n" aria-hidden="true">5,0</span>
+          <span class="ia-stars" aria-hidden="true"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></span>
+          <span class="ia-g__t">Nuestra ficha de Google Business, con 5 estrellas.</span>
+          <span class="ia-more">Ver la ficha en Google<svg aria-hidden="true"><use href="#ic-ext"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · ¿TE SUENA? -->
+  <section class="sec" id="te-suena">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>¿Te suena<span class="accent">alguna de estas?</span></h2>
+        <p>Lo que pasa cada semana en un negocio local, y lo que cambia cuando la web atiende.</p>
+      </div>
+      <div class="ia-pains">
+        <article class="ia-pain ia-pain--lg reveal">
+          <span class="ia-time" aria-hidden="true">23:47<small>un martes</small></span>
+          <h3>Te escriben por la noche y contestas a la mañana siguiente, cuando ya han preguntado a otro.</h3>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>El agente responde al momento</b>, también de noche, en fin de semana y en festivos.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <h3>Contestas las mismas preguntas una y otra vez.</h3>
+          <div class="ia-asks" aria-hidden="true"><span>¿Horario?</span><span>¿Dónde estáis?</span><span>¿Hacéis esto?</span></div>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Las resuelve con tu información y tu tono.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <h3>Cerrar una cita es un ir y venir de mensajes.</h3>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Ofrece los huecos que tú marcas y la deja cerrada.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <h3>No sabes si quien escribe va en serio o solo curiosea.</h3>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Pregunta lo necesario antes de pasártelo.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <h3>El formulario de contacto acaba en un correo que nadie mira.</h3>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Cada contacto te llega al instante, listo para llamar.</span></p>
+        </article>
+        <article class="ia-pain ia-pain--full reveal">
+          <div>
+            <h3>Tu catálogo, tu carta de servicios o tu normativa no caben en una lista de preguntas frecuentes.</h3>
+          </div>
+          <ul class="ia-docs" aria-label="Ejemplos de documentos">
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Catálogo</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Carta de servicios</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Normativa</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Condiciones</li>
+          </ul>
+          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Con RAG, opcional</b>, el agente contesta consultando tus propios documentos, no con suposiciones.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · QUÉ ES UN AGENTE IA -->
+  <section class="sec sec--alt" id="que-es">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="sec-head reveal" style="margin-bottom:26px">
+            <h2>Qué es un agente de IA,<span class="accent">sin jerga.</span></h2>
+          </div>
+          <div class="copy reveal">
+            <p>Es un asistente que <strong>conversa por escrito con quien entra en tu web</strong>, entiende lo que necesita y actúa: responde, da cita o te pasa el contacto. No es un menú de botones ni un formulario disfrazado.</p>
+            <p>Trabaja con <strong>lo que le contamos de tu negocio</strong>: servicios, horarios y forma de trabajar, y contesta con tu tono. Si algo necesita a una persona, lo dice y te lo deriva.</p>
+            <p>Lo montamos <strong>hablando contigo</strong>, y antes de empezar te decimos qué se puede automatizar y qué no.</p>
+          </div>
+          <p class="ia-local reveal"><svg aria-hidden="true"><use href="#ic-pin"/></svg><span>Desde Majadahonda. Presencial en Las Rozas, Boadilla, Pozuelo y Madrid capital; online en toda España.</span></p>
+        </div>
+        <div class="ia-vs reveal">
+          <table>
+            <caption class="sr-only">Diferencias entre un chatbot de botones y un agente de IA</caption>
+            <thead><tr><th scope="col"><span class="sr-only">Aspecto</span></th><th scope="col">Chatbot de botones</th><th scope="col">Agente de IA</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Qué entiende</th><td data-l="Chatbot de botones">Solo las opciones de su menú</td><td data-l="Agente de IA">Lo que el cliente escribe, como lo escriba</td></tr>
+              <tr><th scope="row">Si no sabe algo</th><td data-l="Chatbot de botones">Te devuelve al principio</td><td data-l="Agente de IA">Lo dice y te pasa la consulta</td></tr>
+              <tr><th scope="row">Citas</th><td data-l="Chatbot de botones">Te manda a un formulario</td><td data-l="Agente de IA">Ofrece hueco y la deja cerrada</td></tr>
+              <tr><th scope="row">Con qué responde</th><td data-l="Chatbot de botones">Textos fijos</td><td data-l="Agente de IA">Tu información y, con RAG, tus documentos</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CAPACIDADES -->
+  <section class="sec" id="capacidades">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Lo que hace<span class="accent">cada día en tu web.</span></h2>
+      </div>
+      <div class="ia-caps">
+        <article class="ia-cap ia-cap--w reveal">
+          <h3>Atiende 24/7</h3>
+          <p>Contesta al momento, dentro y fuera de tu horario, sin que tengas que estar pendiente del móvil.</p>
+          <div class="ia-viz" aria-hidden="true">
+            <div class="ia-hours"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i></div>
+            <div class="ia-hours-l"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+            <div class="ia-key"><span>Tu horario</span><span>Cuando tú no estás</span></div>
+          </div>
+        </article>
+        <article class="ia-cap reveal">
+          <h3>Agenda citas</h3>
+          <p>Da hueco según la disponibilidad que marques, sin llamadas ni idas y venidas.</p>
+          <div class="ia-viz ia-slots" aria-hidden="true">
+            <span>Jue 16:00</span><span class="off">Jue 16:45</span><span class="on">Jue 17:30<svg><use href="#ic-check"/></svg></span><span>Jue 18:15</span>
+          </div>
+        </article>
+        <article class="ia-cap reveal">
+          <h3>Capta el contacto</h3>
+          <p>Guarda nombre, teléfono y motivo, y te avisa al instante para que llames tú.</p>
+          <div class="ia-viz" aria-hidden="true">
+            <div class="ia-lead">
+              <div class="ia-lead__h"><span class="live-dot"></span>Nuevo contacto<em>ahora</em></div>
+              <dl><div><dt>Nombre</dt><dd><i style="width:52%"></i></dd></div><div><dt>Teléfono</dt><dd><i style="width:40%"></i></dd></div><div><dt>Motivo</dt><dd><i style="width:78%"></i></dd></div></dl>
+            </div>
+          </div>
+        </article>
+        <article class="ia-cap ia-cap--w reveal">
+          <span class="ia-opt">Opcional</span>
+          <h3>Responde con tus datos</h3>
+          <p>Si manejas mucha información, le añadimos RAG para que conteste consultando tus documentos.</p>
+          <div class="ia-viz ia-rag" aria-hidden="true">
+            <ul class="ia-docs"><li><svg><use href="#ic-doc"/></svg>Catálogo</li><li><svg><use href="#ic-doc"/></svg>Normativa</li><li><svg><use href="#ic-doc"/></svg>Condiciones</li></ul>
+            <span class="arrow"><svg><use href="#ic-arrow"/></svg></span>
+            <p class="out">Según tus condiciones, ese servicio incluye revisión.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · LOS CAMINOS -->
+  <section class="sec sec--alt" id="caminos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>¿Ya tienes web?<span class="accent">Eso decide por dónde empezar.</span></h2>
+      </div>
+      <div class="ia-paths">
+        <article class="ia-path reveal">
+          <span class="ia-ans"><svg aria-hidden="true"><use href="#ic-yes"/></svg>Sí, ya tengo web</span>
+          <h3>Spark</h3>
+          <p>El agente de IA se instala en la web que ya tienes, sin rehacerla.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>Responde, agenda y capta 24/7</li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>Entrenado con tus servicios y tu tono</li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>RAG opcional con tus documentos</li>
+          </ul>
+          <a class="btn btn--ghost" href="/spark/" onclick="window.wmTrack&&wmTrack('click_producto_cta',{producto:'spark',placement:'ia-caminos'})">Ver Spark<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+        </article>
+        <article class="ia-path ia-path--core reveal">
+          <span class="ia-ans"><svg aria-hidden="true"><use href="#ic-layout"/></svg>No, o quiero empezar de cero</span>
+          <h3>Core Spark Web</h3>
+          <p>Te hacemos la web nueva con el agente dentro y un panel para gestionar cada contacto.</p>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>Web con tu dominio, SSL y mantenimiento</li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>El agente atendiendo desde el primer día</li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>Panel para ordenar y repartir contactos</li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg>SEO, GEO y AEO de serie</li>
+          </ul>
+          <a class="btn btn--p" href="/core/" onclick="window.wmTrack&&wmTrack('click_producto_cta',{producto:'core',placement:'ia-caminos'})">Ver Core Spark Web<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · MÍRALO EN TU SECTOR -->
+  <section class="sec" id="sectores">
+    <div class="wrap">
+      <div class="ia-sector reveal">
+        <div>
+          <h2>Míralo funcionando<span class="accent">en un negocio como el tuyo.</span></h2>
+          <p>Demos por sector: ábrelas, hazle preguntas y pide una cita de prueba.</p>
+          <a class="btn btn--p" href="/demos/" onclick="window.wmTrack&&wmTrack('click_demo_sector',{sector:'todas',placement:'ia-sectores'})">Ver las demos<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+        </div>
+        <div>
+          <p class="sr-only">Hay demos para clínica dental, peluquería, podología, veterinaria, gestoría, abogados, inmobiliaria, taller de coches, restaurante, yoga y pilates y autoescuela.</p>
+          <div class="ia-marq" aria-hidden="true">
+            <div class="ia-marq__row"><span>Clínica dental</span><span>Peluquería</span><span>Podología</span><span>Veterinaria</span><span>Gestoría</span><span>Abogados</span><span class="dup">Clínica dental</span><span class="dup">Peluquería</span><span class="dup">Podología</span><span class="dup">Veterinaria</span><span class="dup">Gestoría</span><span class="dup">Abogados</span></div>
+            <div class="ia-marq__row ia-marq__row--r"><span>Inmobiliaria</span><span>Taller de coches</span><span>Restaurante</span><span>Yoga y pilates</span><span>Autoescuela</span><span class="dup">Inmobiliaria</span><span class="dup">Taller de coches</span><span class="dup">Restaurante</span><span class="dup">Yoga y pilates</span><span class="dup">Autoescuela</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · CÓMO TRABAJAMOS -->
+  <section class="sec sec--alt" id="como-trabajamos">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Cómo trabajamos,<span class="accent">paso a paso.</span></h2>
+        <p>De la primera conversación a tu web atendiendo, sin proyectos de meses.</p>
+      </div>
+      <ol class="ia-steps">
+        <li class="ia-step reveal"><span class="n">01</span><h3>Diagnóstico</h3><p>Nos cuentas a qué te dedicas y qué te quita tiempo. Te decimos qué se puede automatizar y qué no.</p></li>
+        <li class="ia-step reveal"><span class="n">02</span><h3>Propuesta a medida</h3><p>Te la enviamos en 24h, sin compromiso y ajustada a lo que necesita tu negocio.</p></li>
+        <li class="ia-step reveal"><span class="n">03</span><h3>Montaje</h3><p>Entrenamos el agente con tus servicios, tu tono y tus datos, y lo probamos contigo.</p></li>
+        <li class="ia-step ia-step--hi reveal"><span class="n">04</span><h3>Operativo en 7 días</h3><p>En cuanto tenemos la información de tu negocio, tu web empieza a atender.</p></li>
+        <li class="ia-step reveal"><span class="n">05</span><h3>Seguimiento</h3><p>Revisamos contigo cómo responde y lo ajustamos cuando cambia algo en tu negocio.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 9 · POR QUÉ WHITEMOON -->
+  <section class="sec" id="por-que">
+    <div class="wrap">
+      <div class="ia-why">
+        <div class="reveal">
+          <div class="sec-head">
+            <h2>Por qué WhiteMoon,<span class="accent">sin adornos.</span></h2>
+            <p>No somos la única opción. Esto es lo que nos diferencia, y lo puedes comprobar.</p>
+          </div>
+          <div class="ia-cmp">
+            <b>¿Comparando opciones?</b>
+            <ul>
+              <li><a href="/whitemoon-vs-chatgpt/">WhiteMoon vs ChatGPT</a></li>
+              <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
+              <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
+              <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+              <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
+              <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ia-rows reveal">
+          <div class="ia-row"><b>Cerca.</b><p>Estamos en Majadahonda y hablas con quien monta tu agente.</p></div>
+          <div class="ia-row"><b>Claros.</b><p>Antes de empezar te decimos qué se puede automatizar y qué no, aunque eso signifique no proponerte nada.</p></div>
+          <div class="ia-row"><b>Sin ataduras.</b><p>Sin permanencia: si no te aporta, lo dejas.</p></div>
+          <div class="ia-row"><b>Comprobable.</b><p>Lo que enseñamos tiene enlace: el caso de Bambu Sushi, las capturas con fecha y nuestra ficha de Google.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · FAQ (sincronizada con el FAQPage del <head>: check 16 del Guardian) -->
+  <section class="sec sec--alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head sec-head--c reveal">
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item reveal"><summary class="faq-q">¿Cuánto tarda en estar funcionando?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Operativo en 7 días en cuanto tenemos la información de tu negocio: servicios, horarios y cómo trabajas.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Hay permanencia?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Si no te aporta, lo cancelas sin penalizaciones.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Qué datos necesitáis de mi negocio?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Lo que le contarías a alguien que entra nuevo en tu equipo: qué servicios ofreces, tus horarios, cómo das cita, las preguntas que más te hacen y el tono en el que hablas. Si quieres que conteste con documentos, como un catálogo o una normativa, nos los pasas y le añadimos RAG.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Se integra en la web que ya tengo?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Sí. Spark se instala en la web que ya tienes, sin rehacerla. Si no tienes web o quieres empezar de cero, Core Spark Web te la hace con el agente dentro.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Y si mi negocio no encaja con un agente de IA?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Te lo decimos antes de empezar. En el diagnóstico vemos qué se puede automatizar y qué no, y si un agente no te resuelve nada, no te lo proponemos.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿El agente se inventa respuestas?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Responde con la información de tu negocio; si no sabe algo, lo dice y te pasa la consulta.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · CTA FINAL -->
+  <section class="sec" id="propuesta">
+    <div class="wrap">
+      <div class="ia-final reveal">
+        <h2>Pide tu propuesta a medida</h2>
+        <p>Cuéntanos tu caso y te la preparamos en 24h, sin compromiso y sin permanencia.</p>
+        <div class="ia-acts">
+          <a class="btn btn--w" href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="window.wmTrack&&wmTrack('whatsapp_click',{wm_source:'inteligencia-artificial',placement:'cta-final'})"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="btn btn--line" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&&wmTrack('click_calcom',{wm_source:'inteligencia-artificial',placement:'cta-final'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+        <p class="alt">¿Prefieres escribirnos con calma? <a href="/contacto/">Ve a la página de contacto</a>.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
+<footer id="contacto" class="wm-foot">
+  <div class="wm-foot__grid">
+
+    <div class="wm-foot__brand">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+        <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
+        <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+      </a>
+      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <div class="wm-foot__social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a>
+        <a href="https://www.linkedin.com/in/cristobal-martinez-8b9b9951" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/@whitemoonweb" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.1 2.7 12 2.7 12 2.7s-5.1 0-8.3.2c-.4.1-1.4.1-2.3 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5.1 0 8.3-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.7 13.5V7.9l6.2 2.8-6.2 2.8z"/></svg></a>
+        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></a><!--/email_off-->
+      </div>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <ul>
+        <li><a href="/spark/">Spark</a></li>
+        <li><a href="/core/">Core Spark Web</a></li>
+        <li><a href="/marketing/">Marketing</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Comparativas</h3>
+      <ul>
+        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <div class="wm-foot__contact">
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wm-foot__bottom">
+    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div class="wm-foot__legal">
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
+    </div>
+    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+  </div>
+</footer>
+
+<script>
+/* Reveal con stagger (mismo patrón que /spark/). Solo oculta si el <head>
+   marcó .js: sin JS o con movimiento reducido, todo el contenido se ve. */
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('js')) return;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  function show(el) { el.classList.add('in'); }
+  if (document.visibilityState === 'hidden') { els.forEach(show); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach(function (el) {
+    var i = el.parentElement ? [].indexOf.call(el.parentElement.children, el) : 0;
+    el.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+</body>
+</html>
