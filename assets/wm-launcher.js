@@ -2,19 +2,21 @@
    WhiteMoon — lanzador de contacto (esquina inferior derecha)
    -------------------------------------------------------------
    Sustituye al widget de voz (orion-widget.js). Solo ENLACES:
-   ni chat, ni API, ni SDK, ni ninguna petición de red. Inyecta su
-   propio CSS y HTML para no tocar las ~250 páginas más que en la
-   etiqueta <script>.
+   ni chat, ni API, ni SDK. Inyecta su propio CSS y HTML para no
+   tocar las ~250 páginas más que en la etiqueta <script>.
 
    - FAB de 52px con halo de anillos (se paran con el panel abierto
      y no existen con prefers-reduced-motion).
    - Panel con 4 acciones: Spark y Core Spark Web por WhatsApp con
      texto prellenado, reunión en Cal.com y WhatsApp directo.
    - Cierra con Esc, clic fuera o foco fuera; el foco vuelve al FAB.
+   - Eventos GA4 al abrir y en cada acción, solo con el nombre del
+     evento: sin parámetros ni datos personales. gtag es el shim de
+     cookie-consent.js, así que respeta el consentimiento.
+   - Mientras el banner de cookies (#wm-cookie-banner) está en el DOM
+     el FAB se oculta; reaparece al aceptar o rechazar.
    - Una página con su propio flotante abajo a la derecha puede subirlo
      con :root{--wml-base:..;--wml-base-m:..} (escritorio / móvil).
-   - Si aparece el banner de cookies (#wm-cookie-banner, fijo abajo)
-     se sube por encima para no taparle los botones.
    ============================================================= */
 (function () {
   "use strict";
@@ -37,16 +39,23 @@
     return '<svg class="' + cls + '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + ICON[name] + "</svg>";
   }
 
+  // GA4: solo el nombre del evento. Si cookie-consent.js no ha cargado
+  // (bloqueado, página sin él) no hay gtag y no se hace nada.
+  function track(name) {
+    if (typeof gtag !== "undefined") gtag("event", name);
+  }
+
   var ACTIONS = [
-    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes" },
-    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA" },
-    { href: CAL, icon: "cal", label: "Agendar reunión", hint: "Elige día y hora" },
-    { href: WA, icon: "wa", label: "WhatsApp", hint: "643 199 580" }
+    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes", ev: "launcher_spark_whatsapp" },
+    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA", ev: "launcher_core_whatsapp" },
+    { href: CAL, icon: "cal", label: "Agendar reunión", hint: "Elige día y hora", ev: "launcher_agendar" },
+    { href: WA, icon: "wa", label: "WhatsApp", hint: "643 199 580", ev: "launcher_whatsapp" }
   ];
 
   var css = ''
-    + '#wm-launcher{position:fixed;right:24px;bottom:calc(var(--wml-base,24px) + var(--wml-lift,0px));z-index:9998;'
-    + "font-family:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif;transition:bottom .25s ease}"
+    + '#wm-launcher{position:fixed;right:24px;bottom:var(--wml-base,24px);z-index:9998;'
+    + "font-family:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif}"
+    + '#wm-launcher.is-hidden{display:none}'
     + '#wm-launcher *{box-sizing:border-box}'
     // --- FAB ---------------------------------------------------------------
     + '.wml-fab{position:relative;width:52px;height:52px;border-radius:50%;border:0;padding:0;margin:0;cursor:pointer;'
@@ -91,12 +100,12 @@
     + '.wml-hint{font-size:.74rem;color:#8888a0;line-height:1.3;margin-top:2px}'
     + '.wml-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}'
     // --- Móvil -------------------------------------------------------------
-    + '@media (max-width:600px){#wm-launcher{right:16px;bottom:calc(var(--wml-base-m,16px) + var(--wml-lift,0px))}'
+    + '@media (max-width:600px){#wm-launcher{right:16px;bottom:var(--wml-base-m,16px)}'
     + '.wml-panel{bottom:64px;width:calc(100vw - 32px);max-width:320px}}'
     // --- Sin movimiento ----------------------------------------------------
     + '@media (prefers-reduced-motion:reduce){'
     + '.wml-fab::before,.wml-fab::after,.wml-ring{animation:none!important;opacity:0!important}'
-    + '#wm-launcher,.wml-fab,.wml-panel,.wml-link{transition:none!important}'
+    + '.wml-fab,.wml-panel,.wml-link{transition:none!important}'
     + '.wml-fab:hover{transform:none}.wml-panel{transform:none}}';
 
   var style = document.createElement("style");
@@ -106,8 +115,8 @@
 
   var root = document.createElement("div");
   root.id = "wm-launcher";
-  var items = ACTIONS.map(function (a) {
-    return '<li><a class="wml-link" href="' + a.href + '" target="_blank" rel="noopener">'
+  var items = ACTIONS.map(function (a, i) {
+    return '<li><a class="wml-link" data-i="' + i + '" href="' + a.href + '" target="_blank" rel="noopener">'
       + '<span class="wml-badge' + (a.icon === "wa" ? " is-wa" : "") + '">' + svg(a.icon, "") + "</span>"
       + '<span class="wml-txt"><span class="wml-label">' + a.label + "</span>"
       + '<span class="wml-hint">' + a.hint + "</span></span>"
@@ -131,10 +140,12 @@
   function isOpen() { return root.classList.contains("is-open"); }
 
   function open() {
-    if (isOpen()) return;
+    // Con el banner de cookies en pantalla el lanzador no se muestra.
+    if (isOpen() || root.classList.contains("is-hidden")) return;
     root.classList.add("is-open");
     fab.setAttribute("aria-expanded", "true");
     fab.setAttribute("aria-label", "Cerrar menú de contacto");
+    track("abrir_launcher");
     // Espera al frame en que el panel deja de estar visibility:hidden.
     requestAnimationFrame(function () { links[0].focus(); });
   }
@@ -152,9 +163,13 @@
     else open();
   });
 
-  // Al elegir una acción, la pestaña nueva se abre y el panel se recoge.
+  // Al elegir una acción: evento GA4, la pestaña nueva se abre y el panel
+  // se recoge.
   Array.prototype.forEach.call(links, function (a) {
-    a.addEventListener("click", function () { close(false); });
+    a.addEventListener("click", function () {
+      track(ACTIONS[+a.getAttribute("data-i")].ev);
+      close(false);
+    });
   });
 
   document.addEventListener("keydown", function (e) {
@@ -180,25 +195,18 @@
     close(false);
   });
 
-  // Banner de cookies: fijo abajo con z-index 99999. Mientras esté, el
-  // lanzador se coloca justo encima para no taparle "Aceptar"/"Rechazar".
-  var observed = null;
-  var ro = typeof ResizeObserver === "function" ? new ResizeObserver(lift) : null;
-  function lift() {
-    var b = document.getElementById("wm-cookie-banner");
-    if (ro && b !== observed) {
-      if (observed) ro.unobserve(observed);
-      if (b) ro.observe(b);
-      observed = b;
-    }
-    root.style.setProperty("--wml-lift", b ? b.offsetHeight + "px" : "0px");
+  // Banner de cookies: fijo abajo y a todo el ancho. Mientras esté en el DOM
+  // el FAB se oculta; cookie-consent.js lo quita al aceptar o rechazar.
+  function syncBanner() {
+    var visible = !!document.getElementById("wm-cookie-banner");
+    if (visible) close(false);
+    root.classList.toggle("is-hidden", visible);
   }
 
   function mount() {
     document.body.appendChild(root);
-    lift();
-    new MutationObserver(lift).observe(document.body, { childList: true });
-    window.addEventListener("resize", lift);
+    syncBanner();
+    new MutationObserver(syncBanner).observe(document.body, { childList: true });
   }
   if (document.body) mount();
   else document.addEventListener("DOMContentLoaded", mount, { once: true });
