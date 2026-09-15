@@ -2,44 +2,34 @@ import 'jsr:@supabase/functions-js/edge-runtime.d.ts';
 
 // propuesta-generator — genera una propuesta comercial WhiteMoon en HTML.
 // Claude (haiku) redacta solo las secciones narrativas (JSON); la funcion
-// ensambla el HTML final con datos deterministas (precios, ROI, plazos, CTA)
-// para evitar alucinaciones en cifras y condiciones comerciales.
+// ensambla el HTML final con datos deterministas (producto, plazo, condiciones, CTA).
+// Modelo de 2 productos con propuesta a medida: la propuesta no lleva precios,
+// ni cifras de rendimiento, ni productos retirados. Si un texto de Claude
+// incumple esas reglas se descarta y se usa un texto fijo.
 
 const WA = '643199580';
 const WEB = 'whitemoon.es';
 
-// Precios por pack — catalogo vigente 2026 (fuente de verdad: /precios/). Sin permanencia.
-const PACKS: Record<string, { label: string; setup: number; mensual: number; cap: string }> = {
-  'mini-core':   { label: 'Mini Core',      setup: 599,  mensual: 99,  cap: 'landing profesional + agente IA · para autonomos sin web' },
-  spark:         { label: 'Spark',          setup: 499,  mensual: 99,  cap: 'agente IA de texto en tu web actual · leads 24/7' },
-  'orion-agent': { label: 'Orion IA Agent', setup: 799,  mensual: 99,  cap: 'agente de voz 24/7 en tu web actual' },
-  core:          { label: 'Core Spark Web', setup: 899,  mensual: 99,  cap: 'web nueva + dominio + agente de texto + SEO/GEO/AEO' },
-  'core-orion':  { label: 'Core Orion',     setup: 1499, mensual: 99,  cap: 'web nueva + dominio + agente de voz + SEO/GEO/AEO' },
-  wm360:         { label: 'WhiteMoon 360',  setup: 1899, mensual: 199, cap: 'web + chat 24/7 + CRM de gestion del negocio' },
-  'core-rag':    { label: 'Core RAG',       setup: 2499, mensual: 199, cap: 'agente IA entrenado con tus documentos · sin web' },
+// Productos vigentes. Sin precios: la parte economica se cierra en la llamada.
+const PRODUCTOS: Record<string, { label: string; cap: string; features: string[] }> = {
+  spark: {
+    label: 'Spark',
+    cap: 'agente IA en la web que ya tienes · atiende, agenda y capta leads 24/7',
+    features: ['Agente IA 24/7 en tu web actual', 'Entrenado con tus servicios y tu tono', 'Agenda citas segun tu disponibilidad', 'Captura de nombre, telefono y motivo', 'Aviso inmediato de cada lead', 'RAG opcional con tus documentos'],
+  },
+  'core-spark-web': {
+    label: 'Core Spark Web',
+    cap: 'web nueva con el agente IA dentro y un CRM para gestionar cada lead · SEO, GEO y AEO',
+    features: ['Web nueva con tu dominio, SSL y mantenimiento', 'Agente IA 24/7 dentro desde el primer dia', 'CRM: pipeline, reparto al equipo, agenda e historial', 'SEO, GEO y AEO de serie', 'Aviso inmediato de cada lead', 'RAG opcional con tus documentos'],
+  },
 };
 
-// Plazo y permanencia — ningun pack tiene permanencia (30 dias de aviso para cancelar).
-const TERMS = { plazo: '7 dias laborables', permanencia: 'Sin permanencia · 30 dias de aviso' };
+// Plazo y condiciones. Ningun producto tiene permanencia.
+const TERMS = { plazo: '7 dias laborables', permanencia: 'Sin permanencia' };
 
-// ROI por sector (brief) — horas/semana ahorradas + metrica destacada
-const ROI: Record<string, { metric: string; horas: number }> = {
-  dental:      { metric: '+40% mas citas agendadas',          horas: 15 },
-  clinica:     { metric: '+40% mas citas agendadas',          horas: 15 },
-  legal:       { metric: '+60% leads cualificados',           horas: 20 },
-  abogados:    { metric: '+60% leads cualificados',           horas: 20 },
-  restaurante: { metric: '+35% mas reservas · 24/7',          horas: 10 },
-  gestoria:    { metric: '-25h/semana en consultas repetitivas', horas: 25 },
-  inmobiliaria:{ metric: '+50% leads atendidos · 24/7',       horas: 18 },
-  gimnasio:    { metric: '+30% conversion',                   horas: 10 },
-  peluqueria:  { metric: '+30% conversion',                   horas: 10 },
-  veterinaria: { metric: '+35% citas · atencion 24/7',        horas: 12 },
-  formacion:   { metric: '+40% preinscripciones',             horas: 12 },
-  taller:      { metric: '+30% presupuestos atendidos',       horas: 12 },
-  podologia:   { metric: '+40% mas citas',                    horas: 12 },
-  automovil:   { metric: '+30% leads atendidos',              horas: 14 },
-};
-const ROI_DEFAULT = { metric: '+30% leads atendidos · 24/7', horas: 12 };
+// Lo que una propuesta nunca puede decir: precios, porcentajes o cifras de
+// rendimiento, productos retirados, voz y preaviso de cancelacion.
+const PROHIBIDO = /€|\beur(?:os)?\b|%|[+\-−]\s?\d+\s?(?:h\b|x\b|veces)|\b\d+\s?(?:x|veces)\b|\bOrion\b|Core Orion|WhiteMoon 360|Core RAG|Mini Core|\bvoz\b|30 d[ií]as/i;
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -49,8 +39,46 @@ const corsHeaders = {
 const esc = (s: unknown) =>
   String(s ?? '').replace(/[&<>"]/g, (c) => (({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }) as Record<string, string>)[c]);
 
-// Formato es-ES con separador de miles (el runtime de Deno no aplica ICU completo).
-const eur = (n: number) => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '€';
+const limpio = (v: unknown) => {
+  const s = String(v ?? '');
+  return s && !PROHIBIDO.test(s) ? s : '';
+};
+
+const incumple = (ai: Record<string, unknown>) =>
+  [ai.resumen_ejecutivo, ai.problema, ai.solucion, ai.caso_exito, ...(Array.isArray(ai.features) ? ai.features : [])]
+    .some((v) => PROHIBIDO.test(String(v ?? '')));
+
+async function redactar(apiKey: string, system: string, user: string): Promise<{ ai?: Record<string, unknown>; error?: Response }> {
+  const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2000,
+      system,
+      messages: [{ role: 'user', content: user }],
+    }),
+  });
+  if (!resp.ok) {
+    const err = await resp.text();
+    return {
+      error: new Response(JSON.stringify({ error: 'Claude API error', details: err }), {
+        status: resp.status, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }),
+    };
+  }
+  const data = await resp.json();
+  let raw = (data.content?.[0]?.text || '{}').trim();
+  raw = raw.replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+  let ai: Record<string, unknown> = {};
+  try {
+    ai = JSON.parse(raw);
+  } catch {
+    const s = raw.indexOf('{'), e = raw.lastIndexOf('}');
+    if (s >= 0 && e > s) { try { ai = JSON.parse(raw.slice(s, e + 1)); } catch { /* noop */ } }
+  }
+  return { ai };
+}
 
 Deno.serve(async (req: Request) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
@@ -61,32 +89,29 @@ Deno.serve(async (req: Request) => {
   try {
     const body = await req.json();
     const {
-      nombre_cliente = '', empresa = '', sector = '', pack = 'core',
-      url_web = '', dolor_principal = '', presupuesto_mensual = '', notas = '',
+      nombre_cliente = '', empresa = '', sector = '', pack = 'core-spark-web',
+      url_web = '', dolor_principal = '', notas = '',
     } = body ?? {};
 
-    const packKey = String(pack).toLowerCase();
-    const P = PACKS[packKey] ?? PACKS.core;
+    const packKey = String(pack).toLowerCase().trim();
+    const P = PRODUCTOS[packKey];
+    if (!P) return json({ error: 'pack no valido', permitidos: Object.keys(PRODUCTOS) }, 400);
     const T = TERMS;
-    const R = ROI[String(sector).toLowerCase()] ?? ROI_DEFAULT;
-
-    const ahorroMes = Math.round((R.horas * 4.33 * 20) / 10) * 10; // ~20€/h
-    const costeNoActuar = ahorroMes + P.mensual;
 
     const apiKey = Deno.env.get('ANTHROPIC_API_KEY');
     if (!apiKey) return json({ error: 'ANTHROPIC_API_KEY no configurada' }, 500);
 
     const SYSTEM = [
-      'Eres un copywriter comercial senior de WhiteMoon Agencia IA (agentes IA conversacionales y webs con SEO para pymes en Espana).',
-      'Escribes propuestas comerciales persuasivas, cercanas y profesionales, en espanol de Espana.',
+      'Eres un copywriter comercial senior de WhiteMoon Agencia IA (agentes IA para la web de pymes en Espana).',
+      'Escribes propuestas comerciales cercanas, honestas y profesionales, en espanol de Espana.',
+      'WhiteMoon tiene solo dos productos: Spark (agente IA en la web que el negocio ya tiene) y Core Spark Web (web nueva con el agente IA dentro y un CRM). No existe ningun otro producto.',
       'Devuelves EXCLUSIVAMENTE un objeto JSON valido (sin markdown, sin texto fuera del JSON) con estas claves:',
       '- resumen_ejecutivo: 2-3 parrafos en HTML (<p>...</p>) dirigidos al cliente, conectando su sector con el valor de un agente IA.',
       '- problema: 1-2 parrafos en HTML sobre el problema concreto de su sector, partiendo del dolor indicado.',
-      '- solucion: 1-2 parrafos en HTML que presentan el pack recomendado aplicado a su sector.',
-      '- features: array de 6 features concretas y especificas del sector y pack (frases cortas).',
-      '- roi_intro: 1 frase introduciendo el retorno de inversion.',
-      '- caso_exito: 1 parrafo en HTML. Si el sector es restaurante, usa el cliente real Bambu Sushi (Cordoba, Pack Core: web + SEO + chatbot de reservas y pedidos). Para CUALQUIER OTRO sector, describe resultados tipicos del sector SIN inventar nombres de clientes ni testimonios ficticios.',
-      'Reglas: usa solo los datos proporcionados; no inventes precios, plazos ni testimonios; tono honesto orientado a resultados; HTML simple (solo <p>, <strong>, <em>); todas las claves con comillas dobles JSON estandar.',
+      '- solucion: 1-2 parrafos en HTML que presentan el producto recomendado aplicado a su sector.',
+      '- features: array de 6 features concretas del sector y del producto (frases cortas).',
+      '- caso_exito: 1 parrafo en HTML. Si el sector es restaurante, usa el cliente real Bambu Sushi (Cordoba: web + SEO + chatbot de reservas y pedidos). Para CUALQUIER OTRO sector, explica de forma cualitativa como ayuda un agente IA a un negocio de ese sector, SIN nombres de clientes, SIN testimonios y SIN cifras.',
+      'Reglas estrictas: no escribas precios, importes ni el simbolo del euro; no escribas porcentajes, multiplicadores ni cifras de resultados o de ahorro (el retorno se calcula en la llamada con los numeros reales del cliente); no menciones canales distintos del texto en la web, llamadas telefonicas ni ningun otro producto; no menciones plazos de cancelacion; HTML simple (solo <p>, <strong>, <em>); todas las claves con comillas dobles JSON estandar.',
     ].join('\n');
 
     const USER = [
@@ -94,52 +119,32 @@ Deno.serve(async (req: Request) => {
       '- Cliente: ' + (nombre_cliente || '(sin nombre)'),
       '- Empresa: ' + (empresa || '(sin empresa)'),
       '- Sector: ' + (sector || '(generico)'),
-      '- Pack recomendado: ' + P.label + ' (' + P.cap + ')',
+      '- Producto recomendado: ' + P.label + ' (' + P.cap + ')',
       '- Web actual: ' + (url_web || '(no indica)'),
       '- Dolor principal: ' + (dolor_principal || '(no indica)'),
-      '- Presupuesto mensual aproximado: ' + (presupuesto_mensual ? presupuesto_mensual + '€/mes' : '(no indica)'),
       '- Notas de la llamada: ' + (notas || '(ninguna)'),
-      '- ROI de referencia del sector: ' + R.metric + '; ahorro ~' + R.horas + 'h/semana.',
       'Genera el JSON de la propuesta.',
     ].join('\n');
 
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': apiKey, 'anthropic-version': '2023-06-01' },
-      body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2000,
-        system: SYSTEM,
-        messages: [{ role: 'user', content: USER }],
-      }),
-    });
-
-    if (!resp.ok) {
-      const err = await resp.text();
-      return json({ error: 'Claude API error', details: err }, resp.status);
+    let r = await redactar(apiKey, SYSTEM, USER);
+    if (r.error) return r.error;
+    if (incumple(r.ai!)) {
+      const r2 = await redactar(apiKey, SYSTEM, USER + '\nIMPORTANTE: tu respuesta anterior incluia precios, porcentajes, cifras de resultados o productos no permitidos. Reescribela sin ninguno.');
+      if (!r2.error) r = r2;
     }
-    const data = await resp.json();
-    let raw = (data.content?.[0]?.text || '{}').trim();
-    raw = raw.replace(/^```(?:json)?/i, '').replace(/```$/i, '').trim();
+    const ai = r.ai ?? {};
 
-    let ai: Record<string, unknown> = {};
-    try {
-      ai = JSON.parse(raw);
-    } catch {
-      const s = raw.indexOf('{'), e = raw.lastIndexOf('}');
-      if (s >= 0 && e > s) { try { ai = JSON.parse(raw.slice(s, e + 1)); } catch { /* noop */ } }
-    }
+    const resumen = limpio(ai.resumen_ejecutivo) ||
+      ('<p>Propuesta para ' + esc(empresa || nombre_cliente || 'tu negocio') + ': un agente IA que atiende a tus clientes 24/7, responde con tu informacion y te pasa cada lead al momento.</p>');
+    const problema = limpio(ai.problema);
+    const solucion = limpio(ai.solucion) || ('<p>' + esc(P.label) + ': ' + esc(P.cap) + '.</p>');
+    const aiFeatures = Array.isArray(ai.features)
+      ? (ai.features as unknown[]).map((f) => String(f)).filter((f) => f && !PROHIBIDO.test(f))
+      : [];
+    const features = aiFeatures.length >= 4 ? aiFeatures.slice(0, 6) : P.features;
+    const caso = limpio(ai.caso_exito);
 
-    const resumen = String(ai.resumen_ejecutivo || ('<p>Propuesta de automatizacion con IA para ' + esc(empresa || nombre_cliente) + '.</p>'));
-    const problema = String(ai.problema || '');
-    const solucion = String(ai.solucion || '');
-    const features = Array.isArray(ai.features) && ai.features.length
-      ? (ai.features as unknown[]).map((f) => String(f))
-      : [P.cap, 'Captacion de leads 24/7', 'Respuestas inmediatas', 'Cualificacion automatica', 'Aviso instantaneo por WhatsApp', 'Web + SEO incluidos'];
-    const roiIntro = String(ai.roi_intro || 'Estimacion de retorno para tu negocio:');
-    const caso = String(ai.caso_exito || '');
-
-    const html = assemble({ nombre_cliente, empresa, sector, P, T, R, ahorroMes, costeNoActuar, resumen, problema, solucion, features, roiIntro, caso });
+    const html = assemble({ nombre_cliente, empresa, sector, P, T, resumen, problema, solucion, features, caso });
     return json({ html });
   } catch (err) {
     return json({ error: 'Error interno', details: String(err) }, 500);
@@ -151,9 +156,8 @@ function assemble(d: any): string {
   const cliente = esc(d.nombre_cliente || '');
   const empresa = esc(d.empresa || '');
   const sector = esc(d.sector || '');
-  const P = d.P, T = d.T, R = d.R;
+  const P = d.P, T = d.T;
   const featuresHtml = d.features.map((f: string) => '<li>' + esc(f) + '</li>').join('');
-  const metricCorto = esc(String(R.metric).split('·')[0].trim());
 
   return [
     "<!DOCTYPE html>",
@@ -180,7 +184,7 @@ function assemble(d: any): string {
     ".feat li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:800}",
     ".roi{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}",
     ".roi .c{background:var(--panel);color:var(--light);border-radius:12px;padding:18px;text-align:center}",
-    ".roi .c .n{font-size:1.5rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}",
+    ".roi .c .n{font-size:1.2rem;font-weight:800;color:var(--accent);letter-spacing:-.02em}",
     ".roi .c .l{font-size:.74rem;color:var(--muted);margin-top:4px}",
     ".precio{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px}",
     ".precio .box{flex:1;min-width:200px;border:2px solid var(--purple);border-radius:14px;padding:20px;background:linear-gradient(135deg,rgba(124,77,255,.06),rgba(0,212,170,.06))}",
@@ -188,10 +192,6 @@ function assemble(d: any): string {
     ".precio .box .big{font-size:1.7rem;font-weight:800;margin:6px 0;letter-spacing:-.02em}",
     ".precio .box .sub{color:#555;font-size:.85rem}",
     ".precio .box .cap{margin-top:10px;font-size:.84rem;color:#333}",
-    ".noact{flex:1;min-width:200px;border:1px dashed #d33;border-radius:14px;padding:20px;background:#fff5f5}",
-    ".noact .t{color:#c00;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.06em}",
-    ".noact .big{font-size:1.7rem;font-weight:800;color:#c00;margin:6px 0}",
-    ".noact .sub{color:#a33;font-size:.85rem}",
     ".pasos{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}",
     ".pasos .p{flex:1;min-width:150px;background:#f6f6fb;border-radius:10px;padding:14px;font-size:.88rem}",
     ".pasos .p b{display:block;color:var(--purple);margin-bottom:3px}",
@@ -217,15 +217,14 @@ function assemble(d: any): string {
     "</div></div>",
     "<section><h2>Resumen ejecutivo</h2>" + d.resumen + "</section>",
     (d.problema ? "<section><h2>El reto de tu sector</h2>" + d.problema + "</section>" : ''),
-    "<section><h2>La solucion: Pack " + esc(P.label) + "</h2>" + d.solucion + "<ul class='feat'>" + featuresHtml + "</ul></section>",
-    "<section><h2>ROI estimado</h2><p>" + esc(d.roiIntro) + "</p><div class='roi'>",
-    "<div class='c'><div class='n'>" + R.horas + "h</div><div class='l'>ahorradas / semana</div></div>",
-    "<div class='c'><div class='n'>" + metricCorto + "</div><div class='l'>en tu sector</div></div>",
-    "<div class='c'><div class='n'>~" + eur(d.ahorroMes) + "</div><div class='l'>ahorro estimado / mes</div></div>",
+    "<section><h2>La solucion: " + esc(P.label) + "</h2>" + d.solucion + "<ul class='feat'>" + featuresHtml + "</ul></section>",
+    "<section><h2>Retorno de la inversion</h2><p>El retorno depende de tus numeros: las consultas que hoy se pierden fuera de horario, tu ticket medio y las horas que tu equipo dedica a responder lo mismo. En la llamada lo calculamos con tus numeros reales, sin estimaciones genericas.</p><div class='roi'>",
+    "<div class='c'><div class='n'>Consultas</div><div class='l'>que hoy se pierden fuera de horario</div></div>",
+    "<div class='c'><div class='n'>Horas</div><div class='l'>de tu equipo respondiendo lo mismo</div></div>",
+    "<div class='c'><div class='n'>Tus numeros</div><div class='l'>lo calculamos contigo en la llamada</div></div>",
     "</div></section>",
     "<section><h2>Inversion</h2><div class='precio'>",
-    "<div class='box'><div class='pk'>Pack " + esc(P.label) + "</div><div class='big'>" + eur(P.setup) + " <span style='font-size:.9rem;font-weight:500'>setup</span></div><div class='sub'>+ " + eur(P.mensual) + "/mes</div><div class='cap'>" + esc(P.cap) + "</div></div>",
-    "<div class='noact'><div class='t'>Coste de no actuar</div><div class='big'>~" + eur(d.costeNoActuar) + "/mes</div><div class='sub'>en horas perdidas y oportunidades sin captar cada mes que pasa.</div></div>",
+    "<div class='box'><div class='pk'>" + esc(P.label) + "</div><div class='big'>Propuesta a medida</div><div class='sub'>La cerramos en la llamada, sin compromiso.</div><div class='cap'>" + esc(P.cap) + "</div></div>",
     "</div></section>",
     (d.caso ? "<section><h2>Casos de exito</h2>" + d.caso + "</section>" : ''),
     "<section><h2>Proximos pasos</h2><div class='pasos'>",
