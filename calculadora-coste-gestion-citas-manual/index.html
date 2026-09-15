@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Coste Gestión Citas Manual 2026 · WhiteMoon</title>
-<meta name="description" content="Calcula cuánto gastas en gestión manual de citas (consultas, reprogramaciones). Horas/mes, coste y ahorro con Orion IA Agent automatizando agenda.">
-<meta name="keywords" content="coste gestion citas manual, automatizar agenda clinica, orion ia agent clinicas, ahorro recepcionista, gestion citas ia">
+<meta name="description" content="Calcula cuánto gastas en gestión manual de citas (consultas, reprogramaciones). Horas/mes, coste y ahorro con un agente IA automatizando la agenda.">
+<meta name="keywords" content="coste gestion citas manual, automatizar agenda clinica, agente ia clinicas, ahorro recepcionista, gestion citas ia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://whitemoon.es/calculadora-coste-gestion-citas-manual/">
 <meta property="og:title" content="Calculadora Coste Gestión Citas Manual 2026 · WhiteMoon">
-<meta property="og:description" content="Cuánto gastas en gestión manual de citas + ahorro con Orion IA Agent.">
+<meta property="og:description" content="Cuánto gastas en gestión manual de citas + ahorro con un agente IA.">
 <meta property="og:url" content="https://whitemoon.es/calculadora-coste-gestion-citas-manual/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -31,9 +31,9 @@
   "@type":"FAQPage",
   "mainEntity":[
     {"@type":"Question","name":"¿Cuánto cuesta gestionar las citas manualmente?","acceptedAnswer":{"@type":"Answer","text":"Clínica con 40 consultas de cita al día × 4 min = 2,67 h/día × 22 días = 58,7 h/mes. A 18€/h: ~1.060€/mes solo en gestionar la agenda. Con reprogramaciones y confirmaciones: 1.500-2.000€/mes."}},
-    {"@type":"Question","name":"¿Qué ahorra Orion IA Agent en citas?","acceptedAnswer":{"@type":"Answer","text":"Atiende en tu web las nuevas reservas, modificaciones, cancelaciones y confirmaciones, de modo que buena parte de esas gestiones deja de llegar a recepción. Orion no coge el teléfono: resuelve en la web a quien si no habría llamado. Ahorro: 800-1.500€/mes."}},
+    {"@type":"Question","name":"¿Qué ahorra un agente IA en citas?","acceptedAnswer":{"@type":"Answer","text":"Atiende en tu web las nuevas reservas, modificaciones, cancelaciones y confirmaciones, de modo que buena parte de esas gestiones deja de llegar a recepción. El agente no coge el teléfono: resuelve en la web a quien si no habría llamado. Ahorro: 800-1.500€/mes."}},
     {"@type":"Question","name":"¿Funciona con cualquier software de agenda?","acceptedAnswer":{"@type":"Answer","text":"Integración API con Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, Google Calendar. Sin API: scraping autenticado o sync por exportación. Si tu software no está soportado lo evaluamos en auditoría."}},
-    {"@type":"Question","name":"¿En cuánto se amortiza?","acceptedAnswer":{"@type":"Answer","text":"Con los supuestos por defecto de la calculadora: 1.000€/mes recuperados − 99€ de cuota = 901€/mes netos. El setup de 799€ se cubre el primer mes. Cambia las horas y el coste/hora por los tuyos para ver tu propio número."}}
+    {"@type":"Question","name":"¿En cuánto se amortiza?","acceptedAnswer":{"@type":"Answer","text":"Con los supuestos por defecto de la calculadora se recuperan unos 845€/mes (el 80% de 1.056€ de gestión manual). Réstale la cuota mensual de tu propuesta y divide la puesta en marcha entre lo que queda para ver los meses. Cambia las horas y el coste/hora por los tuyos para ver tu propio número."}}
   ]
 }
 </script>
@@ -104,7 +104,7 @@
   <section class="sec"><div class="wrap"><div class="hdr c">
     <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6"/><circle cx="18" cy="14" r="4"/><polyline points="18 12 18 14 19.5 15.5"/></svg></span> Calculadora gratuita · Automatizar agenda</span>
     <h1 class="sec-h">Calculadora <em>Coste Gestión Citas Manual</em> 2026</h1>
-    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las horas/mes que tu equipo dedica a gestión manual de citas y el coste real. Comparativa con Orion IA Agent: cuánto ahorras automatizando.</p>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las horas/mes que tu equipo dedica a gestión manual de citas y el coste real. Comparativa con un agente IA: cuánto ahorras automatizando.</p>
   </div></div></section>
 
   <section class="sec"><div class="wrap"><div class="calc-card">
@@ -117,19 +117,22 @@
       <div class="calc-row"><label class="calc-label" for="cm-dias">Días laborables al mes</label><input type="number" id="cm-dias" class="calc-input" value="22" min="1" max="31" step="1" oninput="calcCitasManual()"></div>
     </div>
     <div class="calc-cols">
-      <div class="calc-row"><label class="calc-label" for="cm-absorcion">% absorción por Orion IA</label>
+      <div class="calc-row"><label class="calc-label" for="cm-absorcion">% absorción por el agente IA</label>
         <select id="cm-absorcion" class="calc-select" onchange="calcCitasManual()">
           <option value="70">70% conservador</option>
           <option value="80" selected>80% (valor por defecto)</option>
           <option value="85">85% agresivo</option>
         </select>
       </div>
-      <div class="calc-row"><label class="calc-label" for="cm-cuota">Cuota Orion IA Agent (€/mes)</label>
-        <select id="cm-cuota" class="calc-select" onchange="calcCitasManual()">
-          <option value="99" selected>99 €/mes (Spark + Orion Agent)</option>
-          <option value="199">199 €/mes (Core RAG)</option>
+      <div class="calc-row"><label class="calc-label" for="cm-producto">Producto</label>
+        <select id="cm-producto" class="calc-select" onchange="calcCitasManual()">
+          <option value="Spark" selected>Spark · ya tienes web</option>
+          <option value="Core Spark Web">Core Spark Web · aún no tienes web</option>
         </select>
       </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="cm-cuota">Cuota mensual de tu propuesta (€) · tu supuesto</label><input type="number" id="cm-cuota" class="calc-input" min="0" step="1" placeholder="Tu cifra" oninput="calcCitasManual()"></div>
     </div>
 
     <div class="calc-out">
@@ -138,7 +141,7 @@
       <div class="calc-out-card"><div class="calc-out-num" id="cm-ahorro">0 €</div><div class="calc-out-lbl">Ahorro neto con IA</div></div>
     </div>
 
-    <div class="calc-detail" id="cm-explain">Horas/mes = consultas × minutos / 60 × días laborables. Coste mensual = horas × coste/hora. Ahorro neto = (coste mensual × % absorción) − cuota Orion IA.</div>
+    <div class="calc-detail" id="cm-explain">Horas/mes = consultas × minutos / 60 × días laborables. Coste mensual = horas × coste/hora. Ahorro neto = (coste mensual × % absorción) − cuota de tu propuesta.</div>
 
     <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. No incluye las horas en reprogramaciones por email o móvil ni el coste de oportunidad de la recepcionista atendiendo cosas más valiosas.</p>
   </div></div></section>
@@ -147,9 +150,9 @@
     <span class="sec-label">Preguntas frecuentes</span>
     <h2 class="sec-h" style="margin-bottom:24px">FAQ Coste Gestión Citas Manual</h2>
     <div class="faq-item"><div class="faq-q">¿Cuánto cuesta gestionar las citas manualmente?</div><div class="faq-a">Clínica con 40 consultas de cita al día × 4 min = 2,67 h/día × 22 días = 58,7 h/mes. A 18€/h: ~1.060€/mes solo en gestionar la agenda. Con reprogramaciones y confirmaciones: 1.500-2.000€/mes.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Qué ahorra Orion IA Agent en citas?</div><div class="faq-a">Atiende en tu web las nuevas reservas, modificaciones, cancelaciones y confirmaciones, de modo que buena parte de esas gestiones deja de llegar a recepción. Orion no coge el teléfono: resuelve en la web a quien si no habría llamado. Ahorro: 800-1.500€/mes.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Qué ahorra un agente IA en citas?</div><div class="faq-a">Atiende en tu web las nuevas reservas, modificaciones, cancelaciones y confirmaciones, de modo que buena parte de esas gestiones deja de llegar a recepción. El agente no coge el teléfono: resuelve en la web a quien si no habría llamado. Ahorro: 800-1.500€/mes.</div></div>
     <div class="faq-item"><div class="faq-q">¿Funciona con cualquier software de agenda?</div><div class="faq-a">Integración API con Klinikare, Gesden, Hidoc, Dentaltic, Resuelve, Google Calendar. Sin API: scraping autenticado o sync por exportación. Si tu software no está soportado lo evaluamos en auditoría.</div></div>
-    <div class="faq-item"><div class="faq-q">¿En cuánto se amortiza?</div><div class="faq-a">Con los supuestos por defecto de la calculadora: 1.000€/mes recuperados − 99€ de cuota = 901€/mes netos. El setup de 799€ se cubre el primer mes. Cambia las horas y el coste/hora por los tuyos para ver tu propio número.</div></div>
+    <div class="faq-item"><div class="faq-q">¿En cuánto se amortiza?</div><div class="faq-a">Con los supuestos por defecto de la calculadora se recuperan unos 845€/mes (el 80% de 1.056€ de gestión manual). Réstale la cuota mensual de tu propuesta y divide la puesta en marcha entre lo que queda para ver los meses. Cambia las horas y el coste/hora por los tuyos para ver tu propio número.</div></div>
   </div></div></section>
 
   <section class="sec"><div class="wrap" style="text-align:center">
@@ -289,6 +292,7 @@ function calcCitasManual(){
   var dias = Math.max(0, parseFloat(document.getElementById('cm-dias').value)||0);
   var absorcion = Math.max(0, parseFloat(document.getElementById('cm-absorcion').value)||0) / 100;
   var cuota = Math.max(0, parseFloat(document.getElementById('cm-cuota').value)||0);
+  var producto = document.getElementById('cm-producto').value;
 
   var horasDia = (llamadas * minutos) / 60;
   var horasMes = horasDia * dias;
@@ -301,7 +305,7 @@ function calcCitasManual(){
   document.getElementById('cm-ahorro').textContent = Math.round(ahorroNeto).toLocaleString('es-ES') + ' €';
 
   document.getElementById('cm-explain').textContent =
-    'Horas/mes = ' + Math.round(llamadas).toLocaleString('es-ES') + ' consultas × ' + minutos.toString().replace('.', ',') + ' min / 60 × ' + Math.round(dias).toLocaleString('es-ES') + ' días = ' + horasMes.toFixed(1).replace('.', ',') + ' h. Coste mensual = ' + horasMes.toFixed(1).replace('.', ',') + ' h × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeMes).toLocaleString('es-ES') + ' €. Orion IA absorbe el ' + (absorcion*100).toFixed(0) + '% (' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € bruto) − cuota ' + Math.round(cuota).toLocaleString('es-ES') + ' €/mes = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
+    'Horas/mes = ' + Math.round(llamadas).toLocaleString('es-ES') + ' consultas × ' + minutos.toString().replace('.', ',') + ' min / 60 × ' + Math.round(dias).toLocaleString('es-ES') + ' días = ' + horasMes.toFixed(1).replace('.', ',') + ' h. Coste mensual = ' + horasMes.toFixed(1).replace('.', ',') + ' h × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeMes).toLocaleString('es-ES') + ' €. ' + producto + ' absorbe el ' + (absorcion*100).toFixed(0) + '% (' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € bruto) − cuota ' + Math.round(cuota).toLocaleString('es-ES') + ' €/mes = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
 }
 calcCitasManual();
 </script>

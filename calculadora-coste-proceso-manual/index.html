@@ -33,7 +33,7 @@
     {"@type":"Question","name":"¿Qué procesos se pueden automatizar?","acceptedAnswer":{"@type":"Answer","text":"FAQ, citas, recordatorios, presupuestos estándar, captura leads CRM, derivación consultas, sync sistemas, informes periódicos, RAG sobre docs, traducción, validación. Regla: >5 veces/semana mismo patrón = automatizable."}},
     {"@type":"Question","name":"¿Cuánto cuesta un error humano?","acceptedAnswer":{"@type":"Answer","text":"Transcripción 5-20€. Cita/agenda 30-80€. Presupuesto 50-200€. Facturación 100-500€. Cumplimiento LOPD/RGPD 500-50.000€. IA reduce errores 80-95%."}},
     {"@type":"Question","name":"¿Cuál es el ROI medio?","acceptedAnswer":{"@type":"Answer","text":"Procesos >50/día: 1-3 meses. Procesos críticos con alto coste error: <1 mes. Procesos <5/día: caso por caso, a veces no compensa."}},
-    {"@type":"Question","name":"¿Cómo se implementa?","acceptedAnswer":{"@type":"Answer","text":"5 fases: auditoría (gratuita), diseño flujo, implementación Orion + integraciones, prueba 2-4 semanas, optimización continua. Total: 7-21 días."}}
+    {"@type":"Question","name":"¿Cómo se implementa?","acceptedAnswer":{"@type":"Answer","text":"5 fases: auditoría (gratuita), diseño flujo, implementación del agente IA + integraciones, prueba 2-4 semanas, optimización continua. Total: 7-21 días."}}
   ]
 }
 </script>
@@ -128,12 +128,15 @@
           <option value="90">90% agresivo</option>
         </select>
       </div>
-      <div class="calc-row"><label class="calc-label" for="pm-cuota">Cuota IA mensual (€)</label>
-        <select id="pm-cuota" class="calc-select" onchange="calcProcesoManual()">
-          <option value="99" selected>99 €/mes (Spark / Orion Agent)</option>
-          <option value="199">199 €/mes (Core RAG)</option>
+      <div class="calc-row"><label class="calc-label" for="pm-producto">Producto</label>
+        <select id="pm-producto" class="calc-select" onchange="calcProcesoManual()">
+          <option value="Spark" selected>Spark · ya tienes web</option>
+          <option value="Core Spark Web">Core Spark Web · aún no tienes web</option>
         </select>
       </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="pm-cuota">Cuota mensual de tu propuesta (€) · tu supuesto</label><input type="number" id="pm-cuota" class="calc-input" min="0" step="1" placeholder="Tu cifra" oninput="calcProcesoManual()"></div>
     </div>
 
     <div class="calc-out">
@@ -153,7 +156,7 @@
     <div class="faq-item"><div class="faq-q">¿Qué procesos se pueden automatizar?</div><div class="faq-a">FAQ, citas, recordatorios, presupuestos estándar, captura leads CRM, derivación consultas, sync sistemas, informes periódicos, RAG sobre docs, traducción, validación. Regla: &gt;5 veces/semana mismo patrón = automatizable.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuánto cuesta un error humano?</div><div class="faq-a">Transcripción 5-20€. Cita/agenda 30-80€. Presupuesto 50-200€. Facturación 100-500€. Cumplimiento LOPD/RGPD 500-50.000€. IA reduce errores 80-95%.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuál es el ROI medio?</div><div class="faq-a">Procesos &gt;50/día: 1-3 meses. Procesos críticos con alto coste error: &lt;1 mes. Procesos &lt;5/día: caso por caso, a veces no compensa.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Cómo se implementa?</div><div class="faq-a">5 fases: auditoría (gratuita), diseño flujo, implementación Orion + integraciones, prueba 2-4 semanas, optimización continua. Total: 7-21 días.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo se implementa?</div><div class="faq-a">5 fases: auditoría (gratuita), diseño flujo, implementación del agente IA + integraciones, prueba 2-4 semanas, optimización continua. Total: 7-21 días.</div></div>
   </div></div></section>
 
   <section class="sec"><div class="wrap" style="text-align:center">
@@ -185,7 +188,7 @@
       <a href="/calculadora-coste-atencion-manual-vs-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6"/><rect x="14" y="11" width="8" height="8" rx="1"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Atención Manual vs IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Comparativa coste</div></a>
       <a href="/calculadora-escalabilidad-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Escalabilidad IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Crecimiento sin contratar</div></a>
       <a href="/calculadora-coste-oportunidad-no-ia/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste Oportunidad No IA</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">Por sector</div></a>
-      <a href="/white-moon-system/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">WhiteMoon System</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 pilares del sistema</div></a>
+      <a href="/white-moon-system/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">WhiteMoon System</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">4 pilares del sistema</div></a>
       <a href="/coste-no-automatizar/" style="display:block;padding:18px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;color:inherit;text-decoration:none"><div style="line-height:1;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:22px;height:22px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg></div><div style="font-weight:700;color:#fff;margin-top:8px">Coste No Automatizar</div><div style="font-size:.78rem;color:#9090b0;margin-top:4px">5 costes ocultos</div></a>
     </div>
   </div></div></section>
@@ -295,6 +298,7 @@ function calcProcesoManual(){
   var costeError = Math.max(0, parseFloat(document.getElementById('pm-coste-error').value)||0);
   var automatizable = Math.max(0, Math.min(100, parseFloat(document.getElementById('pm-automatizable').value)||0)) / 100;
   var cuota = Math.max(0, parseFloat(document.getElementById('pm-cuota').value)||0);
+  var producto = document.getElementById('pm-producto').value;
 
   // Coste proceso/mes
   var costeProcesoMes = (procesos * minutos * dias / 60) * coste;
@@ -311,7 +315,7 @@ function calcProcesoManual(){
   document.getElementById('pm-ahorro').textContent = Math.round(ahorroNeto).toLocaleString('es-ES') + ' €';
 
   document.getElementById('pm-explain').textContent =
-    'Coste proceso/mes = ' + Math.round(procesos).toLocaleString('es-ES') + ' procesos × ' + minutos.toString().replace('.', ',') + ' min × ' + Math.round(dias) + ' días / 60 × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeProcesoMes).toLocaleString('es-ES') + ' €. Coste errores = ' + Math.round(errores).toLocaleString('es-ES') + ' × ' + Math.round(costeError).toLocaleString('es-ES') + ' € = ' + Math.round(costeErroresMes).toLocaleString('es-ES') + ' €. Total ' + Math.round(costeTotal).toLocaleString('es-ES') + ' €/mes. Automatizable ' + (automatizable*100).toFixed(0) + '% → ahorro bruto ' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € − cuota IA ' + Math.round(cuota).toLocaleString('es-ES') + ' € = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
+    'Coste proceso/mes = ' + Math.round(procesos).toLocaleString('es-ES') + ' procesos × ' + minutos.toString().replace('.', ',') + ' min × ' + Math.round(dias) + ' días / 60 × ' + Math.round(coste).toLocaleString('es-ES') + ' €/h = ' + Math.round(costeProcesoMes).toLocaleString('es-ES') + ' €. Coste errores = ' + Math.round(errores).toLocaleString('es-ES') + ' × ' + Math.round(costeError).toLocaleString('es-ES') + ' € = ' + Math.round(costeErroresMes).toLocaleString('es-ES') + ' €. Total ' + Math.round(costeTotal).toLocaleString('es-ES') + ' €/mes. Automatizable ' + (automatizable*100).toFixed(0) + '% → ahorro bruto ' + Math.round(ahorroBruto).toLocaleString('es-ES') + ' € − cuota ' + producto + ' ' + Math.round(cuota).toLocaleString('es-ES') + ' € = ahorro neto ' + Math.round(ahorroNeto).toLocaleString('es-ES') + ' €/mes (' + Math.round(ahorroNeto*12).toLocaleString('es-ES') + ' €/año).';
 }
 calcProcesoManual();
 </script>
