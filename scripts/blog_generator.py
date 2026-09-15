@@ -56,7 +56,6 @@ RELATED_POOL = [
     ("Agente IA", "Que es un Agente IA: guia completa para empresas", "/blog/que-es-un-agente-ia/"),
     ("Comparativa", "Agente IA vs Chatbot: 6 diferencias reales", "/blog/agente-ia-vs-chatbot-diferencias/"),
     ("Agente de voz", "Que es un agente de voz IA y por que lo necesitas", "/blog/que-es-agente-voz-ia-2026/"),
-    ("Agente de voz", "Orion IA: el agente de voz que atiende 24/7", "/blog/orion-ia-agente-voz-24-7/"),
     ("SEO y GEO", "GEO/AEO: posicionamiento IA para pymes", "/blog/geo-aeo-posicionamiento-ia-pymes/"),
     ("Precios", "Cuanto cuesta implementar IA en tu negocio", "/blog/cuanto-cuesta-ia-negocio/"),
     ("Estrategia", "Automatizacion de procesos con IA para pymes", "/blog/automatizacion-procesos-ia-pymes/"),
@@ -402,7 +401,7 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
             body_parts.append(
                 '<div class="post-mid-cta" style="background:#111118;border:1px solid rgba(124,77,255,0.15);border-radius:14px;padding:24px 22px;margin:34px 0;text-align:center;">\n'
                 f'  <p style="margin:0 0 16px;color:#f0f0f5;font-size:1rem;line-height:1.6;">{esc(data["cta_texto"])}</p>\n'
-                f'  <button type="button" onclick="wmTrack&amp;&amp;wmTrack(\'click_blog_mid_{event_slug}\');document.getElementById(\'luna-btn\')?.click()" style="display:inline-block;padding:13px 26px;background:#7c4dff;color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con Orion &rarr;</button>\n'
+                f'  <button type="button" data-wm-launcher style="display:inline-block;padding:13px 26px;background:#7c4dff;color:#fff;border:0;border-radius:10px;font-family:inherit;font-weight:700;font-size:.95rem;cursor:pointer;">Habla con nosotros &rarr;</button>\n'
                 '</div>'
             )
     body_html = "\n".join(body_parts)
