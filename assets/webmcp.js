@@ -34,7 +34,7 @@
   var ORIGEN = 'webmcp-agent';
 
   // ── Herramienta 1 · captar el contacto ────────────────────────────────
-  // Mismo insert + mismo aviso que /mini-core/ y /mas-info/.
+  // Mismo insert + mismo aviso que /mas-info/.
   function guardarLead(nombre, telefono, interes, sector) {
     var mensaje = 'Lead solicitado por un agente IA vía WebMCP'
       + (interes ? ' — interés: ' + interes : '');

@@ -8,14 +8,13 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/mas-info/">
-<!-- Mini Core tiene página propia desde 2026-08: los enlaces viejos y los
-     compartidos con ?pack=mini-core siguen funcionando redirigiendo allí.
+<!-- Los enlaces viejos con ?pack=mini-core (pack retirado) redirigen a /spark/.
      Va aquí arriba a propósito, antes de pintar nada. -->
 <script>
 (function(){
   try {
     if (new URLSearchParams(location.search).get('pack') === 'mini-core') {
-      location.replace('/mini-core/');
+      location.replace('/spark/');
     }
   } catch (e) { /* navegador sin URLSearchParams: se queda en /mas-info/ */ }
 })();
@@ -242,8 +241,7 @@
   // ?pack= y `name` es lo que viaja con el lead. `accent` acepta
   // 'gold' o 'purple'. En cada feature, `quip` es opcional.
   //
-  // 'mini-core' ya no vive aquí: tiene página propia en /mini-core/ y el
-  // redirect del <head> se dispara antes de llegar a este diccionario.
+  // ?pack=mini-core (retirado) no llega aquí: el redirect del <head> lo manda a /spark/.
   var PACKS = {
     'whitemoon-360': {
       name: 'WhiteMoon 360',

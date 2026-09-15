@@ -1,8 +1,4 @@
 # Redirecciones 301 — WhiteMoon
-# Orion IA Calls retirado del catálogo → Spark.
-/orion-calls     /spark/    301
-/orion-calls/*   /spark/    301
-
 # URLs con 404 en Search Console → destino correcto.
 /chatbot-ia-abogados-majadahonda/    /chatbot-abogados-ia-majadahonda/    301
 /blog/n8n-claude-api-automatizacion/    /blog/    301

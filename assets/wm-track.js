@@ -2,7 +2,6 @@
  * Uso:
  *   wmTrack('whatsapp_click', {wm_source: 'spark', placement: 'hero'});
  *   wmTrack('click_solicitar_pack', {pack: 'spark'});
- *   wmTrack('click_open_orion', {wm_source: 'home'});
  *   wmTrack('newsletter_signup');
  *
  * gtag() es el shim de cookie-consent.js, que encola en dataLayer.
@@ -13,9 +12,8 @@
  * Convención de eventos:
  *   - whatsapp_click          → outbound a wa.me
  *   - click_solicitar_pack    → CTA principal de pack (params: {pack})
- *   - click_open_orion        → apertura del widget Orion
  *   - lead_captured           → lead completo (nombre+teléfono) capturado por
- *                               un agente conversacional: Orion en whitemoon.es
+ *                               un agente conversacional
  *   - newsletter_signup       → suscripción al newsletter del blog
  *   - roi_calculator_used     → uso de la calculadora ROI
  *

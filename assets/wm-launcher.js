@@ -1,7 +1,7 @@
 /* =============================================================
    WhiteMoon — lanzador de contacto (esquina inferior derecha)
    -------------------------------------------------------------
-   Sustituye al widget de voz (orion-widget.js). Solo ENLACES:
+   Solo ENLACES:
    ni chat, ni API, ni SDK. Inyecta su propio CSS y HTML para no
    tocar las ~250 páginas más que en la etiqueta <script>.
 
@@ -184,15 +184,12 @@
     if (e.relatedTarget && !root.contains(e.relatedTarget)) close(false);
   });
 
-  // Cualquier botón con data-wm-launcher abre este panel (calculadoras).
-  // También los heredados del widget de voz que aún quedan en el blog
-  // (onclick con luna-btn / orion-open), para que no se queden muertos;
-  // esa parte se quita cuando se limpien esos botones.
-  var LEGACY = '[data-wm-launcher],[onclick*="luna-btn"],[onclick*="orion-open"]';
+  // Cualquier botón con data-wm-launcher abre este panel (calculadoras, blog).
+  var OPENERS = '[data-wm-launcher]';
   document.addEventListener("click", function (e) {
     var t = e.target;
     if (!(t instanceof Element) || root.contains(t)) return;
-    if (t.closest(LEGACY)) { open(); return; }
+    if (t.closest(OPENERS)) { open(); return; }
     close(false);
   });
 
