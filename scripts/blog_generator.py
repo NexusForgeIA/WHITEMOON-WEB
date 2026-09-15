@@ -261,7 +261,7 @@ def canned_content(tema):
             {"pregunta": "Tiene permanencia?",
              "respuesta": "Ninguno de los packs de WhiteMoon tiene permanencia. Puedes cancelar avisando con 30 dias."},
             {"pregunta": "En cuanto tiempo esta operativo?",
-             "respuesta": "Los packs habituales se ponen en marcha en 5-7 dias laborables una vez tenemos la informacion de tu negocio."},
+             "respuesta": "Los packs habituales se ponen en marcha en 7 dias una vez tenemos la informacion de tu negocio."},
         ],
         "excerpt": clamp(f"Como un Agente IA ayuda a un negocio del sector {sector} a atender siempre y no perder clientes.", 155),
         "cta_texto": "Quieres aplicar esto a tu negocio? Te contamos como quedaria, sin compromiso.",
@@ -504,7 +504,7 @@ def render_html(tema, data, date_iso, date_human, words, read_min, related, even
 
         <div class="cta-inline">
           <h3>Quieres aplicarlo a tu negocio?</h3>
-          <p>Demo gratuita sin compromiso. Operativo en 5-7 dias laborables. Sin permanencia. 643 199 580</p>
+          <p>Demo gratuita sin compromiso. Operativo en 7 dias. Sin permanencia. 643 199 580</p>
           <a href="https://wa.me/34643199580?text=Hola%20quiero%20info%20sobre%20Agentes%20IA" class="btn-prim" target="_blank" rel="noopener">Consultar con WhiteMoon &rarr;</a>
         </div>
 
