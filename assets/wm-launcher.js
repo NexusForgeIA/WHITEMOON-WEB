@@ -184,10 +184,11 @@
     if (e.relatedTarget && !root.contains(e.relatedTarget)) close(false);
   });
 
-  // Botones heredados del widget de voz que aún quedan en blog y calculadoras
-  // (onclick con luna-btn / orion-open): abren este panel en vez de quedarse
-  // muertos. Se quita cuando se limpien esos botones.
-  var LEGACY = '[onclick*="luna-btn"],[onclick*="orion-open"]';
+  // Cualquier botón con data-wm-launcher abre este panel (calculadoras).
+  // También los heredados del widget de voz que aún quedan en el blog
+  // (onclick con luna-btn / orion-open), para que no se queden muertos;
+  // esa parte se quita cuando se limpien esos botones.
+  var LEGACY = '[data-wm-launcher],[onclick*="luna-btn"],[onclick*="orion-open"]';
   document.addEventListener("click", function (e) {
     var t = e.target;
     if (!(t instanceof Element) || root.contains(t)) return;
