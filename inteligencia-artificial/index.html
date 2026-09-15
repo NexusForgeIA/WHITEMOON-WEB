@@ -56,7 +56,8 @@ html,body{background:#08080d}
 .ia-v:nth-of-type(3)::after{animation-delay:1.4s}
 .ia-where{display:flex;align-items:center;gap:8px;margin-top:24px;font-size:.9rem;color:var(--muted)}
 .ia-where svg{width:16px;height:16px;color:var(--p2);flex-shrink:0}
-.ia-hero .hero-visual{position:relative;padding-bottom:46px}
+.ia-stage{position:relative;padding-bottom:40px}
+.ia-note{margin-top:14px}
 .ia-chat .chat-body{display:flex;flex-direction:column;gap:10px;min-height:0;padding:18px 18px 14px}
 .ia-chat .msg{max-width:86%}
 .ia-chat .msg--me{align-self:flex-end;border-bottom-left-radius:16px;border-bottom-right-radius:5px;background:rgba(124,77,255,.16);border-color:rgba(157,112,255,.3);color:var(--text)}
@@ -88,13 +89,17 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
 .ia-built{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:0;list-style:none}
 .ia-built li{padding:7px 12px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:.82rem;color:var(--text)}
 .ia-case .ia-more{margin-top:auto;padding-top:24px}
-.ia-ai{display:flex;flex-direction:column}
-.ia-ai .ia-shot{display:block;width:100%;height:auto;border-bottom:1px solid var(--line);background:#fff}
-.ia-ai .ia-body{padding:22px 26px 24px}
-.ia-q{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,1.9vw,1.5rem);line-height:1.2;letter-spacing:-.015em;color:var(--text)}
-.ia-src{margin-top:10px;font-size:.8rem;color:var(--muted)}
-.ia-also{margin-top:12px;font-size:.92rem;color:var(--ink)}
-.ia-ai .ia-more{margin-top:16px}
+.ia-ai .ia-body{display:flex;flex-direction:column;height:100%;padding:28px 28px 26px}
+.ia-ask{align-self:flex-start;display:inline-flex;align-items:center;gap:9px;padding:9px 15px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:.86rem;color:var(--text)}
+.ia-ask svg{width:15px;height:15px;flex-shrink:0;color:var(--p2)}
+.ia-eng{margin:20px 0 0;padding:18px 0 0 18px;border-top:1px solid var(--line);position:relative}
+.ia-eng::before{content:"";position:absolute;left:0;top:24px;width:8px;height:8px;border-radius:50%;background:var(--g)}
+.ia-eng figcaption{font-size:.76rem;font-weight:600;color:var(--p2)}
+.ia-eng blockquote{margin:6px 0 0}
+.ia-q{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2vw,1.6rem);line-height:1.18;letter-spacing:-.015em;color:var(--text)}
+.ia-q--s{font-size:clamp(1.15rem,1.7vw,1.35rem)}
+.ia-src{margin-top:18px;font-size:.8rem;color:var(--muted)}
+.ia-ai .ia-more{margin-top:auto;padding-top:18px}
 .ia-g{display:grid!important;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:center;padding:26px 28px}
 .ia-g__n{grid-row:span 3;font-family:var(--display);font-weight:600;font-size:clamp(3.6rem,6vw,4.8rem);line-height:.85;letter-spacing:-.04em;color:var(--gold)}
 .ia-stars{display:flex;gap:3px;color:var(--gold)}
@@ -112,8 +117,9 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
 .ia-time small{font-family:var(--body);font-size:.8rem;font-weight:500;letter-spacing:0;color:var(--muted)}
 .ia-asks{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .ia-asks span{padding:5px 10px;border-radius:999px;border:1px dashed rgba(255,255,255,.18);font-size:.76rem;color:var(--muted)}
-.ia-fix{display:flex;align-items:flex-start;gap:10px;margin:22px -24px 0;margin-top:auto;padding:16px 24px 18px;border-top:1px solid rgba(0,212,170,.2);background:rgba(0,212,170,.05);font-size:.92rem;line-height:1.5;color:var(--ink)}
-.ia-pain h3+.ia-fix,.ia-asks+.ia-fix{margin-top:22px}
+.ia-fix{display:flex;align-items:flex-start;gap:10px;margin:auto -24px 0;padding:16px 24px 18px;border-top:1px solid rgba(0,212,170,.2);background:rgba(0,212,170,.05);font-size:.92rem;line-height:1.5;color:var(--ink)}
+.ia-pain>h3,.ia-asks{margin-bottom:22px}
+.ia-pain--full>div>h3{margin-bottom:22px}
 .ia-pain--lg .ia-fix{margin-inline:-32px;padding-inline:32px}
 .ia-fix svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;color:var(--g)}
 .ia-fix b{color:var(--text);font-weight:600}
@@ -213,8 +219,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
 .ia-why{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:start}
 .ia-why .sec-head{margin-bottom:0}
 .ia-rows{border-top:1px solid var(--line)}
-.ia-row{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);gap:24px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
-.ia-row b{font-family:var(--display);font-weight:600;font-size:clamp(1.55rem,2.6vw,2.05rem);line-height:1.05;letter-spacing:-.02em;color:var(--text)}
+.ia-row{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:28px;align-items:baseline;padding:26px 0;border-bottom:1px solid var(--line)}
+.ia-row b{font-family:var(--display);font-weight:600;font-size:clamp(1.45rem,2.2vw,1.9rem);line-height:1.05;letter-spacing:-.02em;color:var(--text)}
 .ia-row p{color:var(--ink)}
 .ia-cmp{margin-top:30px}
 .ia-cmp b{display:block;font-size:.9rem;font-weight:600;color:var(--text)}
@@ -247,29 +253,29 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
   .ia-step h3{margin-top:4px}
 }
 @media (max-width:1000px){
-  .ia-hero .hero-grid{grid-template-columns:1fr}
+  .ia-hero .hero-grid{grid-template-columns:minmax(0,1fr)}
   .ia-hero .hero-visual{max-width:460px}
   .ia-pop{left:12px}
 }
 @media (max-width:900px){
-  .ia-proof,.ia-paths,.ia-why,.ia-sector{grid-template-columns:1fr}
+  .ia-proof,.ia-paths,.ia-why,.ia-sector{grid-template-columns:minmax(0,1fr)}
   .ia-case{grid-row:auto}
-  .ia-pains{grid-template-columns:1fr 1fr}
+  .ia-pains{grid-template-columns:repeat(2,minmax(0,1fr))}
   .ia-pain{grid-column:span 1}
   .ia-pain--lg,.ia-pain--full{grid-column:1/-1}
-  .ia-caps{grid-template-columns:1fr}
+  .ia-caps{grid-template-columns:minmax(0,1fr)}
   .ia-cap,.ia-cap--w{grid-column:auto}
   .ia-sector{gap:32px;padding:36px 28px}
   .ia-why{gap:36px}
 }
 @media (max-width:620px){
-  .ia-pains{grid-template-columns:1fr}
+  .ia-pains{grid-template-columns:minmax(0,1fr)}
   .ia-pain{grid-column:auto}
   .ia-pain,.ia-pain--lg,.ia-pain--full{padding:24px 20px 0}
   .ia-fix,.ia-pain--lg .ia-fix,.ia-pain--full .ia-fix{margin-inline:-20px;padding-inline:20px}
-  .ia-pain--full{grid-template-columns:1fr;gap:18px}
+  .ia-pain--full{grid-template-columns:minmax(0,1fr);gap:18px}
   .ia-case .ia-body,.ia-ai .ia-body,.ia-g,.ia-path,.ia-cap{padding-left:22px;padding-right:22px}
-  .ia-g{grid-template-columns:1fr}
+  .ia-g{grid-template-columns:minmax(0,1fr)}
   .ia-g__n{grid-row:auto}
   .ia-vs thead{display:none}
   .ia-vs tbody tr{display:block;padding:14px 16px}
@@ -280,8 +286,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
   .ia-vs td:last-child{background:rgba(0,212,170,.08)}
   .ia-vs td::before{content:attr(data-l);display:block;margin-bottom:2px;font-size:.72rem;font-weight:600;color:var(--muted)}
   .ia-vs td:last-child::before{color:var(--g)}
-  .ia-row{grid-template-columns:1fr;gap:6px;padding:20px 0}
-  .ia-rag{grid-template-columns:1fr}
+  .ia-row{grid-template-columns:minmax(0,1fr);gap:6px;padding:20px 0}
+  .ia-rag{grid-template-columns:minmax(0,1fr)}
   .ia-rag .arrow{transform:rotate(90deg)}
   .ia-sector{padding:30px 20px;border-radius:24px}
   .ia-acts .btn{flex:1 1 100%}
@@ -469,6 +475,7 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
         <p class="ia-where"><svg aria-hidden="true"><use href="#ic-pin"/></svg>Desde Majadahonda, Madrid · online en toda España</p>
       </div>
       <div class="hero-visual reveal">
+        <div class="ia-stage">
         <div class="chat ia-chat" role="group" aria-label="Ejemplo de conversación con el agente">
           <div class="chat-head">
             <span class="av"><svg aria-hidden="true"><use href="#ic-bot"/></svg></span>
@@ -483,7 +490,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
           <div class="chat-foot" aria-hidden="true"><span class="chat-input">Escribe tu mensaje…</span><span class="chat-send"><svg aria-hidden="true"><use href="#ic-send"/></svg></span></div>
         </div>
         <div class="ia-pop" aria-hidden="true"><span class="ic"><svg><use href="#ic-send"/></svg></span><div><b>Nuevo contacto con cita</b><span>Te llega al momento, con nombre y teléfono</span></div></div>
-        <p class="cap" style="margin-top:58px">Ejemplo del formato del agente</p>
+        </div>
+        <p class="cap ia-note">Ejemplo del formato del agente</p>
       </div>
     </div>
   </section>
@@ -510,12 +518,18 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
           </div>
         </a>
         <article class="ia-card ia-ai reveal">
-          <img class="ia-shot" src="/assets/img/chatgpt-majadahonda-2026-09.webp" width="1033" height="556" loading="lazy" decoding="async" alt="Captura de ChatGPT respondiendo «mi primera opción sería: WhiteMoon Agencia IA Majadahonda», septiembre de 2026">
           <div class="ia-body">
-            <p class="ia-q">«Mi primera opción sería: WhiteMoon Agencia IA Majadahonda».</p>
-            <p class="ia-src">ChatGPT, a la pregunta «¿mejor agencia de IA en Majadahonda?» · septiembre de 2026</p>
-            <p class="ia-also">Grok, en la misma consulta: «la opción local más sólida».</p>
-            <a class="ia-more" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="window.wmTrack&&wmTrack('click_geo_pruebas',{placement:'ia-prueba'})">Ver capturas y método<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+            <span class="ia-ask"><svg aria-hidden="true"><use href="#ic-search"/></svg>«¿Mejor agencia de IA en Majadahonda?»</span>
+            <figure class="ia-eng">
+              <figcaption>ChatGPT · septiembre de 2026</figcaption>
+              <blockquote class="ia-q">«Mi primera opción sería: WhiteMoon Agencia IA Majadahonda».</blockquote>
+            </figure>
+            <figure class="ia-eng">
+              <figcaption>Grok · septiembre de 2026</figcaption>
+              <blockquote class="ia-q ia-q--s">«La opción local más sólida».</blockquote>
+            </figure>
+            <p class="ia-src">Observaciones puntuales, con captura y fecha. Las respuestas de las IA varían.</p>
+            <a class="ia-more" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="window.wmTrack&amp;&amp;wmTrack('click_geo_pruebas',{placement:'ia-prueba'})">Ver capturas y método<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
           </div>
         </article>
         <a class="ia-card ia-g reveal" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener" aria-label="Ver la ficha de WhiteMoon en Google, valoración 5,0 (se abre en una pestaña nueva)">
