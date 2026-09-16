@@ -43,15 +43,35 @@
 Como la web ya no publica tarifa, **cualquier** cifra de precio de producto es un error.
 Estas son las tarifas viejas que han estado publicadas y no deben reaparecer:
 
-| Cifra | ¿La bloquea el Guardian? |
-|---|---|
-| `4.500€` `8.500€` `2.899€` `1.800€` `3.200€` `999€` | **Sí** — son la lista `BAD_PRICES` literal de `seo_guardian.py` (checks 8 y 13). Bloquean el PR. |
-| `499€` `599€` `799€` `899€` `1.499€` `1.899€` `2.499€` `99€/mes` `199€/mes` `299€/mes` `349€/mes` `449€/mes` | **No.** Hay que cazarlas a mano. |
+### A · Las 6 que el Guardian SÍ bloquea
 
-**Por qué no están todas en `BAD_PRICES`:** meter `99`, `199` o `499` como cadena literal
-reventaría de falsos positivos. Son subcadenas de cifras legítimas por todo el sitio.
-Si algún día se amplía la lista, tiene que ser con contexto (p. ej. `\d+€\s*\+\s*\d+€/mes`),
-nunca con el número suelto.
+`4.500€` · `8.500€` · `2.899€` · `1.800€` · `3.200€` · `999€`
+
+Son la lista `BAD_PRICES` **literal** de `seo_guardian.py`. Los checks 8 y 13 las buscan
+en el texto visible de todas las páginas y **bloquean el PR**. No hay que hacer nada más.
+
+### B · Lista MANUAL — el Guardian NO las vigila
+
+Nadie las para. Hay que grepearlas a mano en cada PR que toque copy, JSON-LD o JS.
+
+**Tarifas antiguas (setup):** `499€` · `599€` · `799€` · `899€` · `1.499€` · `1.899€` · `2.499€`
+**Tarifas antiguas (cuota):** `99€/mes` · `199€/mes` · `299€/mes` · `349€/mes` · `449€/mes`
+**Productos retirados:** `3.500€` · `6.500€` · `299€` · `149€`
+
+Grep de referencia para esta lista:
+
+```bash
+grep -rnE "(499|599|799|899|1\.?499|1\.?899|2\.?499|3\.?500|6\.?500|299|149) ?€|(99|199|299|349|449) ?€ ?/ ?mes" --include=*.html --include=*.js . | grep -v "Claude outputs"
+```
+
+**Verificar SIEMPRE con contexto antes de tocar nada.** El patrón que confirma que es una
+tarifa de producto y no otra cosa es **`\d+€\s*\+\s*\d+€/mes`** (setup + cuota juntos).
+Los números sueltos dan muchísimos falsos positivos — ver la lista de abajo.
+
+**Por eso no se amplía `BAD_PRICES`:** meter `99`, `149`, `199`, `299` o `499` como cadena
+literal reventaría de falsos positivos; son subcadenas de cifras legítimas por todo el sitio
+(el `199` del teléfono, los `1499`/`1999` cc del BOE, el `z-index:499`…). Si algún día se
+amplía, tiene que ser con el patrón de contexto, nunca con el número suelto.
 
 **Falsos positivos conocidos — NO son precios, no tocarlos:**
 - `34643199580` y `643 199 580` — el teléfono de WhatsApp contiene `199`. Sale ~4 veces por página (launcher + footer).
@@ -60,7 +80,13 @@ nunca con el número suelto.
 - `co2 <= 199` g/km en `/calculadora-impuesto-matriculacion/`; `Ley 38/1992` en toda esa página.
 - `diasCotizados < 1800` en `/calculadora-prestacion-paro/`, y los tipos legales 70 % / 60 % / IPREM.
 - Cuota RETA, IVA 10 %, SS 6,35 %, IBI 1 % y demás constantes fiscales de las calculadoras.
+- `33.500 €` en `/calculadora-ingresos-reales-autonomo/` contiene `3.500` como subcadena. Mismo problema con cualquier importe que acabe en una de las cifras vigiladas.
 - Los importes de ejemplo de las calculadoras: son supuestos que introduce el usuario.
+
+**Dónde NO mira nadie:** los stubs de redirección están en `IGNORED_DIRS`, así que el
+Guardian **no revisa su `<meta name="description">`** — y esa descripción sí la sirve
+Google. Al retirar un producto hay que limpiar también el meta del stub, no solo la página
+viva.
 
 ## Nada de precios ni de claims cableados en JavaScript
 
