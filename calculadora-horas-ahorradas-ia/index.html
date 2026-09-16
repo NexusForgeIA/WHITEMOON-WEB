@@ -123,6 +123,10 @@
       <div class="calc-label"><span>Coste hora del empleado (€)</span><span class="calc-val" id="ha-r-coste">18 €</span></div>
       <input type="range" id="ha-coste" class="calc-slider" min="8" max="60" value="18" step="1" oninput="calcHA()">
     </div>
+    <div class="calc-row">
+      <div class="calc-label"><span>Cuánto crees que puede absorber el agente (%)</span><span class="calc-val" id="ha-r-auto">50 %</span></div>
+      <input type="range" id="ha-auto" class="calc-slider" min="0" max="100" value="50" step="5" oninput="calcHA()">
+    </div>
 
     <div class="calc-out">
       <div class="calc-out-card"><div class="calc-out-num" id="ha-horas">31 h</div><div class="calc-out-lbl">Horas ahorradas/mes</div></div>
@@ -299,11 +303,14 @@ function calcHA(){
   document.getElementById('ha-r-min').textContent=min+' min';
   document.getElementById('ha-r-dias').textContent=dias;
   document.getElementById('ha-r-coste').textContent=coste+' €';
-  var minDia=tareas*min, minMes=minDia*dias, horasMes=minMes/60, horasAhorradas=horasMes*0.70, diasEq=horasAhorradas/8, costeAhorrado=horasAhorradas*coste;
+  // El porcentaje lo pone el usuario: no hay constante de eficacia cableada.
+  var auto=parseInt(document.getElementById('ha-auto').value,10);
+  document.getElementById('ha-r-auto').textContent=auto+' %';
+  var minDia=tareas*min, minMes=minDia*dias, horasMes=minMes/60, horasAhorradas=horasMes*(auto/100), diasEq=horasAhorradas/8, costeAhorrado=horasAhorradas*coste;
   document.getElementById('ha-horas').textContent=Math.round(horasAhorradas)+' h';
   document.getElementById('ha-dias-eq').textContent=diasEq.toFixed(1).replace('.',',')+' días';
   document.getElementById('ha-coste-ahorro').textContent=Math.round(costeAhorrado).toLocaleString('es-ES')+' €';
-  document.getElementById('ha-explain').textContent=tareas+' tareas/día × '+min+' min = '+minDia+' min/día × '+dias+' días = '+minMes+' min/mes = '+Math.round(horasMes)+' h/mes dedicadas. Automatización 70% con Agente IA: '+Math.round(horasAhorradas)+' h ahorradas/mes = '+diasEq.toFixed(1).replace('.',',')+' días laborales (8h/día). A '+coste+' €/h: '+Math.round(costeAhorrado).toLocaleString('es-ES')+' € de coste personal recuperado al mes.';
+  document.getElementById('ha-explain').textContent=tareas+' tareas/día × '+min+' min = '+minDia+' min/día × '+dias+' días = '+minMes+' min/mes = '+Math.round(horasMes)+' h/mes dedicadas. Con tu supuesto del '+auto+' %: '+Math.round(horasAhorradas)+' h ahorradas/mes = '+diasEq.toFixed(1).replace('.',',')+' días laborales (8h/día). A '+coste+' €/h: '+Math.round(costeAhorrado).toLocaleString('es-ES')+' € de coste personal recuperado al mes.';
 }
 calcHA();
 </script>

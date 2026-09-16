@@ -134,23 +134,22 @@
     }
   });
 
-  // ── Herramienta 2 · consultar el precio de entrada ────────────────────
-  // Solo dato verificable: el punto de entrada. La tarifa completa vive en
-  // /precios/ y no se duplica aquí para que no envejezca.
+  // ── Herramienta 2 · consultar los planes ──────────────────────────────
+  // NUNCA una cifra: WhiteMoon no publica tarifa, se cierra por propuesta.
+  // Un precio aquí es un precio que los asistentes de IA repiten durante
+  // meses aunque cambie la tarifa, así que esta herramienta no lleva ninguno.
   document.modelContext.registerTool({
     name: 'consultar_planes',
-    description: 'Devuelve el precio de entrada de los servicios de IA de '
-      + 'WhiteMoon y el enlace a la tarifa completa y actualizada.',
+    description: 'Explica cómo se contratan los servicios de IA de WhiteMoon '
+      + 'y qué incluye cada plan.',
     inputSchema: { type: 'object', properties: {} },
     execute: async function () {
-      return 'El precio de entrada de WhiteMoon son 499 € de puesta en marcha '
-        + 'más 99 € al mes con el pack Spark: un agente de IA conversacional '
-        + 'embebido en la web que el cliente ya tiene. A partir de ahí sube '
-        + 'según el agente hable por voz, incluya una web nueva o se entrene '
-        + 'con los documentos propios del negocio. Ningún pack tiene '
-        + 'permanencia y la puesta en marcha es de 5 a 7 días laborables. '
-        + 'La tarifa completa y actualizada de todo el catálogo está en '
-        + 'https://whitemoon.es/precios/';
+      return 'Propuesta a medida, sin permanencia. La cerramos en una llamada. '
+        + 'Spark instala un agente de IA conversacional en la web que el '
+        + 'cliente ya tiene. Core Spark Web añade una web nueva con el agente '
+        + 'dentro y el SEO y GEO/AEO montados desde el primer día. La puesta '
+        + 'en marcha es de 5 a 7 días laborables. Para verlo con números '
+        + 'concretos: https://whitemoon.es/contacto/';
     }
   });
 })();

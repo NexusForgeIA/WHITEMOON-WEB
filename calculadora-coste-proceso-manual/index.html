@@ -147,9 +147,9 @@
       <div class="calc-out-card"><div class="calc-out-num" id="pm-ahorro">0 €</div><div class="calc-out-lbl">Ahorro neto con IA</div></div>
     </div>
 
-    <div class="calc-detail" id="pm-explain">Coste proceso = procesos × minutos × días / 60 × coste hora. Coste errores = errores × coste por error. Ahorro IA = (proceso + errores × 85% reducción) × % automatizable − cuota IA.</div>
+    <div class="calc-detail" id="pm-explain">Coste proceso = procesos × minutos × días / 60 × coste hora. Coste errores = errores × coste por error. Ahorro = (proceso + errores) × el % automatizable que elijas − cuota IA.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. La IA reduce errores hasta el 85% de los actuales (no los elimina). El % automatizable depende de la estructura del proceso (estandarizable vs con excepciones).</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo. El % automatizable lo eliges tú y depende de la estructura del proceso (estandarizable vs con excepciones); la automatización no elimina los errores, los reduce en la parte que absorbe.</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
@@ -308,8 +308,9 @@ function calcProcesoManual(){
   var costeErroresMes = errores * costeError;
   // Coste total
   var costeTotal = costeProcesoMes + costeErroresMes;
-  // Ahorro: automatizable × proceso + errores × 85% reducción × % automatizable − cuota IA
-  var ahorroBruto = (costeProcesoMes * automatizable) + (costeErroresMes * 0.85 * automatizable);
+  // Ahorro: el % automatizable que pone el usuario, aplicado igual al coste
+  // del proceso y al de los errores. Sin factor de eficacia añadido.
+  var ahorroBruto = (costeProcesoMes + costeErroresMes) * automatizable;
   var ahorroNeto = ahorroBruto - cuota;
 
   document.getElementById('pm-proceso-eur').textContent = Math.round(costeProcesoMes).toLocaleString('es-ES') + ' €';
