@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Pérdidas Restaurante 2026 · WhiteMoon</title>
-<meta name="description" content="Calculadora pérdidas restaurante: estima ingresos perdidos por mesas vacías e ingresos recuperables con un Agente IA de reservas (+15% ocupación media).">
+<meta name="description" content="Calculadora pérdidas restaurante: estima los ingresos que pierdes por mesas vacías y cuánto podrías recuperar con un Agente IA de reservas 24/7.">
 <meta name="keywords" content="calculadora perdidas restaurante, ocupacion restaurante, reservas automaticas restaurante, chatbot restaurante">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia de IA">
@@ -117,7 +117,7 @@
       <div class="hdr c">
         <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><path d="M7 2 V11 M11 2 V11 M9 11 V22"/><path d="M15 11 H21 V2 C18 2 15 5 15 11 Z"/><path d="M15 11 V22"/></svg></span> Calculadora gratuita · Hostelería</span>
         <h1 class="sec-h">Calculadora <em>Pérdidas en Restaurante</em></h1>
-        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima los ingresos perdidos por mesas vacías y cuánto puedes recuperar con un Agente IA de reservas 24/7 (impacto medio observado: +15% ocupación según informes del sector).</p>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima los ingresos perdidos por mesas vacías y cuánto podrías recuperar con un Agente IA de reservas 24/7. Cuánta ocupación recuperas lo pones tú: es tu supuesto, no una media nuestra.</p>
       </div>
     </div>
   </section>
@@ -158,18 +158,23 @@
           </select>
         </div>
 
+        <div class="calc-row">
+          <label class="calc-label" for="pr-recup-pct">Cuánta ocupación crees que recuperarías (%)</label>
+          <input type="number" id="pr-recup-pct" class="calc-input" value="10" min="0" max="100" step="1" oninput="calcPR()">
+        </div>
+
         <div class="calc-out">
           <div class="calc-out-card"><div class="calc-out-num" id="pr-vacias">84</div><div class="calc-out-lbl">Mesas vacías/semana</div></div>
           <div class="calc-out-card"><div class="calc-out-num" id="pr-perd-sem">4.620 €</div><div class="calc-out-lbl">Ingresos perdidos/semana</div></div>
         </div>
         <div class="calc-out">
           <div class="calc-out-card"><div class="calc-out-num" id="pr-perd-mes">19.866 €</div><div class="calc-out-lbl">Ingresos perdidos/mes</div></div>
-          <div class="calc-out-card win"><div class="calc-out-num" id="pr-recup">35.640 €</div><div class="calc-out-lbl">Recuperables/año con IA (+15%)</div></div>
+          <div class="calc-out-card win"><div class="calc-out-num" id="pr-recup">—</div><div class="calc-out-lbl">Recuperable/año con tu supuesto</div></div>
         </div>
 
         <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="pr-detail">20 mesas × 2 servicios × 6 días × 35% mesas vacías = 84 mesas vacías/semana. A 55€/mesa = 4.620€/sem (19.866€/mes). Subiendo ocupación +15% con Agente IA: recuperas 35.640€/año.</div>
 
-        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">+15% ocupación es la media observada con Agente IA de reservas 24/7 + confirmación + reprogramación según informes del sector hostelería (KPMG, Hostelería de España). El impacto real depende del estado inicial y franja horaria.</p>
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El porcentaje de ocupación recuperada lo eliges tú arriba. Un agente de reservas 24/7 con confirmación y reprogramación actúa sobre las mesas que hoy se quedan vacías, pero cuánto recuperes depende de tu carta, tu zona y tu volumen. El impacto real depende del estado inicial y franja horaria.</p>
       </div>
     </div>
   </section>
@@ -356,9 +361,11 @@ function calcPR(){
   // Mes = ~4.33 semanas
   var perdMes = perdSem * 4.33;
   var perdAnual = perdSem * 52;
-  // Recuperación con +15% ocupación: 15% del total potencial (capacidad × ticket)
+  // Cuánta ocupación crees que recuperas lo pones tú: no hay porcentaje
+  // de eficacia cableado.
+  var recupPct = Math.max(0, Math.min(100, parseFloat((document.getElementById('pr-recup-pct')||{}).value) || 0)) / 100;
   var potencialAnual = capacidadSemana * ticket * 52;
-  var recupAnual = potencialAnual * 0.15;
+  var recupAnual = potencialAnual * recupPct;
 
   document.getElementById('pr-vacias').textContent = Math.round(vaciasSemana).toLocaleString('es-ES');
   document.getElementById('pr-perd-sem').textContent = Math.round(perdSem).toLocaleString('es-ES') + ' €';
@@ -368,7 +375,7 @@ function calcPR(){
     ' días × ' + Math.round(pctVacias * 100) + '% mesas vacías = ' + Math.round(vaciasSemana).toLocaleString('es-ES') +
     ' mesas vacías/semana. A ' + ticket.toLocaleString('es-ES') + '€/mesa = ' +
     Math.round(perdSem).toLocaleString('es-ES') + '€/sem (' + Math.round(perdMes).toLocaleString('es-ES') +
-    '€/mes). Subiendo ocupación +15% con Agente IA: recuperas ' +
+    '€/mes). Con tu supuesto de ocupación recuperada (' + Math.round(recupPct*100) + ' %): ' +
     Math.round(recupAnual).toLocaleString('es-ES') + '€/año.';
 }
 calcPR();

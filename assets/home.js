@@ -19,13 +19,13 @@ function toggleFaq(btn) {
 const PACKS={
   advance:{
     ico:'💬',title:'Spark',sub:'Agente IA conversacional',isGold:false,
-    price:'499€ + 199€/mes',period:'Setup único · Cuota mensual',note:'Sin permanencia',
+    price:'Propuesta a medida',period:'Puesta en marcha + cuota mensual',note:'Sin permanencia',
     features:['Agente IA instalado en tu web o QR','El cliente puede escribir libremente','IA detecta intención y responde en contexto','Cualificación automática de leads','Captación de datos por WhatsApp','Respuestas rápidas personalizadas','Detección de palabras clave por área','Actualización de contenidos incluida'],
-    noInclude:'',wa:'Hola%20WhiteMoon%2C%20me%20interesa%20Spark%20499%E2%82%AC%20%2B%20199%E2%82%AC%2Fmes'
+    noInclude:'',wa:'Hola%20WhiteMoon%2C%20me%20interesa%20Spark'
   },
   pyme:{
     ico:'🏆',title:'Core',sub:'Web profesional + Agente IA + SEO y GEO/AEO',isGold:true,
-    price:'1.800€ + 199€/mes',period:'Setup único · Cuota mensual',note:'Operativo en 5-7 días · Sin permanencia',
+    price:'Propuesta a medida',period:'Puesta en marcha + cuota mensual',note:'Operativo en 5-7 días · Sin permanencia',
     features:[
       'Web profesional completa con diseño personalizado',
       'Dominio incluido el primer año',
@@ -39,7 +39,7 @@ const PACKS={
       'Sin permanencia'
     ],
     noInclude:'',
-    wa:'Hola%20WhiteMoon%2C%20me%20interesa%20Core%201.800%E2%82%AC%20%2B%20199%E2%82%AC%2Fmes'
+    wa:'Hola%20WhiteMoon%2C%20me%20interesa%20Core%20Spark%20Web%20%28web%20%2B%20agente%20IA%29'
   }
 };
 
@@ -121,7 +121,7 @@ function sendLead(packId){
   const negocio=document.getElementById('lead-negocio-'+packId)?.value.trim()||'';
   const msg=document.getElementById('lead-msg-'+packId)?.value.trim()||'';
   if(!nombre||!tel){alert('Por favor, rellena al menos tu nombre y teléfono.');return;}
-  const packNames={advance:'Spark 499€ + 199€/mes',pyme:'Core 1.800€ + 199€/mes (web+agente IA)'};
+  const packNames={advance:'Spark',pyme:'Core Spark Web (web + agente IA)'};
   const text=encodeURIComponent(
     '🔥 *Nuevo lead desde la web* 🔥\n\n'+
     '*Pack interesado:* '+(packNames[packId]||packId)+'\n'+
@@ -226,25 +226,10 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePack();closeLe
 })();
 
 // === Bloque 4 ===
-function calcROIHome(){
-  var slLeads=document.getElementById('h-sl-leads');
-  var slValor=document.getElementById('h-sl-valor');
-  if(!slLeads || !slValor) return; // guard: la calculadora ROI puede no estar en el DOM
-  var leads=parseInt(slLeads.value);
-  var valor=parseInt(slValor.value);
-  var conv=0.30;
-  var coste=199;
-  var perdida=Math.round(leads*valor*conv);
-  var ahorro=perdida-coste;
-  var roi=ahorro>0?Math.round((ahorro/coste)*100):0;
-  var anual=Math.max(0,ahorro)*12;
-  document.getElementById('h-v-leads').textContent=leads;
-  document.getElementById('h-v-valor').textContent=valor+' €';
-  document.getElementById('h-r-perdida').textContent=perdida.toLocaleString('es-ES')+' €';
-  document.getElementById('h-r-roi').textContent=(ahorro>0?'+':'')+roi+'%';
-  document.getElementById('h-r-anual').textContent=anual.toLocaleString('es-ES')+' €';
-}
-calcROIHome();
+// Aquí vivía calcROIHome(): imprimía un ROI en % calculado sobre una cuota
+// de la tarifa retirada y una tasa de conversión fija, ninguna de las dos a
+// la vista del usuario. El DOM que necesitaba (#h-sl-leads, #h-r-roi…) ya no
+// está en index.html, así que se retira entera.
 
 // === Bloque 5 ===
 (function(){

@@ -144,6 +144,10 @@
             <label class="calc-label" for="ns-dias">Días laborables al mes</label>
             <input type="number" id="ns-dias" class="calc-input" value="22" min="10" max="30" step="1" oninput="calcNS()">
           </div>
+          <div class="calc-row">
+            <label class="calc-label" for="ns-recup">Cuántos de esos no-shows crees que evitarías con recordatorios (%)</label>
+            <input type="number" id="ns-recup" class="calc-input" value="25" min="0" max="100" step="5" oninput="calcNS()">
+          </div>
         </div>
 
         <div class="calc-out">
@@ -152,7 +156,7 @@
         </div>
         <div class="calc-out">
           <div class="calc-out-card"><div class="calc-out-num" id="ns-perd-anual">38.016 €</div><div class="calc-out-lbl">Ingresos perdidos/año</div></div>
-          <div class="calc-out-card win"><div class="calc-out-num" id="ns-ahorro">15.207 €</div><div class="calc-out-lbl">Ahorro/año con IA (-40%)</div></div>
+          <div class="calc-out-card win"><div class="calc-out-num" id="ns-ahorro">—</div><div class="calc-out-lbl">Recuperable/año con tu supuesto</div></div>
         </div>
 
         <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ns-detail">20 citas/día × 12% no-shows × 22 días = 53 no-shows/mes. A 60€/consulta = 3.168€/mes (38.016€/año) de ingresos perdidos. Con recordatorios IA (-40%): recuperas 15.207€/año.</div>
@@ -338,7 +342,10 @@ function calcNS(){
   var noShowsMes = noShowsDia * dias;
   var perdMes = noShowsMes * ticket;
   var perdAnual = perdMes * 12;
-  var ahorroAnual = perdAnual * 0.40;  // reducción 40% con IA
+  // Cuánto se recupera con recordatorios lo estima el usuario: no hay
+  // porcentaje de eficacia cableado.
+  var recupPct = Math.max(0, Math.min(100, parseFloat((document.getElementById('ns-recup')||{}).value) || 0)) / 100;
+  var ahorroAnual = perdAnual * recupPct;
 
   document.getElementById('ns-mes').textContent = Math.round(noShowsMes).toLocaleString('es-ES');
   document.getElementById('ns-perd-mes').textContent = Math.round(perdMes).toLocaleString('es-ES') + ' €';
@@ -347,7 +354,7 @@ function calcNS(){
   document.getElementById('ns-detail').textContent = citas + ' citas/día × ' + pct.toString().replace('.', ',') +
     '% no-shows × ' + dias + ' días = ' + Math.round(noShowsMes).toLocaleString('es-ES') + ' no-shows/mes. A ' +
     ticket.toLocaleString('es-ES') + '€/consulta = ' + Math.round(perdMes).toLocaleString('es-ES') + '€/mes (' +
-    Math.round(perdAnual).toLocaleString('es-ES') + '€/año) de ingresos perdidos. Con recordatorios IA (-40%): recuperas ' +
+    Math.round(perdAnual).toLocaleString('es-ES') + '€/año) de ingresos perdidos. Con tu supuesto de recuperación (' + Math.round(recupPct*100) + ' %): ' +
     Math.round(ahorroAnual).toLocaleString('es-ES') + '€/año.';
 }
 calcNS();
