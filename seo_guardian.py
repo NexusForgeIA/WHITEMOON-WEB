@@ -48,6 +48,9 @@ IGNORED_DIRS = {
     "agente-ia-texto-o-voz-cual-elegir",
     # Posts de funciones del CRM de WhiteMoon 360 que no se ofrecen (redirigen a /core/).
     "reparto-automatico-trabajos-zonas-equipo", "conseguir-mas-resenas-google-negocio-local",
+    # Borradores que Claude genera en local. Estan gitignorados, asi que en CI no
+    # existen; esto es solo para que el informe en local no salga con ruido.
+    "Claude outputs",
 }
 # Archivos individuales a ignorar (stub de Google Search Console).
 IGNORED_FILES = {"google0f366eade019ef7a.html"}
@@ -93,6 +96,58 @@ RETIRED_PATTERNS = RETIRED_PRODUCTS
 # Prefijos exentos del check 9: líneas de producto distintas donde los nombres
 # de packs retirados son legítimos. Sin exenciones activas.
 RETIRED_EXEMPT_PREFIXES = ()
+
+# ── Checks 17-19 · los puntos ciegos ───────────────────────────────────────
+# Los checks 8, 9 y 13 solo miran texto visible de .html no ignorados. Durante
+# la retirada de la tarifa se colaron por tres agujeros, todos reales:
+#   · assets/home.js servia "Spark 499€ + 199€/mes" (con un 1.800€ que esta en
+#     BAD_PRICES) porque el escaneo hace soup(['script','style']).extract().
+#   · /auditoria-ia/ anunciaba "899€ pago único" en su meta description: es un
+#     stub de IGNORED_DIRS, asi que ningun check lo miraba — pero Google si
+#     sirve esa meta en el snippet.
+#   · /coste-no-automatizar/ calculaba el ROI con WM_BASE = 199 + 499/12, sin
+#     simbolo de euro, invisible para cualquier regla basada en €.
+#
+# NO hay check de rangos ("1.800-2.200€"). Se probo y se descarto con datos: un
+# patron generico da 122 hits en main, todos legitimos (salarios, IRPF, tasas).
+# Y la version acotada no distingue la fuga retirada en el PR #766 ("Nuevo
+# agente cuesta 1.800-2.200€/mes") de la frase legitima de la MISMA pagina
+# ("Total empresa 1.800-2.500€/mes (bruto + SS…)"), porque solo las separa el
+# juicio, no la forma. Esos rangos se cazan a mano; CLAUDE.md lleva el grep.
+
+# Toda la tarifa que ha estado publicada. Las 6 de BAD_PRICES mas la lista
+# manual de CLAUDE.md. Aqui SI se puede usar la lista larga porque estos checks
+# exigen ademas contexto de pack: el numero suelto nunca basta.
+RETIRED_PRICES = frozenset({
+    4500, 8500, 2899, 1800, 3200, 999,           # BAD_PRICES (checks 8 y 13)
+    499, 599, 799, 899, 1499, 1899, 2499,        # setups retirados
+    3500, 6500, 299, 149,                        # productos retirados
+    99, 199, 349, 449,                           # cuotas mensuales retiradas
+})
+# Forma inequivoca de tarifa NUESTRA: puesta en marcha + cuota, juntas.
+# Ningun coste laboral se escribe asi.
+TARIFA_RX = re.compile(r"\d[\d.]*\s?(?:€|EUR)\s*\+\s*\d[\d.]*\s?(?:€|EUR)\s*/\s*mes", re.I)
+# Cifra con € suelta, para cruzarla con RETIRED_PRICES.
+EURO_RX = re.compile(r"(?<![\d.,])(\d{1,3}(?:\.\d{3})+|\d+)\s?(?:€|EUR\b)")
+# Veto laboral: si la cifra habla de contratar a una persona, NO es tarifa
+# nuestra. Es argumento de venta y tiene que poder escribirse.
+COSTE_LABORAL_RX = re.compile(
+    r"salari|emplead|becario|recepcionis|n[oó]mina|\bSS\b|cotizaci|bruto"
+    r"|contratar|jornada|plantilla|autonomo|aut[oó]nomo|IRPF|indemnizaci",
+    re.I,
+)
+# Identificador de precio en JS, para el check 19 (numeros sin €).
+JS_PRICE_IDENT_RX = re.compile(
+    r"\b(WM_BASE|setup|precio|price|coste[A-Za-z_]*|cuota|tarifa|pack[A-Za-z_]*)\b", re.I
+)
+JS_NUMBER_RX = re.compile(r"(?<![\d.\w])(\d{3,4})(?![\d.\w])")
+# Metas que Google sirve en el snippet.
+META_DESC_RX = re.compile(
+    r'<meta[^>]+(?:name="(?:description|twitter:description)"'
+    r'|property="og:description")[^>]+content="([^"]*)"',
+    re.I,
+)
+SERVED_EXTS = (".html", ".js", ".txt", ".xml", ".json")
 
 # ── Check 15 · reseñas en datos estructurados ──────────────────────────────
 # Una tanda de landings de zona llevó durante meses un aggregateRating de
@@ -397,6 +452,99 @@ def scan_dead_prices(relpath, text, dead_values):
     return criticos, warnings
 
 
+# ── Corpus de los checks 17-19 ─────────────────────────────────────────────
+def served_files(exts=SERVED_EXTS, incluir_ignorados=True):
+    """Ficheros que GitHub Pages sirve. `path: '.'` + `.nojekyll` = todo el arbol.
+
+    A diferencia de find_html_files(), por defecto NO se salta IGNORED_DIRS: los
+    stubs de redirect tienen meta description y Google la sirve. Lo que si se
+    salta siempre son los directorios ocultos y la carpeta local de borradores.
+    """
+    out = []
+    for root, dirs, names in os.walk("."):
+        dirs[:] = [d for d in dirs
+                   if not d.startswith(".") and d not in ("Claude outputs", "__pycache__")]
+        for name in names:
+            if not name.endswith(exts):
+                continue
+            rel = os.path.relpath(os.path.join(root, name), ".").replace("\\", "/")
+            if not incluir_ignorados and is_ignored(rel):
+                continue
+            out.append(rel)
+    return sorted(out)
+
+
+def js_chunks():
+    """(origen, codigo) de cada .js y de cada <script> inline no JSON-LD."""
+    out = []
+    for rel in served_files((".js",)):
+        out.append((rel, read_text(rel)))
+    for rel in served_files((".html",)):
+        html = read_text(rel)
+        for m in re.finditer(r"<script([^>]*)>(.*?)</script>", html, re.S | re.I):
+            if "ld+json" in m.group(1).lower() or not m.group(2).strip():
+                continue
+            out.append((f"{rel} <script>", m.group(2)))
+    return out
+
+
+def meta_tarifa_retirada(html):
+    """Cifras retiradas dentro de una meta description. Lista de (valor, meta)."""
+    out = []
+    for m in META_DESC_RX.finditer(html):
+        contenido = m.group(1)
+        if COSTE_LABORAL_RX.search(contenido):
+            continue
+        for n in EURO_RX.finditer(contenido):
+            valor = normalize_price(n.group(1))
+            if valor is not None and valor in RETIRED_PRICES:
+                out.append((valor, contenido))
+    return out
+
+
+def js_constante_precio(codigo):
+    """Numeros de RETIRED_PRICES pegados a un identificador de precio, sin €."""
+    out = []
+    for m in JS_NUMBER_RX.finditer(codigo):
+        valor = int(m.group(1))
+        if valor not in RETIRED_PRICES:
+            continue
+        cerca = codigo[max(0, m.start() - 45):m.end() + 25]
+        if not JS_PRICE_IDENT_RX.search(cerca) or COSTE_LABORAL_RX.search(cerca):
+            continue
+        out.append((valor, " ".join(cerca.split())))
+    return out
+
+
+def _snippet(texto, ini, fin, antes=55, despues=30):
+    return " ".join(texto[max(0, ini - antes):fin + despues].split())
+
+
+def tarifa_propia(rel, texto):
+    """Tarifa NUESTRA en `texto`. Devuelve lista de motivos (vacia si limpio).
+
+    Dos señales, las dos exigen mas que un numero suelto:
+      A · setup + cuota juntos — ningun sueldo se escribe asi.
+      B · literal retirado CON contexto de pack y SIN contexto laboral.
+    """
+    hallazgos = []
+    for m in TARIFA_RX.finditer(texto):
+        hallazgos.append(f"tarifa setup+cuota — «…{_snippet(texto, m.start(), m.end())}…»")
+    for m in EURO_RX.finditer(texto):
+        valor = normalize_price(m.group(1))
+        if valor is None or valor not in RETIRED_PRICES:
+            continue
+        cerca = texto[max(0, m.start() - 55):m.end() + 30]
+        if not PACK_STRONG_RX.search(cerca):
+            continue
+        if COSTE_LABORAL_RX.search(cerca):
+            continue
+        if price_allowlisted(rel, valor, cerca):
+            continue
+        hallazgos.append(f"{valor}€ retirado junto a nombre de pack — «…{_snippet(texto, m.start(), m.end())}…»")
+    return hallazgos
+
+
 # ── Ejecución de checks ────────────────────────────────────────────────────
 def run_checks():
     """Ejecuta todos los checks y devuelve un dict {num: {"title","sev","items"}}."""
@@ -417,6 +565,9 @@ def run_checks():
         14: {"title": "Cifras ambiguas que podrían ser precios retirados", "sev": "warning", "items": []},
         15: {"title": "Reseñas en datos estructurados sin fuente aprobada", "sev": "critico", "items": []},
         16: {"title": "FAQPage que no coincide con el DOM visible", "sev": "critico", "items": []},
+        17: {"title": "Tarifa propia en JS o en ficheros servidos no-HTML", "sev": "critico", "items": []},
+        18: {"title": "Tarifa retirada en meta description (stubs incluidos)", "sev": "critico", "items": []},
+        19: {"title": "Constante de precio retirado cableada en JS", "sev": "critico", "items": []},
     }
 
     html_files = find_html_files()
@@ -599,6 +750,34 @@ def run_checks():
                 checks[11]["items"].append(f"URL en llms.txt sin archivo: {url} → `{expected}`")
     else:
         checks[11]["items"].append("No se encontró llms.txt")
+
+    # ── 17 · tarifa propia en JS y en ficheros servidos que no son HTML ────
+    # El corpus es lo que el visitante (o un crawler) puede descargar, no lo
+    # que el parser considera "texto visible".
+    for origen, codigo in js_chunks():
+        for motivo in tarifa_propia(origen.split(" <script>")[0], codigo):
+            checks[17]["items"].append(f"`{origen}` — {motivo}")
+    for rel in served_files((".txt", ".xml", ".json")):
+        for motivo in tarifa_propia(rel, read_text(rel)):
+            checks[17]["items"].append(f"`{rel}` — {motivo}")
+
+    # ── 18 · metas, stubs de IGNORED_DIRS incluidos ────────────────────────
+    # La meta entera es el contexto: son cortas y el nombre de marca suele
+    # quedar lejos de la cifra (en /auditoria-ia/ habia ~90 caracteres entre
+    # "WhiteMoon" y el "899€", asi que una ventana estrecha no lo veia).
+    for rel in served_files((".html",)):
+        for valor, contenido in meta_tarifa_retirada(read_text(rel)):
+            checks[18]["items"].append(
+                f"`{rel}` — {valor}€ en meta description: «{contenido[:110]}»")
+
+    # ── 19 · constantes de precio en JS, sin simbolo de euro ───────────────
+    # WM_BASE = 199 + 499/12 no lleva €, asi que ninguna regla basada en el
+    # simbolo lo veia. Se exige que el numero este pegado a un identificador
+    # de precio: "199" suelto esta por todas partes (delays, z-index, BOE).
+    for origen, codigo in js_chunks():
+        for valor, cerca in js_constante_precio(codigo):
+            checks[19]["items"].append(
+                f"`{origen}` — {valor} junto a identificador de precio: «…{cerca}…»")
 
     return checks
 
