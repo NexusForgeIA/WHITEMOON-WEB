@@ -103,10 +103,13 @@
   .calc-row .l{font-size:.86rem;color:#9CA3AF;line-height:1.4;letter-spacing:-.005em}
   .calc-row .v{font-family:'Inter',sans-serif;font-size:1.4rem;font-weight:700;color:#E8E8F0;letter-spacing:-.025em;line-height:1;font-variant-numeric:tabular-nums;text-align:right;flex-shrink:0}
   .calc-row.is-loss .v{color:#fca5a5}
-  .calc-row.is-save .v{background:linear-gradient(135deg,#9d70ff,#c4b3ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .calc-row.is-roi .v{color:#00d4aa}
   .calc-cta{margin-top:6px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;border-radius:10px;text-decoration:none;font-family:'Inter',sans-serif;font-weight:600;font-size:.92rem;letter-spacing:-.005em;box-shadow:0 12px 32px rgba(124,77,255,.32);transition:transform .15s ease,box-shadow .2s ease}
   .calc-cta:hover{transform:translateY(-1px);box-shadow:0 16px 40px rgba(124,77,255,.42)}
+  .calc-cta-sec{background:none;border:1px solid rgba(157,112,255,.45);color:#c4b3ff;box-shadow:none}
+  .calc-cta-sec:hover{background:rgba(157,112,255,.10);box-shadow:none}
+  .calc-close{margin:2px 0 0;font-size:.9rem;line-height:1.6;color:#9CA3AF}
+  .calc-sup{margin:4px 0 0;font-size:.78rem;line-height:1.65;color:#8888a0}
+  .calc-sup strong{color:#c4b3ff;font-weight:600}
   .calc-cta svg{transition:transform .15s ease;width:14px;height:14px}
   .calc-cta:hover svg{transform:translateX(2px)}
 
@@ -274,7 +277,7 @@
   <section class="cn-sec">
     <div class="wrap">
       <h2><span class="num">02</span>Calcula tu <em>coste real</em></h2>
-      <p class="lead">Tres inputs simples. Estimación inmediata del coste mensual sin automatizar, ahorro potencial con WhiteMoon y ROI en meses.</p>
+      <p class="lead">Una estimación del coste mensual que te deja hoy el trabajo sin automatizar. Todos los supuestos están a la vista y son editables: cámbialos por los tuyos.</p>
 
       <div class="calc">
         <div class="calc-grid">
@@ -311,6 +314,17 @@
               <input id="cn-ticket" type="number" min="0" max="100000" value="80" inputmode="numeric">
               <span class="hint">Valor medio de una venta o servicio.</span>
             </div>
+            <div class="calc-field">
+              <label for="cn-noshow">Citas a las que no se presentan (%)</label>
+              <input id="cn-noshow" type="number" min="0" max="100" value="20" inputmode="numeric">
+              <span class="hint">Al elegir sector se precarga un valor de partida. Cámbialo por el tuyo.</span>
+            </div>
+            <div class="calc-field">
+              <label for="cn-conv">De consulta a venta (%)</label>
+              <input id="cn-conv" type="number" min="0" max="100" value="30" inputmode="numeric">
+              <span class="hint">Cuántas de las consultas que atiendes acaban en venta.</span>
+            </div>
+            <p class="calc-sup">El resto de supuestos, a la vista: <strong><span id="cn-sup-horas">3</span> h/día</strong> dedicadas a dudas frecuentes a 18 €/h de coste empresa, 22 días laborables al mes, un 15 % de consultas que hoy no se llegan a atender y un 30 % de leads que se quedan sin seguimiento rápido. Es una estimación orientativa, no una medición.</p>
           </div>
 
           <div class="calc-out" aria-live="polite">
@@ -319,16 +333,13 @@
               <span class="l">Coste mensual sin automatizar</span>
               <span class="v" id="cn-out-loss">—</span>
             </div>
-            <div class="calc-row is-save">
-              <span class="l">Ahorro potencial con WhiteMoon</span>
-              <span class="v" id="cn-out-save">—</span>
-            </div>
-            <div class="calc-row is-roi">
-              <span class="l">ROI estimado</span>
-              <span class="v" id="cn-out-roi">—</span>
-            </div>
-            <a href="/auditoria-geo-ia/" class="calc-cta" onclick="wmTrack('click_calc_cta',{from:'coste-no-automatizar'})">
-              Solicitar Auditoría GEO IA
+            <p class="calc-close">Esto es lo que este problema podría estar costándote cada mes. Hablémoslo y vemos cómo reducirlo.</p>
+            <a href="https://wa.me/34643199580?text=Hola%20WhiteMoon%2C%20he%20calculado%20mi%20coste%20oculto%20y%20quiero%20comentarlo" target="_blank" rel="noopener" class="calc-cta" onclick="wmTrack('click_calc_cta',{from:'coste-no-automatizar',action:'whatsapp'})">
+              Hablarlo por WhatsApp
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="https://cal.com/whitemoon" target="_blank" rel="noopener" class="calc-cta calc-cta-sec" onclick="wmTrack('click_calc_cta',{from:'coste-no-automatizar',action:'calcom'})">
+              Reservar una llamada
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
@@ -554,19 +565,23 @@
   var TASA_PERDIDA = .15; // % llamadas no atendidas
   var TASA_LEAD = .30;    // % leads que llegan sin seguimiento rápido
   var COST_H = 18;        // €/h coste empresa
-  var WM_BASE = 199 + 499/12; // coste mensual amortizado Spark (12m)
-  var EFICACIA = .65;     // % del coste oculto que la automatización captura
+  // No hay constante de precio ni de eficacia: la calculadora solo estima el
+  // coste oculto con los supuestos que el usuario ve y puede editar.
+
+  // Lee un porcentaje del DOM y lo devuelve en tanto por uno. Si el campo
+  // está vacío o fuera de rango, cae al valor de partida del sector.
+  function pct(id, fallback){
+    var el = document.getElementById(id);
+    if(!el || el.value === '') return fallback;
+    var v = parseFloat(el.value);
+    if(!isFinite(v) || v < 0 || v > 100) return fallback;
+    return v / 100;
+  }
 
   function fmtEur(v){
     if(!isFinite(v) || v<=0) return '0 €';
     return new Intl.NumberFormat('es-ES',{maximumFractionDigits:0}).format(Math.round(v)) + ' €';
   }
-  function fmtMonths(m){
-    if(!isFinite(m) || m<=0) return '—';
-    if(m < 1) return '< 1 mes';
-    return Math.round(m) + ' ' + (Math.round(m)===1?'mes':'meses');
-  }
-
   function calc(){
     var sectorEl = document.getElementById('cn-sector');
     var llamEl = document.getElementById('cn-llamadas');
@@ -575,47 +590,52 @@
     var sec = sectorCfg[sectorEl.value] || sectorCfg.otro;
     var llam = Math.max(0, parseFloat(llamEl.value) || 0);
     var ticket = Math.max(0, parseFloat(ticketEl.value) || 0);
+    // Los dos supuestos que más mueven el resultado los pone el usuario.
+    var noshow = pct('cn-noshow', sec.noshow);
+    var conv = pct('cn-conv', sec.conv);
 
     var llamadasMes = llam * DIAS;
-    var costeLlamadasPerdidas = llamadasMes * TASA_PERDIDA * sec.conv * ticket;
-    var costeLeadsLentos = llamadasMes * TASA_LEAD * .25 * sec.conv * ticket;
+    var costeLlamadasPerdidas = llamadasMes * TASA_PERDIDA * conv * ticket;
+    var costeLeadsLentos = llamadasMes * TASA_LEAD * .25 * conv * ticket;
     var costeProcesos = sec.faqHrs * DIAS * COST_H;
-    var costeNoShows = llamadasMes * sec.noshow * ticket * .35;
-    var costeFueraHora = llamadasMes * .25 * sec.conv * ticket;
+    var costeNoShows = llamadasMes * noshow * ticket * .35;
+    var costeFueraHora = llamadasMes * .25 * conv * ticket;
 
     var loss = costeLlamadasPerdidas + costeLeadsLentos + costeProcesos + costeNoShows + costeFueraHora;
-    var save = loss * EFICACIA;
-    var roiMeses = (save > WM_BASE) ? (WM_BASE / save) * 12 : NaN;
 
     document.getElementById('cn-out-loss').textContent = fmtEur(loss) + ' / mes';
-    document.getElementById('cn-out-save').textContent = fmtEur(save) + ' / mes';
-    document.getElementById('cn-out-roi').textContent  = fmtMonths(roiMeses);
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    ['cn-sector','cn-llamadas','cn-ticket'].forEach(function(id){
+    ['cn-sector','cn-llamadas','cn-ticket','cn-noshow','cn-conv'].forEach(function(id){
       var el = document.getElementById(id);
       if(el){
         el.addEventListener('input', calc);
         el.addEventListener('change', calc);
       }
     });
-    // Al elegir un sector con defaults, precarga ticket medio y llamadas/día
-    // (siguen siendo editables por el usuario). Recalcula a continuación.
+    // Al elegir un sector se precargan los supuestos de partida — no-shows,
+    // conversión y horas en dudas frecuentes — y, si el sector los trae,
+    // también ticket medio y consultas/día. Todos siguen siendo editables.
     var secEl = document.getElementById('cn-sector');
-    if(secEl){
-      secEl.addEventListener('change', function(){
-        var s = sectorCfg[secEl.value];
-        if(s && typeof s.ticket === 'number'){
-          var t = document.getElementById('cn-ticket');
-          if(t) t.value = s.ticket;
-          var l = document.getElementById('cn-llamadas');
-          if(l && typeof s.llamadasDia === 'number') l.value = s.llamadasDia;
-          calc();
-        }
-      });
+    function precarga(){
+      var s = sectorCfg[secEl.value] || sectorCfg.otro;
+      var ns = document.getElementById('cn-noshow');
+      if(ns) ns.value = Math.round(s.noshow * 100);
+      var cv = document.getElementById('cn-conv');
+      if(cv) cv.value = Math.round(s.conv * 100);
+      var hrs = document.getElementById('cn-sup-horas');
+      if(hrs) hrs.textContent = String(s.faqHrs).replace('.', ',');
+      if(typeof s.ticket === 'number'){
+        var t = document.getElementById('cn-ticket');
+        if(t) t.value = s.ticket;
+        var l = document.getElementById('cn-llamadas');
+        if(l && typeof s.llamadasDia === 'number') l.value = s.llamadasDia;
+      }
+      calc();
     }
-    calc();
+    if(secEl) secEl.addEventListener('change', precarga);
+    if(secEl) precarga(); else calc();
   });
 })();
 </script>
