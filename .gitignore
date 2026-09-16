@@ -5,6 +5,12 @@
 .pr-body-tmp.md
 .scripts-tmp/
 
+# Borradores y mockups que genera Claude en local. Estan en la raiz, asi que
+# GitHub Pages los serviria (path: '.' + .nojekyll): no deben entrar al repo.
+# Anclado con "/" a proposito: solo la carpeta de la raiz, no cualquier
+# directorio que se llame igual mas abajo.
+/Claude outputs/
+
 # SEO Guardian generated report (CI artifact)
 seo-guardian-report.md
 
