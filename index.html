@@ -1245,7 +1245,10 @@
     #wm-sticky-cta.wm-visible{ opacity:1; transform:translateY(0); pointer-events:auto; }
   }
 </style>
-<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<!-- Solo en la home: el agente sustituye al lanzador de enlaces. WhatsApp y
+     Cal.com siguen ahí, dentro del panel del agente. Las demás páginas
+     mantienen wm-launcher.js. -->
+<script src="/assets/wm-agente.js?v=2026091701" defer></script>
 
 
 <!-- JSON-LD secundario (movido al final del body para no retrasar el LCP) -->

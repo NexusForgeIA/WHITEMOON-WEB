@@ -19,3 +19,6 @@ __pycache__/
 
 # Blog generator run summary (transient; leido por blog_notify.py en el mismo job)
 scripts/last-run.json
+
+# Supabase CLI
+supabase/.temp/
