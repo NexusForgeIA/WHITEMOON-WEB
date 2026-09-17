@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desarrollo de software a medida en Madrid · WhiteMoon</title>
+<meta name="description" content="Software a medida: ERP, CRM, apps móviles, big data, modernización de código e integración de IA. Consultoría gratuita para definir tu proyecto.">
+<meta name="keywords" content="desarrollo de software a medida, erp a medida, crm a medida, desarrollo de apps moviles, modernizacion de software, integracion de ia, desarrollo software madrid">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/desarrollo-software/">
+<meta property="og:title" content="Desarrollo de software a medida en Madrid · WhiteMoon">
+<meta property="og:description" content="Software a medida: ERP, CRM, apps móviles, big data, modernización de código e integración de IA. Consultoría gratuita para definir tu proyecto.">
+<meta property="og:url" content="https://whitemoon.es/desarrollo-software/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="WhiteMoon">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="WhiteMoon &middot; Agencia de IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desarrollo de software a medida en Madrid · WhiteMoon">
+<meta name="twitter:description" content="Software a medida: ERP, CRM, apps móviles, big data, modernización de código e integración de IA. Consultoría gratuita para definir tu proyecto.">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta name="theme-color" content="#7c4dff">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"Inicio","item":"https://whitemoon.es/"},
+{"@type":"ListItem","position":2,"name":"Desarrollo de software","item":"https://whitemoon.es/desarrollo-software/"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service",
+"name":"Desarrollo de software a medida",
+"serviceType":"Desarrollo de software a medida",
+"description":"Diseño y construcción de software a medida para empresas: plataformas de gestión, ERP y CRM adaptados al flujo real del negocio, apps móviles para iOS y Android, big data y analytics, auditoría y modernización de código heredado e integración de IA en los sistemas existentes. El proyecto arranca con una consultoría gratuita para definir el alcance.",
+"url":"https://whitemoon.es/desarrollo-software/",
+"provider":{"@type":"Organization","name":"WhiteMoon","url":"https://whitemoon.es/","email":"comercial@whitemoon.es","telephone":"+34643199580","foundingDate":"2025","address":{"@type":"PostalAddress","addressLocality":"Majadahonda","addressRegion":"Madrid","addressCountry":"ES"}},
+"areaServed":{"@type":"Country","name":"España"},
+"availableChannel":{"@type":"ServiceChannel","serviceUrl":"https://whitemoon.es/desarrollo-software/#consultoria"}}
+</script>
+
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/wm-track.js?v=2026052801"></script>
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
+<style>
+  /* ─────────────────────────────────────────────────────────────────────
+     /desarrollo-software/ · hoja propia y autocontenida.
+     Mismo criterio que /marketing/: no carga site.css, comparte sólo los
+     tokens de marca y monta su propia rejilla sobre Sora.
+     ───────────────────────────────────────────────────────────────────── */
+  :root{
+    --bg:#08080d; --bg2:#0b0b12; --card:#111118; --card2:#16161f;
+    --p:#7c4dff; --p2:#9d70ff; --g:#00d4aa; --g2:#5eead4;
+    --wa:#25d366;
+    --text:#f0f0f5; --muted:#9090b0;
+    /* --dim sólo para metadatos y texto de apoyo: sobre --bg da 4.6:1. */
+    --dim:#8285a0;
+    --border:rgba(124,77,255,0.18);
+    --hair:rgba(255,255,255,0.07);
+    --shell:1180px;
+    /* Altura real de la navbar de wm-nav.css: va fija sobre el contenido. */
+    --navh:64px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  html,body{overflow-x:hidden}
+  body{
+    font-family:'Sora',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--text);
+    font-weight:400;line-height:1.7;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  :focus-visible{outline:2px solid var(--p2);outline-offset:3px;border-radius:4px}
+
+  .shell{max-width:var(--shell);margin:0 auto;padding:0 28px}
+  .sec{padding:clamp(72px,9vw,120px) 0}
+  /* Las anclas del hero y del menú aterrizaban debajo de la barra fija. */
+  section[id],article[id]{scroll-margin-top:calc(var(--navh) + 18px)}
+
+  /* ── Tipografía ─────────────────────────────────────────────────────── */
+  h1,h2,h3{text-wrap:balance;letter-spacing:-.03em;line-height:1.12;font-weight:700}
+  h1{font-size:clamp(2.3rem,5.6vw,4.1rem);letter-spacing:-.035em;line-height:1.06}
+  h2{font-size:clamp(1.75rem,3.6vw,2.7rem)}
+  h3{font-size:clamp(1.15rem,1.7vw,1.4rem);letter-spacing:-.02em}
+  p{text-wrap:pretty}
+  .lead{font-size:clamp(1.02rem,1.35vw,1.16rem);color:var(--muted);line-height:1.8;max-width:60ch}
+  .eyebrow{display:block;font-size:.74rem;font-weight:600;color:var(--dim);letter-spacing:.11em;text-transform:uppercase}
+  .h2-tight{margin-top:14px}
+
+  /* ── Botones ────────────────────────────────────────────────────────── */
+  .btns{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    padding:14px 26px;border-radius:11px;border:1px solid transparent;
+    font-family:inherit;font-size:.92rem;font-weight:600;letter-spacing:-.01em;
+    cursor:pointer;transition:background .22s var(--ease),border-color .22s var(--ease),color .22s var(--ease),transform .22s var(--ease);
+  }
+  .btn svg{width:17px;height:17px;flex:0 0 auto}
+  .btn--p{background:var(--p);color:#fff}
+  .btn--p:hover{background:#6a3aef;transform:translateY(-2px)}
+  .btn--wa{background:transparent;color:var(--text);border-color:rgba(255,255,255,.18)}
+  .btn--wa:hover{border-color:var(--wa);color:var(--wa);transform:translateY(-2px)}
+
+  /* ── Hero ───────────────────────────────────────────────────────────── */
+  .hero{position:relative;padding:calc(var(--navh) + clamp(64px,8vw,110px)) 0 clamp(64px,8vw,104px);overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:-30% -10% auto -10%;height:520px;
+    background:radial-gradient(60% 60% at 22% 0%,rgba(124,77,255,.20),transparent 70%),
+               radial-gradient(45% 55% at 82% 12%,rgba(0,212,170,.10),transparent 72%);
+    pointer-events:none;
+  }
+  .hero__grid{position:relative;display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(34px,5vw,72px);align-items:start}
+  .hero__kicker{
+    display:inline-flex;align-items:center;gap:9px;margin-bottom:22px;
+    padding:6px 14px 6px 10px;border-radius:50px;
+    border:1px solid var(--border);background:rgba(124,77,255,.07);
+    font-size:.76rem;font-weight:500;color:var(--p2);letter-spacing:.01em;
+  }
+  .hero__kicker i{width:6px;height:6px;border-radius:50%;background:var(--g);flex:0 0 auto}
+  .hero h1 span{color:var(--p2)}
+  .hero .lead{margin-top:24px}
+  .hero .btns{margin-top:34px}
+  .hero__foot{margin-top:26px;padding-top:20px;border-top:1px solid var(--hair);font-size:.86rem;color:var(--dim);line-height:1.7;max-width:54ch}
+
+  /* Índice de capacidades del hero: rejilla, no una card decorativa. */
+  .idx{border:1px solid var(--border);border-radius:18px;background:linear-gradient(180deg,var(--card),rgba(17,17,24,.4));overflow:hidden}
+  .idx__h{padding:16px 22px;border-bottom:1px solid var(--hair);font-size:.74rem;font-weight:600;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+  .idx a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 22px;border-bottom:1px solid var(--hair);transition:background .22s var(--ease),padding-left .22s var(--ease)}
+  .idx a:last-child{border-bottom:0}
+  .idx a:hover{background:rgba(124,77,255,.08);padding-left:27px}
+  .idx__n{font-size:.93rem;font-weight:600;letter-spacing:-.015em}
+  .idx__t{font-size:.8rem;font-weight:500;color:var(--g2);white-space:nowrap}
+
+  /* ── ¿Te suena?: filas con hairline, no una rejilla de cards ────────── */
+  .prob{display:grid;gap:0;margin-top:26px}
+  .prob__row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(20px,4vw,56px);padding:30px 0;border-top:1px solid var(--hair);align-items:start}
+  .prob__row:last-child{border-bottom:1px solid var(--hair)}
+  .prob__t{font-size:clamp(1.1rem,1.9vw,1.45rem);font-weight:600;letter-spacing:-.025em;line-height:1.3;text-wrap:balance}
+  .prob__d{color:var(--muted);font-size:.96rem;line-height:1.8;display:flex;gap:12px}
+  .prob__d svg{width:16px;height:16px;flex:0 0 auto;margin-top:7px;stroke:var(--p2);fill:none;stroke-width:2}
+
+  /* ── Qué podemos construir ──────────────────────────────────────────── */
+  .caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:38px}
+  .cap{
+    background:var(--card);border:1px solid var(--hair);border-radius:18px;
+    padding:clamp(22px,2.4vw,28px);
+    transition:border-color .25s var(--ease),transform .25s var(--ease),background .25s var(--ease);
+  }
+  .cap:hover{border-color:rgba(124,77,255,.42);background:var(--card2);transform:translateY(-3px)}
+  .cap__i{
+    width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:rgba(124,77,255,.1);border:1px solid var(--border);margin-bottom:18px;
+  }
+  .cap__i svg{width:19px;height:19px;stroke:var(--p2);fill:none;stroke-width:1.8}
+  .cap h3{font-size:1.06rem}
+  .cap p{margin-top:10px;color:var(--muted);font-size:.9rem;line-height:1.75}
+
+  /* ── Cómo trabajamos: aquí los números SÍ son la información ────────── */
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2.6vw,34px);margin-top:38px}
+  .step{position:relative;padding-top:28px;border-top:1px solid var(--hair)}
+  .step::before{content:"";position:absolute;top:-1px;left:0;width:44px;height:1px;background:var(--p)}
+  .step__n{font-size:.8rem;font-weight:700;color:var(--p2);letter-spacing:.04em}
+  .step h3{margin-top:10px;font-size:1.05rem}
+  .step p{margin-top:11px;color:var(--muted);font-size:.92rem;line-height:1.8}
+
+  /* ── Formulario ─────────────────────────────────────────────────────── */
+  .cons{border-top:1px solid var(--hair);background:radial-gradient(70% 100% at 50% 0%,rgba(124,77,255,.12),transparent 70%)}
+  .cons__head{text-align:center;max-width:620px;margin:0 auto 42px}
+  .cons__head p{margin-top:14px;color:var(--muted);font-size:1rem;line-height:1.75}
+  .card{
+    max-width:880px;margin:0 auto;background:var(--card);
+    border:1px solid var(--border);border-radius:22px;
+    padding:clamp(26px,3.4vw,44px);
+  }
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .f{margin-bottom:16px}
+  .f label,.fs__legend{display:block;font-size:.8rem;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-bottom:8px}
+  .opt{color:var(--dim);font-weight:400}
+  .f input,.f textarea{
+    width:100%;padding:13px 15px;background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.12);border-radius:10px;color:var(--text);
+    font-family:inherit;font-size:.94rem;line-height:1.5;
+    transition:border-color .15s var(--ease),background .15s var(--ease);
+  }
+  .f textarea{min-height:128px;resize:vertical}
+  .f input::placeholder,.f textarea::placeholder{color:#5f5f78}
+  .f input:focus,.f textarea:focus{outline:none;border-color:var(--p);background:rgba(124,77,255,.06)}
+  .f input[aria-invalid="true"]{border-color:#f87171}
+
+  /* Radios como píldoras. El <input> sigue en el DOM (nada de display:none)
+     para que el teclado y el lector de pantalla lo recorran: se oculta a la
+     vista y el foco se pinta sobre la píldora hermana. */
+  .fs{border:0;margin:0 0 18px;padding:0}
+  .fs__opts{display:flex;flex-wrap:wrap;gap:9px}
+  .opt-pill{position:relative;display:inline-flex}
+  .opt-pill input{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+  .opt-pill span{
+    display:inline-flex;align-items:center;padding:9px 16px;border-radius:50px;
+    border:1px solid var(--hair);background:var(--bg2);
+    font-size:.86rem;color:#d4d4e4;cursor:pointer;
+    transition:border-color .18s var(--ease),background .18s var(--ease),color .18s var(--ease);
+  }
+  .opt-pill span:hover{border-color:var(--border);color:var(--text)}
+  .opt-pill input:checked + span{border-color:var(--p);background:rgba(124,77,255,.14);color:var(--p2);font-weight:600}
+  .opt-pill input:focus-visible + span{outline:2px solid var(--p2);outline-offset:2px}
+
+  /* Consentimiento RGPD. La casilla y el enlace son dos zonas de clic
+     distintas a propósito: el <label> cubre sólo el texto, así pulsar el
+     enlace abre la política sin marcar la casilla de paso. */
+  .consent{display:flex;align-items:flex-start;gap:11px;margin:6px 0 18px}
+  .consent input{flex-shrink:0;width:18px;height:18px;margin:2px 0 0;accent-color:var(--p);cursor:pointer}
+  .consent input:focus-visible{outline:2px solid var(--p2);outline-offset:2px}
+  .consent input[aria-invalid="true"]{outline:2px solid #f87171;outline-offset:2px}
+  .consent-txt{font-size:.85rem;color:#c7c7d6;line-height:1.55;min-width:0;overflow-wrap:anywhere}
+  .consent-txt label{display:inline;font-size:inherit;color:inherit;margin:0;cursor:pointer}
+  .consent-txt a{color:var(--p2);text-decoration:underline;text-underline-offset:3px}
+
+  .send{
+    width:100%;padding:16px 26px;border:0;border-radius:12px;
+    background:linear-gradient(135deg,#7c4dff,#9d70ff);color:#fff;
+    font-family:inherit;font-weight:600;font-size:.97rem;cursor:pointer;
+    box-shadow:0 14px 36px rgba(124,77,255,.3);
+    transition:transform .15s var(--ease),filter .2s var(--ease);
+  }
+  .send:hover{transform:translateY(-1px);filter:brightness(1.06)}
+  .send:disabled{opacity:.6;cursor:default;transform:none}
+  .msg{margin:12px 0 0;font-size:.86rem;line-height:1.6;min-height:1px;text-align:center}
+  .msg.is-warn{color:#fbbf24}
+  .msg.is-error{color:#f87171}
+  .msg a{color:inherit;text-decoration:underline}
+  .note{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--hair);font-size:.76rem;color:var(--dim);line-height:1.65}
+  .note b{color:#b8b8cc;font-weight:600}
+  .note a{color:var(--p2);text-decoration:underline;text-underline-offset:2px}
+  .alt{margin:22px 0 0;text-align:center;font-size:.88rem;color:var(--muted)}
+  .alt a{color:var(--p2);border-bottom:1px solid rgba(157,112,255,.35)}
+  .alt a:hover{border-bottom-color:var(--p2)}
+
+  /* Recuadro de éxito — mismo tratamiento que el widget de la home. */
+  .ok{display:none;text-align:center;padding:30px 8px}
+  .ok svg{width:42px;height:42px;color:var(--g);margin:0 auto 14px;stroke:currentColor;fill:none;stroke-width:2}
+  .ok b{display:block;font-size:1.16rem;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
+  .ok p{font-size:.94rem;color:var(--muted);line-height:1.7;max-width:44ch;margin:0 auto}
+
+  /* ── Responsive ─────────────────────────────────────────────────────── */
+  @media(max-width:900px){
+    .shell{padding:0 22px}
+    .hero__grid{grid-template-columns:1fr;gap:38px}
+    .prob__row{grid-template-columns:1fr;gap:12px;padding:24px 0}
+    .caps{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+  }
+  @media(max-width:600px){
+    :root{--navh:60px}
+    .shell{padding:0 18px}
+    .sec{padding:clamp(56px,12vw,72px) 0}
+    .caps{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr;gap:24px}
+    .grid2{grid-template-columns:1fr;gap:0}
+    .btn{width:100%}
+    .btns{gap:10px}
+    .card{border-radius:18px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      transition-duration:.01ms!important;
+      animation-duration:.01ms!important;animation-iteration-count:1!important;
+    }
+    html{scroll-behavior:auto}
+  }
+</style>
+<script defer src="/assets/wm-nav.js?v=2026091501"></script>
+</head>
+<body>
+
+<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
+<nav class="wm-nav" aria-label="Navegación principal">
+  <div class="wm-nav__row">
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
+
+    <div class="wm-nav__center">
+      <a href="/inteligencia-artificial/">IA</a>
+      <div class="wm-nav__dd" aria-expanded="false">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="wm-nav__menu" role="menu">
+          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
+        </div>
+      </div>
+      <a href="/desarrollo-software/">Software a medida</a>
+      <a href="/marketing/">Marketing</a>
+      <a href="/contacto/">Contacto</a>
+    </div>
+
+    <div class="wm-nav__right">
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    </div>
+  </div>
+</nav>
+<aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
+  <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/spark/">Spark</a>
+  <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
+  <a class="wm-drawer__link" href="/marketing/">Marketing</a>
+  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</aside>
+
+<!-- 1 · HERO ────────────────────────────────────────────────────────────── -->
+<header class="hero">
+  <div class="shell hero__grid">
+    <div>
+      <span class="hero__kicker"><i></i>Desarrollo a medida</span>
+      <h1>Software a medida para tu <span>negocio</span></h1>
+      <p class="lead">ERP, CRM, apps y automatización diseñados para cómo trabajas tú. Arquitectura y validación antes de escribir una línea de código.</p>
+      <div class="btns">
+        <a class="btn btn--p" href="#consultoria" onclick="wmTrack('click_desarrollo_hero',{destino:'consultoria'})">
+          Consultoría gratuita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn btn--wa" href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="wmTrack('whatsapp_click',{placement:'desarrollo-hero'})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+          WhatsApp · 643 199 580
+        </a>
+      </div>
+      <p class="hero__foot">Cada proyecto es distinto, así que no hay tarifa publicada: el alcance se define en la consultoría y la propuesta va a medida.</p>
+    </div>
+
+    <nav class="idx" aria-label="Qué podemos construir">
+      <div class="idx__h">Qué podemos construir</div>
+      <a href="#cap-empresas"><span class="idx__n">Software para empresas</span><span class="idx__t">Plataformas</span></a>
+      <a href="#cap-erp-crm"><span class="idx__n">ERP y CRM a medida</span><span class="idx__t">Gestión</span></a>
+      <a href="#cap-apps"><span class="idx__n">Apps móviles</span><span class="idx__t">iOS / Android</span></a>
+      <a href="#cap-datos"><span class="idx__n">Big data y analytics</span><span class="idx__t">Datos</span></a>
+      <a href="#cap-modernizacion"><span class="idx__n">Auditoría y modernización</span><span class="idx__t">Código</span></a>
+      <a href="#cap-ia"><span class="idx__n">Integración de IA</span><span class="idx__t">IA</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- 2 · ¿TE SUENA? ──────────────────────────────────────────────────────── -->
+<section class="sec" id="te-suena">
+  <div class="shell">
+    <span class="eyebrow">¿Te suena?</span>
+    <h2 class="h2-tight">Cuatro puntos donde el software estorba</h2>
+    <div class="prob">
+      <div class="prob__row">
+        <p class="prob__t">Gestionas el negocio con Excel o herramientas que se te quedan pequeñas</p>
+        <p class="prob__d"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span>Una plataforma a medida que centraliza tu operativa.</span></p>
+      </div>
+      <div class="prob__row">
+        <p class="prob__t">Pagas Salesforce, SAP o HubSpot por funciones que no usas</p>
+        <p class="prob__d"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span>Un ERP o CRM diseñado para tu flujo real.</span></p>
+      </div>
+      <div class="prob__row">
+        <p class="prob__t">Tu software es lento y caro de mantener</p>
+        <p class="prob__d"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span>Auditoría de deuda técnica y modernización.</span></p>
+      </div>
+      <div class="prob__row">
+        <p class="prob__t">Tienes una idea y no sabes por dónde empezar</p>
+        <p class="prob__d"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg><span>Consultoría para definir el alcance.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · QUÉ PODEMOS CONSTRUIR ───────────────────────────────────────────── -->
+<section class="sec" id="construir" style="border-top:1px solid var(--hair);background:var(--bg2)">
+  <div class="shell">
+    <span class="eyebrow">Capacidades</span>
+    <h2 class="h2-tight">Qué podemos construir</h2>
+    <div class="caps">
+
+      <article class="cap" id="cap-empresas">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg></div>
+        <h3>Software a medida para empresas</h3>
+        <p>Plataformas internas que sustituyen a la hoja de cálculo y a las herramientas sueltas, con la lógica de tu negocio dentro.</p>
+      </article>
+
+      <article class="cap" id="cap-erp-crm">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>ERP y CRM a medida</h3>
+        <p>Gestión, clientes y procesos modelados sobre cómo trabaja tu equipo, en vez de adaptar el equipo a un producto genérico.</p>
+      </article>
+
+      <article class="cap" id="cap-apps">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+        <h3>Apps móviles (iOS/Android)</h3>
+        <p>Aplicaciones para tu equipo o para tus clientes, conectadas a los sistemas que ya usas.</p>
+      </article>
+
+      <article class="cap" id="cap-datos">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="20" x2="4" y2="12"/><line x1="10" y1="20" x2="10" y2="4"/><line x1="16" y1="20" x2="16" y2="9"/><line x1="22" y1="20" x2="22" y2="15"/></svg></div>
+        <h3>Big data y analytics</h3>
+        <p>Los datos que ya genera tu operativa, reunidos y puestos en cuadros de mando que se leen de un vistazo.</p>
+      </article>
+
+      <article class="cap" id="cap-modernizacion">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Auditoría y modernización de código</h3>
+        <p>Revisión de lo que ya tienes: dónde está la deuda técnica, qué frena al sistema y en qué orden conviene abordarlo.</p>
+      </article>
+
+      <article class="cap" id="cap-ia">
+        <div class="cap__i"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M19.1 4.9l-2.2 2.2M7.1 16.9l-2.2 2.2"/></svg></div>
+        <h3>Integración de IA</h3>
+        <p>IA dentro de los procesos que ya existen, donde aporta algo concreto y medible, no como decorado.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4 · CÓMO TRABAJAMOS ─────────────────────────────────────────────────── -->
+<section class="sec" id="como-trabajamos">
+  <div class="shell">
+    <span class="eyebrow">Cómo trabajamos</span>
+    <h2 class="h2-tight">Primero se entiende, luego se construye</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step__n">01</div>
+        <h3>Consultoría gratuita</h3>
+        <p>Entendemos tu negocio y tus objetivos.</p>
+      </div>
+      <div class="step">
+        <div class="step__n">02</div>
+        <h3>Propuesta a medida</h3>
+        <p>Arquitectura y plan de trabajo.</p>
+      </div>
+      <div class="step">
+        <div class="step__n">03</div>
+        <h3>Desarrollo por sprints</h3>
+        <p>Ves avances cada 2 semanas.</p>
+      </div>
+      <div class="step">
+        <div class="step__n">04</div>
+        <h3>Lanzamiento y soporte</h3>
+        <p>Sale a producción y el soporte continúa después.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · CONSULTORÍA GRATUITA — captación del lead ───────────────────────── -->
+<section class="sec cons" id="consultoria">
+  <div class="shell">
+    <div class="cons__head">
+      <h2>Consultoría gratuita</h2>
+      <p>Cuéntanos tu proyecto, sin compromiso.</p>
+    </div>
+
+    <div class="card">
+      <form id="devLeadForm" novalidate>
+
+        <div class="grid2">
+          <div class="f">
+            <label for="dv-nombre">Nombre</label>
+            <input type="text" id="dv-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+          </div>
+          <div class="f">
+            <label for="dv-empresa">Empresa <span class="opt">(opcional)</span></label>
+            <input type="text" id="dv-empresa" name="empresa" autocomplete="organization" placeholder="Nombre de la empresa">
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="f">
+            <label for="dv-email">Email <span class="opt">(opcional)</span></label>
+            <input type="email" id="dv-email" name="email" autocomplete="email" placeholder="tu@empresa.com">
+          </div>
+          <div class="f">
+            <label for="dv-telefono">Teléfono</label>
+            <input type="tel" id="dv-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
+          </div>
+        </div>
+
+        <div class="f">
+          <label for="dv-web">Página web <span class="opt">(opcional)</span></label>
+          <input type="text" id="dv-web" name="web" autocomplete="url" placeholder="tuempresa.com, si tienes">
+        </div>
+
+        <fieldset class="fs">
+          <legend class="fs__legend">¿Qué necesitas? <span class="opt">(opcional)</span></legend>
+          <div class="fs__opts">
+            <label class="opt-pill"><input type="radio" name="necesidad" value="Software"><span>Software</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="Web"><span>Web</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="Marketing"><span>Marketing</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="SEO"><span>SEO</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="IA"><span>IA</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="Consultoría"><span>Consultoría</span></label>
+            <label class="opt-pill"><input type="radio" name="necesidad" value="No sé aún"><span>No sé aún</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="fs">
+          <legend class="fs__legend">¿Cuándo? <span class="opt">(opcional)</span></legend>
+          <div class="fs__opts">
+            <label class="opt-pill"><input type="radio" name="cuando" value="Inmediatamente"><span>Inmediatamente</span></label>
+            <label class="opt-pill"><input type="radio" name="cuando" value="En 2 semanas"><span>En 2 semanas</span></label>
+            <label class="opt-pill"><input type="radio" name="cuando" value="En un mes"><span>En un mes</span></label>
+            <label class="opt-pill"><input type="radio" name="cuando" value="De 1 a 2 meses"><span>De 1 a 2 meses</span></label>
+            <label class="opt-pill"><input type="radio" name="cuando" value="+3 meses"><span>+3 meses</span></label>
+          </div>
+        </fieldset>
+
+        <div class="f">
+          <label for="dv-proyecto">Cuéntanos tu proyecto <span class="opt">(opcional)</span></label>
+          <textarea id="dv-proyecto" name="proyecto" placeholder="Qué quieres resolver, con qué herramientas trabajas hoy y qué te gustaría que hiciera el sistema."></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="dv-consent" name="consent" required
+                 aria-label="Acepto la política de privacidad">
+          <span class="consent-txt"><label for="dv-consent">Acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+        </div>
+
+        <button type="submit" class="send" id="dv-send">Solicitar consultoría gratuita</button>
+        <p class="msg" id="dv-msg" role="status" aria-live="polite"></p>
+
+        <p class="note">
+          <b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon).
+          <b>Datos que pedimos:</b> los que rellenes en este formulario.
+          <b>Para qué:</b> contactarte sobre tu consulta. No se ceden a terceros salvo los proveedores necesarios para prestarte el servicio.
+          <b>Derechos y detalle:</b> <a href="/politica-privacidad/">política de privacidad</a>.
+        </p>
+      </form>
+
+      <div class="ok" id="dv-ok">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
+        <b>Gracias por tu solicitud.</b>
+        <p>En breve el equipo de WhiteMoon se pone en contacto contigo.</p>
+      </div>
+    </div>
+
+    <p class="alt">¿Prefieres hablarlo ya? Escríbenos por <a href="https://wa.me/34643199580" target="_blank" rel="noopener" onclick="wmTrack('whatsapp_click',{placement:'desarrollo-form'})">WhatsApp al 643 199 580</a>.</p>
+  </div>
+</section>
+
+<script>
+/* ─────────────────────────────────────────────────────────────────────────
+   Formulario de /desarrollo-software/ — patrón estándar de captación
+   WhiteMoon, el mismo que homeLeadForm en index.html. Los DOS envíos van EN
+   PARALELO, nunca encadenados:
+     1. INSERT en leads_web con la publishable key, keepalive y UN reintento
+        a los 800 ms. Supabase devuelve 503 transitorios de forma esporádica
+        y sin reintento ese lead se pierde.
+     2. Aviso a Telegram por la Edge Function whitemoon-notify, con
+        navigator.sendBeacon y Blob 'text/plain;charset=UTF-8'. Con
+        'application/json' salta el preflight CORS, Chrome descarta el POST y
+        sendBeacon devuelve true igual: el aviso se pierde en silencio. El
+        body sigue siendo JSON y la función lo parsea igual.
+   La publishable key no es secreta: por RLS el rol anónimo sólo puede
+   INSERT. El token de Telegram vive en los Secrets de la Edge Function.
+   ───────────────────────────────────────────────────────────────────────── */
+(function () {
+  var SB_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
+  var SB_KEY = 'sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV';
+  var NOTIFY_FN = SB_URL + '/functions/v1/whitemoon-notify';
+  var ORIGEN = 'desarrollo-software';
+
+  var form = document.getElementById('devLeadForm');
+  if (!form) return;
+  var btn = document.getElementById('dv-send');
+  var msg = document.getElementById('dv-msg');
+  var ok = document.getElementById('dv-ok');
+  var LABEL = btn ? btn.textContent : '';
+
+  function val(name) {
+    var el = form.elements[name];
+    return el && typeof el.value === 'string' ? el.value.trim() : '';
+  }
+  function radio(name) {
+    var el = form.elements[name];
+    if (!el) return '';
+    // Con un solo <input> de ese name, form.elements devuelve el elemento;
+    // con varios, una RadioNodeList. Hay que cubrir los dos casos.
+    if (typeof el.length !== 'number') return el.checked ? el.value : '';
+    for (var i = 0; i < el.length; i++) {
+      if (el[i].checked) return el[i].value;
+    }
+    return '';
+  }
+  function digits(s) {
+    return (s.match(/\d/g) || []).length;
+  }
+  // Une sólo lo que tiene contenido: sin esto el mensaje viajaba con
+  // etiquetas vacías ("Web:  · Proyecto: ") cuando el campo no se rellena.
+  function join(parts) {
+    return parts.filter(Boolean).join(' · ');
+  }
+  function setMsg(kind, text) {
+    msg.className = 'msg' + (kind ? ' is-' + kind : '');
+    msg.textContent = text || '';
+  }
+
+  // 1 · leads_web, con UN reintento a los 800 ms. Devuelve una promesa que
+  //     resuelve true sólo si el INSERT acabó entrando.
+  function postLead(lead) {
+    return fetch(SB_URL + '/rest/v1/leads_web', {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(lead)
+    }).then(function (r) {
+      if (!r.ok) console.warn('[desarrollo] leads_web ' + r.status);
+      return r.ok;
+    }).catch(function (err) {
+      console.warn('[desarrollo] leads_web error', err);
+      return false;
+    });
+  }
+  function insertLead(lead) {
+    return postLead(lead).then(function (entro) {
+      if (entro) return true;
+      return new Promise(function (res) {
+        setTimeout(function () { postLead(lead).then(res); }, 800);
+      });
+    });
+  }
+
+  // 2 · aviso a Telegram. sendBeacon con text/plain para no disparar preflight.
+  function avisar(aviso) {
+    var payload = JSON.stringify(aviso);
+    var sent = false;
+    try {
+      if (navigator.sendBeacon) {
+        sent = navigator.sendBeacon(NOTIFY_FN, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+      }
+    } catch (e) { /* sin sendBeacon usable, cae al fetch de abajo */ }
+    if (!sent) {
+      fetch(NOTIFY_FN, {
+        method: 'POST',
+        keepalive: true,
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY
+        },
+        body: payload
+      }).catch(function () { /* silencioso: el cliente no tiene que ver esto */ });
+    }
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var nombre = val('nombre');
+    var empresa = val('empresa');
+    var email = val('email');
+    var telefono = val('telefono');
+    var web = val('web');
+    var proyecto = val('proyecto');
+    var necesidad = radio('necesidad');
+    var cuando = radio('cuando');
+    var consent = form.elements.consent;
+
+    form.elements.nombre.removeAttribute('aria-invalid');
+    form.elements.telefono.removeAttribute('aria-invalid');
+    if (consent) consent.removeAttribute('aria-invalid');
+
+    if (!nombre) {
+      form.elements.nombre.setAttribute('aria-invalid', 'true');
+      form.elements.nombre.focus();
+      setMsg('warn', 'Necesitamos tu nombre y un teléfono para poder llamarte.');
+      return;
+    }
+    // Un teléfono español tiene 9 dígitos; con prefijo, más. Por debajo de 9
+    // es un campo a medio escribir, no un contacto.
+    if (digits(telefono) < 9) {
+      form.elements.telefono.setAttribute('aria-invalid', 'true');
+      form.elements.telefono.focus();
+      setMsg('warn', 'Ese teléfono no parece completo: necesitamos al menos 9 dígitos.');
+      return;
+    }
+
+    // Gate de consentimiento RGPD: sin la casilla marcada no se avisa ni se
+    // inserta nada. Va DESPUÉS de validar nombre y teléfono y ANTES de
+    // cualquier envío, así que un return aquí deja el lead sin salir.
+    if (!consent || !consent.checked) {
+      if (consent) {
+        consent.setAttribute('aria-invalid', 'true');
+        consent.focus();
+      }
+      setMsg('warn', 'Para poder escribirte necesitamos que aceptes la política de privacidad.');
+      return;
+    }
+
+    setMsg('', '');
+    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+    var mensaje = join([web ? 'Web: ' + web : '', proyecto ? 'Proyecto: ' + proyecto : '']);
+
+    // Los dos envíos arrancan a la vez; el aviso no espera al INSERT.
+    // En el aviso, `interes` lleva necesidad + empresa: es la línea que se lee
+    // de un vistazo en la notificación del móvil.
+    avisar({
+      nombre: nombre,
+      telefono: telefono,
+      interes: join([necesidad, empresa]),
+      mensaje: join([email ? 'Email: ' + email : '', cuando ? 'Cuándo: ' + cuando : '', mensaje])
+    });
+    insertLead({
+      nombre: nombre,
+      empresa: empresa,
+      email: email,
+      telefono: telefono,
+      sector: '',
+      interes: necesidad,
+      preferencia: cuando,
+      mensaje: mensaje,
+      origen: ORIGEN,
+      fecha: new Date().toISOString()
+    }).then(function (entro) {
+      if (!entro) {
+        if (btn) { btn.disabled = false; btn.textContent = LABEL; }
+        msg.className = 'msg is-error';
+        msg.innerHTML = 'No se pudo enviar. Prueba otra vez o escríbenos a ' +
+          '<!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off-->';
+        return;
+      }
+      if (typeof window.wmTrack === 'function') {
+        window.wmTrack('enviar_form_desarrollo', { placement: 'consultoria' });
+      }
+      form.style.display = 'none';
+      if (ok) ok.style.display = 'block';
+    });
+  });
+})();
+</script>
+
+<!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
+<footer id="contacto" class="wm-foot">
+  <div class="wm-foot__grid">
+
+    <div class="wm-foot__brand">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+        <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
+        <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+      </a>
+      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <div class="wm-foot__social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a>
+        <a href="https://www.linkedin.com/in/cristobal-martinez-8b9b9951" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/@whitemoonweb" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.1 2.7 12 2.7 12 2.7s-5.1 0-8.3.2c-.4.1-1.4.1-2.3 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5.1 0 8.3-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.7 13.5V7.9l6.2 2.8-6.2 2.8z"/></svg></a>
+        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></a><!--/email_off-->
+      </div>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <ul>
+        <li><a href="/spark/">Spark</a></li>
+        <li><a href="/core/">Core Spark Web</a></li>
+        <li><a href="/desarrollo-software/">Software a medida</a></li>
+        <li><a href="/marketing/">Marketing</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Comparativas</h3>
+      <ul>
+        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <div class="wm-foot__contact">
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wm-foot__bottom">
+    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div class="wm-foot__legal">
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
+    </div>
+    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+  </div>
+</footer>
+
+</body>
+</html>
