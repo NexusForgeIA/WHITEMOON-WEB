@@ -202,11 +202,12 @@
     + '.wma-consent{display:flex;align-items:flex-start;gap:9px;margin:4px 0 16px}'
     + '.wma-consent input{flex:0 0 16px;width:16px;height:16px;margin:2px 0 0;accent-color:var(--p,#7c4dff);cursor:pointer}'
     + '.wma-consent input[aria-invalid="true"]{outline:2px solid #f87171;outline-offset:2px;border-radius:3px}'
-    + '.wma-consent label{font-size:.78rem;color:var(--muted,#8888a0);line-height:1.5;cursor:pointer}'
+    + '.wma-consent-txt{font-size:.78rem;color:var(--muted,#8888a0);line-height:1.5}'
+    + '.wma-consent-txt label{cursor:pointer}'
+    + '.wma-consent-txt a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:2px}'
+    + '.wma-consent-txt a:hover{color:var(--text,#f0f0f5)}'
     + '.wma-msg{margin:12px 0 0;font-size:.8rem;line-height:1.5;color:#fbbf24;min-height:1px}'
     + '.wma-msg.is-error{color:#f87171}'
-    + '.wma-legal{margin:14px 0 0;font-size:.7rem;color:#6B7280;line-height:1.5}'
-    + '.wma-legal a{color:var(--muted,#8888a0)}'
     // --- Confirmación: recuadro verde --------------------------------------
     + '.wma-ok{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;'
     + 'padding:26px 20px;border-radius:14px;background:rgba(0,212,170,.10);border:1px solid var(--g,#00d4aa)}'
@@ -275,14 +276,15 @@
     + '<input type="tel" id="wma-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required></div>'
     + '<div class="wma-campo"><label for="wma-empresa">Empresa</label>'
     + '<input type="text" id="wma-empresa" name="empresa" autocomplete="organization" placeholder="Nombre de tu negocio" required></div>'
+    // El enlace va FUERA del <label>: dentro, al pulsarlo el navegador
+    // activaría también la casilla. Mismo patrón que #pide-propuesta.
     + '<div class="wma-consent">'
-    + '<input type="checkbox" id="wma-consent" name="consent" required>'
-    + '<label for="wma-consent">Acepto que WhiteMoon me contacte sobre mi solicitud.</label></div>'
+    + '<input type="checkbox" id="wma-consent" name="consent" required'
+    + ' aria-label="Acepto la política de privacidad">'
+    + '<span class="wma-consent-txt"><label for="wma-consent">Acepto la</label> '
+    + '<a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a></span></div>'
     + '<button type="submit" class="wma-btn" id="wma-enviar">Enviar</button>'
     + '<p class="wma-msg" id="wma-msg" role="status" aria-live="polite"></p>'
-    + '<p class="wma-legal"><b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon). '
-    + '<b>Datos:</b> nombre, teléfono y empresa. <b>Para qué:</b> contactarte sobre tu solicitud. '
-    + '<b>Detalle:</b> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</p>'
     + "</form>"
     + '<button type="button" class="wma-back" data-volver="2">' + svg("atras", "") + "Volver</button>"
     + "</div>"
