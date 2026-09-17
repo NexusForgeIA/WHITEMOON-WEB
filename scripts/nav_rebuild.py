@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
-Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web) · Marketing ·
-                  Contacto + un unico CTA: "Agendar reunion" (cal.com).
+Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web) ·
+                  Software a medida · Marketing · Contacto
+                  + un unico CTA: "Agendar reunion" (cal.com).
 
 Footer: el de 5 columnas de la home (Marca · Servicios · Recursos · Comparativas
 · Contacto + legales), identico en todo el universo. Su CSS vive en
@@ -100,6 +101,7 @@ def nav_html(flow: bool) -> str:
           <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
         </div>
       </div>
+      <a href="/desarrollo-software/">Software a medida</a>
       <a href="/marketing/">Marketing</a>
       <a href="/contacto/">Contacto</a>
     </div>
@@ -116,6 +118,7 @@ def nav_html(flow: bool) -> str:
   <span class="wm-drawer__label">Productos</span>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
   <a class="wm-drawer__link" href="/marketing/">Marketing</a>
   <a class="wm-drawer__link" href="/contacto/">Contacto</a>
   <a class="wm-drawer__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
@@ -144,6 +147,9 @@ FOOTER_COLS = [
     ("Servicios", [
         ("/spark/", "Spark"),
         ("/core/", "Core Spark Web"),
+        # No es un producto del catálogo (siguen siendo dos): es un servicio
+        # aparte, por eso va fuera del desplegable "Productos" de la navbar.
+        ("/desarrollo-software/", "Software a medida"),
         ("/marketing/", "Marketing"),
     ]),
     ("Recursos", [
