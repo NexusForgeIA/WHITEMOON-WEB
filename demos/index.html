@@ -43,11 +43,11 @@
      así que el titular no se reajusta a media carga. -->
 <link rel="preload" href="/demos/assets/fonts/sora-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css">
-<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026091601">
+<link rel="stylesheet" href="/demos/assets/embudo.css?v=2026091701">
 <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
-<script defer src="/demos/assets/embudo.js?v=2026091601"></script>
+<script defer src="/demos/assets/embudo.js?v=2026091701"></script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -621,7 +621,7 @@
              la publishable key solo puede hacer INSERT, por RLS. -->
         <form class="lead-form" id="lead-form" aria-labelledby="lead-form-title" novalidate>
           <h3 class="lead-form__title" id="lead-form-title">Tus datos</h3>
-          <p class="lead-form__hint">Todos los campos son obligatorios: con esto ya podemos ponernos.</p>
+          <p class="lead-form__hint">Con el nombre y un teléfono ya podemos ponernos. Los datos de facturación se piden después, cuando haya algo que facturar.</p>
 
           <div class="lead-form__grid">
             <div class="field">
@@ -631,61 +631,35 @@
             </div>
 
             <div class="field">
-              <label for="f-empresa">Empresa</label>
-              <input id="f-empresa" name="empresa" type="text" autocomplete="organization" autocapitalize="words" required aria-describedby="e-empresa">
-              <p class="field__err" id="e-empresa"></p>
-            </div>
-
-            <div class="field">
-              <label for="f-cif">CIF / NIF</label>
-              <input id="f-cif" name="cif" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" required aria-describedby="e-cif">
-              <p class="field__err" id="e-cif"></p>
-            </div>
-
-            <div class="field">
-              <label for="f-movil">Móvil</label>
+              <label for="f-movil">Teléfono</label>
               <input id="f-movil" name="movil" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-movil">
               <p class="field__err" id="e-movil"></p>
             </div>
 
-            <div class="field field--wide">
-              <label for="f-email">Email</label>
-              <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" required aria-describedby="e-email">
-              <p class="field__err" id="e-email"></p>
-            </div>
-
-            <div class="field field--wide">
-              <label for="f-direccion">Dirección</label>
-              <input id="f-direccion" name="direccion" type="text" autocomplete="street-address" required aria-describedby="e-direccion">
-              <p class="field__err" id="e-direccion"></p>
+            <div class="field">
+              <label for="f-empresa">Empresa <span class="field__opt">(opcional)</span></label>
+              <input id="f-empresa" name="empresa" type="text" autocomplete="organization" autocapitalize="words" aria-describedby="e-empresa">
+              <p class="field__err" id="e-empresa"></p>
             </div>
 
             <div class="field">
-              <label for="f-cp">Código postal</label>
-              <input id="f-cp" name="cp" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code" required aria-describedby="e-cp">
-              <p class="field__err" id="e-cp"></p>
-            </div>
-
-            <div class="field">
-              <label for="f-ciudad">Ciudad</label>
-              <input id="f-ciudad" name="ciudad" type="text" autocomplete="address-level2" autocapitalize="words" required aria-describedby="e-ciudad">
-              <p class="field__err" id="e-ciudad"></p>
-            </div>
-
-            <div class="field">
-              <label for="f-provincia">Provincia</label>
-              <input id="f-provincia" name="provincia" type="text" autocomplete="address-level1" autocapitalize="words" required aria-describedby="e-provincia">
-              <p class="field__err" id="e-provincia"></p>
-            </div>
-
-            <div class="field">
-              <label for="f-pack">Producto</label>
+              <label for="f-pack">Producto <span class="field__opt">(opcional)</span></label>
               <!-- Las opciones (Spark y Core Spark Web) se pintan desde PACKS y llega
                    elegido el que encaja según el paso 5, pero decide el cliente. -->
-              <select id="f-pack" name="pack" required aria-describedby="e-pack"></select>
+              <select id="f-pack" name="pack" aria-describedby="e-pack"></select>
               <p class="field__err" id="e-pack"></p>
             </div>
           </div>
+
+          <!-- Consentimiento RGPD. La casilla y el enlace son dos zonas de clic
+               distintas a propósito: el <label> cubre sólo el texto, así pulsar el
+               enlace abre la política sin marcar la casilla de paso. -->
+          <div class="consent">
+            <input type="checkbox" id="f-consent" name="consent" required
+                   aria-label="Acepto la política de privacidad" aria-describedby="e-consent">
+            <span class="consent__txt"><label for="f-consent">Acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+          </div>
+          <p class="field__err" id="e-consent"></p>
 
           <button type="submit" class="btn btn--g btn--xl lead-form__go" id="lead-go">
             <span id="lead-go-label">Empezar mi proyecto</span>

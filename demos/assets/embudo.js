@@ -1,7 +1,7 @@
 /* WhiteMoon · embudo de venta guiado de /demos/
    Origen: repo WHITEMOON-PROPUESTA-COMERCIAL-. Aquí solo cambian tres cosas:
    las tarjetas de demos ya vienen en el HTML (este fichero solo las filtra),
-   el lead se marca con origen "demo-embudo-web" y el guion vive fuera del HTML.
+   el lead se marca con origen "demos-embudo" y el guion vive fuera del HTML.
    El resto —packs, diagnóstico, formulario, Cal.com— es el mismo. */
 (function(){
   "use strict";
@@ -74,6 +74,40 @@
   }
 
   /* ==========================================================
+     Medicion
+     ----------------------------------------------------------
+     Los ocho pasos viven en una sola URL, asi que para GA4 todo el embudo era
+     UNA page_view y el abandono no se podia situar. Ahora cada paso empuja una
+     entrada de historial (/demos/#paso-N) y emite su propia page_view, con lo
+     que el embudo se ve nativo por page_path.
+
+     wmTrack() es el helper de assets/wm-track.js: acaba llamando a
+     gtag('event', nombre, params) y es no-op si gtag no esta disponible
+     (consentimiento no dado, adblock, JS del consent bloqueado). Ni el
+     recorrido ni el formulario dependen de que la medicion funcione.
+     ========================================================== */
+  function track(nombre, params){
+    if(typeof window.wmTrack === "function"){
+      try { window.wmTrack(nombre, params || {}); } catch(e){}
+    }
+  }
+
+  var pasoMedido = null;
+  function medirPaso(n){
+    if(pasoMedido === n) return;          /* sin duplicados al volver por historial */
+    pasoMedido = n;
+    track("page_view", {
+      page_path:  "/demos/#paso-" + n,
+      page_title: "Demos \u00b7 paso " + n
+    });
+  }
+
+  /* Sector de la ultima demo abierta. Alimenta el evento demo_open y viaja
+     despues en el campo `sector` del lead: si alguien probo la demo de
+     talleres, esa es su pista de sector y no un literal fijo. */
+  var sectorVisto = "";
+
+  /* ==========================================================
      Pintado: demos
      ========================================================== */
   var demosBox  = $("#demos");
@@ -83,6 +117,19 @@
      sectores lo lee un buscador sin ejecutar nada. Aquí solo se enseñan y se
      esconden, y `data-k` trae el heno ya normalizado. */
   var demoCards = $$(".demo", demosBox);
+
+  /* Abrir una demo es el momento de valor de la pagina y no se medía. El
+     listener NO toca el evento: las tarjetas son <a target="_blank"> y la
+     pestana se abre igual aunque wmTrack falle o gtag no exista. Tambien se
+     guarda el sector para el lead del paso 8. */
+  demoCards.forEach(function(card){
+    card.addEventListener("click", function(){
+      var h3 = card.querySelector("h3");
+      var sector = h3 ? h3.textContent.trim() : "";
+      if(sector) sectorVisto = sector;
+      track("demo_open", {sector: sector, from: "demos"});
+    });
+  });
 
   /* Se busca palabra a palabra, no la frase entera: la gente escribe como
      habla ("clínica dental", "permiso de conducir") y antes eso no encontraba
@@ -252,7 +299,7 @@
        1. INSERT en leads_web con la publishable key, con UN reintento a los
           800 ms. Supabase devuelve 503 transitorios de forma esporádica y sin
           reintento ese lead se pierde.
-       2. Aviso a Telegram por la Edge Function propuesta-notify, con
+       2. Aviso a Telegram por la Edge Function whitemoon-notify, con
           navigator.sendBeacon y Blob 'text/plain;charset=UTF-8'. Con
           'application/json' se dispara el preflight CORS, Chrome descarta el
           POST y sendBeacon devuelve true igual: el aviso se pierde en
@@ -265,55 +312,64 @@
      ========================================================== */
   var SUPABASE_URL = "https://mlaqtniujnvfxcvcourm.supabase.co";
   var SUPABASE_KEY = "sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV";
-  var NOTIFY_FN    = SUPABASE_URL + "/functions/v1/propuesta-notify";
-  var SECTOR       = "demo-embudo-web";
-  var ORIGEN       = "demo-embudo-web";
+  /* whitemoon-notify es la funcion estandar de aviso del sitio: lee
+     {nombre, telefono, interes, mensaje} y no inserta nada. El INSERT lo hace
+     este cliente con la publishable key. */
+  var NOTIFY_FN    = SUPABASE_URL + "/functions/v1/whitemoon-notify";
+  var ORIGEN       = "demos-embudo";
 
   var form        = $("#lead-form");
   var packSelect  = $("#f-pack");
   var statusBox   = $("#lead-status");
   var goLabel     = $("#lead-go-label");
-  var packTouched = false;   // si el cliente elige pack a mano, el paso 5 ya no le pisa la elección
+  var goBtn       = $("#lead-go");
+  var consentBox  = $("#f-consent");
+  var consentErr  = $("#e-consent");
+  var packTouched = false;   // si el cliente elige pack a mano, el paso 5 ya no le pisa la eleccion
   var enviado     = false;
 
-  var RE_EMAIL = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
-  /* Móvil español: nueve cifras que empiezan por 6 o 7, con prefijo opcional. */
-  var RE_MOVIL = /^(?:\+?34|0034)?[67]\d{8}$/;
-  var RE_CP    = /^\d{5}$/;
+  function soloDigitos(v){ return String(v).replace(/[^0-9]/g, ""); }
 
-  function soloDigitos(v){ return String(v).replace(/[\s.\-()]/g, ""); }
-
+  /* El embudo pedia diez campos obligatorios, CIF y direccion incluidos: eso
+     es un alta de cliente, no un lead, y se cobraba en abandono justo en el
+     ultimo paso. Ahora solo bloquean el envio el nombre, el telefono y el
+     consentimiento; empresa y producto son opcionales y los datos de
+     facturacion se piden fuera del embudo, cuando hay algo que facturar. */
   var CAMPOS = [
-    {id:"nombre",    err:"Dinos cómo te llamas."},
-    {id:"empresa",   err:"Falta el nombre de tu empresa."},
-    {id:"cif",       err:"Falta el CIF o el NIF."},
-    {id:"movil",     err:"Escribe un móvil de nueve cifras.", test:function(v){ return RE_MOVIL.test(soloDigitos(v)); }},
-    {id:"email",     err:"Revisa el correo, parece que le falta algo.", test:function(v){ return RE_EMAIL.test(v.trim()); }},
-    {id:"direccion", err:"Falta la dirección."},
-    {id:"cp",        err:"El código postal son cinco cifras.", test:function(v){ return RE_CP.test(soloDigitos(v)); }},
-    {id:"ciudad",    err:"Falta la ciudad."},
-    {id:"provincia", err:"Falta la provincia."},
-    {id:"pack",      err:"Elige el producto por el que quieres empezar."}
+    {id:"nombre", req:true,  err:"Dinos cómo te llamas."},
+    {id:"movil",  req:true,  err:"Escribe un teléfono de al menos nueve cifras.",
+     test:function(v){ return soloDigitos(v).length >= 9; }},
+    {id:"empresa", req:false},
+    {id:"pack",    req:false}
   ];
 
   function campoEl(c){ return $("#f-" + c.id); }
 
   function valida(c){
-    var v = campoEl(c).value;
-    if(!String(v).trim()) return false;
+    var v = String(campoEl(c).value || "").trim();
+    if(!v) return !c.req;                 // vacio solo falla si es obligatorio
     return c.test ? c.test(v) : true;
   }
 
   function marca(c, ok){
     var el = campoEl(c);
     el.closest(".field").classList.toggle("is-bad", !ok);
+    var box = $("#e-" + c.id);
     if(ok){
       el.removeAttribute("aria-invalid");
-      $("#e-" + c.id).textContent = "";
+      if(box) box.textContent = "";
     } else {
       el.setAttribute("aria-invalid", "true");
-      $("#e-" + c.id).textContent = c.err;
+      if(box) box.textContent = c.err || "";
     }
+    return ok;
+  }
+
+  function marcaConsent(ok){
+    consentErr.textContent = ok ? "" : "Para poder escribirte necesitamos que aceptes la política de privacidad.";
+    consentErr.classList.toggle("is-on", !ok);
+    if(ok) consentBox.removeAttribute("aria-invalid");
+    else consentBox.setAttribute("aria-invalid", "true");
     return ok;
   }
 
@@ -326,14 +382,17 @@
   }
 
   /* El pack que encaja llega ya elegido, pero manda el cliente: en cuanto toca
-     el desplegable, el diagnóstico deja de sobrescribirle la elección. */
+     el desplegable, el diagnostico deja de sobrescribirle la eleccion. */
   function syncPackSelect(){
     if(enviado || packTouched) return;
     packSelect.value = recommendedId || "";
   }
 
-  function insertLead(lead, reintento){
-    fetch(SUPABASE_URL + "/rest/v1/leads_web", {
+  /* 1 - leads_web, con UN reintento a los 800 ms. Devuelve una promesa que
+         resuelve true solo si el INSERT acabo entrando. Mismo patron que
+         homeLeadForm en index.html. */
+  function postLead(lead){
+    return fetch(SUPABASE_URL + "/rest/v1/leads_web", {
       method: "POST",
       keepalive: true,
       headers: {
@@ -343,11 +402,27 @@
         "Prefer": "return=minimal"
       },
       body: JSON.stringify(lead)
-    })
-    .then(function(r){ if(!r.ok && !reintento) setTimeout(function(){ insertLead(lead, 1); }, 800); })
-    .catch(function(){ if(!reintento) setTimeout(function(){ insertLead(lead, 1); }, 800); });
+    }).then(function(r){
+      if(!r.ok) console.warn("[demos] leads_web " + r.status);
+      return r.ok;
+    }).catch(function(err){
+      console.warn("[demos] leads_web error", err);
+      return false;
+    });
+  }
+  function insertLead(lead){
+    return postLead(lead).then(function(entro){
+      if(entro) return true;
+      return new Promise(function(res){
+        setTimeout(function(){ postLead(lead).then(res); }, 800);
+      });
+    });
   }
 
+  /* 2 - aviso a Telegram. sendBeacon con text/plain para no disparar el
+         preflight CORS: con application/json Chrome descarta el POST y
+         sendBeacon devuelve true igual, asi que el aviso se perderia en
+         silencio. El body sigue siendo JSON y la funcion lo parsea igual. */
   function notificarTelegram(aviso){
     var payload = JSON.stringify(aviso);
     var sent = false;
@@ -355,7 +430,7 @@
       if(navigator.sendBeacon){
         sent = navigator.sendBeacon(NOTIFY_FN, new Blob([payload], {type:"text/plain;charset=UTF-8"}));
       }
-    } catch(e){}
+    } catch(e){ /* sin sendBeacon usable, cae al fetch de abajo */ }
     if(!sent){
       fetch(NOTIFY_FN, {
         method: "POST",
@@ -366,7 +441,7 @@
           "Authorization": "Bearer " + SUPABASE_KEY
         },
         body: payload
-      }).catch(function(){ /* silencioso — el cliente no tiene que ver esto */ });
+      }).catch(function(){ /* silencioso - el cliente no tiene que ver esto */ });
     }
   }
 
@@ -375,23 +450,28 @@
     form.classList.add("is-sent");
     goLabel.textContent = "Datos enviados";
   }
+  function desbloquearForm(){
+    $$("#lead-form input, #lead-form select, #lead-form button").forEach(function(el){ el.disabled = false; });
+    form.classList.remove("is-sent");
+    goLabel.textContent = "Empezar mi proyecto";
+  }
 
-  function confirmar(nombre){
+  function confirmar(){
     statusBox.innerHTML =
       '<div class="confirm">'
       +   '<span class="confirm__check" aria-hidden="true">'
       +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="m5 13 4.5 4.5L19 7"/></svg>'
       +   '</span>'
-      +   '<h3>¡Listo, ' + esc(nombre) + '!</h3>'
-      +   '<p>Hemos recibido tus datos. Nos ponemos con tu proyecto: en 7 días laborables estará funcionando, en las condiciones de la garantía.</p>'
-      +   '<h4 class="next__title">Qué pasa ahora</h4>'
-      +   '<ol class="next">'
-      +     '<li><span class="next__n" aria-hidden="true">1</span>Te llamamos en menos de 24 h laborables</li>'
-      +     '<li><span class="next__n" aria-hidden="true">2</span>Preparamos y configuramos tu agente</li>'
-      +     '<li><span class="next__n" aria-hidden="true">3</span>En 7 días laborables, funcionando</li>'
-      +   '</ol>'
+      +   '<h3>Gracias por tu solicitud.</h3>'
+      +   '<p>En breve el equipo de WhiteMoon se pone en contacto contigo.</p>'
       + '</div>';
     statusBox.focus();
+  }
+
+  function errorEnvio(){
+    statusBox.innerHTML =
+      '<p class="sendfail" role="alert">No se pudo enviar. Prueba otra vez o escríbenos a '
+      + '<a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a>.</p>';
   }
 
   function resetLeadForm(){
@@ -399,9 +479,8 @@
     packTouched = false;
     form.reset();
     CAMPOS.forEach(function(c){ marca(c, true); });
-    $$("#lead-form input, #lead-form select, #lead-form button").forEach(function(el){ el.disabled = false; });
-    form.classList.remove("is-sent");
-    goLabel.textContent = "Empezar mi proyecto";
+    marcaConsent(true);
+    desbloquearForm();
     statusBox.innerHTML = "";
     syncPackSelect();
   }
@@ -424,50 +503,74 @@
     ev.preventDefault();
     if(enviado) return;
 
+    /* Gate minimo: nombre, telefono y consentimiento. Empresa y producto son
+       opcionales y no bloquean nada. */
     var primerFallo = null;
     CAMPOS.forEach(function(c){
       if(!marca(c, valida(c)) && !primerFallo) primerFallo = campoEl(c);
     });
     if(primerFallo){ primerFallo.focus(); return; }
 
+    /* El consentimiento RGPD va DESPUES de validar los campos y ANTES de
+       cualquier envio: un return aqui deja el lead sin salir. */
+    if(!consentBox.checked){
+      marcaConsent(false);
+      consentBox.focus();
+      return;
+    }
+    marcaConsent(true);
+
     var d = {};
-    CAMPOS.forEach(function(c){ d[c.id] = campoEl(c).value.trim(); });
+    CAMPOS.forEach(function(c){ d[c.id] = String(campoEl(c).value || "").trim(); });
 
     var pack = packById(d.pack);
-    var packNombre = pack ? pack.name : d.pack;
-    var direccionCompleta = d.direccion + ", " + d.cp + " " + d.ciudad + " (" + d.provincia + ")";
+    var packNombre = pack ? pack.name : "";
 
-    /* leads_web sí tiene columna propia para empresa y email, así que van
-       aparte además de en `mensaje`: el resumen concatenado se mantiene porque
-       es lo que leen los avisos y el CRM, pero el dato queda consultable.
-       `fecha` la pone el cliente en ISO — la columna no tiene default. */
-    var lead = {
-      nombre:   d.nombre,
-      telefono: d.movil,
-      sector:   SECTOR,
-      interes:  packNombre,
-      empresa:  d.empresa,
-      email:    d.email,
-      mensaje:  "Empresa: " + d.empresa + " | CIF: " + d.cif + " | Email: " + d.email
-              + " | Dirección: " + direccionCompleta,
-      origen:   ORIGEN,
-      fecha:    new Date().toISOString()
-    };
-
-    /* El aviso lleva los campos sueltos: Telegram los pinta uno a uno. */
-    var aviso = {
-      nombre: d.nombre, empresa: d.empresa, cif: d.cif, pack: packNombre,
-      telefono: d.movil, email: d.email,
-      direccion: d.direccion, cp: d.cp, ciudad: d.ciudad, provincia: d.provincia,
-      sector: SECTOR, origen: ORIGEN
-    };
-
-    insertLead(lead, 0);
-    notificarTelegram(aviso);
+    /* El diagnostico del paso 5 viaja en `preferencia`: dice si el visitante
+       tiene web y si trabaja con documentacion propia, que es lo que decide
+       por donde encaja empezar. Si no lo respondio, va vacio. */
+    var diag = [];
+    if(answers.web)  diag.push("Web: "  + (answers.web  === "si" ? "si" : "no"));
+    if(answers.docs) diag.push("Docs: " + (answers.docs === "si" ? "si" : "no"));
+    var preferencia = diag.join(" | ");
 
     enviado = true;
     bloquearForm();
-    confirmar(d.nombre);
+
+    /* Los dos envios arrancan a la vez; el aviso no espera al INSERT.
+       En el aviso, `interes` lleva producto + empresa: es la linea que se lee
+       de un vistazo en la notificacion del movil. */
+    notificarTelegram({
+      nombre:   d.nombre,
+      telefono: d.movil,
+      interes:  [(packNombre || "Demos"), d.empresa].filter(Boolean).join(" · "),
+      mensaje:  ["Lead embudo /demos/", sectorVisto ? "Demo vista: " + sectorVisto : "", preferencia]
+                  .filter(Boolean).join(" | ")
+    });
+
+    insertLead({
+      nombre:      d.nombre,
+      telefono:    d.movil,
+      empresa:     d.empresa,
+      sector:      sectorVisto,
+      interes:     packNombre,
+      preferencia: preferencia,
+      mensaje:     "Lead embudo /demos/",
+      origen:      ORIGEN,
+      fecha:       new Date().toISOString()
+    }).then(function(entro){
+      if(!entro){
+        enviado = false;
+        desbloquearForm();
+        errorEnvio();
+        return;
+      }
+      track("demos_lead_enviado", {
+        producto: packNombre || "",
+        sector:   sectorVisto || ""
+      });
+      confirmar();
+    });
   });
 
   pintaPacks();
@@ -602,9 +705,16 @@
     prevBtn.style.visibility = n <= 1 ? "hidden" : "visible";
     nextLabel.textContent = n === TOTAL ? "Volver al principio" : "Siguiente";
 
+    /* Cada paso deja su entrada en el historial, asi el boton atras del
+       navegador retrocede de paso en vez de sacarte de la pagina. La primera
+       pintada y el regreso por popstate no empujan nada: reemplazan, o el
+       historial se llenaria de duplicados. */
     if(location.hash !== "#paso-" + n){
-      history.replaceState(null, "", "#paso-" + n);
+      var modo = (opts && opts.history) || "push";
+      if(modo === "push"){ history.pushState({paso:n}, "", "#paso-" + n); }
+      else if(modo === "replace"){ history.replaceState({paso:n}, "", "#paso-" + n); }
     }
+    medirPaso(n);
 
     syncPackSelect();
     if(n === TOTAL && !window.IntersectionObserver) cargarCal();
@@ -631,7 +741,7 @@
     renderDemos("");
     renderResult();
     resetLeadForm();
-    show(1);
+    show(1, {history:"replace"});
   }
 
   document.addEventListener("click", function(ev){
@@ -651,9 +761,12 @@
     else if(ev.key === "ArrowLeft"){ go(-1); }
   });
 
-  window.addEventListener("hashchange", function(){
+  /* popstate cubre el boton atras del navegador y tambien la edicion manual
+     del hash. Se pinta con history:"none" porque la entrada ya existe: volver
+     a empujarla dejaria el boton atras girando en bucle. */
+  window.addEventListener("popstate", function(){
     var m = /^#paso-(\d+)$/.exec(location.hash);
-    if(m){ show(parseInt(m[1], 10)); }
+    show(m ? parseInt(m[1], 10) : 1, {history:"none"});
   });
 
   /* ==========================================================
@@ -665,5 +778,5 @@
   renderResult();
 
   var start = /^#paso-(\d+)$/.exec(location.hash);
-  show(start ? parseInt(start[1], 10) : 1, {silent:true});
+  show(start ? parseInt(start[1], 10) : 1, {silent:true, history:"replace"});
 })();
