@@ -73,7 +73,7 @@ Dos productos, y ninguno tiene permanencia:
 - Spark: un agente de IA conversacional instalado en la web que el cliente YA tiene. Atiende 24/7 con la información del negocio, agenda citas y capta el lead avisando al móvil al momento.
 - Core Spark Web: una web nueva con el agente dentro, más SEO y GEO/AEO montados desde el día 1, y un panel para gestionar cada lead. Para quien NO tiene web.
 
-Los dos: propuesta a medida, sin permanencia, operativo en 5-7 días laborables.
+Los dos: propuesta a medida, sin permanencia, operativo en 7 días laborables.
 
 Suelto, aparte de los dos anteriores: la Auditoría GEO IA, un análisis de 35 checks SEO/GEO/AEO con informe PDF en 24h. Pago único, sin permanencia.
 </que_vendemos>
