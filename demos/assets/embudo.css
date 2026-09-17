@@ -540,6 +540,24 @@ html:root{--wml-base:100px;--wml-base-m:96px}
 .wme .field.is-bad input,.wme .field.is-bad select{border-color:var(--err)}
 .wme .field__err{margin:0;font-size:.78rem;font-weight:600;color:var(--err);display:none;line-height:1.5}
 .wme .field.is-bad .field__err{display:block}
+/* Marca de campo opcional: el formulario del embudo solo exige nombre,
+   telefono y consentimiento; el resto se declara a la vista. */
+.wme .field__opt{color:var(--muted);font-weight:400}
+
+/* Consentimiento RGPD. La casilla y el enlace son dos zonas de clic distintas
+   a proposito: el <label> cubre solo el texto, asi pulsar el enlace abre la
+   politica sin marcar la casilla de paso. */
+.wme .consent{display:flex;align-items:flex-start;gap:11px;margin:20px 0 0}
+.wme .consent input{flex:none;width:18px;height:18px;margin:2px 0 0;accent-color:var(--p2);cursor:pointer}
+.wme .consent input:focus-visible{outline:2px solid var(--p2);outline-offset:2px}
+.wme .consent input[aria-invalid="true"]{outline:2px solid var(--err);outline-offset:2px}
+.wme .consent__txt{font-size:.85rem;color:var(--text);line-height:1.55;min-width:0;overflow-wrap:anywhere}
+.wme .consent__txt label{display:inline;font-size:inherit;color:inherit;margin:0;cursor:pointer}
+.wme .consent__txt a{color:var(--p2);text-decoration:underline;text-underline-offset:3px}
+/* Este error vive fuera de un .field, asi que se ensena por su propia clase. */
+.wme #e-consent{margin:8px 0 0}
+.wme #e-consent.is-on{display:block}
+
 .wme .lead-form__go{margin-top:24px}
 .wme .lead-form__go[disabled]{cursor:default;transform:none}
 /* Franja de confianza: solo repite lo que ya está publicado —el plazo, la
@@ -555,6 +573,11 @@ html:root{--wml-base:100px;--wml-base-m:96px}
 .wme .privacy{margin:14px 0 0;font-size:.78rem;color:var(--muted);line-height:1.65}
 .wme .privacy a{color:var(--p2)}
 .wme .lead-form.is-sent .lead-form__grid,.wme .lead-form.is-sent .lead-form__go{opacity:.5}
+
+/* Fallo de envio: el formulario se desbloquea y el aviso sale aqui, no en un
+   alert. Mismo tratamiento que el resto de errores del embudo. */
+.wme .sendfail{margin:18px 0 0;font-size:.88rem;font-weight:600;color:var(--err);line-height:1.6}
+.wme .sendfail a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 
 /* Tarjeta de confirmación: el contenedor vive siempre en el DOM (vacío) para
    que el lector de pantalla anuncie el texto al inyectarlo. */
