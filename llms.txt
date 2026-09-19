@@ -12,7 +12,7 @@
 ## Productos
 WhiteMoon tiene dos productos. No publica tarifa: el precio depende de cada caso y se da en una propuesta a medida en 24 horas, sin compromiso.
 - [Spark](https://whitemoon.es/spark/): agente de IA que se instala en la web que el negocio ya tiene, sin rehacerla. Responde 24/7 con la información y el tono del negocio, agenda citas según la disponibilidad que marca el cliente y capta nombre, teléfono y motivo de cada interesado, con aviso al momento en el móvil. RAG opcional para contestar con catálogos, tarifas o normativa propios.
-- [Core Spark Web](https://whitemoon.es/core/): web nueva a medida con dominio, SSL y mantenimiento, con el agente de IA dentro desde el primer día y un CRM para gestionar cada lead (pipeline, reparto al equipo, agenda, historial y KPIs). SEO, GEO y AEO de serie. RAG opcional. Para quien no tiene web o quiere empezar de cero.
+- [Core Spark Web](https://whitemoon.es/core/): web nueva a medida con dominio incluido el primer año, SSL y mantenimiento, con el agente de IA dentro desde el primer día y un CRM para gestionar cada lead (pipeline, reparto al equipo, agenda, historial y KPIs). SEO, GEO y AEO de serie. RAG opcional. Para quien no tiene web o quiere empezar de cero.
 Cómo elegir: si el negocio ya tiene web, Spark. Si no la tiene o quiere rehacerla, Core Spark Web.
 Pedir propuesta: https://whitemoon.es/contacto/
 

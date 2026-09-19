@@ -70,7 +70,7 @@
       entradilla: "Te montamos la web entera con el agente dentro.",
       ev: "widget_ruta_core",
       items: [
-        ["Web nueva + dominio + SSL + mantenimiento", "Diseño a medida con tu marca. La web es tuya."],
+        ["Web nueva + dominio (primer año) + SSL + mantenimiento", "Diseño a medida con tu marca. La web es tuya."],
         ["El agente dentro desde el día 1", "Responde, agenda y capta 24/7. RAG opcional."],
         ["CRM para gestionar cada lead", "Pipeline, reparto al equipo, agenda, historial y KPIs."],
         ["SEO, GEO y AEO de serie", "Preparada para Google y para aparecer en las respuestas de las IA."],

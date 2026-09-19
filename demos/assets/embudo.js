@@ -23,9 +23,9 @@
     },
     {
       id:"core-spark-web", warranty:true, name:"Core Spark Web", forWho:"Aún no tienes web",
-      tag:"Web profesional + dominio + agente Spark conversacional 24/7 + SEO/GEO/AEO completo desde el día 1.",
+      tag:"Web profesional + dominio (primer año) + agente Spark conversacional 24/7 + SEO/GEO/AEO completo desde el día 1.",
       sub:"Propuesta a medida · Sin permanencia · Operativo en 7 días laborables",
-      short:"Web profesional con dominio, agente de chat 24/7 y SEO/GEO/AEO desde el día 1.",
+      short:"Web profesional con dominio (primer año), agente de chat 24/7 y SEO/GEO/AEO desde el día 1.",
       url:"https://whitemoon.es/core/",
       items:["Web profesional + dominio primer año incluido","SSL + hosting + mantenimiento técnico","Agente Spark conversacional 24/7","Sistema de reservas y citas online","SEO técnico + GEO/AEO · visible en ChatGPT, Grok y Perplexity"]
     }
@@ -37,7 +37,7 @@
       alt:"core-spark-web", altWhy:"es la opción si algún día quieres renovar también la web, con el agente dentro."
     },
     "core-spark-web":{
-      why:"Como aún no tienes web, te conviene empezar por las dos cosas a la vez: tu web con tu dominio, el agente Spark contestando a cualquier hora y el SEO/GEO/AEO puesto desde el primer día.",
+      why:"Como aún no tienes web, te conviene empezar por las dos cosas a la vez: tu web con dominio incluido el primer año, el agente Spark contestando a cualquier hora y el SEO/GEO/AEO puesto desde el primer día.",
       alt:"spark", altWhy:"te basta si más adelante ya tienes web propia: pone el agente en la que tengas, sin rehacerla."
     }
   };
