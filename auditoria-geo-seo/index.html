@@ -356,6 +356,10 @@
       return r.json();
     }).then(function(data){
       if(!data || data.ok === false){ showError(); return; }
+      // Aquí NO se emite lead_captured: esta página no inserta en leads_web
+      // desde el cliente. El POST va a un servicio externo (AUDIT_ENDPOINT) y
+      // no podemos confirmar que guarde el lead, así que contarlo como
+      // conversión sería medir un lead que puede no existir.
       renderResult(data);
     }).catch(function(err){
       clearTimeout(timeout);

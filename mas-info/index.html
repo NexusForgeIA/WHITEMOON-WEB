@@ -372,6 +372,13 @@
           }).catch(function(err){ console.warn('[mas-info] Lead notify falló', err); });
         } catch(e){ console.warn('[mas-info] Lead notify error', e); }
         try { if(typeof wmTrack === 'function') wmTrack('submit_mas_info', { sector: sector }); } catch(e){}
+        // Lead real: r.ok confirmado y teléfono utilizable (9+ dígitos, mismo
+        // criterio que wm-agente.js).
+        try {
+          if(typeof wmTrack === 'function' && (telefono.match(/\d/g) || []).length >= 9){
+            wmTrack('lead_captured', { method: 'form', wm_source: payload.origen });
+          }
+        } catch(e){}
         // 4 · Mensaje de éxito
         showSuccess();
       } else {

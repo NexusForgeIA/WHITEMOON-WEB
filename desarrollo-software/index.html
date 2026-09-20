@@ -745,6 +745,11 @@
       }
       if (typeof window.wmTrack === 'function') {
         window.wmTrack('enviar_form_desarrollo', { placement: 'consultoria' });
+        // Lead real: INSERT confirmado (entro === true) y teléfono utilizable.
+        // Mismo criterio de 9+ dígitos que wm-agente.js.
+        if ((telefono.match(/\d/g) || []).length >= 9) {
+          window.wmTrack('lead_captured', { method: 'form', wm_source: ORIGEN });
+        }
       }
       form.style.display = 'none';
       if (ok) ok.style.display = 'block';

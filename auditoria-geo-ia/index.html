@@ -568,6 +568,11 @@
         try {
           if(typeof wmTrack === 'function'){
             wmTrack('submit_auditoria_geo_ia', { sector: sector });
+            // Lead real: r.ok confirmado y teléfono utilizable (9+ dígitos,
+            // mismo criterio que wm-agente.js).
+            if((telefono.match(/\d/g) || []).length >= 9){
+              wmTrack('lead_captured', { method: 'form', wm_source: payload.origen });
+            }
           }
         } catch(e){}
         showSuccess();

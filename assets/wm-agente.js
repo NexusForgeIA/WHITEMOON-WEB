@@ -103,6 +103,15 @@
     if (typeof gtag !== "undefined") gtag("event", name);
   }
 
+  // Los eventos con parámetros van por wmTrack (assets/wm-track.js), que
+  // renombra los reservados de atribución antes de llegar a GA4. track() de
+  // arriba no puede: manda solo el nombre.
+  function trackParams(name, params) {
+    if (typeof window.wmTrack === "function") {
+      try { window.wmTrack(name, params); } catch (e) { /* nunca romper la UI */ }
+    }
+  }
+
   var css = ''
     + '#wm-agente{position:fixed;right:24px;bottom:var(--wml-base,24px);z-index:9998;'
     + "font-family:'Sora',system-ui,-apple-system,'Segoe UI',sans-serif}"
@@ -514,6 +523,9 @@
         return;
       }
       track("widget_lead_enviado");
+      // Lead real: el INSERT entró y el teléfono ya pasó el filtro de 9+
+      // dígitos en la validación de arriba, que no deja llegar hasta aquí.
+      trackParams("lead_captured", { method: "widget", wm_source: ORIGEN });
       irA(4);
     });
   });

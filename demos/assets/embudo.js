@@ -569,6 +569,9 @@
         producto: packNombre || "",
         sector:   sectorVisto || ""
       });
+      /* Lead real: el INSERT entro y el movil ya paso el filtro de 9+ cifras
+         de CAMPOS, que no deja llegar hasta aqui. */
+      track("lead_captured", { method: "demos", wm_source: ORIGEN });
       confirmar();
     });
   });
