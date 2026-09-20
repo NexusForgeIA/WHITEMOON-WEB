@@ -636,6 +636,58 @@
       layout: "month_view"
     });
 
+    /* ----------------------------------------------------------
+       meeting_scheduled — la reserva de verdad, no el clic
+       ----------------------------------------------------------
+       Los 327 enlaces a cal.com del sitio abren pestaña nueva y solo se
+       puede medir la INTENCION (click_nav_meeting, launcher_agendar...).
+       Este es el unico embed inline que hay, asi que es el unico sitio
+       donde se puede saber que alguien reservo de verdad.
+
+       Como funciona el 'on' del embed (comprobado en app.cal.com/embed/
+       embed.js): on(accion, cb) hace addEventListener sobre window del
+       tipo "CAL:<namespace>:<accion>". Por eso hay que registrarlo en
+       Cal.ns.contenidos y no en un Cal global: con el namespace vacio
+       escucharia "CAL::..." y no llegaria nada. No hay lista blanca de
+       acciones, asi que registrar una que el booker no emita es inocuo.
+
+       Se escuchan DOS nombres: la doc de Cal.com documenta hoy
+       bookingSuccessfulV2 y da bookingSuccessful por obsoleto, pero el
+       nombre lo emite el iframe, no el embed.js que servimos, asi que no
+       se puede saber desde aqui cual manda la version desplegada. Con los
+       dos queda cubierto en ambos casos; `medidas` evita contar dos veces
+       si llegaran los dos.
+
+       NO se escucha dryRunBookingSuccessfulV2: son reservas de prueba.
+       ---------------------------------------------------------- */
+    var medidas = {};
+    function alReservar(e){
+      var d = (e && e.detail && e.detail.data) || {};
+      /* Dedupe por reserva. Si el payload no trae uid se cae a una sola
+         medicion por carga de pagina, que es el caso realista aqui. */
+      var clave = d.uid || "sin-uid";
+      if(medidas[clave]) return;
+      medidas[clave] = true;
+
+      /* "Reservada" no siempre es "confirmada": si el event type pide
+         confirmacion del anfitrion, la reserva nace pendiente. V2 lo dice
+         en `status`; el payload antiguo, en `confirmed`. Solo se descarta
+         cuando el dato dice explicitamente que esta pendiente: si no viene,
+         se mide, que es preferible a no medir nada por un campo ausente. */
+      var pendiente = d.status === "pending" || d.confirmed === false;
+      if(pendiente) return;
+
+      /* meeting_type sale del slug que ya conocemos (CAL_LINK es
+         "whitemoon/contenidos"). El payload V2 no trae eventType.slug
+         —solo eventTypeId—, asi que no se inventa el campo. */
+      window.wmTrack && window.wmTrack("meeting_scheduled", {
+        source:       "demos",
+        meeting_type: CAL_LINK.split("/").pop() || "demo"
+      });
+    }
+    window.Cal.ns.contenidos("on", {action: "bookingSuccessfulV2", callback: alReservar});
+    window.Cal.ns.contenidos("on", {action: "bookingSuccessful",   callback: alReservar});
+
     /* El embed monta el iframe por su cuenta y no siempre le pone título: sin
        él, un lector de pantalla anuncia un marco sin nombre. */
     var titula = new MutationObserver(function(){
