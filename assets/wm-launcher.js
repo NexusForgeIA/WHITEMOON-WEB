@@ -10,9 +10,11 @@
    - Panel con 4 acciones: Spark y Core Spark Web por WhatsApp con
      texto prellenado, reunión en Cal.com y WhatsApp directo.
    - Cierra con Esc, clic fuera o foco fuera; el foco vuelve al FAB.
-   - Eventos GA4 al abrir y en cada acción, solo con el nombre del
-     evento: sin parámetros ni datos personales. gtag es el shim de
-     cookie-consent.js, así que respeta el consentimiento.
+   - Eventos GA4 al abrir (abrir_launcher) y al agendar (launcher_agendar),
+     solo con el nombre del evento: sin parámetros ni datos personales.
+     gtag es el shim de cookie-consent.js, así que respeta el
+     consentimiento. Las tres acciones de WhatsApp NO se miden aquí: son
+     <a href="wa.me…"> y las recoge el listener delegado de wm-track.js.
    - Mientras el banner de cookies (#wm-cookie-banner) está en el DOM
      el FAB se oculta; reaparece al aceptar o rechazar.
    - Una página con su propio flotante abajo a la derecha puede subirlo
@@ -45,11 +47,15 @@
     if (typeof gtag !== "undefined") gtag("event", name);
   }
 
+  // Las tres acciones de WhatsApp no llevan `ev`: son <a href="wa.me…"> y
+  // las mide el listener delegado de assets/wm-track.js, que emite
+  // whatsapp_click con placement:'launcher'. Marcarlas aquí también daría
+  // dos eventos por clic.
   var ACTIONS = [
-    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes", ev: "launcher_spark_whatsapp" },
-    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA", ev: "launcher_core_whatsapp" },
+    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes" },
+    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA" },
     { href: CAL, icon: "cal", label: "Agendar reunión", hint: "Elige día y hora", ev: "launcher_agendar" },
-    { href: WA, icon: "wa", label: "WhatsApp", hint: "643 199 580", ev: "launcher_whatsapp" }
+    { href: WA, icon: "wa", label: "WhatsApp", hint: "643 199 580" }
   ];
 
   var css = ''
@@ -167,7 +173,8 @@
   // se recoge.
   Array.prototype.forEach.call(links, function (a) {
     a.addEventListener("click", function () {
-      track(ACTIONS[+a.getAttribute("data-i")].ev);
+      var ev = ACTIONS[+a.getAttribute("data-i")].ev;
+      if (ev) track(ev);   // solo Cal: las de WhatsApp las mide wm-track.js
       close(false);
     });
   });
