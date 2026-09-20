@@ -669,20 +669,25 @@
       if(medidas[clave]) return;
       medidas[clave] = true;
 
-      /* "Reservada" no siempre es "confirmada": si el event type pide
-         confirmacion del anfitrion, la reserva nace pendiente. V2 lo dice
-         en `status`; el payload antiguo, en `confirmed`. Solo se descarta
-         cuando el dato dice explicitamente que esta pendiente: si no viene,
-         se mide, que es preferible a no medir nada por un campo ausente. */
-      var pendiente = d.status === "pending" || d.confirmed === false;
-      if(pendiente) return;
+      /* Se mide toda reserva completada, pendiente de confirmacion o no:
+         el estado NO filtra, viaja como parametro. Si el event type pide
+         confirmacion del anfitrion, la reserva nace pendiente y aun asi
+         cuenta como reserva hecha; separarlas es cosa de GA4.
+         V2 trae `status`; el payload antiguo solo `confirmed`, que se
+         normaliza al mismo vocabulario para que la dimension sirva
+         vengan por donde vengan. */
+      var estado = d.status;
+      if(!estado && typeof d.confirmed === "boolean"){
+        estado = d.confirmed ? "accepted" : "pending";
+      }
 
       /* meeting_type sale del slug que ya conocemos (CAL_LINK es
          "whitemoon/contenidos"). El payload V2 no trae eventType.slug
          —solo eventTypeId—, asi que no se inventa el campo. */
       window.wmTrack && window.wmTrack("meeting_scheduled", {
-        source:       "demos",
-        meeting_type: CAL_LINK.split("/").pop() || "demo"
+        wm_source:    "demos",
+        meeting_type: CAL_LINK.split("/").pop() || "demo",
+        status:       estado || "unknown"
       });
     }
     window.Cal.ns.contenidos("on", {action: "bookingSuccessfulV2", callback: alReservar});
