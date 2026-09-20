@@ -73,7 +73,9 @@
       } catch (e) { console.warn('[webmcp] aviso error', e); }
 
       if (typeof window.wmTrack === 'function') {
-        window.wmTrack('lead_captured', { source: ORIGEN });
+        // Misma forma de params que el resto de emisores de lead_captured.
+        // `source` lo renombraba wm-track.js a `wm_source`; ahora va explícito.
+        window.wmTrack('lead_captured', { method: 'mcp', wm_source: ORIGEN });
       }
       return true;
     });

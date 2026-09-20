@@ -8,10 +8,19 @@
  * POST a Supabase REST /leads_web con payload completo según regla CLAUDE.md:
  *   nombre, telefono, sector, interes, mensaje, preferencia, origen, fecha
  * Si el envío falla → console.warn, NUNCA se interrumpe el flujo del usuario.
+ *
+ * GA4: `lead_form_submit` y `lead_captured` se emiten SOLO con respuesta 2xx
+ * de Supabase (INSERT confirmado). `lead_captured` exige además un teléfono
+ * de 9+ dígitos. Un fallo de red o un 4xx no se miden.
  */
 (function(){
   var SUPABASE_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co';
   var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1sYXF0bml1am52ZnhjdmNvdXJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MzUyMzIsImV4cCI6MjA5MzQxMTIzMn0.Neh7VUS8ADsxf0DPab0JoJyGXOAXnLIaXzXbKzj2BGs';
+
+  // Un teléfono utilizable tiene al menos 9 dígitos (mismo criterio que
+  // wm-agente.js). Solo decide si el lead SE MIDE: el envío a leads_web no
+  // cambia, para no perder un lead con un formato raro.
+  function digitos(s){ return ((s || '').match(/\d/g) || []).length; }
 
   function showSuccess(form, nombre){
     var ok = form.querySelector('.calc-lead-ok');
@@ -58,19 +67,24 @@
       body: JSON.stringify(payload)
     })
     .then(function(r){
-      if(!r.ok){ console.warn('lead_form HTTP ' + r.status); }
+      // El acuse de recibo al usuario NO depende de la medición: se muestra
+      // siempre, igual que antes (regla CLAUDE.md: nunca interrumpir el flujo).
       showSuccess(form, nombre);
-      if(typeof window.wmTrack === 'function'){
-        window.wmTrack('lead_form_submit', { source: source });
+      // Un 4xx/5xx de Supabase significa que el lead NO entró. Antes se medía
+      // igual y los envíos fallidos se contaban como leads buenos.
+      if(!r.ok){ console.warn('lead_form HTTP ' + r.status); return; }
+      if(typeof window.wmTrack !== 'function') return;
+      window.wmTrack('lead_form_submit', { source: source });
+      // Lead real: confirmado por el servidor y con un teléfono utilizable.
+      if(digitos(telefono) >= 9){
+        window.wmTrack('lead_captured', { method: 'calc', wm_source: source });
       }
     })
     .catch(function(err){
-      // Regla CLAUDE.md: fallo Supabase → console.warn, NUNCA interrumpe flujo
+      // Regla CLAUDE.md: fallo Supabase → console.warn, NUNCA interrumpe flujo.
+      // Sin respuesta del servidor no hay confirmación de INSERT: no se mide.
       console.warn('lead_form error:', err);
       showSuccess(form, nombre);
-      if(typeof window.wmTrack === 'function'){
-        window.wmTrack('lead_form_submit', { source: source, offline: true });
-      }
     });
 
     return false;
