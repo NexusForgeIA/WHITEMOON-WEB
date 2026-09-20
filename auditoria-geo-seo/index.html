@@ -356,15 +356,10 @@
       return r.json();
     }).then(function(data){
       if(!data || data.ok === false){ showError(); return; }
-      // Lead real: el servicio ha respondido 200 y ha aceptado el análisis
-      // (data.ok). Aquí el lead no se inserta desde el cliente: nombre y
-      // teléfono viajan en el POST y los guarda el servicio. Teléfono
-      // utilizable con el mismo criterio de 9+ dígitos que wm-agente.js.
-      try {
-        if(typeof wmTrack === 'function' && (telefono.match(/\d/g) || []).length >= 9){
-          wmTrack('lead_captured', { method: 'form', wm_source: 'auditoria-geo-seo' });
-        }
-      } catch(e){}
+      // Aquí NO se emite lead_captured: esta página no inserta en leads_web
+      // desde el cliente. El POST va a un servicio externo (AUDIT_ENDPOINT) y
+      // no podemos confirmar que guarde el lead, así que contarlo como
+      // conversión sería medir un lead que puede no existir.
       renderResult(data);
     }).catch(function(err){
       clearTimeout(timeout);
