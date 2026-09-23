@@ -16,7 +16,7 @@
   - **Spark** (`/spark/`) — agente de IA conversacional instalado en la web que el cliente YA tiene.
   - **Core Spark Web** (`/core/`) — web nueva con el agente dentro, más SEO y GEO/AEO montados desde el día 1. Para quien NO tiene web.
   - **Agente IA Citas** (`/agente-ia-citas/`) — agente de reservas para negocios de cita previa (peluquería, estética, uñas, barbería, taller, fisio, podología, dental…): el cliente reserva solo por QR o con un enlace, o desde el agente embebido en su web, sin llamadas. Panel de citas (alta manual, mover/cancelar, importar) y reseñas por WhatsApp que envía el propio negocio en un clic: **no** usa la API de WhatsApp Business ni envía nada automático. No garantiza ventas.
-  - Los tres: **propuesta a medida, sin permanencia**. Spark y Core Spark Web: operativo en 5-7 días laborables.
+  - Los tres: **propuesta a medida, sin permanencia**, operativo en 5-7 días laborables.
   - Producto suelto: **Auditoría GEO IA** (`/auditoria-geo-ia/`) — pago único, informe en 24h. En web se dice "Pago único · Sin permanencia", **sin cifra**.
 - **CERO PRECIO EN WEB.** La web no publica tarifa en ningún soporte: ni texto visible, ni `<meta>`, ni JSON-LD (`price`/`priceRange`/`lowPrice`/`highPrice`), ni JavaScript. El precio se cierra en una llamada.
   - Fórmula estándar: **"Propuesta a medida, sin permanencia."**
