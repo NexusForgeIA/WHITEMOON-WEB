@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente IA de citas: reservas por QR, sin llamadas · WhiteMoon</title>
+<meta name="description" content="Agente de IA que da citas por ti: tus clientes reservan solos por QR o desde tu web, sin llamadas. Para peluquerías, estética, talleres, fisios y clínicas.">
+<meta name="keywords" content="agente IA citas, reservas por QR, agente de reservas con IA, cita previa sin llamadas, WhiteMoon">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/agente-ia-citas/">
+<meta name="theme-color" content="#08080d">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="WhiteMoon Agencia de IA">
+<meta property="og:locale" content="es_ES">
+<meta property="og:title" content="Agente IA de citas: reservas por QR, sin llamadas · WhiteMoon">
+<meta property="og:description" content="Agente de IA que da citas por ti: tus clientes reservan solos por QR o desde tu web, sin llamadas. Para peluquerías, estética, talleres, fisios y clínicas.">
+<meta property="og:url" content="https://whitemoon.es/agente-ia-citas/">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-agente-ia-citas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Agente IA Citas · WhiteMoon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agente IA de citas: reservas por QR, sin llamadas · WhiteMoon">
+<meta name="twitter:description" content="Agente de IA que da citas por ti: tus clientes reservan solos por QR o desde tu web, sin llamadas. Para peluquerías, estética, talleres, fisios y clínicas.">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-agente-ia-citas.jpg">
+<meta name="geo.region" content="ES-MD">
+<meta name="geo.placename" content="Majadahonda, Madrid">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces-600-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sora-latin-var.woff2" crossorigin>
+<script>if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/assets/producto.css?v=2026091501">
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
+<style>
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('/assets/fonts/fraunces-600-latin.woff2') format('woff2')}
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),url('/assets/fonts/sora-latin-var.woff2') format('woff2')}
+html,body{background:#08080d}
+</style>
+<style>
+.steps.steps--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chat-body.book{gap:10px}
+.chat-body.book>*{grid-area:auto}
+.chat-body.book>.typing,.chat-body.book>.s1{grid-area:1/1}
+.msg.msg--me{justify-self:end;background:rgba(124,77,255,.16);border-color:rgba(157,112,255,.34);border-bottom-left-radius:16px;border-bottom-right-radius:5px}
+.s3{animation-delay:2.7s}
+.s4{animation-delay:3.3s}
+@media (max-width:900px){.steps.steps--3{grid-template-columns:1fr}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://whitemoon.es/agente-ia-citas/#servicio",
+  "name": "Agente IA Citas · reservas por QR o en tu web",
+  "serviceType": "Agente de IA para reservas y cita previa",
+  "description": "Agente de IA que da citas por ti: tus clientes reservan solos por QR o desde tu web, sin llamadas. Para peluquerías, estética, talleres, fisios y clínicas.",
+  "url": "https://whitemoon.es/agente-ia-citas/",
+  "audience": {
+    "@type": "BusinessAudience",
+    "name": "Negocios que trabajan con cita previa: peluquería, estética, uñas, barbería, taller, fisioterapia, podología y clínica dental"
+  },
+  "provider": {
+    "@type": "LocalBusiness",
+    "@id": "https://whitemoon.es/#negocio",
+    "name": "WhiteMoon Agencia IA",
+    "url": "https://whitemoon.es",
+    "telephone": "+34643199580",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Majadahonda",
+      "addressRegion": "Madrid",
+      "postalCode": "28220",
+      "addressCountry": "ES"
+    }
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Majadahonda"
+    },
+    {
+      "@type": "City",
+      "name": "Madrid"
+    },
+    {
+      "@type": "Country",
+      "name": "España"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta el Agente IA Citas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No publicamos tarifa: depende de tu negocio. Te hacemos una propuesta a medida, sin permanencia, y la cerramos en una llamada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito tener web?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Tus clientes reservan escaneando un QR o abriendo un enlace. Si ya tienes web, también podemos poner el agente dentro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Usa la API de WhatsApp Business?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Usamos los enlaces click-to-chat de WhatsApp (wa.me): se abre la conversación con el mensaje escrito y lo envías tú. No enviamos mensajes automáticos en tu nombre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con las citas que me llegan por teléfono?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las das de alta a mano en el panel de citas, junto a las que entran por el agente. Desde ahí también puedes moverlas o cancelarlas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo pasar la agenda que ya tengo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. El panel permite importar las citas que ya tienes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Me garantiza más clientes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Facilita que quien ya quiere venir reserve sin llamar. No te prometemos más ventas ni cifras que no podamos enseñarte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Avisas con 30 días y lo cancelas, sin penalizaciones."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://whitemoon.es/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Agente IA",
+      "item": "https://whitemoon.es/#servicios"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Agente IA Citas",
+      "item": "https://whitemoon.es/agente-ia-citas/"
+    }
+  ]
+}
+</script>
+<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/wm-nav.js?v=2026091501"></script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ic-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/><path d="M8.5 11h.01M12 11h.01M15.5 11h.01"/></symbol><symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol><symbol id="ic-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol><symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol><symbol id="ic-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.2 7.5L3 20.5l1.6-5.6A8.4 8.4 0 1 1 21 11.5z"/><path d="M8.8 9c.2-.5.4-.5.7-.5h.6c.2 0 .4 0 .6.5l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.3.4-.1.7a6 6 0 0 0 2.7 2.3c.3.1.5 0 .7-.2l.5-.6c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.2.4.4a1.8 1.8 0 0 1-1.3 1.7 3.7 3.7 0 0 1-2.7-.5 10 10 0 0 1-4.5-4.4 3.5 3.5 0 0 1-.6-2.1c0-.4.3-.7.6-.8z"/></symbol><symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></symbol><symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol><symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="ic-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="12" rx="3.5"/><path d="M12 3.5v4M8.5 13h.01M15.5 13h.01M9.5 16.4h5"/></symbol><symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="ic-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></symbol><symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol><symbol id="ic-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol><symbol id="ic-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol><symbol id="ic-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></symbol><symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="ic-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12h12"/></symbol><symbol id="ic-yes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 5-5.5"/></symbol><symbol id="ic-no" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></symbol><symbol id="ic-layout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 20V9"/></symbol><symbol id="ic-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></symbol><symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="ic-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol><symbol id="ic-qr" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.2"/><rect x="14" y="3" width="7" height="7" rx="1.2"/><rect x="3" y="14" width="7" height="7" rx="1.2"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></symbol></svg>
+
+<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
+<nav class="wm-nav" aria-label="Navegación principal">
+  <div class="wm-nav__row">
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
+
+    <div class="wm-nav__center">
+      <a href="/inteligencia-artificial/">IA</a>
+      <div class="wm-nav__dd" aria-expanded="false">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="wm-nav__menu" role="menu">
+          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
+        </div>
+      </div>
+      <a href="/desarrollo-software/">Software a medida</a>
+      <a href="/marketing/">Marketing</a>
+      <a href="/contacto/">Contacto</a>
+    </div>
+
+    <div class="wm-nav__right">
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    </div>
+  </div>
+</nav>
+<aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
+  <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/spark/">Spark</a>
+  <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
+  <a class="wm-drawer__link" href="/marketing/">Marketing</a>
+  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</aside>
+
+<main id="main" class="pp">
+
+  <!-- 1 · HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Producto · Agente IA Citas</span>
+        <h1>Tus clientes reservan solos, <span class="accent">por QR o con un enlace</span></h1>
+        <p class="hero-desc">Un agente de IA que <strong>busca hueco y cierra la cita por ti, sin llamadas</strong>. Para peluquería, estética, uñas, barbería, taller, fisio, podología, dental y cualquier negocio que trabaje con cita previa.</p>
+        <div class="hero-actions">
+          <a class="btn btn--p" href="https://wa.me/34643199580?text=Hola%2C%20me%20interesa%20el%20Agente%20IA%20Citas" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="btn btn--ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_reunion',{producto:'agente-ia-citas',placement:'hero'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <div class="chat" role="group" aria-label="Ejemplo de una reserva con el agente">
+          <div class="chat-head">
+            <span class="av"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span>
+            <div><b>Reservas · tu negocio<span class="live-dot" aria-hidden="true"></span></b><small>Abierto por QR · sin llamadas</small></div>
+          </div>
+          <div class="chat-body book">
+            <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+            <p class="msg seq s1">¡Hola! ¿Qué servicio quieres reservar?</p>
+            <p class="msg msg--me seq s2">Corte y color</p>
+            <p class="msg seq s3">Tengo hueco el jueves a las 10:30 o a las 17:00. ¿Cuál te va mejor?</p>
+          </div>
+          <div class="chips seq s4"><span>Jueves 10:30</span><span>Jueves 17:00</span><span>Otro día</span></div>
+          <div class="chat-foot" aria-hidden="true"><span class="chat-input">Escribe tu respuesta…</span><span class="chat-send"><svg aria-hidden="true"><use href="#ic-send"/></svg></span></div>
+        </div>
+        <p class="cap">Ejemplo ilustrativo de una reserva</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · TIRA DE BENEFICIOS -->
+  <div class="strip">
+    <div class="wrap">
+      <ul class="strip-grid" role="list" style="list-style:none;margin:0;padding:0">
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-clock"/></svg></span><b>Reservas 24/7</b><span>También de noche y en festivos</span></li>
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-qr"/></svg></span><b>Por QR</b><span>En el mostrador, el escaparate o una tarjeta</span></li>
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-globe"/></svg></span><b>O en tu web</b><span>Embebido, sin rehacerla</span></li>
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-layout"/></svg></span><b>Panel de citas</b><span>Alta manual, mover y cancelar</span></li>
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-wa"/></svg></span><b>Reseñas por WhatsApp</b><span>Mensaje listo, lo envías tú</span></li>
+        <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-shield"/></svg></span><b>Sin permanencia</b><span>Propuesta a medida</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3 · CÓMO FUNCIONA -->
+  <section class="sec" id="como-funciona">
+    <span class="bignum bignum--l" aria-hidden="true" data-n="01"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Del QR a la cita,<span class="accent">en tres pasos.</span></h2>
+        <p>Sin llamadas, sin idas y venidas y sin que tu cliente instale nada.</p>
+      </div>
+      <ol class="steps steps--3" style="list-style:none;margin:0;padding:0">
+        <li class="step reveal"><span class="n">01</span><span class="ic"><svg aria-hidden="true"><use href="#ic-qr"/></svg></span><h3>Escanean el QR o abren el enlace</h3><p>El QR va en tu mostrador, el escaparate o una tarjeta. El enlace lo compartes en tu web, en Instagram o por WhatsApp.</p></li>
+        <li class="step reveal"><span class="n">02</span><span class="ic"><svg aria-hidden="true"><use href="#ic-bot"/></svg></span><h3>El agente busca hueco y reserva</h3><p>Pregunta qué servicio quieren, ofrece los huecos libres según tu disponibilidad y deja la cita apuntada.</p></li>
+        <li class="step reveal"><span class="n">03</span><span class="ic"><svg aria-hidden="true"><use href="#ic-layout"/></svg></span><h3>Tú lo gestionas desde el panel</h3><p>Todas las citas en un mismo sitio: das de alta las que te llegan por teléfono o en persona, las mueves o las cancelas.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 4 · QUÉ INCLUYE -->
+  <section class="sec sec--alt" id="incluye">
+    <span class="bignum bignum--r" aria-hidden="true" data-n="02"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Qué incluye</span>
+        <h2>Las reservas, la agenda<span class="accent">y las reseñas.</span></h2>
+      </div>
+      <div class="incl">
+        <div class="incl-list reveal">
+          <h3>El Agente IA Citas incluye</h3>
+          <ul>
+            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Agente de reservas 24/7</b><span>Por QR o embebido en tu web. Da cita también de noche, en fin de semana y en festivos.</span></div></li>
+            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Con tus servicios y tus horarios</b><span>Solo ofrece los huecos que tú dejas libres.</span></div></li>
+            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Panel de citas</b><span>Alta manual, mover y cancelar citas, e importar la agenda que ya tienes.</span></div></li>
+            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Reseñas por WhatsApp</b><span>Tras la cita, abres WhatsApp con el mensaje para pedir la reseña ya escrito y lo envías tú.</span></div></li>
+          </ul>
+        </div>
+        <div class="ask reveal">
+          <span class="eyebrow">Precio</span>
+          <h3>Sin tarifa publicada.<span class="accent">Propuesta a medida.</span></h3>
+          <p>Depende de tu negocio y de cómo trabajas. Lo vemos en una llamada y te hacemos la propuesta.</p>
+          <div class="tags"><span>Propuesta a medida</span><span>Sin permanencia</span><span>Sin compromiso</span></div>
+          <a class="btn btn--p" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_reunion',{producto:'agente-ia-citas',placement:'incluye'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · PARA QUIÉN -->
+  <section class="sec" id="para-quien">
+    <span class="bignum bignum--l" aria-hidden="true" data-n="03"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Para quién</span>
+        <h2>Para quién es<span class="accent">y para quién no.</span></h2>
+        <p>Preferimos que lo sepas antes de hablar con nosotros.</p>
+      </div>
+      <div class="yesno">
+        <div class="yn yn--si reveal">
+          <h3><svg aria-hidden="true"><use href="#ic-yes"/></svg>Encaja si…</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Trabajas con cita previa:</b> peluquería, estética, uñas, barbería, taller, fisio, podología, dental…</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Se te va el día al teléfono</b> dando, moviendo y cancelando citas.</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Te piden cita fuera de horario</b> o mientras estás atendiendo.</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>No quieres tocar tu web:</b> el QR y el enlace funcionan sin ella.</span></li>
+          </ul>
+        </div>
+        <div class="yn yn--no reveal">
+          <h3><svg aria-hidden="true"><use href="#ic-no"/></svg>No encaja si…</h3>
+          <ul>
+            <li><svg aria-hidden="true"><use href="#ic-minus"/></svg><span><b>Atiendes por orden de llegada</b> y no das cita.</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-minus"/></svg><span><b>Buscas que te traiga clientes nuevos:</b> el agente facilita la reserva a quien ya quiere venir.</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-minus"/></svg><span><b>Necesitas envíos masivos o automáticos por WhatsApp:</b> no usamos la API de WhatsApp Business.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · SIN HUMO -->
+  <section class="sec sec--alt" id="sin-humo">
+    <span class="bignum bignum--r" aria-hidden="true" data-n="04"></span>
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow">Sin humo</span>
+        <h2>Lo que prometemos,<span class="accent">y lo que no.</span></h2>
+      </div>
+      <div class="does">
+        <article class="does-c reveal"><span class="does-n" aria-hidden="true">01</span><h3>No garantiza ventas</h3><p>Hace más fácil reservar y te quita llamadas. Que la agenda se llene depende de tu negocio, no del agente.</p></article>
+        <article class="does-c reveal"><span class="does-n" aria-hidden="true">02</span><h3>WhatsApp por enlace, no por API</h3><p>Usamos los enlaces click-to-chat de WhatsApp (wa.me): se abre la conversación con el mensaje escrito y lo envías tú. No usamos la API de WhatsApp Business ni enviamos mensajes en tu nombre.</p></article>
+        <article class="does-c reveal"><span class="does-n" aria-hidden="true">03</span><h3>Sin datos inventados</h3><p>Aquí no hay testimonios, casos ni porcentajes de mejora. No te prometemos cifras que no podamos enseñarte.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · FAQ -->
+  <section class="sec" id="faq">
+    <span class="bignum bignum--l" aria-hidden="true" data-n="05"></span>
+    <div class="wrap">
+      <div class="sec-head sec-head--c reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>Lo que más nos preguntan</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item reveal"><summary class="faq-q">¿Cuánto cuesta el Agente IA Citas?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No publicamos tarifa: depende de tu negocio. Te hacemos una propuesta a medida, sin permanencia, y la cerramos en una llamada.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Necesito tener web?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Tus clientes reservan escaneando un QR o abriendo un enlace. Si ya tienes web, también podemos poner el agente dentro.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Usa la API de WhatsApp Business?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Usamos los enlaces click-to-chat de WhatsApp (wa.me): se abre la conversación con el mensaje escrito y lo envías tú. No enviamos mensajes automáticos en tu nombre.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Qué pasa con las citas que me llegan por teléfono?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Las das de alta a mano en el panel de citas, junto a las que entran por el agente. Desde ahí también puedes moverlas o cancelarlas.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Puedo pasar la agenda que ya tengo?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>Sí. El panel permite importar las citas que ya tienes.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Me garantiza más clientes?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Facilita que quien ya quiere venir reserve sin llamar. No te prometemos más ventas ni cifras que no podamos enseñarte.</p></div></details>
+        <details class="faq-item reveal"><summary class="faq-q">¿Hay permanencia?<span class="pl" aria-hidden="true"></span></summary><div class="faq-a"><p>No. Avisas con 30 días y lo cancelas, sin penalizaciones.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · CONTACTO -->
+  <section class="sec sec--alt" id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <div>
+          <div class="sec-head reveal">
+            <span class="eyebrow">Contacto</span>
+            <h2>¿Lo montamos<span class="accent">en tu negocio?</span></h2>
+            <p>Escríbenos por WhatsApp o agenda una llamada y vemos cómo encaja en tu forma de dar citas.</p>
+          </div>
+          <div class="ccols reveal">
+            <a class="ccol" href="https://wa.me/34643199580?text=Hola%2C%20me%20interesa%20el%20Agente%20IA%20Citas" target="_blank" rel="noopener"><span class="ic"><svg aria-hidden="true"><use href="#ic-wa"/></svg></span><span class="k">WhatsApp</span><span class="v">643 199 580</span></a>
+            <a class="ccol" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_reunion',{producto:'agente-ia-citas',placement:'contacto-col'})"><span class="ic"><svg aria-hidden="true"><use href="#ic-calendar"/></svg></span><span class="k">Reunión</span><span class="v">Agenda una llamada en Cal.com</span></a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <h3>Hablemos</h3>
+          <p>Propuesta a medida, sin permanencia. La cerramos en una llamada.</p>
+          <a class="btn btn--p" href="https://wa.me/34643199580?text=Hola%2C%20me%20interesa%20el%20Agente%20IA%20Citas" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Escríbenos por WhatsApp</a>
+          <a class="btn btn--ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_reunion',{producto:'agente-ia-citas',placement:'contacto'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
+<footer class="wm-foot">
+  <div class="wm-foot__grid">
+
+    <div class="wm-foot__brand">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+        <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
+        <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+      </a>
+      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <div class="wm-foot__social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a>
+        <a href="https://www.linkedin.com/in/cristobal-martinez-8b9b9951" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/@whitemoonweb" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.1 2.7 12 2.7 12 2.7s-5.1 0-8.3.2c-.4.1-1.4.1-2.3 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5.1 0 8.3-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.7 13.5V7.9l6.2 2.8-6.2 2.8z"/></svg></a>
+        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></a><!--/email_off-->
+      </div>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <ul>
+        <li><a href="/spark/">Spark</a></li>
+        <li><a href="/core/">Core Spark Web</a></li>
+        <li><a href="/desarrollo-software/">Software a medida</a></li>
+        <li><a href="/marketing/">Marketing</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Comparativas</h3>
+      <ul>
+        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <div class="wm-foot__contact">
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wm-foot__bottom">
+    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div class="wm-foot__legal">
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
+    </div>
+    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+  </div>
+</footer>
+
+<script>
+/* Reveal con stagger. Solo oculta si el <head> marcó .js (hay IntersectionObserver
+   y no se pide movimiento reducido): sin JS, todo el contenido se ve. */
+(function () {
+  var root = document.documentElement;
+  if (!root.classList.contains('js')) return;
+  var els = [].slice.call(document.querySelectorAll('.reveal'));
+  function show(el) { el.classList.add('in'); }
+  if (document.visibilityState === 'hidden') { els.forEach(show); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+  els.forEach(function (el) {
+    var i = el.parentElement ? [].indexOf.call(el.parentElement.children, el) : 0;
+    el.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
+    io.observe(el);
+  });
+})();
+</script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+</body>
+</html>
