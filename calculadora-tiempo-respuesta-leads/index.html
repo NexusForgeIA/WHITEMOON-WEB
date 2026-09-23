@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#7c4dff">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Tiempo Respuesta Leads 2026","description":"Calcula los leads perdidos por respuesta lenta y la mejora con IA de respuesta instantánea. Datos Harvard Business Review.","url":"https://whitemoon.es/calculadora-tiempo-respuesta-leads/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Tiempo Respuesta Leads 2026","description":"Calcula los leads perdidos por respuesta lenta y la mejora con IA de respuesta instantánea, con los supuestos que ajustas tú.","url":"https://whitemoon.es/calculadora-tiempo-respuesta-leads/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Tiempo Respuesta Leads","item":"https://whitemoon.es/calculadora-tiempo-respuesta-leads/"}]}
@@ -30,9 +30,9 @@
   "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"¿Por qué importa tanto el tiempo de respuesta?","acceptedAnswer":{"@type":"Answer","text":"Harvard Business Review + Lead Connect: probabilidad cualificación cae 10x si > 5 min, 60x si > 1 hora. El lead está en \"modo decisión\" justo al consultar; minutos después ya mira competencia."}},
+    {"@type":"Question","name":"¿Por qué importa tanto el tiempo de respuesta?","acceptedAnswer":{"@type":"Answer","text":"Porque el interés del lead es máximo justo cuando consulta. Un estudio publicado en Harvard Business Review sobre leads online concluyó que responder rápido aumenta mucho la probabilidad de contactar y cualificar al lead. Si tardas, puede estar ya hablando con la competencia."}},
     {"@type":"Question","name":"¿Qué % de empresas responde en < 5 min?","acceptedAnswer":{"@type":"Answer","text":"No damos una cifra: los porcentajes que circulan varían mucho y no hemos podido verificar ninguno para España. Lo que sí puedes medir es tu propio tiempo de respuesta con esta calculadora. Fuera de horario laboral, muchas consultas se quedan sin respuesta hasta el siguiente día laborable."}},
-    {"@type":"Question","name":"¿Cómo cambia la conversión con respuesta inmediata?","acceptedAnswer":{"@type":"Answer","text":"×2-5 según sector. Clínicas/servicios pro: 2-3x. Inmobiliaria/formación: 3-5x. Venta directa B2C: 4-8x. Capturas al lead caliente, no después de hablar con 5 competidores."}},
+    {"@type":"Question","name":"¿Cómo cambia la conversión con respuesta inmediata?","acceptedAnswer":{"@type":"Answer","text":"Depende de tu sector y de la calidad del lead, y no damos un multiplicador sin fuente. Por eso en la calculadora lo eliges tú: parte del supuesto por defecto y ajústalo a lo que veas en tu negocio. Lo que sí cambia es el momento: atiendes al lead cuando aún está interesado, no después de hablar con otros proveedores."}},
     {"@type":"Question","name":"¿Cómo logra un agente IA la respuesta instantánea?","acceptedAnswer":{"@type":"Answer","text":"El agente IA atiende en tu web en segundos, a cualquier hora. Cualifica (presupuesto, urgencia, sector), agenda la llamada comercial y registra el lead en tu CRM. Tu equipo solo habla con leads calientes."}}
   ]
 }
@@ -124,13 +124,17 @@
     </div>
     <div class="calc-cols">
       <div class="calc-row"><label class="calc-label" for="tr-conversion">Tasa conversión actual (%)</label><input type="number" id="tr-conversion" class="calc-input" value="15" min="0" max="100" step="1" oninput="calcRespuesta()"></div>
-      <div class="calc-row"><label class="calc-label" for="tr-mejora">Multiplicador conversión con IA</label>
+      <div class="calc-row"><label class="calc-label" for="tr-mejora">Multiplicador de conversión con IA · supuesto</label>
         <select id="tr-mejora" class="calc-select" onchange="calcRespuesta()">
           <option value="2">×2 conservador</option>
-          <option value="3" selected>×3 (valor por defecto)</option>
+          <option value="3" selected>×3 (supuesto por defecto)</option>
           <option value="5">×5 agresivo</option>
         </select>
       </div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tr-perdida-1h">Leads que pierdes si respondes en 5 min – 1 h (%) · supuesto</label><input type="number" id="tr-perdida-1h" class="calc-input" value="50" min="0" max="100" step="1" oninput="calcRespuesta()"></div>
+      <div class="calc-row"><label class="calc-label" for="tr-perdida-lento">Leads que pierdes si respondes en más de 1 h (%) · supuesto</label><input type="number" id="tr-perdida-lento" class="calc-input" value="90" min="0" max="100" step="1" oninput="calcRespuesta()"></div>
     </div>
 
     <div class="calc-out">
@@ -139,17 +143,17 @@
       <div class="calc-out-card"><div class="calc-out-num" id="tr-mejora-eur">0 €</div><div class="calc-out-lbl">Recuperable con IA</div></div>
     </div>
 
-    <div class="calc-detail" id="tr-explain">Factor pérdida: respuesta &lt; 5 min mantiene 100% probabilidad. 5 min - 1 h: 50%. &gt; 1 h: 10%. Leads perdidos = leads × (50% × pct_5min_a_1h + 90% × pct_lentos) según escalones HBR. Recuperable IA = leads × ticket × conversión actual × multiplicador.</div>
+    <div class="calc-detail" id="tr-explain">Leads perdidos = leads × (% respondidos en 5 min – 1 h × pérdida que supones + % respondidos en más de 1 h × pérdida que supones). Recuperable con IA = leads × conversión actual × multiplicador × ticket, menos lo que ya conviertes hoy.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo basado en Harvard Business Review y Lead Connect. Los resultados varían según sector (B2B vs B2C, ticket alto vs bajo) y calidad del lead inicial.</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Cálculo orientativo con tus supuestos: las pérdidas por responder tarde y el multiplicador de conversión con IA vienen con un valor por defecto que no es un dato medido; cámbialos por lo que veas en tu negocio. Los resultados varían según sector (B2B vs B2C, ticket alto vs bajo) y calidad del lead inicial.</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
     <span class="sec-label">Preguntas frecuentes</span>
     <h2 class="sec-h" style="margin-bottom:24px">FAQ Tiempo Respuesta Leads</h2>
-    <div class="faq-item"><div class="faq-q">¿Por qué importa tanto el tiempo de respuesta?</div><div class="faq-a">Harvard Business Review + Lead Connect: probabilidad cualificación cae 10x si &gt; 5 min, 60x si &gt; 1 hora. El lead está en "modo decisión" justo al consultar; minutos después ya mira competencia.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Por qué importa tanto el tiempo de respuesta?</div><div class="faq-a">Porque el interés del lead es máximo justo cuando consulta. Un estudio publicado en Harvard Business Review sobre leads online concluyó que responder rápido aumenta mucho la probabilidad de contactar y cualificar al lead. Si tardas, puede estar ya hablando con la competencia.</div></div>
     <div class="faq-item"><div class="faq-q">¿Qué % de empresas responde en &lt; 5 min?</div><div class="faq-a">No damos una cifra: los porcentajes que circulan varían mucho y no hemos podido verificar ninguno para España. Lo que sí puedes medir es tu propio tiempo de respuesta con esta calculadora. Fuera de horario laboral, muchas consultas se quedan sin respuesta hasta el siguiente día laborable.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Cómo cambia la conversión con respuesta inmediata?</div><div class="faq-a">×2-5 según sector. Clínicas/servicios pro: 2-3x. Inmobiliaria/formación: 3-5x. Venta directa B2C: 4-8x. Capturas al lead caliente, no después de hablar con 5 competidores.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cómo cambia la conversión con respuesta inmediata?</div><div class="faq-a">Depende de tu sector y de la calidad del lead, y no damos un multiplicador sin fuente. Por eso en la calculadora lo eliges tú: parte del supuesto por defecto y ajústalo a lo que veas en tu negocio. Lo que sí cambia es el momento: atiendes al lead cuando aún está interesado, no después de hablar con otros proveedores.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cómo logra un agente IA la respuesta instantánea?</div><div class="faq-a">El agente IA atiende en tu web en segundos, a cualquier hora. Cualifica (presupuesto, urgencia, sector), agenda la llamada comercial y registra el lead en tu CRM. Tu equipo solo habla con leads calientes.</div></div>
   </div></div></section>
 
@@ -292,6 +296,9 @@ function calcRespuesta(){
   var ticket = Math.max(0, parseFloat(document.getElementById('tr-ticket').value)||0);
   var conv = Math.max(0, Math.min(100, parseFloat(document.getElementById('tr-conversion').value)||0)) / 100;
   var mult = Math.max(1, parseFloat(document.getElementById('tr-mejora').value)||1);
+  // Supuestos del usuario (visibles en el formulario): % de leads que se pierden según el tiempo de respuesta.
+  var perd1h = Math.max(0, Math.min(100, parseFloat(document.getElementById('tr-perdida-1h').value)||0)) / 100;
+  var perdLento = Math.max(0, Math.min(100, parseFloat(document.getElementById('tr-perdida-lento').value)||0)) / 100;
 
   // p1h debe incluir p5 (si está respondido en <5min también está en <1h)
   if(p1h < p5) p1h = p5;
@@ -300,17 +307,14 @@ function calcRespuesta(){
   var pctEntre5y1h = p1h - p5;
   var pctMasDe1h = 1 - p1h;
 
-  // Factor pérdida vs respuesta ideal (HBR):
-  // < 5 min: 0% pérdida (mantiene 100% probabilidad)
-  // 5 min - 1 h: 50% pérdida sobre potencial
-  // > 1 h: 90% pérdida sobre potencial
-  var leadsPerdidos = leads * (pctEntre5y1h * 0.50 + pctMasDe1h * 0.90);
+  // Pérdida frente a responder en < 5 min: la fija el usuario en los dos campos de supuestos.
+  var leadsPerdidos = leads * (pctEntre5y1h * perd1h + pctMasDe1h * perdLento);
   var clientesPerdidos = leadsPerdidos * conv;
   var ingresosPerdidos = clientesPerdidos * ticket;
 
   // Mejora con IA: respuesta instantánea (todos en <5min) × multiplicador conversión
   var clientesConIA = leads * conv * mult;
-  var clientesActuales = leads * conv * (pctBajo5 + pctEntre5y1h * 0.50 + pctMasDe1h * 0.10);
+  var clientesActuales = leads * conv * (pctBajo5 + pctEntre5y1h * (1 - perd1h) + pctMasDe1h * (1 - perdLento));
   var deltaClientes = Math.max(0, clientesConIA - clientesActuales);
   var mejoraEur = deltaClientes * ticket;
 
@@ -319,7 +323,7 @@ function calcRespuesta(){
   document.getElementById('tr-mejora-eur').textContent = Math.round(mejoraEur).toLocaleString('es-ES') + ' €';
 
   document.getElementById('tr-explain').textContent =
-    'De ' + Math.round(leads).toLocaleString('es-ES') + ' leads/mes: ' + (pctBajo5*100).toFixed(0) + '% &lt;5 min (sin pérdida), ' + (pctEntre5y1h*100).toFixed(0) + '% 5min-1h (−50% probabilidad), ' + (pctMasDe1h*100).toFixed(0) + '% &gt;1h (−90% probabilidad). Leads efectivamente perdidos: ' + Math.round(leadsPerdidos).toLocaleString('es-ES') + '. Con conversión actual ' + (conv*100).toFixed(0) + '% y ticket ' + Math.round(ticket).toLocaleString('es-ES') + ' € → ingresos perdidos ' + Math.round(ingresosPerdidos).toLocaleString('es-ES') + ' €/mes. Con IA respuesta instantánea y conversión ×' + mult.toFixed(0).replace('.', ',') + ': recuperable ' + Math.round(mejoraEur).toLocaleString('es-ES') + ' €/mes (' + Math.round(mejoraEur*12).toLocaleString('es-ES') + ' €/año).';
+    'De ' + Math.round(leads).toLocaleString('es-ES') + ' leads/mes: ' + (pctBajo5*100).toFixed(0) + '% en <5 min (sin pérdida), ' + (pctEntre5y1h*100).toFixed(0) + '% en 5 min – 1 h (pierdes el ' + (perd1h*100).toFixed(0) + '%, supuesto tuyo), ' + (pctMasDe1h*100).toFixed(0) + '% en >1 h (pierdes el ' + (perdLento*100).toFixed(0) + '%, supuesto tuyo). Leads efectivamente perdidos: ' + Math.round(leadsPerdidos).toLocaleString('es-ES') + '. Con conversión actual ' + (conv*100).toFixed(0) + '% y ticket ' + Math.round(ticket).toLocaleString('es-ES') + ' € → ingresos perdidos ' + Math.round(ingresosPerdidos).toLocaleString('es-ES') + ' €/mes. Con IA respuesta instantánea y conversión ×' + mult.toFixed(0).replace('.', ',') + ': recuperable ' + Math.round(mejoraEur).toLocaleString('es-ES') + ' €/mes (' + Math.round(mejoraEur*12).toLocaleString('es-ES') + ' €/año).';
 }
 calcRespuesta();
 </script>
