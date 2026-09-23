@@ -305,7 +305,6 @@ HTML = """<!DOCTYPE html>
     <a href="/demos/" class="nav-link">Demo</a>
     <a href="/casos/" class="nav-link">Casos</a>
     <a href="/recursos/" class="nav-link" style="color:#f0f0f5">Recursos</a>
-    <a href="/precios/" class="nav-link">Precios</a>
     <a href="/blog/" class="nav-link">Blog</a>
     <a href="/auditoria-geo-seo/" class="nav-cta">Auditoría gratis →</a>
   </div>
