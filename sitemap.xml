@@ -34,31 +34,7 @@
 
   <!-- Cluster 6 · Legal / Administrativo (5 calculadoras priority 0.8) -->
   <url>
-    <loc>https://whitemoon.es/calculadora-tasas-judiciales/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-herencia-impuesto-sucesiones/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-donaciones/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://whitemoon.es/calculadora-sanciones-fiscales/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-indemnizacion-accidente-trafico/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -788,12 +764,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://whitemoon.es/calculadora-transferencia-vehiculo/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://whitemoon.es/calculadora-ahorro-automatizacion/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -891,36 +861,6 @@
   </url>
   <url>
     <loc>https://whitemoon.es/calculadora-rentabilidad-negocio-autonomo/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-cambio-titularidad-vehiculo/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-impuesto-matriculacion/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-gastos-compra-coche-segunda-mano/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-depreciacion-vehiculo/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-seguro-coche-estimado/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
