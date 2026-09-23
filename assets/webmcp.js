@@ -101,8 +101,7 @@
         interes: {
           type: 'string',
           description: 'Qué producto o servicio le interesa, si lo ha dicho. '
-            + 'Por ejemplo: agente de voz en la web, chatbot, web nueva '
-            + 'o agente entrenado con documentos propios.'
+            + 'Por ejemplo: Spark, Core Spark Web o Agente IA Citas.'
         },
         sector: {
           type: 'string',
