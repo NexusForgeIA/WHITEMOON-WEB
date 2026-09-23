@@ -130,3 +130,12 @@ footer a{color:var(--p2);}
 .calc-cta-btn:focus-visible{outline:2px solid #9d70ff;outline-offset:3px;}
 @media(max-width:900px){.calc-cta-card{padding:24px;gap:18px;}}
 @media(max-width:600px){.calc-cta{padding:0 5% 40px;}.calc-cta-card{flex-direction:column;align-items:stretch;padding:22px 20px;gap:16px;}.calc-cta-txt{flex:0 0 auto;width:100%;}.calc-cta-btn{width:100%;text-align:center;}}
+
+/* Cierre de calculadora: WhatsApp + reunión (+ reservas) y la demo como enlace */
+.calc-cta-acts{flex:0 0 auto;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.calc-cta-btn--p{background:var(--p,#7c4dff);border-color:var(--p,#7c4dff);color:#fff;}
+.calc-cta-btn--p:hover{background:#8a5fff;border-color:#8a5fff;color:#fff;}
+.calc-cta-links{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:6px 20px;margin:0;font-family:'Sora','Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:.84rem;}
+.calc-cta-links a{color:var(--p2,#9d70ff);text-decoration:underline;text-underline-offset:3px;}
+.calc-cta-links a:hover{color:#fff;}
+@media (max-width:600px){.calc-cta-acts{width:100%;flex-direction:column;align-items:stretch;}.calc-cta-acts .calc-cta-btn{width:100%;text-align:center;}}

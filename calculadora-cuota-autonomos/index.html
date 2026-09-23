@@ -57,7 +57,7 @@
 }
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/landing-generic.css">
+<link rel="stylesheet" href="/assets/landing-generic.css?v=2026092301">
 <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
 <script defer src="/assets/wm-track.js?v=2026052801"></script>
 <script defer src="/assets/calc-lead.js?v=2026060402"></script>
@@ -187,9 +187,13 @@
     <div class="calc-cta-card">
       <div class="calc-cta-txt">
         <h2 class="calc-cta-h">¿Gestoría o asesoría?</h2>
-        <p class="calc-cta-p">Un agente de IA atiende las consultas de tus clientes y capta leads 24/7. Míralo funcionando en la demo guiada.</p>
+        <p class="calc-cta-p">Si llevas una gestoría o asesoría, un agente de IA atiende las consultas de tus clientes y capta leads 24/7, también fuera de horario.</p>
       </div>
-      <a class="calc-cta-btn" href="/demos/" onclick="wmTrack('click_calc_to_demo',{from:'calc-cuota-autonomos'})">Probar la demo guiada <span aria-hidden="true">→</span></a>
+      <div class="calc-cta-acts">
+        <a class="calc-cta-btn calc-cta-btn--p" href="https://wa.me/34643199580?text=Hola%2C%20he%20usado%20la%20calculadora%20de%20Cuota%20Aut%C3%B3nomos%20de%20WhiteMoon%20y%20me%20gustar%C3%ADa%20hablar." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="calc-cta-btn" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_calc_reunion',{from:'calc-cuota-autonomos'})">Agendar reunión</a>
+      </div>
+      <p class="calc-cta-links"><a href="/demos/" onclick="wmTrack('click_calc_to_demo',{from:'calc-cuota-autonomos'})">o prueba la demo guiada →</a></p>
     </div>
   </section>
 
@@ -219,14 +223,6 @@
     </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap" style="text-align:center;">
-      <span class="sec-label">Pack recomendado</span>
-      <h2 class="sec-h">Gestoría con IA para tu cuota mensual</h2>
-      <p style="color:var(--muted);max-width:680px;margin:14px auto 24px;line-height:1.7;">Si necesitas gestoría que te avise de cambios de tramo, presente modelos automáticamente y resuelva dudas de RETA 24/7, WhiteMoon instala un agente IA conversacional en tu web, con RAG documental opcional para gestorías con catálogo amplio de clientes.</p>
-      <a href="/contacto/" class="btn-prim" style="display:inline-block;padding:13px 32px;" onclick="wmTrack('click_pack',{from:'calc-autonomos',pack:'contacto'})">Pide tu propuesta →</a>
-    </div>
-  </section>
 
 <!-- Guías relacionadas (hubs SEO) -->
 <section style="padding:50px 6%;border-top:1px solid rgba(124,77,255,.18);background:rgba(13,13,26,.4)">
