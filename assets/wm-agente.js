@@ -60,7 +60,7 @@
         ["Entrenado con tus servicios", "Con tu información, tu tono y tus preguntas frecuentes."],
         ["Captura de leads al instante", "Cada interesado te llega al móvil con nombre, teléfono y motivo."],
         ["Agenda", "Da cita según la disponibilidad que marques."],
-        ["RAG opcional", "Para que conteste con tus catálogos, tarifas o normativa."],
+        ["Con tu información real", "Servicios, precios, horarios y preguntas frecuentes de tu negocio."],
         ["Operativo en 7 días", "Y sin permanencia."]
       ]
     },
@@ -71,7 +71,7 @@
       ev: "widget_ruta_core",
       items: [
         ["Web nueva + dominio (primer año) + SSL + mantenimiento", "Diseño a medida con tu marca. La web es tuya."],
-        ["El agente dentro desde el día 1", "Responde, agenda y capta 24/7. RAG opcional."],
+        ["El agente dentro desde el día 1", "Responde, agenda y capta 24/7."],
         ["CRM para gestionar cada lead", "Pipeline, reparto al equipo, agenda, historial y KPIs."],
         ["SEO, GEO y AEO de serie", "Preparada para Google y para aparecer en las respuestas de las IA."],
         ["Captura de leads al instante", "Cada interesado te llega al móvil, al momento."],

@@ -222,9 +222,9 @@
   var recommendedId = null;
 
   /* Dos productos: con web, Spark; sin web, Core Spark Web. La documentación
-     no cambia el producto: si hay mucha, se cuenta que el agente puede
-     entrenarse con esos documentos (RAG), como capacidad opcional. */
-  var DOCS_LINE = "Como trabajas con mucha documentación tuya, el agente se puede entrenar con tus documentos (RAG) para responder con tu criterio y no con generalidades. Es opcional: lo vemos en tu propuesta.";
+     no cambia el producto: si hay mucha, se dice que en la propuesta vemos
+     qué información necesita conocer el agente. */
+  var DOCS_LINE = "Como trabajas con mucha información propia, en tu propuesta vemos qué necesita conocer el agente (servicios, precios, horarios, preguntas frecuentes) para responder con tu criterio y no con generalidades.";
 
   function decide(a){
     if(a.web === null || a.docs === null) return null;

@@ -11,8 +11,8 @@
 
 ## Productos
 WhiteMoon tiene tres productos. No publica tarifa: el precio depende de cada caso y se da en una propuesta a medida en 24 horas, sin compromiso.
-- [Spark](https://whitemoon.es/spark/): agente de IA que se instala en la web que el negocio ya tiene, sin rehacerla. Responde 24/7 con la información y el tono del negocio, agenda citas según la disponibilidad que marca el cliente y capta nombre, teléfono y motivo de cada interesado, con aviso al momento en el móvil. RAG opcional para contestar con catálogos, tarifas o normativa propios.
-- [Core Spark Web](https://whitemoon.es/core/): web nueva a medida con dominio incluido el primer año, SSL y mantenimiento, con el agente de IA dentro desde el primer día y un CRM para gestionar cada lead (pipeline, reparto al equipo, agenda, historial y KPIs). SEO, GEO y AEO de serie. RAG opcional. Para quien no tiene web o quiere empezar de cero.
+- [Spark](https://whitemoon.es/spark/): agente de IA que se instala en la web que el negocio ya tiene, sin rehacerla. Responde 24/7 con la información y el tono del negocio, agenda citas según la disponibilidad que marca el cliente y capta nombre, teléfono y motivo de cada interesado, con aviso al momento en el móvil.
+- [Core Spark Web](https://whitemoon.es/core/): web nueva a medida con dominio incluido el primer año, SSL y mantenimiento, con el agente de IA dentro desde el primer día y un CRM para gestionar cada lead (pipeline, reparto al equipo, agenda, historial y KPIs). SEO, GEO y AEO de serie. Para quien no tiene web o quiere empezar de cero.
 - [Agente IA Citas](https://whitemoon.es/agente-ia-citas/): agente de IA para negocios de cita previa (peluquería, estética, uñas, barbería, taller, fisioterapia, podología, clínica dental). El cliente reserva solo escaneando un QR o abriendo un enlace, sin llamadas, o desde el agente embebido en la web del negocio. Incluye panel de citas (alta manual, mover, cancelar e importar la agenda) y petición de reseñas por WhatsApp mediante enlaces click-to-chat (wa.me), que envía el propio negocio: no usa la API de WhatsApp Business ni envía mensajes automáticos. No garantiza ventas.
 Cómo elegir: si el negocio ya tiene web, Spark. Si no la tiene o quiere rehacerla, Core Spark Web. Si lo que necesita es que sus clientes reserven cita solos, Agente IA Citas.
 Pedir propuesta: https://whitemoon.es/contacto/
@@ -33,7 +33,7 @@ Cómo empieza: con una consultoría gratuita en la que se define el alcance ante
 Antes de empezar se le dice al cliente qué se puede automatizar y qué no.
 
 ## Qué hace y qué no
-- Sí hace: responde 24/7, agenda citas, capta el lead y avisa al momento, y responde con la información del negocio (RAG) cuando la necesita.
+- Sí hace: responde 24/7, agenda citas, capta el lead y avisa al momento, y responde con la información real del negocio.
 - No hace: no inventa (si no sabe algo, lo dice y deriva a una persona), no sustituye el criterio del negocio, no hace spam ni contacta en frío, y no ata: sin permanencia.
 
 ## Sectores objetivo
@@ -70,7 +70,7 @@ Un software que conversa en lenguaje natural con los visitantes de una web: enti
 Un chatbot tradicional sigue un guion rígido de respuestas predefinidas. Un agente IA entiende lenguaje natural, razona sobre la información del negocio y resuelve consultas reales, cualifica leads y agenda como lo haría una persona del equipo.
 
 ### ¿Cuánto cuesta un agente de IA?
-Depende del caso: si va sobre una web existente o dentro de una web nueva, las integraciones con los sistemas del negocio, si se entrena con documentos propios (RAG) y el volumen de consultas. WhiteMoon no publica tarifa: envía una propuesta a medida en 24 horas, sin compromiso: https://whitemoon.es/contacto/
+Depende del caso: si va sobre una web existente o dentro de una web nueva, las integraciones con los sistemas del negocio, y el volumen de consultas. WhiteMoon no publica tarifa: envía una propuesta a medida en 24 horas, sin compromiso: https://whitemoon.es/contacto/
 
 ### ¿En cuánto tiempo está operativo?
 En 7 días.
