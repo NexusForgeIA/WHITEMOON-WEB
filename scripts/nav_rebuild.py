@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
-Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web) ·
+Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web · Agente IA Citas) ·
                   Software a medida · Marketing · Contacto
                   + un unico CTA: "Agendar reunion" (cal.com).
 
@@ -99,6 +99,7 @@ def nav_html(flow: bool) -> str:
         <div class="wm-nav__menu" role="menu">
           <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
           <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
       <a href="/desarrollo-software/">Software a medida</a>
@@ -118,6 +119,7 @@ def nav_html(flow: bool) -> str:
   <span class="wm-drawer__label">Productos</span>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
   <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
   <a class="wm-drawer__link" href="/marketing/">Marketing</a>
   <a class="wm-drawer__link" href="/contacto/">Contacto</a>
