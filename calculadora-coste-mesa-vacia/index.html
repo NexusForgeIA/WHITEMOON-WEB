@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Coste Mesa Vacía 2026 · Restaurantes · WhiteMoon</title>
-<meta name="description" content="Calcula cuánto pierde tu restaurante por mesas vacías cada semana. Ingresos no capturados y mejora con IA de reservas (+15% ocupación).">
+<meta name="description" content="Calcula cuánto pierde tu restaurante por mesas vacías cada semana. Ingresos no capturados y la mejora que estimes con IA de reservas.">
 <meta name="keywords" content="calculadora mesa vacia, ocupacion restaurante, ia reservas restaurante, ingresos perdidos restaurante, optimizacion mesas">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://whitemoon.es/calculadora-coste-mesa-vacia/">
 <meta property="og:title" content="Calculadora Coste Mesa Vacía 2026 · Restaurantes · WhiteMoon">
-<meta property="og:description" content="Mesas vacías + ingresos perdidos + mejora con IA de reservas (+15% ocupación).">
+<meta property="og:description" content="Mesas vacías + ingresos perdidos + la mejora que estimes con IA de reservas.">
 <meta property="og:url" content="https://whitemoon.es/calculadora-coste-mesa-vacia/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -33,7 +33,7 @@
     {"@type":"Question","name":"¿Cuánto cuesta una mesa vacía?","acceptedAnswer":{"@type":"Answer","text":"Para ticket medio 25€ y mesas 2-4 comensales: 60-90€ por mesa vacía en hora punta + coste fijo prorrateado. Pérdida real 70-130€ por mesa vacía."}},
     {"@type":"Question","name":"¿Cuál es la ocupación óptima en hostelería?","acceptedAnswer":{"@type":"Answer","text":"Tradicional 75-85% (picos 100% hora punta). Casual 65-78%. Fine dining 55-70%. Media nacional sin IA: 55-65%."}},
     {"@type":"Question","name":"¿Cómo aumenta la IA la ocupación?","acceptedAnswer":{"@type":"Answer","text":"Tomando reservas 24/7, también fuera de horario, para que no se pierdan las que llegan cuando nadie puede coger el teléfono."}},
-    {"@type":"Question","name":"¿Funciona para todo tipo de restaurantes?","acceptedAnswer":{"@type":"Answer","text":"Tradicional y casual: +15-25%. Fine dining: +10-15% en waiting list y upselling. Rápida/delivery: el foco está en pedidos (agente IA en tu web). Bares: para llevar y eventos privados."}}
+    {"@type":"Question","name":"¿Funciona para todo tipo de restaurantes?","acceptedAnswer":{"@type":"Answer","text":"Sí, con distinto foco. Tradicional, casual y fine dining: reservas a cualquier hora y dudas sobre la carta. Rápida/delivery: el foco está en pedidos (agente IA en tu web). Bares: para llevar y eventos privados."}}
   ]
 }
 </script>
@@ -110,7 +110,7 @@
   <section class="sec"><div class="wrap"><div class="hdr c">
     <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="3" y="9" width="18" height="6" rx="1"/><line x1="6" y1="15" x2="6" y2="21"/><line x1="18" y1="15" x2="18" y2="21"/><line x1="3" y1="6" x2="21" y2="6"/></svg></span> Calculadora gratuita · IA de reservas</span>
     <h1 class="sec-h">Calculadora <em>Coste Mesa Vacía</em> 2026</h1>
-    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las mesas vacías a la semana, los ingresos perdidos al mes y la mejora con IA de reservas (+15% ocupación efectiva en restaurantes tradicionales).</p>
+    <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuantifica las mesas vacías a la semana, los ingresos perdidos al mes y la mejora con IA de reservas según el porcentaje que tú supongas.</p>
   </div></div></section>
 
   <section class="sec"><div class="wrap"><div class="calc-card">
@@ -127,10 +127,10 @@
       <div class="calc-row"><label class="calc-label" for="mv-dias">Días abiertos a la semana</label><input type="number" id="mv-dias" class="calc-input" value="6" min="1" max="7" step="1" oninput="calcMesaVacia()"></div>
     </div>
     <div class="calc-cols">
-      <div class="calc-row"><label class="calc-label" for="mv-mejora">Mejora ocupación con IA (+%)</label>
+      <div class="calc-row"><label class="calc-label" for="mv-mejora">Mejora de ocupación que supones con IA (+%)</label>
         <select id="mv-mejora" class="calc-select" onchange="calcMesaVacia()">
           <option value="10">+10% conservador</option>
-          <option value="15" selected>+15% (valor por defecto)</option>
+          <option value="15" selected>+15% (supuesto por defecto)</option>
           <option value="20">+20% agresivo</option>
         </select>
       </div>
@@ -160,7 +160,7 @@
     <div class="faq-item"><div class="faq-q">¿Cuánto cuesta una mesa vacía?</div><div class="faq-a">Para ticket medio 25€ y mesas 2-4 comensales: 60-90€ por mesa vacía en hora punta + coste fijo prorrateado. Pérdida real 70-130€ por mesa vacía.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuál es la ocupación óptima en hostelería?</div><div class="faq-a">Tradicional 75-85% (picos 100% hora punta). Casual 65-78%. Fine dining 55-70%. Media nacional sin IA: 55-65%.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cómo aumenta la IA la ocupación?</div><div class="faq-a">Tomando reservas 24/7, también fuera de horario, para que no se pierdan las que llegan cuando nadie puede coger el teléfono.</div></div>
-    <div class="faq-item"><div class="faq-q">¿Funciona para todo tipo de restaurantes?</div><div class="faq-a">Tradicional y casual: +15-25%. Fine dining: +10-15% en waiting list y upselling. Rápida/delivery: el foco está en pedidos (agente IA en tu web). Bares: para llevar y eventos privados.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Funciona para todo tipo de restaurantes?</div><div class="faq-a">Sí, con distinto foco. Tradicional, casual y fine dining: reservas a cualquier hora y dudas sobre la carta. Rápida/delivery: el foco está en pedidos (agente IA en tu web). Bares: para llevar y eventos privados.</div></div>
   </div></div></section>
 
   <section class="sec"><div class="wrap" style="text-align:center">
