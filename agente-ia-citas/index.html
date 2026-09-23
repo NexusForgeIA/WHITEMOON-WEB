@@ -49,6 +49,22 @@ html,body{background:#08080d}
 .s3{animation-delay:2.7s}
 .s4{animation-delay:3.3s}
 @media (max-width:900px){.steps.steps--3{grid-template-columns:1fr}}
+.demo-note{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:.82rem;color:var(--muted)}
+.demo-note svg{width:15px;height:15px;flex-shrink:0;color:var(--g)}
+.demo-qr{display:flex;align-items:center;gap:16px;max-width:430px;margin-top:26px;padding:12px 20px 12px 12px;border:1px solid var(--border);border-radius:16px;background:var(--card)}
+.demo-qr svg{flex:none;border-radius:8px}
+.demo-qr p{font-size:.9rem;line-height:1.45;color:var(--ink)}
+html.demo-open{overflow:hidden}
+.demo-dlg{width:min(440px,92vw);height:min(780px,90vh);max-width:none;max-height:none;padding:0;overflow:hidden;border:1px solid var(--border);border-radius:20px;background:var(--bg2);color:var(--text)}
+.demo-dlg[open]{display:flex;flex-direction:column}
+.demo-dlg::backdrop{background:rgba(4,4,8,.74);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.demo-dlg__bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.demo-dlg__x{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--text);cursor:pointer;transition:border-color .2s ease}
+.demo-dlg__x:hover{border-color:var(--p2)}
+.demo-dlg__x:focus-visible{outline:2px solid var(--p2);outline-offset:2px}
+.demo-dlg__x svg{width:20px;height:20px}
+.demo-dlg iframe{flex:1;width:100%;border:0;background:var(--bg2)}
+@media (max-width:900px){.demo-qr{display:none}}
 </style>
 <script type="application/ld+json">
 {
@@ -243,8 +259,14 @@ html,body{background:#08080d}
         <h1>Tus clientes reservan solos, <span class="accent">por QR o con un enlace</span></h1>
         <p class="hero-desc">Un agente de IA que <strong>busca hueco y cierra la cita por ti, sin llamadas</strong>. Para peluquería, estética, uñas, barbería, taller, fisio, podología, dental y cualquier negocio que trabaje con cita previa.</p>
         <div class="hero-actions">
+          <a class="btn btn--p" href="https://nexusforgeia.github.io/WHITEMOON-PELUQUERIAS/cita.html?demo=1" target="_blank" rel="noopener" data-demo onclick="window.wmTrack&amp;&amp;wmTrack('click_demo_sector',{sector:'peluquerias',placement:'agente-ia-citas-hero'})"><svg aria-hidden="true"><use href="#ic-bot"/></svg>Pruébalo gratis</a>
           <a class="btn btn--p" href="https://wa.me/34643199580?text=Hola%2C%20me%20interesa%20el%20Agente%20IA%20Citas" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Escríbenos por WhatsApp</a>
           <a class="btn btn--ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_reunion',{producto:'agente-ia-citas',placement:'hero'})"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Agendar reunión</a>
+        </div>
+        <p class="demo-note"><svg aria-hidden="true"><use href="#ic-shield"/></svg>Demo real · peluquería de ejemplo · no se guarda ninguna cita.</p>
+        <div class="demo-qr">
+          <svg viewBox="0 0 41 41" width="112" height="112" shape-rendering="crispEdges" role="img" aria-label="Código QR que abre la demo del agente de citas"><path fill="#f0f0f5" d="M0 0h41v41h-41z"/><path class="qrline" stroke="#08080d" d="M2 2.5h7m2 0h1m2 0h1m1 0h4m4 0h3m3 0h1m1 0h7m-37 1h1m5 0h1m3 0h3m1 0h3m1 0h1m1 0h2m3 0h1m1 0h1m2 0h1m5 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h1m3 0h1m5 0h1m1 0h1m4 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h4m6 0h5m1 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h6m2 0h1m1 0h2m1 0h1m2 0h1m1 0h1m1 0h3m1 0h1m-37 1h1m5 0h1m1 0h2m7 0h1m3 0h2m1 0h1m2 0h2m1 0h1m5 0h1m-37 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h2m3 0h3m1 0h2m2 0h2m5 0h1m-29 1h1m1 0h5m3 0h1m1 0h3m1 0h1m2 0h1m4 0h3m3 0h5m-35 1h5m3 0h1m1 0h2m2 0h2m2 0h1m1 0h4m2 0h1m2 0h3m3 0h1m-36 1h3m2 0h2m3 0h3m1 0h3m2 0h1m1 0h2m2 0h5m1 0h1m3 0h2m-37 1h1m1 0h1m6 0h1m2 0h1m2 0h1m2 0h5m3 0h2m8 0h1m-37 1h1m2 0h1m1 0h5m1 0h2m2 0h2m2 0h1m2 0h2m1 0h3m1 0h2m1 0h1m2 0h2m-37 1h3m4 0h1m1 0h1m1 0h1m3 0h2m1 0h1m1 0h2m1 0h1m4 0h1m2 0h1m3 0h2m-37 1h1m5 0h3m2 0h1m1 0h1m1 0h2m1 0h1m1 0h2m4 0h2m2 0h4m1 0h2m-36 1h2m1 0h2m1 0h4m1 0h1m1 0h3m2 0h4m1 0h1m3 0h2m1 0h2m3 0h1m-34 1h4m2 0h2m2 0h1m4 0h1m1 0h2m1 0h5m2 0h1m3 0h2m-34 1h1m6 0h4m1 0h3m4 0h1m1 0h1m4 0h1m2 0h1m1 0h1m1 0h1m-35 1h1m2 0h11m5 0h1m5 0h2m1 0h3m3 0h2m-37 1h3m1 0h1m2 0h1m1 0h1m4 0h1m1 0h1m4 0h1m4 0h5m1 0h1m3 0h1m-35 1h1m2 0h2m1 0h1m2 0h1m1 0h1m6 0h1m3 0h4m1 0h2m1 0h1m-33 1h5m2 0h1m1 0h2m1 0h1m4 0h2m1 0h2m1 0h1m1 0h1m2 0h2m3 0h1m2 0h1m-36 1h1m2 0h1m1 0h1m1 0h3m1 0h1m2 0h1m1 0h1m2 0h2m4 0h4m1 0h3m1 0h2m-37 1h1m1 0h1m1 0h1m5 0h4m2 0h6m1 0h1m2 0h1m2 0h1m1 0h2m2 0h2m-37 1h1m1 0h2m2 0h2m2 0h3m1 0h1m1 0h1m2 0h1m1 0h1m2 0h7m3 0h3m-37 1h1m4 0h1m1 0h3m1 0h1m3 0h1m1 0h2m1 0h1m2 0h1m1 0h1m2 0h1m2 0h1m-32 1h1m1 0h5m1 0h4m1 0h1m1 0h2m2 0h1m2 0h1m1 0h1m2 0h2m3 0h1m2 0h2m-37 1h1m1 0h2m3 0h1m3 0h1m1 0h3m3 0h3m4 0h2m2 0h1m4 0h2m-37 1h1m2 0h4m1 0h1m1 0h1m3 0h2m3 0h1m2 0h1m1 0h3m1 0h6m1 0h2m-29 1h2m4 0h3m1 0h2m3 0h1m1 0h1m2 0h1m3 0h2m2 0h1m-37 1h7m2 0h1m3 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h3m-37 1h1m5 0h1m1 0h2m4 0h1m1 0h1m2 0h2m2 0h1m4 0h1m3 0h2m2 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m1 0h2m1 0h2m3 0h8m1 0h6m1 0h1m1 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m2 0h3m1 0h3m5 0h1m2 0h1m2 0h2m1 0h1m3 0h1m-37 1h1m1 0h3m1 0h1m1 0h1m5 0h1m2 0h1m2 0h2m7 0h1m5 0h2m-37 1h1m5 0h1m2 0h1m3 0h2m1 0h1m4 0h3m2 0h3m1 0h1m1 0h1m3 0h1m-37 1h7m1 0h3m1 0h1m9 0h4m3 0h1m2 0h1m2 0h2"/></svg>
+          <p>Escanéalo con el móvil y pruébalo como lo haría tu cliente</p>
         </div>
       </div>
       <div class="hero-visual reveal">
@@ -419,6 +441,14 @@ html,body{background:#08080d}
     </div>
   </section>
 
+  <dialog class="demo-dlg" id="demoDlg" aria-label="Demo del Agente IA Citas en una peluquería de ejemplo">
+    <div class="demo-dlg__bar">
+      <span>Demo real · peluquería de ejemplo · no se guarda ninguna cita.</span>
+      <button type="button" class="demo-dlg__x" aria-label="Cerrar la demo" autofocus><svg aria-hidden="true"><use href="#ic-no"/></svg></button>
+    </div>
+    <iframe title="Demo del agente de citas: peluquería de ejemplo" data-src="https://nexusforgeia.github.io/WHITEMOON-PELUQUERIAS/cita.html?demo=1"></iframe>
+  </dialog>
+
 </main>
 
 
@@ -518,6 +548,41 @@ html,body{background:#08080d}
     el.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
     io.observe(el);
   });
+})();
+</script>
+<script>
+/* "Pruébalo gratis": en escritorio abre la demo en un <dialog> (Escape nativo,
+   clic en el fondo, botón X). El iframe no recibe src hasta abrirlo, para no
+   cargar la demo con la página. En <=900px, o sin <dialog>, el enlace abre la
+   demo en pestaña nueva. El scroll se bloquea fijando el body (overflow:hidden
+   en <html> no para el scroll programático ni el de iOS) y al cerrar se vuelve
+   a la misma altura. */
+(function () {
+  var dlg = document.getElementById('demoDlg');
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  var movil = window.matchMedia('(max-width:900px)');
+  var fr = dlg.querySelector('iframe');
+  var root = document.documentElement;
+  var body = document.body;
+  var y = 0;
+  [].forEach.call(document.querySelectorAll('[data-demo]'), function (a) {
+    a.addEventListener('click', function (e) {
+      if (movil.matches) return;
+      e.preventDefault();
+      if (!fr.getAttribute('src')) fr.setAttribute('src', fr.getAttribute('data-src'));
+      y = window.scrollY;
+      body.style.cssText += ';position:fixed;top:' + (-y) + 'px;left:0;right:0';
+      root.classList.add('demo-open');
+      dlg.showModal();
+    });
+  });
+  dlg.addEventListener('close', function () {
+    root.classList.remove('demo-open');
+    body.style.position = body.style.top = body.style.left = body.style.right = '';
+    window.scrollTo({ top: y, behavior: 'instant' });
+  });
+  dlg.querySelector('.demo-dlg__x').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
 })();
 </script>
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
