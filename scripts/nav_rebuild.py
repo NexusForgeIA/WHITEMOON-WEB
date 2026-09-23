@@ -149,7 +149,8 @@ FOOTER_COLS = [
     ("Servicios", [
         ("/spark/", "Spark"),
         ("/core/", "Core Spark Web"),
-        # No es un producto del catálogo (siguen siendo dos): es un servicio
+        ("/agente-ia-citas/", "Agente IA Citas"),
+        # No es un producto del catálogo: es un servicio
         # aparte, por eso va fuera del desplegable "Productos" de la navbar.
         ("/desarrollo-software/", "Software a medida"),
         ("/marketing/", "Marketing"),

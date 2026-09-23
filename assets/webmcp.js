@@ -150,7 +150,10 @@
         + 'Spark instala un agente de IA conversacional en la web que el '
         + 'cliente ya tiene. Core Spark Web añade una web nueva con el agente '
         + 'dentro y el SEO y GEO/AEO montados desde el primer día. La puesta '
-        + 'en marcha es de 5 a 7 días laborables. Para verlo con números '
+        + 'en marcha es de 5 a 7 días laborables. Agente IA Citas es para '
+        + 'negocios de cita previa: sus clientes reservan solos por QR o con '
+        + 'un enlace, sin llamadas (https://whitemoon.es/agente-ia-citas/). '
+        + 'Para verlo con números '
         + 'concretos: https://whitemoon.es/contacto/';
     }
   });
