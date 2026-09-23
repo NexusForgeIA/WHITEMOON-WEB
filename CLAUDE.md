@@ -78,7 +78,6 @@ amplía, tiene que ser con el patrón de contexto, nunca con el número suelto.
 - `34643199580` y `643 199 580` — el teléfono de WhatsApp contiene `199`. Sale ~4 veces por página (launcher + footer).
 - `z-index:499` en `/electricistas-madrid/`.
 - Tramos del BOE en `/calculadora-itp/`: `[[999,45],[1499,60],[1999,90]]` son centímetros cúbicos.
-- `diasCotizados < 1800` en `/calculadora-prestacion-paro/`, y los tipos legales 70 % / 60 % / IPREM.
 - Cuota RETA, IVA 10 %, SS 6,35 %, IBI 1 % y demás constantes fiscales de las calculadoras.
 - `33.500 €` en `/calculadora-ingresos-reales-autonomo/` contiene `3.500` como subcadena. Mismo problema con cualquier importe que acabe en una de las cifras vigiladas.
 - Los importes de ejemplo de las calculadoras: son supuestos que introduce el usuario.

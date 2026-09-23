@@ -33,12 +33,6 @@
   </url>
 
   <!-- Cluster 6 · Legal / Administrativo (5 calculadoras priority 0.8) -->
-  <url>
-    <loc>https://whitemoon.es/calculadora-sanciones-fiscales/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
 
   <!-- Cluster 7 · Clínicas y Salud (5 calculadoras priority 0.8) -->
   <url>
@@ -734,19 +728,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://whitemoon.es/calculadora-finiquito/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://whitemoon.es/calculadora-coste-trabajador/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-indemnizacion-despido/</loc>
     <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -772,42 +754,6 @@
   <url>
     <loc>https://whitemoon.es/calculadora-cuota-autonomos/</loc>
     <lastmod>2026-06-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-sueldo-neto/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-retencion-irpf/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-subida-salarial/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-prestacion-paro/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-vacaciones-pendientes/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-horas-extra/</loc>
-    <lastmod>2026-09-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -848,42 +794,6 @@
     <priority>0.8</priority>
   </url>
   <!-- Cluster 4 — Vivienda e Hipotecas -->
-  <url>
-    <loc>https://whitemoon.es/calculadora-hipoteca-mensual/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-capacidad-hipotecaria/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-gastos-compra-vivienda/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-plusvalia-municipal/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-alquiler-vs-compra/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://whitemoon.es/calculadora-rentabilidad-alquiler/</loc>
-    <lastmod>2026-09-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
   <url>
     <loc>https://whitemoon.es/roi-inteligencia-artificial/</loc>
     <lastmod>2026-09-23</lastmod>
