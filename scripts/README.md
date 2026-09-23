@@ -96,7 +96,7 @@ python seo_guardian.py                  # 0 criticos
 ```
 
 Universo: la casta 1 del repo (paginas con menu real). Quedan fuera, a proposito,
-las landings de conversion, el microsite `reformas-madrid/` y los micrositios con
+las landings de conversion y los micrositios con
 nav de anclas propias (`EXCLUDE` dentro del script). En esas paginas el script
 solo degrada el boton morado de cal.com a enlace de texto, para que no compita
 con su CTA propio.
