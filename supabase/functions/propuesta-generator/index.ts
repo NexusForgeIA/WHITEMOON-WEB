@@ -16,12 +16,12 @@ const PRODUCTOS: Record<string, { label: string; cap: string; features: string[]
   spark: {
     label: 'Spark',
     cap: 'agente IA en la web que ya tienes · atiende, agenda y capta leads 24/7',
-    features: ['Agente IA 24/7 en tu web actual', 'Entrenado con tus servicios y tu tono', 'Agenda citas segun tu disponibilidad', 'Captura de nombre, telefono y motivo', 'Aviso inmediato de cada lead', 'RAG opcional con tus documentos'],
+    features: ['Agente IA 24/7 en tu web actual', 'Entrenado con tus servicios y tu tono', 'Agenda citas segun tu disponibilidad', 'Captura de nombre, telefono y motivo', 'Aviso inmediato de cada lead'],
   },
   'core-spark-web': {
     label: 'Core Spark Web',
     cap: 'web nueva con el agente IA dentro y un CRM para gestionar cada lead · SEO, GEO y AEO',
-    features: ['Web nueva con tu dominio, SSL y mantenimiento', 'Agente IA 24/7 dentro desde el primer dia', 'CRM: pipeline, reparto al equipo, agenda e historial', 'SEO, GEO y AEO de serie', 'Aviso inmediato de cada lead', 'RAG opcional con tus documentos'],
+    features: ['Web nueva con tu dominio, SSL y mantenimiento', 'Agente IA 24/7 dentro desde el primer dia', 'CRM: pipeline, reparto al equipo, agenda e historial', 'SEO, GEO y AEO de serie', 'Aviso inmediato de cada lead'],
   },
 };
 
@@ -38,7 +38,7 @@ const BAMBU_HTML =
 // <filtros>
 // Lo que una propuesta nunca puede decir: precios, porcentajes o cifras de
 // rendimiento, productos retirados, voz y preaviso de cancelacion.
-const PROHIBIDO = /€|\beur(?:os)?\b|%|[+\-−]\s?\d+\s?(?:h\b|x\b|veces)|\b\d+\s?(?:x|veces)\b|\bOrion\b|Core Orion|WhiteMoon 360|Core RAG|Mini Core|\bvoz\b|30 d[ií]as/i;
+const PROHIBIDO = /€|\beur(?:os)?\b|%|[+\-−]\s?\d+\s?(?:h\b|x\b|veces)|\b\d+\s?(?:x|veces)\b|\bOrion\b|Core Orion|WhiteMoon 360|Core RAG|\bRAG\b|Mini Core|\bvoz\b|30 d[ií]as/i;
 
 // Casos o clientes presentados como reales. El unico caso lo pone la plantilla.
 const CASO = /casos?\s+de\s+[eé]xito|casos?\s+real(?:es)?\b|clientes?\s+real(?:es)?\b|nuestros\s+clientes|testimoni|Bambu/i;
