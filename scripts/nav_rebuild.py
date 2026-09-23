@@ -411,7 +411,8 @@ def touch_lastmod(rels: list[str], check: bool) -> list[str]:
     for rel in rels:
         rx = re.compile(r"(<loc>%s</loc>\s*<lastmod>)[^<]*(</lastmod>)" % re.escape(page_url(rel)))
         sm, n = rx.subn(lambda m: m.group(1) + today + m.group(2), sm)
-        if n != 1:
+        # Las noindex no van en el sitemap a propósito: no son un "falta".
+        if n != 1 and not re.search(r'name="robots"[^>]*noindex', read(os.path.join(ROOT, rel)), re.I):
             missing.append(rel)
     if not check:
         write(path, sm)
