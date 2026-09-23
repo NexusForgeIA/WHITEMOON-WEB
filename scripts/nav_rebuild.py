@@ -12,7 +12,6 @@ assets/wm-nav.css: ningun <style> de pagina depende de la posicion del footer.
 Universo (casta 1 del repo: paginas de paseo con menu real, >=2 destinos
 internos en el <nav>). Quedan fuera, por la regla ya fijada del repo:
   · las landings de conversion (nav minimo intencional),
-  · el microsite reformas-madrid,
   · los micrositios con nav de anclas propias y /precios/ (EXCLUDE).
 
 Tras escribir, actualiza el <lastmod> del sitemap de las paginas modificadas.
@@ -34,7 +33,7 @@ ASSET_V = "2026091501"
 
 SKIP_DIRS = {
     ".git", ".github", ".claude", ".agents", "__pycache__", "node_modules",
-    "assets", "supabase", "outputs", "reformas-madrid", ".well-known",
+    "assets", "supabase", "outputs", ".well-known",
 }
 
 # Micrositios / landings con navegacion de anclas propia. Su <nav> es indice de
