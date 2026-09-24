@@ -1264,16 +1264,9 @@ input[type="email"]::placeholder { color: var(--text-muted); opacity: 0.7; }
   <p style="margin-top:8px;">Verificar siempre los cálculos con la normativa autonómica vigente. <a href="https://whitemoon.es" target="_blank">whitemoon.es</a></p>
 </footer>
 
+<script src="/assets/itp-vehiculos.js?v=2026092401"></script>
 <script>
-const tablaTurismos = [
-  [0, 1.00, "Hasta 1 año"], [1, 0.84, "Más de 1 año, hasta 2"],
-  [2, 0.67, "Más de 2 años, hasta 3"], [3, 0.56, "Más de 3 años, hasta 4"],
-  [4, 0.47, "Más de 4 años, hasta 5"], [5, 0.39, "Más de 5 años, hasta 6"],
-  [6, 0.34, "Más de 6 años, hasta 7"], [7, 0.28, "Más de 7 años, hasta 8"],
-  [8, 0.24, "Más de 8 años, hasta 9"], [9, 0.19, "Más de 9 años, hasta 10"],
-  [10, 0.17, "Más de 10 años, hasta 11"], [11, 0.13, "Más de 11 años, hasta 12"],
-  [12, 0.10, "Más de 12 años"]
-];
+const tablaTurismos = WM_ITP.tablaTurismos; // FUENTE: /assets/itp-vehiculos.js
 
 const tablaAutocaravanas = [
   [0, 1.00, "Hasta 1 año"], [1, 0.87, "Más de 1 año, hasta 2"],
@@ -1297,34 +1290,9 @@ const tablaEmbarcaciones = [
   [20, 0.20, 0.10]
 ];
 
-const ccaaData = {
-  "Andalucía":          { tg: 0.04, t15: 0.08, t0: 0.01, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Aragón":             { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 10, cf: [[1000,0],[1500,20],[2000,30],[Infinity,30]] },
-  "Asturias":           { tg: 0.04, t15: 0.08, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Baleares":           { tg: 0.04, t15: 0.08, t0: 0, teco: 0.02, exA: 0, exV: 0, cA: 0, cf: null },
-  "Canarias (IGIC)":    { tg: 0.055, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 10, cf: [[1000,40],[1500,70],[2000,115],[Infinity,115]] },
-  "Cantabria":          { tg: 0.06, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 10, cf: [[999,45],[1499,60],[1999,90],[Infinity,90]] },
-  "Castilla-La Mancha": { tg: 0.06, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Castilla y León":    { tg: 0.05, t15: 0.08, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Cataluña":           { tg: 0.05, t15: -1, t0: 0, teco: -1, exA: 10, exV: 40000, cA: 0, cf: null },
-  "Ceuta":              { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Comunidad de Madrid":{ tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Comunidad Valenciana":{ tg: 0.06, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Extremadura":        { tg: 0.06, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Galicia":            { tg: 0.03, t15: -1, t0: 0, teco: -1, exA: 0, exV: 0, cA: 14, cf: [[1199,22],[1599,38],[Infinity,38],[Infinity,38]] },
-  "La Rioja":           { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Melilla":            { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null },
-  "Murcia":             { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 12, cf: [[1000,0],[1500,30],[2000,50],[Infinity,75]] },
-  "Navarra":            { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 10, exV: 40000, cA: 0, cf: null },
-  "País Vasco":         { tg: 0.04, t15: -1, t0: -1, teco: -1, exA: 0, exV: 0, cA: 0, cf: null }
-};
+const ccaaData = WM_ITP.ccaaData; // FUENTE: /assets/itp-vehiculos.js
 
-const valencianaCuotas = {
-  motos: { ">12": [[250, 10], [550, 20], [750, 35], [Infinity, 55]],
-           "5-12": [[250, 30], [550, 60], [750, 90], [Infinity, 140]] },
-  coches: { ">12": [[1500, 40], [2000, 60], [Infinity, 140]],
-            "5-12": [[1500, 120], [2000, 180], [Infinity, 280]] }
-};
+const valencianaCuotas = WM_ITP.valencianaCuotas; // FUENTE: /assets/itp-vehiculos.js
 
 const tablaMotosComb = [
   ["Hasta 50 c.c.", 950], ["De 50,01 a 75 c.c.", 1150],
@@ -1437,36 +1405,11 @@ function tramoTexto(tipo, anos) {
   return '—';
 }
 
-function cuotaFijaValenciana(anos, cilindrada, valor, esMoto) {
-  if (valor >= 20000) return null;
-  if (anos == null || cilindrada == null || !cilindrada) return null;
-  let tramoAnt = null;
-  if (anos > 12) tramoAnt = '>12';
-  else if (anos > 5 && anos <= 12) tramoAnt = '5-12';
-  else return null;
-  const tabla = esMoto ? valencianaCuotas.motos[tramoAnt] : valencianaCuotas.coches[tramoAnt];
-  for (const [maxCc, cuota] of tabla) {
-    if (cilindrada <= maxCc) return { cuota, tramoAnt, esMoto };
-  }
-  return null;
-}
+const cuotaFijaValenciana = WM_ITP.cuotaFijaValenciana; // FUENTE: /assets/itp-vehiculos.js
 
-function cuotaFijaEstandar(ccaaParam, anos, cilindrada) {
-  if (!ccaaParam.cf || !cilindrada) return null;
-  if (ccaaParam.cA === 0 || anos === null || anos < ccaaParam.cA) return null;
-  for (const [maxCc, cuota] of ccaaParam.cf) {
-    if (cilindrada <= maxCc) return cuota;
-  }
-  return null;
-}
+const cuotaFijaEstandar = WM_ITP.cuotaFijaEstandar; // FUENTE: /assets/itp-vehiculos.js
 
-function calcularTipoNormal(ccaaParam, etiqueta, cvf, base) {
-  let tipo = ccaaParam.tg;
-  if (etiqueta === '0' && ccaaParam.t0 >= 0) tipo = ccaaParam.t0;
-  else if (etiqueta === 'ECO' && ccaaParam.teco >= 0) tipo = ccaaParam.teco;
-  else if (cvf > 15 && ccaaParam.t15 >= 0) tipo = ccaaParam.t15;
-  return { tipo, itp: base * tipo };
-}
+const calcularTipoNormal = WM_ITP.calcularTipoNormal; // FUENTE: /assets/itp-vehiculos.js
 
 function calcular() {
   const tipo = document.getElementById('tipo').value;

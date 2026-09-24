@@ -129,18 +129,52 @@
   <section class="sec">
     <div class="wrap">
       <div class="calc-card">
-        <div class="calc-cols">
-          <div class="calc-row">
-            <label class="calc-label" for="ct-precio">Precio de venta escriturado (€)</label>
-            <input type="number" id="ct-precio" class="calc-input" value="12000" min="100" max="500000" step="100" oninput="calcCT()">
-            <p style="font-size:11px;color:#8888a0;margin:6px 0 0">Se usa el valor venal del BOE si es superior al escriturado.</p>
-          </div>
-          <div class="calc-row">
-            <label class="calc-label" for="ct-antiguedad">Antigüedad del vehículo (años)</label>
-            <input type="number" id="ct-antiguedad" class="calc-input" value="6" min="0" max="40" step="1" oninput="calcCT()">
-          </div>
-        </div>
-        <div class="calc-cols">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-anexo">Precio Anexo I (€)</label><input type="number" id="ct-anexo" class="calc-input" value="20000" min="0" step="100" oninput="calcCT()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0"><strong>¿Cómo lo encuentro?</strong> Es el precio medio de venta del vehículo nuevo que publica Hacienda: busca marca, modelo y período de comercialización en el Anexo I de la Orden HAC/1501/2025 (BOE). Para motos, usa la tabla por cilindrada de la <a href="/calculadora-itp/" style="color:var(--p2)">calculadora de ITP</a>.</p></div>
+      <div class="calc-row"><label class="calc-label" for="ct-anti">Antigüedad (años completos desde la 1ª matriculación)</label><input type="number" id="ct-anti" class="calc-input" value="6" min="0" max="40" step="1" oninput="calcCT()"></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-cc">Cilindrada (cc)</label><input type="number" id="ct-cc" class="calc-input" value="1600" min="0" step="1" oninput="calcCT()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Necesaria para las cuotas fijas autonómicas.</p></div>
+      <div class="calc-row"><label class="calc-label" for="ct-cvf">Potencia fiscal (CVf)</label><input type="number" id="ct-cvf" class="calc-input" value="11" min="0" step="0.1" oninput="calcCT()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Por encima de 15 CVf algunas CCAA aplican un tipo mayor.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-etiqueta">Etiqueta ambiental DGT</label><select id="ct-etiqueta" class="calc-select" onchange="calcCT()">
+          <option value="ninguna">Sin etiqueta</option>
+          <option value="B">B</option>
+          <option value="C" selected>C</option>
+          <option value="ECO">ECO</option>
+          <option value="0">0 emisiones</option>
+        </select></div>
+      <div class="calc-row"><label class="calc-label" for="ct-uso">¿Uso taxi, autoescuela o alquiler?</label><select id="ct-uso" class="calc-select" onchange="calcCT()">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Reduce el valor fiscal al 70%.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="ct-ccaa">Comunidad Autónoma del comprador</label><select id="ct-ccaa" class="calc-select" onchange="calcCT()">
+          <option value="Andalucía">Andalucía</option>
+          <option value="Aragón">Aragón</option>
+          <option value="Asturias">Asturias</option>
+          <option value="Baleares">Baleares</option>
+          <option value="Canarias (IGIC)">Canarias (IGIC)</option>
+          <option value="Cantabria">Cantabria</option>
+          <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+          <option value="Castilla y León">Castilla y León</option>
+          <option value="Cataluña">Cataluña</option>
+          <option value="Ceuta">Ceuta</option>
+          <option value="Comunidad de Madrid" selected>Comunidad de Madrid</option>
+          <option value="Comunidad Valenciana">Comunidad Valenciana</option>
+          <option value="Extremadura">Extremadura</option>
+          <option value="Galicia">Galicia</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Melilla">Melilla</option>
+          <option value="Murcia">Murcia</option>
+          <option value="Navarra">Navarra</option>
+          <option value="País Vasco">País Vasco</option>
+        </select></div>
+      <div class="calc-row"><label class="calc-label" for="ct-contrato">Precio del contrato (€) — opcional</label><input type="number" id="ct-contrato" class="calc-input" value="" min="0" step="100" placeholder="0" oninput="calcCT()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Si es mayor que el valor fiscal, Hacienda toma este importe como base imponible.</p></div>
+    </div>
+    <div class="calc-cols">
           <div class="calc-row">
             <label class="calc-label" for="ct-tipo">Tipo de vehículo</label>
             <select id="ct-tipo" class="calc-select" onchange="calcCT()">
@@ -149,40 +183,17 @@
               <option value="furgoneta">Furgoneta / mixta</option>
             </select>
           </div>
-          <div class="calc-row">
-            <label class="calc-label" for="ct-ccaa">Comunidad Autónoma (comprador)</label>
-            <select id="ct-ccaa" class="calc-select" onchange="calcCT()">
-              <option value="madrid" data-tipo="4" selected>Madrid · 4%</option>
-              <option value="andalucia" data-tipo="4">Andalucía · 4%</option>
-              <option value="asturias" data-tipo="4">Asturias · 4%</option>
-              <option value="baleares" data-tipo="4">Illes Balears · 4%</option>
-              <option value="navarra" data-tipo="4">Navarra · 4%</option>
-              <option value="rioja" data-tipo="4">La Rioja · 4%</option>
-              <option value="pais-vasco" data-tipo="4">País Vasco · 4%</option>
-              <option value="castilla-leon" data-tipo="5">Castilla y León · 5%</option>
-              <option value="cataluna" data-tipo="5">Catalunya · 5%</option>
-              <option value="castilla-mancha" data-tipo="6">Castilla-La Mancha · 6%</option>
-              <option value="extremadura" data-tipo="6">Extremadura · 6%</option>
-              <option value="valencia" data-tipo="6">Comunitat Valenciana · 6%</option>
-              <option value="aragon" data-tipo="6">Aragón · 6%</option>
-              <option value="cantabria" data-tipo="8">Cantabria · 8%</option>
-              <option value="canarias" data-tipo="5.5">Canarias · 5,5%</option>
-              <option value="galicia" data-tipo="8">Galicia · 8%</option>
-              <option value="murcia" data-tipo="8">Murcia · 8%</option>
-            </select>
-          </div>
-        </div>
-
+    </div>
         <div class="calc-out">
-          <div class="calc-out-card"><div class="calc-out-num" id="ct-itp">240 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ct-itp">272,00 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
           <div class="calc-out-card"><div class="calc-out-num">55,70 €</div><div class="calc-out-lbl">Tasa DGT</div></div>
         </div>
         <div class="calc-out">
           <div class="calc-out-card"><div class="calc-out-num">100 €</div><div class="calc-out-lbl">Gestoría orientativa</div></div>
-          <div class="calc-out-card total"><div class="calc-out-num" id="ct-total">396 €</div><div class="calc-out-lbl">Total gastos transferencia</div></div>
+          <div class="calc-out-card total"><div class="calc-out-num" id="ct-total">427,70 €</div><div class="calc-out-lbl">Total gastos transferencia</div></div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ct-detail">Valor fiscal depreciado: 6.720€ (56% sobre 12.000€ a 6 años). Madrid 4% × 6.720€ = 269€ ITP. Total: 269€ + 55,70€ DGT + 100€ gestoría ≈ 425€.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ct-detail">Valor fiscal: precio Anexo I 20.000,00 € × 34,0 % (más de 6 años, hasta 7) = 6800,00 €. ITP Comunidad de Madrid 4,0 % × 6800,00 € = 272,00 €. Total: 272,00 € ITP + 55,70 € DGT + 100,00 € gestoría = 427,70 €.</div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Tasa DGT cambio titularidad 2026: 55,70€ (resolución BOE anual). Gestorías cobran entre 80€ y 120€ — hemos usado 100€ de media. ITP siempre lo paga el comprador en la Hacienda autonómica donde resida (no donde se firma el contrato).</p>
       </div>
@@ -343,46 +354,28 @@
 </footer>
 
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/itp-vehiculos.js?v=2026092401"></script>
 <script>
-// Tabla depreciación Anexo IV BOE 2026
-var DEPRECIACION = [
-  {edad: 1, pct: 100}, {edad: 2, pct: 84}, {edad: 3, pct: 67},
-  {edad: 4, pct: 56}, {edad: 5, pct: 47}, {edad: 6, pct: 39},
-  {edad: 7, pct: 34}, {edad: 8, pct: 28}, {edad: 9, pct: 24},
-  {edad: 10, pct: 19}, {edad: 11, pct: 17}, {edad: 12, pct: 13},
-  {edad: 99, pct: 10}
-];
-function getDep(y){for(var i=0;i<DEPRECIACION.length;i++){if(y<=DEPRECIACION[i].edad)return DEPRECIACION[i].pct;}return 10;}
-
-var TASA_DGT = 55.70;
-var GESTORIA = 100;
-
+function calcCTInputs(){
+  var g=function(id){return document.getElementById(id);};
+  return {
+    ccaa: g('ct-ccaa').value,
+    precioAnexo: parseFloat(g('ct-anexo').value)||0,
+    anos: parseInt(g('ct-anti').value,10),
+    cilindrada: parseFloat(g('ct-cc').value)||0,
+    cvf: parseFloat(g('ct-cvf').value)||0,
+    etiqueta: g('ct-etiqueta').value,
+    precioContrato: parseFloat(g('ct-contrato').value)||0,
+    usoEspecial: g('ct-uso').value==='si',
+    moto: g('ct-tipo').value==='moto'
+  };
+}
+var GESTORIA = 100; // gestoría orientativa (media 80-120 €)
 function calcCT(){
-  var precio = parseFloat(document.getElementById('ct-precio').value) || 0;
-  var antiguedad = parseInt(document.getElementById('ct-antiguedad').value, 10) || 0;
-  var ccaaSel = document.getElementById('ct-ccaa');
-  var pctTipo = parseFloat(ccaaSel.options[ccaaSel.selectedIndex].getAttribute('data-tipo'));
-  var tipoSel = document.getElementById('ct-tipo').value;
-
-  // Motos suelen tener ITP reducido en algunas CCAA, pero como simplificación usamos mismo % salvo
-  // para moto en Cantabria/Murcia/Galicia/Aragón/Valencia/Canarias (cuotas fijas reales)
-  var pctEfectivo = pctTipo;
-
-  var pctDep = getDep(antiguedad);
-  var valorFiscal = precio * (pctDep / 100);
-  var itp = valorFiscal * (pctEfectivo / 100);
-  var total = itp + TASA_DGT + GESTORIA;
-
-  document.getElementById('ct-itp').textContent = Math.round(itp).toLocaleString('es-ES') + ' €';
-  document.getElementById('ct-total').textContent = Math.round(total).toLocaleString('es-ES') + ' €';
-  document.getElementById('ct-detail').textContent = 'Valor fiscal depreciado: ' +
-    Math.round(valorFiscal).toLocaleString('es-ES') + '€ (' + pctDep + '% sobre ' +
-    Math.round(precio).toLocaleString('es-ES') + '€ a ' + antiguedad + ' años). ' +
-    ccaaSel.options[ccaaSel.selectedIndex].textContent.split(' · ')[0] + ' ' + pctTipo +
-    '% × ' + Math.round(valorFiscal).toLocaleString('es-ES') + '€ = ' +
-    Math.round(itp).toLocaleString('es-ES') + '€ ITP. Total: ' +
-    Math.round(itp).toLocaleString('es-ES') + '€ + 55,70€ DGT + 100€ gestoría ≈ ' +
-    Math.round(total).toLocaleString('es-ES') + '€.';
+  var o=calcCTInputs(), r=WM_ITP.turismo(o), itp=r?r.itp:0, total=itp+WM_ITP.TASA_DGT+GESTORIA, f=WM_ITP.fmtEur;
+  document.getElementById('ct-itp').textContent=r?f(itp):'— €';
+  document.getElementById('ct-total').textContent=f(total);
+  document.getElementById('ct-detail').textContent=WM_ITP.describe(r,o)+' Total: '+f(itp)+' ITP + '+f(WM_ITP.TASA_DGT)+' DGT + '+f(GESTORIA)+' gestoría = '+f(total)+'.';
 }
 calcCT();
 </script>
