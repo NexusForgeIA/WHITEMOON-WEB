@@ -123,7 +123,7 @@
       <div class="hdr c">
         <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><line x1="3" y1="21" x2="21" y2="21"/><rect x="5" y="13" width="3" height="8"/><rect x="10.5" y="8" width="3" height="13"/><rect x="16" y="3" width="3" height="18"/></svg></span> Calculadora gratuita · AEAT 2026</span>
         <h1 class="sec-h">Calculadora <em>IRPF Autónomos</em> 2026</h1>
-        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuota íntegra, pagos fraccionados del modelo 130 y resultado de la declaración anual. Aplica tramos IRPF estatal + autonómico medio + situación familiar.</p>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Cuota íntegra, pagos fraccionados del modelo 130 y resultado de la declaración anual. Aplica la escala general del IRPF (estatal + autonómica tipo) y los mínimos por situación familiar. ⚠️ Estimación orientativa a nivel nacional: los tramos autonómicos, las reducciones y las cotizaciones pueden variar por año y comunidad. Verifícalo con tu gestor o en la <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener" style="color:var(--p2,#9d70ff);text-decoration:underline">AEAT</a>.</p>
       </div>
     </div>
   </section>
@@ -145,47 +145,31 @@
         </div>
         <div class="calc-cols">
           <div class="calc-row">
-            <label class="calc-label" for="ir-ccaa">Comunidad Autónoma</label>
-            <select id="ir-ccaa" class="calc-select" onchange="calcIR()">
-              <option value="madrid" selected>Madrid</option>
-              <option value="cataluna">Catalunya</option>
-              <option value="andalucia">Andalucía</option>
-              <option value="valencia">Comunitat Valenciana</option>
-              <option value="pais-vasco">País Vasco</option>
-              <option value="navarra">Navarra</option>
-              <option value="galicia">Galicia</option>
-              <option value="castilla-leon">Castilla y León</option>
-              <option value="aragon">Aragón</option>
-              <option value="castilla-mancha">Castilla-La Mancha</option>
-              <option value="canarias">Canarias</option>
-              <option value="baleares">Illes Balears</option>
-              <option value="murcia">Murcia</option>
-              <option value="asturias">Asturias</option>
-              <option value="extremadura">Extremadura</option>
-              <option value="cantabria">Cantabria</option>
-              <option value="rioja">La Rioja</option>
-            </select>
+            <span class="calc-label">Comunidad Autónoma</span>
+            <p style="font-size:12px;color:#8888a0;margin:6px 0 0;line-height:1.6">El tramo autonómico varía por comunidad y no se estima aquí: el cálculo usa la escala general.</p>
           </div>
           <div class="calc-row">
             <label class="calc-label" for="ir-situacion">Situación familiar</label>
             <select id="ir-situacion" class="calc-select" onchange="calcIR()">
-              <option value="soltero" data-reduccion="5550" selected>Soltero/a sin hijos</option>
-              <option value="casado-2" data-reduccion="9000">Casado/a sin hijos</option>
-              <option value="1-hijo" data-reduccion="8050">1 hijo a cargo</option>
-              <option value="2-hijos" data-reduccion="10350">2 hijos a cargo</option>
-              <option value="3-hijos" data-reduccion="14750">3 o más hijos</option>
-              <option value="discapacidad" data-reduccion="8550">Discapacidad ≥33%</option>
+              <option value="soltero" data-minimo="5550" data-conjunta="0" selected>Soltero/a sin hijos</option>
+              <option value="casado-2" data-minimo="5550" data-conjunta="3400">Casado/a sin hijos (declaración conjunta)</option>
+              <option value="1-hijo" data-minimo="7950" data-conjunta="0">1 hijo a cargo</option>
+              <option value="2-hijos" data-minimo="10650" data-conjunta="0">2 hijos a cargo</option>
+              <option value="3-hijos" data-minimo="14650" data-conjunta="0">3 hijos a cargo</option>
+              <option value="4-hijos" data-minimo="19150" data-conjunta="0">4 hijos a cargo</option>
+              <option value="discapacidad" data-minimo="8550" data-conjunta="0">Discapacidad ≥33%</option>
             </select>
+            <p style="font-size:11px;color:#8888a0;margin:6px 0 0">Mínimo personal 5.550 € + descendientes (2.400, 2.700, 4.000 y 4.500 €, acumulativos). Si los hijos conviven con los dos progenitores, el mínimo por descendientes se reparte a partes iguales.</p>
           </div>
         </div>
 
         <div class="calc-out">
-          <div class="calc-out-card"><div class="calc-out-num" id="ir-cuota">5.587 €</div><div class="calc-out-lbl">Cuota íntegra IRPF</div></div>
-          <div class="calc-out-card"><div class="calc-out-num" id="ir-pagado">7.000 €</div><div class="calc-out-lbl">Ya pagado (mod. 130)</div></div>
-          <div class="calc-out-card devolver" id="ir-result-card"><div class="calc-out-num" id="ir-resultado">−1.413 €</div><div class="calc-out-lbl" id="ir-result-lbl">A devolver</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ir-cuota">7611 €</div><div class="calc-out-lbl">Cuota íntegra IRPF</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ir-pagado">7000 €</div><div class="calc-out-lbl">Ya pagado (mod. 130)</div></div>
+          <div class="calc-out-card pagar" id="ir-result-card"><div class="calc-out-num" id="ir-resultado">+611 €</div><div class="calc-out-lbl" id="ir-result-lbl">A pagar</div></div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ir-detail">Rendimiento neto 35.000€ − mínimo personal 5.550€ = base imponible 29.450€. Cuota íntegra IRPF Madrid ≈ 5.587€. Pagos fraccionados modelo 130: 7.000€. Resultado: −1.413€ → devolución.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="ir-detail">Rendimiento neto 35.000€ = base liquidable 35.000€. Cuota íntegra (escala general) ≈ cuota de la base − cuota del mínimo personal y familiar (5550€) = 7611€. Pagos fraccionados modelo 130: 7000€. Resultado: a pagar +611€.</div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Modelo 130 trimestral: 1T (abril), 2T (julio), 3T (octubre), 4T (enero). Pago fraccionado = 20% del rendimiento neto trimestral.</p>
       </div>
@@ -351,21 +335,19 @@ var TRAMOS_IRPF = [
   {hasta: 12450, tipo: 19},{hasta: 20200, tipo: 24},{hasta: 35200, tipo: 30},
   {hasta: 60000, tipo: 37},{hasta: 300000, tipo: 45},{hasta: Infinity, tipo: 47}
 ];
-var AJUSTE_CCAA = {madrid:-0.5,cataluna:0.5,andalucia:0,valencia:0.3,'pais-vasco':-1,navarra:-0.8,galicia:0,'castilla-leon':-0.3,aragon:0,'castilla-mancha':0,canarias:-0.2,baleares:0,murcia:0,asturias:0.2,extremadura:0.2,cantabria:0,rioja:-0.2};
 
 function calcIRPF(b){var c=0,a=0;for(var i=0;i<TRAMOS_IRPF.length;i++){var t=TRAMOS_IRPF[i];if(b>t.hasta){c+=(t.hasta-a)*t.tipo/100;a=t.hasta;}else{c+=(b-a)*t.tipo/100;return c;}}return c;}
 
 function calcIR(){
   var rendNeto = parseFloat(document.getElementById('ir-rendimiento').value) || 0;
   var fraccionados = parseFloat(document.getElementById('ir-fraccionados').value) || 0;
-  var ccaa = document.getElementById('ir-ccaa').value;
-  var sit = document.getElementById('ir-situacion');
-  var minimo = parseFloat(sit.options[sit.selectedIndex].getAttribute('data-reduccion'));
+    var sit = document.getElementById('ir-situacion');
+  var opt = sit.options[sit.selectedIndex];
+var minimo = parseFloat(opt.getAttribute('data-minimo')) || 0;       // se aplica a la CUOTA
+var conjunta = parseFloat(opt.getAttribute('data-conjunta')) || 0;   // reducción de la BASE
 
-  var base = Math.max(0, rendNeto - minimo);
-  var cuotaIntegra = calcIRPF(base);
-  var ajuste = AJUSTE_CCAA[ccaa] || 0;
-  cuotaIntegra = Math.max(0, cuotaIntegra * (1 + ajuste / 100));
+  var base = Math.max(0, rendNeto - conjunta);
+  var cuotaIntegra = Math.max(0, calcIRPF(base) - calcIRPF(Math.min(minimo, base)));
 
   var resultado = cuotaIntegra - fraccionados;
   var card = document.getElementById('ir-result-card');
@@ -384,13 +366,13 @@ function calcIR(){
   document.getElementById('ir-cuota').textContent = Math.round(cuotaIntegra).toLocaleString('es-ES') + ' €';
   document.getElementById('ir-pagado').textContent = Math.round(fraccionados).toLocaleString('es-ES') + ' €';
   document.getElementById('ir-detail').textContent = 'Rendimiento neto ' +
-    Math.round(rendNeto).toLocaleString('es-ES') + '€ − mínimo personal ' +
-    Math.round(minimo).toLocaleString('es-ES') + '€ = base imponible ' +
-    Math.round(base).toLocaleString('es-ES') + '€. Cuota íntegra IRPF ' + ccaa + ' ≈ ' +
-    Math.round(cuotaIntegra).toLocaleString('es-ES') + '€. Pagos fraccionados modelo 130: ' +
-    Math.round(fraccionados).toLocaleString('es-ES') + '€. Resultado: ' +
-    (resultado >= 0 ? 'a pagar +' : 'a devolver −') +
-    Math.abs(Math.round(resultado)).toLocaleString('es-ES') + '€.';
+Math.round(rendNeto).toLocaleString('es-ES') + '€' +
+(conjunta ? ' − reducción por declaración conjunta ' + Math.round(conjunta).toLocaleString('es-ES') + '€' : '') +
+' = base liquidable ' + Math.round(base).toLocaleString('es-ES') + '€. Cuota íntegra (escala general) ≈ cuota de la base − cuota del mínimo personal y familiar (' +
+Math.round(minimo).toLocaleString('es-ES') + '€) = ' + Math.round(cuotaIntegra).toLocaleString('es-ES') + '€. Pagos fraccionados modelo 130: ' +
+Math.round(fraccionados).toLocaleString('es-ES') + '€. Resultado: ' +
+(resultado >= 0 ? 'a pagar +' : 'a devolver −') +
+Math.abs(Math.round(resultado)).toLocaleString('es-ES') + '€.';
 }
 calcIR();
 </script>

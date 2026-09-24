@@ -232,10 +232,11 @@ footer a{color:var(--purple-soft);text-decoration:none;}
   <div class="hero-kicker">Herramienta gratuita · WhiteMoon Agencia IA</div>
   <h1>Calculadora Nómina IA<br><em>2026</em> — totalmente gratis</h1>
   <p class="hero-desc">Calcula tu salario neto, retención IRPF y cuota de Seguridad Social al instante. Tramos IRPF 2026 actualizados, todas las situaciones familiares. Sin registro, sin límites.</p>
+  <p class="hero-desc" style="font-size:.85rem;margin-top:.6rem">⚠️ Estimación orientativa a nivel nacional: los tramos autonómicos, las reducciones y las cotizaciones pueden variar por año y comunidad. Verifícalo con tu gestor o en la <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener" style="color:var(--p2,#9d70ff);text-decoration:underline">AEAT</a>.</p>
   <div class="hero-badges">
     <span class="badge">IRPF 2026 actualizado</span>
     <span class="badge">Seguridad Social</span>
-    <span class="badge">Todas las CCAA</span>
+    <span class="badge">Estimación nacional</span>
     <span class="badge">Sin registro</span>
     <span class="badge">IA · WhiteMoon</span>
   </div>
@@ -284,19 +285,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
       <div class="field-row">
         <div class="field">
           <label>Comunidad autónoma</label>
-          <select id="ccaa">
-            <option value="madrid" selected>Madrid</option>
-            <option value="cataluna">Cataluña</option>
-            <option value="andalucia">Andalucía</option>
-            <option value="valencia">C. Valenciana</option>
-            <option value="galicia">Galicia</option>
-            <option value="euskadi">País Vasco</option>
-            <option value="aragon">Aragón</option>
-            <option value="castilla">Castilla y León</option>
-            <option value="canarias">Canarias</option>
-            <option value="baleares">Baleares</option>
-            <option value="otras">Otras CCAA</option>
-          </select>
+          <p style="font-size:.78rem;color:var(--mid);margin:.4rem 0 0;line-height:1.5">El tramo autonómico varía por comunidad y no se estima aquí: el cálculo usa la escala general.</p>
         </div>
         <div class="field">
           <label>Tipo de contrato</label>
@@ -411,7 +400,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
         <tr><td>6º</td><td>Más de 300.000 €</td><td class="tramo-pct">23,5%</td><td class="tramo-pct">47%</td><td>—</td></tr>
       </tbody>
     </table>
-    <p style="font-size:.72rem;color:var(--mid);margin-top:.75rem;">* El tipo total incluye tramo estatal + tramo autonómico estándar. El tramo autonómico varía por comunidad. Fuente: AEAT 2026.</p>
+    <p style="font-size:.72rem;color:var(--mid);margin-top:.75rem;">* El tipo total es la escala general (tramo estatal + tramo autonómico tipo). Cada comunidad fija su propio tramo autonómico y esta calculadora no lo estima. Fuente: <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener" style="color:var(--p2,#9d70ff);text-decoration:underline">AEAT</a>.</p>
   </div>
 
   <!-- CARDS INFO -->
@@ -450,7 +439,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Por qué varía el IRPF según la comunidad?</div>
-      <p class="faq-a">El IRPF tiene una parte estatal (igual para todos) y una parte autonómica (fijada por cada comunidad). Madrid tiene los tipos autonómicos más bajos de España; Cataluña y Asturias, los más altos.</p>
+      <p class="faq-a">El IRPF tiene una parte estatal (igual para todos) y una parte autonómica (fijada por cada comunidad). Madrid tiene los tipos autonómicos más bajos de España; Cataluña y Asturias, los más altos. Esta calculadora no lo estima: usa la escala general, igual para todas.</p>
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Qué diferencia hay entre 12 y 14 pagas?</div>
@@ -458,7 +447,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     </div>
     <div class="faq-item">
       <div class="faq-q">¿El cálculo es exacto?</div>
-      <p class="faq-a">La calculadora aplica el algoritmo oficial de la AEAT con los tramos IRPF 2026 y los tipos de SS vigentes. El resultado puede diferir ligeramente del real por variables específicas como deducciones autonómicas, discapacidad o múltiples pagadores.</p>
+      <p class="faq-a">No. Es una estimación orientativa a nivel nacional: usa la escala general del IRPF, no el tramo de tu comunidad, y las reducciones y los tipos de cotización pueden variar de un año a otro. Puede diferir del real por deducciones autonómicas, discapacidad o varios pagadores. Verifícalo con tu gestor o en la AEAT.</p>
     </div>
   </div>
 
@@ -555,7 +544,6 @@ var TRAMOS = [
   {hasta:12450,tipo:0.19},{hasta:20200,tipo:0.24},{hasta:35200,tipo:0.30},
   {hasta:60000,tipo:0.37},{hasta:300000,tipo:0.45},{hasta:Infinity,tipo:0.47}
 ];
-var CCAA_AJUSTE = {madrid:-0.005,cataluna:0.01,andalucia:0,valencia:0.005,galicia:0,euskadi:-0.01,aragon:0.005,castilla:0,canarias:-0.005,baleares:0.005,otras:0};
 
 function redRendimientos(rnt) {
   // Reduccion rendimientos trabajo AEAT 2026
@@ -573,16 +561,16 @@ function minimoFamiliar(fam) {
   if (fam==='hijo1'||fam==='divorciado1') return 2400;
   if (fam==='hijo2'||fam==='divorciado2') return 2400+2700;
   if (fam==='hijo3'||fam==='divorciado3') return 2400+2700+4000;
-  if (fam==='casado') return 3400;
   return 0;
 }
-function calcIRPF(base, ccaa) {
+function calcIRPF(base) {
+  // Escala general (estatal + autonómica tipo); el tramo de cada CCAA no se estima
   if(base<=0) return 0;
-  var cuota=0, prev=0, aj=CCAA_AJUSTE[ccaa]||0;
+  var cuota=0, prev=0;
   for(var i=0;i<TRAMOS.length;i++){
     var t=TRAMOS[i];
     if(base<=prev) break;
-    cuota += (Math.min(base,t.hasta)-prev)*(t.tipo+aj);
+    cuota += (Math.min(base,t.hasta)-prev)*t.tipo;
     prev=t.hasta;
     if(base<=t.hasta) break;
   }
@@ -596,7 +584,6 @@ function calcular() {
   var bruto = parseFloat(document.getElementById('brutoanual').value)||0;
   var pagas = parseInt(document.getElementById('pagas').value);
   var fam   = document.getElementById('familia').value;
-  var ccaa  = document.getElementById('ccaa').value;
   var edad  = document.getElementById('edad').value;
   if(bruto<=0){alert('Introduce un salario bruto válido');return;}
 
@@ -609,7 +596,7 @@ function calcular() {
   // 3. Reduccion rendimientos del trabajo (se aplica sobre rnt)
   var red = redRendimientos(rnt);
 
-  // 4. Reduccion declaracion conjunta
+  // 4. Reduccion declaracion conjunta (3.400 €, solo aqui: no es un minimo familiar)
   var redConj = (fam==='casado') ? 3400 : 0;
 
   // 5. Base imponible
@@ -621,8 +608,8 @@ function calcular() {
   var minT = minP + minF;
 
   // 7. Cuota IRPF = cuota(base) - cuota(minimos)
-  var cuotaBase = calcIRPF(baseImp, ccaa);
-  var cuotaMin  = calcIRPF(Math.min(minT, baseImp), ccaa);
+  var cuotaBase = calcIRPF(baseImp);
+  var cuotaMin  = calcIRPF(Math.min(minT, baseImp));
   var cuotaIRPF = Math.max(0, cuotaBase - cuotaMin);
 
   // 8. Minimo exento soltero
