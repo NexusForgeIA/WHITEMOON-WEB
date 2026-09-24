@@ -32,8 +32,8 @@
   "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"¿Cuánto cuesta de verdad comprar un coche de segunda mano?","acceptedAnswer":{"@type":"Answer","text":"El precio del coche es solo el 80-90% del coste real. Hay que sumar: ITP autonómico (4-8% del valor venal), tasa DGT (55,70€), gestoría (80-120€) y seguro primer año (400-1.200€ según perfil). Si financias, suma intereses (TIN típico 7-10% en 2026). Para un coche de 12.000€: 13.500-14.500€ contado o 15.000-16.500€ financiado."}},
-    {"@type":"Question","name":"¿En qué CCAA es más barato comprar un coche usado?","acceptedAnswer":{"@type":"Answer","text":"Madrid, Andalucía, Asturias, Baleares, Navarra, La Rioja y País Vasco aplican el 4% de ITP. Castilla y León y Catalunya 5%. Castilla-La Mancha, Extremadura, Valencia y Aragón 6%. Cantabria, Galicia y Murcia 8%. El ITP se paga donde resida el comprador."}},
+    {"@type":"Question","name":"¿Cuánto cuesta de verdad comprar un coche de segunda mano?","acceptedAnswer":{"@type":"Answer","text":"El precio del coche es solo el 80-90% del coste real. Hay que sumar: ITP autonómico (entre el 3% y el 6% del valor fiscal según la CCAA, hasta el 8% en algunas para más de 15 CVf), tasa DGT (55,70€), gestoría (80-120€) y seguro primer año (400-1.200€ según perfil). Si financias, suma intereses (TIN típico 7-10% en 2026). Para un coche de 12.000€: 13.500-14.500€ contado o 15.000-16.500€ financiado."}},
+    {"@type":"Question","name":"¿En qué CCAA es más barato comprar un coche usado?","acceptedAnswer":{"@type":"Answer","text":"Galicia tiene el tipo general más bajo, el 3%. Aplican el 4% la Comunidad de Madrid, Andalucía, Aragón, Asturias, Baleares, Murcia, Navarra, La Rioja, el País Vasco, Ceuta y Melilla; el 5%, Castilla y León y Cataluña; Canarias, el 5,5%; y el 6%, Cantabria, Castilla-La Mancha, Extremadura y la Comunidad Valenciana. Andalucía, Asturias, Baleares y Castilla y León suben al 8% para coches de más de 15 CVf, y varias comunidades aplican cuotas fijas o exenciones a los coches antiguos. El ITP se paga donde resida el comprador."}},
     {"@type":"Question","name":"¿Es obligatorio contratar seguro al comprar?","acceptedAnswer":{"@type":"Answer","text":"Sí. El seguro a terceros es obligatorio por ley desde el momento en que el vehículo está matriculado a tu nombre (Ley 50/1980 y RDL 8/2004). No se puede circular sin seguro vigente. El cambio de titularidad debe hacerse en 30 días."}}
   ]
 }
@@ -132,44 +132,51 @@
   <section class="sec">
     <div class="wrap">
       <div class="calc-card">
-        <div class="calc-cols">
-          <div class="calc-row">
-            <label class="calc-label" for="gc-precio">Precio de compra (€)</label>
-            <input type="number" id="gc-precio" class="calc-input" value="12000" min="100" max="500000" step="100" oninput="calcGC()">
-          </div>
-          <div class="calc-row">
-            <label class="calc-label" for="gc-antiguedad">Antigüedad del vehículo (años)</label>
-            <input type="number" id="gc-antiguedad" class="calc-input" value="6" min="0" max="40" step="1" oninput="calcGC()">
-          </div>
-        </div>
-        <div class="calc-cols">
-          <div class="calc-row">
-            <label class="calc-label" for="gc-ccaa">Comunidad Autónoma</label>
-            <select id="gc-ccaa" class="calc-select" onchange="calcGC()">
-              <option value="madrid" data-tipo="4" selected>Madrid · 4%</option>
-              <option value="andalucia" data-tipo="4">Andalucía · 4%</option>
-              <option value="asturias" data-tipo="4">Asturias · 4%</option>
-              <option value="baleares" data-tipo="4">Illes Balears · 4%</option>
-              <option value="navarra" data-tipo="4">Navarra · 4%</option>
-              <option value="rioja" data-tipo="4">La Rioja · 4%</option>
-              <option value="pais-vasco" data-tipo="4">País Vasco · 4%</option>
-              <option value="castilla-leon" data-tipo="5">Castilla y León · 5%</option>
-              <option value="cataluna" data-tipo="5">Catalunya · 5%</option>
-              <option value="castilla-mancha" data-tipo="6">Castilla-La Mancha · 6%</option>
-              <option value="extremadura" data-tipo="6">Extremadura · 6%</option>
-              <option value="valencia" data-tipo="6">Comunitat Valenciana · 6%</option>
-              <option value="aragon" data-tipo="6">Aragón · 6%</option>
-              <option value="cantabria" data-tipo="8">Cantabria · 8%</option>
-              <option value="canarias" data-tipo="5.5">Canarias · 5,5%</option>
-              <option value="galicia" data-tipo="8">Galicia · 8%</option>
-              <option value="murcia" data-tipo="8">Murcia · 8%</option>
-            </select>
-          </div>
-          <div class="calc-row">
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="gc-precio">Precio de compra (€)</label><input type="number" id="gc-precio" class="calc-input" value="12000" min="100" max="500000" step="100" oninput="calcGC()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Es el precio del contrato: si es mayor que el valor fiscal, Hacienda lo toma como base del ITP.</p></div>
+      <div class="calc-row"><label class="calc-label" for="gc-anexo">Precio Anexo I (€)</label><input type="number" id="gc-anexo" class="calc-input" value="20000" min="0" step="100" oninput="calcGC()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0"><strong>¿Cómo lo encuentro?</strong> Es el precio medio de venta del vehículo nuevo que publica Hacienda: busca marca, modelo y período de comercialización en el Anexo I de la Orden HAC/1501/2025 (BOE). Para motos, usa la tabla por cilindrada de la <a href="/calculadora-itp/" style="color:var(--p2)">calculadora de ITP</a>.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="gc-anti">Antigüedad (años completos desde la 1ª matriculación)</label><input type="number" id="gc-anti" class="calc-input" value="6" min="0" max="40" step="1" oninput="calcGC()"></div>
+      <div class="calc-row"><label class="calc-label" for="gc-cc">Cilindrada (cc)</label><input type="number" id="gc-cc" class="calc-input" value="1600" min="0" step="1" oninput="calcGC()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Necesaria para las cuotas fijas autonómicas.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="gc-cvf">Potencia fiscal (CVf)</label><input type="number" id="gc-cvf" class="calc-input" value="11" min="0" step="0.1" oninput="calcGC()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Por encima de 15 CVf algunas CCAA aplican un tipo mayor.</p></div>
+      <div class="calc-row"><label class="calc-label" for="gc-etiqueta">Etiqueta ambiental DGT</label><select id="gc-etiqueta" class="calc-select" onchange="calcGC()">
+          <option value="ninguna">Sin etiqueta</option>
+          <option value="B">B</option>
+          <option value="C" selected>C</option>
+          <option value="ECO">ECO</option>
+          <option value="0">0 emisiones</option>
+        </select></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="gc-ccaa">Comunidad Autónoma del comprador</label><select id="gc-ccaa" class="calc-select" onchange="calcGC()">
+          <option value="Andalucía">Andalucía</option>
+          <option value="Aragón">Aragón</option>
+          <option value="Asturias">Asturias</option>
+          <option value="Baleares">Baleares</option>
+          <option value="Canarias (IGIC)">Canarias (IGIC)</option>
+          <option value="Cantabria">Cantabria</option>
+          <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+          <option value="Castilla y León">Castilla y León</option>
+          <option value="Cataluña">Cataluña</option>
+          <option value="Ceuta">Ceuta</option>
+          <option value="Comunidad de Madrid" selected>Comunidad de Madrid</option>
+          <option value="Comunidad Valenciana">Comunidad Valenciana</option>
+          <option value="Extremadura">Extremadura</option>
+          <option value="Galicia">Galicia</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Melilla">Melilla</option>
+          <option value="Murcia">Murcia</option>
+          <option value="Navarra">Navarra</option>
+          <option value="País Vasco">País Vasco</option>
+        </select></div>
+      <div class="calc-row">
             <label class="calc-label" for="gc-seguro">Seguro estimado primer año (€)</label>
             <input type="number" id="gc-seguro" class="calc-input" value="600" min="100" max="3000" step="50" oninput="calcGC()">
           </div>
-        </div>
+    </div>
         <div class="calc-row">
           <label class="calc-label" for="gc-financiado">¿Vas a financiar la compra?</label>
           <select id="gc-financiado" class="calc-select" onchange="calcGC()">
@@ -181,23 +188,23 @@
         </div>
 
         <div class="calc-out">
-          <div class="calc-out-card"><div class="calc-out-num" id="gc-itp">269 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
-          <div class="calc-out-card"><div class="calc-out-num" id="gc-intereses">0 €</div><div class="calc-out-lbl">Intereses financiación</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="gc-itp">480,00 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="gc-intereses">0,00 €</div><div class="calc-out-lbl">Intereses financiación</div></div>
         </div>
         <div class="calc-out">
-          <div class="calc-out-card total"><div class="calc-out-num" id="gc-total">13.025 €</div><div class="calc-out-lbl">TOTAL REAL DE LA COMPRA</div></div>
+          <div class="calc-out-card total"><div class="calc-out-num" id="gc-total">13.235,70 €</div><div class="calc-out-lbl">TOTAL REAL DE LA COMPRA</div></div>
         </div>
 
         <div class="breakdown">
-          <div class="row"><span>Precio del coche</span><strong id="gc-r-precio">12.000 €</strong></div>
-          <div class="row"><span>ITP autonómico</span><strong id="gc-r-itp">269 €</strong></div>
+          <div class="row"><span>Precio del coche</span><strong id="gc-r-precio">12.000,00 €</strong></div>
+          <div class="row"><span>ITP autonómico</span><strong id="gc-r-itp">480,00 €</strong></div>
           <div class="row"><span>Tasa DGT cambio titularidad</span><strong>55,70 €</strong></div>
           <div class="row"><span>Gestoría orientativa</span><strong>100 €</strong></div>
-          <div class="row"><span>Seguro primer año</span><strong id="gc-r-seguro">600 €</strong></div>
-          <div class="row" id="gc-r-int-row" style="display:none"><span>Intereses totales financiación</span><strong id="gc-r-int">0 €</strong></div>
+          <div class="row"><span>Seguro primer año</span><strong id="gc-r-seguro">600,00 €</strong></div>
+          <div class="row" id="gc-r-int-row" style="display:none"><span>Intereses totales financiación</span><strong id="gc-r-int">0,00 €</strong></div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px" id="gc-detail">12.000€ precio + 269€ ITP + 55,70€ DGT + 100€ gestoría + 600€ seguro = 13.025€ contado. Sobrecoste sobre precio: +8,5%.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6;margin-top:14px" id="gc-detail">Valor fiscal: precio Anexo I 20.000,00 € × 34,0 % (más de 6 años, hasta 7) = 6800,00 €. Base imponible: el precio del contrato (12.000,00 €), porque es mayor que el valor fiscal. ITP Comunidad de Madrid 4,0 % × 12.000,00 € = 480,00 €. Total: 12.000,00 € precio + 480,00 € ITP + 55,70 € DGT + 100,00 € gestoría + 600,00 € seguro = 13.235,70 € al contado. Sobrecoste sobre el precio: +10,3%.</div>
 
         <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El sobrecoste medio sobre el precio anunciado es del 7-15% al contado y del 15-30% financiado. Tip: negocia el precio asumiendo que vas a tener que gastar otros 1.500-2.500€ en trámites y seguro.</p>
       </div>
@@ -225,8 +232,8 @@
       <div style="max-width:760px;margin:0 auto">
         <span class="sec-label">Preguntas frecuentes</span>
         <h2 class="sec-h" style="margin-bottom:24px">FAQ Compra Coche Segunda Mano</h2>
-        <div class="faq-item"><div class="faq-q">¿Cuánto cuesta de verdad comprar un coche de segunda mano?</div><div class="faq-a">El precio del coche es solo el 80-90% del coste real. Hay que sumar: ITP autonómico (4-8% del valor venal), tasa DGT (55,70€), gestoría (80-120€) y seguro primer año (400-1.200€ según perfil). Si financias, suma intereses (TIN típico 7-10% en 2026). Para un coche de 12.000€: 13.500-14.500€ contado o 15.000-16.500€ financiado.</div></div>
-        <div class="faq-item"><div class="faq-q">¿En qué CCAA es más barato comprar un coche usado?</div><div class="faq-a">Madrid, Andalucía, Asturias, Baleares, Navarra, La Rioja y País Vasco aplican el 4% de ITP. Castilla y León y Catalunya 5%. Castilla-La Mancha, Extremadura, Valencia y Aragón 6%. Cantabria, Galicia y Murcia 8%. El ITP se paga donde resida el comprador.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Cuánto cuesta de verdad comprar un coche de segunda mano?</div><div class="faq-a">El precio del coche es solo el 80-90% del coste real. Hay que sumar: ITP autonómico (entre el 3% y el 6% del valor fiscal según la CCAA, hasta el 8% en algunas para más de 15 CVf), tasa DGT (55,70€), gestoría (80-120€) y seguro primer año (400-1.200€ según perfil). Si financias, suma intereses (TIN típico 7-10% en 2026). Para un coche de 12.000€: 13.500-14.500€ contado o 15.000-16.500€ financiado.</div></div>
+        <div class="faq-item"><div class="faq-q">¿En qué CCAA es más barato comprar un coche usado?</div><div class="faq-a">Galicia tiene el tipo general más bajo, el 3%. Aplican el 4% la Comunidad de Madrid, Andalucía, Aragón, Asturias, Baleares, Murcia, Navarra, La Rioja, el País Vasco, Ceuta y Melilla; el 5%, Castilla y León y Cataluña; Canarias, el 5,5%; y el 6%, Cantabria, Castilla-La Mancha, Extremadura y la Comunidad Valenciana. Andalucía, Asturias, Baleares y Castilla y León suben al 8% para coches de más de 15 CVf, y varias comunidades aplican cuotas fijas o exenciones a los coches antiguos. El ITP se paga donde resida el comprador.</div></div>
         <div class="faq-item"><div class="faq-q">¿Es obligatorio contratar seguro al comprar?</div><div class="faq-a">Sí. El seguro a terceros es obligatorio por ley desde el momento en que el vehículo está matriculado a tu nombre (Ley 50/1980 y RDL 8/2004). No se puede circular sin seguro vigente. El cambio de titularidad debe hacerse en 30 días.</div></div>
       </div>
     </div>
@@ -358,63 +365,51 @@
 </footer>
 
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/itp-vehiculos.js?v=2026092401"></script>
 <script>
-var DEPRECIACION = [
-  {edad: 1, pct: 100}, {edad: 2, pct: 84}, {edad: 3, pct: 67},
-  {edad: 4, pct: 56}, {edad: 5, pct: 47}, {edad: 6, pct: 39},
-  {edad: 7, pct: 34}, {edad: 8, pct: 28}, {edad: 9, pct: 24},
-  {edad: 10, pct: 19}, {edad: 11, pct: 17}, {edad: 12, pct: 13},
-  {edad: 99, pct: 10}
-];
-function getDep(y){for(var i=0;i<DEPRECIACION.length;i++){if(y<=DEPRECIACION[i].edad)return DEPRECIACION[i].pct;}return 10;}
-
-var TASA_DGT = 55.70;
-var GESTORIA = 100;
-
+function calcGCInputs(){
+  var g=function(id){return document.getElementById(id);};
+  return {
+    ccaa: g('gc-ccaa').value,
+    precioAnexo: parseFloat(g('gc-anexo').value)||0,
+    anos: parseInt(g('gc-anti').value,10),
+    cilindrada: parseFloat(g('gc-cc').value)||0,
+    cvf: parseFloat(g('gc-cvf').value)||0,
+    etiqueta: g('gc-etiqueta').value,
+    precioContrato: parseFloat(g('gc-precio').value)||0,
+    usoEspecial: false,
+    moto: false
+  };
+}
+var GESTORIA = 100; // gestoría orientativa (media 80-120 €)
 function calcGC(){
-  var precio = parseFloat(document.getElementById('gc-precio').value) || 0;
-  var antiguedad = parseInt(document.getElementById('gc-antiguedad').value, 10) || 0;
-  var ccaaSel = document.getElementById('gc-ccaa');
-  var pctTipo = parseFloat(ccaaSel.options[ccaaSel.selectedIndex].getAttribute('data-tipo'));
-  var seguro = parseFloat(document.getElementById('gc-seguro').value) || 0;
-  var finOpt = document.getElementById('gc-financiado').value;
-
-  var valorFiscal = precio * (getDep(antiguedad) / 100);
-  var itp = valorFiscal * (pctTipo / 100);
-
-  // Cálculo intereses si financiado: anios-TIN
-  var intereses = 0;
-  if(finOpt !== '0'){
-    var parts = finOpt.split('-');
-    var years = parseInt(parts[0], 10);
-    var tin = parseFloat(parts[1]) / 100;
-    // Cuota mensual francesa
-    var n = years * 12;
-    var i = tin / 12;
-    var cuota = precio * (i * Math.pow(1+i, n)) / (Math.pow(1+i, n) - 1);
-    var totalPagado = cuota * n;
-    intereses = totalPagado - precio;
+  var o=calcGCInputs(), r=WM_ITP.turismo(o), f=WM_ITP.fmtEur;
+  var precio=o.precioContrato;
+  var seguro=parseFloat(document.getElementById('gc-seguro').value)||0;
+  var finOpt=document.getElementById('gc-financiado').value;
+  var itp=r?r.itp:0;
+  var intereses=0;
+  if(finOpt!=='0'){
+    var parts=finOpt.split('-');
+    var years=parseInt(parts[0],10);
+    var tin=parseFloat(parts[1])/100;
+    var n=years*12;
+    var i=tin/12;
+    var cuota=precio*(i*Math.pow(1+i,n))/(Math.pow(1+i,n)-1);
+    intereses=cuota*n-precio;
   }
-
-  var total = precio + itp + TASA_DGT + GESTORIA + seguro + intereses;
-
-  document.getElementById('gc-itp').textContent = Math.round(itp).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-intereses').textContent = Math.round(intereses).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-total').textContent = Math.round(total).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-r-precio').textContent = Math.round(precio).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-r-itp').textContent = Math.round(itp).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-r-seguro').textContent = Math.round(seguro).toLocaleString('es-ES') + ' €';
-  document.getElementById('gc-r-int-row').style.display = intereses > 0 ? 'flex' : 'none';
-  document.getElementById('gc-r-int').textContent = Math.round(intereses).toLocaleString('es-ES') + ' €';
-
-  var sobrecoste = precio > 0 ? ((total - precio) / precio) * 100 : 0;
-  document.getElementById('gc-detail').textContent = Math.round(precio).toLocaleString('es-ES') +
-    '€ precio + ' + Math.round(itp).toLocaleString('es-ES') + '€ ITP + 55,70€ DGT + 100€ gestoría + ' +
-    Math.round(seguro).toLocaleString('es-ES') + '€ seguro' +
-    (intereses > 0 ? ' + ' + Math.round(intereses).toLocaleString('es-ES') + '€ intereses' : '') +
-    ' = ' + Math.round(total).toLocaleString('es-ES') + '€ ' +
-    (intereses > 0 ? 'financiado' : 'contado') + '. Sobrecoste sobre precio: +' +
-    sobrecoste.toFixed(1).replace('.', ',') + '%.';
+  var total=precio+itp+WM_ITP.TASA_DGT+GESTORIA+seguro+intereses;
+  document.getElementById('gc-itp').textContent=r?f(itp):'— €';
+  document.getElementById('gc-intereses').textContent=f(intereses);
+  document.getElementById('gc-total').textContent=f(total);
+  document.getElementById('gc-r-precio').textContent=f(precio);
+  document.getElementById('gc-r-itp').textContent=r?f(itp):'— €';
+  document.getElementById('gc-r-seguro').textContent=f(seguro);
+  document.getElementById('gc-r-int-row').style.display=intereses>0?'flex':'none';
+  document.getElementById('gc-r-int').textContent=f(intereses);
+  var sobrecoste=precio>0?((total-precio)/precio)*100:0;
+  document.getElementById('gc-detail').textContent=WM_ITP.describe(r,o)+' Total: '+f(precio)+' precio + '+f(itp)+' ITP + '+f(WM_ITP.TASA_DGT)+' DGT + '+f(GESTORIA)+' gestoría + '+f(seguro)+' seguro'+
+    (intereses>0?' + '+f(intereses)+' intereses':'')+' = '+f(total)+(intereses>0?' financiado':' al contado')+'. Sobrecoste sobre el precio: +'+sobrecoste.toFixed(1).replace('.',',')+'%.';
 }
 calcGC();
 </script>

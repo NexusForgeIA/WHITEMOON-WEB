@@ -30,7 +30,7 @@
   "@context":"https://schema.org",
   "@type":"FAQPage",
   "mainEntity":[
-    {"@type":"Question","name":"¿Cuánto cuesta el cambio de nombre de un coche?","acceptedAnswer":{"@type":"Answer","text":"Tres conceptos: ITP (4-8% del valor venal según CCAA con depreciación BOE), tasa DGT 55,70 €, gestoría 200-300 € si la contratas. Coche valor fiscal 8.000 € en Madrid: 320 + 56 + 250 = 626 €."}},
+    {"@type":"Question","name":"¿Cuánto cuesta el cambio de nombre de un coche?","acceptedAnswer":{"@type":"Answer","text":"Tres conceptos: ITP (entre el 3% y el 6% según la CCAA, hasta el 8% en algunas para más de 15 CVf, sobre el precio del Anexo I con la depreciación del BOE), tasa DGT 55,70 €, gestoría 200-300 € si la contratas. Coche con valor fiscal de 8.000 € en Madrid (4%): 320 + 55,70 + 250 = 625,70 €."}},
     {"@type":"Question","name":"¿Puedo hacerlo sin gestoría?","acceptedAnswer":{"@type":"Answer","text":"Sí. Presentas el modelo 620 en Hacienda autonómica y luego pides cita en DGT con: contrato compraventa, IVTM pagado, ficha técnica, permiso de circulación, ITV vigente y DNI."}},
     {"@type":"Question","name":"¿Cuánto tiempo tengo para hacer la transferencia?","acceptedAnswer":{"@type":"Answer","text":"30 días naturales desde la firma del contrato. Pasado el plazo, la DGT puede sancionar al comprador. El vendedor debe notificar la venta para que no le sigan llegando multas e IVTM."}},
     {"@type":"Question","name":"¿Sigue activa la reducción 70% para taxi, autoescuela y alquiler?","acceptedAnswer":{"@type":"Answer","text":"Sí. Acreditando licencia o autorización profesional, la base imponible del ITP se reduce un 70%. No afecta a la tasa DGT ni a la gestoría."}}
@@ -113,31 +113,51 @@
 
   <section class="sec"><div class="wrap"><div class="calc-card">
     <div class="calc-cols">
-      <div class="calc-row"><label class="calc-label" for="tv-precio">Precio venta acordado (€)</label><input type="number" id="tv-precio" class="calc-input" value="10000" min="0" step="100" oninput="calcTV()"></div>
-      <div class="calc-row"><label class="calc-label" for="tv-anti">Antigüedad (años desde matriculación)</label><input type="number" id="tv-anti" class="calc-input" value="5" min="0" max="30" step="1" oninput="calcTV()"></div>
+      <div class="calc-row"><label class="calc-label" for="tv-anexo">Precio Anexo I (€)</label><input type="number" id="tv-anexo" class="calc-input" value="20000" min="0" step="100" oninput="calcTV()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0"><strong>¿Cómo lo encuentro?</strong> Es el precio medio de venta del vehículo nuevo que publica Hacienda: busca marca, modelo y período de comercialización en el Anexo I de la Orden HAC/1501/2025 (BOE). Para motos, usa la tabla por cilindrada de la <a href="/calculadora-itp/" style="color:var(--p2)">calculadora de ITP</a>.</p></div>
+      <div class="calc-row"><label class="calc-label" for="tv-anti">Antigüedad (años completos desde la 1ª matriculación)</label><input type="number" id="tv-anti" class="calc-input" value="5" min="0" max="40" step="1" oninput="calcTV()"></div>
     </div>
     <div class="calc-cols">
-      <div class="calc-row"><label class="calc-label" for="tv-ccaa">Comunidad Autónoma del comprador</label>
-        <select id="tv-ccaa" class="calc-select" onchange="calcTV()">
-          <option value="madrid" data-tipo="4" selected>Comunidad de Madrid · 4%</option>
-          <option value="andalucia" data-tipo="4">Andalucía · 4%</option>
-          <option value="asturias" data-tipo="4">Asturias · 4%</option>
-          <option value="baleares" data-tipo="4">Illes Balears · 4%</option>
-          <option value="navarra" data-tipo="4">Navarra · 4%</option>
-          <option value="rioja" data-tipo="4">La Rioja · 4%</option>
-          <option value="pais-vasco" data-tipo="4">País Vasco · 4%</option>
-          <option value="castilla-leon" data-tipo="5">Castilla y León · 5%</option>
-          <option value="cataluna" data-tipo="5">Catalunya · 5%</option>
-          <option value="castilla-mancha" data-tipo="6">Castilla-La Mancha · 6%</option>
-          <option value="extremadura" data-tipo="6">Extremadura · 6%</option>
-          <option value="valencia" data-tipo="6">Comunitat Valenciana · 6%</option>
-          <option value="aragon" data-tipo="6">Aragón · 6%</option>
-          <option value="cantabria" data-tipo="8">Cantabria · 8%</option>
-          <option value="canarias" data-tipo="5.5">Canarias · 5,5%</option>
-          <option value="galicia" data-tipo="8">Galicia · 8%</option>
-          <option value="murcia" data-tipo="8">Murcia · 8%</option>
-        </select>
-      </div>
+      <div class="calc-row"><label class="calc-label" for="tv-cc">Cilindrada (cc)</label><input type="number" id="tv-cc" class="calc-input" value="1600" min="0" step="1" oninput="calcTV()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Necesaria para las cuotas fijas autonómicas.</p></div>
+      <div class="calc-row"><label class="calc-label" for="tv-cvf">Potencia fiscal (CVf)</label><input type="number" id="tv-cvf" class="calc-input" value="11" min="0" step="0.1" oninput="calcTV()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Por encima de 15 CVf algunas CCAA aplican un tipo mayor.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tv-etiqueta">Etiqueta ambiental DGT</label><select id="tv-etiqueta" class="calc-select" onchange="calcTV()">
+          <option value="ninguna">Sin etiqueta</option>
+          <option value="B">B</option>
+          <option value="C" selected>C</option>
+          <option value="ECO">ECO</option>
+          <option value="0">0 emisiones</option>
+        </select></div>
+      <div class="calc-row"><label class="calc-label" for="tv-uso">¿Uso taxi, autoescuela o alquiler?</label><select id="tv-uso" class="calc-select" onchange="calcTV()">
+          <option value="no" selected>No</option>
+          <option value="si">Sí</option>
+        </select><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Reduce el valor fiscal al 70%.</p></div>
+    </div>
+    <div class="calc-cols">
+      <div class="calc-row"><label class="calc-label" for="tv-ccaa">Comunidad Autónoma del comprador</label><select id="tv-ccaa" class="calc-select" onchange="calcTV()">
+          <option value="Andalucía">Andalucía</option>
+          <option value="Aragón">Aragón</option>
+          <option value="Asturias">Asturias</option>
+          <option value="Baleares">Baleares</option>
+          <option value="Canarias (IGIC)">Canarias (IGIC)</option>
+          <option value="Cantabria">Cantabria</option>
+          <option value="Castilla-La Mancha">Castilla-La Mancha</option>
+          <option value="Castilla y León">Castilla y León</option>
+          <option value="Cataluña">Cataluña</option>
+          <option value="Ceuta">Ceuta</option>
+          <option value="Comunidad de Madrid" selected>Comunidad de Madrid</option>
+          <option value="Comunidad Valenciana">Comunidad Valenciana</option>
+          <option value="Extremadura">Extremadura</option>
+          <option value="Galicia">Galicia</option>
+          <option value="La Rioja">La Rioja</option>
+          <option value="Melilla">Melilla</option>
+          <option value="Murcia">Murcia</option>
+          <option value="Navarra">Navarra</option>
+          <option value="País Vasco">País Vasco</option>
+        </select></div>
+      <div class="calc-row"><label class="calc-label" for="tv-contrato">Precio del contrato (€) — opcional</label><input type="number" id="tv-contrato" class="calc-input" value="" min="0" step="100" placeholder="0" oninput="calcTV()"><p style="font-size:11px;color:#8888a0;margin:6px 0 0">Si es mayor que el valor fiscal, Hacienda toma este importe como base imponible.</p></div>
+    </div>
+    <div class="calc-cols">
       <div class="calc-row"><label class="calc-label" for="tv-gest">Gestoría (orientativa)</label>
         <select id="tv-gest" class="calc-select" onchange="calcTV()">
           <option value="0">Sin gestoría · solo tasas oficiales</option>
@@ -146,23 +166,22 @@
         </select>
       </div>
     </div>
-
     <div class="calc-out">
-      <div class="calc-out-card"><div class="calc-out-num" id="tv-itp">188 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
-      <div class="calc-out-card"><div class="calc-out-num" id="tv-dgt">56 €</div><div class="calc-out-lbl">Tasa DGT</div></div>
-      <div class="calc-out-card"><div class="calc-out-num" id="tv-gestoria">200 €</div><div class="calc-out-lbl">Gestoría</div></div>
-      <div class="calc-out-card"><div class="calc-out-num" id="tv-total">444 €</div><div class="calc-out-lbl">Total transferencia</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-itp">312,00 €</div><div class="calc-out-lbl">ITP autonómico</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-dgt">55,70 €</div><div class="calc-out-lbl">Tasa DGT</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-gestoria">200,00 €</div><div class="calc-out-lbl">Gestoría</div></div>
+      <div class="calc-out-card"><div class="calc-out-num" id="tv-total">567,70 €</div><div class="calc-out-lbl">Total transferencia</div></div>
     </div>
 
-    <div class="calc-detail" id="tv-explain">Valor fiscal con depreciación 47% (5 años): 10.000 × 47% = 4.700 €. ITP Madrid 4%: 188 €. Tasa DGT cambio titularidad: 55,70 € (redondeada). Gestoría online: 200 €. Total: 444 €.</div>
+    <div class="calc-detail" id="tv-explain">Valor fiscal: precio Anexo I 20.000,00 € × 39,0 % (más de 5 años, hasta 6) = 7800,00 €. ITP Comunidad de Madrid 4,0 % × 7800,00 € = 312,00 €. Tasa DGT cambio de titularidad: 55,70 €. Gestoría: 200,00 €. Total: 567,70 €.</div>
 
-    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El ITP se calcula sobre el valor venal del BOE 2026 con depreciación Anexo IV, no sobre el precio escriturado. La gestoría es orientativa y varía por empresa.</p>
+    <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">El ITP se calcula sobre el precio del Anexo I de la Orden HAC/1501/2025 con la depreciación del Anexo IV; si el precio del contrato es mayor, Hacienda toma ese. La gestoría es orientativa y varía por empresa.</p>
   </div></div></section>
 
   <section class="sec-alt"><div class="wrap"><div style="max-width:760px;margin:0 auto">
     <span class="sec-label">Preguntas frecuentes</span>
     <h2 class="sec-h" style="margin-bottom:24px">FAQ Transferencia Vehículo 2026</h2>
-    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta el cambio de nombre de un coche?</div><div class="faq-a">Tres conceptos: ITP (4-8% del valor venal según CCAA con depreciación BOE), tasa DGT 55,70 €, gestoría 200-300 € si la contratas. Coche valor fiscal 8.000 € en Madrid: 320 + 56 + 250 = 626 €.</div></div>
+    <div class="faq-item"><div class="faq-q">¿Cuánto cuesta el cambio de nombre de un coche?</div><div class="faq-a">Tres conceptos: ITP (entre el 3% y el 6% según la CCAA, hasta el 8% en algunas para más de 15 CVf, sobre el precio del Anexo I con la depreciación del BOE), tasa DGT 55,70 €, gestoría 200-300 € si la contratas. Coche con valor fiscal de 8.000 € en Madrid (4%): 320 + 55,70 + 250 = 625,70 €.</div></div>
     <div class="faq-item"><div class="faq-q">¿Puedo hacerlo sin gestoría?</div><div class="faq-a">Sí. Presentas el modelo 620 en Hacienda autonómica y luego pides cita en DGT con: contrato compraventa, IVTM pagado, ficha técnica, permiso de circulación, ITV vigente y DNI.</div></div>
     <div class="faq-item"><div class="faq-q">¿Cuánto tiempo tengo para hacer la transferencia?</div><div class="faq-a">30 días naturales desde la firma del contrato. Pasado el plazo, la DGT puede sancionar al comprador. El vendedor debe notificar la venta para que no le sigan llegando multas e IVTM.</div></div>
     <div class="faq-item"><div class="faq-q">¿Sigue activa la reducción 70% para taxi, autoescuela y alquiler?</div><div class="faq-a">Sí. Acreditando licencia o autorización profesional, la base imponible del ITP se reduce un 70%. No afecta a la tasa DGT ni a la gestoría.</div></div>
@@ -302,21 +321,30 @@
 </footer>
 
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/itp-vehiculos.js?v=2026092401"></script>
 <script>
-var TV_DEPRECIACION=[{e:1,p:100},{e:2,p:84},{e:3,p:67},{e:4,p:56},{e:5,p:47},{e:6,p:39},{e:7,p:34},{e:8,p:28},{e:9,p:24},{e:10,p:19},{e:11,p:17},{e:12,p:13},{e:99,p:10}];
-function tvDep(y){for(var i=0;i<TV_DEPRECIACION.length;i++){if(y<=TV_DEPRECIACION[i].e)return TV_DEPRECIACION[i].p;}return 10;}
+function calcTVInputs(){
+  var g=function(id){return document.getElementById(id);};
+  return {
+    ccaa: g('tv-ccaa').value,
+    precioAnexo: parseFloat(g('tv-anexo').value)||0,
+    anos: parseInt(g('tv-anti').value,10),
+    cilindrada: parseFloat(g('tv-cc').value)||0,
+    cvf: parseFloat(g('tv-cvf').value)||0,
+    etiqueta: g('tv-etiqueta').value,
+    precioContrato: parseFloat(g('tv-contrato').value)||0,
+    usoEspecial: g('tv-uso').value==='si',
+    moto: false
+  };
+}
 function calcTV(){
-  var precio=parseFloat(document.getElementById('tv-precio').value)||0;
-  var anti=parseInt(document.getElementById('tv-anti').value,10)||0;
-  var sel=document.getElementById('tv-ccaa');
-  var tipo=parseFloat(sel.options[sel.selectedIndex].getAttribute('data-tipo'));
-  var gest=parseFloat(document.getElementById('tv-gest').value)||0;
-  var pctDep=tvDep(anti), valFiscal=precio*(pctDep/100), itp=valFiscal*(tipo/100), dgt=55.70, total=itp+dgt+gest;
-  document.getElementById('tv-itp').textContent=Math.round(itp).toLocaleString('es-ES')+' €';
-  document.getElementById('tv-dgt').textContent='56 €';
-  document.getElementById('tv-gestoria').textContent=Math.round(gest).toLocaleString('es-ES')+' €';
-  document.getElementById('tv-total').textContent=Math.round(total).toLocaleString('es-ES')+' €';
-  document.getElementById('tv-explain').textContent='Valor fiscal depreciado '+pctDep+'% ('+anti+' años): '+Math.round(precio).toLocaleString('es-ES')+' × '+pctDep+'% = '+Math.round(valFiscal).toLocaleString('es-ES')+' €. ITP '+sel.options[sel.selectedIndex].textContent+': '+Math.round(itp).toLocaleString('es-ES')+' €. Tasa DGT cambio titularidad: 55,70 €. Gestoría: '+Math.round(gest).toLocaleString('es-ES')+' €. Total: '+Math.round(total).toLocaleString('es-ES')+' €.';
+  var o=calcTVInputs(), r=WM_ITP.turismo(o), gest=parseFloat(document.getElementById('tv-gest').value)||0;
+  var itp=r?r.itp:0, total=itp+WM_ITP.TASA_DGT+gest, f=WM_ITP.fmtEur;
+  document.getElementById('tv-itp').textContent=r?f(itp):'— €';
+  document.getElementById('tv-dgt').textContent=f(WM_ITP.TASA_DGT);
+  document.getElementById('tv-gestoria').textContent=f(gest);
+  document.getElementById('tv-total').textContent=f(total);
+  document.getElementById('tv-explain').textContent=WM_ITP.describe(r,o)+' Tasa DGT cambio de titularidad: '+f(WM_ITP.TASA_DGT)+'. Gestoría: '+f(gest)+'. Total: '+f(total)+'.';
 }
 calcTV();
 </script>
