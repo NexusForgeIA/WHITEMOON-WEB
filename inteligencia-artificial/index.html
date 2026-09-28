@@ -430,6 +430,293 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
   .wmia-holo{transform:none}
   .wmia-lienzo,.wmia-nodo,.wmia-tab{transition:none}
 }
+
+/* ===== Capa holográfica /inteligencia-artificial/ (prototipo) ===== */
+:root{--h-c:#4db8ff;--h-d:#ff6b8b;--h-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@property --wmh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes wmh-gira{to{--wmh-ang:360deg}}
+@keyframes wmh-barre{0%{transform:translateX(-60%)}100%{transform:translateX(60%)}}
+@keyframes wmh-escanea{0%{transform:translateY(-60%)}100%{transform:translateY(60%)}}
+@keyframes wmh-late{50%{opacity:.45}}
+@keyframes wmh-halo{to{transform:rotate(360deg)}}
+
+/* Fondo de sección: rejilla fina y un resplandor, siempre detrás del contenido */
+.sec::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(700px 380px at var(--wmh-x,85%) 0%,rgba(124,77,255,.13),transparent 70%),
+    linear-gradient(rgba(157,112,255,.07) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.07) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%);
+          mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%)}
+.sec:nth-of-type(even)::before{--wmh-x:12%}
+.sec--alt::before{background:
+    radial-gradient(640px 360px at var(--wmh-x,15%) 100%,rgba(0,212,170,.10),transparent 70%),
+    linear-gradient(rgba(0,212,170,.055) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(0,212,170,.055) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 100%,#000 20%,transparent 75%);
+          mask-image:radial-gradient(120% 70% at 50% 100%,#000 20%,transparent 75%)}
+.sec > .wrap{position:relative;z-index:1}
+/* Línea holográfica entre secciones */
+.sec--alt{border-top-color:transparent;border-bottom-color:transparent}
+.sec--alt::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--g) 50%,var(--h-c) 75%,transparent);opacity:.55}
+
+/* ---- Tarjeta holográfica común ---- */
+.ia-card,.ia-cap,.ia-path,.ia-step,.ia-pain,.ia-vs,.ia-sector,.ia-chat,.faq-item{position:relative;isolation:isolate}
+.ia-card::before,.ia-cap::before,.ia-path::before,.ia-step::before,.ia-pain::before,.ia-vs::before,.ia-sector::before,.ia-chat::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;z-index:2;
+  background:conic-gradient(from var(--wmh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  opacity:.62;transition:opacity .3s ease}
+.ia-card::after,.ia-cap::after,.ia-path::after,.ia-pain::after,.ia-sector::after,.ia-chat::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat,
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 4px),
+    radial-gradient(120% 80% at 0% 0%,rgba(124,77,255,.14),transparent 55%),
+    radial-gradient(100% 80% at 100% 100%,rgba(0,212,170,.08),transparent 55%)}
+.ia-card > *,.ia-cap > *,.ia-path > *,.ia-pain > *,.ia-sector > *{position:relative;z-index:1}
+.ia-card:hover::before,.ia-cap:hover::before,.ia-path:hover::before,.ia-pain:hover::before{opacity:1}
+/* Brillo que cruza al pasar el ratón (solo punteros finos) */
+@media (hover:hover) and (pointer:fine){
+  .ia-cap,.ia-card,.ia-pain,.ia-path{overflow:hidden}
+  .ia-cap .wmh-brillo,.ia-card .wmh-brillo{display:none}
+}
+/* Bordes que giran: solo en piezas destacadas y solo cuando se ven (clase .wmh-on la pone el JS) */
+.ia-path--core::before,.ia-step--hi::before,.ia-vs::before,.ia-chat::before{opacity:.95}
+.wmh-on .ia-path--core::before,.wmh-on.ia-path--core::before,
+.wmh-on .ia-step--hi::before,.wmh-on .ia-vs::before,.wmh-on .ia-chat::before{animation:wmh-gira 8s linear infinite}
+
+/* ---- Hero: halo detrás del chat ---- */
+.ia-stage::before{content:"";position:absolute;z-index:-1;left:50%;top:44%;width:120%;aspect-ratio:1;max-width:560px;
+  transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:conic-gradient(from 0deg,rgba(124,77,255,.0),rgba(124,77,255,.35),rgba(0,212,170,.3),rgba(77,184,255,.25),rgba(255,107,139,.22),rgba(124,77,255,0));
+  filter:blur(42px);opacity:.75}
+.ia-stage{isolation:isolate}
+.ia-chat{border-radius:20px}
+
+/* ---- Prueba ---- */
+.ia-g__n{background:linear-gradient(120deg,#fff 10%,var(--g) 45%,var(--h-c) 70%,var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:none}
+
+/* ---- Te suena ---- */
+.ia-time{font-family:var(--h-mono);letter-spacing:.04em;color:var(--g);text-shadow:0 0 18px rgba(0,212,170,.55)}
+.ia-fix{position:relative;background:linear-gradient(90deg,rgba(0,212,170,.12),rgba(0,212,170,.03) 60%,transparent)!important}
+.ia-fix::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,var(--g),rgba(77,184,255,.6),transparent)}
+
+/* ---- Qué es: la columna del agente se escanea ---- */
+.ia-vs{overflow:hidden;background:radial-gradient(90% 60% at 100% 0%,rgba(0,212,170,.10),transparent 60%),var(--card)}
+.ia-vs table{position:relative;z-index:1}
+.ia-vs thead th:last-child{background:linear-gradient(180deg,rgba(0,212,170,.18),rgba(0,212,170,.05));text-shadow:0 0 14px rgba(0,212,170,.5)}
+.ia-vs td:last-child{box-shadow:inset 1px 0 0 rgba(0,212,170,.35)}
+.wmh-scan{position:absolute;right:0;top:0;bottom:0;width:38%;z-index:2;pointer-events:none;will-change:transform;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,212,170,.22) 46%,rgba(77,184,255,.75) 50%,rgba(0,212,170,.22) 54%,transparent 60%);opacity:0}
+.wmh-on .wmh-scan{opacity:1;animation:wmh-escanea 4.5s ease-in-out infinite}
+@media (max-width:600px){.wmh-scan{display:none}}
+
+/* ---- Capacidades ---- */
+.ia-viz{position:relative}
+.ia-viz::after{content:"";position:absolute;inset:-10px;z-index:-1;border-radius:18px;pointer-events:none;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(124,77,255,.18),transparent 70%);filter:blur(10px)}
+.ia-cap h3{text-shadow:0 0 22px rgba(157,112,255,.25)}
+
+/* ---- Caminos ---- */
+.ia-path h3{background:linear-gradient(120deg,#fff 30%,var(--p2) 70%,var(--h-c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ia-path--core h3{background:linear-gradient(120deg,#fff 20%,var(--g) 55%,var(--h-c) 80%,var(--p2));-webkit-background-clip:text;background-clip:text}
+.ia-path--core{box-shadow:0 0 0 1px rgba(0,212,170,.12),0 30px 80px -30px rgba(124,77,255,.55)}
+
+/* ---- Sectores: suelo holográfico en perspectiva ---- */
+.ia-sector{overflow:hidden}
+.ia-sector::after{background:
+   radial-gradient(80% 90% at 100% 0%,rgba(124,77,255,.22),transparent 60%),
+   radial-gradient(60% 70% at 0% 100%,rgba(0,212,170,.14),transparent 60%)}
+.wmh-suelo{position:absolute;left:-20%;right:-20%;bottom:-2px;height:62%;z-index:0;pointer-events:none;
+  transform:perspective(420px) rotateX(62deg);transform-origin:50% 100%;
+  background:
+    linear-gradient(rgba(0,212,170,.35) 1px,transparent 1px) 0 0/100% 34px,
+    linear-gradient(90deg,rgba(124,77,255,.35) 1px,transparent 1px) 0 0/48px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 10%,transparent 90%);mask-image:linear-gradient(0deg,#000 10%,transparent 90%);opacity:.55}
+.wmh-on .wmh-suelo{animation:wmh-avanza 3.5s linear infinite}
+@keyframes wmh-avanza{to{background-position:0 34px,0 0}}
+.ia-marq span{box-shadow:inset 0 0 0 1px rgba(77,184,255,.10),0 0 18px -8px rgba(124,77,255,.6)}
+
+/* ---- Cómo trabajamos: pasos enlazados ---- */
+.ia-steps{isolation:isolate}
+.ia-step{background:linear-gradient(180deg,rgba(124,77,255,.07),transparent 70%),var(--bg)}
+.ia-step .n{background:linear-gradient(160deg,#fff 5%,var(--p2) 45%,var(--h-c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.ia-step--hi .n{background:linear-gradient(160deg,#fff 5%,var(--g) 50%,var(--h-c));-webkit-background-clip:text;background-clip:text}
+.wmh-hilo{position:absolute;z-index:-1;left:6%;right:6%;top:40px;height:92px;pointer-events:none;
+  background:linear-gradient(to top right,transparent calc(50% - 1.5px),rgba(157,112,255,.8) 50%,transparent calc(50% + 1.5px));
+  filter:drop-shadow(0 0 6px rgba(124,77,255,.8))}
+@media (max-width:1000px){.wmh-hilo{left:31px;right:auto;top:20px;bottom:20px;width:2px;height:auto;
+  background:linear-gradient(180deg,var(--p),var(--g),var(--h-c))}}
+
+/* ---- Por qué ---- */
+.ia-row{position:relative}
+.ia-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--p),var(--g));box-shadow:0 0 12px rgba(0,212,170,.5)}
+
+/* ---- FAQ ---- */
+.faq-item{border-radius:14px}
+.faq-item[open]{box-shadow:0 0 0 1px rgba(0,212,170,.25),0 20px 50px -30px rgba(0,212,170,.45)}
+
+/* ---- CTA final ---- */
+.ia-final{isolation:isolate}
+.ia-final::before{content:"";position:absolute;right:-12%;top:-40%;width:70%;aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:0;
+  background:repeating-radial-gradient(circle,rgba(255,255,255,.16) 0 1px,transparent 1px 34px);
+  -webkit-mask-image:radial-gradient(circle,#000 30%,transparent 70%);mask-image:radial-gradient(circle,#000 30%,transparent 70%)}
+.wmh-on.ia-final::before{animation:wmh-halo 60s linear infinite}
+.ia-final > *{position:relative;z-index:1}
+
+@media (prefers-reduced-motion:reduce){
+  .ia-card::before,.ia-cap::before,.ia-path::before,.ia-step::before,.ia-vs::before,.ia-chat::before,
+  .wmh-scan,.wmh-suelo,.ia-final::before{animation:none!important}
+  .wmh-scan{display:none}
+}
+
+/* Acentos de los títulos con degradado holográfico */
+.sec-head h2 .accent,.ia-sector h2 .accent,.ia-why h2 .accent,.wmia-sec h2 em{
+  background:linear-gradient(100deg,#b69bff 0%,#7c4dff 30%,#4db8ff 62%,#00d4aa 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 18px rgba(124,77,255,.35))}
+/* Pulso que recorre el hilo de los pasos */
+.wmh-hilo::after{content:"";position:absolute;left:-6px;top:-6px;width:calc(100% + 12px);height:calc(100% + 12px);pointer-events:none;will-change:transform;
+  background:radial-gradient(circle 6px at 6px 6px,#fff 45%,rgba(0,212,170,.85) 70%,transparent 100%);
+  filter:drop-shadow(0 0 6px rgba(0,212,170,.9)) drop-shadow(0 0 12px rgba(124,77,255,.7));opacity:0}
+@media (max-width:1000px){.wmh-hilo::after{width:14px;background:radial-gradient(circle 6px at 7px 6px,#fff 45%,rgba(0,212,170,.85) 70%,transparent 100%)}}
+.wmh-on .wmh-hilo::after{opacity:1;animation:wmh-recorre 5s ease-in-out infinite}
+@keyframes wmh-recorre{0%{transform:translate(0,0)}100%{transform:translate(calc(100% - 12px),calc(100% - 12px))}}
+@media (max-width:1000px){.wmh-on .wmh-hilo::after{animation-name:wmh-baja}}
+@keyframes wmh-baja{0%{transform:translate(0,0)}100%{transform:translate(0,calc(100% - 12px))}}
+/* Anillo que gira alrededor del chat del hero */
+.ia-stage::after{content:"";position:absolute;z-index:-1;left:50%;top:46%;width:128%;aspect-ratio:1;max-width:620px;border-radius:50%;
+  transform:translate(-50%,-50%);pointer-events:none;padding:1.5px;
+  background:conic-gradient(from var(--wmh-ang),transparent 0 20%,#7c4dff 30%,#00d4aa 42%,transparent 52% 70%,#4db8ff 80%,transparent 90%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.8}
+.wmh-on.ia-stage::after{animation:wmh-gira 10s linear infinite}
+/* Chips de sectores y demos */
+.ia-marq span{border-color:rgba(77,184,255,.28)!important;background:linear-gradient(135deg,rgba(124,77,255,.14),rgba(0,212,170,.06))!important}
+.wmh-suelo{opacity:.8}
+@media (prefers-reduced-motion:reduce){.wmh-hilo::after{display:none}.ia-stage::after{animation:none!important}}
+@media (max-width:600px){.ia-stage::after{width:118%}}
+
+/* ================= v2: hero, te suena y capacidades ================= */
+@keyframes wmh-flota{50%{transform:translateY(-8px)}}
+@keyframes wmh-pulso{0%{box-shadow:0 0 0 0 rgba(0,212,170,.55)}100%{box-shadow:0 0 0 14px rgba(0,212,170,0)}}
+@keyframes wmh-parpadeo{50%{opacity:.15}}
+@keyframes wmh-cruza{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes wmh-barrido-v{0%{transform:translateY(-60%)}100%{transform:translateY(60%)}}
+@keyframes wmh-reloj{0%{transform:translateX(0)}100%{transform:translateX(100%)}}
+@keyframes wmh-llena{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes wmh-rayo{0%{transform:translateX(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateX(100%);opacity:0}}
+@keyframes wmh-radar{to{transform:rotate(360deg)}}
+
+/* ---- HERO: suelo, proyector de holograma y chips flotantes ---- */
+.hero .wmh-suelo-hero{position:absolute;left:-10%;right:-10%;bottom:-2px;height:46%;z-index:0;pointer-events:none;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%);opacity:.55}
+.hero .wmh-scan-hero{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0;pointer-events:none;will-change:transform;
+  background:linear-gradient(180deg,transparent 43%,rgba(124,77,255,.07) 47%,rgba(77,184,255,.16) 50%,rgba(124,77,255,.07) 53%,transparent 57%);transform:translateY(-60%)}
+.wmh-on .wmh-suelo-hero{animation:wmh-avanza-h 4s linear infinite}
+@keyframes wmh-avanza-h{to{background-position:0 40px,0 0}}
+.hero.wmh-on .wmh-scan-hero{animation:wmh-barrido-v 7s linear infinite}
+.wmh-proyector{position:absolute;left:50%;bottom:-6px;width:78%;height:34px;transform:translateX(-50%);z-index:-1;pointer-events:none;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,212,170,.55),rgba(124,77,255,.35) 45%,transparent 70%);filter:blur(2px)}
+.wmh-proyector::before{content:"";position:absolute;left:8%;right:8%;bottom:50%;height:560px;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,212,170,.22),rgba(77,184,255,.08) 45%,transparent 80%);
+  clip-path:polygon(38% 100%,62% 100%,100% 0,0 0);filter:blur(6px)}
+.wmh-proyector::after{content:"";position:absolute;inset:6px 18%;border-radius:50%;border:1px solid rgba(0,212,170,.6);box-shadow:0 0 18px rgba(0,212,170,.6)}
+.wmh-chip{position:absolute;z-index:3;display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;pointer-events:none;
+  font-family:var(--h-mono);font-size:.72rem;letter-spacing:.04em;color:#dff;white-space:nowrap;
+  border:1px solid rgba(77,184,255,.45);background:linear-gradient(135deg,rgba(124,77,255,.28),rgba(0,212,170,.14));
+  box-shadow:0 0 22px -4px rgba(77,184,255,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.wmh-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g)}
+.wmh-chip--a{top:-18px;right:-14px}
+.wmh-chip--b{top:38%;left:-44px}
+.wmh-chip--c{bottom:78px;right:-26px}
+.wmh-on .wmh-chip{animation:wmh-flota 5s ease-in-out infinite}
+.wmh-on .wmh-chip--b{animation-delay:-1.7s}.wmh-on .wmh-chip--c{animation-delay:-3.2s}
+.ia-chat{overflow:hidden}
+.wmh-barrido{position:absolute;left:0;right:0;top:0;bottom:0;z-index:3;pointer-events:none;will-change:transform;
+  background:linear-gradient(180deg,transparent 43%,rgba(77,184,255,.10) 50%,transparent 57%);transform:translateY(-60%)}
+.wmh-on .wmh-barrido{animation:wmh-barrido-v 4.5s ease-in-out infinite}
+.ia-v::after{background:linear-gradient(90deg,var(--g),var(--h-c),var(--p2))!important;box-shadow:0 0 12px rgba(0,212,170,.6)}
+@media (max-width:900px){.wmh-chip--b{left:-6px}.wmh-chip--a{right:4px}.wmh-chip--c{right:4px}}
+@media (max-width:600px){.wmh-chip{font-size:.66rem;padding:6px 10px}.wmh-chip--b{display:none}.wmh-proyector::before{height:420px}}
+
+/* ---- TE SUENA: antes / después ---- */
+.wmh-antes,.wmh-despues{display:inline-flex;align-items:center;gap:6px;width:max-content;font-family:var(--h-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;border-radius:6px;padding:4px 8px}
+.wmh-antes{margin-bottom:12px;color:#ff9aad;border:1px solid rgba(255,107,139,.35);background:rgba(255,107,139,.08)}
+.wmh-antes::before{content:"";width:6px;height:6px;border-radius:50%;background:#ff6b8b;box-shadow:0 0 8px #ff6b8b}
+.wmh-on .wmh-antes::before{animation:wmh-parpadeo 1.6s steps(2) infinite}
+.wmh-despues{flex:0 0 auto;color:var(--g);border:1px solid rgba(0,212,170,.4);background:rgba(0,212,170,.1);margin-right:4px}
+.ia-pain h3{text-shadow:0 0 1px rgba(255,107,139,.0)}
+.ia-pain--lg{overflow:hidden}
+.wmh-radar{position:absolute;right:-90px;top:-90px;width:320px;height:320px;border-radius:50%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle,transparent 0 30%,rgba(0,212,170,.18) 30.5% 31%,transparent 31.5% 55%,rgba(0,212,170,.14) 55.5% 56%,transparent 56.5% 80%,rgba(0,212,170,.10) 80.5% 81%,transparent 81.5%),
+    conic-gradient(from 0deg,rgba(0,212,170,.35),transparent 18%)}
+.wmh-on .wmh-radar{animation:wmh-radar 5s linear infinite}
+.ia-time{position:relative}
+.ia-time .wmh-dp{display:inline-block;font:inherit;color:inherit}
+.wmh-on .ia-time .wmh-dp{animation:wmh-parpadeo 1s steps(2) infinite}
+.ia-asks span{border-style:solid!important;border-color:rgba(77,184,255,.35)!important;background:rgba(77,184,255,.08);color:#cfe9ff!important;box-shadow:0 0 14px -6px rgba(77,184,255,.8)}
+.wmh-on .ia-asks span{animation:wmh-flota 4s ease-in-out infinite}
+.wmh-on .ia-asks span:nth-child(2){animation-delay:-1.3s}.wmh-on .ia-asks span:nth-child(3){animation-delay:-2.6s}
+.ia-docs li{position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(77,184,255,.12),0 0 18px -8px rgba(124,77,255,.8)}
+.ia-docs li::after{content:"";position:absolute;inset:0;pointer-events:none;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent 35%,rgba(77,184,255,.28) 50%,transparent 65%)}
+.wmh-on .ia-docs li::after{animation:wmh-cruza 3.2s ease-in-out infinite}
+.wmh-on .ia-docs li:nth-child(2)::after{animation-delay:.4s}.wmh-on .ia-docs li:nth-child(3)::after{animation-delay:.8s}.wmh-on .ia-docs li:nth-child(4)::after{animation-delay:1.2s}
+.ia-fix{align-items:center}
+
+/* ---- CAPACIDADES ---- */
+.ia-hours{position:relative}
+.ia-hours i{box-shadow:0 0 12px -2px currentColor}
+.ia-hours i{color:rgba(0,212,170,.8)}.ia-hours i:nth-child(n+21){color:rgba(157,112,255,.8)}
+.wmh-ahora{position:absolute;top:-8px;bottom:-8px;left:0;right:0;pointer-events:none;z-index:2;will-change:transform}
+.wmh-ahora::after{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;
+  background:linear-gradient(180deg,transparent,#fff 20%,#fff 80%,transparent);box-shadow:0 0 12px 3px rgba(77,184,255,.9)}
+.wmh-ahora::before{content:"ahora";position:absolute;top:-16px;left:0;transform:translateX(-50%);font-family:var(--h-mono);font-size:.6rem;letter-spacing:.08em;color:#cfe9ff}
+.wmh-on .wmh-ahora{animation:wmh-reloj 9s linear infinite}
+.ia-slots{position:relative;overflow:hidden;border-radius:12px}
+.ia-slots::after{content:"";position:absolute;inset:0;pointer-events:none;transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent 37%,rgba(0,212,170,.18) 50%,transparent 63%)}
+.wmh-on .ia-slots::after{animation:wmh-cruza 3.8s ease-in-out infinite}
+.ia-slots .on{box-shadow:0 0 0 1px rgba(0,212,170,.5),0 0 26px -6px rgba(0,212,170,.9)}
+.wmh-on .ia-slots .on{animation:wmh-pulso 1.8s ease-out infinite}
+.ia-lead{box-shadow:0 0 0 1px rgba(77,184,255,.12),0 20px 50px -24px rgba(124,77,255,.8)}
+.ia-lead dd i{background:linear-gradient(90deg,var(--p),var(--h-c),var(--g));transform-origin:left;box-shadow:0 0 10px rgba(77,184,255,.6)}
+.wmh-on .ia-lead dd i{animation:wmh-llena 1.2s cubic-bezier(.16,1,.3,1) both}
+.wmh-on .ia-lead dl div:nth-child(2) dd i{animation-delay:.35s}.wmh-on .ia-lead dl div:nth-child(3) dd i{animation-delay:.7s}
+.ia-rag{position:relative}
+.wmh-rayo{position:absolute;left:18%;right:28%;top:50%;height:2px;margin-top:-1px;pointer-events:none;z-index:0;
+  background:linear-gradient(90deg,transparent,rgba(124,77,255,.6),rgba(77,184,255,.6),transparent)}
+.wmh-rayo::after{content:"";position:absolute;left:-5px;right:5px;top:-5px;height:12px;pointer-events:none;will-change:transform;
+  background:radial-gradient(circle 5px at 5px 6px,#fff 45%,rgba(77,184,255,.9) 70%,transparent 100%);
+  filter:drop-shadow(0 0 6px rgba(77,184,255,.9)) drop-shadow(0 0 12px rgba(124,77,255,.6));opacity:0}
+.wmh-on .wmh-rayo::after{animation:wmh-rayo 2.4s ease-in-out infinite}
+.ia-rag .arrow{position:relative;z-index:1;background:var(--card);box-shadow:0 0 18px -2px rgba(124,77,255,.8)}
+.ia-rag .out{position:relative;z-index:1;box-shadow:0 0 0 1px rgba(0,212,170,.3),0 0 30px -10px rgba(0,212,170,.8)}
+.ia-caps .ia-cap::before{opacity:.9}
+.wmh-on .ia-cap::before{animation:wmh-gira 10s linear infinite}
+.wmh-on .ia-cap:nth-child(2)::before{animation-delay:-2.5s}.wmh-on .ia-cap:nth-child(3)::before{animation-delay:-5s}.wmh-on .ia-cap:nth-child(4)::before{animation-delay:-7.5s}
+@media (max-width:900px){.wmh-rayo{left:17px;right:auto;top:30%;bottom:30%;width:2px;height:auto;background:linear-gradient(180deg,transparent,rgba(124,77,255,.6),rgba(77,184,255,.6),transparent)}
+  .wmh-rayo::after{left:-5px;right:auto;top:-5px;bottom:5px;width:12px;height:auto;background:radial-gradient(circle 5px at 6px 5px,#fff 45%,rgba(77,184,255,.9) 70%,transparent 100%)}
+  .wmh-on .wmh-rayo::after{animation-name:wmh-rayo-v}}
+@keyframes wmh-rayo-v{0%{transform:translateY(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(100%);opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .wmh-suelo-hero,.wmh-scan-hero,.wmh-chip,.wmh-barrido,.wmh-radar,.ia-time .wmh-dp,.ia-asks span,.ia-docs li::after,
+  .wmh-ahora,.ia-slots::after,.ia-slots .on,.ia-lead dd i,.wmh-rayo::after,.ia-cap::before,.wmh-antes::before{animation:none!important}
+  .wmh-scan-hero,.wmh-barrido,.wmh-ahora{display:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -594,7 +881,7 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
 <main id="main" class="pp">
 
   <!-- 1 · HERO -->
-  <section class="hero ia-hero" id="top">
+  <section class="hero ia-hero" id="top"><span class="wmh-suelo-hero" aria-hidden="true"></span><span class="wmh-scan-hero" aria-hidden="true"></span>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">Inteligencia artificial para negocios</span>
@@ -607,8 +894,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
         <p class="ia-where"><svg aria-hidden="true"><use href="#ic-pin"/></svg>Desde Majadahonda, Madrid · online en toda España</p>
       </div>
       <div class="hero-visual reveal">
-        <div class="ia-stage">
-        <div class="chat ia-chat" role="group" aria-label="Ejemplo de conversación con el agente">
+        <div class="ia-stage"><span class="wmh-proyector" aria-hidden="true"></span><span class="wmh-chip wmh-chip--a" aria-hidden="true">Responde 24/7</span><span class="wmh-chip wmh-chip--b" aria-hidden="true">Da cita</span><span class="wmh-chip wmh-chip--c" aria-hidden="true">Contacto al móvil</span>
+        <div class="chat ia-chat" role="group" aria-label="Ejemplo de conversación con el agente"><span class="wmh-barrido" aria-hidden="true"></span>
           <div class="chat-head">
             <span class="av"><svg aria-hidden="true"><use href="#ic-bot"/></svg></span>
             <div><b>Agente IA · tu negocio<span class="live-dot" aria-hidden="true"></span></b><small>En línea · responde al momento</small></div>
@@ -628,219 +915,7 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
     </div>
   </section>
 
-  <!-- 2 · PRUEBA REAL -->
-  <section class="sec sec--alt" id="prueba">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>Lo que contamos,<span class="accent">con enlace para comprobarlo.</span></h2>
-      </div>
-      <div class="ia-proof">
-        <a class="ia-card ia-case reveal" href="/casos-de-exito/bambu-sushi/" onclick="window.wmTrack&&wmTrack('click_caso_bambu',{destino:'caso',placement:'ia-prueba'})">
-          <img src="/casos-de-exito/assets/bambu-sushi-web.webp" width="1200" height="576" loading="lazy" decoding="async" alt="Web y agente de IA de Bambu Sushi Córdoba, hechos por WhiteMoon">
-          <div class="ia-body">
-            <span class="ia-tag">Cliente real</span>
-            <h3>Bambu Sushi atiende pedidos y reservas con su agente</h3>
-            <p>Restaurante de sushi en Córdoba. Su chatbot toma pedidos y reservas según la franja horaria, y está en vivo en bambusushi.es.</p>
-            <ul class="ia-built">
-              <li>Web propia a medida</li>
-              <li>Pedidos y reservas por chat</li>
-              <li>SEO local</li>
-            </ul>
-            <span class="ia-more">Ver el caso completo<svg aria-hidden="true"><use href="#ic-arrow"/></svg></span>
-          </div>
-        </a>
-        <article class="ia-card ia-ai reveal">
-          <div class="ia-body">
-            <span class="ia-ask"><svg aria-hidden="true"><use href="#ic-search"/></svg>«¿Mejor agencia de IA en Majadahonda?»</span>
-            <figure class="ia-eng">
-              <figcaption>ChatGPT · septiembre de 2026</figcaption>
-              <blockquote class="ia-q">«Mi primera opción sería: WhiteMoon Agencia IA Majadahonda».</blockquote>
-            </figure>
-            <figure class="ia-eng">
-              <figcaption>Grok · septiembre de 2026</figcaption>
-              <blockquote class="ia-q ia-q--s">«La opción local más sólida».</blockquote>
-            </figure>
-            <p class="ia-src">Observaciones puntuales, con captura y fecha. Las respuestas de las IA varían.</p>
-            <a class="ia-more" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="window.wmTrack&amp;&amp;wmTrack('click_geo_pruebas',{placement:'ia-prueba'})">Ver capturas y método<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
-          </div>
-        </article>
-        <a class="ia-card ia-g reveal" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener" aria-label="Ver la ficha de WhiteMoon en Google, valoración 5,0 (se abre en una pestaña nueva)">
-          <span class="ia-g__n" aria-hidden="true">5,0</span>
-          <span class="ia-stars" aria-hidden="true"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></span>
-          <span class="ia-g__t">Nuestra ficha de Google Business, con 5 estrellas.</span>
-          <span class="ia-more">Ver la ficha en Google<svg aria-hidden="true"><use href="#ic-ext"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3 · ¿TE SUENA? -->
-  <section class="sec" id="te-suena">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>¿Te suena<span class="accent">alguna de estas?</span></h2>
-        <p>Lo que pasa cada semana en un negocio local, y lo que cambia cuando la web atiende.</p>
-      </div>
-      <div class="ia-pains">
-        <article class="ia-pain ia-pain--lg reveal">
-          <span class="ia-time" aria-hidden="true">23:47<small>un martes</small></span>
-          <h3>Te escriben por la noche y contestas a la mañana siguiente, cuando ya han preguntado a otro.</h3>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>El agente responde al momento</b>, también de noche, en fin de semana y en festivos.</span></p>
-        </article>
-        <article class="ia-pain reveal">
-          <h3>Contestas las mismas preguntas una y otra vez.</h3>
-          <div class="ia-asks" aria-hidden="true"><span>¿Horario?</span><span>¿Dónde estáis?</span><span>¿Hacéis esto?</span></div>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Las resuelve con tu información y tu tono.</span></p>
-        </article>
-        <article class="ia-pain reveal">
-          <h3>Cerrar una cita es un ir y venir de mensajes.</h3>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Ofrece los huecos que tú marcas y la deja cerrada.</span></p>
-        </article>
-        <article class="ia-pain reveal">
-          <h3>No sabes si quien escribe va en serio o solo curiosea.</h3>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Pregunta lo necesario antes de pasártelo.</span></p>
-        </article>
-        <article class="ia-pain reveal">
-          <h3>El formulario de contacto acaba en un correo que nadie mira.</h3>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Cada contacto te llega al instante, listo para llamar.</span></p>
-        </article>
-        <article class="ia-pain ia-pain--full reveal">
-          <div>
-            <h3>Tu catálogo, tu carta de servicios o tu normativa no caben en una lista de preguntas frecuentes.</h3>
-          </div>
-          <ul class="ia-docs" aria-label="Ejemplos de documentos">
-            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Catálogo</li>
-            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Carta de servicios</li>
-            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Normativa</li>
-            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Condiciones</li>
-          </ul>
-          <p class="ia-fix"><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Con tu información real</b>: el agente contesta con tus servicios, precios y horarios, no con suposiciones.</span></p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4 · QUÉ ES UN AGENTE IA -->
-  <section class="sec sec--alt" id="que-es">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <div class="sec-head reveal" style="margin-bottom:26px">
-            <h2>Qué es un agente de IA,<span class="accent">sin jerga.</span></h2>
-          </div>
-          <div class="copy reveal">
-            <p><strong>Spark es el chatbot que sí conversa y capta</strong>, no un menú de botones ni un formulario disfrazado. Habla por escrito con quien entra en tu web, entiende lo que necesita y actúa: responde, da cita o te pasa el contacto.</p>
-            <p>Trabaja con <strong>lo que le contamos de tu negocio</strong>: servicios, horarios y forma de trabajar, y contesta con tu tono. Si algo necesita a una persona, lo dice y te lo deriva.</p>
-            <p>Lo montamos <strong>hablando contigo</strong>, y antes de empezar te decimos qué se puede automatizar y qué no.</p>
-          </div>
-          <p class="ia-local reveal"><svg aria-hidden="true"><use href="#ic-pin"/></svg><span>Desde Majadahonda. Presencial en Las Rozas, Boadilla, Pozuelo y Madrid capital; online en toda España.</span></p>
-        </div>
-        <div class="ia-vs reveal">
-          <table>
-            <caption class="sr-only">Diferencias entre un menú de botones y un agente de IA</caption>
-            <thead><tr><th scope="col"><span class="sr-only">Aspecto</span></th><th scope="col">Menú de botones</th><th scope="col">Agente de IA</th></tr></thead>
-            <tbody>
-              <tr><th scope="row">Qué entiende</th><td data-l="Menú de botones">Solo las opciones de su menú</td><td data-l="Agente de IA">Lo que el cliente escribe, como lo escriba</td></tr>
-              <tr><th scope="row">Si no sabe algo</th><td data-l="Menú de botones">Te devuelve al principio</td><td data-l="Agente de IA">Lo dice y te pasa la consulta</td></tr>
-              <tr><th scope="row">Citas</th><td data-l="Menú de botones">Te manda a un formulario</td><td data-l="Agente de IA">Ofrece hueco y la deja cerrada</td></tr>
-              <tr><th scope="row">Con qué responde</th><td data-l="Menú de botones">Textos fijos</td><td data-l="Agente de IA">Tu información real</td></tr>
-              <tr><th scope="row">El contacto</th><td data-l="Menú de botones">Solo si rellena un formulario</td><td data-l="Agente de IA">Te llega al momento, con nombre y teléfono</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5 · CAPACIDADES -->
-  <section class="sec" id="capacidades">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>Así capta clientes<span class="accent">mientras tú trabajas.</span></h2>
-      </div>
-      <div class="ia-caps">
-        <article class="ia-cap ia-cap--w reveal">
-          <h3>Atiende 24/7</h3>
-          <p>No pierdes al que entra de noche o en festivo: le contesta al momento, dentro y fuera de tu horario.</p>
-          <div class="ia-viz" aria-hidden="true">
-            <div class="ia-hours"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i></div>
-            <div class="ia-hours-l"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
-            <div class="ia-key"><span>Tu horario</span><span>Cuando tú no estás</span></div>
-          </div>
-        </article>
-        <article class="ia-cap reveal">
-          <h3>Da cita</h3>
-          <p>Ofrece los huecos que marcas y cierra la cita en la misma conversación, para ir llenando tu agenda sin llamadas.</p>
-          <div class="ia-viz ia-slots" aria-hidden="true">
-            <span>Jue 16:00</span><span class="off">Jue 16:45</span><span class="on">Jue 17:30<svg><use href="#ic-check"/></svg></span><span>Jue 18:15</span>
-          </div>
-        </article>
-        <article class="ia-cap reveal">
-          <h3>Te pasa el contacto al momento</h3>
-          <p>Nombre, teléfono y motivo, directos a tu móvil en cuanto el cliente los deja: el lead, en tu bolsillo.</p>
-          <div class="ia-viz" aria-hidden="true">
-            <div class="ia-lead">
-              <div class="ia-lead__h"><span class="live-dot"></span>Nuevo contacto<em>ahora</em></div>
-              <dl><div><dt>Nombre</dt><dd><i style="width:52%"></i></dd></div><div><dt>Teléfono</dt><dd><i style="width:40%"></i></dd></div><div><dt>Motivo</dt><dd><i style="width:78%"></i></dd></div></dl>
-            </div>
-          </div>
-        </article>
-        <article class="ia-cap ia-cap--w reveal">
-          <span class="ia-opt">A medida</span>
-          <h3>Responde con tus datos</h3>
-          <p>Base de conocimiento con tus documentos — proyecto a medida (bajo consulta). Si manejas mucha información, lo vemos en tu propuesta.</p>
-          <div class="ia-viz ia-rag" aria-hidden="true">
-            <ul class="ia-docs"><li><svg><use href="#ic-doc"/></svg>Catálogo</li><li><svg><use href="#ic-doc"/></svg>Normativa</li><li><svg><use href="#ic-doc"/></svg>Condiciones</li></ul>
-            <span class="arrow"><svg><use href="#ic-arrow"/></svg></span>
-            <p class="out">Según tus condiciones, ese servicio incluye revisión.</p>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5b · TE LLEGA AL MÓVIL — el móvil ilustra el formato; el texto de la izquierda lo explica -->
-  <section class="sec sec--alt wmia-sec" id="avisos-movil">
-    <div class="wrap wmia-grid">
-      <div>
-        <div class="sec-head reveal">
-          <span class="eyebrow">Te llega al móvil</span>
-          <h2>Tú descansas. <span class="wmia-hl">El contacto</span> te espera en el móvil.</h2>
-          <p>Cada vez que alguien deja su nombre y su teléfono, te llega un aviso al momento con lo que necesita. Por la mañana solo tienes que llamar.</p>
-        </div>
-        <ul class="wmia-puntos reveal">
-          <li><span class="wmia-ico" aria-hidden="true">↯</span><div><b>Al momento</b><span>El aviso llega en cuanto el cliente deja sus datos, sea la hora que sea.</span></div></li>
-          <li><span class="wmia-ico" aria-hidden="true">≡</span><div><b>Con lo que necesita</b><span>Nombre, teléfono y motivo; si ha pedido cita, también el día y la hora.</span></div></li>
-          <li><span class="wmia-ico" aria-hidden="true">◇</span><div><b>Nada se pierde</b><span>Con Core Spark Web, cada contacto queda además en tu panel para ordenarlo y repartirlo.</span></div></li>
-        </ul>
-        <p class="wmia-nota">Ejemplo del formato del aviso · ilustración, no datos reales</p>
-      </div>
-
-      <div class="wmia-escena">
-        <div class="wmia-halo" aria-hidden="true"></div>
-        <div class="wmia-fantasma" aria-hidden="true">lead</div>
-        <div class="wmia-movil" role="img" aria-label="Pantalla de bloqueo de un móvil recibiendo avisos de contactos nuevos de ejemplo">
-          <div class="wmia-pantalla">
-            <div class="wmia-isla"></div>
-            <div class="wmia-barra"><span></span><i>5G ▮▮▮</i></div>
-            <div class="wmia-bloqueo">
-              <div class="wmia-reloj" id="wmia-reloj">23:47</div>
-              <div class="wmia-fecha">miércoles, 1 de octubre</div>
-              <div class="wmia-notis" id="wmia-notis" aria-hidden="true">
-                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>ahora</span></div><b>Nuevo contacto</b><span class="wmia-noti-t">Laura · 6•• ••• 412 · Quiere saber qué incluye una limpieza</span></div></div>
-                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>antes</span></div><b>Nuevo contacto con cita</b><span class="wmia-noti-t">Andrés · 6•• ••• 208 · Jueves 17:30 · Corte</span></div></div>
-                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>antes</span></div><b>Consulta para ti</b><span class="wmia-noti-t">Marta · 6•• ••• 931 · «¿Revisáis un clásico del 72?»</span></div></div>
-              </div>
-              <div class="wmia-linterna" aria-hidden="true"><i></i><i></i></div>
-              <div class="wmia-barra-home" aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5c · POR DENTRO — tarjeta holográfica; cables y registro son decorativos -->
+  <!-- 2 · POR DENTRO — tarjeta holográfica; cables y registro son decorativos -->
   <section class="sec wmia-sec" id="por-dentro">
     <span class="wmia-ancla" id="noche"></span><span class="wmia-ancla" id="cita"></span><span class="wmia-ancla" id="nosabe"></span><span class="wmia-ancla" id="documentos"></span>
     <div class="wrap">
@@ -892,7 +967,173 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
   </section>
   <script defer src="/assets/wm-ia-demo.js?v=2026092801"></script>
 
-  <!-- 6 · LOS CAMINOS -->
+  <!-- 3 · TE LLEGA AL MÓVIL — el móvil ilustra el formato; el texto de la izquierda lo explica -->
+  <section class="sec sec--alt wmia-sec" id="avisos-movil">
+    <div class="wrap wmia-grid">
+      <div>
+        <div class="sec-head reveal">
+          <span class="eyebrow">Te llega al móvil</span>
+          <h2>Tú descansas. <span class="wmia-hl">El contacto</span> te espera en el móvil.</h2>
+          <p>Cada vez que alguien deja su nombre y su teléfono, te llega un aviso al momento con lo que necesita. Por la mañana solo tienes que llamar.</p>
+        </div>
+        <ul class="wmia-puntos reveal">
+          <li><span class="wmia-ico" aria-hidden="true">↯</span><div><b>Al momento</b><span>El aviso llega en cuanto el cliente deja sus datos, sea la hora que sea.</span></div></li>
+          <li><span class="wmia-ico" aria-hidden="true">≡</span><div><b>Con lo que necesita</b><span>Nombre, teléfono y motivo; si ha pedido cita, también el día y la hora.</span></div></li>
+          <li><span class="wmia-ico" aria-hidden="true">◇</span><div><b>Nada se pierde</b><span>Con Core Spark Web, cada contacto queda además en tu panel para ordenarlo y repartirlo.</span></div></li>
+        </ul>
+        <p class="wmia-nota">Ejemplo del formato del aviso · ilustración, no datos reales</p>
+      </div>
+
+      <div class="wmia-escena">
+        <div class="wmia-halo" aria-hidden="true"></div>
+        <div class="wmia-fantasma" aria-hidden="true">lead</div>
+        <div class="wmia-movil" role="img" aria-label="Pantalla de bloqueo de un móvil recibiendo avisos de contactos nuevos de ejemplo">
+          <div class="wmia-pantalla">
+            <div class="wmia-isla"></div>
+            <div class="wmia-barra"><span></span><i>5G ▮▮▮</i></div>
+            <div class="wmia-bloqueo">
+              <div class="wmia-reloj" id="wmia-reloj">23:47</div>
+              <div class="wmia-fecha">miércoles, 1 de octubre</div>
+              <div class="wmia-notis" id="wmia-notis" aria-hidden="true">
+                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>ahora</span></div><b>Nuevo contacto</b><span class="wmia-noti-t">Laura · 6•• ••• 412 · Quiere saber qué incluye una limpieza</span></div></div>
+                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>antes</span></div><b>Nuevo contacto con cita</b><span class="wmia-noti-t">Andrés · 6•• ••• 208 · Jueves 17:30 · Corte</span></div></div>
+                <div class="wmia-noti"><div class="wmia-logo">IA</div><div><div class="wmia-noti-cab"><span>Asistente IA</span><span>antes</span></div><b>Consulta para ti</b><span class="wmia-noti-t">Marta · 6•• ••• 931 · «¿Revisáis un clásico del 72?»</span></div></div>
+              </div>
+              <div class="wmia-linterna" aria-hidden="true"><i></i><i></i></div>
+              <div class="wmia-barra-home" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · ¿TE SUENA? -->
+  <section class="sec" id="te-suena">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>¿Te suena<span class="accent">alguna de estas?</span></h2>
+        <p>Lo que pasa cada semana en un negocio local, y lo que cambia cuando la web atiende.</p>
+      </div>
+      <div class="ia-pains">
+        <article class="ia-pain ia-pain--lg reveal">
+          <span class="wmh-antes" aria-hidden="true">Sin agente</span> <span class="wmh-radar" aria-hidden="true"></span><span class="ia-time" aria-hidden="true">23<span class="wmh-dp">:</span>47<small>un martes</small></span>
+          <h3>Te escriben por la noche y contestas a la mañana siguiente, cuando ya han preguntado a otro.</h3>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>El agente responde al momento</b>, también de noche, en fin de semana y en festivos.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <span class="wmh-antes" aria-hidden="true">Sin agente</span><h3>Contestas las mismas preguntas una y otra vez.</h3>
+          <div class="ia-asks" aria-hidden="true"><span>¿Horario?</span><span>¿Dónde estáis?</span><span>¿Hacéis esto?</span></div>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Las resuelve con tu información y tu tono.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <span class="wmh-antes" aria-hidden="true">Sin agente</span><h3>Cerrar una cita es un ir y venir de mensajes.</h3>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Ofrece los huecos que tú marcas y la deja cerrada.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <span class="wmh-antes" aria-hidden="true">Sin agente</span><h3>No sabes si quien escribe va en serio o solo curiosea.</h3>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Pregunta lo necesario antes de pasártelo.</span></p>
+        </article>
+        <article class="ia-pain reveal">
+          <span class="wmh-antes" aria-hidden="true">Sin agente</span><h3>El formulario de contacto acaba en un correo que nadie mira.</h3>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span>Cada contacto te llega al instante, listo para llamar.</span></p>
+        </article>
+        <article class="ia-pain ia-pain--full reveal">
+          <div><span class="wmh-antes" aria-hidden="true">Sin agente</span>
+            <h3>Tu catálogo, tu carta de servicios o tu normativa no caben en una lista de preguntas frecuentes.</h3>
+          </div>
+          <ul class="ia-docs" aria-label="Ejemplos de documentos">
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Catálogo</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Carta de servicios</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Normativa</li>
+            <li><svg aria-hidden="true"><use href="#ic-doc"/></svg>Condiciones</li>
+          </ul>
+          <p class="ia-fix"><span class="wmh-despues" aria-hidden="true">Con agente</span><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Con tu información real</b>: el agente contesta con tus servicios, precios y horarios, no con suposiciones.</span></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · QUÉ ES UN AGENTE IA -->
+  <section class="sec sec--alt" id="que-es">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="sec-head reveal" style="margin-bottom:26px">
+            <h2>Qué es un agente de IA,<span class="accent">sin jerga.</span></h2>
+          </div>
+          <div class="copy reveal">
+            <p><strong>Spark es el chatbot que sí conversa y capta</strong>, no un menú de botones ni un formulario disfrazado. Habla por escrito con quien entra en tu web, entiende lo que necesita y actúa: responde, da cita o te pasa el contacto.</p>
+            <p>Trabaja con <strong>lo que le contamos de tu negocio</strong>: servicios, horarios y forma de trabajar, y contesta con tu tono. Si algo necesita a una persona, lo dice y te lo deriva.</p>
+            <p>Lo montamos <strong>hablando contigo</strong>, y antes de empezar te decimos qué se puede automatizar y qué no.</p>
+          </div>
+          <p class="ia-local reveal"><svg aria-hidden="true"><use href="#ic-pin"/></svg><span>Desde Majadahonda. Presencial en Las Rozas, Boadilla, Pozuelo y Madrid capital; online en toda España.</span></p>
+        </div>
+        <div class="ia-vs reveal"><span class="wmh-scan" aria-hidden="true"></span>
+          <table>
+            <caption class="sr-only">Diferencias entre un menú de botones y un agente de IA</caption>
+            <thead><tr><th scope="col"><span class="sr-only">Aspecto</span></th><th scope="col">Menú de botones</th><th scope="col">Agente de IA</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Qué entiende</th><td data-l="Menú de botones">Solo las opciones de su menú</td><td data-l="Agente de IA">Lo que el cliente escribe, como lo escriba</td></tr>
+              <tr><th scope="row">Si no sabe algo</th><td data-l="Menú de botones">Te devuelve al principio</td><td data-l="Agente de IA">Lo dice y te pasa la consulta</td></tr>
+              <tr><th scope="row">Citas</th><td data-l="Menú de botones">Te manda a un formulario</td><td data-l="Agente de IA">Ofrece hueco y la deja cerrada</td></tr>
+              <tr><th scope="row">Con qué responde</th><td data-l="Menú de botones">Textos fijos</td><td data-l="Agente de IA">Tu información real</td></tr>
+              <tr><th scope="row">El contacto</th><td data-l="Menú de botones">Solo si rellena un formulario</td><td data-l="Agente de IA">Te llega al momento, con nombre y teléfono</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · CAPACIDADES -->
+  <section class="sec" id="capacidades">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Así capta clientes<span class="accent">mientras tú trabajas.</span></h2>
+      </div>
+      <div class="ia-caps">
+        <article class="ia-cap ia-cap--w reveal">
+          <h3>Atiende 24/7</h3>
+          <p>No pierdes al que entra de noche o en festivo: le contesta al momento, dentro y fuera de tu horario.</p>
+          <div class="ia-viz" aria-hidden="true">
+            <div class="ia-hours"><span class="wmh-ahora" aria-hidden="true"></span><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i><i style="--i:12"></i><i style="--i:13"></i><i style="--i:14"></i><i style="--i:15"></i><i style="--i:16"></i><i style="--i:17"></i><i style="--i:18"></i><i style="--i:19"></i><i style="--i:20"></i><i style="--i:21"></i><i style="--i:22"></i><i style="--i:23"></i></div>
+            <div class="ia-hours-l"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div>
+            <div class="ia-key"><span>Tu horario</span><span>Cuando tú no estás</span></div>
+          </div>
+        </article>
+        <article class="ia-cap reveal">
+          <h3>Da cita</h3>
+          <p>Ofrece los huecos que marcas y cierra la cita en la misma conversación, para ir llenando tu agenda sin llamadas.</p>
+          <div class="ia-viz ia-slots" aria-hidden="true">
+            <span>Jue 16:00</span><span class="off">Jue 16:45</span><span class="on">Jue 17:30<svg><use href="#ic-check"/></svg></span><span>Jue 18:15</span>
+          </div>
+        </article>
+        <article class="ia-cap reveal">
+          <h3>Te pasa el contacto al momento</h3>
+          <p>Nombre, teléfono y motivo, directos a tu móvil en cuanto el cliente los deja: el lead, en tu bolsillo.</p>
+          <div class="ia-viz" aria-hidden="true">
+            <div class="ia-lead">
+              <div class="ia-lead__h"><span class="live-dot"></span>Nuevo contacto<em>ahora</em></div>
+              <dl><div><dt>Nombre</dt><dd><i style="width:52%"></i></dd></div><div><dt>Teléfono</dt><dd><i style="width:40%"></i></dd></div><div><dt>Motivo</dt><dd><i style="width:78%"></i></dd></div></dl>
+            </div>
+          </div>
+        </article>
+        <article class="ia-cap ia-cap--w reveal">
+          <span class="ia-opt">A medida</span>
+          <h3>Responde con tus datos</h3>
+          <p>Base de conocimiento con tus documentos — proyecto a medida (bajo consulta). Si manejas mucha información, lo vemos en tu propuesta.</p>
+          <div class="ia-viz ia-rag" aria-hidden="true"><span class="wmh-rayo" aria-hidden="true"></span>
+            <ul class="ia-docs"><li><svg><use href="#ic-doc"/></svg>Catálogo</li><li><svg><use href="#ic-doc"/></svg>Normativa</li><li><svg><use href="#ic-doc"/></svg>Condiciones</li></ul>
+            <span class="arrow"><svg><use href="#ic-arrow"/></svg></span>
+            <p class="out">Según tus condiciones, ese servicio incluye revisión.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · LOS CAMINOS -->
   <section class="sec sec--alt" id="caminos">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -925,10 +1166,10 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
     </div>
   </section>
 
-  <!-- 7 · MÍRALO EN TU SECTOR -->
+  <!-- 8 · MÍRALO EN TU SECTOR -->
   <section class="sec" id="sectores">
     <div class="wrap">
-      <div class="ia-sector reveal">
+      <div class="ia-sector reveal"><span class="wmh-suelo" aria-hidden="true"></span>
         <div>
           <h2>Míralo funcionando<span class="accent">en un negocio como el tuyo.</span></h2>
           <p>Demos por sector: ábrelas, hazle preguntas y pide una cita de prueba.</p>
@@ -945,7 +1186,7 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
     </div>
   </section>
 
-  <!-- 8 · CÓMO TRABAJAMOS -->
+  <!-- 9 · CÓMO TRABAJAMOS -->
   <section class="sec sec--alt" id="como-trabajamos">
     <div class="wrap">
       <div class="sec-head reveal">
@@ -958,12 +1199,58 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
         <li class="ia-step reveal"><span class="n">03</span><h3>Montaje</h3><p>Entrenamos el agente con tus servicios, tu tono y tus datos, y lo probamos contigo.</p></li>
         <li class="ia-step ia-step--hi reveal"><span class="n">04</span><h3>Operativo en 7 días</h3><p>En cuanto tenemos la información de tu negocio, tu web empieza a atender.</p></li>
         <li class="ia-step reveal"><span class="n">05</span><h3>Seguimiento</h3><p>Revisamos contigo cómo responde y lo ajustamos cuando cambia algo en tu negocio.</p></li>
-      </ol>
+      <li class="wmh-hilo" aria-hidden="true"></li></ol>
     </div>
   </section>
 
-  <!-- 9 · POR QUÉ WHITEMOON -->
-  <section class="sec" id="por-que">
+  <!-- 10 · PRUEBA REAL -->
+  <section class="sec" id="prueba">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2>Lo que contamos,<span class="accent">con enlace para comprobarlo.</span></h2>
+      </div>
+      <div class="ia-proof">
+        <a class="ia-card ia-case reveal" href="/casos-de-exito/bambu-sushi/" onclick="window.wmTrack&&wmTrack('click_caso_bambu',{destino:'caso',placement:'ia-prueba'})">
+          <img src="/casos-de-exito/assets/bambu-sushi-web.webp" width="1200" height="576" loading="lazy" decoding="async" alt="Web y agente de IA de Bambu Sushi Córdoba, hechos por WhiteMoon">
+          <div class="ia-body">
+            <span class="ia-tag">Cliente real</span>
+            <h3>Bambu Sushi atiende pedidos y reservas con su agente</h3>
+            <p>Restaurante de sushi en Córdoba. Su chatbot toma pedidos y reservas según la franja horaria, y está en vivo en bambusushi.es.</p>
+            <ul class="ia-built">
+              <li>Web propia a medida</li>
+              <li>Pedidos y reservas por chat</li>
+              <li>SEO local</li>
+            </ul>
+            <span class="ia-more">Ver el caso completo<svg aria-hidden="true"><use href="#ic-arrow"/></svg></span>
+          </div>
+        </a>
+        <article class="ia-card ia-ai reveal">
+          <div class="ia-body">
+            <span class="ia-ask"><svg aria-hidden="true"><use href="#ic-search"/></svg>«¿Mejor agencia de IA en Majadahonda?»</span>
+            <figure class="ia-eng">
+              <figcaption>ChatGPT · septiembre de 2026</figcaption>
+              <blockquote class="ia-q">«Mi primera opción sería: WhiteMoon Agencia IA Majadahonda».</blockquote>
+            </figure>
+            <figure class="ia-eng">
+              <figcaption>Grok · septiembre de 2026</figcaption>
+              <blockquote class="ia-q ia-q--s">«La opción local más sólida».</blockquote>
+            </figure>
+            <p class="ia-src">Observaciones puntuales, con captura y fecha. Las respuestas de las IA varían.</p>
+            <a class="ia-more" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="window.wmTrack&amp;&amp;wmTrack('click_geo_pruebas',{placement:'ia-prueba'})">Ver capturas y método<svg aria-hidden="true"><use href="#ic-arrow"/></svg></a>
+          </div>
+        </article>
+        <a class="ia-card ia-g reveal" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener" aria-label="Ver la ficha de WhiteMoon en Google, valoración 5,0 (se abre en una pestaña nueva)">
+          <span class="ia-g__n" aria-hidden="true">5,0</span>
+          <span class="ia-stars" aria-hidden="true"><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg><svg><use href="#ic-star"/></svg></span>
+          <span class="ia-g__t">Nuestra ficha de Google Business, con 5 estrellas.</span>
+          <span class="ia-more">Ver la ficha en Google<svg aria-hidden="true"><use href="#ic-ext"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · POR QUÉ WHITEMOON -->
+  <section class="sec sec--alt" id="por-que">
     <div class="wrap">
       <div class="ia-why">
         <div class="reveal">
@@ -993,8 +1280,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
     </div>
   </section>
 
-  <!-- 10 · FAQ (sincronizada con el FAQPage del <head>: check 16 del Guardian) -->
-  <section class="sec sec--alt" id="faq">
+  <!-- 12 · FAQ (sincronizada con el FAQPage del <head>: check 16 del Guardian) -->
+  <section class="sec" id="faq">
     <div class="wrap">
       <div class="sec-head sec-head--c reveal">
         <h2>Preguntas frecuentes</h2>
@@ -1010,8 +1297,8 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
     </div>
   </section>
 
-  <!-- 11 · CTA FINAL -->
-  <section class="sec" id="propuesta">
+  <!-- 13 · CTA FINAL -->
+  <section class="sec sec--alt" id="propuesta">
     <div class="wrap">
       <div class="ia-final reveal">
         <h2>Pide tu propuesta a medida</h2>
@@ -1125,6 +1412,7 @@ a:hover>.ia-more svg,a.ia-more:hover svg,.ia-card:hover .ia-more svg{transform:t
   });
 })();
 </script>
+<script defer src="/assets/wm-ia-holo.js?v=2026092802"></script>
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 </body>
 </html>
