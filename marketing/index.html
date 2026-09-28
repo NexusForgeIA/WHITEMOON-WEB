@@ -403,8 +403,215 @@
     .mk-dot--2{animation-delay:.18s}
     .mk-dot--3{animation-delay:.36s}
   }
+
+/* ===== Capa holográfica /marketing/ (prefijo mkh-) ===== */
+:root{--mkh-c:#4db8ff;--mkh-d:#ff6b8b;--mkh-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@property --mkh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes mkh-gira{to{--mkh-ang:360deg}}
+@keyframes mkh-rota{to{transform:rotate(360deg)}}
+@keyframes mkh-barre-v{0%{transform:translateY(-60%)}100%{transform:translateY(60%)}}
+@keyframes mkh-barre-h{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes mkh-flota{50%{transform:translateY(-8px)}}
+@keyframes mkh-avanza{to{background-position:0 40px,0 0}}
+@keyframes mkh-video{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+@keyframes mkh-seg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes mkh-sub{0%,4%{opacity:0;transform:translateY(6px)}8%,30%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateY(-4px)}}
+@keyframes mkh-tick{0%,10%{opacity:.25}18%,100%{opacity:1}}
+@keyframes mkh-cae{0%{transform:translate(0,0);opacity:0}15%{opacity:1}100%{transform:translate(var(--dx,-40px),60px);opacity:0}}
+@keyframes mkh-pulso-h{0%{transform:translateX(0)}100%{transform:translateX(calc(100% - 12px))}}
+@keyframes mkh-parpadeo{50%{opacity:.25}}
+
+/* Fondo de sección: rejilla y resplandor detrás del contenido */
+.sec{position:relative;overflow:hidden}
+.sec::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(680px 360px at var(--mkh-x,85%) 0%,rgba(124,77,255,.12),transparent 70%),
+    linear-gradient(rgba(157,112,255,.065) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.065) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%);mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%)}
+.sec:nth-of-type(even)::before{--mkh-x:12%}
+.sec > .shell{position:relative;z-index:1}
+.sec::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--g) 50%,var(--mkh-c) 75%,transparent);opacity:.45}
+h2{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Borde holográfico común */
+.pack,.idx,.whonot,.band,.tier,.tpro,.mech__col,.step,.mkh-escena{position:relative;isolation:isolate}
+.pack::before,.idx::before,.whonot::before,.band::before,.mech__col::before,.step::after,.mkh-escena::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--mkh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.7}
+.mkh-on.pack::before,.mkh-on .idx::before,.mkh-on.band::before,.mkh-on .mkh-escena::before{animation:mkh-gira 9s linear infinite}
+.whonot::before{background:conic-gradient(from var(--mkh-ang),#ff6b8b,#7c4dff,#ff6b8b)}
+/* El anillo va por dentro (varias cards tienen overflow:hidden): su borde plano se hace transparente */
+.pack,.idx,.band,.mech__col,.whonot{border-color:transparent}
+.mech__col > h3,.mech__col > ul{position:relative;z-index:2}
+/* Esquinas HUD */
+.pack,.idx,.band,.whonot,.mech__col,.step{--k:rgba(0,212,170,.85)}
+.pack::after,.band::after,.mech__col::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat,
+    repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 4px)}
+
+/* ---- HERO ---- */
+.hero h1 span{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(124,77,255,.4))}
+.mkh-suelo{position:absolute;left:-10%;right:-10%;bottom:-2px;height:42%;z-index:0;pointer-events:none;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.38) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.26) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%);opacity:.55}
+.mkh-on .mkh-suelo{animation:mkh-avanza 4s linear infinite}
+.mkh-scan{position:absolute;left:0;right:0;top:0;bottom:0;z-index:0;pointer-events:none;transform:translateY(-60%);will-change:transform;
+  background:linear-gradient(180deg,transparent 43%,rgba(124,77,255,.06) 47%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.06) 53%,transparent 57%)}
+.mkh-on .mkh-scan{animation:mkh-barre-v 7s linear infinite}
+.hero__grid{z-index:1}
+.mkh-col{display:flex;flex-direction:column;gap:18px;min-width:0}
+.mkh-escena{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:18px;align-items:center;padding:20px;border-radius:18px;
+  background:radial-gradient(110% 80% at 0% 0%,rgba(124,77,255,.18),transparent 60%),radial-gradient(90% 80% at 100% 100%,rgba(0,212,170,.12),transparent 60%),var(--card)}
+/* Móvil 9:16 con un Reel de ejemplo */
+.mkh-movil{position:relative;justify-self:center;width:100%;max-width:150px;aspect-ratio:9/16;border-radius:22px;padding:6px;
+  background:linear-gradient(160deg,#2a2a3a,#12121a);box-shadow:0 0 0 1px rgba(255,255,255,.08),0 20px 50px -10px rgba(124,77,255,.6)}
+.mkh-pantalla{position:relative;height:100%;border-radius:17px;overflow:hidden;
+  background:linear-gradient(120deg,#2b1466,#0e5a6e,#4b1f7a,#0a6b5c);background-size:300% 300%}
+.mkh-on .mkh-pantalla{animation:mkh-video 8s ease-in-out infinite alternate}
+.mkh-pantalla::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px)}
+.mkh-segs{position:absolute;left:8px;right:8px;top:8px;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;z-index:1}
+.mkh-segs i{height:2px;border-radius:2px;background:rgba(255,255,255,.28);overflow:hidden;position:relative}
+.mkh-segs i::after{content:"";position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0)}
+.mkh-on .mkh-segs i::after{animation:mkh-seg 2s linear forwards}
+.mkh-on .mkh-segs i:nth-child(2)::after{animation-delay:2s}.mkh-on .mkh-segs i:nth-child(3)::after{animation-delay:4s}
+.mkh-on .mkh-segs i:nth-child(4)::after{animation-delay:6s}.mkh-on .mkh-segs i:nth-child(5)::after{animation-delay:8s}
+.mkh-formato{position:absolute;right:8px;top:16px;z-index:1;font-family:var(--mkh-mono);font-size:.55rem;color:#fff;opacity:.8}
+.mkh-subs{position:absolute;left:8px;right:8px;bottom:18px;z-index:1;height:34px}
+.mkh-subs span{position:absolute;left:0;right:0;bottom:0;text-align:center;font-weight:700;font-size:.66rem;line-height:1.25;color:#fff;
+  text-shadow:0 1px 6px rgba(0,0,0,.7);opacity:0}
+.mkh-subs span b{display:inline-block;padding:2px 6px;border-radius:5px;background:rgba(0,212,170,.85);color:#06221c}
+.mkh-subs span:first-child{opacity:1}
+.mkh-on .mkh-subs span{animation:mkh-sub 9s infinite}
+.mkh-on .mkh-subs span:nth-child(2){animation-delay:3s}.mkh-on .mkh-subs span:nth-child(3){animation-delay:6s}
+/* Auditoría: radar + checklist */
+.mkh-audit{min-width:0}
+.mkh-radar{position:relative;width:118px;aspect-ratio:1;border-radius:50%;margin:0 auto 14px;
+  background:
+    radial-gradient(circle,transparent 0 31%,rgba(0,212,170,.3) 31.5% 32.5%,transparent 33% 62%,rgba(0,212,170,.22) 62.5% 63.5%,transparent 64% 96%,rgba(0,212,170,.4) 96.5%),
+    linear-gradient(rgba(0,212,170,.18),rgba(0,212,170,.18)) 50% 0/1px 100% no-repeat,
+    linear-gradient(90deg,rgba(0,212,170,.18),rgba(0,212,170,.18)) 0 50%/100% 1px no-repeat;
+  box-shadow:0 0 30px -6px rgba(0,212,170,.55)}
+.mkh-radar::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(0,212,170,.55),transparent 22%)}
+.mkh-on .mkh-radar::before{animation:mkh-rota 3.2s linear infinite}
+.mkh-radar i{position:absolute;width:6px;height:6px;border-radius:50%;background:#ff6b8b;box-shadow:0 0 8px #ff6b8b}
+.mkh-radar i:nth-child(1){left:26%;top:30%}.mkh-radar i:nth-child(2){left:66%;top:58%}.mkh-radar i:nth-child(3){left:40%;top:72%}
+.mkh-on .mkh-radar i{animation:mkh-parpadeo 1.6s steps(2) infinite}
+.mkh-on .mkh-radar i:nth-child(2){animation-delay:.5s}.mkh-on .mkh-radar i:nth-child(3){animation-delay:1s}
+.mkh-check{display:grid;gap:7px;margin:0;padding:0}
+.mkh-check li{display:flex;align-items:center;gap:8px;font-family:var(--mkh-mono);font-size:.66rem;letter-spacing:.03em;color:#cfe9ff}
+.mkh-check li::before{content:"✓";display:grid;place-items:center;width:15px;height:15px;border-radius:4px;flex:0 0 auto;font-size:.6rem;color:#06221c;background:var(--g);box-shadow:0 0 10px rgba(0,212,170,.6)}
+.mkh-on .mkh-check li{animation:mkh-tick 6s infinite}
+.mkh-on .mkh-check li:nth-child(2){animation-delay:.6s}.mkh-on .mkh-check li:nth-child(3){animation-delay:1.2s}.mkh-on .mkh-check li:nth-child(4){animation-delay:1.8s}
+.mkh-nota{grid-column:1/-1;margin-top:2px;text-align:center;font-family:var(--mkh-mono);font-size:.64rem;color:var(--dim)}
+.idx{background:radial-gradient(120% 90% at 100% 0%,rgba(0,212,170,.10),transparent 60%),linear-gradient(180deg,var(--card),rgba(17,17,24,.4))}
+.idx__p{font-family:var(--mkh-mono);text-shadow:0 0 12px rgba(94,234,212,.6)}
+
+/* ---- PROBLEMA: tres fugas ---- */
+.mkh-fuga{display:inline-flex;align-items:center;gap:7px;width:max-content;margin-bottom:10px;padding:4px 9px;border-radius:6px;
+  font-family:var(--mkh-mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:#ff9aad;border:1px solid rgba(255,107,139,.35);background:rgba(255,107,139,.08)}
+.mkh-fuga::before{content:"";width:6px;height:6px;border-radius:50%;background:#ff6b8b;box-shadow:0 0 8px #ff6b8b}
+.mkh-on .mkh-fuga::before{animation:mkh-parpadeo 1.6s steps(2) infinite}
+.prob__t{display:flex;flex-direction:column}
+.prob__row{position:relative;border-top-color:transparent!important}
+.prob__row::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,rgba(255,107,139,.6),rgba(124,77,255,.4) 40%,transparent)}
+.mkh-embudo{position:absolute;right:28px;top:-18px;width:150px;height:163px;z-index:0;pointer-events:none;opacity:.95}
+.mkh-embudo svg{width:100%;height:100%;overflow:visible}
+.mkh-embudo .gota{opacity:0}
+.mkh-on .mkh-embudo .gota{animation:mkh-cae 2.6s ease-in infinite}
+.mkh-on .mkh-embudo .gota:nth-of-type(2){animation-delay:.9s}.mkh-on .mkh-embudo .gota:nth-of-type(3){animation-delay:1.7s}
+#problema .shell > h2,#problema .shell > .lead{max-width:calc(100% - 200px)}
+@media (max-width:900px){.mkh-embudo{display:none}#problema .shell > h2,#problema .shell > .lead{max-width:none}}
+
+/* ---- PACKS ---- */
+.pack{background:radial-gradient(120% 60% at 100% 0%,rgba(124,77,255,.10),transparent 60%),var(--card)}
+.shot{isolation:isolate}
+.shot::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;transform:translateY(-60%);will-change:transform;
+  background:linear-gradient(180deg,transparent 40%,rgba(0,212,170,.15) 47%,rgba(77,184,255,.55) 50%,rgba(0,212,170,.15) 53%,transparent 60%)}
+.mkh-on .shot::before{animation:mkh-barre-v 4.5s ease-in-out infinite}
+.mkh-etiq{position:absolute;left:12px;top:12px;z-index:3;padding:5px 9px;border-radius:6px;font-family:var(--mkh-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#dff;border:1px solid rgba(77,184,255,.45);background:rgba(8,8,13,.7);box-shadow:0 0 18px -4px rgba(77,184,255,.7)}
+.mkh-etiq::before{content:"● ";color:var(--g)}
+.pack__name{background:linear-gradient(110deg,#fff 30%,#c9b8ff 65%,#8fd8ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tier{background:radial-gradient(100% 80% at 0% 0%,rgba(0,212,170,.07),transparent 60%),var(--bg2);box-shadow:inset 0 0 0 1px rgba(77,184,255,.08)}
+.tier__p{text-shadow:0 0 14px rgba(94,234,212,.6)}
+.pack__ship{box-shadow:0 0 24px -10px rgba(0,212,170,.8)}
+.pack__hook .hi{position:relative;color:#fff;background:linear-gradient(90deg,rgba(124,77,255,.35),rgba(0,212,170,.3));padding:1px 6px;border-radius:5px;box-shadow:0 0 16px -4px rgba(0,212,170,.7)}
+
+/* ---- PROCESO ---- */
+.steps{position:relative}
+.step{padding:26px 22px 24px;border-top:0;border-radius:16px;background:radial-gradient(110% 80% at 0% 0%,rgba(124,77,255,.12),transparent 60%),var(--card)}
+.step::before{top:0;left:22px;width:54px;height:2px;background:linear-gradient(90deg,var(--p),var(--g));box-shadow:0 0 12px rgba(0,212,170,.7)}
+.step__n{font-family:var(--mkh-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--g2);text-shadow:0 0 12px rgba(94,234,212,.5)}
+.mkh-hilo{position:absolute;left:0;right:0;top:-14px;height:12px;pointer-events:none}
+.mkh-hilo::before{content:"";position:absolute;left:6px;right:6px;top:5px;height:2px;background:linear-gradient(90deg,var(--p),var(--g),var(--mkh-c));opacity:.7;box-shadow:0 0 10px rgba(124,77,255,.7)}
+.mkh-hilo::after{content:"";position:absolute;inset:0;will-change:transform;
+  background:radial-gradient(circle 6px at 6px 6px,#fff 45%,rgba(0,212,170,.85) 70%,transparent 100%);filter:drop-shadow(0 0 6px rgba(0,212,170,.9));opacity:0}
+.mkh-on .mkh-hilo::after{opacity:1;animation:mkh-pulso-h 4s ease-in-out infinite}
+@media (max-width:900px){.mkh-hilo{display:none}}
+
+/* ---- PARA QUIÉN ---- */
+.chip{box-shadow:inset 0 0 0 1px rgba(77,184,255,.10),0 0 18px -8px rgba(124,77,255,.8);background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(0,212,170,.05))}
+.chip--open{border-color:rgba(0,212,170,.4);color:var(--g2)}
+.whonot{background:radial-gradient(120% 80% at 100% 0%,rgba(255,107,139,.10),transparent 60%),var(--card)}
+.whonot h3{color:#ffb3c1}
+.whonot svg{stroke:#ff6b8b}
+
+/* ---- MECANISMO ---- */
+.mech__cols{position:relative}
+.mech__col{padding:22px;border-radius:16px;overflow:hidden;background:radial-gradient(110% 80% at 0% 0%,rgba(77,184,255,.14),transparent 60%),var(--card)}
+.mech__col--no{background:radial-gradient(110% 80% at 100% 0%,rgba(124,77,255,.2),transparent 60%),var(--card)}
+.mech__col h3{font-family:var(--mkh-mono);color:#cfe9ff;border-bottom-color:rgba(77,184,255,.25)}
+.mech__col--no h3{color:#d9ccff;border-bottom-color:rgba(157,112,255,.3)}
+.mech__col li{position:relative;padding-left:16px}
+.mech__col li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--mkh-c);box-shadow:0 0 8px var(--mkh-c)}
+.mech__col--no li::before{background:var(--p2);box-shadow:0 0 8px var(--p2)}
+.mkh-escaner{position:absolute;inset:0;z-index:1;pointer-events:none;transform:translateY(-60%);will-change:transform;
+  background:linear-gradient(180deg,transparent 42%,rgba(77,184,255,.12) 48%,rgba(77,184,255,.4) 50%,rgba(77,184,255,.12) 52%,transparent 58%)}
+.mkh-on .mkh-escaner{animation:mkh-barre-v 4s ease-in-out infinite}
+
+/* ---- SIN PERMANENCIA y CTA final ---- */
+.band{overflow:hidden;background:radial-gradient(90% 120% at 100% 0%,rgba(0,212,170,.14),transparent 60%),linear-gradient(135deg,rgba(124,77,255,.14),rgba(0,212,170,.05))}
+.band > *{position:relative;z-index:4}
+.mkh-brillo{position:absolute;inset:0;z-index:1;pointer-events:none;transform:translateX(-100%);
+  background:linear-gradient(100deg,transparent 38%,rgba(255,255,255,.07) 50%,transparent 62%)}
+.mkh-on .mkh-brillo{animation:mkh-barre-h 5s ease-in-out infinite}
+.final{isolation:isolate}
+.mkh-anillos{position:absolute;left:50%;top:50%;width:min(900px,120vw);aspect-ratio:1;margin:calc(min(900px,120vw) / -2) 0 0 calc(min(900px,120vw) / -2);z-index:0;pointer-events:none;border-radius:50%;
+  background:repeating-radial-gradient(circle,rgba(157,112,255,.14) 0 1px,transparent 1px 42px);
+  -webkit-mask-image:radial-gradient(circle,#000 20%,transparent 68%);mask-image:radial-gradient(circle,#000 20%,transparent 68%)}
+.mkh-on .mkh-anillos{animation:mkh-rota 80s linear infinite}
+.faq details[open]{box-shadow:inset 3px 0 0 var(--g)}
+.faq details[open] summary{color:var(--g2)}
+
+@media (max-width:900px){
+  .mkh-escena{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+}
+@media (max-width:600px){
+  .mkh-escena{padding:16px;gap:12px}
+  .mkh-movil{max-width:120px}
+  .mkh-radar{width:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  .mkh-suelo,.mkh-scan,.mkh-pantalla,.mkh-segs i::after,.mkh-subs span,.mkh-radar::before,.mkh-radar i,.mkh-check li,.mkh-fuga::before,
+  .mkh-embudo .gota,.shot::before,.mkh-hilo::after,.mkh-escaner,.mkh-brillo,.mkh-anillos,
+  .pack::before,.idx::before,.band::before,.mkh-escena::before{animation:none!important}
+  .mkh-scan,.shot::before,.mkh-escaner,.mkh-brillo{display:none}
+  .mkh-subs span:first-child{opacity:1}
+  .mkh-segs i::after{transform:scaleX(1)}
+}
 </style>
 <script defer src="/assets/wm-nav.js?v=2026091501"></script>
+<script defer src="/assets/wm-mk-holo.js?v=2026092801"></script>
 </head>
 <body>
 
@@ -453,7 +660,7 @@
 <main>
 
   <!-- ═══ 1 · HERO ═══════════════════════════════════════════════════ -->
-  <section class="hero">
+  <section class="hero"><span class="mkh-suelo" aria-hidden="true"></span><span class="mkh-scan" aria-hidden="true"></span>
     <div class="shell hero__grid">
       <div>
         <span class="hero__kicker"><i></i>Marketing y captación · WhiteMoon</span>
@@ -474,7 +681,20 @@
         </div>
       </div>
 
-      <div class="idx">
+<div class="mkh-col">
+      <div class="mkh-escena" aria-hidden="true">
+        <div class="mkh-movil"><div class="mkh-pantalla">
+          <div class="mkh-segs"><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="mkh-formato">9:16</span>
+          <div class="mkh-subs"><span><b>Hook</b> en 3 s</span><span>Subtítulos</span><span><b>CTA</b> final</span></div>
+        </div></div>
+        <div class="mkh-audit">
+          <div class="mkh-radar"><i></i><i></i><i></i></div>
+          <ul class="mkh-check"><li>Ficha de Google</li><li>Web y redes</li><li>Competencia</li><li>Visibilidad en IA</li></ul>
+        </div>
+        <p class="mkh-nota">Ilustración del formato, no datos reales</p>
+      </div>
+<div class="idx">
         <div class="idx__h">Los dos packs</div>
         <a href="#auditoria-ia">
           <span class="idx__n">Auditoría IA</span>
@@ -486,26 +706,38 @@
         </a>
         <div class="idx__f">Propuesta a medida · Sin permanencia · Sin cuota mensual</div>
       </div>
+      </div>
     </div>
   </section>
 
   <!-- ═══ 2 · EL PROBLEMA ════════════════════════════════════════════ -->
   <section class="sec" id="problema" style="background:var(--bg2);border-top:1px solid var(--hair)">
     <div class="shell">
+      <div class="mkh-embudo" aria-hidden="true"><svg viewBox="0 0 230 250" fill="none">
+        <defs><linearGradient id="mkhE" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7c4dff"/><stop offset=".55" stop-color="#4db8ff"/><stop offset="1" stop-color="#00d4aa"/></linearGradient></defs>
+        <path d="M18 30H212L142 168V228H88V168Z" stroke="url(#mkhE)" stroke-width="1.5" fill="rgba(124,77,255,.06)"/>
+        <path d="M42 78H188M66 124H164" stroke="rgba(157,112,255,.35)" stroke-dasharray="3 5"/>
+        <text x="115" y="58" text-anchor="middle" fill="#b8b8cc" font-family="ui-monospace,Menlo,monospace" font-size="14" letter-spacing="1">VISITAS</text>
+        <text x="115" y="106" text-anchor="middle" fill="#b8b8cc" font-family="ui-monospace,Menlo,monospace" font-size="14" letter-spacing="1">CONTACTOS</text>
+        <text x="115" y="150" text-anchor="middle" fill="#5eead4" font-family="ui-monospace,Menlo,monospace" font-size="12" letter-spacing="1">CLIENTES</text>
+        <circle class="gota" cx="36" cy="52" r="3.5" fill="#ff6b8b" style="--dx:-34px"/>
+        <circle class="gota" cx="190" cy="96" r="3.5" fill="#ff6b8b" style="--dx:34px"/>
+        <circle class="gota" cx="62" cy="138" r="3.5" fill="#ff6b8b" style="--dx:-30px"/>
+      </svg></div>
       <h2>Casi nunca es que falte gente mirando.</h2>
       <p class="lead" style="margin-top:18px">Es que lo que miran no lleva a ninguna parte. Estas son las tres fugas que nos encontramos en prácticamente todos los negocios locales que auditamos.</p>
 
       <div class="prob">
         <div class="prob__row">
-          <p class="prob__t">Tu ficha, tus redes y tu web pierden contactos por el camino</p>
+          <p class="prob__t"><span class="mkh-fuga" aria-hidden="true">Fuga 01</span>Tu ficha, tus redes y tu web pierden contactos por el camino</p>
           <p class="prob__d">Alguien busca tu servicio, entra en tu ficha de Google, mira dos fotos, no encuentra el precio ni un botón claro y se va al siguiente resultado. No queda rastro de esa visita en ningún sitio, así que ni siquiera sabes cuántas has perdido esta semana.</p>
         </div>
         <div class="prob__row">
-          <p class="prob__t">Los leads que sí llegan se quedan sin seguimiento</p>
+          <p class="prob__t"><span class="mkh-fuga" aria-hidden="true">Fuga 02</span>Los leads que sí llegan se quedan sin seguimiento</p>
           <p class="prob__d">Entra un mensaje a las nueve de la noche, se contesta al día siguiente por la tarde y para entonces ya han llamado a otros dos. Sin un sitio donde ver en qué estado está cada contacto, el seguimiento depende de que alguien se acuerde.</p>
         </div>
         <div class="prob__row">
-          <p class="prob__t">Se hace marketing por hacer, no por convertir</p>
+          <p class="prob__t"><span class="mkh-fuga" aria-hidden="true">Fuga 03</span>Se hace marketing por hacer, no por convertir</p>
           <p class="prob__d">Se publica porque toca publicar. Se mide en «me gusta» porque es lo único que la app enseña. Y lo que de verdad haría falta medir (cuántas llamadas, cuántos presupuestos, cuántas reservas) no lo cuenta nadie.</p>
         </div>
       </div>
@@ -525,7 +757,7 @@
           <!-- ── AUDITORÍA IA ────────────────────────────────────────── -->
           <article class="pack" id="auditoria-ia">
             <div class="mock">
-              <figure class="shot">
+              <figure class="shot"><span class="mkh-etiq" aria-hidden="true">Auditoría · 24-48 h</span>
                   <picture>
                     <source srcset="/assets/img/marketing-auditoria.webp" type="image/webp">
                     <img src="/assets/img/marketing-auditoria.jpg" alt="Panel de analítica web con gráficas de sesiones, tiempo de carga y porcentaje de rebote"
@@ -576,7 +808,7 @@
           <!-- ── PACK REELS IA ───────────────────────────────────────── -->
           <article class="pack" id="reels-ia">
             <div class="mock">
-              <figure class="shot">
+              <figure class="shot"><span class="mkh-etiq" aria-hidden="true">Reels · 9:16</span>
                   <picture>
                     <source srcset="/assets/img/marketing-reels.webp" type="image/webp">
                     <img src="/assets/img/marketing-reels.jpg" alt="Línea de tiempo de edición de vídeo con varios clips cortos y pistas de color"
@@ -641,6 +873,7 @@
           <h3>Medición</h3>
           <p>Te dejamos claro qué mirar y dónde: contactos que entran, de dónde vienen y en qué estado están. Si pasado un tiempo razonable no se mueve nada, te lo decimos.</p>
         </div>
+        <div class="mkh-hilo" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -685,7 +918,7 @@
         <p class="lead" style="margin-top:18px">La inteligencia artificial no es lo que te vendemos: es la razón por la que esto se entrega en horas y con un precio cerrado. Nos quita las horas de producción, no el criterio.</p>
       </div>
       <div class="mech__cols">
-        <div class="mech__col">
+        <div class="mech__col"><span class="mkh-escaner" aria-hidden="true"></span>
           <h3>Lo hace la IA</h3>
           <ul>
             <li>Generar el vídeo, la locución y los subtítulos</li>
@@ -694,7 +927,7 @@
             <li>Preparar los borradores en una fracción del tiempo</li>
           </ul>
         </div>
-        <div class="mech__col mech__col--no">
+        <div class="mech__col mech__col--no"><span class="mkh-escaner" aria-hidden="true"></span>
           <h3>Lo hacemos nosotros</h3>
           <ul>
             <li>Decidir qué se dice, a quién y por qué</li>
@@ -710,7 +943,7 @@
   <!-- ═══ 7 · SIN PERMANENCIA ════════════════════════════════════════ -->
   <section class="sec sec--tight" id="sin-permanencia">
     <div class="shell">
-      <div class="band">
+      <div class="band"><span class="mkh-brillo" aria-hidden="true"></span>
         <div>
           <h2 style="font-size:clamp(1.5rem,2.6vw,2.05rem)">Sin permanencia, y lo decimos en serio</h2>
           <p>Los dos packs son trabajos puntuales: se pagan una vez, se entregan y ahí termina el compromiso. No hay cuota obligatoria detrás ni renovación automática. Si lo que montamos funciona y quieres continuidad, se puede escalar a un plan mensual, pero eso se habla cuando haya algo que escalar, no antes de empezar.</p>
@@ -756,7 +989,7 @@
   </section>
 
   <!-- ═══ 9 · CTA FINAL ══════════════════════════════════════════════ -->
-  <section class="sec final" id="contacto">
+  <section class="sec final" id="contacto"><span class="mkh-anillos" aria-hidden="true"></span>
     <div class="shell">
       <h2>Cuéntanos qué negocio tienes y te decimos por dónde empezar</h2>
       <p class="lead">Sin formulario de doce campos. Escríbenos por WhatsApp y te contestamos, o coge un hueco de veinte minutos y lo vemos en directo.</p>
