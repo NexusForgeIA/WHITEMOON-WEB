@@ -254,6 +254,165 @@
   .ok b{display:block;font-size:1.16rem;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.02em}
   .ok p{font-size:.94rem;color:var(--muted);line-height:1.7;max-width:44ch;margin:0 auto}
 
+  /* ── App móvil + flujo IA (#app-movil, #flujo-ia) ──────────────────────
+     Todo con prefijo .wmapp-* / .wmflujo-*. Los colores extra del holograma
+     y la mono viven en la propia sección: no se tocan los tokens de :root.
+     Las animaciones CSS arrancan en pausa y wm-software-demo.js añade
+     .is-vivo sólo mientras la sección está en pantalla. */
+  .wmapp-sec,.wmflujo-sec{
+    --wm-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --wm-bg3:#13131e; --wm-gold:#f5c842;
+    --wm-holo-a:#7c4dff; --wm-holo-b:#00d4aa; --wm-holo-c:#4db8ff; --wm-holo-d:#ff6b8b;
+  }
+  .wmflujo-sec{border-top:1px solid var(--hair);background:var(--bg2)}
+  .wmapp-hl{color:var(--p2)}
+  .wmapp-nota{margin-top:18px;font-family:var(--wm-mono);font-size:.72rem;color:var(--dim);letter-spacing:.02em}
+  .wmapp-nota::before{content:"◇ ";color:var(--g)}
+
+  .wmapp-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center}
+  .wmapp-grid .lead{margin-top:20px}
+  .wmapp-puntos{display:grid;gap:14px;margin:28px 0 20px}
+  .wmapp-puntos li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+  .wmapp-puntos b{display:block;font-weight:600;line-height:1.5}
+  .wmapp-puntos span:not(.wmapp-ico){display:block;color:var(--muted);font-size:.9rem;line-height:1.65}
+  .wmapp-ico{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:rgba(124,77,255,.12);border:1px solid var(--border);color:var(--p2);font-size:13px;font-family:var(--wm-mono)}
+  .wmapp-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .wmapp-chip{font-size:.75rem;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:rgba(124,77,255,.08);color:var(--text);line-height:1.4}
+
+  .wmapp-escena{position:relative;display:grid;place-items:center;min-height:620px;padding-block:24px;overflow-x:clip}
+  .wmapp-halo{position:absolute;inset:8% 10%;background:radial-gradient(closest-side,rgba(124,77,255,.35),transparent 70%),radial-gradient(closest-side at 70% 70%,rgba(0,212,170,.18),transparent 70%);filter:blur(30px);pointer-events:none}
+  .wmapp-fantasma{position:absolute;right:0;bottom:0;font-weight:700;font-size:clamp(90px,14vw,170px);line-height:1;letter-spacing:-.05em;color:rgba(240,240,245,.035);pointer-events:none;user-select:none}
+  .wmapp-movil{position:relative;width:300px;max-width:100%;aspect-ratio:300/620;border-radius:52px;padding:12px;
+    background:linear-gradient(145deg,#2a2a36,#0d0d13 40%,#1c1c26 70%,#35354a);
+    box-shadow:0 0 0 1.5px #3a3a4c inset,0 40px 80px -20px rgba(0,0,0,.8),0 0 0 1px #000;
+    transform:rotate(-4deg);animation:wmapp-flota 7s ease-in-out infinite;animation-play-state:paused}
+  .wmapp-sec.is-vivo .wmapp-movil{animation-play-state:running}
+  .wmapp-movil::before,.wmapp-movil::after{content:"";position:absolute;width:3px;border-radius:3px;background:#2a2a36}
+  .wmapp-movil::before{left:-3px;top:120px;height:56px;box-shadow:0 70px 0 #2a2a36}
+  .wmapp-movil::after{right:-3px;top:150px;height:84px}
+  @keyframes wmapp-flota{50%{transform:rotate(-4deg) translateY(-10px)}}
+  .wmapp-pantalla{position:relative;height:100%;border-radius:42px;overflow:hidden;background:linear-gradient(180deg,#0f0f18,#0a0a10);display:flex;flex-direction:column;line-height:1.5}
+  .wmapp-isla{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:20px;background:#000;z-index:3}
+  .wmapp-barra{display:flex;justify-content:space-between;padding:14px 26px 0;font-size:12px;font-weight:600;height:40px}
+  .wmapp-barra i{font-style:normal;font-family:var(--wm-mono);font-size:10.5px;opacity:.8}
+  .wmapp-cab{padding:14px 20px 6px}
+  .wmapp-cab small{display:block;color:var(--muted);font-size:11px}
+  .wmapp-cab b{display:block;margin-top:2px;font-size:22px;font-weight:700;letter-spacing:-.02em;line-height:1.2}
+  .wmapp-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 16px}
+  .wmapp-kpi{background:var(--wm-bg3);border:1px solid var(--border);border-radius:14px;padding:10px 12px}
+  .wmapp-kpi b{display:block;font-size:22px;line-height:1.1;font-variant-numeric:tabular-nums}
+  .wmapp-kpi span{font-size:10.5px;color:var(--muted)}
+  .wmapp-kpi--g b{color:var(--g)}
+  .wmapp-lista{padding:4px 16px;display:grid;gap:8px;flex:1;align-content:start}
+  .wmapp-lista-t{margin:6px 4px 0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .wmapp-fila{display:grid;grid-template-columns:42px 1fr;column-gap:10px;row-gap:5px;align-items:center;background:var(--card);border-radius:14px;padding:10px 12px;border:1px solid rgba(255,255,255,.04)}
+  .wmapp-fila time{font-family:var(--wm-mono);font-size:12px;color:var(--p2)}
+  .wmapp-fila > div{min-width:0}
+  .wmapp-fila b{display:block;font-size:12.5px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wmapp-fila small{display:block;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wmapp-est{grid-column:2;justify-self:start;font-size:9.5px;padding:3px 7px;border-radius:999px;border:1px solid;line-height:1.3}
+  .wmapp-est--ok{color:var(--g);border-color:rgba(0,212,170,.4)}
+  .wmapp-est--pend{color:var(--wm-gold);border-color:rgba(245,200,66,.4)}
+  .wmapp-tabs{display:grid;grid-template-columns:repeat(4,1fr);padding:10px 14px 18px;border-top:1px solid rgba(255,255,255,.06);font-size:9.5px;color:var(--muted);text-align:center}
+  .wmapp-tabs span::before{content:"";display:block;width:18px;height:18px;margin:0 auto 3px;border-radius:6px;border:1.5px solid currentColor;opacity:.7}
+  .wmapp-tabs .is-on{color:var(--p2)}
+  /* Sin JS el aviso se ve fijo; con JS entra y sale (.is-anim / .is-ver). */
+  .wmapp-aviso{position:absolute;top:46px;left:10px;right:10px;z-index:4;background:rgba(28,28,40,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:10px 12px;display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:center;
+    transition:transform .5s cubic-bezier(.2,.9,.3,1),opacity .4s}
+  .wmapp-aviso.is-anim:not(.is-ver){transform:translateY(-140%);opacity:0}
+  .wmapp-aviso-logo{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--p),var(--g));display:grid;place-items:center;font-size:12px;font-weight:700}
+  .wmapp-aviso b{display:block;font-size:11.5px;line-height:1.35}
+  .wmapp-aviso span{display:block;font-size:10.5px;color:#c8c8d8;line-height:1.35}
+
+  @property --wmflujo-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+  .wmflujo-cab{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;margin-bottom:28px}
+  .wmflujo-cab .lead{margin-top:20px}
+  .wmflujo-holo{position:relative;border-radius:20px;padding:1.5px;isolation:isolate;
+    background:conic-gradient(from var(--wmflujo-ang),var(--wm-holo-a),var(--wm-holo-b),var(--wm-holo-c),var(--wm-holo-d),var(--wm-holo-a));
+    animation:wmflujo-gira 9s linear infinite;animation-play-state:paused;
+    transform:perspective(1400px) rotateX(var(--wmflujo-rx,0deg)) rotateY(var(--wmflujo-ry,0deg));transition:transform .5s ease}
+  @keyframes wmflujo-gira{to{--wmflujo-ang:360deg}}
+  .wmflujo-in{position:relative;border-radius:19px;overflow:hidden;
+    background:radial-gradient(120% 90% at 0% 0%,rgba(124,77,255,.16),transparent 55%),radial-gradient(100% 80% at 100% 100%,rgba(0,212,170,.12),transparent 55%),#0b0b12;
+    padding:22px clamp(16px,3vw,28px) 18px;line-height:1.5}
+  .wmflujo-in::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
+  .wmflujo-in::after{content:"";position:absolute;inset:-40%;pointer-events:none;
+    background:linear-gradient(115deg,transparent 40%,rgba(157,112,255,.10) 48%,rgba(0,212,170,.10) 52%,transparent 60%);
+    animation:wmflujo-barrido 6s ease-in-out infinite;animation-play-state:paused}
+  @keyframes wmflujo-barrido{0%{transform:translateX(-30%)}100%{transform:translateX(30%)}}
+  .wmflujo-top{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .wmflujo-negocio{display:flex;gap:10px;align-items:center}
+  .wmflujo-m{width:34px;height:34px;border-radius:10px;border:1px solid rgba(0,212,170,.4);display:grid;place-items:center;font-family:var(--wm-mono);color:var(--g);font-size:13px}
+  .wmflujo-negocio b{display:block;font-size:14px}
+  .wmflujo-negocio small{display:block;color:var(--muted);font-size:11.5px}
+  .wmflujo-vivo{font-family:var(--wm-mono);font-size:11px;color:var(--g);display:flex;align-items:center;gap:8px}
+  .wmflujo-vivo::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 10px var(--g);animation:wmflujo-late 1.6s ease-in-out infinite;animation-play-state:paused}
+  @keyframes wmflujo-late{50%{opacity:.3}}
+
+  .wmflujo-lienzo{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.1fr 1.3fr;grid-template-rows:repeat(4,auto);gap:14px 64px;align-items:center}
+  .wmflujo-cables{position:absolute;inset:0;width:100%;height:100%;max-width:none;overflow:visible;pointer-events:none;z-index:0}
+  .wmflujo-nodo{position:relative;z-index:1;background:rgba(17,17,24,.78);border:1px solid rgba(124,77,255,.28);border-radius:14px;padding:12px 14px;
+    display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:center;transition:border-color .3s,box-shadow .3s,transform .3s}
+  .wmflujo-ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font-family:var(--wm-mono);font-size:12px;background:rgba(124,77,255,.12);color:var(--p2)}
+  .wmflujo-nodo b{display:block;font-size:13.5px;line-height:1.25}
+  .wmflujo-nodo small{display:block;font-size:11px;color:var(--muted);line-height:1.35}
+  .wmflujo-tag{position:absolute;top:-9px;right:10px;font-family:var(--wm-mono);font-size:9.5px;letter-spacing:.08em;padding:1px 7px;border-radius:6px;background:#0b0b12;border:1px solid rgba(124,77,255,.35);color:var(--muted);line-height:1.4}
+  .wmflujo-nodo.is-act{border-color:var(--g);box-shadow:0 0 0 1px rgba(0,212,170,.35),0 0 28px -4px rgba(0,212,170,.55);transform:translateY(-1px)}
+  .wmflujo-nodo.is-act .wmflujo-ic{background:rgba(0,212,170,.14);color:var(--g)}
+  .wmflujo-n-web{grid-column:1;grid-row:2 / span 2}
+  .wmflujo-n-ia{grid-column:2;grid-row:2 / span 2}
+  .wmflujo-n-admin{grid-column:3;grid-row:1}
+  .wmflujo-n-correo{grid-column:3;grid-row:2}
+  .wmflujo-n-fact{grid-column:3;grid-row:3}
+  .wmflujo-n-com{grid-column:3;grid-row:4}
+  .wmflujo-n-ia .wmflujo-ic{background:linear-gradient(135deg,rgba(124,77,255,.35),rgba(0,212,170,.25));color:#fff}
+
+  .wmflujo-cable-base{fill:none;stroke:rgba(124,77,255,.22);stroke-width:1.5}
+  .wmflujo-cable-luz{fill:none;stroke:url(#wmflujo-grad);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:14 220;filter:url(#wmflujo-brillo);opacity:.9;
+    animation:wmflujo-corre 3.2s linear infinite;animation-play-state:paused}
+  .wmflujo-cable-luz.is-on{stroke-width:3;opacity:1;animation-duration:1.3s}
+  @keyframes wmflujo-corre{to{stroke-dashoffset:-234}}
+  .wmflujo-sec.is-vivo .wmflujo-holo,
+  .wmflujo-sec.is-vivo .wmflujo-in::after,
+  .wmflujo-sec.is-vivo .wmflujo-vivo::before,
+  .wmflujo-sec.is-vivo .wmflujo-cable-luz{animation-play-state:running}
+
+  .wmflujo-log{position:relative;z-index:2;margin-top:18px;border-top:1px solid rgba(124,77,255,.18);padding-top:12px;font-family:var(--wm-mono);font-size:11.5px;color:var(--muted);display:grid;gap:4px;min-height:74px;align-content:start}
+  .wmflujo-linea{display:grid;grid-template-columns:70px 1fr;gap:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wmflujo-linea > span{overflow:hidden;text-overflow:ellipsis}
+  .wmflujo-linea time{color:var(--p2)}
+  .wmflujo-linea:first-child{color:var(--text)}
+
+  @media(max-width:900px){
+    .wmapp-grid{grid-template-columns:1fr;gap:40px}
+    .wmapp-escena{min-height:560px}
+    .wmflujo-cab{grid-template-columns:1fr}
+    .wmflujo-lienzo{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:40px 14px}
+    .wmflujo-n-web{grid-column:1;grid-row:1}
+    .wmflujo-n-ia{grid-column:2;grid-row:1}
+    .wmflujo-n-admin{grid-column:1;grid-row:2}
+    .wmflujo-n-correo{grid-column:2;grid-row:2}
+    .wmflujo-n-fact{grid-column:1;grid-row:3}
+    .wmflujo-n-com{grid-column:2;grid-row:3}
+  }
+  @media(max-width:600px){
+    .wmapp-movil{width:270px}
+    .wmapp-cab b{font-size:19px}
+    .wmapp-escena{min-height:0}
+    .wmflujo-lienzo{grid-template-columns:1fr;gap:34px}
+    .wmflujo-lienzo .wmflujo-nodo{grid-column:1;grid-row:auto}
+    .wmflujo-linea{white-space:normal;grid-template-columns:62px 1fr}
+  }
+  /* Movimiento reducido: todo quieto y en su estado final. */
+  @media(prefers-reduced-motion:reduce){
+    .wmapp-movil,.wmflujo-holo,.wmflujo-in::after,.wmflujo-vivo::before,.wmflujo-cable-luz{animation:none!important}
+    .wmflujo-cable-luz{stroke-dasharray:none;opacity:.55}
+    .wmapp-aviso.is-anim:not(.is-ver){transform:none;opacity:1}
+    .wmflujo-holo{transform:none}
+  }
+
   /* ── Responsive ─────────────────────────────────────────────────────── */
   @media(max-width:900px){
     .shell{padding:0 22px}
@@ -432,6 +591,101 @@
     </div>
   </div>
 </section>
+
+<!-- 3b · APPS MÓVILES — el móvil es decorativo; el texto de la izquierda lo explica -->
+<section class="sec wmapp-sec" id="app-movil">
+  <div class="shell wmapp-grid">
+    <div>
+      <span class="eyebrow">Apps móviles · iOS y Android</span>
+      <h2 class="h2-tight">Tu negocio, <span class="wmapp-hl">en el bolsillo</span> de tu equipo</h2>
+      <p class="lead">Diseñamos y construimos la app con la lógica de tu negocio: agenda, clientes, cobros y avisos al momento, para iPhone y Android y conectada a tus sistemas.</p>
+      <ul class="wmapp-puntos">
+        <li><span class="wmapp-ico" aria-hidden="true">↯</span><div><b>Avisos al instante</b><span>Nueva cita, pago recibido o cliente esperando: llega al móvil de quien lo tiene que atender.</span></div></li>
+        <li><span class="wmapp-ico" aria-hidden="true">⇄</span><div><b>Conectada a lo que ya usas</b><span>Tu CRM, tu facturación, tu web y tu agente IA comparten los mismos datos.</span></div></li>
+        <li><span class="wmapp-ico" aria-hidden="true">⌁</span><div><b>Pensada para trabajar fuera</b><span>Si tu equipo está en la calle, la app puede guardar sin conexión y sincronizar al volver.</span></div></li>
+      </ul>
+      <div class="wmapp-chips"><span class="wmapp-chip">iOS</span><span class="wmapp-chip">Android</span><span class="wmapp-chip">Notificaciones push</span><span class="wmapp-chip">Login seguro</span></div>
+      <p class="wmapp-nota">Taller de ejemplo · ilustración, no datos reales</p>
+    </div>
+
+    <div class="wmapp-escena" aria-hidden="true">
+      <div class="wmapp-halo"></div>
+      <div class="wmapp-fantasma">app</div>
+      <div class="wmapp-movil">
+        <div class="wmapp-pantalla">
+          <div class="wmapp-isla"></div>
+          <div class="wmapp-aviso" id="wmapp-aviso">
+            <div class="wmapp-aviso-logo">R</div>
+            <div><b id="wmapp-aviso-t">Nueva cita confirmada</b><span id="wmapp-aviso-s">Revisión ITV · jueves 10:30</span></div>
+          </div>
+          <div class="wmapp-barra"><span>9:41</span><i>5G ▮▮▮</i></div>
+          <div class="wmapp-cab"><small>Taller Rivas · hoy</small><b>Buenos días, Marta</b></div>
+          <div class="wmapp-kpis">
+            <div class="wmapp-kpi"><b>8</b><span>citas hoy</span></div>
+            <div class="wmapp-kpi wmapp-kpi--g"><b>3</b><span>cobros al día</span></div>
+          </div>
+          <div class="wmapp-lista">
+            <div class="wmapp-lista-t">Próximas</div>
+            <div class="wmapp-fila"><time>09:00</time><div><b>Cambio de aceite</b><small>Seat Ibiza · L. Gómez</small></div><span class="wmapp-est wmapp-est--ok">Confirmada</span></div>
+            <div class="wmapp-fila"><time>10:30</time><div><b>Revisión pre-ITV</b><small>Kia Ceed · A. Ruiz</small></div><span class="wmapp-est wmapp-est--ok">Confirmada</span></div>
+            <div class="wmapp-fila"><time>12:00</time><div><b>Frenos delanteros</b><small>VW Golf · P. Sanz</small></div><span class="wmapp-est wmapp-est--pend">Pago pdte.</span></div>
+          </div>
+          <div class="wmapp-tabs"><span class="is-on">Hoy</span><span>Agenda</span><span>Clientes</span><span>Cobros</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3c · FLUJO IA — tarjeta holográfica; cables y registro son decorativos -->
+<section class="sec wmflujo-sec" id="flujo-ia">
+  <div class="shell">
+    <div class="wmflujo-cab">
+      <div>
+        <span class="eyebrow">Automatización · triggers</span>
+        <h2 class="h2-tight">Un cliente escribe en tu web. <span class="wmapp-hl">Todo lo demás</span> se mueve solo.</h2>
+        <p class="lead">Conectamos tus herramientas para que cada evento dispare el siguiente paso: el agente IA atiende en tu web, el CRM se actualiza, el cliente recibe su correo, se prepara la factura y comercial sabe a quién llamar.</p>
+      </div>
+      <p class="wmapp-nota">Negocio de ejemplo · ilustración, no datos reales</p>
+    </div>
+
+    <div class="wmflujo-holo" id="wmflujo-holo">
+      <div class="wmflujo-in">
+        <div class="wmflujo-top">
+          <div class="wmflujo-negocio"><span class="wmflujo-m" aria-hidden="true">TR</span><div><b>Taller Rivas</b><small>Flujo «Web → cita → cobro»</small></div></div>
+          <span class="wmflujo-vivo" aria-hidden="true">flujo activo</span>
+        </div>
+
+        <div class="wmflujo-lienzo" id="wmflujo-lienzo">
+          <svg class="wmflujo-cables" id="wmflujo-cables" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="wmflujo-grad" x1="0" x2="1" y1="0" y2="0">
+                <stop offset="0" stop-color="#7c4dff"/><stop offset=".5" stop-color="#4db8ff"/><stop offset="1" stop-color="#00d4aa"/>
+              </linearGradient>
+              <filter id="wmflujo-brillo" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+          </svg>
+
+          <div class="wmflujo-nodo wmflujo-n-web" data-n="web"><span class="wmflujo-tag" aria-hidden="true">TRIGGER</span><span class="wmflujo-ic" aria-hidden="true">◎</span><div><b>Web del cliente</b><small>Un visitante pide cita para la ITV en el chat</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-ia is-act" data-n="ia"><span class="wmflujo-tag" aria-hidden="true">IA</span><span class="wmflujo-ic" aria-hidden="true">◐</span><div><b>Agente IA</b><small>Entiende, busca hueco y reserva el jueves 10:30</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-admin" data-n="admin"><span class="wmflujo-ic" aria-hidden="true">▤</span><div><b>Admin · CRM</b><small>Ficha del cliente y cita en agenda</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-correo" data-n="correo"><span class="wmflujo-ic" aria-hidden="true">✉&#xFE0E;</span><div><b>Correo</b><small>Confirmación y recordatorio 24 h antes</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-fact" data-n="fact"><span class="wmflujo-ic" aria-hidden="true">€</span><div><b>Facturación</b><small>Presupuesto y factura listos al cerrar</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-com" data-n="com"><span class="wmflujo-ic" aria-hidden="true">↗</span><div><b>Comercial</b><small>Aviso: ofrecer revisión anual</small></div></div>
+        </div>
+
+        <div class="wmflujo-log" id="wmflujo-log" aria-hidden="true">
+          <div class="wmflujo-linea"><time>10:02:19</time><span>CRM: cita creada · cliente actualizado</span></div>
+          <div class="wmflujo-linea"><time>10:02:17</time><span>Agente IA: hueco jueves 10:30 · reservado</span></div>
+          <div class="wmflujo-linea"><time>10:02:15</time><span>Web: visitante abre el chat · pide cita ITV</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script defer src="/assets/wm-software-demo.js?v=2026092802"></script>
 
 <!-- 4 · CÓMO TRABAJAMOS ─────────────────────────────────────────────────── -->
 <section class="sec" id="como-trabajamos">
