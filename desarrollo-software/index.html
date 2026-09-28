@@ -361,7 +361,7 @@
   .wmflujo-tag{position:absolute;top:-9px;right:10px;font-family:var(--wm-mono);font-size:9.5px;letter-spacing:.08em;padding:1px 7px;border-radius:6px;background:#0b0b12;border:1px solid rgba(124,77,255,.35);color:var(--muted);line-height:1.4}
   .wmflujo-nodo.is-act{border-color:var(--g);box-shadow:0 0 0 1px rgba(0,212,170,.35),0 0 28px -4px rgba(0,212,170,.55);transform:translateY(-1px)}
   .wmflujo-nodo.is-act .wmflujo-ic{background:rgba(0,212,170,.14);color:var(--g)}
-  .wmflujo-n-llamada{grid-column:1;grid-row:2 / span 2}
+  .wmflujo-n-web{grid-column:1;grid-row:2 / span 2}
   .wmflujo-n-ia{grid-column:2;grid-row:2 / span 2}
   .wmflujo-n-admin{grid-column:3;grid-row:1}
   .wmflujo-n-correo{grid-column:3;grid-row:2}
@@ -390,7 +390,7 @@
     .wmapp-escena{min-height:560px}
     .wmflujo-cab{grid-template-columns:1fr}
     .wmflujo-lienzo{grid-template-columns:1fr 1fr;grid-template-rows:auto;gap:40px 14px}
-    .wmflujo-n-llamada{grid-column:1;grid-row:1}
+    .wmflujo-n-web{grid-column:1;grid-row:1}
     .wmflujo-n-ia{grid-column:2;grid-row:1}
     .wmflujo-n-admin{grid-column:1;grid-row:2}
     .wmflujo-n-correo{grid-column:2;grid-row:2}
@@ -643,8 +643,8 @@
     <div class="wmflujo-cab">
       <div>
         <span class="eyebrow">Automatización · triggers</span>
-        <h2 class="h2-tight">Una llamada entra. <span class="wmapp-hl">Todo lo demás</span> se mueve solo.</h2>
-        <p class="lead">Conectamos tus herramientas para que cada evento dispare el siguiente paso: el agente IA atiende, el CRM se actualiza, el cliente recibe su correo, se prepara la factura y comercial sabe a quién llamar.</p>
+        <h2 class="h2-tight">Un cliente escribe en tu web. <span class="wmapp-hl">Todo lo demás</span> se mueve solo.</h2>
+        <p class="lead">Conectamos tus herramientas para que cada evento dispare el siguiente paso: el agente IA atiende en tu web, el CRM se actualiza, el cliente recibe su correo, se prepara la factura y comercial sabe a quién llamar.</p>
       </div>
       <p class="wmapp-nota">Negocio de ejemplo · ilustración, no datos reales</p>
     </div>
@@ -652,7 +652,7 @@
     <div class="wmflujo-holo" id="wmflujo-holo">
       <div class="wmflujo-in">
         <div class="wmflujo-top">
-          <div class="wmflujo-negocio"><span class="wmflujo-m" aria-hidden="true">TR</span><div><b>Taller Rivas</b><small>Flujo «Llamada → cita → cobro»</small></div></div>
+          <div class="wmflujo-negocio"><span class="wmflujo-m" aria-hidden="true">TR</span><div><b>Taller Rivas</b><small>Flujo «Web → cita → cobro»</small></div></div>
           <span class="wmflujo-vivo" aria-hidden="true">flujo activo</span>
         </div>
 
@@ -668,7 +668,7 @@
             </defs>
           </svg>
 
-          <div class="wmflujo-nodo wmflujo-n-llamada" data-n="llamada"><span class="wmflujo-tag" aria-hidden="true">TRIGGER</span><span class="wmflujo-ic" aria-hidden="true">☏&#xFE0E;</span><div><b>Llamada entrante</b><small>Cliente pide cita para la ITV</small></div></div>
+          <div class="wmflujo-nodo wmflujo-n-web" data-n="web"><span class="wmflujo-tag" aria-hidden="true">TRIGGER</span><span class="wmflujo-ic" aria-hidden="true">◎</span><div><b>Web del cliente</b><small>Un visitante pide cita para la ITV en el chat</small></div></div>
           <div class="wmflujo-nodo wmflujo-n-ia is-act" data-n="ia"><span class="wmflujo-tag" aria-hidden="true">IA</span><span class="wmflujo-ic" aria-hidden="true">◐</span><div><b>Agente IA</b><small>Entiende, busca hueco y reserva el jueves 10:30</small></div></div>
           <div class="wmflujo-nodo wmflujo-n-admin" data-n="admin"><span class="wmflujo-ic" aria-hidden="true">▤</span><div><b>Admin · CRM</b><small>Ficha del cliente y cita en agenda</small></div></div>
           <div class="wmflujo-nodo wmflujo-n-correo" data-n="correo"><span class="wmflujo-ic" aria-hidden="true">✉&#xFE0E;</span><div><b>Correo</b><small>Confirmación y recordatorio 24 h antes</small></div></div>
@@ -679,13 +679,13 @@
         <div class="wmflujo-log" id="wmflujo-log" aria-hidden="true">
           <div class="wmflujo-linea"><time>10:02:19</time><span>CRM: cita creada · cliente actualizado</span></div>
           <div class="wmflujo-linea"><time>10:02:17</time><span>Agente IA: hueco jueves 10:30 · reservado</span></div>
-          <div class="wmflujo-linea"><time>10:02:15</time><span>Llamada entrante · +34 6•• ••• 412</span></div>
+          <div class="wmflujo-linea"><time>10:02:15</time><span>Web: visitante abre el chat · pide cita ITV</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<script defer src="/assets/wm-software-demo.js?v=2026092801"></script>
+<script defer src="/assets/wm-software-demo.js?v=2026092802"></script>
 
 <!-- 4 · CÓMO TRABAJAMOS ─────────────────────────────────────────────────── -->
 <section class="sec" id="como-trabajamos">

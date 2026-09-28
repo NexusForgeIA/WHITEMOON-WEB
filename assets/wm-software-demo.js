@@ -89,7 +89,7 @@
     // Cables: se crean una vez y sólo se recalcula su "d" al cambiar el
     // tamaño. Se mide con offset* (no getBoundingClientRect) para que la
     // inclinación 3D de la tarjeta no deforme el trazado.
-    var enlaces = [['llamada', 'ia'], ['ia', 'admin'], ['ia', 'correo'], ['ia', 'fact'], ['ia', 'com']];
+    var enlaces = [['web', 'ia'], ['ia', 'admin'], ['ia', 'correo'], ['ia', 'fact'], ['ia', 'com']];
     var cables = {};
     enlaces.forEach(function (e, i) {
       var base = document.createElementNS(NS, 'path');
@@ -156,8 +156,8 @@
     }
 
     var pasos = [
-      ['llamada', null, 'Llamada entrante · +34 6•• ••• 412'],
-      ['ia', 'llamada>ia', 'Agente IA: hueco jueves 10:30 · reservado'],
+      ['web', null, 'Web: visitante abre el chat · pide cita ITV'],
+      ['ia', 'web>ia', 'Agente IA: hueco jueves 10:30 · reservado'],
       ['admin', 'ia>admin', 'CRM: cita creada · cliente actualizado'],
       ['correo', 'ia>correo', 'Correo de confirmación enviado'],
       ['fact', 'ia>fact', 'Presupuesto preparado · pre-ITV'],
