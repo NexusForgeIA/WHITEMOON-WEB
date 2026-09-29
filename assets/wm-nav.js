@@ -4,7 +4,8 @@
  * `onclick` inline en el markup del header: todo se engancha aqui, de forma
  * que si este archivo no llega (adblock, red) el header sigue siendo HTML
  * navegable — el desplegable de Productos abre igual por :hover/:focus-within
- * en CSS.
+ * en CSS. Con este archivo cargado, el <nav> lleva .wm-nav--js y el
+ * desplegable pasa a abrirse por clic (.is-open): el hover deja de mandar.
  *
  * LEGACY: /precios/ conserva el navbar anterior (CTA a la auditoria + enlace
  * secundario .wm-nav__meet) hasta que se borre en su fase. El tracking decide
@@ -32,23 +33,26 @@
 
   var nav = document.querySelector('.wm-nav');
   if (!nav) return;
+  nav.classList.add('wm-nav--js');
 
   var drawer = document.getElementById('wmDrawer');
   var burger = nav.querySelector('.wm-nav__burger');
   var dd = nav.querySelector('.wm-nav__dd');
 
   // ── Desplegable de Productos ─────────────────────────────────────────
-  function closeDd() {
-    if (dd) dd.setAttribute('aria-expanded', 'false');
+  // Abierto = .is-open en el div; aria-expanded solo en el <button>.
+  var ddBtn = dd ? dd.querySelector('button') : null;
+  function setDd(open) {
+    if (!dd) return;
+    dd.classList.toggle('is-open', open);
+    if (ddBtn) ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
+  function closeDd() { setDd(false); }
   if (dd) {
-    var ddBtn = dd.querySelector('button');
     if (ddBtn) {
       ddBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        var open = dd.getAttribute('aria-expanded') !== 'true';
-        dd.setAttribute('aria-expanded', open ? 'true' : 'false');
-        ddBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        setDd(!dd.classList.contains('is-open'));
       });
     }
     document.addEventListener('click', function (e) {
@@ -81,7 +85,10 @@
 
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape' && e.key !== 'Esc') return;
-    closeDd();
+    if (dd && dd.classList.contains('is-open')) {
+      closeDd();
+      if (ddBtn) ddBtn.focus();
+    }
     if (drawer && drawer.classList.contains('is-open')) toggleDrawer(false);
   });
 

@@ -29,7 +29,7 @@ import sys
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ASSET_V = "2026091501"
+ASSET_V = "2026092902"
 
 SKIP_DIRS = {
     ".git", ".github", ".claude", ".agents", "__pycache__", "node_modules",
@@ -93,7 +93,7 @@ def nav_html(flow: bool) -> str:
 
     <div class="wm-nav__center">
       <a href="/inteligencia-artificial/">IA</a>
-      <div class="wm-nav__dd" aria-expanded="false">
+      <div class="wm-nav__dd">
         <button type="button" aria-haspopup="true" aria-expanded="false">Productos{CARET}</button>
         <div class="wm-nav__menu" role="menu">
           <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
