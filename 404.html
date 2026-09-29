@@ -24,7 +24,7 @@
 <!-- site.css sin bloquear el render (preload + swap en onload). -->
 <link rel="preload" href="/assets/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/site.css"></noscript>
-<link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026092902">
 <style>
   /* Fuentes en el CSS crítico, como en el resto del sitio (site.css va en diferido). */
   @font-face{font-family:'Inter';font-style:normal;font-weight:100 900;font-display:swap;
@@ -34,7 +34,7 @@
     src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),
         url('/assets/fonts/sora-latin-var.woff2') format('woff2');}
 </style>
-<script defer src="/assets/wm-nav.js?v=2026091501"></script>
+<script defer src="/assets/wm-nav.js?v=2026092902"></script>
 </head>
 <body>
 
@@ -48,7 +48,7 @@
 
     <div class="wm-nav__center">
       <a href="/inteligencia-artificial/">IA</a>
-      <div class="wm-nav__dd" aria-expanded="false">
+      <div class="wm-nav__dd">
         <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="wm-nav__menu" role="menu">
           <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>

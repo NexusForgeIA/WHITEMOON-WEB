@@ -54,11 +54,13 @@
 .wm-nav__center>a.is-current,.wm-nav__dd.is-current>button{color:#E8E8F0}
 
 /* ── Desplegable de Productos ──────────────────────────────────────────── */
+/* Con JS (.wm-nav--js en el <nav>) se abre por clic: .is-open en .wm-nav__dd.
+   Sin JS, :hover y :focus-within siguen abriéndolo como red de seguridad. */
 .wm-nav__dd{position:relative}
 .wm-nav__dd>button{display:inline-flex;align-items:center;gap:5px}
 .wm-nav__dd>button svg{width:11px;height:11px;transition:transform .18s ease}
-.wm-nav__dd[aria-expanded="true"]>button{color:#E8E8F0;background:rgba(255,255,255,.05)}
-.wm-nav__dd[aria-expanded="true"]>button svg{transform:rotate(180deg)}
+.wm-nav__dd.is-open>button{color:#E8E8F0;background:rgba(255,255,255,.05)}
+.wm-nav__dd.is-open>button svg{transform:rotate(180deg)}
 .wm-nav__menu{position:absolute;top:calc(100% + 8px);left:50%;
   transform:translateX(-50%) translateY(-4px);min-width:268px;padding:8px;
   background:rgba(11,15,23,.97);
@@ -68,9 +70,12 @@
   box-shadow:0 20px 50px rgba(0,0,0,.5);
   opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .18s ease,transform .18s ease,visibility .18s}
-.wm-nav__dd[aria-expanded="true"] .wm-nav__menu,
-.wm-nav__dd:hover .wm-nav__menu,
-.wm-nav__dd:focus-within .wm-nav__menu{opacity:1;visibility:visible;
+/* Puente invisible sobre los 8px entre el botón y la caja: el ratón no sale
+   del desplegable al bajar al menú. */
+.wm-nav__menu::before{content:"";position:absolute;left:0;right:0;top:-9px;height:9px}
+.wm-nav__dd.is-open .wm-nav__menu,
+.wm-nav:not(.wm-nav--js) .wm-nav__dd:hover .wm-nav__menu,
+.wm-nav:not(.wm-nav--js) .wm-nav__dd:focus-within .wm-nav__menu{opacity:1;visibility:visible;
   pointer-events:auto;transform:translateX(-50%) translateY(0)}
 .wm-nav__menu a{display:flex;flex-direction:column;gap:2px;padding:10px 14px;
   border-radius:8px;text-decoration:none;font-family:inherit;font-size:.87rem;
