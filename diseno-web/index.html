@@ -278,9 +278,10 @@ html,body{background:#08080d}
   .dwh-marco{padding:32px 10px 10px}
   .dwh-marco>h3{left:32px}
   .dwh-incl{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
-  .dwh-incl li{padding:9px 10px}
+  /* En móvil la celda solo lleva check y título: el subtítulo se oculta */
+  .dwh-incl li{padding:8px 9px}
   .dwh-incl b{font-size:.76rem;line-height:1.28}
-  .dwh-incl li span:not(.ck){font-size:.68rem;line-height:1.35}
+  .dwh-incl li span:not(.ck){display:none}
   .dwh-banda{grid-template-columns:1fr;padding:22px 18px}
   .dwh-banda .btn{align-self:stretch;width:100%}
   .dwh-chip{font-size:.66rem;padding:6px 10px}.dwh-chip--b,.dwh-chip--d{display:none}
