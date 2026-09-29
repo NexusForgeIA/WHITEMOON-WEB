@@ -20,7 +20,7 @@ Cómo elegir: si solo necesita web, sin IA, Diseño web (https://whitemoon.es/di
 Pedir propuesta: https://whitemoon.es/contacto/
 
 ## Software a medida
-No es un tercer producto de catálogo: es un servicio de desarrollo que se define proyecto a proyecto.
+No es un producto de catálogo: es un servicio de desarrollo que se define proyecto a proyecto.
 - [Desarrollo de software a medida](https://whitemoon.es/desarrollo-software/): ERP y CRM diseñados sobre el flujo real del negocio, plataformas de gestión que sustituyen a la hoja de cálculo, apps móviles para iOS y Android, big data y analytics, auditoría de deuda técnica y modernización de código heredado, e integración de IA en los sistemas que ya existen. Se trabaja por sprints, con avances cada dos semanas, y con soporte después del lanzamiento.
 Cómo empieza: con una consultoría gratuita en la que se define el alcance antes de escribir código. Sin tarifa publicada: la propuesta va a medida. Formulario: https://whitemoon.es/desarrollo-software/#consultoria
 
