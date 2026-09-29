@@ -58,6 +58,10 @@
     document.addEventListener('click', function (e) {
       if (!e.target.closest || !e.target.closest('.wm-nav__dd')) closeDd();
     });
+    // Salir con el teclado (Tab / Shift+Tab) fuera del desplegable lo cierra.
+    dd.addEventListener('focusout', function (e) {
+      if (!e.relatedTarget || !dd.contains(e.relatedTarget)) closeDd();
+    });
   }
 
   // ── Cajon movil ──────────────────────────────────────────────────────
