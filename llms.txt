@@ -10,19 +10,17 @@
 - Ubicación: Majadahonda, Madrid, España
 
 ## Productos
-WhiteMoon tiene tres productos. No publica tarifa: el precio depende de cada caso y se da en una propuesta a medida en 24 horas, sin compromiso.
+WhiteMoon tiene cuatro productos. No publica tarifa: el precio depende de cada caso y se da en una propuesta a medida en 24 horas, sin compromiso.
+- [Diseño de páginas web para negocios](https://whitemoon.es/diseno-web/): web sin agente de IA en dos opciones. Web Esencial: 3 páginas (inicio, servicios y contacto). Web Profesional: 5 páginas. Incluye dominio el primer año (después se renueva cada año), diseño responsive a medida, textos redactados por WhiteMoon, formulario y botón de WhatsApp, mapa, textos legales y cookies, Google Analytics, SEO local básico y Search Console, y 2 rondas de cambios. Publicada en 7 días desde que hay textos e imágenes. Cuota mensual con hosting, SSL, mantenimiento y cambios pequeños. No incluye tienda online, fotos profesionales, páginas extra ni migración de la web actual: se presupuestan aparte. Propuesta a medida, sin permanencia.
+Si después se quiere IA: el agente se añade con Spark sin rehacer la web. Para web con agente desde el primer día, Core Spark Web.
 - [Spark](https://whitemoon.es/spark/): agente de IA que se instala en la web que el negocio ya tiene, sin rehacerla. Responde 24/7 con la información y el tono del negocio, agenda citas según la disponibilidad que marca el cliente y capta nombre, teléfono y motivo de cada interesado, con aviso al momento en el móvil.
 - [Core Spark Web](https://whitemoon.es/core/): web nueva a medida con dominio incluido el primer año, SSL y mantenimiento, con el agente de IA dentro desde el primer día y un CRM para gestionar cada lead (pipeline, reparto al equipo, agenda, historial y KPIs). SEO, GEO y AEO de serie. Para quien no tiene web o quiere empezar de cero.
 - [Agente IA Citas](https://whitemoon.es/agente-ia-citas/): agente de IA para negocios de cita previa (peluquería, estética, uñas, barbería, taller, fisioterapia, podología, clínica dental). El cliente reserva solo escaneando un QR o abriendo un enlace, sin llamadas, o desde el agente embebido en la web del negocio. Incluye panel de citas (alta manual, mover, cancelar e importar la agenda) y petición de reseñas por WhatsApp mediante enlaces click-to-chat (wa.me), que envía el propio negocio: no usa la API de WhatsApp Business ni envía mensajes automáticos. No garantiza ventas.
-Cómo elegir: si el negocio ya tiene web, Spark. Si no la tiene o quiere rehacerla, Core Spark Web. Si lo que necesita es que sus clientes reserven cita solos, Agente IA Citas.
+Cómo elegir: si solo necesita web, sin IA, Diseño web (https://whitemoon.es/diseno-web/). Si el negocio ya tiene web, Spark. Si no la tiene o quiere rehacerla, Core Spark Web. Si lo que necesita es que sus clientes reserven cita solos, Agente IA Citas.
 Pedir propuesta: https://whitemoon.es/contacto/
 
-## Diseño web (sin agente de IA)
-- [Diseño de páginas web para negocios](https://whitemoon.es/diseno-web/): web sin agente de IA en dos opciones. Web Esencial: 3 páginas (inicio, servicios y contacto). Web Profesional: 5 páginas. Incluye dominio el primer año (después se renueva cada año), diseño responsive a medida, textos redactados por WhiteMoon, formulario y botón de WhatsApp, mapa, textos legales y cookies, Google Analytics, SEO local básico y Search Console, y 2 rondas de cambios. Publicada en 7 días desde que hay textos e imágenes. Cuota mensual con hosting, SSL, mantenimiento y cambios pequeños. No incluye tienda online, fotos profesionales, páginas extra ni migración de la web actual: se presupuestan aparte. Propuesta a medida, sin permanencia.
-Si después se quiere IA: el agente se añade con Spark sin rehacer la web. Para web con agente desde el primer día, Core Spark Web.
-
 ## Software a medida
-No es un tercer producto de catálogo: es un servicio de desarrollo que se define proyecto a proyecto.
+No es un producto de catálogo: es un servicio de desarrollo que se define proyecto a proyecto.
 - [Desarrollo de software a medida](https://whitemoon.es/desarrollo-software/): ERP y CRM diseñados sobre el flujo real del negocio, plataformas de gestión que sustituyen a la hoja de cálculo, apps móviles para iOS y Android, big data y analytics, auditoría de deuda técnica y modernización de código heredado, e integración de IA en los sistemas que ya existen. Se trabaja por sprints, con avances cada dos semanas, y con soporte después del lanzamiento.
 Cómo empieza: con una consultoría gratuita en la que se define el alcance antes de escribir código. Sin tarifa publicada: la propuesta va a medida. Formulario: https://whitemoon.es/desarrollo-software/#consultoria
 
