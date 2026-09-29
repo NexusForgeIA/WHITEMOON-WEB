@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
-Menu resultante:  IA · Productos (desplegable: Spark · Core Spark Web · Agente IA Citas) ·
+Menu resultante:  IA · Productos (desplegable: Web · Spark · Core Spark Web · Agente IA Citas) ·
                   Software a medida · Marketing · Contacto
                   + un unico CTA: "Agendar reunion" (cal.com).
 
@@ -87,7 +87,7 @@ def nav_html(flow: bool) -> str:
 <nav class="{cls}" aria-label="Navegación principal">
   <div class="wm-nav__row">
     <a class="wm-nav__logo" href="/">
-      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon" width="28" height="28" loading="eager" decoding="async">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
       <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
     </a>
 
@@ -96,6 +96,7 @@ def nav_html(flow: bool) -> str:
       <div class="wm-nav__dd" aria-expanded="false">
         <button type="button" aria-haspopup="true" aria-expanded="false">Productos{CARET}</button>
         <div class="wm-nav__menu" role="menu">
+          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
           <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
           <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
           <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
@@ -116,6 +117,7 @@ def nav_html(flow: bool) -> str:
   <button class="wm-drawer__close" type="button" aria-label="Cerrar menú">{CLOSE}</button>
   <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
   <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
@@ -146,6 +148,7 @@ ICON_CLOCK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-
 
 FOOTER_COLS = [
     ("Servicios", [
+        ("/diseno-web/", "Diseño web"),
         ("/spark/", "Spark"),
         ("/core/", "Core Spark Web"),
         ("/agente-ia-citas/", "Agente IA Citas"),
