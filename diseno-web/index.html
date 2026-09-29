@@ -79,6 +79,220 @@ html,body{background:#08080d}
   .plan .btn,.ia-c .btn,.band .btn{align-self:stretch;width:100%}
   .wa-fab{right:12px}
 }
+/* ===== Capa holográfica /diseno-web/ (prefijo dwh-) =====
+   Solo se anima transform, opacity y background-position (nada de top/left/
+   width/height: da CLS). Todo corre con .dwh-on, que pone wm-dw-holo.js
+   mientras cada bloque está en pantalla; sin JS o con movimiento reducido,
+   quieto. El borde irisado no gira con una custom property: es un conic-gradient
+   al 200% cuyo centro orbita la tarjeta animando background-position. */
+:root{--dwh-c:#4db8ff;--dwh-d:#ff6b8b;--dwh-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@keyframes dwh-orbita{0%,100%{background-position:0% 0%}25%{background-position:100% 0%}50%{background-position:100% 100%}75%{background-position:0% 100%}}
+@keyframes dwh-barre-v{0%{transform:translateY(-60%)}100%{transform:translateY(60%)}}
+@keyframes dwh-barre-h{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes dwh-flota{50%{transform:translateY(-8px)}}
+@keyframes dwh-avanza{to{background-position:0 40px,0 0}}
+@keyframes dwh-construye{0%{opacity:0;transform:scaleX(.15)}100%{opacity:1;transform:none}}
+@keyframes dwh-enciende{0%{opacity:.18;transform:translateY(6px)}100%{opacity:1;transform:none}}
+@keyframes dwh-latido{50%{opacity:.45}}
+@keyframes dwh-rayo{0%{transform:translateX(0);opacity:0}10%,90%{opacity:1}100%{transform:translateX(100%);opacity:0}}
+@keyframes dwh-baja{0%{transform:translateY(0);opacity:0}10%,90%{opacity:1}100%{transform:translateY(100%);opacity:0}}
+@keyframes dwh-rota{to{transform:rotate(360deg)}}
+
+/* Fondo de sección: rejilla y resplandor; línea irisada arriba */
+.pp .sec::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(680px 360px at var(--dwh-x,85%) 0%,rgba(124,77,255,.12),transparent 70%),
+    linear-gradient(rgba(157,112,255,.06) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.06) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%);mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%)}
+.pp .sec:nth-of-type(even)::before{--dwh-x:12%}
+.pp .sec::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--g) 50%,var(--dwh-c) 75%,transparent);opacity:.45}
+.pp .sec>.wrap{position:relative;z-index:1}
+.pp h2{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Borde irisado + esquinas HUD comunes */
+.plan,.dwh-marco,.dwh-banda,.visual .browser{position:relative;isolation:isolate;border-color:transparent}
+.plan::before,.dwh-marco::before,.dwh-banda::before,.visual .browser::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:conic-gradient(from 0deg at 50% 50%,#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff) 0 0/200% 200%;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.75}
+.dwh-on .plan::before,.dwh-on .dwh-marco::before,.dwh-on .dwh-banda::before,.dwh-on .visual .browser::before{animation:dwh-orbita 9s linear infinite}
+.dwh-on .plan--pro::before{animation-delay:-4.5s}
+.plan,.dwh-marco,.visual .browser{--k:rgba(0,212,170,.85)}
+.plan::after,.dwh-marco::after,.visual .browser::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px calc(100% - 12px)/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.visual .browser::after{--k:rgba(77,184,255,.75)}
+/* Escáner: banda de luz que recorre el bloque de arriba abajo */
+.dwh-escaner,.dwh-scan{position:absolute;inset:0;pointer-events:none;transform:translateY(-60%);will-change:transform}
+.dwh-escaner{z-index:2;background:linear-gradient(180deg,transparent 42%,rgba(77,184,255,.10) 48%,rgba(77,184,255,.32) 50%,rgba(77,184,255,.10) 52%,transparent 58%)}
+.dwh-on .dwh-escaner{animation:dwh-barre-v 4.5s ease-in-out infinite}
+
+/* ---- HERO: suelo, escáner, proyector, holograma que se construye, chips ---- */
+.hero h1 .accent{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dwh-suelo{position:absolute;left:-10%;right:-10%;bottom:-2px;height:42%;z-index:0;pointer-events:none;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.38) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.26) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%);opacity:.55}
+.hero.dwh-on .dwh-suelo{animation:dwh-avanza 4s linear infinite}
+.dwh-scan{z-index:0;background:linear-gradient(180deg,transparent 43%,rgba(124,77,255,.06) 47%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.06) 53%,transparent 57%)}
+.hero.dwh-on .dwh-scan{animation:dwh-barre-v 7s linear infinite}
+.visual{isolation:isolate}
+.dwh-proyector{position:absolute;left:50%;bottom:4px;width:78%;height:34px;transform:translateX(-50%);z-index:-1;pointer-events:none;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,212,170,.55),rgba(124,77,255,.35) 45%,transparent 70%);filter:blur(2px)}
+.dwh-proyector::before{content:"";position:absolute;left:8%;right:8%;bottom:50%;height:520px;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,212,170,.22),rgba(77,184,255,.08) 45%,transparent 80%);
+  clip-path:polygon(38% 100%,62% 100%,100% 0,0 0);filter:blur(6px)}
+.dwh-proyector::after{content:"";position:absolute;inset:6px 18%;border-radius:50%;border:1px solid rgba(0,212,170,.6);box-shadow:0 0 18px rgba(0,212,170,.6)}
+.visual .browser{background:linear-gradient(180deg,rgba(14,14,22,.92),rgba(8,8,13,.96));box-shadow:0 40px 80px -46px rgba(0,0,0,.9),0 0 60px -24px rgba(77,184,255,.5)}
+.browser-body .sk,.browser-body .sk-row i,.browser-body .map-sk,.browser-body .pages span{transform-origin:0 50%}
+.browser-body .sk--h{background:linear-gradient(90deg,rgba(157,112,255,.35),rgba(77,184,255,.22))}
+.browser-body .sk-row i{border-color:rgba(77,184,255,.22);background:linear-gradient(160deg,rgba(124,77,255,.12),rgba(0,212,170,.05))}
+.hero.dwh-on .browser-body .pages span,.hero.dwh-on .browser-body .sk,.hero.dwh-on .browser-body .sk-row i,.hero.dwh-on .browser-body .map-sk{animation:dwh-construye .7s cubic-bezier(.16,1,.3,1) both}
+.hero.dwh-on .browser-body .pages span:nth-child(2){animation-delay:.08s}.hero.dwh-on .browser-body .pages span:nth-child(3){animation-delay:.16s}
+.hero.dwh-on .browser-body .sk--h{animation-delay:.25s}.hero.dwh-on .browser-body .sk--80{animation-delay:.35s}.hero.dwh-on .browser-body .sk--55{animation-delay:.45s}
+.hero.dwh-on .browser-body .sk-row i:nth-child(1){animation-delay:.55s}.hero.dwh-on .browser-body .sk-row i:nth-child(2){animation-delay:.65s}.hero.dwh-on .browser-body .sk-row i:nth-child(3){animation-delay:.75s}
+.hero.dwh-on .browser-body .map-sk{animation-delay:.9s}
+.hero.dwh-on .wa-fab{animation:dwh-flota 4s ease-in-out infinite}
+.dwh-chip{position:absolute;z-index:4;display:inline-flex;align-items:center;gap:7px;padding:7px 12px;border-radius:999px;pointer-events:none;
+  font-family:var(--dwh-mono);font-size:.72rem;letter-spacing:.04em;color:#dff;white-space:nowrap;
+  border:1px solid rgba(77,184,255,.45);background:linear-gradient(135deg,rgba(40,24,90,.92),rgba(8,40,40,.92));
+  box-shadow:0 0 22px -4px rgba(77,184,255,.55)}
+.dwh-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g)}
+.dwh-chip--a{top:-16px;right:-12px}
+.dwh-chip--b{top:34%;left:-34px}
+.dwh-chip--c{top:56%;right:-22px}
+.dwh-chip--d{bottom:82px;left:-18px}
+.hero.dwh-on .dwh-chip{animation:dwh-flota 5s ease-in-out infinite}
+.hero.dwh-on .dwh-chip--b{animation-delay:-1.3s}.hero.dwh-on .dwh-chip--c{animation-delay:-2.6s}.hero.dwh-on .dwh-chip--d{animation-delay:-3.9s}
+
+/* ---- TIRA: brillo que la recorre ---- */
+.strip{overflow:hidden}
+.strip>.wrap{position:relative;z-index:1}
+.dwh-brillo{position:absolute;inset:0;z-index:2;pointer-events:none;transform:translateX(-100%);
+  background:linear-gradient(100deg,transparent 38%,rgba(255,255,255,.06) 47%,rgba(77,184,255,.10) 50%,rgba(255,255,255,.06) 53%,transparent 62%)}
+.strip.dwh-on .dwh-brillo{animation:dwh-barre-h 6s ease-in-out infinite}
+
+/* ---- DOS OPCIONES: etiqueta HUD y mini mapa del sitio ---- */
+.plan{background:radial-gradient(120% 60% at 100% 0%,rgba(124,77,255,.12),transparent 60%),var(--card)}
+.plan--pro{background:radial-gradient(120% 70% at 100% 0%,rgba(0,212,170,.10),transparent 60%),linear-gradient(160deg,rgba(124,77,255,.16) 0%,var(--card) 60%)}
+.plan>*{position:relative;z-index:4}
+.plan>.dwh-etiq{position:absolute;right:22px;top:22px;padding:5px 9px;border-radius:6px;font-family:var(--dwh-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:#dff;border:1px solid rgba(77,184,255,.45);background:rgba(8,8,13,.7);box-shadow:0 0 18px -4px rgba(77,184,255,.7)}
+.dwh-etiq::before{content:"● ";color:var(--g)}
+.dwh-mapa{display:block;width:100%;max-width:300px;height:auto;margin-top:20px;overflow:visible}
+.dwh-mapa .dwh-lin path{fill:none;stroke:rgba(0,212,170,.7);stroke-width:1.5}
+.dwh-mapa .dwh-lin .dwh-lin--m{stroke:rgba(77,184,255,.6);stroke-dasharray:3 3}
+.dwh-mapa rect{fill:rgba(124,77,255,.14);stroke:rgba(157,112,255,.6);stroke-width:1}
+.dwh-mapa rect.dwh-m{fill:rgba(77,184,255,.08);stroke:rgba(77,184,255,.6);stroke-dasharray:4 3}
+.dwh-mapa text{fill:#e6e6f5;font-family:var(--dwh-mono);font-size:11px;text-anchor:middle}
+.dwh-mapa text.dwh-tm{fill:#bfe6ff}
+.dwh-on .dwh-mapa rect{animation:dwh-latido 3.6s ease-in-out infinite}
+.dwh-on .dwh-mapa rect:nth-child(2){animation-delay:.6s}.dwh-on .dwh-mapa rect:nth-child(3){animation-delay:1.2s}
+.dwh-on .dwh-mapa rect:nth-child(4){animation-delay:1.8s}.dwh-on .dwh-mapa rect:nth-child(5){animation-delay:2.4s}
+
+/* ---- QUÉ INCLUYE: rejilla compacta en marco HUD + banda de propuesta ---- */
+#incluye{padding:60px 0}
+#incluye .sec-head{max-width:none;margin-bottom:22px}
+#incluye .sec-head h2{margin-top:12px;font-size:clamp(1.75rem,3.1vw,2.5rem)}
+#incluye .sec-head h2 .accent{display:inline;margin-left:.26em}
+#incluye .sec-head p{margin-top:8px}
+.dwh-marco{overflow:hidden;padding:32px 12px 12px;border-radius:20px;
+  background:radial-gradient(90% 60% at 0% 0%,rgba(124,77,255,.12),transparent 60%),radial-gradient(70% 60% at 100% 100%,rgba(0,212,170,.08),transparent 60%),rgba(8,8,13,.55)}
+.dwh-marco>h3{position:absolute;left:34px;top:11px;z-index:4;margin:0;font-family:var(--dwh-mono);font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g)}
+.dwh-incl{position:relative;z-index:1;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;gap:6px}
+/* El check flota en la esquina: título y subtítulo usan todo el ancho de la celda */
+.dwh-incl li{position:relative;min-width:0;padding:11px 12px;border-radius:12px;
+  border:1px solid rgba(157,112,255,.18);background:linear-gradient(160deg,rgba(124,77,255,.09),rgba(17,17,24,.9) 70%)}
+.dwh-incl .ck{float:right;margin:0 -2px 2px 6px;display:grid;place-items:center;width:18px;height:18px;border-radius:7px;background:rgba(0,212,170,.12);color:var(--g);box-shadow:0 0 12px -3px rgba(0,212,170,.6)}
+.dwh-incl .ck svg{width:11px;height:11px}
+.dwh-incl li>div{min-width:0}
+.dwh-incl b{display:block;font-size:.8rem;font-weight:600;line-height:1.3;color:var(--text)}
+.dwh-incl li span:not(.ck){display:block;margin-top:4px;font-size:.72rem;line-height:1.4;color:var(--muted)}
+#incluye.dwh-on .dwh-incl li{animation:dwh-enciende .55s cubic-bezier(.16,1,.3,1) both}
+#incluye.dwh-on .dwh-incl li:nth-child(2){animation-delay:.07s}#incluye.dwh-on .dwh-incl li:nth-child(3){animation-delay:.14s}
+#incluye.dwh-on .dwh-incl li:nth-child(4){animation-delay:.21s}#incluye.dwh-on .dwh-incl li:nth-child(5){animation-delay:.28s}
+#incluye.dwh-on .dwh-incl li:nth-child(6){animation-delay:.35s}#incluye.dwh-on .dwh-incl li:nth-child(7){animation-delay:.42s}
+#incluye.dwh-on .dwh-incl li:nth-child(8){animation-delay:.49s}#incluye.dwh-on .dwh-incl li:nth-child(9){animation-delay:.56s}
+#incluye.dwh-on .dwh-incl li:nth-child(10){animation-delay:.63s}#incluye.dwh-on .dwh-incl li:nth-child(11){animation-delay:.7s}
+#incluye.dwh-on .dwh-incl li:nth-child(12){animation-delay:.77s}
+.dwh-banda{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:14px 28px;margin-top:14px;padding:18px 26px}
+.dwh-banda>*{position:relative;z-index:4}
+.dwh-banda h3{margin-top:4px;font-size:clamp(1.3rem,2vw,1.55rem)}
+.dwh-banda h3 .accent{display:inline;margin-left:.26em}
+.dwh-banda p{margin-top:4px;max-width:64ch;font-size:.88rem;line-height:1.5}
+.dwh-banda .tags{margin-top:0;max-width:280px;gap:6px}
+.dwh-banda .tags span{padding:6px 11px;font-size:.76rem}
+.dwh-banda .btn,.dwh-banda .tags+.btn{margin-top:0;align-self:center}
+
+/* ---- QUÉ NO INCLUYE: separador holográfico ---- */
+.dwh-sep{position:absolute;left:50%;top:6%;bottom:6%;width:2px;margin-left:-1px;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,transparent,var(--g) 20%,var(--dwh-c) 50%,var(--dwh-d) 80%,transparent);opacity:.85;box-shadow:0 0 14px rgba(77,184,255,.6)}
+.dwh-sep::after{content:"";position:absolute;left:-5px;top:-6px;width:12px;height:100%;will-change:transform;opacity:0;
+  background:radial-gradient(circle 5px at 6px 6px,#fff 45%,rgba(0,212,170,.85) 70%,transparent 100%) no-repeat;filter:drop-shadow(0 0 6px rgba(0,212,170,.9))}
+#no-incluye.dwh-on .dwh-sep::after{animation:dwh-baja 3.2s ease-in-out infinite}
+.yn--si{box-shadow:0 0 40px -22px rgba(0,212,170,.7)}
+.yn--no{box-shadow:0 0 40px -22px rgba(255,107,139,.6)}
+
+/* ---- ¿Y SI LUEGO QUIERES IA?: de tu web al agente ---- */
+.dwh-flujo{position:relative;z-index:1;display:flex;align-items:center;max-width:640px;margin:0 0 26px}
+.dwh-nodo{flex:0 0 auto;padding:9px 14px;border-radius:10px;font-family:var(--dwh-mono);font-size:.74rem;letter-spacing:.06em;color:#dff;
+  border:1px solid rgba(77,184,255,.45);background:linear-gradient(135deg,rgba(124,77,255,.22),rgba(0,212,170,.10));box-shadow:0 0 22px -6px rgba(77,184,255,.6)}
+.dwh-nodo--ia{border-color:rgba(0,212,170,.6);color:#9ff5e2;box-shadow:0 0 26px -6px rgba(0,212,170,.7)}
+.dwh-rayo{position:relative;flex:1 1 auto;min-width:40px;height:2px;background:linear-gradient(90deg,rgba(124,77,255,.75),rgba(77,184,255,.75),rgba(0,212,170,.75))}
+.dwh-rayo::after{content:"";position:absolute;left:-6px;right:6px;top:-5px;height:12px;pointer-events:none;will-change:transform;opacity:0;
+  background:radial-gradient(circle 5px at 6px 6px,#fff 45%,rgba(77,184,255,.9) 70%,transparent 100%) no-repeat;
+  filter:drop-shadow(0 0 6px rgba(77,184,255,.9)) drop-shadow(0 0 12px rgba(124,77,255,.6))}
+#ia.dwh-on .dwh-rayo::after{animation:dwh-rayo 2.4s ease-in-out infinite}
+#ia.dwh-on .dwh-nodo--ia{animation:dwh-latido 2.4s ease-in-out infinite}
+
+/* ---- CTA final: anillos ---- */
+.dwh-anillos{position:absolute;left:50%;top:50%;width:min(900px,120vw);aspect-ratio:1;margin:calc(min(900px,120vw) / -2) 0 0 calc(min(900px,120vw) / -2);z-index:0;pointer-events:none;border-radius:50%;
+  background:repeating-radial-gradient(circle,rgba(157,112,255,.14) 0 1px,transparent 1px 42px);
+  -webkit-mask-image:radial-gradient(circle,#000 20%,transparent 68%);mask-image:radial-gradient(circle,#000 20%,transparent 68%)}
+#contacto.dwh-on .dwh-anillos{animation:dwh-rota 80s linear infinite}
+.contact-card{box-shadow:0 40px 80px -44px rgba(124,77,255,.6),0 0 0 1px rgba(77,184,255,.15),0 0 40px -18px rgba(0,212,170,.5)}
+
+@media (max-width:1000px){
+  .dwh-banda{grid-template-columns:minmax(0,1fr) auto}
+  .dwh-banda-txt{grid-column:1/-1}
+  .dwh-chip--b{left:-8px}.dwh-chip--d{left:-4px}.dwh-chip--a,.dwh-chip--c{right:4px}
+}
+/* Lo pesado fuera por debajo de 900px */
+@media (max-width:899px){
+  .dwh-suelo,.dwh-scan,.dwh-escaner,.dwh-proyector::before,.dwh-sep,.dwh-anillos,.dwh-brillo{display:none}
+  .dwh-incl{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:600px){
+  #incluye{padding:56px 0}
+  .dwh-marco{padding:32px 10px 10px}
+  .dwh-marco>h3{left:32px}
+  .dwh-incl{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .dwh-incl li{padding:9px 10px}
+  .dwh-incl b{font-size:.76rem;line-height:1.28}
+  .dwh-incl li span:not(.ck){font-size:.68rem;line-height:1.35}
+  .dwh-banda{grid-template-columns:1fr;padding:22px 18px}
+  .dwh-banda .btn{align-self:stretch;width:100%}
+  .dwh-chip{font-size:.66rem;padding:6px 10px}.dwh-chip--b,.dwh-chip--d{display:none}
+  .plan>.dwh-etiq{right:16px;top:16px}
+  .dwh-nodo{padding:8px 10px;font-size:.68rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .dwh-suelo,.dwh-scan,.dwh-escaner,.dwh-brillo,.dwh-anillos,.dwh-chip,.wa-fab,.dwh-rayo::after,.dwh-sep::after,.dwh-mapa rect,.dwh-nodo--ia,
+  .dwh-incl li,.browser-body .sk,.browser-body .sk-row i,.browser-body .map-sk,.browser-body .pages span,
+  .plan::before,.dwh-marco::before,.dwh-banda::before,.visual .browser::before{animation:none!important}
+  .dwh-scan,.dwh-escaner,.dwh-brillo{display:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -271,6 +485,7 @@ html,body{background:#08080d}
 
   <!-- 1 · HERO -->
   <section class="hero" id="top">
+    <span class="dwh-suelo" aria-hidden="true"></span><span class="dwh-scan" aria-hidden="true"></span>
     <div class="wrap hero-grid">
       <div>
         <!-- Migas: espejo del BreadcrumbList del <head>. -->
@@ -284,9 +499,12 @@ html,body{background:#08080d}
         </div>
       </div>
       <div class="visual reveal" aria-hidden="true">
+        <span class="dwh-proyector"></span>
+        <span class="dwh-chip dwh-chip--a">Dominio ✓</span><span class="dwh-chip dwh-chip--b">SSL ✓</span><span class="dwh-chip dwh-chip--c">Google ✓</span><span class="dwh-chip dwh-chip--d">WhatsApp ✓</span>
         <div class="browser">
           <div class="browser-bar"><i></i><i></i><i></i><span class="browser-url">tunegocio.es</span></div>
           <div class="browser-body">
+            <span class="dwh-escaner"></span>
             <div class="pages"><span>Inicio</span><span>Servicios</span><span>Contacto</span></div>
             <div class="sk sk--h"></div><div class="sk sk--80"></div><div class="sk sk--55"></div>
             <div class="sk-row"><i></i><i></i><i></i></div>
@@ -301,6 +519,7 @@ html,body{background:#08080d}
 
   <!-- 2 · TIRA -->
   <div class="strip">
+    <span class="dwh-brillo" aria-hidden="true"></span>
     <div class="wrap">
       <ul class="strip-grid" role="list" style="list-style:none;margin:0;padding:0">
         <li class="strip-i"><span class="ic"><svg aria-hidden="true"><use href="#ic-globe"/></svg></span><b>Dominio incluido</b><span>El primer año</span></li>
@@ -326,7 +545,9 @@ html,body{background:#08080d}
         <article class="plan reveal">
           <span class="eyebrow">Opción 1</span>
           <h3>Web Esencial</h3>
+          <span class="dwh-etiq" aria-hidden="true">3 páginas</span>
           <p class="plan-n"><b>3</b>páginas</p>
+          <svg class="dwh-mapa" viewBox="0 0 300 44" aria-hidden="true"><g class="dwh-lin"><path d="M88 22h26M188 22h26"/></g><g class="dwh-nodos"><rect x="2" y="8" width="86" height="28" rx="8"/><rect x="114" y="8" width="74" height="28" rx="8"/><rect x="214" y="8" width="84" height="28" rx="8"/></g><g class="dwh-txt"><text x="45" y="26">Inicio</text><text x="151" y="26">Servicios</text><text x="256" y="26">Contacto</text></g></svg>
           <p>Para el negocio que necesita presentarse bien: qué hace, cómo trabaja y cómo contactarle.</p>
           <ul>
             <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Inicio:</b> quién eres y por qué elegirte.</span></li>
@@ -338,7 +559,9 @@ html,body{background:#08080d}
         <article class="plan plan--pro reveal">
           <span class="eyebrow">Opción 2</span>
           <h3>Web Profesional</h3>
+          <span class="dwh-etiq" aria-hidden="true">5 páginas</span>
           <p class="plan-n"><b>5</b>páginas</p>
+          <svg class="dwh-mapa" viewBox="0 0 300 92" aria-hidden="true"><g class="dwh-lin"><path d="M88 22h26M188 22h26"/><path class="dwh-lin--m" d="M45 36V70H61M151 36V70H165"/></g><g class="dwh-nodos"><rect x="2" y="8" width="86" height="28" rx="8"/><rect x="114" y="8" width="74" height="28" rx="8"/><rect x="214" y="8" width="84" height="28" rx="8"/><rect class="dwh-m" x="61" y="56" width="74" height="28" rx="8"/><rect class="dwh-m" x="165" y="56" width="74" height="28" rx="8"/></g><g class="dwh-txt"><text x="45" y="26">Inicio</text><text x="151" y="26">Servicios</text><text x="256" y="26">Contacto</text><text class="dwh-tm" x="98" y="74">a medida</text><text class="dwh-tm" x="202" y="74">a medida</text></g></svg>
           <p>Para el negocio que necesita más espacio: varios servicios, más detalle o contar mejor quién hay detrás.</p>
           <ul>
             <li><svg aria-hidden="true"><use href="#ic-check"/></svg><span><b>Inicio, servicios y contacto</b>, como en la Esencial.</span></li>
@@ -361,31 +584,32 @@ html,body{background:#08080d}
         <h2>Todo lo que necesita tu web<span class="accent">para salir a la calle.</span></h2>
         <p>En las dos opciones, Esencial y Profesional.</p>
       </div>
-      <div class="incl">
-        <div class="incl-list reveal">
-          <h3>Tu web incluye</h3>
-          <ul>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Dominio incluido el primer año</b><span>Después se renueva cada año.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Diseño responsive a medida</b><span>Pensado para tu negocio y para verse bien en el móvil.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Textos redactados por nosotros</b><span>A partir de lo que nos cuentas de tu negocio.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Formulario y botón de WhatsApp</b><span>Para que el cliente te escriba en un clic.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Mapa</b><span>Para que sepan dónde estás y cómo llegar.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Textos legales y cookies</b><span>Aviso legal, privacidad y política de cookies.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Google Analytics</b><span>Para saber cuántas visitas tienes y de dónde llegan.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>SEO local básico y Search Console</b><span>Lo necesario para que Google entienda qué haces y dónde.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>2 rondas de cambios</b><span>Para ajustar diseño y textos antes de darla por cerrada.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Publicada en 7 días</b><span>Desde que tenemos los textos y las imágenes.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Cuota mensual</b><span>Hosting, certificado SSL, mantenimiento y cambios pequeños.</span></div></li>
-            <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Sin permanencia</b><span>Avisas con 30 días y la das de baja.</span></div></li>
-          </ul>
-        </div>
-        <div class="ask reveal">
+      <div class="dwh-marco reveal">
+        <span class="dwh-escaner" aria-hidden="true"></span>
+        <h3>Tu web incluye</h3>
+        <ul class="dwh-incl" role="list">
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Dominio incluido el primer año</b><span>Después se renueva cada año.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Diseño responsive a medida</b><span>Pensado para tu negocio y para verse bien en el móvil.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Textos redactados por nosotros</b><span>A partir de lo que nos cuentas de tu negocio.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Formulario y botón de WhatsApp</b><span>Para que el cliente te escriba en un clic.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Mapa</b><span>Para que sepan dónde estás y cómo llegar.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Textos legales y cookies</b><span>Aviso legal, privacidad y política de cookies.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Google Analytics</b><span>Para saber cuántas visitas tienes y de dónde llegan.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>SEO local básico y Search Console</b><span>Lo necesario para que Google entienda qué haces y dónde.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>2 rondas de cambios</b><span>Para ajustar diseño y textos antes de darla por cerrada.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Publicada en 7 días</b><span>Desde que tenemos los textos y las imágenes.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Cuota mensual</b><span>Hosting, certificado SSL, mantenimiento y cambios pequeños.</span></div></li>
+          <li><span class="ck"><svg aria-hidden="true"><use href="#ic-check"/></svg></span><div><b>Sin permanencia</b><span>Avisas con 30 días y la das de baja.</span></div></li>
+        </ul>
+      </div>
+      <div class="ask dwh-banda reveal">
+        <div class="dwh-banda-txt">
           <span class="eyebrow">Precio</span>
           <h3>Pide propuesta.<span class="accent">Sin compromiso.</span></h3>
           <p>No publicamos tarifa: depende de la opción y de tu caso. Te preparamos una propuesta a medida y la cerramos en una llamada.</p>
-          <div class="tags"><span>Propuesta a medida</span><span>Sin compromiso</span><span>Sin permanencia</span></div>
-          <a class="btn btn--p" href="https://wa.me/34643199580?text=Hola%2C%20quiero%20una%20propuesta%20para%20una%20web%20de%20mi%20negocio." target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_cta',{producto:'diseno-web',placement:'incluye'})"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Pide propuesta por WhatsApp</a>
         </div>
+        <div class="tags"><span>Propuesta a medida</span><span>Sin compromiso</span><span>Sin permanencia</span></div>
+        <a class="btn btn--p" href="https://wa.me/34643199580?text=Hola%2C%20quiero%20una%20propuesta%20para%20una%20web%20de%20mi%20negocio." target="_blank" rel="noopener" onclick="window.wmTrack&amp;&amp;wmTrack('click_producto_cta',{producto:'diseno-web',placement:'incluye'})"><svg aria-hidden="true"><use href="#ic-wa"/></svg>Pide propuesta por WhatsApp</a>
       </div>
     </div>
   </section>
@@ -400,6 +624,7 @@ html,body{background:#08080d}
         <p>Preferimos que lo sepas antes de pedir propuesta.</p>
       </div>
       <div class="yesno">
+        <span class="dwh-sep" aria-hidden="true"></span>
         <div class="yn yn--si reveal">
           <h3><svg aria-hidden="true"><use href="#ic-yes"/></svg>Entra</h3>
           <ul>
@@ -431,6 +656,7 @@ html,body{background:#08080d}
         <h2>Tu web, hoy.<span class="accent">El agente, cuando quieras.</span></h2>
         <p>Esta web no lleva agente de IA. Si más adelante lo quieres, se lo añadimos sin rehacerla.</p>
       </div>
+      <div class="dwh-flujo reveal" aria-hidden="true"><span class="dwh-nodo">Tu web</span><span class="dwh-rayo"></span><span class="dwh-nodo dwh-nodo--ia">Agente IA · Spark</span></div>
       <div class="ia">
         <article class="ia-c reveal">
           <span class="eyebrow">Más adelante</span>
@@ -478,6 +704,7 @@ html,body{background:#08080d}
 
   <!-- 8 · CONTACTO -->
   <section class="sec sec--alt" id="contacto">
+    <span class="dwh-anillos" aria-hidden="true"></span>
     <div class="wrap">
       <div class="contact">
         <div>
@@ -605,5 +832,6 @@ html,body{background:#08080d}
 })();
 </script>
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script defer src="/assets/wm-dw-holo.js?v=2026092901"></script>
 </body>
 </html>
