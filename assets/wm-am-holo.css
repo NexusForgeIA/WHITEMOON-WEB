@@ -5,7 +5,6 @@
    ilustraciones van en content: para no añadir texto al HTML. */
 :root{--wmm-c:#4db8ff;--wmm-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 @keyframes wmm-gira{to{transform:rotate(360deg)}}
-@keyframes wmm-disco{from{transform:rotateX(68deg) rotate(0)}to{transform:rotateX(68deg) rotate(360deg)}}
 @keyframes wmm-avanza{to{background-position:0 40px,0 0}}
 @keyframes wmm-flota{50%{transform:translateY(-10px)}}
 @keyframes wmm-escanea{from{transform:translateY(-70%)}to{transform:translateY(70%)}}
@@ -13,7 +12,7 @@
 @keyframes wmm-late{50%{opacity:.25}}
 @keyframes wmm-respira{50%{opacity:.5}}
 
-/* ---- Hero: suelo en perspectiva y proyector a un lado del titular ---- */
+/* ---- Hero: suelo en perspectiva ---- */
 .wmm-hero{position:relative;overflow:hidden;isolation:isolate}
 .wmm-hero>.wrap{position:relative;z-index:1}
 .wmm-suelo{position:absolute;left:-10%;right:-10%;bottom:-2px;height:44%;z-index:0;pointer-events:none;
@@ -22,30 +21,122 @@
              linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
   -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%);opacity:.5}
 .wmm-on .wmm-suelo{animation:wmm-avanza 4s linear infinite}
-.wmm-proy{position:absolute;z-index:0;right:max(14px,calc(50% - 690px));bottom:44px;width:230px;height:400px;pointer-events:none;display:none}
-@media (min-width:1240px){.wmm-proy{display:block}}
-/* base del proyector */
-.wmm-proy::before{content:"";position:absolute;left:8%;right:8%;bottom:0;height:30px;border-radius:50%;
+/* Escena del hero: panel de gráficas a la izquierda y teléfono a la derecha.
+   Todo va en em sobre el font-size de .wmm-esc, que es lo que escala la escena
+   según el hueco libre a los lados del texto. Por debajo de 900 px solo queda
+   el teléfono, bajo el botón, en un hueco reservado con padding. */
+.wmm-esc{position:absolute;inset:0;z-index:0;pointer-events:none;font-size:8px;line-height:1}
+.wmm-graf,.wmm-arco{display:none}
+@media (max-width:899.98px){.wmm-hero{padding-bottom:336px}}
+@media (min-width:600px) and (max-width:899.98px){.wmm-hero{padding-bottom:396px}.wmm-esc{font-size:10px}}
+/* teléfono */
+.wmm-fono{position:absolute;width:13em;height:30em;left:50%;margin-left:-6.5em;bottom:44px}
+.wmm-fono::after{content:"Ilustración, no datos reales";position:absolute;left:50%;top:100%;margin-top:8px;transform:translateX(-50%);white-space:nowrap;
+  font:500 9px/1 var(--wmm-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wmm-proy{position:absolute;left:1.2em;right:1.2em;bottom:0;height:2.4em;border-radius:50%;
   background:radial-gradient(50% 50% at 50% 50%,rgba(0,212,170,.6),rgba(124,77,255,.38) 45%,transparent 70%);
-  box-shadow:0 0 0 1px rgba(0,212,170,.35),0 0 26px rgba(0,212,170,.45)}
-/* haz de luz */
-.wmm-proy::after{content:"";position:absolute;left:0;right:0;bottom:14px;height:330px;
-  background:linear-gradient(0deg,rgba(0,212,170,.24),rgba(77,184,255,.09) 45%,transparent 85%);
-  clip-path:polygon(40% 100%,60% 100%,100% 0,0 0);filter:blur(5px)}
-/* anillos: discos inclinados que giran */
-.wmm-anillo{position:absolute;left:50%;top:150px;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;padding:2px;
-  transform:rotateX(68deg);
-  background:conic-gradient(transparent 0 18%,#7c4dff 30%,#00d4aa 44%,transparent 54% 70%,#4db8ff 82%,transparent 92%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
-          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.95}
-.wmm-anillo--b{top:215px;width:130px;height:130px;margin:-65px 0 0 -65px;opacity:.7}
-.wmm-on .wmm-anillo{animation:wmm-disco 9s linear infinite}
-.wmm-on .wmm-anillo--b{animation-duration:6s;animation-direction:reverse}
-/* núcleo del holograma */
-.wmm-nucleo{position:absolute;left:50%;top:92px;width:74px;height:74px;margin-left:-37px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fff 0,rgba(77,184,255,.85) 22%,rgba(124,77,255,.55) 55%,transparent 72%);
-  box-shadow:0 0 40px 6px rgba(124,77,255,.45),0 0 80px 10px rgba(0,212,170,.2)}
-.wmm-on .wmm-nucleo{animation:wmm-flota 5s ease-in-out infinite}
+  box-shadow:0 0 0 1px rgba(0,212,170,.35),0 0 1.6em rgba(0,212,170,.35)}
+.wmm-proy::after{content:"";position:absolute;left:-1.4em;right:-1.4em;bottom:1.2em;height:12em;
+  background:linear-gradient(0deg,rgba(0,212,170,.26),rgba(77,184,255,.08) 55%,transparent 90%);
+  clip-path:polygon(34% 100%,66% 100%,100% 0,0 0)}
+.wmm-tel{position:absolute;left:0;top:0;width:13em;height:27em;border-radius:2.3em;border:1.5px solid transparent;overflow:hidden;
+  padding:3.3em .9em 1em;display:flex;flex-direction:column;gap:.65em;
+  background:linear-gradient(160deg,rgba(30,24,58,.8),rgba(10,10,18,.7)) padding-box,
+             conic-gradient(from 210deg,#7c4dff,#00d4aa,#4db8ff,#9d70ff,#7c4dff) border-box;
+  transform:perspective(60em) rotateY(-18deg) rotateX(4deg);
+  box-shadow:0 1.6em 3em -1.8em rgba(124,77,255,.7)}
+.wmm-tel::before{content:"";position:absolute;left:50%;top:.85em;width:4.2em;height:1.25em;margin-left:-2.1em;border-radius:1em;background:#05050a;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
+.wmm-tel::after{content:"";position:absolute;inset:0;pointer-events:none;will-change:transform;transform:translateY(-70%);
+  background:linear-gradient(180deg,transparent 43%,rgba(77,184,255,.13) 50%,transparent 57%)}
+.wmm-on .wmm-tel::after{animation:wmm-escanea 5s ease-in-out infinite alternate}
+.wmm-m{display:block;flex:none;height:2em;width:72%;border-radius:.8em .8em .8em .25em;
+  background:linear-gradient(rgba(255,255,255,.26),rgba(255,255,255,.26)) .8em 50%/60% .4em no-repeat,rgba(157,112,255,.26)}
+.wmm-m--u{align-self:flex-end;width:56%;border-radius:.8em .8em .25em .8em;
+  background:linear-gradient(rgba(255,255,255,.26),rgba(255,255,255,.26)) .8em 50%/66% .4em no-repeat,rgba(255,255,255,.09)}
+.wmm-m--t{width:4.4em;display:flex;align-items:center;justify-content:center;gap:.45em;background:rgba(0,212,170,.14)}
+.wmm-m--t b{width:.55em;height:.55em;border-radius:50%;background:var(--g)}
+.wmm-on .wmm-m--t b{animation:wmm-late 1.2s ease-in-out infinite}
+.wmm-on .wmm-m--t b:nth-child(2){animation-delay:.2s}.wmm-on .wmm-m--t b:nth-child(3){animation-delay:.4s}
+.wmm-nota{display:block;flex:none;margin-top:auto;height:3.7em;border-radius:.9em;border:1px solid rgba(0,212,170,.5);
+  background:radial-gradient(circle .35em at 1.1em 50%,var(--g) 96%,transparent),
+             linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.3)) 2.2em 34%/52% .4em no-repeat,
+             linear-gradient(rgba(255,255,255,.16),rgba(255,255,255,.16)) 2.2em 68%/36% .4em no-repeat,rgba(0,212,170,.12);
+  box-shadow:0 0 1.4em -.5em rgba(0,212,170,.8)}
+.wmm-on .wmm-nota{animation:wmm-sube-nota 4s ease-in-out infinite}
+@keyframes wmm-sube-nota{50%{transform:translateY(-.5em)}}
+/* panel de gráficas: formas sin escala ni cifras */
+.wmm-graf{position:absolute;width:19em;height:25em;border-radius:1.2em;border:1px solid rgba(77,184,255,.28);overflow:hidden;
+  padding:1.3em;flex-direction:column;gap:1.1em;
+  background:linear-gradient(160deg,rgba(124,77,255,.16),rgba(0,212,170,.05)),rgba(12,12,20,.62);
+  transform:perspective(60em) rotateY(18deg) rotateX(3deg);
+  box-shadow:0 1.6em 3em -1.8em rgba(0,212,170,.45)}
+.wmm-graf::before{content:"";position:absolute;inset:0;pointer-events:none;--k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) .6em .6em/1em 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) .6em .6em/1.5px 1em no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - .6em) calc(100% - .6em)/1em 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - .6em) calc(100% - .6em)/1.5px 1em no-repeat}
+.wmm-graf::after{content:"";position:absolute;inset:0;pointer-events:none;will-change:transform;transform:translateY(-70%);
+  background:linear-gradient(180deg,transparent 43%,rgba(0,212,170,.07) 47%,rgba(77,184,255,.2) 50%,rgba(0,212,170,.07) 53%,transparent 57%)}
+.wmm-on .wmm-graf::after{animation:wmm-escanea 6s ease-in-out infinite alternate}
+.wmm-bars::before,.wmm-don::after{font:600 max(.8em,8px)/1 var(--wmm-mono);letter-spacing:.04em;text-transform:uppercase;color:#cfe9ff;white-space:nowrap}
+.wmm-bars{position:relative;display:flex;flex:none;align-items:flex-end;gap:.7em;height:7.5em;padding-top:1.9em}
+.wmm-bars::before{content:"Más contactos";position:absolute;left:0;top:0}
+.wmm-bars b{flex:1;height:30%;border-radius:.3em .3em 0 0;transform-origin:50% 100%;background:linear-gradient(180deg,var(--g),rgba(124,77,255,.5))}
+.wmm-bars b:nth-child(2){height:46%}.wmm-bars b:nth-child(3){height:40%}.wmm-bars b:nth-child(4){height:68%}.wmm-bars b:nth-child(5){height:100%}
+@keyframes wmm-sube{0%,100%{transform:scaleY(.12)}22%,84%{transform:scaleY(1)}}
+.wmm-on .wmm-bars b{animation:wmm-sube 7s cubic-bezier(.16,1,.3,1) infinite}
+.wmm-on .wmm-bars b:nth-child(2){animation-delay:.15s}.wmm-on .wmm-bars b:nth-child(3){animation-delay:.3s}
+.wmm-on .wmm-bars b:nth-child(4){animation-delay:.45s}.wmm-on .wmm-bars b:nth-child(5){animation-delay:.6s}
+.wmm-linea{display:block;flex:none;width:100%;height:5.5em;overflow:visible}
+.wmm-on .wmm-linea circle{animation:wmm-late 2.5s ease-in-out infinite}
+.wmm-on .wmm-linea circle:nth-child(2){animation-delay:.3s}.wmm-on .wmm-linea circle:nth-child(3){animation-delay:.6s}
+.wmm-on .wmm-linea circle:nth-child(4){animation-delay:.9s}.wmm-on .wmm-linea circle:nth-child(5){animation-delay:1.2s}
+.wmm-don{display:flex;flex:none;align-items:center;gap:1em}
+.wmm-don::after{content:"Respuesta 24/7"}
+.wmm-donut{display:block;flex:none;width:5.2em;height:5.2em}
+.wmm-donut circle:nth-child(n+7){opacity:.15}
+@keyframes wmm-seg{0%,88%,100%{opacity:.12}8%,72%{opacity:1}}
+.wmm-on .wmm-donut circle{animation:wmm-seg 9s ease-in-out infinite}
+.wmm-on .wmm-donut circle:nth-child(2){animation-delay:.5s}.wmm-on .wmm-donut circle:nth-child(3){animation-delay:1s}
+.wmm-on .wmm-donut circle:nth-child(4){animation-delay:1.5s}.wmm-on .wmm-donut circle:nth-child(5){animation-delay:2s}
+.wmm-on .wmm-donut circle:nth-child(6){animation-delay:2.5s}.wmm-on .wmm-donut circle:nth-child(7){animation-delay:3s}
+.wmm-on .wmm-donut circle:nth-child(8){animation-delay:3.5s}
+/* 900-1239 px: escena reducida arriba, junto a la parte estrecha del texto */
+@media (min-width:900px){
+  .wmm-esc{font-size:clamp(7px,calc((100vw - 640px)/38),9.2px)}
+  .wmm-graf{display:flex;right:calc(50% + 300px + .8em);top:30px}
+  .wmm-fono{left:calc(50% + 300px + 1.5em);margin-left:0;top:28px;bottom:auto}
+  .wmm-fono::after{top:auto;bottom:100%;margin:0 0 5px;font-size:8px}
+}
+/* >=1240 px: tamaño completo, centrada en vertical, e hilos de luz que unen las dos piezas */
+@media (min-width:1240px){
+  .wmm-esc{font-size:clamp(10.4px,calc((100vw - 800px)/42),14px)}
+  .wmm-graf{right:calc(50% + 380px + 2em);top:50%;margin-top:-12.5em}
+  .wmm-fono{left:calc(50% + 380px + 2.4em);top:50%;margin-top:-15em}
+  .wmm-fono::after{top:100%;bottom:auto;margin:8px 0 0;font-size:9px}
+  .wmm-arco{display:block;position:absolute;left:calc(50% - 380px - 10.5em);right:calc(50% - 380px - 9.5em);top:26px;height:200px;overflow:hidden}
+  .wmm-arco--b{top:auto;bottom:22px;transform:scaleY(-1)}
+  .wmm-arco b{position:absolute;left:0;right:0;top:0;height:200%;border-radius:50%;padding:1px;overflow:hidden;
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+            mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+  .wmm-arco i{position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;margin-top:-50%;
+    background:conic-gradient(rgba(157,112,255,.2) 0 80%,rgba(0,212,170,.85) 85%,#fff 86.5%,rgba(157,112,255,.2) 88%)}
+  .wmm-on .wmm-arco i{animation:wmm-gira 14s linear infinite}
+  .wmm-on .wmm-arco--b i{animation-delay:-7s}
+}
+
+/* ---- Mini panel de gráficas en "Cómo trabajamos" (mismas piezas, sin rótulos) ---- */
+.wmm-mini{display:none}
+@media (min-width:1040px){
+  .wmm-mini{display:flex;position:absolute;right:28px;transform-origin:100% 50%;top:-4px;width:17em;height:8.6em;font-size:11px;line-height:1;align-items:flex-end;gap:1.2em;padding:1em 1.2em;
+    border:1px solid rgba(77,184,255,.24);border-radius:12px;pointer-events:none;
+    background:linear-gradient(160deg,rgba(124,77,255,.14),rgba(0,212,170,.05)),rgba(12,12,20,.6);
+    transform:perspective(60em) rotateY(-14deg)}
+  .wmm-mini .wmm-bars{flex:1 1 0;min-width:0;height:100%;padding-top:0}
+  .wmm-mini .wmm-bars::before{content:none}
+  .wmm-mini .wmm-linea{flex:1 1 0;min-width:0;width:0;height:100%}
+}
 
 /* ---- Fondo de sección: rejilla fina y resplandor, detrás del contenido ---- */
 .wmm-rejilla{position:relative;isolation:isolate}
@@ -124,7 +215,11 @@
 .wmm-on .wmm-rayo::after{animation:wmm-cruza 2.4s ease-in-out infinite}
 @keyframes wmm-cruza{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
 .wmm-movil{width:150px;height:158px;border-radius:22px;padding:40px 10px 0}
-.wmm-movil::before{content:"";position:absolute;left:50%;top:10px;width:44px;height:5px;margin-left:-22px;border-radius:5px;background:rgba(255,255,255,.18)}
+.wmm-movil{border:1.5px solid transparent;
+  background:linear-gradient(160deg,rgba(30,24,58,.85),rgba(10,10,18,.8)) padding-box,
+             conic-gradient(from 210deg,#7c4dff,#00d4aa,#4db8ff,#9d70ff,#7c4dff) border-box}
+@media (min-width:601px){.wmm-movil{transform:perspective(600px) rotateY(-16deg)}}
+.wmm-movil::before{content:"";position:absolute;left:50%;top:10px;width:46px;height:13px;margin-left:-23px;border-radius:10px;background:#05050a;box-shadow:0 0 0 1px rgba(255,255,255,.08)}
 .wmm-aviso{display:block;position:relative;border-radius:10px;padding:9px 8px 9px 22px;line-height:1.35;letter-spacing:.06em;
   border:1px solid rgba(0,212,170,.45);background:rgba(0,212,170,.1);box-shadow:0 0 26px -8px rgba(0,212,170,.9)}
 .wmm-aviso::before{content:"";position:absolute;left:9px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g)}
@@ -171,8 +266,9 @@
 .wmm-cta.wmm-on::after{animation:wmm-gira 24s linear infinite}
 
 @media (prefers-reduced-motion:reduce){
-  .wmm-suelo,.wmm-anillo,.wmm-nucleo,.wmm-borde i,.wmm-b--t,.wmm-rayo::after,.wmm-aviso,
+  .wmm-tel::after,.wmm-graf::after,.wmm-m--t b,.wmm-nota,.wmm-bars b,.wmm-linea circle,.wmm-donut circle,.wmm-arco i,
+  .wmm-suelo,.wmm-borde i,.wmm-b--t,.wmm-rayo::after,.wmm-aviso,
   .wmm-steps::after,.wmm-entrada::after,.wmm-cta::before,.wmm-cta::after{animation:none!important}
-  .wmm-steps::after,.wmm-entrada::after,.wmm-rayo::after{display:none}
+  .wmm-steps::after,.wmm-entrada::after,.wmm-rayo::after,.wmm-tel::after,.wmm-graf::after{display:none}
   .wmm-brillo a.card::before{display:none}
 }
