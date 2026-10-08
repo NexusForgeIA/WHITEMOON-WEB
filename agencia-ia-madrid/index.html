@@ -150,6 +150,7 @@
 <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sora-latin-var.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css?v=2026092302">
 <link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
+<link rel="stylesheet" href="/assets/wm-am-holo.css?v=2026100901">
 <style>
 @font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),url('/assets/fonts/sora-latin-var.woff2') format('woff2')}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
@@ -221,7 +222,7 @@
   </div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero wmm-hero"><span class="wmm-suelo" aria-hidden="true"></span><span class="wmm-proy" aria-hidden="true"><i class="wmm-nucleo"></i><i class="wmm-anillo"></i><i class="wmm-anillo wmm-anillo--b"></i></span>
     <div class="wrap">
       <div class="hero-sector">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -243,33 +244,33 @@
       <span class="sec-label">Por qué WhiteMoon</span>
       <h2 class="sec-h">Una agencia de IA en Madrid sin letra pequeña</h2>
       <p class="sec-sub" style="margin-bottom:36px">Lo que nos diferencia de otras agencias de inteligencia artificial: propuesta clara, cero permanencia y puesta en marcha rápida.</p>
-      <div class="grid3">
-        <div class="card">
+      <div class="grid3 wmm-cards">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Propuesta</span>
           <h3>A medida en 24 h</h3>
           <p>Te decimos qué cuesta tu caso antes de empezar, por escrito. Sin presupuestos opacos ni sorpresas a final de mes.</p>
         </div>
-        <div class="card">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Compromiso</span>
           <h3>Sin permanencia</h3>
           <p>Cancela cuando quieras. Sin contratos largos que te aten.</p>
         </div>
-        <div class="card">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Plazo</span>
           <h3>Operativo en 7 días</h3>
           <p>De la firma a tu primer lead en una semana (7 días), no en meses de desarrollo.</p>
         </div>
-        <div class="card">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Honestidad</span>
           <h3>Sin humo</h3>
           <p>No prometemos ventas mágicas ni inventamos casos de éxito. Te decimos qué hace la IA, qué no hace y qué vas a ver desde el primer día.</p>
         </div>
-        <div class="card">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Remoto</span>
           <h3>Base en Majadahonda, 100% en remoto</h3>
           <p>Somos una agencia madrileña con base en Majadahonda. Montamos y gestionamos todo sin que nadie tenga que desplazarse a tu local: tienes un agente de IA funcionando estés donde estés en Madrid.</p>
         </div>
-        <div class="card">
+        <div class="card"><span class="wmm-borde" aria-hidden="true"><i></i></span>
           <span class="card-k">Resultados</span>
           <h3>Todo medido</h3>
           <p>Cada conversación y cada lead quedan registrados. Sabes de dónde viene cada contacto y qué está funcionando.</p>
@@ -306,16 +307,17 @@
           </div>
         </div>
       </div>
+      <div class="wmm-mock" aria-hidden="true"><div class="wmm-chat"><span class="wmm-b wmm-b--u"></span><span class="wmm-b"></span><span class="wmm-b wmm-b--u"></span><span class="wmm-b wmm-b--t"></span></div><span class="wmm-rayo"></span><div class="wmm-movil"><span class="wmm-aviso"></span></div></div>
     </div>
   </section>
 
   <!-- QUÉ MONTAMOS + PRECIO DE ENTRADA -->
-  <section class="sec">
+  <section class="sec wmm-rejilla">
     <div class="wrap">
       <span class="sec-label">Qué montamos</span>
       <h2 class="sec-h">Tres formas de empezar con IA en tu negocio</h2>
       <p class="sec-sub" style="margin-bottom:36px">Todo operativo en 7 días y sin permanencia. Te preparamos una propuesta a medida en 24 horas.</p>
-      <div class="grid3">
+      <div class="grid3 wmm-brillo">
         <a class="card" href="/spark/">
           <span class="card-k">Ya tienes web</span>
           <h3>Agente de IA por texto</h3>
@@ -336,7 +338,7 @@
         </a>
       </div>
 
-      <div class="pack-box entrada">
+      <div class="pack-box entrada wmm-entrada">
         <div class="pack-lbl">Propuesta a medida</div>
         <div class="pack-price">A medida</div>
         <div class="pack-period">en 24 h · sin compromiso · sin permanencia</div>
@@ -349,12 +351,12 @@
   </section>
 
   <!-- SECTORES MADRID -->
-  <section class="sec-alt">
+  <section class="sec-alt wmm-rejilla wmm-rejilla--g">
     <div class="wrap">
       <span class="sec-label">Sectores en Madrid</span>
       <h2 class="sec-h">Sectores que atendemos en Madrid</h2>
       <p class="sec-sub" style="margin-bottom:36px">El agente no se configura igual para una clínica que para un taller. Implantamos IA adaptada a la operativa real de cada sector.</p>
-      <div class="grid3">
+      <div class="grid3 wmm-brillo">
         <a class="card" href="/chatbot-ia-clinicas-dentales/">
           <h3>Clínicas dentales</h3>
           <p>Agenda citas, recuerda revisiones y responde dudas de pacientes 24/7 sin saturar recepción.</p>
@@ -399,7 +401,7 @@
       <span class="sec-label">Cómo trabajamos</span>
       <h2 class="sec-h">De la primera llamada al agente funcionando</h2>
       <p class="sec-sub">Tres pasos, sin fases intermedias que solo sirven para facturar. Tú aportas el conocimiento de tu negocio; el resto lo ponemos nosotros.</p>
-      <div class="steps">
+      <div class="steps wmm-steps">
         <div class="step">
           <h3>Auditoría</h3>
           <p>Miramos tu web, cómo captas clientes hoy y qué preguntas te repiten cada día. Te damos tu score GEO/SEO y si apareces en ChatGPT, Grok y Perplexity. Gratis y sin compromiso: si la IA no te aporta nada, te lo decimos.</p>
@@ -510,7 +512,7 @@
   </section>
 
   <!-- CTA FINAL -->
-  <section class="cta-sec">
+  <section class="cta-sec wmm-cta">
     <div class="wrap">
       <h2>¿Tu negocio en Madrid necesita IA? Pide tu propuesta</h2>
       <p style="color:var(--muted);margin-bottom:8px;">Sin compromiso · Operativo en 7 días · Sin permanencia</p>
@@ -548,5 +550,6 @@
 
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 <script src="/assets/webmcp.js?v=2026091601" defer></script>
+<script src="/assets/wm-am-holo.js?v=2026100901" defer></script>
 </body>
 </html>
