@@ -147,11 +147,12 @@
   ]
 }
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/sora-latin-var.woff2" crossorigin>
 <link rel="stylesheet" href="/assets/landing-generic.css?v=2026092302">
 <link rel="stylesheet" href="/assets/wm-nav.css?v=2026091501">
 <link rel="stylesheet" href="/assets/wm-am-holo.css?v=2026100901">
 <style>
+@font-face{font-family:'Sora';font-style:normal;font-weight:100 800;font-display:swap;src:url('/assets/fonts/sora-latin-var.woff2') format('woff2-variations'),url('/assets/fonts/sora-latin-var.woff2') format('woff2')}
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media(max-width:760px){.grid3{grid-template-columns:1fr;}}
   .card p{font-size:.85rem;color:var(--muted);line-height:1.6;margin-top:6px;}
