@@ -1,0 +1,178 @@
+/* /agencia-ia-madrid/ · capa holográfica. Solo decoración: nada de aquí cambia
+   textos, orden ni medidas del contenido. Las animaciones corren solo con
+   .wmm-on (la pone assets/wm-am-holo.js mientras el bloque está en pantalla) y
+   solo mueven transform, opacity o background-position. Los rótulos de las
+   ilustraciones van en content: para no añadir texto al HTML. */
+:root{--wmm-c:#4db8ff;--wmm-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+@keyframes wmm-gira{to{transform:rotate(360deg)}}
+@keyframes wmm-disco{from{transform:rotateX(68deg) rotate(0)}to{transform:rotateX(68deg) rotate(360deg)}}
+@keyframes wmm-avanza{to{background-position:0 40px,0 0}}
+@keyframes wmm-flota{50%{transform:translateY(-10px)}}
+@keyframes wmm-escanea{from{transform:translateY(-70%)}to{transform:translateY(70%)}}
+@keyframes wmm-recorre{from{transform:translateX(calc(-100% + 12px))}to{transform:translateX(0)}}
+@keyframes wmm-late{50%{opacity:.25}}
+@keyframes wmm-respira{50%{opacity:.5}}
+
+/* ---- Hero: suelo en perspectiva y proyector a un lado del titular ---- */
+.wmm-hero{position:relative;overflow:hidden;isolation:isolate}
+.wmm-hero>.wrap{position:relative;z-index:1}
+.wmm-suelo{position:absolute;left:-10%;right:-10%;bottom:-2px;height:44%;z-index:0;pointer-events:none;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%);opacity:.5}
+.wmm-on .wmm-suelo{animation:wmm-avanza 4s linear infinite}
+.wmm-proy{position:absolute;z-index:0;right:max(14px,calc(50% - 690px));bottom:44px;width:230px;height:400px;pointer-events:none;display:none}
+@media (min-width:1240px){.wmm-proy{display:block}}
+/* base del proyector */
+.wmm-proy::before{content:"";position:absolute;left:8%;right:8%;bottom:0;height:30px;border-radius:50%;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(0,212,170,.6),rgba(124,77,255,.38) 45%,transparent 70%);
+  box-shadow:0 0 0 1px rgba(0,212,170,.35),0 0 26px rgba(0,212,170,.45)}
+/* haz de luz */
+.wmm-proy::after{content:"";position:absolute;left:0;right:0;bottom:14px;height:330px;
+  background:linear-gradient(0deg,rgba(0,212,170,.24),rgba(77,184,255,.09) 45%,transparent 85%);
+  clip-path:polygon(40% 100%,60% 100%,100% 0,0 0);filter:blur(5px)}
+/* anillos: discos inclinados que giran */
+.wmm-anillo{position:absolute;left:50%;top:150px;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;padding:2px;
+  transform:rotateX(68deg);
+  background:conic-gradient(transparent 0 18%,#7c4dff 30%,#00d4aa 44%,transparent 54% 70%,#4db8ff 82%,transparent 92%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.95}
+.wmm-anillo--b{top:215px;width:130px;height:130px;margin:-65px 0 0 -65px;opacity:.7}
+.wmm-on .wmm-anillo{animation:wmm-disco 9s linear infinite}
+.wmm-on .wmm-anillo--b{animation-duration:6s;animation-direction:reverse}
+/* núcleo del holograma */
+.wmm-nucleo{position:absolute;left:50%;top:92px;width:74px;height:74px;margin-left:-37px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0,rgba(77,184,255,.85) 22%,rgba(124,77,255,.55) 55%,transparent 72%);
+  box-shadow:0 0 40px 6px rgba(124,77,255,.45),0 0 80px 10px rgba(0,212,170,.2)}
+.wmm-on .wmm-nucleo{animation:wmm-flota 5s ease-in-out infinite}
+
+/* ---- Fondo de sección: rejilla fina y resplandor, detrás del contenido ---- */
+.wmm-rejilla{position:relative;isolation:isolate}
+.wmm-rejilla>.wrap{position:relative;z-index:1}
+.wmm-rejilla::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(700px 380px at 85% 0%,rgba(124,77,255,.13),transparent 70%),
+    linear-gradient(rgba(157,112,255,.07) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.07) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%);
+          mask-image:radial-gradient(120% 70% at 50% 0%,#000 20%,transparent 75%)}
+.wmm-rejilla--g::before{background:
+    radial-gradient(640px 360px at 12% 0%,rgba(0,212,170,.10),transparent 70%),
+    linear-gradient(rgba(0,212,170,.055) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(0,212,170,.055) 1px,transparent 1px) 0 0/44px 44px}
+/* hilo de luz en el borde superior de la sección */
+.wmm-rejilla::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--g) 50%,var(--wmm-c) 75%,transparent);opacity:.5}
+
+/* ---- "Por qué WhiteMoon": borde irisado que gira y esquinas HUD ---- */
+.wmm-cards .card{position:relative;isolation:isolate;overflow:hidden}
+.wmm-cards .card>*{position:relative;z-index:1}
+.wmm-cards .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 10px 10px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 10px 10px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 10px) calc(100% - 10px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 10px) calc(100% - 10px)/1.5px 14px no-repeat,
+    radial-gradient(120% 80% at 0% 0%,rgba(124,77,255,.13),transparent 55%),
+    radial-gradient(100% 80% at 100% 100%,rgba(0,212,170,.07),transparent 55%)}
+/* el borde es una máscara de 1px; dentro gira un disco cónico (solo transform) */
+.wmm-cards .card>.wmm-borde{position:absolute;inset:0;z-index:0;border-radius:inherit;padding:1px;pointer-events:none;overflow:hidden;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.75}
+.wmm-borde i{position:absolute;left:50%;top:50%;width:160%;aspect-ratio:1;margin:-80% 0 0 -80%;
+  background:conic-gradient(#7c4dff,#00d4aa,#4db8ff,#9d70ff,#7c4dff)}
+.wmm-on .wmm-borde i{animation:wmm-gira 12s linear infinite}
+.wmm-on .card:nth-child(2n) .wmm-borde i{animation-delay:-4s}
+.wmm-on .card:nth-child(3n) .wmm-borde i{animation-delay:-8s}
+@media (max-width:600px){.wmm-on .wmm-borde i{animation:none}}
+
+/* ---- Tarjetas enlazadas ("Tres formas", "Sectores"): brillo al pasar el cursor ---- */
+@media (hover:hover) and (pointer:fine){
+  .wmm-brillo a.card{position:relative;overflow:hidden}
+  .wmm-brillo a.card::before{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;pointer-events:none;
+    background:linear-gradient(100deg,transparent 20%,rgba(157,112,255,.16) 45%,rgba(0,212,170,.14) 55%,transparent 80%);
+    transform:translateX(-110%);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+  .wmm-brillo a.card:hover::before{transform:translateX(280%)}
+  .wmm-brillo a.card:hover{box-shadow:0 18px 50px -28px rgba(124,77,255,.8)}
+}
+
+/* ---- Spark: mini mockup de chat y aviso al móvil ---- */
+.wmm-mock{position:relative;display:flex;align-items:center;justify-content:center;gap:0;margin-top:28px;padding:30px 24px 46px;
+  border:1px solid rgba(77,184,255,.18);border-radius:16px;overflow:hidden;
+  background:radial-gradient(70% 120% at 0% 0%,rgba(124,77,255,.12),transparent 60%),radial-gradient(60% 120% at 100% 100%,rgba(0,212,170,.08),transparent 60%),var(--bg3);
+  font-family:var(--wmm-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:#cfe9ff}
+.wmm-mock::after{content:"Ilustración, no datos reales";position:absolute;left:0;right:0;bottom:14px;text-align:center;color:var(--muted);letter-spacing:.08em}
+.wmm-chat,.wmm-movil{position:relative;flex:0 0 auto;border-radius:14px;border:1px solid rgba(157,112,255,.3);background:rgba(8,8,13,.72)}
+.wmm-chat{width:250px;padding:34px 14px 14px;display:flex;flex-direction:column;gap:8px}
+.wmm-chat::before{content:"Chat en tu web";position:absolute;left:14px;top:12px;color:var(--p2)}
+.wmm-b{display:block;height:26px;border-radius:10px 10px 10px 3px;width:74%;
+  background:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.22)) 10px 50%/62% 5px no-repeat,rgba(157,112,255,.2)}
+.wmm-b--u{align-self:flex-end;width:58%;border-radius:10px 10px 3px 10px;
+  background:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.22)) 10px 50%/70% 5px no-repeat,rgba(255,255,255,.07)}
+.wmm-b--t{width:54px;background:
+  radial-gradient(circle 3px at 16px 50%,var(--g) 98%,transparent),
+  radial-gradient(circle 3px at 27px 50%,var(--g) 98%,transparent),
+  radial-gradient(circle 3px at 38px 50%,var(--g) 98%,transparent),rgba(0,212,170,.12)}
+.wmm-on .wmm-b--t{animation:wmm-late 1.4s ease-in-out infinite}
+/* hilo entre el chat y el móvil, con un pulso que lo recorre */
+.wmm-rayo{position:relative;flex:1 1 60px;max-width:150px;height:2px;overflow:hidden;
+  background:linear-gradient(90deg,rgba(124,77,255,.7),rgba(77,184,255,.7),rgba(0,212,170,.7))}
+.wmm-rayo::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 60%,#fff 92%,transparent);transform:translateX(-100%)}
+.wmm-on .wmm-rayo::after{animation:wmm-cruza 2.4s ease-in-out infinite}
+@keyframes wmm-cruza{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+.wmm-movil{width:150px;height:158px;border-radius:22px;padding:40px 10px 0}
+.wmm-movil::before{content:"";position:absolute;left:50%;top:10px;width:44px;height:5px;margin-left:-22px;border-radius:5px;background:rgba(255,255,255,.18)}
+.wmm-aviso{display:block;position:relative;border-radius:10px;padding:9px 8px 9px 22px;line-height:1.35;letter-spacing:.06em;
+  border:1px solid rgba(0,212,170,.45);background:rgba(0,212,170,.1);box-shadow:0 0 26px -8px rgba(0,212,170,.9)}
+.wmm-aviso::before{content:"";position:absolute;left:9px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g)}
+.wmm-aviso::after{content:"Aviso al móvil";color:var(--g)}
+.wmm-on .wmm-aviso{animation:wmm-flota 4s ease-in-out infinite}
+@media (max-width:600px){
+  .wmm-mock{flex-direction:column;gap:14px;padding:22px 16px 44px}
+  .wmm-chat{width:100%;max-width:260px}
+  .wmm-rayo{display:none}
+  .wmm-movil{height:auto;width:100%;max-width:260px;padding:30px 10px 12px;border-radius:14px}
+}
+
+/* ---- "Cómo trabajamos": hilo que une los tres pasos, con pulso ---- */
+@media (min-width:900px){
+  .wmm-steps{position:relative;isolation:isolate}
+  .wmm-steps .step::before{z-index:3}
+  .wmm-steps::before,.wmm-steps::after{content:"";position:absolute;z-index:2;pointer-events:none;
+    left:41px;width:calc((100% - 40px)/3*2 + 40px)}
+  .wmm-steps::before{top:2px;height:2px;background:linear-gradient(90deg,var(--p),var(--wmm-c),var(--g));box-shadow:0 0 10px rgba(124,77,255,.8)}
+  .wmm-steps::after{top:-3px;height:12px;opacity:0;will-change:transform;
+    background:radial-gradient(circle 6px at calc(100% - 6px) 6px,#fff 45%,rgba(0,212,170,.9) 70%,transparent 100%);
+    filter:drop-shadow(0 0 6px rgba(0,212,170,.9))}
+  .wmm-steps.wmm-on::after{opacity:1;animation:wmm-recorre 5s ease-in-out infinite}
+}
+
+/* ---- Recuadro "24 h · sin compromiso · sin permanencia": escáner suave ---- */
+.wmm-entrada::after{content:"";position:absolute;inset:0;pointer-events:none;will-change:transform;opacity:0;
+  background:linear-gradient(180deg,transparent 42%,rgba(0,212,170,.07) 47%,rgba(77,184,255,.2) 50%,rgba(0,212,170,.07) 53%,transparent 58%)}
+.wmm-entrada.wmm-on::after{opacity:1;animation:wmm-escanea 5s ease-in-out infinite alternate}
+.wmm-entrada>*{position:relative;z-index:1}
+
+/* ---- CTA final: anillos ---- */
+.wmm-cta{position:relative;overflow:hidden;isolation:isolate}
+.wmm-cta>.wrap{position:relative;z-index:1}
+.wmm-cta::before,.wmm-cta::after{content:"";position:absolute;left:50%;top:50%;width:min(760px,150vw);aspect-ratio:1;border-radius:50%;pointer-events:none;z-index:0;
+  margin:calc(min(760px,150vw)/-2) 0 0 calc(min(760px,150vw)/-2)}
+.wmm-cta::before{background:repeating-radial-gradient(circle,rgba(255,255,255,.13) 0 1px,transparent 1px 38px);
+  -webkit-mask-image:radial-gradient(circle,#000 25%,transparent 68%);mask-image:radial-gradient(circle,#000 25%,transparent 68%)}
+.wmm-cta::after{padding:1.5px;opacity:.7;
+  background:conic-gradient(transparent 0 20%,#7c4dff 32%,#00d4aa 44%,transparent 54% 72%,#4db8ff 84%,transparent 94%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.wmm-cta.wmm-on::before{animation:wmm-respira 6s ease-in-out infinite}
+.wmm-cta.wmm-on::after{animation:wmm-gira 24s linear infinite}
+
+@media (prefers-reduced-motion:reduce){
+  .wmm-suelo,.wmm-anillo,.wmm-nucleo,.wmm-borde i,.wmm-b--t,.wmm-rayo::after,.wmm-aviso,
+  .wmm-steps::after,.wmm-entrada::after,.wmm-cta::before,.wmm-cta::after{animation:none!important}
+  .wmm-steps::after,.wmm-entrada::after,.wmm-rayo::after{display:none}
+  .wmm-brillo a.card::before{display:none}
+}
