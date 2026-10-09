@@ -19,13 +19,13 @@ function toggleFaq(btn) {
 const PACKS={
   advance:{
     ico:'💬',title:'Spark',sub:'Agente IA conversacional',isGold:false,
-    price:'Propuesta a medida',period:'Puesta en marcha + cuota mensual',note:'Sin permanencia',
+    price:'Ver precios',period:'Alta única + cuota mensual · sin IVA · precios en /precios/',note:'Sin permanencia',
     features:['Agente IA instalado en tu web o QR','El cliente puede escribir libremente','IA detecta intención y responde en contexto','Cualificación automática de leads','Captación de datos por WhatsApp','Respuestas rápidas personalizadas','Detección de palabras clave por área','Actualización de contenidos incluida'],
     noInclude:'',wa:'Hola%20WhiteMoon%2C%20me%20interesa%20Spark'
   },
   pyme:{
     ico:'🏆',title:'Core',sub:'Web profesional + Agente IA + SEO y GEO/AEO',isGold:true,
-    price:'Propuesta a medida',period:'Puesta en marcha + cuota mensual',note:'Operativo en 5-7 días · Sin permanencia',
+    price:'Ver precios',period:'Alta única + cuota mensual · sin IVA · precios en /precios/',note:'Operativo en 5-7 días · Sin permanencia',
     features:[
       'Web profesional completa con diseño personalizado',
       'Dominio incluido el primer año',
