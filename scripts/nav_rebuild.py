@@ -2,7 +2,7 @@
 """Aplica la navbar y el footer unificados de WhiteMoon a todas las paginas de paseo.
 
 Menu resultante:  IA · Productos (desplegable: Web · Spark · Core Spark Web · Agente IA Citas) ·
-                  Software a medida · Marketing · Contacto
+                  Precios · Software a medida · Contacto
                   + un unico CTA: "Agendar reunion" (cal.com).
 
 Footer: el de 5 columnas de la home (Marca · Servicios · Recursos · Comparativas
@@ -12,7 +12,7 @@ assets/wm-nav.css: ningun <style> de pagina depende de la posicion del footer.
 Universo (casta 1 del repo: paginas de paseo con menu real, >=2 destinos
 internos en el <nav>). Quedan fuera, por la regla ya fijada del repo:
   · las landings de conversion (nav minimo intencional),
-  · los micrositios con nav de anclas propias y /precios/ (EXCLUDE).
+  · los micrositios con nav de anclas propias (EXCLUDE).
 
 Tras escribir, actualiza el <lastmod> del sitemap de las paginas modificadas.
 
@@ -42,10 +42,6 @@ EXCLUDE = {
     "electricistas-madrid/index.html",   # microsite de cliente
     "gestotrafic/index.html",            # microsite de producto
     "automatizaciones/index.html",       # landing WhiteMoon 360, nav de anclas
-    # Se borra entera en su fase y se queda con el navbar y el footer viejos
-    # hasta entonces. Por eso wm-nav.css y wm-nav.js conservan las reglas
-    # antiguas (.wm-fnav, .wm-nav__meet, .wm-long/.wm-short).
-    "precios/index.html",
 }
 
 # Paginas cuyo header vivia en el flujo del documento (sticky). Ahi la navbar
@@ -102,8 +98,8 @@ def nav_html(flow: bool) -> str:
           <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
+      <a href="/precios/">Precios</a>
       <a href="/desarrollo-software/">Software a medida</a>
-      <a href="/marketing/">Marketing</a>
       <a href="/contacto/">Contacto</a>
     </div>
 
@@ -121,8 +117,8 @@ def nav_html(flow: bool) -> str:
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
+  <a class="wm-drawer__link" href="/precios/">Precios</a>
   <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
-  <a class="wm-drawer__link" href="/marketing/">Marketing</a>
   <a class="wm-drawer__link" href="/contacto/">Contacto</a>
   <a class="wm-drawer__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
 </aside>"""
