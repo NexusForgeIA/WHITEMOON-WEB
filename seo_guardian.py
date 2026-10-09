@@ -38,7 +38,7 @@ IGNORED_DIRS = {
     # Pack Ads retirado: WhiteMoon ya no gestiona publicidad.
     "pack-ads",
     # Catálogo viejo: el modelo pasa a 2 productos (/spark/ y /core/).
-    "precios", "servicios", "recursos", "gestotrafic",
+    "servicios", "recursos", "gestotrafic",
     "orion", "orion-agent", "mini-core", "core-rag",
     "core-orion", "whitemoon-360", "automatizaciones",
     # Posts del blog sobre el agente de voz retirado (redirigen a /spark/).
@@ -121,7 +121,7 @@ RETIRED_EXEMPT_PREFIXES = ()
 RETIRED_PRICES = frozenset({
     4500, 8500, 2899, 1800, 3200, 999,           # BAD_PRICES (checks 8 y 13)
     499, 599, 799, 899, 1499, 1899, 2499,        # setups retirados
-    3500, 6500, 299, 149,                        # productos retirados
+    3500, 6500, 149,                             # productos retirados (299 ya es el alta vigente, 2026-10)
     99, 199, 349, 449,                           # cuotas mensuales retiradas
 })
 # Forma inequivoca de tarifa NUESTRA: puesta en marcha + cuota, juntas.

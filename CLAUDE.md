@@ -13,19 +13,19 @@
   - Cambios de 1-3 líneas sin riesgo → commit directo a main permitido
   - Nunca push directo a main para: cambios grandes, nuevas funcionalidades, cambios de arquitectura
 - **Catálogo comercial vigente — CUATRO productos.** No hay más.
-  - **Web** (`/diseno-web/`) — web para negocios SIN agente de IA, en dos opciones: Web Esencial (3 páginas: inicio, servicios, contacto) y Web Profesional (5 páginas). Sin precios en la web: propuesta a medida, sin permanencia. Si luego quiere IA → Spark; web con agente desde el día 1 → Core Spark Web.
+  - **Web** (`/diseno-web/`) — web para negocios SIN agente de IA, en dos opciones: Web Esencial (3 páginas: inicio, servicios, contacto) y Web Profesional (5 páginas). Precios en `/precios/`, sin permanencia. Si luego quiere IA → Spark; web con agente desde el día 1 → Core Spark Web.
   - **Spark** (`/spark/`) — agente de IA conversacional instalado en la web que el cliente YA tiene.
   - **Core Spark Web** (`/core/`) — web nueva con el agente dentro, más SEO y GEO/AEO montados desde el día 1. Para quien NO tiene web.
   - **Agente IA Citas** (`/agente-ia-citas/`) — agente de reservas para negocios de cita previa (peluquería, estética, uñas, barbería, taller, fisio, podología, dental…): el cliente reserva solo por QR o con un enlace, o desde el agente embebido en su web, sin llamadas. Panel de citas (alta manual, mover/cancelar, importar) y reseñas por WhatsApp que envía el propio negocio en un clic: **no** usa la API de WhatsApp Business ni envía nada automático. No garantiza ventas.
-  - Spark, Core Spark Web y Agente IA Citas: **propuesta a medida, sin permanencia**, operativo en 5-7 días laborables.
+  - Spark, Core Spark Web y Agente IA Citas: **precios en `/precios/`, sin permanencia**, operativo en 5-7 días laborables. **"Propuesta a medida" se reserva SOLO para Software a medida** (y los servicios que se cotizan proyecto a proyecto, como marketing): nunca para los productos de catálogo.
   - Producto suelto: **Auditoría GEO IA** (`/auditoria-geo-ia/`) — pago único, informe en 24h. En web se dice "Pago único · Sin permanencia", **sin cifra**.
-- **CERO PRECIO EN WEB.** La web no publica tarifa en ningún soporte: ni texto visible, ni `<meta>`, ni JSON-LD (`price`/`priceRange`/`lowPrice`/`highPrice`), ni JavaScript. El precio se cierra en una llamada.
-  - Fórmula estándar: **"Propuesta a medida, sin permanencia."**
-  - `/precios/` **ya no es la fuente de verdad**: hoy es un stub meta-refresh a `/`. No hay página de tarifa, así que no hay dónde "ir a comprobar el precio" — simplemente no se escribe.
-  - Únicas excepciones: el `price:"0"` de las herramientas gratuitas (calculadoras, `/auditoria-geo-seo/`) y el `priceRange:"€€"` simbólico del `LocalBusiness` en `/contacto/` y `/electricistas-madrid/`.
+- **PRECIOS: SOLO EN `/precios/`** (decidido por Cris, 2026-10-09; sustituye a la regla "CERO PRECIO EN WEB"). La tarifa pública vive **únicamente** en `/precios/` (alta única + cuota mensual por plan, sin IVA, sin permanencia). En el resto de páginas, metas, JSON-LD y JavaScript **no se escriben cifras de producto**: se enlaza a `/precios/`.
+  - Fuente de verdad de las cifras: el panel del CDN. **Al cambiar un precio en el panel, actualizar `/precios/` en el mismo día** (una sola página que mantener).
+  - `/precios/` no lleva `Offer`/`price` en JSON-LD (para no fijar cifras en rich results). Las excepciones previas siguen: `price:"0"` de herramientas gratuitas y `priceRange:"€€"` de `/contacto/` y `/electricistas-madrid/`.
+  - El Guardian (check 8, `PRICE_FREE_PAGES`) sigue exigiendo cero cifras en home, `/spark/`, `/core/`, `/marketing/` y `/costes-eficiencia-empresarial-ia/`. `299` salió de `RETIRED_PRICES` porque es el alta vigente.
 - **RETIRADOS del catálogo comercial** — no mencionar como producto en venta, ni en copy, ni en JSON-LD, ni en el prompt de ningún agente:
   Orion / agente de voz · WhiteMoon 360 · Core RAG · Mini Core · Core Orion · Orion IA Agent · Pack Ads · Calculadora ITP Pro · Scale · Elite · Orbit · Gestoría IA · Orion IA Calls.
-  - Redirecciones vivas: `/scale/`, `/elite/`, `/pack-ads/`, `/precios/`, `/servicios/`, `/recursos/`, `/mini-core/`, `/core-rag/`, `/core-orion/`, `/whitemoon-360/`, `/automatizaciones/` → `/`; `/orion-calls/` → `/orion-agent/`.
+  - Redirecciones vivas: `/scale/`, `/elite/`, `/pack-ads/`, `/servicios/`, `/recursos/`, `/mini-core/`, `/core-rag/`, `/core-orion/`, `/whitemoon-360/`, `/automatizaciones/` → `/`; `/orion-calls/` → `/orion-agent/`.
   - Un redirect tiene **dos mitades**: el stub meta-refresh Y el alta en `IGNORED_DIRS` de `seo_guardian.py`. Sin la segunda, el check 5 bloquea el PR por "0 H1".
   - El check 9 del Guardian falla si "Scale", "Elite", "Orion IA Calls", "Orbit", "Gestoría IA" o "Pack Ads" aparecen en texto visible. Los demás retirados **no los vigila nadie**: hay que cazarlos a mano.
   - `/calculadora-itp/` y `/calculadora-itp-vivienda/` son **herramientas públicas gratuitas y siguen vivas**. Lo retirado es el producto "Calculadora ITP Pro" (el SaaS de pago). No confundir.
@@ -38,11 +38,11 @@
 - Sin cifras de rendimiento inventadas: nada de "+X% de conversión", "recuperan la inversión en X días" ni "media de nuestros clientes" si no hay una fuente que se pueda enseñar. Si el dato no existe, el número lo pone el usuario en un input y se etiqueta como supuesto suyo (así funciona la calculadora de `/precio-agente-ia/` y, desde los PR #762/#763, las de `/coste-no-automatizar/`, `/calculadora-ahorro-automatizacion/`, `/calculadora-horas-ahorradas-ia/` y `/calculadora-perdidas-restaurante/`).
 - **Nada de "#1 en ChatGPT" ni "los primeros en Grok".** Lo que sí es cierto y se puede decir: **"recomendados por ChatGPT y Grok (citas verificadas, no posición #1)"**. Los asistentes no tienen ranking posicional y la metodología no soporta ese claim. Hay capturas desde septiembre de 2026: citar la frase con su fecha, sin adjuntar la imagen (enseña precios y "voz", ambos retirados).
 - Fundada en 2025.
-- Descripción de Core Spark Web: "Web profesional + chatbot IA por texto + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." Incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7 por texto, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp y responsive. Operativo en 5-7 días, sin permanencia, **propuesta a medida**.
+- Descripción de Core Spark Web: "Web profesional + chatbot IA por texto + SEO y GEO/AEO. Tu negocio online, automatizado y visible en Google, ChatGPT y Grok desde el día 1." Incluye web con diseño personalizado, dominio el primer año, chatbot IA 24/7 por texto, sistema de reservas, SEO técnico completo, GEO/AEO, captura de leads → WhatsApp y responsive. Operativo en 5-7 días, sin permanencia, precio en `/precios/`.
 
 ## Cifras de precio prohibidas — y qué vigila REALMENTE el Guardian
 
-Como la web ya no publica tarifa, **cualquier** cifra de precio de producto es un error.
+Fuera de `/precios/`, **cualquier** cifra de precio de producto es un error.
 Estas son las tarifas viejas que han estado publicadas y no deben reaparecer:
 
 ### A · Las 6 que el Guardian SÍ bloquea
