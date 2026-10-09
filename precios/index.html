@@ -85,10 +85,10 @@ h1 em{font-style:normal;color:var(--p2)}
 .chath b{display:block;font-size:.8rem;line-height:1.2}
 .chath span{font-size:.64rem;color:var(--g);display:flex;align-items:center;gap:5px}
 .msgs{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px 12px;overflow:hidden}
-.m{max-width:82%;padding:8px 11px;border-radius:16px;line-height:1.4;font-size:.74rem;opacity:0;animation-duration:18s;animation-iteration-count:infinite;animation-fill-mode:both}
-.m.u{align-self:flex-end;background:var(--p);color:#fff;border-bottom-right-radius:5px}
-.m.a{align-self:flex-start;background:rgba(255,255,255,.07);border:1px solid var(--line);border-bottom-left-radius:5px}
-.m.k1{animation-name:k1}.m.k2{animation-name:k2}.m.k3{animation-name:k3}.m.k4{animation-name:k4}.m.k5{animation-name:k5}
+.cm{max-width:82%;padding:8px 11px;border-radius:16px;line-height:1.4;font-size:.74rem;opacity:0;animation-duration:18s;animation-iteration-count:infinite;animation-fill-mode:both}
+.cm.u{align-self:flex-end;background:var(--p);color:#fff;border-bottom-right-radius:5px}
+.cm.a{align-self:flex-start;background:rgba(255,255,255,.07);border:1px solid var(--line);border-bottom-left-radius:5px}
+.cm.k1{animation-name:k1}.cm.k2{animation-name:k2}.cm.k3{animation-name:k3}.cm.k4{animation-name:k4}
 .lead{align-self:stretch;margin-top:2px;padding:10px 12px;border-radius:12px;border:1px solid rgba(0,212,170,.6);background:rgba(0,212,170,.08);font-size:.7rem;line-height:1.4;opacity:0;animation:k5 18s infinite both}
 .lead b{display:block;color:var(--g);font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
 .typ{align-self:flex-start;display:flex;gap:4px;padding:10px 12px;border-radius:16px;border-bottom-left-radius:5px;background:rgba(255,255,255,.07);border:1px solid var(--line);opacity:0;position:absolute;left:12px;bottom:0}
@@ -168,7 +168,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
 @keyframes sheen{0%,100%{background-position:150% 0}50%{background-position:-50% 0}}
 @media (max-width:1060px){.hero{grid-template-columns:1fr}.scene{min-height:0}.plans{grid-template-columns:repeat(2,minmax(0,1fr))}.ptag{min-height:0}.base{grid-template-columns:1fr}}
 @media (max-width:600px){.plans{grid-template-columns:1fr}.wrap{padding-block:32px 48px}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.m,.lead,.notif{opacity:1!important}.typw,.notif{display:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.cm,.lead,.notif{opacity:1!important}.typw,.notif{display:none}}
 
 .cta{margin-top:64px;padding:40px 28px;border-radius:16px;border:1px solid var(--border);background:linear-gradient(135deg,rgba(124,77,255,.14),rgba(0,212,170,.06));display:grid;gap:12px;justify-items:start}.cta h2{font-size:clamp(1.6rem,3.2vw,2.3rem)}.cta p{margin:0;color:var(--ink);max-width:52ch}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}.btn{display:inline-flex;align-items:center;padding:14px 28px;border-radius:8px;background:var(--p);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .2s}.btn:hover{transform:translateY(-2px)}.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
 .fnote{margin:36px 0 0;color:var(--muted);font-size:.78rem;font-family:var(--mono)}
@@ -247,10 +247,10 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
         <div class="notif"><small>Nuevo contacto · aviso al móvil</small>Marta pide cita mañana a las 18:30</div>
         <div class="chath"><i>✦</i><div><b>Asistente IA</b><span><span class="dot"></span>En línea</span></div></div>
         <div class="msgs">
-          <div class="m u k1">Hola, ¿tenéis hueco mañana por la tarde?</div>
-          <div class="m a k2">¡Hola! Mañana tengo 17:00 y 18:30. ¿Cuál te viene mejor?</div>
-          <div class="m u k3">A las 18:30, por favor</div>
-          <div class="m a k4">Perfecto. ¿Me dices tu nombre y tu móvil para confirmarla?</div>
+          <div class="cm u k1">Hola, ¿tenéis hueco mañana por la tarde?</div>
+          <div class="cm a k2">¡Hola! Mañana tengo 17:00 y 18:30. ¿Cuál te viene mejor?</div>
+          <div class="cm u k3">A las 18:30, por favor</div>
+          <div class="cm a k4">Perfecto. ¿Me dices tu nombre y tu móvil para confirmarla?</div>
           <div class="lead"><b>Contacto guardado</b>Marta · mañana 18:30 · el negocio lo recibe al instante</div>
         </div>
         <div class="typw"><div class="typ t1"><i></i><i></i><i></i></div><div class="typ t2"><i></i><i></i><i></i></div></div>
