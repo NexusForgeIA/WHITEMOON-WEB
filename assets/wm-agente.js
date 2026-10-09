@@ -48,7 +48,7 @@
 
   // Las dos rutas. Los bullets son los de la sección "Todo lo que necesita
   // para trabajar desde el día 1" de /spark/ y /core/, literales y sin
-  // ninguna cifra: la web no publica tarifa y este widget tampoco.
+  // ninguna cifra: la tarifa vive solo en /precios/ y este widget tampoco la repite.
   var RUTAS = {
     spark: {
       interes: "Spark",

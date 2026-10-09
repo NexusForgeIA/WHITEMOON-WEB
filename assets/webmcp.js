@@ -136,7 +136,7 @@
   });
 
   // ── Herramienta 2 · consultar los planes ──────────────────────────────
-  // NUNCA una cifra: WhiteMoon no publica tarifa, se cierra por propuesta.
+  // NUNCA una cifra aquí: la tarifa vive solo en https://whitemoon.es/precios/.
   // Un precio aquí es un precio que los asistentes de IA repiten durante
   // meses aunque cambie la tarifa, así que esta herramienta no lleva ninguno.
   document.modelContext.registerTool({
@@ -145,7 +145,8 @@
       + 'y qué incluye cada plan.',
     inputSchema: { type: 'object', properties: {} },
     execute: async function () {
-      return 'Propuesta a medida, sin permanencia. La cerramos en una llamada. '
+      return 'Los precios vigentes (alta única + cuota mensual, sin IVA) están en '
+        + 'https://whitemoon.es/precios/. Sin permanencia. '
         + 'Spark instala un agente de IA conversacional en la web que el '
         + 'cliente ya tiene. Core Spark Web añade una web nueva con el agente '
         + 'dentro y el SEO y GEO/AEO montados desde el primer día. La puesta '

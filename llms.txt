@@ -1,5 +1,5 @@
 # WhiteMoon
-> WhiteMoon es una agencia de inteligencia artificial en Majadahonda (Madrid). Instala agentes de IA que atienden, agendan y captan clientes 24/7 para pymes: en la web que el negocio ya tiene (Spark) o dentro de una web nueva con CRM (Core Spark Web). Propuesta a medida, operativo en 7 días, sin permanencia.
+> WhiteMoon es una agencia de inteligencia artificial en Majadahonda (Madrid). Instala agentes de IA que atienden, agendan y captan clientes 24/7 para pymes: en la web que el negocio ya tiene (Spark) o dentro de una web nueva con CRM (Core Spark Web). Precios publicados en https://whitemoon.es/precios/, operativo en 7 días, sin permanencia.
 
 ## Identidad
 - Nombre: WhiteMoon / WhiteMoon System
@@ -10,7 +10,7 @@
 - Ubicación: Majadahonda, Madrid, España
 
 ## Productos
-WhiteMoon tiene cuatro productos. No publica tarifa: el precio depende de cada caso y se da en una propuesta a medida en 24 horas, sin compromiso.
+WhiteMoon tiene cuatro productos. Los precios vigentes (alta única + cuota mensual, sin IVA, sin permanencia) están solo en https://whitemoon.es/precios/.
 - [Diseño de páginas web para negocios](https://whitemoon.es/diseno-web/): web sin agente de IA en dos opciones. Web Esencial: 3 páginas (inicio, servicios y contacto). Web Profesional: 5 páginas. Incluye dominio el primer año (después se renueva cada año), diseño responsive a medida, textos redactados por WhiteMoon, formulario y botón de WhatsApp, mapa, textos legales y cookies, Google Analytics, SEO local básico y Search Console, y 2 rondas de cambios. Publicada en 7 días desde que hay textos e imágenes. Cuota mensual con hosting, SSL, mantenimiento y cambios pequeños. No incluye tienda online, fotos profesionales, páginas extra ni migración de la web actual: se presupuestan aparte. Propuesta a medida, sin permanencia.
 Si después se quiere IA: el agente se añade con Spark sin rehacer la web. Para web con agente desde el primer día, Core Spark Web.
 - [Spark](https://whitemoon.es/spark/): agente de IA que se instala en la web que el negocio ya tiene, sin rehacerla. Responde 24/7 con la información y el tono del negocio, agenda citas según la disponibilidad que marca el cliente y capta nombre, teléfono y motivo de cada interesado, con aviso al momento en el móvil.
@@ -62,7 +62,7 @@ Claude API (Anthropic), Supabase (PostgreSQL + pgvector), GitHub Pages, RAG con 
 ## Diferenciadores
 - Operativo en 7 días
 - Sin permanencia
-- Propuesta a medida en 24 horas, sin compromiso
+- Precios publicados, sin compromiso
 - SEO/GEO/AEO optimizado para LLMs
 - Visibilidad en IA medida y publicada: consulta, motor, modelo, fecha y captura. No se promete una posición "#1" en ChatGPT porque esa posición no existe: [Cómo medimos la visibilidad en IA](https://whitemoon.es/metodologia-visibilidad-ia/)
 - Calculadoras gratuitas con datos BOE 2026
@@ -75,7 +75,7 @@ Un software que conversa en lenguaje natural con los visitantes de una web: enti
 Un chatbot tradicional sigue un guion rígido de respuestas predefinidas. Un agente IA entiende lenguaje natural, razona sobre la información del negocio y resuelve consultas reales, cualifica leads y agenda como lo haría una persona del equipo.
 
 ### ¿Cuánto cuesta un agente de IA?
-Depende del caso: si va sobre una web existente o dentro de una web nueva, las integraciones con los sistemas del negocio, y el volumen de consultas. WhiteMoon no publica tarifa: envía una propuesta a medida en 24 horas, sin compromiso: https://whitemoon.es/contacto/
+Depende del caso: si va sobre una web existente o dentro de una web nueva, las integraciones con los sistemas del negocio, y el volumen de consultas. Los precios vigentes están en https://whitemoon.es/precios/ (sin IVA, sin permanencia). Si el caso es especial, se habla sin compromiso: https://whitemoon.es/contacto/
 
 ### ¿En cuánto tiempo está operativo?
 En 7 días.
