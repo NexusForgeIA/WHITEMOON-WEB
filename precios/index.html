@@ -71,28 +71,49 @@ h1 em{font-style:normal;color:var(--p2)}
 .chip{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--border);background:rgba(124,77,255,.08);color:var(--text)}
 
 /* escena holográfica */
-.scene{position:relative;min-height:440px;display:grid;place-items:center;isolation:isolate}
-.ring{position:absolute;width:min(86%,430px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(77,184,255,.45);z-index:-1;
-  box-shadow:0 0 60px rgba(124,77,255,.18) inset}
-.ring::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid transparent;border-top-color:var(--p2);border-right-color:rgba(0,212,170,.5);animation:spin 18s linear infinite}
-.floor{position:absolute;bottom:6px;width:62%;height:44px;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(124,77,255,.55),rgba(0,212,170,.18) 60%,transparent);filter:blur(2px)}
-.glass{position:relative;width:min(100%,360px);border-radius:16px;padding:16px;background:linear-gradient(180deg,rgba(24,22,40,.78),rgba(14,14,22,.82));
-  border:1px solid rgba(157,112,255,.35);backdrop-filter:blur(6px);box-shadow:0 30px 80px -30px rgba(124,77,255,.6)}
-.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}
-.glass .gh{display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
-.gh i{width:34px;height:34px;border-radius:10px;background:var(--p);display:grid;place-items:center;font-style:normal;color:#fff;font-size:16px}
-.gh b{display:block;color:var(--text);font-size:.92rem;line-height:1.2}
-.gh span{font-size:.72rem;color:var(--muted)}
-.step{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-top:8px;border-radius:10px;border:1px solid var(--line);background:rgba(8,8,13,.6);font-size:.82rem;color:var(--text);position:relative}
-.step small{margin-left:auto;font-family:var(--mono);font-size:.66rem;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
-.step.on{border-color:rgba(0,212,170,.7);box-shadow:0 0 18px rgba(0,212,170,.25) inset,0 0 18px rgba(0,212,170,.15)}
+.scene{position:relative;min-height:600px;display:grid;place-items:center;isolation:isolate;padding:10px 0 4px}
+.scene::before{content:"";position:absolute;width:min(92%,420px);aspect-ratio:1;border-radius:50%;z-index:-1;background:radial-gradient(closest-side,rgba(124,77,255,.32),rgba(0,212,170,.08) 62%,transparent)}
+.phone{position:relative;width:min(100%,284px);aspect-ratio:284/580;border-radius:46px;padding:9px;background:linear-gradient(145deg,#2a2a36,#0b0b11 45%,#22222d);box-shadow:0 0 0 1px rgba(255,255,255,.12) inset,0 0 0 2px #05050a,0 40px 90px -30px rgba(124,77,255,.65),0 18px 40px -18px rgba(0,0,0,.8)}
+.phone::before,.phone::after{content:"";position:absolute;width:3px;border-radius:2px;background:#2a2a36}
+.phone::before{left:-3px;top:112px;height:46px;box-shadow:0 62px 0 #2a2a36}
+.phone::after{right:-3px;top:150px;height:70px}
+.screen{position:relative;height:100%;border-radius:38px;overflow:hidden;background:linear-gradient(180deg,#0e0e16,#08080d);display:flex;flex-direction:column;font-size:.8rem;color:var(--text)}
+.isl{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:20px;background:#000;z-index:3}
+.sbar{display:flex;justify-content:space-between;padding:14px 24px 0;font-family:var(--mono);font-size:.66rem;color:var(--text);height:40px}
+.chath{display:flex;align-items:center;gap:9px;padding:10px 14px 10px;border-bottom:1px solid var(--line)}
+.chath i{width:30px;height:30px;border-radius:9px;background:var(--p);display:grid;place-items:center;font-style:normal;color:#fff;font-size:14px}
+.chath b{display:block;font-size:.8rem;line-height:1.2}
+.chath span{font-size:.64rem;color:var(--g);display:flex;align-items:center;gap:5px}
+.msgs{flex:1;display:flex;flex-direction:column;gap:8px;padding:14px 12px;overflow:hidden}
+.m{max-width:82%;padding:8px 11px;border-radius:16px;line-height:1.4;font-size:.74rem;opacity:0;animation-duration:18s;animation-iteration-count:infinite;animation-fill-mode:both}
+.m.u{align-self:flex-end;background:var(--p);color:#fff;border-bottom-right-radius:5px}
+.m.a{align-self:flex-start;background:rgba(255,255,255,.07);border:1px solid var(--line);border-bottom-left-radius:5px}
+.m.k1{animation-name:k1}.m.k2{animation-name:k2}.m.k3{animation-name:k3}.m.k4{animation-name:k4}.m.k5{animation-name:k5}
+.lead{align-self:stretch;margin-top:2px;padding:10px 12px;border-radius:12px;border:1px solid rgba(0,212,170,.6);background:rgba(0,212,170,.08);font-size:.7rem;line-height:1.4;opacity:0;animation:k5 18s infinite both}
+.lead b{display:block;color:var(--g);font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.typ{align-self:flex-start;display:flex;gap:4px;padding:10px 12px;border-radius:16px;border-bottom-left-radius:5px;background:rgba(255,255,255,.07);border:1px solid var(--line);opacity:0;position:absolute;left:12px;bottom:0}
+.typ i{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:dots 1s ease-in-out infinite}
+.typ i:nth-child(2){animation-delay:.15s}.typ i:nth-child(3){animation-delay:.3s}
+.typw{position:relative;height:30px;margin-top:-4px;flex-shrink:0}
+.typ.t1{animation:tp1 18s infinite both}.typ.t2{animation:tp2 18s infinite both}
+.inp{margin:0 12px 16px;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font-size:.7rem}
+.notif{position:absolute;left:10px;right:10px;top:46px;z-index:4;padding:9px 12px;border-radius:16px;background:rgba(30,28,48,.96);border:1px solid rgba(157,112,255,.5);box-shadow:0 14px 30px -10px rgba(0,0,0,.8);font-size:.68rem;line-height:1.35;opacity:0;animation:k6 18s infinite both}
+.notif small{display:block;font-family:var(--mono);font-size:.58rem;color:var(--p2);letter-spacing:.05em;text-transform:uppercase}
+.sim{margin-top:14px;text-align:center;font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.04em}
+.scene .col{display:flex;flex-direction:column;align-items:center;width:100%}
+@keyframes k1{0%,4%{opacity:0;transform:translateY(10px) scale(.96)}6%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes k2{0%,17%{opacity:0;transform:translateY(10px) scale(.96)}19%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes k3{0%,31%{opacity:0;transform:translateY(10px) scale(.96)}33%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes k4{0%,44%{opacity:0;transform:translateY(10px) scale(.96)}46%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes k5{0%,56%{opacity:0;transform:translateY(10px) scale(.96)}58%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes k6{0%,68%{opacity:0;transform:translateY(10px) scale(.96)}70%{opacity:1;transform:none}92%{opacity:1}96%,100%{opacity:0}}
+@keyframes tp1{0%,10%{opacity:0}12%,16%{opacity:1}18%,100%{opacity:0}}
+@keyframes tp2{0%,38%{opacity:0}40%,43%{opacity:1}45%,100%{opacity:0}}
+@keyframes dots{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--g);box-shadow:0 0 8px var(--g);flex-shrink:0}
 .br{position:absolute;width:14px;height:14px;pointer-events:none}
 .br.tl{top:-1px;left:-1px;border-top:2px solid var(--g);border-left:2px solid var(--g)}
 .br.br2{bottom:-1px;right:-1px;border-bottom:2px solid var(--g);border-right:2px solid var(--g)}
-.fl{position:absolute;font-family:var(--mono);font-size:.72rem;color:var(--text);padding:6px 12px 6px 10px;border-radius:999px;display:flex;align-items:center;gap:8px;
-  background:rgba(14,14,26,.8);border:1px solid rgba(77,184,255,.45);box-shadow:0 0 22px rgba(77,184,255,.2);animation:bob 6s ease-in-out infinite}
-.fl.a{top:34px;right:0} .fl.b{left:0;top:48%;animation-delay:-2s;border-color:rgba(0,212,170,.5)} .fl.c{right:4%;bottom:46px;animation-delay:-4s;border-color:rgba(255,107,139,.5);box-shadow:0 0 22px rgba(255,107,139,.18)}
 
 /* planes */
 .sec-head{margin-top:84px;display:grid;gap:14px;max-width:760px}
@@ -145,11 +166,9 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
 
 @keyframes iris{to{background-position:300% 300%}}
 @keyframes sheen{0%,100%{background-position:150% 0}50%{background-position:-50% 0}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@media (max-width:1060px){.hero{grid-template-columns:1fr}.scene{min-height:400px}.plans{grid-template-columns:repeat(2,minmax(0,1fr))}.ptag{min-height:0}.base{grid-template-columns:1fr}}
-@media (max-width:600px){.plans{grid-template-columns:1fr}.wrap{padding-block:32px 48px}.fl.b{left:-4px}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:1060px){.hero{grid-template-columns:1fr}.scene{min-height:0}.plans{grid-template-columns:repeat(2,minmax(0,1fr))}.ptag{min-height:0}.base{grid-template-columns:1fr}}
+@media (max-width:600px){.plans{grid-template-columns:1fr}.wrap{padding-block:32px 48px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.m,.lead,.notif{opacity:1!important}.typw,.notif{display:none}}
 
 .cta{margin-top:64px;padding:40px 28px;border-radius:16px;border:1px solid var(--border);background:linear-gradient(135deg,rgba(124,77,255,.14),rgba(0,212,170,.06));display:grid;gap:12px;justify-items:start}.cta h2{font-size:clamp(1.6rem,3.2vw,2.3rem)}.cta p{margin:0;color:var(--ink);max-width:52ch}.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}.btn{display:inline-flex;align-items:center;padding:14px 28px;border-radius:8px;background:var(--p);color:#fff;text-decoration:none;font-weight:600;font-size:.95rem;transition:transform .2s}.btn:hover{transform:translateY(-2px)}.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text)}
 .fnote{margin:36px 0 0;color:var(--muted);font-size:.78rem;font-family:var(--mono)}
@@ -221,17 +240,24 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
       <p class="copy">Cinco formas de empezar, de la web sencilla al sistema completo con agente de IA. <b>Una sola alta, cuota mensual</b> y puedes irte cuando quieras.</p>
       <div class="chips"><span class="chip">Sin permanencia</span><span class="chip">Precios sin IVA</span><span class="chip">Operativo en 5-7 días laborables</span></div>
     </div>
-    <div class="scene" aria-hidden="true">
-      <div class="ring"></div><div class="floor"></div>
-      <div class="glass"><i class="br tl"></i><i class="br br2"></i>
-        <div class="gh"><i>✦</i><div><b>Tu negocio, nivel a nivel</b><span>Cada plan se apoya en el anterior</span></div></div>
-        <div class="step"><span class="dot"></span>Una web que te encuentra<small>WEB</small></div>
-        <div class="step"><span class="dot"></span>Un agente que atiende 24/7<small>IA</small></div>
-        <div class="step on"><span class="dot"></span>Panel y aviso a tu móvil<small>CORE</small></div>
+    <div class="scene" role="img" aria-label="Simulación ilustrativa: un cliente reserva cita con el asistente de IA y el negocio recibe un aviso en el móvil">
+      <div class="col">
+      <div class="phone" aria-hidden="true"><div class="screen"><span class="isl"></span>
+        <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
+        <div class="notif"><small>Nuevo contacto · aviso al móvil</small>Marta pide cita mañana a las 18:30</div>
+        <div class="chath"><i>✦</i><div><b>Asistente IA</b><span><span class="dot"></span>En línea</span></div></div>
+        <div class="msgs">
+          <div class="m u k1">Hola, ¿tenéis hueco mañana por la tarde?</div>
+          <div class="m a k2">¡Hola! Mañana tengo 17:00 y 18:30. ¿Cuál te viene mejor?</div>
+          <div class="m u k3">A las 18:30, por favor</div>
+          <div class="m a k4">Perfecto. ¿Me dices tu nombre y tu móvil para confirmarla?</div>
+          <div class="lead"><b>Contacto guardado</b>Marta · mañana 18:30 · el negocio lo recibe al instante</div>
+        </div>
+        <div class="typw"><div class="typ t1"><i></i><i></i><i></i></div><div class="typ t2"><i></i><i></i><i></i></div></div>
+        <div class="inp">Escribe un mensaje…</div>
+      </div></div>
+      <div class="sim">Simulación ilustrativa</div>
       </div>
-      <span class="fl a"><span class="dot"></span>Responde 24/7</span>
-      <span class="fl b"><span class="dot"></span>Sin permanencia</span>
-      <span class="fl c"><span class="dot"></span>Contacto al móvil</span>
     </div>
   </section>
 
