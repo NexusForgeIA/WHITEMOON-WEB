@@ -1,0 +1,114 @@
+/* /calculadora-donaciones/ · capa holográfica (prefijo dnh-). Solo decoración:
+   no toca texto, orden ni tamaños. Anima únicamente transform/opacity/background-position,
+   y solo mientras el bloque está en pantalla (clase .dnh-on puesta por wm-dn-holo.js). */
+:root{--dnh-c:#4db8ff;--dnh-d:#ff6b8b}
+@property --dnh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes dnh-gira{to{--dnh-ang:360deg}}
+@keyframes dnh-rota{to{transform:rotate(360deg)}}
+@keyframes dnh-barre{0%{transform:translateY(-70%)}100%{transform:translateY(70%)}}
+@keyframes dnh-brilla{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes dnh-avanza{to{background-position:0 40px,0 0}}
+@keyframes dnh-flota{50%{transform:translateY(-10px)}}
+@keyframes dnh-pulso{50%{opacity:.35}}
+
+/* Fondo de sección: rejilla fina + resplandor */
+.dnh > .sec,.dnh > .sec-alt,.dnh > .calc-cta{position:relative;overflow:hidden}
+.dnh > .sec::before,.dnh > .sec-alt::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--dnh-x,82%) 0%,rgba(124,77,255,.13),transparent 70%),
+    linear-gradient(rgba(157,112,255,.06) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.06) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 75% at 50% 0%,#000 20%,transparent 78%);mask-image:radial-gradient(120% 75% at 50% 0%,#000 20%,transparent 78%)}
+.dnh > .sec:nth-of-type(even)::before,.dnh > .sec-alt::before{--dnh-x:14%}
+.dnh > .sec > .wrap,.dnh > .sec-alt > .wrap{position:relative;z-index:1}
+.dnh > .sec::after,.dnh > .sec-alt::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:0;
+  background:linear-gradient(90deg,transparent,var(--p,#7c4dff) 25%,var(--g,#00d4aa) 50%,var(--dnh-c) 75%,transparent);opacity:.45}
+
+/* Títulos con degradado holográfico */
+.dnh .sec-h{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dnh h1.sec-h em{font-style:normal;background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(124,77,255,.4))}
+
+/* ---- HERO ---- */
+.dnh > .sec:first-of-type::after{height:46%;top:auto;bottom:-2px;opacity:.55;z-index:0;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.dnh > .sec:first-of-type.dnh-on::after{animation:dnh-avanza 4s linear infinite}
+.dnh .hdr.c{position:relative}
+.dnh .hdr.c::before{content:"";position:absolute;left:50%;top:50%;width:min(520px,92%);aspect-ratio:1;margin:calc(min(520px,92%)/-2) 0 0 calc(min(520px,92%)/-2);
+  border-radius:50%;pointer-events:none;z-index:-1;opacity:.5;
+  background:conic-gradient(from 0deg,transparent 0 60%,rgba(77,184,255,.5) 75%,transparent 90%),
+             repeating-radial-gradient(circle,transparent 0 46px,rgba(157,112,255,.14) 46px 47px);
+  -webkit-mask-image:radial-gradient(circle,transparent 30%,#000 31%,#000 70%,transparent 71%);mask-image:radial-gradient(circle,transparent 30%,#000 31%,#000 70%,transparent 71%)}
+.dnh .sec.dnh-on .hdr.c::before{animation:dnh-rota 22s linear infinite}
+.dnh .hdr.c::after{content:"";position:absolute;left:-10%;right:-10%;top:0;bottom:0;pointer-events:none;z-index:-1;transform:translateY(-70%);
+  background:linear-gradient(180deg,transparent 43%,rgba(124,77,255,.06) 47%,rgba(77,184,255,.16) 50%,rgba(124,77,255,.06) 53%,transparent 57%)}
+.dnh .sec.dnh-on .hdr.c::after{animation:dnh-barre 7s linear infinite}
+
+/* ---- Tarjeta de la calculadora ---- */
+.dnh .calc-card{position:relative;isolation:isolate;border-color:transparent;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.08),rgba(13,13,26,.78) 40%,rgba(0,212,170,.05));
+  box-shadow:0 0 60px -18px rgba(124,77,255,.45),inset 0 0 40px -22px rgba(77,184,255,.5)}
+.dnh .calc-card::before,.dnh .calc-out-card::before,.dnh .calc-cta-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;
+  background:conic-gradient(from var(--dnh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);opacity:.7}
+.dnh .dnh-on .calc-card::before,.dnh .dnh-on .calc-out-card::before,.dnh .calc-cta.dnh-on .calc-cta-card::before{animation:dnh-gira 9s linear infinite}
+/* Esquinas HUD */
+.dnh .calc-card::after,.dnh .calc-cta-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+
+/* Entradas */
+.dnh .calc-input,.dnh .calc-select{transition:border-color .25s,box-shadow .25s}
+.dnh .calc-input:focus,.dnh .calc-select:focus{outline:none;border-color:var(--dnh-c);box-shadow:0 0 0 3px rgba(77,184,255,.16),0 0 18px -4px rgba(77,184,255,.5)}
+
+/* Resultados: paneles holográficos con brillo que barre */
+.dnh .calc-out-card{position:relative;overflow:hidden;isolation:isolate;border-color:transparent;
+  background:linear-gradient(160deg,rgba(124,77,255,.14),rgba(0,212,170,.06))}
+.dnh .calc-out-card:last-child{background:linear-gradient(160deg,rgba(0,212,170,.16),rgba(124,77,255,.12))}
+.dnh .calc-out-num{text-shadow:0 0 18px rgba(157,112,255,.55)}
+.dnh .calc-out-card:last-child .calc-out-num{color:#7af0d6;text-shadow:0 0 20px rgba(0,212,170,.6)}
+.dnh .calc-out-card > div{position:relative;z-index:1}
+.dnh .calc-out-card::after{content:"";position:absolute;top:0;bottom:0;left:0;width:60%;pointer-events:none;z-index:2;transform:translateX(-120%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.1),transparent)}
+.dnh .dnh-on .calc-out-card::after{animation:dnh-brilla 5s ease-in-out infinite}
+.dnh .dnh-on .calc-out-card:nth-child(2)::after{animation-delay:.5s}
+.dnh .dnh-on .calc-out-card:nth-child(3)::after{animation-delay:1s}
+.dnh .calc-detail{border:1px solid rgba(77,184,255,.14);border-left:2px solid var(--g,#00d4aa)}
+
+/* FAQ */
+.dnh .faq-item{position:relative;border-bottom:0;padding-left:14px;transition:background .25s}
+.dnh .faq-item::before{content:"";position:absolute;left:0;top:10%;bottom:10%;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--p,#7c4dff),var(--g,#00d4aa),var(--dnh-c));opacity:.55}
+.dnh .faq-item::after{content:"";position:absolute;left:14px;right:0;bottom:0;height:1px;background:linear-gradient(90deg,rgba(124,77,255,.4),transparent)}
+.dnh .faq-item:hover{background:linear-gradient(90deg,rgba(124,77,255,.07),transparent)}
+
+/* Calculadoras relacionadas y hub */
+.dnh .sec-alt a[href^="/"]{position:relative;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.dnh .sec-alt a[href^="/"]::after{content:"";position:absolute;top:0;bottom:0;left:0;width:55%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(157,112,255,.2),transparent);transition:transform .7s}
+.dnh .sec-alt a[href^="/"]:hover{transform:translateY(-3px);border-color:var(--dnh-c)!important;box-shadow:0 8px 26px -10px rgba(77,184,255,.55)}
+.dnh .sec-alt a[href^="/"]:hover::after{transform:translateX(230%)}
+.dnh > section:not([class]){position:relative;overflow:hidden}
+.dnh > section:not([class])::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--p,#7c4dff) 25%,var(--g,#00d4aa) 50%,var(--dnh-c) 75%,transparent);opacity:.5}
+
+/* Puente final */
+.dnh .calc-cta-card{position:relative;isolation:isolate;border-color:transparent;box-shadow:0 0 50px -20px rgba(124,77,255,.5)}
+.dnh .calc-cta-acts,.dnh .calc-cta-txt{position:relative;z-index:1}
+
+@media(max-width:600px){
+  .dnh .hdr.c::before{opacity:.35}
+  .dnh > .sec:first-of-type::after{height:34%}
+}
+@media(prefers-reduced-motion:reduce){
+  .dnh *,.dnh *::before,.dnh *::after{animation:none!important;transition:none!important}
+}
