@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora IRPF 2025 por tramos · Madrid y Cataluña · WhiteMoon</title>
+<meta name="description" content="Calculadora IRPF por tramos con la escala estatal de la AEAT y la autonómica de Madrid y Cataluña. Cuota, tipo medio y desglose. Gratis y orientativa.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="WhiteMoon Agencia de IA">
+<link rel="canonical" href="https://whitemoon.es/calculadora-irpf/">
+<meta property="og:title" content="Calculadora IRPF 2025 por tramos · Madrid y Cataluña · WhiteMoon">
+<meta property="og:description" content="Calculadora IRPF por tramos con la escala estatal de la AEAT y la autonómica de Madrid y Cataluña. Cuota, tipo medio y desglose. Gratis y orientativa.">
+<meta property="og:url" content="https://whitemoon.es/calculadora-irpf/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="WhiteMoon &middot; Agencia de IA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
+<meta name="theme-color" content="#7c4dff">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "WebApplication", "name": "Calculadora IRPF por tramos 2025 · WhiteMoon", "description": "Calcula la cuota del IRPF aplicando la escala estatal de la AEAT y la autonómica de Madrid y Cataluña sobre tu base liquidable general.", "url": "https://whitemoon.es/calculadora-irpf/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "es", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "publisher": {"@type": "Organization", "name": "WhiteMoon Agencia de IA", "url": "https://whitemoon.es/"}}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "WhiteMoon", "item": "https://whitemoon.es/"}, {"@type": "ListItem", "position": 2, "name": "Calculadora IRPF", "item": "https://whitemoon.es/calculadora-irpf/"}]}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Cómo se calcula el IRPF por tramos?", "acceptedAnswer": {"@type": "Answer", "text": "Se aplica a la base liquidable general la escala estatal y la autonómica de tu comunidad: cada tramo paga su tipo solo por la parte de base que cae en él. De la cuota resultante se resta la cuota que saldría de aplicar la misma escala al mínimo personal y familiar. Esta calculadora hace exactamente ese cálculo con las tablas oficiales que ves en la página."}}, {"@type": "Question", "name": "¿Qué es el mínimo personal y familiar?", "acceptedAnswer": {"@type": "Answer", "text": "Es la parte de la renta que no se grava por considerarse necesaria para cubrir las necesidades básicas del contribuyente. En la escala estatal de 2025 el mínimo del contribuyente es de 5.550 euros anuales, con 1.150 euros más si tienes más de 65 años y 1.400 euros adicionales si superas los 75. Madrid fija sus propias cifras para su tramo autonómico y esta calculadora las aplica."}}, {"@type": "Question", "name": "¿Qué comunidades incluye esta calculadora?", "acceptedAnswer": {"@type": "Answer", "text": "De momento la escala autonómica de la Comunidad de Madrid y la de Cataluña, más la escala estatal. Si eliges otra comunidad, el resultado muestra solo la parte estatal y te lo indica de forma explícita. Iremos añadiendo comunidades a medida que verifiquemos sus tablas con fuente oficial."}}, {"@type": "Question", "name": "¿Sirve para calcular mi nómina o mi declaración completa?", "acceptedAnswer": {"@type": "Answer", "text": "No. Calcula la cuota del IRPF sobre la base liquidable general que tú indiques. No incluye deducciones, descendientes ni ascendientes, ni el resto de la declaración. Es una estimación orientativa y no sustituye a la AEAT ni a un asesor fiscal."}}]}
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=2026092301">
+<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/wm-track.js?v=2026060302"></script>
+<script defer src="/assets/calc-lead.js?v=2026060402"></script>
+<link rel="stylesheet" href="/assets/wm-nav.css?v=2026092902">
+<style>
+.calc-card{background:rgba(13,13,26,.75);border:1px solid rgba(124,77,255,.2);border-radius:18px;padding:32px 28px;max-width:780px;margin:0 auto}
+.calc-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:600px){.calc-cols{grid-template-columns:1fr}}
+.calc-row{margin-bottom:18px}
+.calc-label{display:block;margin-bottom:8px;font-size:13px;color:#f0f0f5}
+.calc-input,.calc-select{width:100%;padding:11px 14px;background:#0d0d1a;border:1px solid rgba(124,77,255,.3);border-radius:10px;color:#fff;font-family:inherit;font-size:14px}
+.calc-out{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}@media(max-width:600px){.calc-out{grid-template-columns:1fr}}
+.calc-out-card{background:rgba(124,77,255,.08);border:1px solid rgba(124,77,255,.18);border-radius:12px;padding:18px 14px;text-align:center}
+.calc-out-card.pagar{background:rgba(239,68,68,.08);border-color:rgba(239,68,68,.3)}
+.calc-out-card.devolver{background:rgba(0,212,170,.08);border-color:rgba(0,212,170,.3)}
+.calc-out-num{font-size:1.4rem;font-weight:800;color:#9d70ff;letter-spacing:-.03em;margin-bottom:4px;line-height:1.1}
+.calc-out-card.pagar .calc-out-num{color:#fca5a5}
+.calc-out-card.devolver .calc-out-num{color:#5eead4}
+.calc-out-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#8888a0}
+.related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
+.related-card{background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:12px;padding:18px;color:inherit;text-decoration:none;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.related-card:hover{background:rgba(124,77,255,.12)}
+.related-ico{font-size:1.4rem;line-height:1}
+.irpf-t{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 4px}
+.irpf-t caption{text-align:left;font-weight:700;color:#f0f0f5;padding:10px 0 8px;font-size:14px}
+.irpf-t th,.irpf-t td{padding:8px 10px;border-bottom:1px solid rgba(124,77,255,.18);text-align:right;color:#cfcfe0}
+.irpf-t th:first-child,.irpf-t td:first-child{text-align:left}
+.irpf-t th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#8888a0;font-weight:600}
+.irpf-wrap{max-width:780px;margin:0 auto;overflow-x:auto}
+.irpf-det{width:100%;border-collapse:collapse;font-size:13px;margin:0}
+.irpf-det td{padding:7px 4px;border-bottom:1px solid rgba(124,77,255,.14);color:#cfcfe0}
+.irpf-det td:last-child{text-align:right;font-weight:600;color:#f0f0f5}
+.irpf-note{font-size:12px;color:#8888a0;line-height:1.6}
+</style>
+<script defer src="/assets/wm-nav.js?v=2026092902"></script>
+</head>
+<body>
+
+<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
+<nav class="wm-nav" aria-label="Navegación principal">
+  <div class="wm-nav__row">
+    <a class="wm-nav__logo" href="/">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
+      <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+    </a>
+
+    <div class="wm-nav__center">
+      <a href="/inteligencia-artificial/">IA</a>
+      <div class="wm-nav__dd">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="wm-nav__menu" role="menu">
+          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
+        </div>
+      </div>
+      <a href="/precios/">Precios</a>
+      <a href="/desarrollo-software/">Software a medida</a>
+      <a href="/contacto/">Contacto</a>
+    </div>
+
+    <div class="wm-nav__right">
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+    </div>
+  </div>
+</nav>
+<aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
+  <span class="wm-drawer__label">Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
+  <a class="wm-drawer__link" href="/spark/">Spark</a>
+  <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
+  <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
+  <a class="wm-drawer__link" href="/precios/">Precios</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
+  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+</aside>
+
+<main>
+  <div class="wrap" style="padding-top:90px">
+    <div style="display:flex;gap:8px;font-size:.78rem;color:var(--muted);margin-bottom:24px">
+      <a href="/" style="color:var(--p2);text-decoration:none">WhiteMoon</a><span>›</span> Calculadora IRPF
+    </div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="hdr c">
+        <h1 class="sec-h">Calculadora <em>IRPF por tramos</em> 2025</h1>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Introduce tu base liquidable general y elige comunidad: aplica la escala estatal de la AEAT y la autonómica de Madrid o Cataluña, resta el mínimo personal y te enseña la cuota tramo a tramo. Estimación orientativa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="calc-card">
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="ir-base">Base liquidable general anual (€)</label>
+            <input type="number" id="ir-base" class="calc-input" value="35000" min="0" max="2000000" step="500" oninput="calcIR()">
+            <p style="font-size:11px;color:#8888a0;margin:6px 0 0">Es un dato que pones tú. Tu base liquidable la ves en el borrador de la AEAT.</p>
+          </div>
+          <div class="calc-row">
+            <label class="calc-label" for="ir-ccaa">Comunidad autónoma</label>
+            <select id="ir-ccaa" class="calc-select" onchange="calcIR()">
+              <option value="madrid" selected>Comunidad de Madrid</option>
+              <option value="cataluna">Cataluña</option>
+              <option value="otra">Otra comunidad (solo parte estatal)</option>
+            </select>
+            <p style="font-size:11px;color:#8888a0;margin:6px 0 0">Las demás comunidades se irán añadiendo con su tabla verificada.</p>
+          </div>
+        </div>
+        <div class="calc-cols">
+          <div class="calc-row">
+            <label class="calc-label" for="ir-edad">Edad del contribuyente</label>
+            <select id="ir-edad" class="calc-select" onchange="calcIR()">
+              <option value="0" selected>65 años o menos</option>
+              <option value="1">Más de 65 años</option>
+              <option value="2">Más de 75 años</option>
+            </select>
+            <p style="font-size:11px;color:#8888a0;margin:6px 0 0">Solo afecta al mínimo del contribuyente.</p>
+          </div>
+          <div class="calc-row">
+            <span class="calc-label">Qué no incluye</span>
+            <p style="font-size:12px;color:#8888a0;margin:6px 0 0;line-height:1.6">Sin deducciones, descendientes ni ascendientes. Es el cálculo de la cuota sobre la base general.</p>
+          </div>
+        </div>
+
+        <div class="calc-out">
+          <div class="calc-out-card"><div class="calc-out-num" id="ir-est">0 €</div><div class="calc-out-lbl">Cuota estatal</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="ir-aut">0 €</div><div class="calc-out-lbl" id="ir-aut-lbl">Cuota autonómica</div></div>
+          <div class="calc-out-card pagar"><div class="calc-out-num" id="ir-total">0 €</div><div class="calc-out-lbl">Cuota total · tipo medio <span id="ir-medio">0 %</span></div></div>
+        </div>
+
+        <table class="irpf-det" aria-label="Desglose del cálculo"><tbody id="ir-det"></tbody></table>
+        <p class="irpf-note" id="ir-aviso" style="margin:12px 0 0"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div class="irpf-wrap">
+        <span class="sec-label">Tablas oficiales usadas</span>
+        <h2 class="sec-h" style="margin-bottom:10px">Escalas del IRPF 2025</h2>
+        <p class="irpf-note" style="margin:0 0 14px">Cada tramo paga su tipo solo por la parte de base que cae en él. La cuota de la columna es la acumulada al inicio del tramo, tal como la publican las fuentes.</p>
+        <table class="irpf-t"><caption>Escala estatal 2025</caption><thead><tr><th scope="col">Base liquidable desde (€)</th><th scope="col">Hasta (€)</th><th scope="col">Cuota hasta el inicio del tramo (€)</th><th scope="col">Tipo del tramo</th></tr></thead><tbody><tr><td>0</td><td>12.450</td><td>0</td><td>9,5 %</td></tr><tr><td>12.450</td><td>20.200</td><td>1.182,75</td><td>12 %</td></tr><tr><td>20.200</td><td>35.200</td><td>2.112,75</td><td>15 %</td></tr><tr><td>35.200</td><td>60.000</td><td>4.362,75</td><td>18,5 %</td></tr><tr><td>60.000</td><td>300.000</td><td>8.950,75</td><td>22,5 %</td></tr><tr><td>300.000</td><td>en adelante</td><td>62.950,75</td><td>24,5 %</td></tr></tbody></table>
+        <p class="irpf-note" style="margin:0 0 22px">Fuente: <a href="https://sede.agenciatributaria.gob.es/Sede/en_gb/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c15-calculo-impuesto-determinacion-cuotas-integras/gravamen-base-liquidable-general/gravamen-estatal.html" target="_blank" rel="noopener" style="color:var(--p2)">Agencia Tributaria, manual práctico IRPF 2025 · gravamen estatal</a>. Mínimo del contribuyente: 5.550 € (+1.150 € si hay más de 65 años; +1.400 € si hay más de 75), según el <a href="https://sede.agenciatributaria.gob.es/Sede/ayuda/manuales-videos-folletos/manuales-practicos/irpf-2025/c14-adecuacion-impuesto-circunstancias-personales/minimo-contribuyente.html" target="_blank" rel="noopener" style="color:var(--p2)">manual de la AEAT</a>.</p>
+        <table class="irpf-t"><caption>Escala autonómica de la Comunidad de Madrid</caption><thead><tr><th scope="col">Base liquidable desde (€)</th><th scope="col">Hasta (€)</th><th scope="col">Cuota hasta el inicio del tramo (€)</th><th scope="col">Tipo del tramo</th></tr></thead><tbody><tr><td>0</td><td>13.362,22</td><td>0</td><td>8,5 %</td></tr><tr><td>13.362,22</td><td>19.004,63</td><td>1.135,79</td><td>10,7 %</td></tr><tr><td>19.004,63</td><td>35.425,68</td><td>1.739,53</td><td>12,8 %</td></tr><tr><td>35.425,68</td><td>57.320,40</td><td>3.841,42</td><td>17,4 %</td></tr><tr><td>57.320,40</td><td>en adelante</td><td>7.651,10</td><td>20,5 %</td></tr></tbody></table>
+        <p class="irpf-note" style="margin:0 0 22px">Fuente: <a href="https://www.bocm.es/boletin/CM_Orden_BOCM/2023/12/21/BOCM-20231221-2.PDF" target="_blank" rel="noopener" style="color:var(--p2)">Ley 13/2023, de 15 de diciembre (BOCM nº 303, 21-12-2023)</a>, aplicable desde el 1 de enero de 2023. Para su tramo autonómico, Madrid fija un mínimo del contribuyente de 5.956,65 € (+1.234,26 € si hay más de 65 años; +1.502,58 € si hay más de 75). No hemos localizado una norma posterior que modifique estas cifras para 2025.</p>
+        <table class="irpf-t"><caption>Escala autonómica de Cataluña</caption><thead><tr><th scope="col">Base liquidable desde (€)</th><th scope="col">Hasta (€)</th><th scope="col">Cuota hasta el inicio del tramo (€)</th><th scope="col">Tipo del tramo</th></tr></thead><tbody><tr><td>0</td><td>12.500</td><td>0</td><td>9,5 %</td></tr><tr><td>12.500</td><td>22.000</td><td>1.187,50</td><td>12,5 %</td></tr><tr><td>22.000</td><td>33.000</td><td>2.375</td><td>16 %</td></tr><tr><td>33.000</td><td>53.000</td><td>4.135</td><td>19 %</td></tr><tr><td>53.000</td><td>90.000</td><td>7.935</td><td>21,5 %</td></tr><tr><td>90.000</td><td>120.000</td><td>15.890</td><td>23,5 %</td></tr><tr><td>120.000</td><td>175.000</td><td>22.940</td><td>24,5 %</td></tr><tr><td>175.000</td><td>en adelante</td><td>36.415</td><td>25,5 %</td></tr></tbody></table>
+        <p class="irpf-note" style="margin:0">Fuente: <a href="https://www.hacienda.gob.es/sgfal/financiacionterritorial/autonomica/capitulo-ii-tributacion-autonomica-2025.pdf" target="_blank" rel="noopener" style="color:var(--p2)">Ministerio de Hacienda, tributación autonómica 2025</a>, vigente desde el 1 de enero de 2025. Para Cataluña usamos el mínimo estatal: el documento de Hacienda consultado no recoge un mínimo propio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap" style="text-align:center">
+      <h2 class="sec-h">¿Quieres que te llamemos?</h2>
+      <p style="color:var(--muted);max-width:640px;margin:14px auto 24px;line-height:1.7">Te explicamos cómo la IA puede ayudar a tu negocio. Sin compromiso.</p>
+      <form class="calc-lead-form" onsubmit="return wmCalcLeadSubmit(event,this,'calculadora-irpf','IRPF por tramos')" style="max-width:420px;margin:0 auto;display:flex;flex-direction:column;gap:10px">
+        <input type="text" name="nombre" placeholder="Tu nombre" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required style="padding:12px 14px;background:rgba(13,13,26,.6);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:10px;color:#fff;font-family:inherit;font-size:14px">
+        <input type="hidden" name="origen" value="calculadora-irpf">
+        <input type="hidden" name="mensaje" value="Lead desde calculadora IRPF por tramos">
+        <button type="submit" style="padding:13px 24px;background:var(--p,#7c4dff);color:#fff;border:0;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;font-family:inherit">Quiero que me llamen →</button>
+        <div class="calc-lead-ok" role="status" aria-live="polite" style="display:none;padding:14px;background:rgba(0,212,170,.12);border:1px solid rgba(0,212,170,.4);border-radius:10px;color:#5eead4;text-align:center;font-size:14px"></div>
+      </form>
+    </div>
+  </section>
+  <section class="calc-cta">
+    <div class="calc-cta-card">
+      <div class="calc-cta-txt">
+        <h2 class="calc-cta-h">¿Gestoría o asesoría?</h2>
+        <p class="calc-cta-p">Si llevas una gestoría o asesoría, un agente de IA atiende las consultas de tus clientes y capta leads 24/7, también fuera de horario.</p>
+      </div>
+      <div class="calc-cta-acts">
+        <a class="calc-cta-btn calc-cta-btn--p" href="https://wa.me/34643199580?text=Hola%2C%20he%20usado%20la%20calculadora%20de%20IRPF%20de%20WhiteMoon%20y%20me%20gustar%C3%ADa%20hablar." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        <a class="calc-cta-btn" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_calc_reunion',{from:'calc-irpf'})">Agendar reunión</a>
+      </div>
+      <p class="calc-cta-links"><a href="/demos/" onclick="wmTrack('click_calc_to_demo',{from:'calc-irpf'})">o prueba la demo guiada →</a></p>
+    </div>
+  </section>
+
+  <section class="sec-alt">
+    <div class="wrap">
+      <div style="max-width:760px;margin:0 auto">
+        <span class="sec-label">Preguntas frecuentes</span>
+        <h2 class="sec-h" style="margin-bottom:24px">FAQ IRPF por tramos</h2>
+        <div class="faq-item"><div class="faq-q">¿Cómo se calcula el IRPF por tramos?</div><div class="faq-a">Se aplica a la base liquidable general la escala estatal y la autonómica de tu comunidad: cada tramo paga su tipo solo por la parte de base que cae en él. De la cuota resultante se resta la cuota que saldría de aplicar la misma escala al mínimo personal y familiar. Esta calculadora hace exactamente ese cálculo con las tablas oficiales que ves en la página.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Qué es el mínimo personal y familiar?</div><div class="faq-a">Es la parte de la renta que no se grava por considerarse necesaria para cubrir las necesidades básicas del contribuyente. En la escala estatal de 2025 el mínimo del contribuyente es de 5.550 euros anuales, con 1.150 euros más si tienes más de 65 años y 1.400 euros adicionales si superas los 75. Madrid fija sus propias cifras para su tramo autonómico y esta calculadora las aplica.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Qué comunidades incluye esta calculadora?</div><div class="faq-a">De momento la escala autonómica de la Comunidad de Madrid y la de Cataluña, más la escala estatal. Si eliges otra comunidad, el resultado muestra solo la parte estatal y te lo indica de forma explícita. Iremos añadiendo comunidades a medida que verifiquemos sus tablas con fuente oficial.</div></div>
+        <div class="faq-item"><div class="faq-q">¿Sirve para calcular mi nómina o mi declaración completa?</div><div class="faq-a">No. Calcula la cuota del IRPF sobre la base liquidable general que tú indiques. No incluye deducciones, descendientes ni ascendientes, ni el resto de la declaración. Es una estimación orientativa y no sustituye a la AEAT ni a un asesor fiscal.</div></div>
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div style="max-width:880px;margin:0 auto">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:#fff;margin:0 0 8px">Más calculadoras fiscales</h2>
+        <p style="color:var(--muted);margin:0 0 20px">Otras herramientas relacionadas.</p>
+        <div class="related-grid">
+          <a class="related-card" href="/calculadora-irpf-autonomos/"><strong style="color:#fff">IRPF Autónomos</strong><span style="font-size:.82rem;color:#9090b0">Modelo 130 y resultado de la declaración</span></a>
+          <a class="related-card" href="/calculadora-nomina/"><strong style="color:#fff">Nómina</strong><span style="font-size:.82rem;color:#9090b0">IRPF y Seguridad Social</span></a>
+          <a class="related-card" href="/calculadora-cuota-autonomos/"><strong style="color:#fff">Cuota de autónomos</strong><span style="font-size:.82rem;color:#9090b0">Cuota mensual de la Seguridad Social</span></a>
+          <a class="related-card" href="/calculadora-iva-autonomos/"><strong style="color:#fff">IVA autónomos</strong><span style="font-size:.82rem;color:#9090b0">Trimestral y anual</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
+<footer id="contacto" class="wm-foot">
+  <div class="wm-foot__grid">
+
+    <div class="wm-foot__brand">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+        <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
+        <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
+      </a>
+      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <div class="wm-foot__social">
+        <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></a>
+        <a href="https://www.linkedin.com/company/whitemoon-agencia-ia/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="https://www.youtube.com/@whitemoonweb" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.3-1C17.1 2.7 12 2.7 12 2.7s-5.1 0-8.3.2c-.4.1-1.4.1-2.3 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2 .9 2.5 1 1.8.2 7.1.2 7.1.2s5.1 0 8.3-.3c.4-.1 1.4-.1 2.3-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.7 13.5V7.9l6.2 2.8-6.2 2.8z"/></svg></a>
+        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></a><!--/email_off-->
+      </div>
+    </div>
+
+    <div>
+      <h3>Servicios</h3>
+      <ul>
+        <li><a href="/diseno-web/">Diseño web</a></li>
+        <li><a href="/spark/">Spark</a></li>
+        <li><a href="/core/">Core Spark Web</a></li>
+        <li><a href="/agente-ia-citas/">Agente IA Citas</a></li>
+        <li><a href="/desarrollo-software/">Software a medida</a></li>
+        <li><a href="/marketing/">Marketing</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Recursos</h3>
+      <ul>
+        <li><a href="/demos/">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Comparativas</h3>
+      <ul>
+        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Contacto</h3>
+      <div class="wm-foot__contact">
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wm-foot__bottom">
+    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div class="wm-foot__legal">
+      <a href="/aviso-legal/">Aviso Legal</a>
+      <a href="/politica-privacidad/">Privacidad</a>
+      <a href="/politica-cookies/">Cookies</a>
+    </div>
+    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+  </div>
+</footer>
+
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script>
+/* Escalas oficiales 2025: mismas cifras que las tablas visibles de la página. [límite superior, tipo %] */
+var ESCALA_ESTATAL = [[12450,9.5],[20200,12],[35200,15],[60000,18.5],[300000,22.5],[Infinity,24.5]];
+var ESCALAS_AUT = {
+  madrid: [[13362.22,8.5],[19004.63,10.7],[35425.68,12.8],[57320.4,17.4],[Infinity,20.5]],
+  cataluna: [[12500,9.5],[22000,12.5],[33000,16],[53000,19],[90000,21.5],[120000,23.5],[175000,24.5],[Infinity,25.5]]
+};
+/* Mínimo del contribuyente: base, más de 65, más de 75 (adicional). */
+var MIN_ESTATAL = [5550, 1150, 1400];
+var MIN_AUT = { madrid: [5956.65, 1234.26, 1502.58] };
+
+function cuotaEscala(base, esc){var c=0,prev=0;for(var i=0;i<esc.length;i++){var lim=esc[i][0],t=esc[i][1];if(base>lim){c+=(lim-prev)*t/100;prev=lim;}else{c+=(base-prev)*t/100;return c;}}return c;}
+function minimo(m, edad){var v=m[0];if(edad>=1)v+=m[1];if(edad>=2)v+=m[2];return v;}
+function fmt(x){return x.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function fe(x){return fmt(x)+' €';}
+
+function calcIR(){
+  var base=Math.max(0,parseFloat(document.getElementById('ir-base').value)||0);
+  var ccaa=document.getElementById('ir-ccaa').value;
+  var edad=parseInt(document.getElementById('ir-edad').value,10)||0;
+
+  var minE=minimo(MIN_ESTATAL,edad);
+  var estBruta=cuotaEscala(base,ESCALA_ESTATAL);
+  var estMin=cuotaEscala(Math.min(minE,base),ESCALA_ESTATAL);
+  var est=Math.max(0,estBruta-estMin);
+
+  var aut=0,autBruta=0,autMin=0,minA=0,hayAut=ESCALAS_AUT[ccaa]!==undefined;
+  if(hayAut){
+    minA=minimo(MIN_AUT[ccaa]||MIN_ESTATAL,edad);
+    autBruta=cuotaEscala(base,ESCALAS_AUT[ccaa]);
+    autMin=cuotaEscala(Math.min(minA,base),ESCALAS_AUT[ccaa]);
+    aut=Math.max(0,autBruta-autMin);
+  }
+  var total=est+aut;
+  var medio=base>0?total/base*100:0;
+
+  document.getElementById('ir-est').textContent=fe(est);
+  document.getElementById('ir-aut').textContent=hayAut?fe(aut):'No calculada';
+  document.getElementById('ir-aut-lbl').textContent=ccaa==='madrid'?'Cuota autonómica (Madrid)':(ccaa==='cataluna'?'Cuota autonómica (Cataluña)':'Cuota autonómica');
+  document.getElementById('ir-total').textContent=fe(total);
+  document.getElementById('ir-medio').textContent=fmt(medio)+' %';
+
+  var rows=[['Base liquidable general',fe(base)],
+    ['Escala estatal aplicada a la base',fe(estBruta)],
+    ['Menos: escala estatal aplicada al mínimo ('+fe(Math.min(minE,base))+')','− '+fe(estMin)],
+    ['Cuota estatal',fe(est)]];
+  if(hayAut){
+    rows.push(['Escala autonómica aplicada a la base',fe(autBruta)]);
+    rows.push(['Menos: escala autonómica aplicada al mínimo ('+fe(Math.min(minA,base))+')','− '+fe(autMin)]);
+    rows.push(['Cuota autonómica',fe(aut)]);
+  }
+  rows.push(['Cuota total (estatal + autonómica)',fe(total)]);
+  document.getElementById('ir-det').innerHTML=rows.map(function(r){return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>';}).join('');
+
+  var av='Estimación orientativa del IRPF 2025 sobre la base liquidable general, sin deducciones ni descendientes. ';
+  if(!hayAut) av+='Has elegido otra comunidad: se muestra solo la parte estatal; la autonómica no está calculada y el total es inferior al real.';
+  else if(ccaa==='cataluna') av+='Para Cataluña se usa el mínimo estatal (ver fuentes más abajo).';
+  else av+='Para la parte autonómica de Madrid se usa el mínimo propio de la Comunidad (ver fuentes más abajo).';
+  document.getElementById('ir-aviso').textContent=av;
+}
+calcIR();
+</script>
+</body>
+</html>
