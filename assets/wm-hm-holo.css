@@ -1,0 +1,83 @@
+/* Home (/) · capa holográfica futurista (prefijo hmh-) en todos los bloques y cards MENOS el hero.
+   Solo decoración: no toca texto, orden ni contenido. Anima únicamente transform/opacity/
+   background-position y el ángulo del borde (@property), y solo mientras el bloque está en pantalla
+   (.hmh-on, la pone wm-hm-holo.js). Los selectores van con :is() y su id para ganar a los estilos
+   en línea de la home. Con movimiento reducido todo queda quieto. */
+:root{--hmh-c:#4db8ff;--hmh-g:#00d4aa}
+@property --hmh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes hmh-gira{to{--hmh-ang:360deg}}
+@keyframes hmh-barre{0%{transform:translateY(-120%)}100%{transform:translateY(120%)}}
+@keyframes hmh-pulso{50%{opacity:.35}}
+@keyframes hmh-brilla{0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+
+/* ---------- Fondo de cada bloque: rejilla fina + resplandor + línea superior ---------- */
+.hmh :is(#servicios,#dolor,#como-funciona,#alcance,#prueba,#faq,#zonas,#hablamos){position:relative;overflow:hidden;isolation:isolate}
+.hmh :is(#servicios,#dolor,#como-funciona,#alcance,#prueba,#faq,#zonas,#hablamos)::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--hmh-x,84%) 0%,rgba(124,77,255,.14),transparent 70%),
+    linear-gradient(rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%)}
+.hmh #dolor::before,.hmh #alcance::before,.hmh #faq::before{--hmh-x:14%}
+.hmh #como-funciona::before,.hmh #zonas::before{--hmh-x:50%}
+.hmh :is(#servicios,#dolor,#como-funciona,#alcance,#prueba,#faq,#zonas,#hablamos)::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:1;opacity:.5;
+  background:linear-gradient(90deg,transparent,var(--p,#7c4dff) 25%,var(--hmh-g) 50%,var(--hmh-c) 75%,transparent)}
+.hmh :is(#servicios>.wrap,#dolor>.wrap,#como-funciona>.hf-wrap,#alcance>.wrap,#prueba>.wrap,#faq>.faq-wrap,#zonas>.wrap,#hablamos>.wrap){position:relative;z-index:2}
+
+/* ---------- Títulos con degradado holográfico ---------- */
+.hmh :is(#servicios .sec-h,#dolor .sec-h,#alcance .sec-h,#prueba .sec-h,#zonas .sec-h,#como-funciona h2,#faq h2,#hablamos h2){background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hmh :is(#dolor .sec-lbl){text-shadow:0 0 14px rgba(157,112,255,.45)}
+.hmh .wm-path__title span{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 12px rgba(124,77,255,.35))}
+
+/* ---------- Cards: borde cónico animado + esquinas HUD ---------- */
+.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card){position:relative;isolation:isolate;border-color:transparent;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.09),rgba(17,17,24,.82) 42%,rgba(0,212,170,.05));
+  background-color:var(--card,#111118);
+  box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
+.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card):hover{box-shadow:0 0 64px -14px rgba(124,77,255,.7),inset 0 0 38px -22px rgba(77,184,255,.7)}
+.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card)::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.7;
+  background:conic-gradient(from var(--hmh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.hmh .hmh-on :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card)::before,.hmh :is(#servicios,#dolor,#como-funciona,#alcance,#prueba,#faq,#zonas,#hablamos).hmh-on :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card)::before{animation:hmh-gira 9s linear infinite}
+.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card)::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#hablamos .cf-card)>*{position:relative;z-index:1}
+.hmh #faq details>*{position:relative;z-index:1}
+
+/* ---------- Iconos con halo, números y detalles ---------- */
+.hmh :is(.wm-path__ico,#dolor .ico){box-shadow:0 0 0 1px rgba(157,112,255,.4),0 0 24px -4px rgba(124,77,255,.75)}
+.hmh :is(#servicios,#dolor).hmh-on :is(.wm-path__ico,#dolor .ico){animation:hmh-pulso 3.6s ease-in-out infinite}
+.hmh .hf-n{text-shadow:0 0 18px rgba(157,112,255,.8)}
+.hmh .wm-path__name{text-shadow:0 0 12px rgba(0,212,170,.5)}
+.hmh #zonas .zn{box-shadow:0 0 18px -8px rgba(124,77,255,.6)}
+.hmh #zonas .zn:hover{border-color:var(--hmh-c);box-shadow:0 0 22px -6px rgba(77,184,255,.7)}
+
+/* ---------- Botones y formulario ---------- */
+.hmh :is(#servicios .wm-path__cta,#hablamos .cf-meet,#hablamos .cf-send){position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(157,112,255,.5),0 12px 34px -12px rgba(124,77,255,.8),0 0 24px -8px rgba(77,184,255,.6)}
+.hmh :is(#hablamos .cf-meet,#hablamos .cf-send)::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent)}
+.hmh #hablamos.hmh-on :is(.cf-meet,.cf-send)::after{animation:hmh-brilla 5s ease-in-out infinite}
+.hmh #hablamos .cf-field input:focus{border-color:var(--hmh-c);box-shadow:0 0 0 3px rgba(77,184,255,.16),0 0 18px -4px rgba(77,184,255,.5)}
+.hmh #hablamos .cf-card{overflow:hidden}
+
+/* ---------- Escáner que barre los bloques con cards ---------- */
+.hmh :is(#dolor,#como-funciona,#alcance,#prueba,#servicios)>:is(.wrap,.hf-wrap)::after{content:"";position:absolute;left:-6%;right:-6%;top:0;bottom:0;pointer-events:none;z-index:-1;transform:translateY(-120%);opacity:0;
+  background:linear-gradient(180deg,transparent 44%,rgba(124,77,255,.05) 48%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.05) 52%,transparent 56%)}
+.hmh :is(#dolor,#como-funciona,#alcance,#prueba,#servicios).hmh-on>:is(.wrap,.hf-wrap)::after{opacity:1;animation:hmh-barre 8s linear infinite}
+
+/* ---------- Móvil: menos capas ---------- */
+@media (max-width:900px){
+  .hmh :is(#dolor,#como-funciona,#alcance,#prueba,#servicios)>:is(.wrap,.hf-wrap)::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .hmh #servicios,.hmh #dolor,.hmh #como-funciona,.hmh #alcance,.hmh #prueba,.hmh #faq,.hmh #zonas,.hmh #hablamos,.hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card),
+  .hmh :is(#servicios .wm-path,#dolor .pain,#como-funciona .hf-step,#alcance .al,#prueba .pb,#faq details,#hablamos .cf-card)::before,.hmh :is(#servicios,#dolor,#como-funciona,#alcance,#prueba,#faq,#zonas,#hablamos)::before,.hmh *::after{animation:none!important}
+}
