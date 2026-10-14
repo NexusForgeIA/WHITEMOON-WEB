@@ -1,0 +1,105 @@
+/* /calculadora-irpf/ · capa holográfica futurista (prefijo irh-). Solo decoración: no toca texto,
+   cifras ni lógica. Anima únicamente transform/opacity/background-position y el ángulo del borde
+   (@property), y solo mientras el bloque está en pantalla (.irh-on, la pone wm-ir-holo.js).
+   Con movimiento reducido todo queda quieto. */
+:root{--irh-c:#4db8ff;--irh-d:#ff6b8b;--irh-g:#00d4aa}
+@property --irh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes irh-gira{to{--irh-ang:360deg}}
+@keyframes irh-barre{0%{transform:translateY(-120%)}100%{transform:translateY(120%)}}
+@keyframes irh-brilla{0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+@keyframes irh-avanza{to{background-position:0 40px,0 0}}
+@keyframes irh-pulso{50%{opacity:.4}}
+
+/* ---------- Secciones: rejilla fina + resplandor + línea superior ---------- */
+.irh main > section{position:relative;overflow:hidden;isolation:isolate}
+.irh main > section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--irh-x,84%) 0%,rgba(124,77,255,.14),transparent 70%),
+    linear-gradient(rgba(157,112,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.05) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%)}
+.irh main > section:nth-of-type(even)::before{--irh-x:14%}
+.irh main > section::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:1;opacity:.45;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--irh-g) 50%,var(--irh-c) 75%,transparent)}
+.irh main > section > *{position:relative;z-index:2}
+
+/* ---------- Títulos con degradado holográfico ---------- */
+.irh .sec-h,.irh .calc-cta-h{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.irh .sec-h em{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(124,77,255,.4))}
+.irh .sec-label{text-shadow:0 0 14px rgba(157,112,255,.45)}
+
+/* ---------- HERO: suelo en perspectiva ---------- */
+.irh main > section:first-of-type::after{inset:auto 0 -2px 0;left:0;right:0;top:auto;height:80%;opacity:.5;z-index:0;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.irh main > section:first-of-type.irh-on::after{animation:irh-avanza 4s linear infinite}
+
+/* ---------- Calculadora y tarjetas: borde cónico animado + esquinas HUD ---------- */
+.irh .calc-card,.irh .calc-cta-card,.irh .irpf-wrap .irpf-t{position:relative;isolation:isolate}
+.irh .calc-card,.irh .calc-cta-card{border-color:transparent;overflow:hidden;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.1),rgba(13,13,26,.85) 42%,rgba(0,212,170,.05));
+  background-color:#0d0d1a;
+  box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
+.irh .calc-card::before,.irh .calc-cta-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.75;
+  background:conic-gradient(from var(--irh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.irh .irh-on .calc-card::before,.irh .irh-on .calc-cta-card::before{animation:irh-gira 9s linear infinite}
+.irh .calc-card::after,.irh .calc-cta-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.irh .calc-card > *,.irh .calc-cta-card > *{position:relative;z-index:1}
+
+/* ---------- Escáner que recorre la calculadora ---------- */
+.irh .calc-card > .irh-scan{position:absolute;left:0;right:0;top:0;height:46%;pointer-events:none;z-index:1;opacity:.5;transform:translateY(-120%);
+  background:linear-gradient(180deg,transparent,rgba(77,184,255,.1) 60%,rgba(0,212,170,.22) 100%);border-bottom:1px solid rgba(0,212,170,.5)}
+.irh .irh-on .calc-card > .irh-scan{animation:irh-barre 6s ease-in-out infinite}
+
+/* ---------- Inputs y resultados ---------- */
+.irh .calc-input,.irh .calc-select{border-color:rgba(124,77,255,.4);box-shadow:inset 0 0 18px -12px rgba(77,184,255,.7)}
+.irh .calc-input:focus,.irh .calc-select:focus{outline:none;border-color:var(--irh-g);box-shadow:0 0 0 1px rgba(0,212,170,.55),0 0 22px -6px rgba(0,212,170,.7)}
+.irh .calc-out-card{position:relative;overflow:hidden;box-shadow:0 0 30px -14px rgba(124,77,255,.8),inset 0 0 26px -18px rgba(77,184,255,.7)}
+.irh .calc-out-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,transparent,var(--irh-c),transparent);opacity:.7}
+.irh .calc-out-card.pagar{box-shadow:0 0 30px -14px rgba(239,68,68,.8),inset 0 0 26px -18px rgba(255,107,139,.6)}
+.irh .calc-out-num{text-shadow:0 0 20px rgba(157,112,255,.5)}
+.irh .calc-out-card.pagar .calc-out-num{text-shadow:0 0 20px rgba(255,107,139,.5)}
+.irh .irh-on .calc-out-card::after{animation:irh-pulso 3.6s ease-in-out infinite}
+.irh .calc-out-card:nth-child(2)::after{animation-delay:-1.2s}
+.irh .calc-out-card:nth-child(3)::after{animation-delay:-2.4s}
+
+/* ---------- Tablas: cabecera luminosa y filas con haz ---------- */
+.irh .irpf-t th{color:#b9a6ff;border-bottom-color:rgba(157,112,255,.45);text-shadow:0 0 12px rgba(124,77,255,.35)}
+.irh .irpf-t tbody tr:hover td,.irh .irpf-det tr:hover td{background:rgba(124,77,255,.07)}
+.irh .irpf-t td,.irh .irpf-det td{border-bottom-color:transparent;background-image:linear-gradient(90deg,rgba(124,77,255,.4),rgba(0,212,170,.3) 50%,transparent);background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat}
+
+/* ---------- Tarjetas relacionadas ---------- */
+.irh .related-card{position:relative;overflow:hidden;box-shadow:0 0 30px -16px rgba(124,77,255,.7)}
+.irh .related-card:hover{border-color:rgba(0,212,170,.55);box-shadow:0 0 28px -10px rgba(77,184,255,.7)}
+.irh .related-card::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.08),transparent)}
+.irh .irh-on .related-card::before{animation:irh-brilla 7s ease-in-out infinite}
+.irh .related-card:nth-child(even)::before{animation-delay:-3.5s}
+
+/* ---------- Botones ---------- */
+.irh .calc-cta-btn--p,.irh .calc-lead-form button[type=submit]{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(157,112,255,.5),0 12px 34px -10px rgba(124,77,255,.8),0 0 26px -6px rgba(77,184,255,.6)}
+.irh .calc-cta-btn--p::after,.irh .calc-lead-form button[type=submit]::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent)}
+.irh .irh-on .calc-cta-btn--p::after,.irh .irh-on .calc-lead-form button[type=submit]::after{animation:irh-brilla 5s ease-in-out infinite}
+
+/* ---------- Móvil: sin capas pesadas ---------- */
+@media(max-width:600px){
+  .irh main > section:first-of-type::after,.irh .calc-card > .irh-scan{display:none}
+  .irh main > section::before{background-size:auto,32px 32px,32px 32px}
+}
+@media(prefers-reduced-motion:reduce){
+  .irh *,.irh *::before,.irh *::after{animation:none!important}
+}
