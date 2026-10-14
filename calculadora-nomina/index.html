@@ -43,7 +43,8 @@
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --dark: #0D0B1A;
@@ -58,8 +59,9 @@
   --white: #FFFFFF;
   --mid: #9A96B8;
   --border: rgba(124,77,255,0.18);
-  --serif: 'Syne', sans-serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
+  --serif: 'Sora', system-ui, sans-serif;
+  --sans: 'Sora', system-ui, sans-serif;
+  --num: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -208,6 +210,18 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 @media(max-width:900px){.calc-grid{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr 1fr;}.faq-grid{grid-template-columns:1fr;}.cta-gestoria{grid-template-columns:1fr;}.cta-precio{text-align:left;}}
 @media(max-width:600px){nav{padding:0 4%;}.hero{padding:3rem 5% 2.5rem;}.calc-section{padding:2.5rem 5%;}.info-section{padding:2.5rem 5%;}.field-row{grid-template-columns:1fr;}.info-grid{grid-template-columns:1fr;}.cta-gestoria{padding:2rem;}.neto-amount{font-size:2.2rem;}footer{flex-direction:column;text-align:center;}}
 
+/* TIPOGRAFÍA: Sora para el texto y JetBrains Mono (cifras de ancho fijo) para los números */
+.hero h1{letter-spacing:-.035em;line-height:1.1;font-weight:700}
+.hero-desc,.info-desc,.faq-a{font-weight:300;line-height:1.75}
+.neto-amount,.desglose-val,.tipo-val,.range-val,.neto-anual,.field input[type=number],.tramos-table td+td,.tramo-pct,.precio-num{font-family:var(--num);font-variant-numeric:tabular-nums;font-feature-settings:"zero" 1}
+.neto-amount{font-weight:700;letter-spacing:-.04em;font-size:2.6rem}
+.neto-amount span{font-family:var(--sans);font-weight:400;letter-spacing:0}
+.neto-anual{font-size:.74rem;letter-spacing:-.01em}
+.desglose-val{font-weight:600;font-size:.84rem}
+.tipo-val{font-weight:700;font-size:1.2rem}
+.range-val{font-weight:600;font-size:.74rem}
+.tramos-table td{font-size:.8rem}
+@media(max-width:600px){.neto-amount{font-size:2rem}}
 /* CTA calculadora -> embudo /demos/ (misma regla que assets/site.css) */
 .calc-cta{padding:0 6% 56px;}
 .calc-cta-card{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:26px 30px;background:var(--card,#111118);border:1px solid var(--border,rgba(124,77,255,.22));border-radius:16px;}
@@ -220,13 +234,14 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 @media(max-width:900px){.calc-cta-card{padding:24px;gap:18px;}}
 @media(max-width:600px){.calc-cta{padding:0 5% 40px;}.calc-cta-card{flex-direction:column;align-items:stretch;padding:22px 20px;gap:16px;}.calc-cta-txt{flex:0 0 auto;width:100%;}.calc-cta-btn{width:100%;text-align:center;}}
 </style>
+<link rel="stylesheet" href="/assets/wm-nm-holo.css?v=2026101402">
   <!-- Analytics (GA4 + Clarity) con consentimiento de cookies -->
   <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
   <script defer src="/assets/wm-track.js?v=2026052801"></script>
 <script defer src="/assets/calc-lead.js?v=2026060402"></script>
   <link rel="dns-prefetch" href="//region1.google-analytics.com">
 </head>
-<body>
+<body class="nmh">
 
 <nav>
   <a href="https://whitemoon.es" class="nav-logo">White<span>Moon</span></a>
@@ -274,11 +289,12 @@ footer a{color:var(--purple-soft);text-decoration:none;}
           </select>
         </div>
         <div class="field">
-          <label for="declaracion">Declaración (conjunta: cónyuge sin rentas)</label>
+          <label for="declaracion">Declaración</label>
           <select id="declaracion" onchange="calcular()">
             <option value="indiv" selected>Individual</option>
             <option value="conjunta">Conjunta</option>
           </select>
+          <p style="font-size:.72rem;color:var(--mid);margin:.35rem 0 0;line-height:1.4">Conjunta: solo si tu cónyuge no tiene rentas.</p>
         </div>
       </div>
 
@@ -527,7 +543,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 <!-- INTERNAL LINKING — herramientas y landings relacionadas -->
 <section class="info-section" style="padding:60px 6% 80px">
   <div style="max-width:1080px;margin:0 auto">
-    <h2 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-.02em">También te puede interesar</h2>
+    <h2 style="font-family:var(--serif);font-size:1.6rem;font-weight:800;color:#fff;margin:0 0 8px;letter-spacing:-.02em">También te puede interesar</h2>
     <p style="color:var(--muted, #8888a0);font-size:.92rem;margin:0 0 28px">Otras herramientas gratuitas de WhiteMoon y servicios relacionados.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px">
       <a href="/calculadora-itp/" style="display:flex;flex-direction:column;gap:8px;padding:22px;background:rgba(124,77,255,.06);border:1px solid rgba(124,77,255,.22);border-radius:14px;color:inherit;text-decoration:none;transition:all .2s">
@@ -560,7 +576,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
       <div style="line-height:1;flex-shrink:0;color:var(--p,#9d70ff)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:28px;height:28px;display:inline-block;vertical-align:middle;color:currentColor;flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg></div>
       <div style="flex:1;min-width:0">
         <div style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(124,77,255,.2),rgba(0,212,170,.15));color:#c4b3ff;font-size:.6rem;font-weight:700;padding:3px 10px;border-radius:50px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px">Hub central</div>
-        <div style="font-family:'Syne',sans-serif;font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
+        <div style="font-family:var(--serif);font-size:1rem;color:#fff;font-weight:700;letter-spacing:-.01em;margin-bottom:2px">Costes, eficiencia y ROI con IA · Guía completa</div>
         <div style="font-size:.82rem;color:#9090b0;line-height:1.5">Todas las calculadoras + casos por sector + el coste real de no automatizar tu pyme.</div>
       </div>
       <div style="color:#9d70ff;font-weight:700;font-size:.9rem;flex-shrink:0">Ver hub central →</div>
@@ -721,5 +737,6 @@ syncRange(30000);
 
 </script>
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/wm-nm-holo.js?v=2026101402" defer></script>
 </body>
 </html>
