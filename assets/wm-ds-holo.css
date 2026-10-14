@@ -1,0 +1,133 @@
+/* /desarrollo-software/ · capa holográfica futurista (prefijo dsh-). Solo decoración:
+   no toca texto, orden ni contenido. Anima únicamente transform/opacity/background-position
+   y el ángulo del borde (@property), y solo mientras el bloque está en pantalla (.dsh-on,
+   la pone wm-ds-holo.js). Las secciones #app-movil y #flujo-ia ya tienen su propio holograma
+   (wmapp-/wmflujo-): aquí no se tocan. Con movimiento reducido todo queda quieto. */
+:root{--dsh-c:#4db8ff;--dsh-d:#ff6b8b}
+@property --dsh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes dsh-gira{to{--dsh-ang:360deg}}
+@keyframes dsh-rota{to{transform:rotate(360deg)}}
+@keyframes dsh-barre{0%{transform:translateY(-120%)}100%{transform:translateY(120%)}}
+@keyframes dsh-brilla{0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+@keyframes dsh-avanza{to{background-position:0 40px,0 0}}
+@keyframes dsh-flota{50%{transform:translateY(-8px)}}
+@keyframes dsh-pulso{50%{opacity:.3}}
+
+/* ---------- Fondo de cada sección: rejilla fina + resplandor + línea superior ---------- */
+.dsh .sec:not(.wmapp-sec):not(.wmflujo-sec){position:relative;overflow:hidden;isolation:isolate}
+.dsh .sec:not(.wmapp-sec):not(.wmflujo-sec)::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--dsh-x,84%) 0%,rgba(124,77,255,.14),transparent 70%),
+    linear-gradient(rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%)}
+.dsh #construir::before{--dsh-x:12%}
+.dsh #consultoria::before{--dsh-x:50%}
+.dsh .sec:not(.wmapp-sec):not(.wmflujo-sec)::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:1;opacity:.5;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--g) 50%,var(--dsh-c) 75%,transparent)}
+.dsh .sec:not(.wmapp-sec):not(.wmflujo-sec) > .shell{position:relative;z-index:2}
+
+/* ---------- Títulos y acentos con degradado holográfico ---------- */
+.dsh h2,.dsh .hero h1{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.dsh .hero h1 span{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(124,77,255,.4))}
+.dsh .eyebrow{text-shadow:0 0 14px rgba(157,112,255,.45)}
+.dsh .hero__kicker{box-shadow:0 0 22px -6px rgba(124,77,255,.7)}
+.dsh .hero__kicker i{box-shadow:0 0 10px var(--g)}
+.dsh .hero.dsh-on .hero__kicker i{animation:dsh-pulso 2.6s ease-in-out infinite}
+
+/* ---------- HERO: suelo en perspectiva y proyector detrás del índice ---------- */
+.dsh .hero::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:36%;pointer-events:none;z-index:0;opacity:.5;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.dsh .hero.dsh-on::after{animation:dsh-avanza 4s linear infinite}
+.dsh .hero__grid{z-index:1}
+.dsh .idx{position:relative}
+.dsh .hero__grid > nav.idx{overflow:visible}
+.dsh .idx::after{content:"";position:absolute;left:50%;top:50%;width:150%;aspect-ratio:1;margin:-75% 0 0 -75%;border-radius:50%;pointer-events:none;z-index:-1;opacity:.5;
+  background:conic-gradient(from 0deg,transparent 0 62%,rgba(77,184,255,.45) 76%,transparent 90%),
+             repeating-radial-gradient(circle,transparent 0 46px,rgba(157,112,255,.14) 46px 47px);
+  -webkit-mask-image:radial-gradient(circle,transparent 26%,#000 27%,#000 66%,transparent 67%);mask-image:radial-gradient(circle,transparent 26%,#000 27%,#000 66%,transparent 67%)}
+.dsh .hero.dsh-on .idx::after{animation:dsh-rota 24s linear infinite}
+.dsh .hero.dsh-on .idx{animation:dsh-flota 7s ease-in-out infinite}
+.dsh .idx__h{position:relative;overflow:hidden}
+.dsh .idx__h::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(77,184,255,.22),transparent)}
+.dsh .hero.dsh-on .idx__h::after{animation:dsh-brilla 5s ease-in-out infinite}
+.dsh .idx__t{text-shadow:0 0 12px rgba(0,212,170,.6)}
+.dsh .idx a:hover{box-shadow:inset 2px 0 0 var(--g),0 0 22px -10px rgba(77,184,255,.8)}
+
+/* ---------- Tarjetas: borde cónico animado + esquinas HUD ---------- */
+.dsh .idx,.dsh .cap,.dsh .step,.dsh .cons .card{position:relative;isolation:isolate;border-color:transparent;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.09),rgba(17,17,24,.82) 42%,rgba(0,212,170,.05));
+  background-color:var(--card);
+  box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
+.dsh .idx::before,.dsh .cap::before,.dsh .cons .card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.7;
+  background:conic-gradient(from var(--dsh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.dsh .dsh-on .cap::before,.dsh .dsh-on .cons .card::before,.dsh .dsh-on.cons .card::before,.dsh .hero.dsh-on .idx::before{animation:dsh-gira 9s linear infinite}
+/* Esquinas HUD en tarjetas */
+.dsh .cap::after,.dsh .cons .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.dsh .idx > *,.dsh .cap > *,.dsh .cons .card > *{position:relative;z-index:1}
+.dsh .idx::after{z-index:-1}
+.dsh .cap{overflow:hidden}
+.dsh .cap:hover{box-shadow:0 0 64px -14px rgba(124,77,255,.7),inset 0 0 38px -22px rgba(77,184,255,.7)}
+.dsh .cap__i{box-shadow:0 0 0 1px rgba(157,112,255,.4),0 0 24px -4px rgba(124,77,255,.75)}
+.dsh .dsh-on .cap__i{animation:dsh-pulso 3.6s ease-in-out infinite}
+.dsh .cap:nth-child(even) .cap__i{animation-delay:-1.8s}
+.dsh .wmflujo-ver{text-shadow:0 0 12px rgba(0,212,170,.5)}
+
+/* ---------- ¿Te suena?: filas con haz de luz ---------- */
+.dsh .prob__row{position:relative;border-top-color:transparent;border-bottom-color:transparent}
+.dsh .prob__row::before,.dsh .prob__row::after{content:"";position:absolute;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,var(--p),var(--g) 45%,var(--dsh-c) 75%,transparent)}
+.dsh .prob__row::before{top:0}
+.dsh .prob__row:last-child::after{bottom:0}
+.dsh .prob__row:not(:last-child)::after{display:none}
+.dsh .prob__row{background:linear-gradient(90deg,rgba(124,77,255,.07),transparent 55%)}
+.dsh .prob__d svg{filter:drop-shadow(0 0 6px rgba(157,112,255,.9))}
+.dsh .prob__t{text-shadow:0 0 22px rgba(124,77,255,.25)}
+
+/* ---------- Cómo trabajamos: pasos como paneles HUD ---------- */
+.dsh .step{padding:26px 22px 24px;border-radius:18px;overflow:hidden;border-top:0}
+.dsh .step::before{top:0;left:22px;width:44px;height:2px;background:linear-gradient(90deg,var(--g),var(--dsh-c));box-shadow:0 0 12px var(--g);z-index:3}
+.dsh .step::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.55;
+  background:conic-gradient(from var(--dsh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.dsh .dsh-on .step::after{animation:dsh-gira 9s linear infinite}
+.dsh .step > *{position:relative;z-index:1}
+.dsh .step__n{text-shadow:0 0 18px rgba(157,112,255,.8)}
+
+/* ---------- Formulario: panel, campos con foco luminoso y botón ---------- */
+.dsh .cons .card{overflow:hidden}
+.dsh .f input:focus,.dsh .f textarea:focus{border-color:var(--dsh-c);box-shadow:0 0 0 3px rgba(77,184,255,.16),0 0 18px -4px rgba(77,184,255,.5)}
+.dsh .opt-pill input:checked + span{box-shadow:0 0 16px -3px rgba(124,77,255,.8)}
+.dsh .send{box-shadow:0 0 0 1px rgba(157,112,255,.5),0 14px 36px rgba(124,77,255,.35),0 0 26px -6px rgba(77,184,255,.6)}
+.dsh .btn--p{box-shadow:0 0 0 1px rgba(157,112,255,.5),0 10px 34px -10px rgba(124,77,255,.9),0 0 24px -6px rgba(77,184,255,.6)}
+
+/* ---------- Escáner que barre las secciones con tarjetas ---------- */
+.dsh #construir > .shell::after,.dsh #como-trabajamos > .shell::after,.dsh #te-suena > .shell::after{content:"";position:absolute;left:-6%;right:-6%;top:0;bottom:0;pointer-events:none;z-index:-1;transform:translateY(-120%);opacity:0;
+  background:linear-gradient(180deg,transparent 44%,rgba(124,77,255,.05) 48%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.05) 52%,transparent 56%)}
+.dsh #construir.dsh-on > .shell::after,.dsh #como-trabajamos.dsh-on > .shell::after,.dsh #te-suena.dsh-on > .shell::after{opacity:1;animation:dsh-barre 8s linear infinite}
+
+/* ---------- Móvil: menos capas, nada de desbordes ---------- */
+@media (max-width:900px){
+  .dsh .idx::after{display:none}
+  .dsh .hero.dsh-on .idx{animation:none}
+  .dsh #construir > .shell::after,.dsh #como-trabajamos > .shell::after,.dsh #te-suena > .shell::after{display:none}
+  .dsh .hero::after{height:26%}
+}
+@media (prefers-reduced-motion:reduce){
+  .dsh *,.dsh *::before,.dsh *::after{animation:none!important}
+}
