@@ -1,4 +1,4 @@
-/* /agente-ia-citas/ · capa holográfica futurista (prefijo ach-). Solo decoración:
+/* /agente-ia-citas/, /spark/ y /core/ · capa holográfica futurista (prefijo ach-). Solo decoración:
    no toca texto, orden ni tamaños. Anima únicamente transform/opacity/background-position
    y @property del ángulo del borde, y solo mientras el bloque está en pantalla (.ach-on,
    la pone wm-ac-holo.js). Sin movimiento reducido todo queda quieto. */
@@ -45,12 +45,21 @@
              repeating-radial-gradient(circle,transparent 0 46px,rgba(157,112,255,.14) 46px 47px);
   -webkit-mask-image:radial-gradient(circle,transparent 26%,#000 27%,#000 66%,transparent 67%);mask-image:radial-gradient(circle,transparent 26%,#000 27%,#000 66%,transparent 67%)}
 .ach .hero.ach-on .hero-visual::before{animation:ach-rota 24s linear infinite}
-.ach .hero-visual .chat{animation:none}
+.ach .hero-visual .chat,
+.ach .hero-visual .crm{animation:none}
 .ach .hero.ach-on .hero-visual{animation:ach-flota 7s ease-in-out infinite}
 
 /* ---------- Tarjetas: borde cónico animado + esquinas HUD ---------- */
-.ach .chat,.ach .demo-qr,.ach .strip-i,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol{position:relative;isolation:isolate}
-.ach .chat,.ach .demo-qr,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol{
+.ach .chat,.ach .demo-qr,.ach .strip-i,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol,
+
+/* ---------- Tarjetas: borde cónico animado + esquinas HUD ---------- */
+.ach .crm,
+
+/* ---------- Tarjetas: borde cónico animado + esquinas HUD ---------- */
+.ach .sector{position:relative;isolation:isolate}
+.ach .chat,.ach .demo-qr,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol,
+.ach .crm,
+.ach .sector{
   border-color:transparent;
   background:
     repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
@@ -58,15 +67,24 @@
   box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
 .ach .yn--si{background:repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),linear-gradient(160deg,rgba(0,212,170,.12),rgba(17,17,24,.82) 45%,rgba(124,77,255,.06))}
 .ach .yn--no{background:repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),linear-gradient(160deg,rgba(255,107,139,.08),rgba(17,17,24,.82) 45%,rgba(124,77,255,.05))}
-.ach .chat::before,.ach .demo-qr::before,.ach .step::before,.ach .incl-list::before,.ach .ask::before,.ach .yn::before,.ach .does-c::before,.ach .faq-item::before,.ach .contact-card::before,.ach .ccol::before,.ach .strip-i::before{
+.ach .chat::before,.ach .demo-qr::before,.ach .step::before,.ach .incl-list::before,.ach .ask::before,.ach .yn::before,.ach .does-c::before,.ach .faq-item::before,.ach .contact-card::before,.ach .ccol::before,.ach .strip-i::before,
+.ach .crm::before,
+.ach .sector::before{
   content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.7;
   background:conic-gradient(from var(--ach-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
   -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
           mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 .ach .ach-on .chat::before,.ach .ach-on .demo-qr::before,.ach .ach-on .step::before,.ach .ach-on .incl-list::before,.ach .ach-on .ask::before,.ach .ach-on .yn::before,.ach .ach-on .does-c::before,.ach .ach-on .faq-item::before,.ach .ach-on .contact-card::before,.ach .ach-on .ccol::before,
-.ach .ach-on.hero .chat::before,.ach .ach-on.hero .demo-qr::before{animation:ach-gira 9s linear infinite}
+.ach .ach-on.hero .chat::before,.ach .ach-on.hero .demo-qr::before,
+.ach .ach-on .crm::before,
+.ach .ach-on .sector::before,
+.ach .ach-on.hero .crm::before{animation:ach-gira 9s linear infinite}
 /* Esquinas HUD (solo donde ::after está libre) */
-.ach .chat::after,.ach .demo-qr::after,.ach .step::after,.ach .incl-list::after,.ach .yn::after,.ach .does-c::after,.ach .contact-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+.ach .chat::after,.ach .demo-qr::after,.ach .step::after,.ach .incl-list::after,.ach .yn::after,.ach .does-c::after,.ach .contact-card::after,
+/* Esquinas HUD (solo donde ::after está libre) */
+.ach .crm::after,
+/* Esquinas HUD (solo donde ::after está libre) */
+.ach .sector::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
   --k:rgba(0,212,170,.85);
   background:
     linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
@@ -76,11 +94,18 @@
 .ach .does-c::after{left:auto;right:0;top:0;width:100%}
 
 /* Chat: cabecera con línea de escaneo y reflejo */
-.ach .chat-head{position:relative;overflow:hidden}
-.ach .chat-head::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+.ach .chat-head,
+
+/* Chat: cabecera con línea de escaneo y reflejo */
+.ach .crm-head{position:relative;overflow:hidden}
+.ach .chat-head::after,
+.ach .crm-head::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
   background:linear-gradient(100deg,transparent,rgba(77,184,255,.22),transparent)}
-.ach .hero.ach-on .chat-head::after{animation:ach-brilla 5s ease-in-out infinite}
-.ach .chat .msg{box-shadow:0 0 18px -8px rgba(124,77,255,.55)}
+.ach .hero.ach-on .chat-head::after,
+.ach .hero.ach-on .crm-head::after{animation:ach-brilla 5s ease-in-out infinite}
+.ach .chat .msg,
+.ach .crm .msg,
+.ach .sector .msg{box-shadow:0 0 18px -8px rgba(124,77,255,.55)}
 .ach .chips span{box-shadow:0 0 14px -6px rgba(0,212,170,.55)}
 
 /* ---------- QR: marco de proyección ---------- */
@@ -110,6 +135,14 @@
 .ach .does-c,.ach .yn{overflow:hidden}
 .ach .yn > *,.ach .does-c > *{position:relative;z-index:1}
 
+/* Paneles de /core/ y tarjetas de sectores de /spark/ y /core/ */
+.ach .sector{overflow:hidden}
+.ach .sector > *,.ach .crm > *{position:relative;z-index:1}
+.ach .crm .kpi{box-shadow:inset 0 0 22px -14px rgba(77,184,255,.7)}
+.ach .crm .bar i{box-shadow:0 0 10px rgba(0,212,170,.7)}
+.ach .crm-row em{text-shadow:0 0 10px rgba(0,212,170,.6)}
+.ach .sector a:hover{box-shadow:0 0 18px -6px rgba(124,77,255,.8)}
+
 /* ---------- Escáner que barre las secciones con tarjetas ---------- */
 .ach .sec .wrap::after{content:"";position:absolute;left:-6%;right:-6%;top:0;bottom:0;pointer-events:none;z-index:-1;transform:translateY(-120%);opacity:0;
   background:linear-gradient(180deg,transparent 44%,rgba(124,77,255,.05) 48%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.05) 52%,transparent 56%)}
@@ -129,7 +162,13 @@
 .ach .btn--p{box-shadow:0 0 0 1px rgba(157,112,255,.5),0 10px 34px -10px rgba(124,77,255,.9),0 0 24px -6px rgba(77,184,255,.6)}
 
 /* Base opaca bajo los degradados (el hilo de pasos no debe verse a través) */
-.ach .chat,.ach .demo-qr,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol{background-color:var(--card)}
+.ach .chat,.ach .demo-qr,.ach .step,.ach .incl-list,.ach .ask,.ach .yn,.ach .does-c,.ach .faq-item,.ach .contact-card,.ach .ccol,
+
+/* Base opaca bajo los degradados (el hilo de pasos no debe verse a través) */
+.ach .crm,
+
+/* Base opaca bajo los degradados (el hilo de pasos no debe verse a través) */
+.ach .sector{background-color:var(--card)}
 
 /* ---------- Móvil: menos capas, nada de desbordes ---------- */
 @media (max-width:900px){
