@@ -1,0 +1,108 @@
+/* /calculadora-nomina/ · capa holográfica futurista (prefijo nmh-). Solo decoración: no toca texto,
+   cifras ni lógica. Anima únicamente transform/opacity/background-position y el ángulo del borde
+   (@property), y solo mientras el bloque está en pantalla (.nmh-on, la pone wm-nm-holo.js).
+   Con movimiento reducido todo queda quieto. */
+:root{--nmh-c:#4db8ff;--nmh-d:#ff6b8b;--nmh-g:#00d4aa}
+@property --nmh-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes nmh-gira{to{--nmh-ang:360deg}}
+@keyframes nmh-barre{0%{transform:translateY(-120%)}100%{transform:translateY(120%)}}
+@keyframes nmh-brilla{0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+@keyframes nmh-avanza{to{background-position:0 40px,0 0}}
+@keyframes nmh-pulso{50%{opacity:.4}}
+
+/* ---------- Secciones: rejilla fina + resplandor + línea superior ---------- */
+.nmh .hero,.nmh .calc-section,.nmh .info-section{position:relative;overflow:hidden;isolation:isolate}
+.nmh .hero::before,.nmh .calc-section::before,.nmh .info-section::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--nmh-x,84%) 0%,rgba(124,77,255,.15),transparent 70%),
+    linear-gradient(rgba(157,112,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.05) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%)}
+.nmh .calc-section::before{--nmh-x:14%}
+.nmh .calc-section::after,.nmh .info-section::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:1;opacity:.5;
+  background:linear-gradient(90deg,transparent,var(--purple) 25%,var(--nmh-g) 50%,var(--nmh-c) 75%,transparent)}
+.nmh .hero > *,.nmh .calc-grid,.nmh .info-section > *{position:relative;z-index:2}
+
+/* ---------- Títulos con degradado holográfico ---------- */
+.nmh .hero h1{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nmh .hero h1 em{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(124,77,255,.4))}
+.nmh .faq-title,.nmh .tramos-title{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nmh .faq-title em,.nmh .tramos-title em{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent}
+.nmh .hero-kicker{text-shadow:0 0 14px rgba(157,112,255,.45)}
+.nmh .badge{box-shadow:0 0 18px -8px rgba(124,77,255,.8)}
+
+/* ---------- HERO: suelo en perspectiva ---------- */
+.nmh .hero::after{content:"";position:absolute;inset:auto 0 -2px 0;height:75%;pointer-events:none;opacity:.5;z-index:0;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.nmh .hero.nmh-on::after{animation:nmh-avanza 4s linear infinite}
+
+/* ---------- Paneles: borde cónico animado + esquinas HUD ---------- */
+.nmh .calc-form,.nmh .calc-result,.nmh .cta-gestoria{position:relative;isolation:isolate;overflow:hidden;border-color:transparent;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.1),rgba(16,13,34,.88) 42%,rgba(0,212,170,.05));
+  background-color:var(--dark2);
+  box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
+.nmh .calc-form::before,.nmh .calc-result::before,.nmh .cta-gestoria::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.75;
+  background:conic-gradient(from var(--nmh-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.nmh .nmh-on .calc-form::before,.nmh .nmh-on .calc-result::before,.nmh .nmh-on .cta-gestoria::before{animation:nmh-gira 9s linear infinite}
+.nmh .calc-form::after,.nmh .calc-result::after,.nmh .cta-gestoria::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.nmh .calc-form > *,.nmh .calc-result > *,.nmh .cta-gestoria > *{position:relative;z-index:1}
+
+/* ---------- Neto destacado: halo y escáner ---------- */
+.nmh .neto-card{position:relative;overflow:hidden;box-shadow:0 0 38px -14px rgba(0,212,170,.7),inset 0 0 30px -18px rgba(0,212,170,.8)}
+.nmh .neto-card::before{content:"";position:absolute;left:0;right:0;top:0;height:50%;pointer-events:none;opacity:.55;transform:translateY(-120%);
+  background:linear-gradient(180deg,transparent,rgba(0,212,170,.12) 60%,rgba(77,184,255,.24) 100%);border-bottom:1px solid rgba(0,212,170,.55)}
+.nmh .nmh-on .neto-card::before{animation:nmh-barre 5s ease-in-out infinite}
+.nmh .neto-card > *{position:relative;z-index:1}
+.nmh .neto-amount{text-shadow:0 0 26px rgba(0,212,170,.55),0 0 2px rgba(255,255,255,.6)}
+.nmh .tipo-card{box-shadow:0 0 26px -14px rgba(124,77,255,.8),inset 0 0 22px -16px rgba(77,184,255,.7)}
+.nmh .tipo-val{text-shadow:0 0 18px rgba(157,112,255,.55)}
+
+/* ---------- Campos, barra y desglose ---------- */
+.nmh .field input,.nmh .field select{border-color:rgba(124,77,255,.4);box-shadow:inset 0 0 18px -12px rgba(77,184,255,.7)}
+.nmh .field input:focus,.nmh .field select:focus{border-color:var(--nmh-g);box-shadow:0 0 0 1px rgba(0,212,170,.55),0 0 22px -6px rgba(0,212,170,.7)}
+.nmh .range-wrap input[type=range]::-webkit-slider-thumb{box-shadow:0 0 0 3px rgba(124,77,255,.25),0 0 16px rgba(124,77,255,.9)}
+.nmh .barra-bg{box-shadow:0 0 18px -8px rgba(124,77,255,.8)}
+.nmh .barra-neto{box-shadow:0 0 12px rgba(0,212,170,.7)}
+.nmh .barra-irpf{box-shadow:0 0 12px rgba(255,77,109,.6)}
+.nmh .desglose-row{border-bottom-color:transparent;background-image:linear-gradient(90deg,rgba(124,77,255,.4),rgba(0,212,170,.3) 50%,transparent);background-size:100% 1px;background-position:0 100%;background-repeat:no-repeat}
+.nmh .desglose-row:last-child{background-image:none}
+
+/* ---------- Tabla de tramos, info y FAQ ---------- */
+.nmh .tramos-table{border-color:rgba(124,77,255,.35);box-shadow:0 0 44px -22px rgba(124,77,255,.8)}
+.nmh .tramos-table th{text-shadow:0 0 12px rgba(124,77,255,.4)}
+.nmh .info-grid,.nmh .faq-grid{position:relative;box-shadow:0 0 44px -24px rgba(124,77,255,.7)}
+.nmh .info-card,.nmh .faq-item{position:relative;overflow:hidden}
+.nmh .info-card::before,.nmh .faq-item::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.06),transparent)}
+.nmh .nmh-on .info-card::before,.nmh .nmh-on .faq-item::before{animation:nmh-brilla 8s ease-in-out infinite}
+.nmh .info-card:nth-child(even)::before,.nmh .faq-item:nth-child(even)::before{animation-delay:-4s}
+.nmh .info-icon{box-shadow:0 0 0 1px rgba(157,112,255,.4),0 0 22px -4px rgba(124,77,255,.75)}
+.nmh .nmh-on .info-icon{animation:nmh-pulso 3.6s ease-in-out infinite}
+
+/* ---------- Botones ---------- */
+.nmh .calc-btn,.nmh .calc-cta-btn,.nmh .calc-lead-form button[type=submit]{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(157,112,255,.5),0 12px 34px -10px rgba(124,77,255,.8),0 0 26px -6px rgba(77,184,255,.6)}
+.nmh .calc-btn::after,.nmh .calc-lead-form button[type=submit]::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent)}
+.nmh .nmh-on .calc-btn::after,.nmh .nmh-on .calc-lead-form button[type=submit]::after{animation:nmh-brilla 5s ease-in-out infinite}
+
+/* ---------- Móvil: sin capas pesadas ---------- */
+@media(max-width:600px){
+  .nmh .hero::after,.nmh .neto-card::before{display:none}
+  .nmh .hero::before,.nmh .calc-section::before,.nmh .info-section::before{background-size:auto,32px 32px,32px 32px}
+}
+@media(prefers-reduced-motion:reduce){
+  .nmh *,.nmh *::before,.nmh *::after{animation:none!important}
+}
