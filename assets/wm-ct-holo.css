@@ -1,0 +1,96 @@
+/* /contacto/ · capa holográfica futurista (prefijo cth-). Solo decoración: no toca texto, orden
+   ni contenido. Anima únicamente transform/opacity/background-position y el ángulo del borde
+   (@property), y solo mientras el bloque está en pantalla (.cth-on, la pone wm-ct-holo.js).
+   Con movimiento reducido todo queda quieto. */
+:root{--cth-c:#4db8ff;--cth-d:#ff6b8b;--cth-g:#00d4aa}
+@property --cth-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+@keyframes cth-gira{to{--cth-ang:360deg}}
+@keyframes cth-rota{to{transform:rotate(360deg)}}
+@keyframes cth-barre{0%{transform:translateY(-120%)}100%{transform:translateY(120%)}}
+@keyframes cth-brilla{0%{transform:translateX(-130%)}100%{transform:translateX(230%)}}
+@keyframes cth-avanza{to{background-position:0 40px,0 0}}
+@keyframes cth-pulso{50%{opacity:.35}}
+
+/* ---------- Fondo de cada sección: rejilla fina + resplandor + línea superior ---------- */
+.cth .ct-main,.cth .ct-donde{position:relative;overflow:hidden;isolation:isolate}
+.cth .ct-main::before,.cth .ct-donde::before,.cth .ct-hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(640px 340px at var(--cth-x,84%) 0%,rgba(124,77,255,.14),transparent 70%),
+    linear-gradient(rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px,
+    linear-gradient(90deg,rgba(157,112,255,.055) 1px,transparent 1px) 0 0/44px 44px;
+  -webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 18%,transparent 78%)}
+.cth .ct-main::before{--cth-x:14%}
+.cth .ct-donde::before{--cth-x:50%}
+.cth .ct-main::after,.cth .ct-donde::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;z-index:1;opacity:.5;
+  background:linear-gradient(90deg,transparent,var(--p) 25%,var(--cth-g) 50%,var(--cth-c) 75%,transparent)}
+.cth .ct-main > .ct-wrap,.cth .ct-donde > .ct-wrap{position:relative;z-index:2}
+
+/* ---------- Títulos y acentos con degradado holográfico ---------- */
+.cth .ct-hero h1,.cth .ct-card h2,.cth .ct-donde h2{background:linear-gradient(100deg,#fff 0%,#f0f0f5 45%,#c9b8ff 75%,#8fd8ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cth .ct-hero h1 .hl{background:linear-gradient(100deg,#b69bff,#7c4dff 30%,#4db8ff 62%,#00d4aa);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(124,77,255,.4))}
+.cth .ct-eyebrow{box-shadow:0 0 22px -6px rgba(124,77,255,.7);text-shadow:0 0 14px rgba(157,112,255,.45)}
+
+/* ---------- HERO: suelo en perspectiva ---------- */
+.cth .ct-hero{isolation:isolate}
+.cth .ct-hero::after{inset:auto 0 -2px 0;height:70%;opacity:.5;z-index:0;
+  transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+  background:linear-gradient(rgba(124,77,255,.4) 1px,transparent 1px) 0 0/100% 40px,
+             linear-gradient(90deg,rgba(0,212,170,.28) 1px,transparent 1px) 0 0/56px 100%;
+  -webkit-mask-image:linear-gradient(0deg,#000 5%,transparent 85%);mask-image:linear-gradient(0deg,#000 5%,transparent 85%)}
+.cth .ct-hero.cth-on::after{animation:cth-avanza 4s linear infinite}
+.cth .ct-hero .ct-wrap{z-index:1}
+
+/* ---------- Tarjetas y mapa: borde cónico animado + esquinas HUD ---------- */
+.cth .ct-card,.cth .ct-mapa{position:relative;isolation:isolate;border-color:transparent;
+  background:
+    repeating-linear-gradient(0deg,rgba(255,255,255,.016) 0 1px,transparent 1px 4px),
+    linear-gradient(160deg,rgba(124,77,255,.09),rgba(17,17,24,.82) 42%,rgba(0,212,170,.05));
+  background-color:var(--card);
+  box-shadow:0 0 56px -20px rgba(124,77,255,.45),inset 0 0 38px -24px rgba(77,184,255,.55)}
+.cth .ct-card{overflow:hidden}
+.cth .ct-card::before,.cth .ct-mapa::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:3;opacity:.7;
+  background:conic-gradient(from var(--cth-ang),#7c4dff,#00d4aa,#4db8ff,#ff6b8b,#7c4dff);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.cth .cth-on .ct-card::before,.cth .cth-on .ct-mapa::before,.cth .ct-main.cth-on .ct-card::before,.cth .ct-donde.cth-on .ct-mapa::before{animation:cth-gira 9s linear infinite}
+.cth .ct-card::after,.cth .ct-mapa::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  --k:rgba(0,212,170,.85);
+  background:
+    linear-gradient(var(--k),var(--k)) 12px 12px/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) 12px 12px/1.5px 14px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/14px 1.5px no-repeat,
+    linear-gradient(var(--k),var(--k)) calc(100% - 12px) calc(100% - 12px)/1.5px 14px no-repeat}
+.cth .ct-card > *{position:relative;z-index:1}
+.cth .ct-mapa > *{position:relative;z-index:1}
+
+/* ---------- Canales: iconos con halo y filas con haz de luz ---------- */
+.cth .ct-ch__ico,.cth .ct-nap .ico{box-shadow:0 0 0 1px rgba(157,112,255,.4),0 0 24px -4px rgba(124,77,255,.75)}
+.cth .cth-on .ct-ch__ico,.cth .cth-on .ct-nap .ico{animation:cth-pulso 3.6s ease-in-out infinite}
+.cth .ct-ch:nth-of-type(even) .ct-ch__ico,.cth .ct-nap li:nth-child(even) .ico{animation-delay:-1.8s}
+.cth a.ct-ch:hover{box-shadow:inset 2px 0 0 var(--cth-g),0 0 22px -10px rgba(77,184,255,.8)}
+.cth .ct-ch,.cth .ct-nap li{border-top-color:transparent;position:relative}
+.cth .ct-ch:not(:first-of-type)::before,.cth .ct-nap li:not(:first-child)::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;pointer-events:none;
+  background:linear-gradient(90deg,var(--p),var(--cth-g) 45%,var(--cth-c) 75%,transparent);opacity:.55}
+.cth .ct-ch__v{text-shadow:0 0 18px rgba(124,77,255,.3)}
+
+/* ---------- Botones y formulario ---------- */
+.cth .ct-meet,.cth .ct-send{position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(157,112,255,.5),0 12px 34px -10px rgba(124,77,255,.8),0 0 26px -6px rgba(77,184,255,.6)}
+.cth .ct-meet::after,.cth .ct-send::after{content:"";position:absolute;top:0;bottom:0;left:0;width:45%;pointer-events:none;transform:translateX(-130%);
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent)}
+.cth .cth-on .ct-meet::after,.cth .cth-on .ct-send::after{animation:cth-brilla 5s ease-in-out infinite}
+.cth .ct-field input:focus{border-color:var(--cth-c);box-shadow:0 0 0 3px rgba(77,184,255,.16),0 0 18px -4px rgba(77,184,255,.5)}
+.cth .ct-consent input{filter:drop-shadow(0 0 5px rgba(124,77,255,.7))}
+
+/* ---------- Escáner que barre las dos tarjetas ---------- */
+.cth .ct-main > .ct-wrap::after{content:"";position:absolute;left:-6%;right:-6%;top:0;bottom:0;pointer-events:none;z-index:-1;transform:translateY(-120%);opacity:0;
+  background:linear-gradient(180deg,transparent 44%,rgba(124,77,255,.05) 48%,rgba(77,184,255,.14) 50%,rgba(124,77,255,.05) 52%,transparent 56%)}
+.cth .ct-main.cth-on > .ct-wrap::after{opacity:1;animation:cth-barre 8s linear infinite}
+
+/* ---------- Móvil: menos capas, nada de desbordes ---------- */
+@media (max-width:900px){
+  .cth .ct-main > .ct-wrap::after{display:none}
+  .cth .ct-hero::after{height:60%}
+}
+@media (prefers-reduced-motion:reduce){
+  .cth *,.cth *::before,.cth *::after{animation:none!important}
+}
