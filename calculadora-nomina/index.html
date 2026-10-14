@@ -100,6 +100,12 @@ nav{position:sticky;top:0;z-index:100;background:rgba(13,11,26,0.95);backdrop-fi
 .range-wrap input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:4px;background:rgba(124,77,255,.2);border-radius:2px;outline:none;padding:0;margin:.5rem 0;}
 .range-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--purple);cursor:pointer;}
 .range-val{position:absolute;right:0;top:0;font-size:.75rem;color:var(--purple-soft);font-weight:500;}
+.nm-check{display:flex!important;gap:.6rem;align-items:flex-start;text-transform:none!important;letter-spacing:0!important;font-size:.84rem!important;color:#d8d4f0!important;cursor:pointer;line-height:1.4}
+.nm-check input{width:auto!important;margin-top:.15rem;accent-color:var(--purple)}
+.nm-det{margin:.9rem 0 .4rem;font-size:.84rem;color:var(--mid)}
+.nm-det summary{cursor:pointer;color:var(--purple-soft);padding:.3rem 0}
+.nm-det .desglose{margin-top:.5rem}
+.nm-aviso{font-size:.78rem;line-height:1.5;color:var(--mid);margin:.6rem 0 0}
 .calc-btn{width:100%;background:var(--purple);color:white;border:none;padding:.95rem;border-radius:6px;font-size:.95rem;font-weight:600;font-family:var(--sans);cursor:pointer;transition:all .2s;margin-top:.5rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
 .calc-btn:hover{background:#6d28d9;transform:translateY(-1px);}
 .calc-btn svg{width:18px;height:18px;fill:none;stroke:white;stroke-width:2;}
@@ -231,7 +237,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 <section class="hero">
   <div class="hero-kicker">Herramienta gratuita · WhiteMoon Agencia IA</div>
   <h1>Calculadora Nómina IA<br><em>2026</em> — totalmente gratis</h1>
-  <p class="hero-desc">Calcula tu salario neto, retención IRPF y cuota de Seguridad Social al instante. Cálculo orientativo de tu nómina para todas las situaciones familiares. Sin registro, sin límites.</p>
+  <p class="hero-desc">Calcula tu salario neto, retención IRPF y cuota de Seguridad Social al instante. Con los tipos de Seguridad Social de 2026, hijos a cargo, cuota de solidaridad, deducción por rentas bajas y coste para la empresa. Sin registro, sin límites.</p>
   <p class="hero-desc" style="font-size:.85rem;margin-top:.6rem">⚠️ Estimación orientativa a nivel nacional: los tramos autonómicos, las reducciones y las cotizaciones pueden variar por año y comunidad. Verifícalo con tu gestor o en la <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener" style="color:var(--p2,#9d70ff);text-decoration:underline">AEAT</a>.</p>
   <div class="hero-badges">
     <span class="badge">Estimación de IRPF y SS</span>
@@ -262,23 +268,39 @@ footer a{color:var(--purple-soft);text-decoration:none;}
       <div class="field-row">
         <div class="field">
           <label>Número de pagas</label>
-          <select id="pagas">
+          <select id="pagas" onchange="calcular()">
             <option value="12">12 pagas</option>
             <option value="14" selected>14 pagas</option>
           </select>
         </div>
         <div class="field">
-          <label>Situación familiar</label>
-          <select id="familia">
-            <option value="soltero" selected>Soltero/a o divorciado/a sin hijos</option>
-            <option value="casado">Casado/a cónyuge no trabaja</option>
-            <option value="divorciado1">Divorciado/a con 1 hijo a cargo</option>
-            <option value="divorciado2">Divorciado/a con 2 hijos a cargo</option>
-            <option value="divorciado3">Divorciado/a con 3 o más hijos</option>
-            <option value="hijo1">Casado/a — 1 hijo/a menor 3 años</option>
-            <option value="hijo2">Casado/a — 2 hijos/as</option>
-            <option value="hijo3">Casado/a — 3 o más hijos/as</option>
+          <label for="declaracion">Declaración (conjunta: cónyuge sin rentas)</label>
+          <select id="declaracion" onchange="calcular()">
+            <option value="indiv" selected>Individual</option>
+            <option value="conjunta">Conjunta</option>
           </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="nm-check"><input type="checkbox" id="tieneHijos" onchange="toggleHijos()"> Tengo hijos a cargo</label>
+      </div>
+      <div id="hijosDet" style="display:none">
+        <div class="field-row">
+          <div class="field">
+            <label for="hijos">Número de hijos</label>
+            <input type="number" id="hijos" value="1" min="1" max="12" step="1" oninput="calcular()">
+          </div>
+          <div class="field">
+            <label for="menores3">Menores de 3 años</label>
+            <input type="number" id="menores3" value="0" min="0" max="12" step="1" oninput="calcular()">
+          </div>
+        </div>
+        <div class="field">
+          <label class="nm-check"><input type="checkbox" id="compartidos" checked onchange="calcular()"> Los hijos también cuentan para el otro progenitor (mínimo repartido al 50 %)</label>
+        </div>
+        <div class="field">
+          <label class="nm-check"><input type="checkbox" id="madre" onchange="calcular()"> Soy madre trabajadora con hijos menores de 3 años (deducción por maternidad)</label>
         </div>
       </div>
 
@@ -289,7 +311,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
         </div>
         <div class="field">
           <label>Tipo de contrato</label>
-          <select id="contrato">
+          <select id="contrato" onchange="calcular()">
             <option value="indefinido" selected>Indefinido</option>
             <option value="temporal">Temporal</option>
           </select>
@@ -298,10 +320,10 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 
       <div class="field">
         <label>Edad</label>
-        <select id="edad">
-          <option value="menor65" selected>Menor de 65 años</option>
-          <option value="65a75">Entre 65 y 75 años</option>
-          <option value="mayor75">Mayor de 75 años</option>
+        <select id="edad" onchange="calcular()">
+          <option value="menor65" selected>Menos de 65 años</option>
+          <option value="65a75">De 65 a 74 años</option>
+          <option value="mayor75">75 años o más</option>
         </select>
       </div>
 
@@ -345,7 +367,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
             <span class="desglose-val val-white" id="dBrutoAnual"></span>
           </div>
           <div class="desglose-row">
-            <span class="desglose-label">Cuota S.S. empleado (6,35%)</span>
+            <span class="desglose-label">Seguridad Social del empleado</span>
             <span class="desglose-val val-red" id="dSS"></span>
           </div>
           <div class="desglose-row">
@@ -353,7 +375,15 @@ footer a{color:var(--purple-soft);text-decoration:none;}
             <span class="desglose-val val-white" id="dBaseLiq"></span>
           </div>
           <div class="desglose-row">
-            <span class="desglose-label">Retención IRPF anual</span>
+            <span class="desglose-label">Cuota íntegra del IRPF</span>
+            <span class="desglose-val val-white" id="dCuotaInt"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">Deducciones (rentas bajas y maternidad)</span>
+            <span class="desglose-val val-green" id="dDeduc"></span>
+          </div>
+          <div class="desglose-row">
+            <span class="desglose-label">IRPF anual a pagar</span>
             <span class="desglose-val val-red" id="dIRPF"></span>
           </div>
           <div class="desglose-row" style="border-top:1px solid rgba(0,200,150,.2);margin-top:4px;padding-top:10px;">
@@ -365,6 +395,11 @@ footer a{color:var(--purple-soft);text-decoration:none;}
             <span class="desglose-val val-green" id="dNetoMes"></span>
           </div>
         </div>
+        <details class="nm-det">
+          <summary>Ver cotizaciones y coste para la empresa</summary>
+          <div class="desglose" id="detSS"></div>
+        </details>
+        <p class="nm-aviso" id="avisoCalc" role="status" aria-live="polite"></p>
         <div class="tipo-card">
           <span class="tipo-label">Tipo efectivo IRPF</span>
           <span class="tipo-val" id="tipoEfectivo"></span>
@@ -397,7 +432,7 @@ footer a{color:var(--purple-soft);text-decoration:none;}
         <tr><td>3º</td><td>20.200 € – 35.200 €</td><td class="tramo-pct">15%</td><td class="tramo-pct">30%</td><td>4.500 €</td></tr>
         <tr><td>4º</td><td>35.200 € – 60.000 €</td><td class="tramo-pct">18,5%</td><td class="tramo-pct">37%</td><td>9.176 €</td></tr>
         <tr><td>5º</td><td>60.000 € – 300.000 €</td><td class="tramo-pct">22,5%</td><td class="tramo-pct">45%</td><td>108.000 €</td></tr>
-        <tr><td>6º</td><td>Más de 300.000 €</td><td class="tramo-pct">23,5%</td><td class="tramo-pct">47%</td><td>—</td></tr>
+        <tr><td>6º</td><td>Más de 300.000 €</td><td class="tramo-pct">24,5%</td><td class="tramo-pct">47%</td><td>—</td></tr>
       </tbody>
     </table>
     <p style="font-size:.72rem;color:var(--mid);margin-top:.75rem;">* El tipo total es la escala general (tramo estatal + tramo autonómico tipo). Cada comunidad fija su propio tramo autonómico y esta calculadora no lo estima. Fuente: <a href="https://sede.agenciatributaria.gob.es/" target="_blank" rel="noopener" style="color:var(--p2,#9d70ff);text-decoration:underline">AEAT</a>.</p>
@@ -413,12 +448,12 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     <div class="info-card">
       <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
       <div class="info-title">Situación familiar</div>
-      <p class="info-desc">Calcula con mínimo personal básico (5.550€) y mínimos por descendientes. Casado con cónyuge no trabajador y familias numerosas.</p>
+      <p class="info-desc">Mínimo personal (5.550 €), por edad y por descendientes, con hijos menores de 3 años, reparto al 50 % entre progenitores, deducción por maternidad y declaración conjunta.</p>
     </div>
     <div class="info-card">
       <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
       <div class="info-title">Seguridad Social</div>
-      <p class="info-desc">Cuota del empleado calculada con el tipo vigente: 4,70% contingencias + 1,55% desempleo + 0,10% formación = 6,35% total.</p>
+      <p class="info-desc">Cuota del empleado con los tipos de 2026: 4,70 % contingencias comunes + 1,55 % desempleo + 0,10 % formación + 0,15 % MEI = 6,50 % hasta la base máxima de 5.101,20 € al mes, más la cuota de solidaridad por el exceso.</p>
     </div>
   </div>
 
@@ -431,11 +466,11 @@ footer a{color:var(--purple-soft);text-decoration:none;}
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Cómo se calcula la retención de IRPF?</div>
-      <p class="faq-a">Se aplica de forma progresiva por tramos: cada parte de la base liquidable tributa al tipo de su tramo. Primero se restan el mínimo personal, las reducciones por trabajo y la cuota de SS para obtener la base liquidable.</p>
+      <p class="faq-a">Se aplica de forma progresiva por tramos: cada parte de la base liquidable tributa al tipo de su tramo. Primero se restan la cuota de SS, 2.000 € de otros gastos y las reducciones por trabajo para obtener la base liquidable. Después se calcula la cuota por tramos y se resta la cuota correspondiente al mínimo personal y familiar.</p>
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Qué es la cuota de Seguridad Social?</div>
-      <p class="faq-a">El empleado cotiza el 6,35% de su salario bruto: 4,70% por contingencias comunes, 1,55% por desempleo y 0,10% por formación profesional. Esta cantidad se descuenta directamente de la nómina.</p>
+      <p class="faq-a">En 2026 el empleado con contrato indefinido cotiza el 6,50 % de su salario bruto hasta la base máxima (5.101,20 € al mes): 4,70 % por contingencias comunes, 1,55 % por desempleo, 0,10 % por formación profesional y 0,15 % por el MEI. Con contrato temporal el desempleo es del 1,60 %. Lo que supere la base máxima paga solo la cuota de solidaridad. Se descuenta directamente de la nómina. Fuente: <a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" target="_blank" rel="noopener">Seguridad Social</a>.</p>
     </div>
     <div class="faq-item">
       <div class="faq-q">¿Por qué varía el IRPF según la comunidad?</div>
@@ -540,31 +575,18 @@ footer a{color:var(--purple-soft);text-decoration:none;}
 </footer>
 
 <script>
+/* Parámetros 2026 (Orden PJC/297/2026 y AEAT). Estimación orientativa: un pagador, sin otras rentas,
+   escala autonómica igual a la general supletoria, sin deducciones autonómicas. */
+var BMAX = 5101.20 * 12;                 // base máxima de cotización anual
 var TRAMOS = [
   {hasta:12450,tipo:0.19},{hasta:20200,tipo:0.24},{hasta:35200,tipo:0.30},
   {hasta:60000,tipo:0.37},{hasta:300000,tipo:0.45},{hasta:Infinity,tipo:0.47}
 ];
+var DESC = [2400,2700,4000,4500];        // mínimo por descendientes (1.º, 2.º, 3.º, 4.º y siguientes)
+var SMI_ANUAL = 17094;                   // SMI 2026 en 14 pagas
+var DED_SMI_MAX = 590.89, DED_SMI_FIN = 20048.45;
 
-function redRendimientos(rnt) {
-  // Reduccion rendimientos trabajo AEAT 2026
-  // Se aplica sobre el rendimiento neto del trabajo (bruto - SS)
-  if (rnt <= 14047.50) return 6498;
-  if (rnt < 19747.50) return 6498 - 1.14286 * (rnt - 14047.50);
-  return 0;
-}
-function minimoPersonal(edad) {
-  if (edad==='mayor75') return 8100;
-  if (edad==='65a75') return 6700;
-  return 5550;
-}
-function minimoFamiliar(fam) {
-  if (fam==='hijo1'||fam==='divorciado1') return 2400;
-  if (fam==='hijo2'||fam==='divorciado2') return 2400+2700;
-  if (fam==='hijo3'||fam==='divorciado3') return 2400+2700+4000;
-  return 0;
-}
-function calcIRPF(base) {
-  // Escala general (estatal + autonómica tipo); el tramo de cada CCAA no se estima
+function escalaIRPF(base){
   if(base<=0) return 0;
   var cuota=0, prev=0;
   for(var i=0;i<TRAMOS.length;i++){
@@ -572,72 +594,131 @@ function calcIRPF(base) {
     if(base<=prev) break;
     cuota += (Math.min(base,t.hasta)-prev)*t.tipo;
     prev=t.hasta;
-    if(base<=t.hasta) break;
   }
-  return Math.max(0,cuota);
+  return cuota;
 }
-function fmt(n){return n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';}
-function syncRange(val){document.getElementById('rangeVal').textContent=parseInt(val).toLocaleString('es-ES')+' €';document.getElementById('brutoanual').value=val;}
-function syncInput(val){var v=Math.min(Math.max(parseInt(val)||0,12000),120000);document.getElementById('rangeSlider').value=v;document.getElementById('rangeVal').textContent=v.toLocaleString('es-ES')+' €';}
+function redRendimientos(rnt){
+  // Art. 20 LIRPF sobre el rendimiento neto del trabajo (tras cotizaciones y 2.000 € de otros gastos)
+  if (rnt <= 14852) return 7302;
+  if (rnt <= 17673.52) return 7302 - 1.75*(rnt-14852);
+  if (rnt < 19747.5) return 2364.34 - 1.14*(rnt-17673.52);
+  return 0;
+}
+function dedRentasBajas(bruto){
+  if (bruto <= SMI_ANUAL) return DED_SMI_MAX;
+  if (bruto < DED_SMI_FIN) return DED_SMI_MAX - 0.2*(bruto-SMI_ANUAL);
+  return 0;
+}
+function seguridadSocial(bruto, temporal){
+  var base = Math.min(bruto, BMAX);
+  var cc=base*0.047, des=base*(temporal?0.016:0.0155), fp=base*0.001, mei=base*0.0015;
+  var ex = Math.max(0, bruto-BMAX);
+  var t1=Math.min(ex,BMAX*0.10), t2=Math.min(Math.max(ex-BMAX*0.10,0),BMAX*0.40), t3=Math.max(ex-BMAX*0.50,0);
+  var solTotal = t1*0.0115 + t2*0.0125 + t3*0.0146;
+  var solTrab = solTotal*4.70/28.30;     // mismo reparto que contingencias comunes
+  var empCC = base*0.236;
+  var empRest = base*((temporal?0.067:0.055)+0.002+0.006+0.015+0.0075) + (solTotal-solTrab); // desempleo, FOGASA, FP, AT/EP medio 1,5 %, MEI
+  return {cc:cc,des:des,fp:fp,mei:mei,sol:solTrab,trab:cc+des+fp+mei+solTrab,empCC:empCC,empRest:empRest};
+}
+function minimoPersonalFamiliar(edad,hijos,menores3,compartidos){
+  var m = 5550;
+  if (edad==='65a75'||edad==='mayor75') m += 1150;
+  if (edad==='mayor75') m += 1400;
+  var d = 0;
+  for (var i=0;i<hijos;i++) d += DESC[Math.min(i,3)];
+  d += 2800*Math.min(menores3,hijos);
+  if (compartidos) d *= 0.5;
+  return m + d;
+}
+function eur(n){return n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})+' €';}
+function fmt(n){return eur(n);}
+function numVal(id,def){var v=parseFloat(document.getElementById(id).value);return isFinite(v)&&v>=0?v:def;}
+function syncRange(val){document.getElementById('rangeVal').textContent=parseInt(val).toLocaleString('es-ES')+' €';document.getElementById('brutoanual').value=val;calcular();}
+function syncInput(val){var v=Math.min(Math.max(parseInt(val)||0,12000),120000);document.getElementById('rangeSlider').value=v;document.getElementById('rangeVal').textContent=v.toLocaleString('es-ES')+' €';calcular();}
+function toggleHijos(){document.getElementById('hijosDet').style.display=document.getElementById('tieneHijos').checked?'block':'none';calcular();}
 
 function calcular() {
-  var bruto = parseFloat(document.getElementById('brutoanual').value)||0;
-  var pagas = parseInt(document.getElementById('pagas').value);
-  var fam   = document.getElementById('familia').value;
-  var edad  = document.getElementById('edad').value;
-  if(bruto<=0){alert('Introduce un salario bruto válido');return;}
+  var bruto = numVal('brutoanual',0);
+  var pagas = parseInt(document.getElementById('pagas').value,10);
+  var temporal = document.getElementById('contrato').value==='temporal';
+  var edad = document.getElementById('edad').value;
+  var conjunta = document.getElementById('declaracion').value==='conjunta';
+  var conHijos = document.getElementById('tieneHijos').checked;
+  var hijos = conHijos ? Math.min(12,Math.round(numVal('hijos',1))) : 0;
+  var menores3 = conHijos ? Math.min(hijos,Math.round(numVal('menores3',0))) : 0;
+  var compartidos = document.getElementById('compartidos').checked;
+  var madre = conHijos && document.getElementById('madre').checked && menores3>0;
+  var aviso = document.getElementById('avisoCalc');
+  if(bruto<=0){
+    document.getElementById('resultEmpty').style.display='block';
+    document.getElementById('resultContent').style.display='none';
+    return;
+  }
 
-  // 1. SS empleado: 6.35% sobre salario bruto
-  var cuotaSS = Math.round(bruto * 0.0635 * 100) / 100;
+  // 1. Seguridad Social del empleado (tipos 2026 hasta la base máxima + cuota de solidaridad)
+  var S = seguridadSocial(bruto, temporal);
 
-  // 2. Rendimiento neto del trabajo = bruto - SS
-  var rnt = bruto - cuotaSS;
+  // 2. Rendimiento neto del trabajo = bruto - SS - 2.000 € de otros gastos
+  var gastos = Math.min(2000, Math.max(0, bruto - S.trab));
+  var rnt = Math.max(0, bruto - S.trab - gastos);
 
-  // 3. Reduccion rendimientos del trabajo (se aplica sobre rnt)
-  var red = redRendimientos(rnt);
+  // 3. Reducción por rendimientos del trabajo y reducción por tributación conjunta
+  var red = Math.min(redRendimientos(rnt), rnt);
+  var redConj = conjunta ? 3400 : 0;
+  var baseLiq = Math.max(0, rnt - red - redConj);
 
-  // 4. Reduccion declaracion conjunta (3.400 €, solo aqui: no es un minimo familiar)
-  var redConj = (fam==='casado') ? 3400 : 0;
+  // 4. Cuota íntegra = escala(base) - escala(mínimo personal y familiar)
+  var minimo = minimoPersonalFamiliar(edad,hijos,menores3,compartidos);
+  var cuotaInt = Math.max(0, escalaIRPF(baseLiq) - escalaIRPF(Math.min(minimo, baseLiq)));
 
-  // 5. Base imponible
-  var baseImp = Math.max(0, rnt - red - redConj);
+  // 5. Deducciones: rentas bajas (RDL 5/2026) y maternidad (1.200 € por hijo menor de 3 años, tope: cotizaciones)
+  var dRentas = Math.min(dedRentasBajas(bruto), cuotaInt);
+  var dMat = madre ? Math.min(1200*menores3, S.trab, Math.max(0,cuotaInt-dRentas)) : 0;
+  var irpf = Math.max(0, cuotaInt - dRentas - dMat);
 
-  // 6. Minimos
-  var minP = minimoPersonal(edad);
-  var minF = minimoFamiliar(fam);
-  var minT = minP + minF;
+  // 6. Neto y coste para la empresa
+  var netoAnual = bruto - S.trab - irpf;
+  var netoMes = netoAnual / pagas;
+  var tipoEf = (irpf/bruto)*100;
+  var empresa = S.empCC + S.empRest;
 
-  // 7. Cuota IRPF = cuota(base) - cuota(minimos)
-  var cuotaBase = calcIRPF(baseImp);
-  var cuotaMin  = calcIRPF(Math.min(minT, baseImp));
-  var cuotaIRPF = Math.max(0, cuotaBase - cuotaMin);
-
-  // 8. Minimo exento soltero
-  if(bruto<=15876 && fam==='soltero') cuotaIRPF=0;
-
-  // 9. Neto
-  var netoAnual = bruto - cuotaSS - cuotaIRPF;
-  var netoMes   = netoAnual / pagas;
-  var tipoEf    = bruto>0 ? (cuotaIRPF/bruto)*100 : 0;
-
-  // Mostrar
   document.getElementById('resultEmpty').style.display='none';
   document.getElementById('resultContent').style.display='block';
   document.getElementById('netoMes').innerHTML = Math.round(netoMes).toLocaleString('es-ES')+' <span>€/mes</span>';
   document.getElementById('netoAnualLabel').textContent = 'Neto anual: '+fmt(netoAnual)+' ('+pagas+' pagas)';
   document.getElementById('dBrutoAnual').textContent = fmt(bruto);
-  document.getElementById('dSS').textContent = '- '+fmt(cuotaSS);
-  document.getElementById('dBaseLiq').textContent = fmt(baseImp);
-  document.getElementById('dIRPF').textContent = '- '+fmt(cuotaIRPF);
+  document.getElementById('dSS').textContent = '- '+fmt(S.trab);
+  document.getElementById('dBaseLiq').textContent = fmt(baseLiq);
+  document.getElementById('dCuotaInt').textContent = fmt(cuotaInt);
+  document.getElementById('dDeduc').textContent = (dRentas+dMat)>0.005 ? '- '+fmt(dRentas+dMat) : fmt(0);
+  document.getElementById('dIRPF').textContent = '- '+fmt(irpf);
   document.getElementById('dNetoAnual').textContent = fmt(netoAnual);
   document.getElementById('dNetoMes').textContent = fmt(netoMes);
   document.getElementById('tipoEfectivo').textContent = tipoEf.toFixed(1)+'%';
-  var pN=(netoAnual/bruto)*100, pI=(cuotaIRPF/bruto)*100, pS=(cuotaSS/bruto)*100;
+  var pN=(netoAnual/bruto)*100, pI=(irpf/bruto)*100, pS=(S.trab/bruto)*100;
   document.getElementById('barNeto').style.width=pN+'%';
   document.getElementById('barIrpf').style.width=pI+'%';
   document.getElementById('barSS').style.width=pS+'%';
+
+  var det=[
+    ['Contingencias comunes (4,70 %)',S.cc],['Desempleo ('+(temporal?'1,60':'1,55')+' %)',S.des],
+    ['Formación profesional (0,10 %)',S.fp],['MEI (0,15 %)',S.mei]
+  ];
+  if(S.sol>0.005) det.push(['Cuota de solidaridad (exceso sobre la base máxima)',S.sol]);
+  var h='';
+  for(var i=0;i<det.length;i++) h+='<div class="desglose-row"><span class="desglose-label">'+det[i][0]+'</span><span class="desglose-val val-red">- '+fmt(det[i][1])+'</span></div>';
+  h+='<div class="desglose-row"><span class="desglose-label">Cotización a cargo de la empresa</span><span class="desglose-val val-white">'+fmt(empresa)+'</span></div>';
+  h+='<div class="desglose-row"><span class="desglose-label">Coste total para la empresa</span><span class="desglose-val val-white">'+fmt(bruto+empresa)+'</span></div>';
+  document.getElementById('detSS').innerHTML=h;
+
+  var n=[];
+  if(dRentas>0.005) n.push('Incluye la deducción por rentas bajas (hasta 590,89 €).');
+  if(bruto>BMAX) n.push('Por encima de la base máxima solo se aplica la cuota de solidaridad.');
+  n.push('El coste de la empresa supone un 1,5 % de accidentes de trabajo como supuesto medio.');
+  aviso.textContent = n.join(' ');
 }
 syncRange(30000);
+
 </script>
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 </body>
