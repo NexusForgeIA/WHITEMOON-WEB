@@ -358,16 +358,28 @@
   <script defer src="/assets/cookie-consent.js?v=2026072802"></script>
   <script defer src="/assets/wm-track.js?v=2026060302"></script>
 <script defer src="/assets/wm-nav.js?v=2026092902"></script>
+<!-- WM-I18N · selector de idioma · generado por scripts/nav_rebuild.py -->
+<style>.wm-i18n-wait body{visibility:hidden}
+.wm-lang{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid rgba(255,255,255,.1);border-radius:8px}
+.wm-lang button{min-width:32px;height:28px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:#9CA3AF;font-family:inherit;font-size:.74rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:color .15s ease,background .15s ease}
+.wm-lang button:hover{color:#E8E8F0}
+.wm-lang button[aria-pressed=true]{background:rgba(124,77,255,.2);color:#E8E8F0}
+.wm-lang button:focus-visible{outline:2px solid #9d70ff;outline-offset:1px}
+.wm-lang--drawer{align-self:flex-start;margin:0 0 12px}
+.wm-lang--drawer button{min-width:48px;height:40px;font-size:.85rem}
+@media(max-width:920px){.wm-lang--nav{display:none}}</style>
+<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','home'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=2026101601';d.head.appendChild(k)})}catch(e){}})();</script>
+<script defer src="/assets/i18n.js?v=2026101601" data-page="home"></script>
 </head>
 <body class="hmh">
-<a href="#main-content" class="skip-link">Saltar al contenido</a>
+<a href="#main-content" class="skip-link" data-i18n="top.1">Saltar al contenido</a>
 
 <!-- SVG sprite — checkmark reutilizable -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol></defs></svg>
 
 <!-- NAVBAR -->
 <!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
-<nav class="wm-nav" aria-label="Navegación principal">
+<nav class="wm-nav" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.aria">
   <div class="wm-nav__row">
     <a class="wm-nav__logo" href="/">
       <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
@@ -375,39 +387,41 @@
     </a>
 
     <div class="wm-nav__center">
-      <a href="/inteligencia-artificial/">IA</a>
+      <a href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
       <div class="wm-nav__dd">
-        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.productos">Productos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="wm-nav__menu" role="menu">
-          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
-          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
-          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
-          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
+          <a href="/diseno-web/" role="menuitem"><span data-i18n="nav.web">Web</span><span class="desc" data-i18n="nav.web.desc">Tu web profesional, sin agente de IA</span></a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc" data-i18n="nav.spark.desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc" data-i18n="nav.core.desc">Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc" data-i18n="nav.citas.desc">Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
-      <a href="/precios/">Precios</a>
-      <a href="/desarrollo-software/">Software a medida</a>
-      <a href="/contacto/">Contacto</a>
+      <a href="/precios/" data-i18n="nav.precios">Precios</a>
+      <a href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+      <a href="/contacto/" data-i18n="nav.contacto">Contacto</a>
     </div>
 
     <div class="wm-nav__right">
-      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <div class="wm-lang wm-lang--nav" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer" data-i18n-attr="aria-label:nav.burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
     </div>
   </div>
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
-  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
-  <span class="wm-drawer__label">Productos</span>
-  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú" data-i18n-attr="aria-label:nav.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="wm-lang wm-lang--drawer" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
+  <span class="wm-drawer__label" data-i18n="nav.productos">Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/" data-i18n="nav.web">Web</a>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
-  <a class="wm-drawer__link" href="/precios/">Precios</a>
-  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
-  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
-  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  <a class="wm-drawer__link" href="/precios/" data-i18n="nav.precios">Precios</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+  <a class="wm-drawer__link" href="/contacto/" data-i18n="nav.contacto">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </aside>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
@@ -426,29 +440,29 @@
 
     <!-- Brand bar -->
     <div class="hero-brand">
-      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon Agencia de IA" width="44" height="44" loading="eager" fetchpriority="high" decoding="async">
+      <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="WhiteMoon Agencia de IA" width="44" height="44" loading="eager" fetchpriority="high" decoding="async" data-i18n-attr="alt:main-content.1">
       <div class="name"><span class="light">WHITE</span><span class="acc">MOON</span></div>
     </div>
 
     <div class="hero-cols">
       <div class="hero-left">
-        <div class="eyebrow">Agencia de IA · Majadahonda, Madrid</div>
-        <h1>Más clientes para tu negocio con WhiteMoon: un agente de IA que atiende, agenda y capta 24/7</h1>
-        <p class="sub">Responde a cada visita al momento, cierra la cita y te manda nombre y teléfono al móvil. Se instala en tu web actual o te hacemos la web entera con el agente dentro — operativo en 7 días, sin permanencia.</p>
+        <div class="eyebrow" data-i18n="main-content.2">Agencia de IA · Majadahonda, Madrid</div>
+        <h1 data-i18n="main-content.3">Más clientes para tu negocio con WhiteMoon: un agente de IA que atiende, agenda y capta 24/7</h1>
+        <p class="sub" data-i18n="main-content.4">Responde a cada visita al momento, cierra la cita y te manda nombre y teléfono al móvil. Se instala en tu web actual o te hacemos la web entera con el agente dentro — operativo en 7 días, sin permanencia.</p>
         <div class="hero-ctas">
           <a href="#pide-propuesta" class="btn-primary" onclick="wmTrack('click_hero_cta',{action:'pide-propuesta',placement:'hero-primario'})">
-            Pide propuesta
+            <span data-i18n="main-content.5">Pide propuesta</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </a>
-          <a href="https://wa.me/34643199580" class="hero-textlink" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+          <a href="https://wa.me/34643199580" class="hero-textlink" target="_blank" rel="noopener" data-i18n="main-content.6">Escríbenos por WhatsApp</a>
         </div>
         <a class="g-badge" href="https://maps.app.goo.gl/ZTt9TpkxRrrHiqms5" target="_blank" rel="noopener"
            aria-label="Ver el perfil de WhiteMoon en Google (valoración 5,0)"
-           onclick="wmTrack('click_google_perfil',{placement:'hero'})">
+           onclick="wmTrack('click_google_perfil',{placement:'hero'})" data-i18n-attr="aria-label:main-content.7">
           <svg class="g-star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.4-5.8-3-5.8 3 1.1-6.4L2.6 9.4l6.5-.9z"/></svg>
-          <span><strong>5,0</strong> en Google</span>
+          <span data-i18n="main-content.8"><strong>5,0</strong> en Google</span>
         </a>
-        <h2 class="hero-h2">Agente de IA para empresas en Madrid que convierte tus visitas en clientes</h2>
+        <h2 class="hero-h2" data-i18n="main-content.9">Agente de IA para empresas en Madrid que convierte tus visitas en clientes</h2>
       </div>
     </div>
 
@@ -486,7 +500,7 @@
   <span id="precios" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hdr c">
-      <h2 class="sec-h">¿Ya tienes web? Elige por dónde empezar.</h2>
+      <h2 class="sec-h" data-i18n="servicios.1">¿Ya tienes web? Elige por dónde empezar.</h2>
     </div>
 
     <div class="wm-paths">
@@ -495,10 +509,10 @@
           <span class="wm-path__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
           <span class="wm-path__name">Spark</span>
         </div>
-        <h3 class="wm-path__title">Ya tienes web. <span>Le metemos el agente IA.</span></h3>
-        <p>Instalamos el agente en tu web actual: responde, agenda y capta leads 24 h. Lo configuramos con tus servicios, precios, horarios y preguntas frecuentes reales.</p>
+        <h3 class="wm-path__title" data-i18n="servicios.2">Ya tienes web. <span>Le metemos el agente IA.</span></h3>
+        <p data-i18n="servicios.3">Instalamos el agente en tu web actual: responde, agenda y capta leads 24 h. Lo configuramos con tus servicios, precios, horarios y preguntas frecuentes reales.</p>
         <a class="wm-path__cta" href="#pide-propuesta" onclick="wmTrack('click_home_camino',{producto:'spark'})">
-          Pide propuesta
+          <span data-i18n="servicios.4">Pide propuesta</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </article>
@@ -508,17 +522,17 @@
           <span class="wm-path__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="7.5" y1="13.5" x2="16.5" y2="13.5"/><line x1="7.5" y1="16.5" x2="12.5" y2="16.5"/></svg></span>
           <span class="wm-path__name">Core Spark Web</span>
         </div>
-        <h3 class="wm-path__title">Quieres web nueva. <span>Web + agente + CRM, todo integrado.</span></h3>
-        <p>Te hacemos la web completa con el agente dentro desde el primer día, y el panel para ver y gestionar cada lead. Lo montamos entero; tú solo atiendes.</p>
+        <h3 class="wm-path__title" data-i18n="servicios.5">Quieres web nueva. <span>Web + agente + CRM, todo integrado.</span></h3>
+        <p data-i18n="servicios.6">Te hacemos la web completa con el agente dentro desde el primer día, y el panel para ver y gestionar cada lead. Lo montamos entero; tú solo atiendes.</p>
         <a class="wm-path__cta" href="#pide-propuesta" onclick="wmTrack('click_home_camino',{producto:'core-spark-web'})">
-          Pide propuesta
+          <span data-i18n="servicios.7">Pide propuesta</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </article>
     </div>
 
-    <p class="wm-paths-foot">¿No sabes cuál? <a href="/contacto/" onclick="wmTrack('click_home_camino',{producto:'no-lo-se'})">Cuéntanos tu caso</a> y te lo decimos — sin compromiso.</p>
-    <p class="wm-paths-foot">¿Solo necesitas la web, sin agente? Mira nuestro <a href="/diseno-web/">diseño web en Majadahonda</a>.</p>
+    <p class="wm-paths-foot"><span data-i18n="servicios.8">¿No sabes cuál?</span> <a href="/contacto/" onclick="wmTrack('click_home_camino',{producto:'no-lo-se'})" data-i18n="servicios.10">Cuéntanos tu caso</a> <span data-i18n="servicios.9">y te lo decimos — sin compromiso.</span></p>
+    <p class="wm-paths-foot" data-i18n="servicios.11">¿Solo necesitas la web, sin agente? Mira nuestro <a href="/diseno-web/">diseño web en Majadahonda</a>.</p>
   </div>
 </section>
 
@@ -535,24 +549,24 @@
 <section id="dolor" class="sec-alt">
   <div class="wrap">
     <div class="hdr c">
-      <span class="sec-lbl">Lo que nos cuentan</span>
-      <h2 class="sec-h">¿Te suena esto?</h2>
+      <span class="sec-lbl" data-i18n="dolor.1">Lo que nos cuentan</span>
+      <h2 class="sec-h" data-i18n="dolor.2">¿Te suena esto?</h2>
     </div>
     <div class="pain-grid">
       <div class="pain">
         <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
-        <h3>Pierdo clientes fuera de horario</h3>
-        <p>Quien entra en tu web a las once de la noche o un domingo no encuentra a nadie al otro lado. Y se va al siguiente resultado.</p>
+        <h3 data-i18n="dolor.3">Pierdo clientes fuera de horario</h3>
+        <p data-i18n="dolor.4">Quien entra en tu web a las once de la noche o un domingo no encuentra a nadie al otro lado. Y se va al siguiente resultado.</p>
       </div>
       <div class="pain">
         <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.9-.9L3 21l1.9-4.6A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.5 8.5 0 0 1 21 11.5z"/><line x1="8.5" y1="11.5" x2="8.5" y2="11.5"/><line x1="12.5" y1="11.5" x2="12.5" y2="11.5"/><line x1="16.5" y1="11.5" x2="16.5" y2="11.5"/></svg></span>
-        <h3>Repito lo mismo mil veces</h3>
-        <p>Horarios, precios, dónde estáis, si hay hueco el jueves. Las mismas cinco preguntas, todos los días, quitándote tiempo de lo tuyo.</p>
+        <h3 data-i18n="dolor.5">Repito lo mismo mil veces</h3>
+        <p data-i18n="dolor.6">Horarios, precios, dónde estáis, si hay hueco el jueves. Las mismas cinco preguntas, todos los días, quitándote tiempo de lo tuyo.</p>
       </div>
       <div class="pain">
         <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="15" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="19" x2="15" y2="19"/></svg></span>
-        <h3>Mi web no me trae clientes</h3>
-        <p>Es un folleto bonito: se ve, se lee y no pasa nada más. Nadie deja su teléfono y tú no te enteras de quién ha pasado por ahí.</p>
+        <h3 data-i18n="dolor.7">Mi web no me trae clientes</h3>
+        <p data-i18n="dolor.8">Es un folleto bonito: se ve, se lee y no pasa nada más. Nadie deja su teléfono y tú no te enteras de quién ha pasado por ahí.</p>
       </div>
     </div>
   </div>
@@ -572,11 +586,11 @@
 </style>
 <section id="como-funciona" class="sec">
   <div class="hf-wrap">
-    <h2>Cómo funciona</h2>
+    <h2 data-i18n="como-funciona.1">Cómo funciona</h2>
     <div class="hf-steps">
-      <div class="hf-step"><div class="hf-n">1</div><h3>Nos cuentas tu caso</h3><p>A qué te dedicas y qué te quita tiempo. Te recomendamos el plan en 24h.</p></div>
-      <div class="hf-step"><div class="hf-n">2</div><h3>Lo montamos</h3><p>Operativo en 7 días. Con tus datos, tu tono, tus servicios.</p></div>
-      <div class="hf-step"><div class="hf-n">3</div><h3>Trabaja por ti 24/7</h3><p>Responde, agenda y capta mientras tú atiendes lo importante. Sin permanencia.</p></div>
+      <div class="hf-step"><div class="hf-n">1</div><h3 data-i18n="como-funciona.2">Nos cuentas tu caso</h3><p data-i18n="como-funciona.3">A qué te dedicas y qué te quita tiempo. Te recomendamos el plan en 24h.</p></div>
+      <div class="hf-step"><div class="hf-n">2</div><h3 data-i18n="como-funciona.4">Lo montamos</h3><p data-i18n="como-funciona.5">Operativo en 7 días. Con tus datos, tu tono, tus servicios.</p></div>
+      <div class="hf-step"><div class="hf-n">3</div><h3 data-i18n="como-funciona.6">Trabaja por ti 24/7</h3><p data-i18n="como-funciona.7">Responde, agenda y capta mientras tú atiendes lo importante. Sin permanencia.</p></div>
     </div>
   </div>
 </section>
@@ -601,32 +615,32 @@
 <section id="alcance" class="sec-alt">
   <div class="wrap">
     <div class="hdr c">
-      <h2 class="sec-h">Qué hace y qué no</h2>
+      <h2 class="sec-h" data-i18n="alcance.1">Qué hace y qué no</h2>
     </div>
     <div class="al-grid">
 
       <div class="al al--si">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><polyline points="8.5 12.4 11 15 15.8 9.6"/></svg>
-          Sí hace
+          <span data-i18n="alcance.2">Sí hace</span>
         </h3>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Responde al instante, día y noche.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Agenda citas y recoge datos.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Capta el lead y te avisa al momento.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span>Contesta con <strong>tu</strong> información real: servicios, precios, horarios y preguntas frecuentes.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span data-i18n="alcance.3">Responde al instante, día y noche.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span data-i18n="alcance.4">Agenda citas y recoge datos.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span data-i18n="alcance.5">Capta el lead y te avisa al momento.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><polyline points="4 12.5 9 17.5 20 6.5"/></svg><span data-i18n="alcance.6">Contesta con <strong>tu</strong> información real: servicios, precios, horarios y preguntas frecuentes.</span></li>
         </ul>
       </div>
 
       <div class="al al--no">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><line x1="8.6" y1="8.6" x2="15.4" y2="15.4"/><line x1="15.4" y1="8.6" x2="8.6" y2="15.4"/></svg>
-          No hace
+          <span data-i18n="alcance.7">No hace</span>
         </h3>
         <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No inventa: si no sabe, lo dice y deriva.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No sustituye tu criterio: te entrega el cliente listo y decides tú.</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span>No hace spam ni contacta en frío: solo atiende a quien te escribe.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="alcance.8">No inventa: si no sabe, lo dice y deriva.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="alcance.9">No sustituye tu criterio: te entrega el cliente listo y decides tú.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="6" y1="12" x2="18" y2="12"/></svg><span data-i18n="alcance.10">No hace spam ni contacta en frío: solo atiende a quien te escribe.</span></li>
         </ul>
       </div>
 
@@ -659,36 +673,36 @@
   <span id="confianza" aria-hidden="true"></span>
   <div class="wrap">
     <div class="hdr c">
-      <h2 class="sec-h">No te lo contamos. Míralo.</h2>
+      <h2 class="sec-h" data-i18n="prueba.1">No te lo contamos. Míralo.</h2>
     </div>
     <div class="pb-grid">
 
       <div class="pb pb--caso">
         <img class="pb-shot" src="/casos-de-exito/assets/bambu-sushi-web.webp" width="1200" height="576"
              loading="lazy" decoding="async"
-             alt="Web y agente de IA de Bambu Sushi Córdoba, hechos por WhiteMoon">
+             alt="Web y agente de IA de Bambu Sushi Córdoba, hechos por WhiteMoon" data-i18n-attr="alt:prueba.2">
         <div class="pb-body">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><polyline points="9 21 9 13 15 13 15 21"/></svg>Un cliente real</h3>
-          <p>Bambu Sushi lo tiene funcionando en bambusushi.es.</p>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><polyline points="9 21 9 13 15 13 15 21"/></svg><span data-i18n="prueba.3">Un cliente real</span></h3>
+          <p data-i18n="prueba.4">Bambu Sushi lo tiene funcionando en bambusushi.es.</p>
           <a class="pb-go" href="https://bambusushi.es" target="_blank" rel="noopener"
              aria-label="Ver bambusushi.es en vivo (se abre en una pestaña nueva)"
-             onclick="wmTrack('click_caso_bambu',{destino:'bambusushi.es',placement:'home-prueba'})">Ver en vivo →</a>
+             onclick="wmTrack('click_caso_bambu',{destino:'bambusushi.es',placement:'home-prueba'})" data-i18n="prueba.6" data-i18n-attr="aria-label:prueba.5">Ver en vivo →</a>
         </div>
       </div>
 
       <div class="pb">
         <div class="pb-body">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="14" rx="2"/><polygon points="10 8 15 11 10 14"/><line x1="8" y1="21" x2="16" y2="21"/></svg>Demos por sector</h3>
-          <p>Pruébalo tú mismo.</p>
-          <a class="pb-go" href="/demos/" onclick="wmTrack('click_demo_sector',{sector:'todas',placement:'home-prueba'})">Ver demos →</a>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="14" rx="2"/><polygon points="10 8 15 11 10 14"/><line x1="8" y1="21" x2="16" y2="21"/></svg><span data-i18n="prueba.7">Demos por sector</span></h3>
+          <p data-i18n="prueba.8">Pruébalo tú mismo.</p>
+          <a class="pb-go" href="/demos/" onclick="wmTrack('click_demo_sector',{sector:'todas',placement:'home-prueba'})" data-i18n="prueba.9">Ver demos →</a>
         </div>
       </div>
 
       <div class="pb">
         <div class="pb-body">
-          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg>Nos encuentran las IA</h3>
-          <p>Cuando preguntan por IA en Majadahonda, ChatGPT, Grok y Perplexity nos nombran.</p>
-          <a class="pb-go" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="wmTrack('click_geo_pruebas',{placement:'home-prueba'})">Ver capturas →</a>
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.2" y2="16.2"/></svg><span data-i18n="prueba.10">Nos encuentran las IA</span></h3>
+          <p data-i18n="prueba.11">Cuando preguntan por IA en Majadahonda, ChatGPT, Grok y Perplexity nos nombran.</p>
+          <a class="pb-go" href="/metodologia-visibilidad-ia/#banco-pruebas" onclick="wmTrack('click_geo_pruebas',{placement:'home-prueba'})" data-i18n="prueba.12">Ver capturas →</a>
         </div>
       </div>
 
@@ -710,38 +724,38 @@
     @media(max-width:360px){#faq .faq-wrap{padding:0 14px}}
   </style>
   <div class="faq-wrap">
-    <h2>Preguntas frecuentes</h2>
+    <h2 data-i18n="faq.1">Preguntas frecuentes</h2>
     <details>
-      <summary>¿Qué hace un agente de IA de WhiteMoon?</summary>
-      <div>Atiende por chat en tu web: responde, agenda y capta 24 h, con tu info y tu tono.</div>
+      <summary data-i18n="faq.2">¿Qué hace un agente de IA de WhiteMoon?</summary>
+      <div data-i18n="faq.3">Atiende por chat en tu web: responde, agenda y capta 24 h, con tu info y tu tono.</div>
     </details>
     <details>
-      <summary>¿Cuánto cuesta?</summary>
-      <div>Precios publicados en la página de precios: alta única y cuota mensual, sin IVA y sin permanencia. Cuéntanos tu caso y te recomendamos el plan.</div>
+      <summary data-i18n="faq.4">¿Cuánto cuesta?</summary>
+      <div data-i18n="faq.5">Precios publicados en la página de precios: alta única y cuota mensual, sin IVA y sin permanencia. Cuéntanos tu caso y te recomendamos el plan.</div>
     </details>
     <details>
-      <summary>¿En cuánto lo tengo funcionando?</summary>
-      <div>Operativo en 7 días.</div>
+      <summary data-i18n="faq.6">¿En cuánto lo tengo funcionando?</summary>
+      <div data-i18n="faq.7">Operativo en 7 días.</div>
     </details>
     <details>
-      <summary>¿Necesito tener web?</summary>
-      <div>No. Spark se lo mete a tu web actual; Core Spark Web te hace la web entera con el agente dentro.</div>
+      <summary data-i18n="faq.8">¿Necesito tener web?</summary>
+      <div data-i18n="faq.9">No. Spark se lo mete a tu web actual; Core Spark Web te hace la web entera con el agente dentro.</div>
     </details>
     <details>
-      <summary>¿El agente inventa?</summary>
-      <div>No. Responde con tu información; si no sabe, lo dice y deriva.</div>
+      <summary data-i18n="faq.10">¿El agente inventa?</summary>
+      <div data-i18n="faq.11">No. Responde con tu información; si no sabe, lo dice y deriva.</div>
     </details>
     <details>
-      <summary>¿Hay permanencia?</summary>
-      <div>No.</div>
+      <summary data-i18n="faq.12">¿Hay permanencia?</summary>
+      <div data-i18n="faq.13">No.</div>
     </details>
     <details>
-      <summary>¿Funciona para mi sector?</summary>
-      <div>Dental, restauración, legal, inmobiliaria, gestoría y más. <a href="/demos/">Prueba las demos</a>.</div>
+      <summary data-i18n="faq.14">¿Funciona para mi sector?</summary>
+      <div data-i18n="faq.15">Dental, restauración, legal, inmobiliaria, gestoría y más. <a href="/demos/">Prueba las demos</a>.</div>
     </details>
     <details>
-      <summary>¿Dónde trabajáis?</summary>
-      <div>Agencia de IA en Majadahonda; trabajamos en todo Madrid y online en toda España.</div>
+      <summary data-i18n="faq.16">¿Dónde trabajáis?</summary>
+      <div data-i18n="faq.17">Agencia de IA en Majadahonda; trabajamos en todo Madrid y online en toda España.</div>
     </details>
   </div>
 </section>
@@ -765,27 +779,27 @@
 <section id="zonas" class="sec">
   <div class="wrap">
     <div class="hdr c" style="margin-bottom:30px">
-      <h2 class="sec-h">Agencia de IA en Majadahonda — y en todo Madrid</h2>
-      <p class="sec-sub" style="margin-bottom:0">Somos de Majadahonda y damos servicio a negocios del noroeste y de toda la comunidad.</p>
+      <h2 class="sec-h" data-i18n="zonas.1">Agencia de IA en Majadahonda — y en todo Madrid</h2>
+      <p class="sec-sub" style="margin-bottom:0" data-i18n="zonas.2">Somos de Majadahonda y damos servicio a negocios del noroeste y de toda la comunidad.</p>
     </div>
-    <nav class="zn-grid" aria-label="Zonas donde trabajamos">
-      <a class="zn" href="/agencia-ia-majadahonda/">Agente IA en Majadahonda</a>
-      <a class="zn" href="/agencia-ia-las-rozas/">Agente IA en Las Rozas</a>
-      <a class="zn" href="/agencia-ia-pozuelo/">Agente IA en Pozuelo de Alarcón</a>
-      <a class="zn" href="/agencia-ia-boadilla/">Agente IA en Boadilla del Monte</a>
-      <a class="zn" href="/agencia-ia-aravaca/">Agente IA en Aravaca</a>
-      <a class="zn" href="/agencia-ia-villanueva-canada/">Agente IA en Villanueva de la Cañada</a>
-      <a class="zn" href="/agencia-ia-villaviciosa-odon/">Agente IA en Villaviciosa de Odón</a>
-      <a class="zn" href="/agencia-ia-collado-villalba/">Agente IA en Collado Villalba</a>
-      <a class="zn" href="/agencia-ia-torrelodones/">Agente IA en Torrelodones</a>
-      <a class="zn" href="/agencia-ia-tres-cantos/">Agente IA en Tres Cantos</a>
-      <a class="zn" href="/agencia-ia-alcobendas/">Agente IA en Alcobendas</a>
-      <a class="zn" href="/agencia-ia-salamanca-madrid/">Agente IA en el Barrio de Salamanca</a>
-      <a class="zn" href="/agencia-ia-madrid/">Agente IA en Madrid</a>
-      <a class="zn" href="/agencia-ia-espana/">Agente IA en toda España</a>
+    <nav class="zn-grid" aria-label="Zonas donde trabajamos" data-i18n-attr="aria-label:zonas.3">
+      <a class="zn" href="/agencia-ia-majadahonda/" data-i18n="zonas.4">Agente IA en Majadahonda</a>
+      <a class="zn" href="/agencia-ia-las-rozas/" data-i18n="zonas.5">Agente IA en Las Rozas</a>
+      <a class="zn" href="/agencia-ia-pozuelo/" data-i18n="zonas.6">Agente IA en Pozuelo de Alarcón</a>
+      <a class="zn" href="/agencia-ia-boadilla/" data-i18n="zonas.7">Agente IA en Boadilla del Monte</a>
+      <a class="zn" href="/agencia-ia-aravaca/" data-i18n="zonas.8">Agente IA en Aravaca</a>
+      <a class="zn" href="/agencia-ia-villanueva-canada/" data-i18n="zonas.9">Agente IA en Villanueva de la Cañada</a>
+      <a class="zn" href="/agencia-ia-villaviciosa-odon/" data-i18n="zonas.10">Agente IA en Villaviciosa de Odón</a>
+      <a class="zn" href="/agencia-ia-collado-villalba/" data-i18n="zonas.11">Agente IA en Collado Villalba</a>
+      <a class="zn" href="/agencia-ia-torrelodones/" data-i18n="zonas.12">Agente IA en Torrelodones</a>
+      <a class="zn" href="/agencia-ia-tres-cantos/" data-i18n="zonas.13">Agente IA en Tres Cantos</a>
+      <a class="zn" href="/agencia-ia-alcobendas/" data-i18n="zonas.14">Agente IA en Alcobendas</a>
+      <a class="zn" href="/agencia-ia-salamanca-madrid/" data-i18n="zonas.15">Agente IA en el Barrio de Salamanca</a>
+      <a class="zn" href="/agencia-ia-madrid/" data-i18n="zonas.16">Agente IA en Madrid</a>
+      <a class="zn" href="/agencia-ia-espana/" data-i18n="zonas.17">Agente IA en toda España</a>
     </nav>
     <div class="zn-foot">
-      <a class="zn-all" href="/agencia-ia-espana/" onclick="wmTrack('click_home_zonas',{destino:'cobertura-completa'})">Ver cobertura completa →</a>
+      <a class="zn-all" href="/agencia-ia-espana/" onclick="wmTrack('click_home_zonas',{destino:'cobertura-completa'})" data-i18n="zonas.18">Ver cobertura completa →</a>
     </div>
   </div>
 </section>
@@ -870,39 +884,39 @@
 <section class="cta-final-ent" id="hablamos">
   <div class="wrap">
     <div class="cf-head">
-      <h2>¿Hablamos?</h2>
-      <p>Cuéntanos tu caso y te recomendamos el plan que encaja. Sin compromiso, sin permanencia.</p>
+      <h2 data-i18n="hablamos.1">¿Hablamos?</h2>
+      <p data-i18n="hablamos.2">Cuéntanos tu caso y te recomendamos el plan que encaja. Sin compromiso, sin permanencia.</p>
     </div>
 
     <div class="cf-cols">
 
       <!-- Formulario — destino de todos los «Pide propuesta» de la home -->
       <div class="cf-card" id="pide-propuesta">
-        <h3>Pide propuesta</h3>
-        <p>Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
+        <h3 data-i18n="hablamos.3">Pide propuesta</h3>
+        <p data-i18n="hablamos.4">Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
 
         <form id="homeLeadForm" novalidate>
           <div class="cf-field">
-            <label for="hl-nombre">Nombre</label>
-            <input type="text" id="hl-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+            <label for="hl-nombre" data-i18n="homeleadform.1">Nombre</label>
+            <input type="text" id="hl-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required data-i18n-attr="placeholder:homeleadform.2">
           </div>
           <div class="cf-field">
-            <label for="hl-telefono">Teléfono</label>
-            <input type="tel" id="hl-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
+            <label for="hl-telefono" data-i18n="homeleadform.3">Teléfono</label>
+            <input type="tel" id="hl-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required data-i18n-attr="placeholder:homeleadform.4">
           </div>
           <div class="cf-field">
-            <label for="hl-sector">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
-            <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
+            <label for="hl-sector" data-i18n="homeleadform.5">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
+            <input type="text" id="hl-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas" data-i18n-attr="placeholder:homeleadform.6">
           </div>
           <div class="cf-consent">
             <input type="checkbox" id="hl-consent" name="consent" required
-                   aria-label="He leído y acepto la política de privacidad">
-            <span class="cf-consent-txt"><label for="hl-consent">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+                   aria-label="He leído y acepto la política de privacidad" data-i18n-attr="aria-label:homeleadform.7">
+            <span class="cf-consent-txt"><label for="hl-consent" data-i18n="homeleadform.8">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener" data-i18n="homeleadform.9">política de privacidad</a>.</span>
           </div>
-          <button type="submit" class="cf-send" id="hl-send">Pide propuesta</button>
-          <p class="cf-reassure">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
+          <button type="submit" class="cf-send" id="hl-send" data-i18n="homeleadform.10">Pide propuesta</button>
+          <p class="cf-reassure" data-i18n="homeleadform.11">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
           <p class="cf-msg" id="hl-msg" role="status" aria-live="polite"></p>
-          <p class="cf-note">
+          <p class="cf-note" data-i18n="homeleadform.12">
             <b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon).
             <b>Datos que pedimos:</b> nombre, teléfono y sector.
             <b>Para qué:</b> contactarte sobre tu consulta. No se ceden a terceros salvo los proveedores necesarios para prestarte el servicio.
@@ -912,33 +926,33 @@
 
         <div class="cf-ok" id="hl-ok">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
-          <b>¡Recibido! Te llamamos enseguida.</b>
-          <p>Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener" style="color:#9d70ff;text-decoration:none">643 199 580</a>.</p>
+          <b data-i18n="hablamos.5">¡Recibido! Te llamamos enseguida.</b>
+          <p data-i18n="hablamos.6">Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener" style="color:#9d70ff;text-decoration:none">643 199 580</a>.</p>
         </div>
       </div>
 
       <!-- Al lado — reunión o WhatsApp -->
       <div class="cf-card">
-        <h3>¿Prefieres hablarlo ya?</h3>
-        <p>Elige hueco en el calendario y hablamos por videollamada, o escríbenos por WhatsApp. Sin guion de ventas.</p>
+        <h3 data-i18n="hablamos.7">¿Prefieres hablarlo ya?</h3>
+        <p data-i18n="hablamos.8">Elige hueco en el calendario y hablamos por videollamada, o escríbenos por WhatsApp. Sin guion de ventas.</p>
         <!-- Foto: Jakub Żerdzicki en Unsplash (Licencia de Unsplash, uso comercial libre) · unsplash.com/photos/C9HUHreoPc0 -->
         <picture class="cf-photo">
           <source type="image/webp" srcset="/assets/img/agenda-portatil-cuaderno-400.webp 1x, /assets/img/agenda-portatil-cuaderno-800.webp 2x">
-          <img src="/assets/img/agenda-portatil-cuaderno-400.jpg" srcset="/assets/img/agenda-portatil-cuaderno-400.jpg 1x, /assets/img/agenda-portatil-cuaderno-800.jpg 2x" width="400" height="400" loading="lazy" decoding="async" alt="Manos anotando tareas en un cuaderno junto al portátil y el móvil, en un escritorio con luz cálida">
+          <img src="/assets/img/agenda-portatil-cuaderno-400.jpg" srcset="/assets/img/agenda-portatil-cuaderno-400.jpg 1x, /assets/img/agenda-portatil-cuaderno-800.jpg 2x" width="400" height="400" loading="lazy" decoding="async" alt="Manos anotando tareas en un cuaderno junto al portátil y el móvil, en un escritorio con luz cálida" data-i18n-attr="alt:hablamos.9">
         </picture>
         <div class="cf-side">
           <a class="cf-sec" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_home_cta_final',{via:'reunion',destination:'cal.com'})">
-            Agendar reunión
+            <span data-i18n="hablamos.10">Agendar reunión</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </a>
-          <a class="cf-wa" href="https://wa.me/34643199580" target="_blank" rel="noopener">WhatsApp · 643 199 580</a>
+          <a class="cf-wa" href="https://wa.me/34643199580" target="_blank" rel="noopener" data-i18n="hablamos.11">WhatsApp · 643 199 580</a>
         </div>
       </div>
 
     </div>
 
     <p class="cf-contact">
-      <span>WhiteMoon</span><span aria-hidden="true">·</span><span>Majadahonda, Madrid</span><span aria-hidden="true">·</span><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--><span aria-hidden="true">·</span><a href="tel:+34643199580">643 199 580</a>
+      <span>WhiteMoon</span><span aria-hidden="true">·</span><span data-i18n="hablamos.12">Majadahonda, Madrid</span><span aria-hidden="true">·</span><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--><span aria-hidden="true">·</span><a href="tel:+34643199580">643 199 580</a>
     </p>
   </div>
 </section>
@@ -1110,11 +1124,11 @@
   <div class="wm-foot__grid">
 
     <div class="wm-foot__brand">
-      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio" data-i18n-attr="aria-label:foot.logo">
         <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
         <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
       </a>
-      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <p data-i18n="foot.brand">Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
       <div class="wm-foot__social">
         <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
@@ -1126,62 +1140,62 @@
     </div>
 
     <div>
-      <h3>Servicios</h3>
+      <h3 data-i18n="foot.h.servicios">Servicios</h3>
       <ul>
-        <li><a href="/diseno-web/">Diseño web</a></li>
-        <li><a href="/spark/">Spark</a></li>
-        <li><a href="/core/">Core Spark Web</a></li>
-        <li><a href="/agente-ia-citas/">Agente IA Citas</a></li>
-        <li><a href="/desarrollo-software/">Software a medida</a></li>
-        <li><a href="/marketing/">Marketing</a></li>
+        <li><a href="/diseno-web/" data-i18n="foot.diseno-web">Diseño web</a></li>
+        <li><a href="/spark/" data-i18n="foot.spark">Spark</a></li>
+        <li><a href="/core/" data-i18n="foot.core">Core Spark Web</a></li>
+        <li><a href="/agente-ia-citas/" data-i18n="foot.agente-ia-citas">Agente IA Citas</a></li>
+        <li><a href="/desarrollo-software/" data-i18n="foot.desarrollo-software">Software a medida</a></li>
+        <li><a href="/marketing/" data-i18n="foot.marketing">Marketing</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Recursos</h3>
+      <h3 data-i18n="foot.h.recursos">Recursos</h3>
       <ul>
-        <li><a href="/demos/">Demos</a></li>
-        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
-        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
-        <li><a href="/casos/">Casos de uso</a></li>
-        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
-        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/demos/" data-i18n="foot.demos">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/" data-i18n="foot.costes-eficiencia-empresarial-ia">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/" data-i18n="foot.prompts-ia-pymes">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/" data-i18n="foot.casos">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/" data-i18n="foot.casos-de-exito.bambu-sushi">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/" data-i18n="foot.blog">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/" data-i18n="foot.agencia-ia-madrid">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/" data-i18n="foot.sobre-nosotros">Sobre nosotros</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Comparativas</h3>
+      <h3 data-i18n="foot.h.comparativas">Comparativas</h3>
       <ul>
-        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
-        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
-        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
-        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
-        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+        <li><a href="/alternativa-flownexion/" data-i18n="foot.alternativa-flownexion">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/" data-i18n="foot.alternativa-llmo">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/" data-i18n="foot.whitemoon-vs-intercom">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/" data-i18n="foot.whitemoon-vs-manychat">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/" data-i18n="foot.whitemoon-vs-tidio">WhiteMoon vs Tidio</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Contacto</h3>
+      <h3 data-i18n="foot.h.contacto">Contacto</h3>
       <div class="wm-foot__contact">
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong data-i18n="foot.direccion">Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong data-i18n="foot.horario">Horario</strong><span data-i18n="foot.horario.txt">Lun-Vie 9:00 - 18:00</span></div></div>
       </div>
     </div>
 
   </div>
 
   <div class="wm-foot__bottom">
-    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div>© <span id="yr">2026</span> <span data-i18n="foot.copy">WhiteMoon · Agencia de IA · Majadahonda, Madrid</span></div>
     <div class="wm-foot__legal">
-      <a href="/aviso-legal/">Aviso Legal</a>
-      <a href="/politica-privacidad/">Privacidad</a>
-      <a href="/politica-cookies/">Cookies</a>
+      <a href="/aviso-legal/" data-i18n="foot.aviso-legal">Aviso Legal</a>
+      <a href="/politica-privacidad/" data-i18n="foot.privacidad">Privacidad</a>
+      <a href="/politica-cookies/" data-i18n="foot.cookies">Cookies</a>
     </div>
-    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+    <div class="wm-foot__tag"><span data-i18n="foot.hecho">Hecho por</span> <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
   </div>
 </footer>
 
@@ -1190,7 +1204,7 @@
   <div class="mbox">
     <div class="mhead" id="pm-head">
       <div class="mhead-ico" id="pm-ico"></div>
-      <h3 id="pm-title">Detalles del pack</h3><p id="pm-sub">Información del pack seleccionado</p>
+      <h3 id="pm-title" data-i18n="top.2">Detalles del pack</h3><p id="pm-sub" data-i18n="top.3">Información del pack seleccionado</p>
       <button class="mx" id="pm-close" onclick="closePack()">✕</button>
     </div>
     <div class="mbody" id="pm-body"></div>
@@ -1200,7 +1214,7 @@
 <!-- LEGAL -->
 <div id="lo" class="lo" onclick="closeLO(event)">
   <div class="lbox">
-    <div class="ltop"><h2 id="l-title">Información legal</h2><button onclick="closeLegal()">✕</button></div>
+    <div class="ltop"><h2 id="l-title" data-i18n="top.4">Información legal</h2><button onclick="closeLegal()">✕</button></div>
     <div id="l-body"></div>
   </div>
 </div>
