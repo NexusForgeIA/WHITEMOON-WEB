@@ -56,8 +56,8 @@ I18N_PAGES = {
     "agente-ia-citas/index.html": "agente-ia-citas",
     "diseno-web/index.html": "diseno-web",
     "contacto/index.html": "contacto",
-    # Sin cifras traducidas: marcada con `i18n_mark.py --sin-cifras`, las
-    # expresiones de precio y todo texto con digitos se quedan en espanol.
+    # Se traduce todo el texto; numeros, € y cifras de precio se copian
+    # identicos en ES/EN/FR (los bloques que solo son cifra no llevan clave).
     "precios/index.html": "precios",
 }
 I18N_V = "2026101602"
