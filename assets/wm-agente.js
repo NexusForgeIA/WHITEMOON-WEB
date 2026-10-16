@@ -80,8 +80,19 @@
     }
   };
 
+  // Idioma (assets/i18n.js, solo en la home): textos visibles por clave
+  // "agente.*" de assets/i18n/home.json. Sin wmI18n o en espanol, T()
+  // devuelve el espanol de siempre. NO se traduce nada de lo que viaja a
+  // leads_web ni al aviso (interes, MENSAJE, ORIGEN), ni el consentimiento,
+  // que se queda en espanol como los textos legales.
+  function T(key, es) {
+    return window.wmI18n ? window.wmI18n.t(key, es) : es;
+  }
+
   var rutaActiva = null;
   var enviando = false;
+  var pasoActual = 1;
+  var ultimoMsg = null;     // [kind, clave, espanol] para repintarlo al cambiar de idioma
 
   var ICON = {
     chat: '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.2 3.6c-.5.4-1.3.1-1.3-.6V16A2.5 2.5 0 0 1 4 13.5z"/>',
@@ -247,7 +258,7 @@
   // El panel va ANTES del botón en el DOM: con el panel abierto el tabulador
   // recorre la pantalla y termina en el FAB, que es el que lo cierra.
   root.innerHTML =
-    '<div class="wma-panel" id="wma-panel" role="region" aria-label="Pide tu propuesta a WhiteMoon">'
+    '<div class="wma-panel" id="wma-panel" role="region" aria-label="Pide tu propuesta a WhiteMoon" data-i18n-attr="aria-label:agente.aria">'
     + '<div class="wma-head">'
     + '<p class="wma-eyebrow" id="wma-eyebrow">Paso 1 de 3</p>'
     + '<h2 class="wma-title" id="wma-title">¿Ya tienes página web?</h2>'
@@ -260,31 +271,31 @@
     + '<div class="wma-opts">'
     + '<button type="button" class="wma-opt" data-ruta="spark">'
     + '<span class="wma-opt__ico">' + svg("web", "") + "</span>"
-    + '<span class="wma-opt__txt"><span class="wma-opt__t">Sí, ya tengo web</span>'
-    + '<span class="wma-opt__h">Le instalamos el agente dentro</span></span></button>'
+    + '<span class="wma-opt__txt"><span class="wma-opt__t" data-i18n="agente.si">Sí, ya tengo web</span>'
+    + '<span class="wma-opt__h" data-i18n="agente.si.h">Le instalamos el agente dentro</span></span></button>'
     + '<button type="button" class="wma-opt" data-ruta="core">'
     + '<span class="wma-opt__ico">' + svg("nueva", "") + "</span>"
-    + '<span class="wma-opt__txt"><span class="wma-opt__t">No, aún no tengo</span>'
-    + '<span class="wma-opt__h">Te hacemos la web con el agente dentro</span></span></button>'
+    + '<span class="wma-opt__txt"><span class="wma-opt__t" data-i18n="agente.no">No, aún no tengo</span>'
+    + '<span class="wma-opt__h" data-i18n="agente.no.h">Te hacemos la web con el agente dentro</span></span></button>'
     + "</div></div>"
 
     // ── Pantalla 2 ──────────────────────────────────────────────────────
     + '<div class="wma-paso" id="wma-paso2">'
     + '<ul class="wma-lista" id="wma-lista"></ul>'
-    + '<button type="button" class="wma-btn" id="wma-quiero">Quiero que me llamen'
+    + '<button type="button" class="wma-btn" id="wma-quiero"><span data-i18n="agente.quiero">Quiero que me llamen</span>'
     + svg("flecha", "") + "</button>"
-    + '<button type="button" class="wma-back" data-volver="1">' + svg("atras", "") + "Volver</button>"
+    + '<button type="button" class="wma-back" data-volver="1">' + svg("atras", "") + '<span data-i18n="agente.volver">Volver</span></button>'
     + "</div>"
 
     // ── Pantalla 3 ──────────────────────────────────────────────────────
     + '<div class="wma-paso" id="wma-paso3">'
     + '<form id="wma-form" novalidate>'
-    + '<div class="wma-campo"><label for="wma-nombre">Nombre</label>'
-    + '<input type="text" id="wma-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required></div>'
-    + '<div class="wma-campo"><label for="wma-telefono">Teléfono</label>'
-    + '<input type="tel" id="wma-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required></div>'
-    + '<div class="wma-campo"><label for="wma-empresa">Empresa</label>'
-    + '<input type="text" id="wma-empresa" name="empresa" autocomplete="organization" placeholder="Nombre de tu negocio" required></div>'
+    + '<div class="wma-campo"><label for="wma-nombre" data-i18n="agente.nombre">Nombre</label>'
+    + '<input type="text" id="wma-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" data-i18n-attr="placeholder:agente.nombre.ph" required></div>'
+    + '<div class="wma-campo"><label for="wma-telefono" data-i18n="agente.telefono">Teléfono</label>'
+    + '<input type="tel" id="wma-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" data-i18n-attr="placeholder:agente.telefono.ph" required></div>'
+    + '<div class="wma-campo"><label for="wma-empresa" data-i18n="agente.empresa">Empresa</label>'
+    + '<input type="text" id="wma-empresa" name="empresa" autocomplete="organization" placeholder="Nombre de tu negocio" data-i18n-attr="placeholder:agente.empresa.ph" required></div>'
     // El enlace va FUERA del <label>: dentro, al pulsarlo el navegador
     // activaría también la casilla. Mismo patrón que #pide-propuesta.
     + '<div class="wma-consent">'
@@ -295,14 +306,14 @@
     + '<button type="submit" class="wma-btn" id="wma-enviar">Enviar</button>'
     + '<p class="wma-msg" id="wma-msg" role="status" aria-live="polite"></p>'
     + "</form>"
-    + '<button type="button" class="wma-back" data-volver="2">' + svg("atras", "") + "Volver</button>"
+    + '<button type="button" class="wma-back" data-volver="2">' + svg("atras", "") + '<span data-i18n="agente.volver">Volver</span></button>'
     + "</div>"
 
     // ── Confirmación ────────────────────────────────────────────────────
     + '<div class="wma-paso" id="wma-paso4">'
     + '<div class="wma-ok" tabindex="-1" role="status">'
     + '<span class="wma-ok__ck">' + svg("check", "") + "</span>"
-    + '<p class="wma-ok__t">' + OK_TEXTO + "</p>"
+    + '<p class="wma-ok__t" data-i18n="agente.ok">' + OK_TEXTO + "</p>"
     + "</div></div>"
 
     + "</div></div>"
@@ -329,43 +340,52 @@
 
   // Cambia de pantalla y reescribe la cabecera. El foco va al primer control
   // de la pantalla nueva para que el tabulador no se quede atrás.
-  function irA(n) {
+  // `sinFoco`: repintado por cambio de idioma, sin mover el foco.
+  function irA(n, sinFoco) {
+    pasoActual = n;
     Array.prototype.forEach.call(root.querySelectorAll(".wma-paso"), function (p, i) {
       p.classList.toggle("is-on", i + 1 === n);
     });
     var c = CABECERAS[n];
-    eyebrow.textContent = c[0];
-    titulo.textContent = c[1];
-    if (n === 2 && rutaActiva) sub.textContent = RUTAS[rutaActiva].entradilla;
-    else sub.textContent = c[2];
+    eyebrow.textContent = T("agente.paso" + n + ".eyebrow", c[0]);
+    if (n === 2 && rutaActiva) {
+      titulo.textContent = T("agente." + rutaActiva + ".titulo", RUTAS[rutaActiva].titulo);
+      sub.textContent = T("agente." + rutaActiva + ".entradilla", RUTAS[rutaActiva].entradilla);
+    } else {
+      titulo.textContent = T("agente.paso" + n + ".titulo", c[1]);
+      sub.textContent = c[2] ? T("agente.paso" + n + ".sub", c[2]) : "";
+    }
     sub.style.display = sub.textContent ? "" : "none";
     // Solo se mueve el foco con el panel abierto: en el mount() el widget
     // está cerrado y robarlo al cargar la página saltaría el scroll.
-    if (!isOpen()) return;
+    if (sinFoco || !isOpen()) return;
     var foco = root.querySelector(".wma-paso.is-on button, .wma-paso.is-on input")
       || root.querySelector(".wma-paso.is-on .wma-ok");
     if (foco) requestAnimationFrame(function () { foco.focus(); });
   }
 
   // Pantalla 2: pinta los bullets de la ruta elegida.
-  function pintaRuta(clave) {
-    rutaActiva = clave;
+  function pintaLista(clave) {
     var r = RUTAS[clave];
-    CABECERAS[2][1] = r.titulo;
     lista.textContent = "";
-    r.items.forEach(function (it) {
+    r.items.forEach(function (it, i) {
       var li = document.createElement("li");
       li.className = "wma-li";
       li.innerHTML = '<span class="wma-li__ck">' + svg("check", "") + "</span>"
         + '<span class="wma-li__t"></span>';
       var t = li.querySelector(".wma-li__t");
-      t.appendChild(document.createTextNode(it[0]));
+      t.appendChild(document.createTextNode(T("agente." + clave + ".i" + (i + 1), it[0])));
       var h = document.createElement("span");
       h.className = "wma-li__h";
-      h.textContent = it[1];
+      h.textContent = T("agente." + clave + ".i" + (i + 1) + ".h", it[1]);
       t.appendChild(h);
       lista.appendChild(li);
     });
+  }
+  function pintaRuta(clave) {
+    rutaActiva = clave;
+    CABECERAS[2][1] = RUTAS[clave].titulo;
+    pintaLista(clave);
     irA(2);
   }
 
@@ -446,9 +466,10 @@
     var el = form.elements[name];
     return el ? (el.value || "").trim() : "";
   }
-  function setMsg(kind, texto) {
+  function setMsg(kind, clave, es) {
+    ultimoMsg = clave ? [kind, clave, es] : null;
     msg.className = "wma-msg" + (kind ? " is-" + kind : "");
-    msg.textContent = texto || "";
+    msg.textContent = clave ? T(clave, es) : "";
   }
   function marca(el, mal) {
     if (mal) el.setAttribute("aria-invalid", "true");
@@ -471,14 +492,14 @@
       var falta = !nombre ? "nombre" : (!telefono ? "telefono" : "empresa");
       marca(form.elements[falta], true);
       form.elements[falta].focus();
-      setMsg("", "Necesitamos tu nombre, un teléfono y el nombre de tu empresa.");
+      setMsg("", "agente.msg.faltan", "Necesitamos tu nombre, un teléfono y el nombre de tu empresa.");
       return;
     }
     // Un teléfono utilizable tiene al menos 9 dígitos.
     if ((telefono.match(/\d/g) || []).length < 9) {
       marca(form.elements.telefono, true);
       form.elements.telefono.focus();
-      setMsg("", "Ese teléfono no parece completo. Revísalo, por favor.");
+      setMsg("", "agente.msg.telefono", "Ese teléfono no parece completo. Revísalo, por favor.");
       return;
     }
     // Gate de consentimiento: va DESPUES de validar los campos y ANTES de
@@ -486,14 +507,14 @@
     if (!consent || !consent.checked) {
       marca(consent, true);
       consent.focus();
-      setMsg("", "Marca la casilla para que podamos ponernos en contacto contigo.");
+      setMsg("", "agente.msg.consent", "Marca la casilla para que podamos ponernos en contacto contigo.");
       return;
     }
 
     setMsg("", "");
     enviando = true;
     btnEnviar.disabled = true;
-    btnEnviar.textContent = "Enviando…";
+    btnEnviar.textContent = T("agente.enviando", "Enviando…");
 
     var interes = RUTAS[rutaActiva] ? RUTAS[rutaActiva].interes : "Por definir";
 
@@ -518,8 +539,8 @@
       enviando = false;
       if (!entro) {
         btnEnviar.disabled = false;
-        btnEnviar.textContent = "Enviar";
-        setMsg("error", "No se ha podido enviar. Inténtalo otra vez en unos segundos.");
+        btnEnviar.textContent = T("agente.enviar", "Enviar");
+        setMsg("error", "agente.msg.error", "No se ha podido enviar. Inténtalo otra vez en unos segundos.");
         return;
       }
       track("widget_lead_enviado");
@@ -538,7 +559,7 @@
     if (isOpen() || root.classList.contains("is-hidden")) return;
     root.classList.add("is-open");
     fab.setAttribute("aria-expanded", "true");
-    fab.setAttribute("aria-label", "Cerrar");
+    fab.setAttribute("aria-label", T("agente.fab.close", "Cerrar"));
     track("abrir_widget");
     // Espera al frame en que el panel deja de estar visibility:hidden.
     requestAnimationFrame(function () {
@@ -551,9 +572,21 @@
     if (!isOpen()) return;
     root.classList.remove("is-open");
     fab.setAttribute("aria-expanded", "false");
-    fab.setAttribute("aria-label", "Pide tu propuesta");
+    fab.setAttribute("aria-label", T("agente.fab.open", "Pide tu propuesta"));
     if (returnFocus) fab.focus();
   }
+
+  // Cambio de idioma: lo que pinta este script (cabecera, bullets, mensaje,
+  // boton de envio, FAB). Lo marcado con data-i18n lo repinta i18n.js.
+  document.addEventListener("wm:lang", function () {
+    if (rutaActiva) pintaLista(rutaActiva);
+    irA(pasoActual, true);
+    if (ultimoMsg) setMsg(ultimoMsg[0], ultimoMsg[1], ultimoMsg[2]);
+    if (!enviando) btnEnviar.textContent = T("agente.enviar", "Enviar");
+    fab.setAttribute("aria-label", isOpen()
+      ? T("agente.fab.close", "Cerrar")
+      : T("agente.fab.open", "Pide tu propuesta"));
+  });
 
   fab.addEventListener("click", function () {
     if (isOpen()) close(true);

@@ -56,8 +56,11 @@ I18N_PAGES = {
     "agente-ia-citas/index.html": "agente-ia-citas",
     "diseno-web/index.html": "diseno-web",
     "contacto/index.html": "contacto",
+    # Se traduce todo el texto; numeros, € y cifras de precio se copian
+    # identicos en ES/EN/FR (los bloques que solo son cifra no llevan clave).
+    "precios/index.html": "precios",
 }
-I18N_V = "2026101601"
+I18N_V = "2026101602"
 # Si hay "en"/"fr" guardado: oculta el body hasta pintar (tope 2 s) para que el
 # cambio de texto al cargar no cuente como CLS, y precarga los diccionarios.
 I18N_HEAD = """<!-- WM-I18N · selector de idioma · generado por scripts/nav_rebuild.py -->

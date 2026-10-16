@@ -144,22 +144,27 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-live', 'polite');
     banner.setAttribute('aria-label', 'Aviso de cookies');
+    // data-i18n: en las paginas con selector de idioma (assets/i18n.js) el
+    // banner sale en el idioma elegido; la Politica de Cookies sigue en espanol.
+    // En el resto del sitio esos atributos no hacen nada.
+    banner.setAttribute('data-i18n-attr', 'aria-label:cookie.aria');
     banner.innerHTML =
       '<div class="wm-cookie-inner">'
       + '<p class="wm-cookie-text">'
-      + '<span class="wm-cookie-long">Usamos cookies técnicas necesarias y, con tu permiso, cookies de analítica '
+      + '<span class="wm-cookie-long" data-i18n="cookie.long">Usamos cookies técnicas necesarias y, con tu permiso, cookies de analítica '
       + '(Google Analytics 4 y Microsoft Clarity) para entender cómo se usa la web. Puedes aceptarlas todas o '
       + 'continuar solo con las esenciales. Más información en nuestra '
       + '<a href="/politica-cookies/">Política de Cookies</a>.</span>'
-      + '<span class="wm-cookie-short">Cookies técnicas y, con tu permiso, de analítica '
+      + '<span class="wm-cookie-short" data-i18n="cookie.short">Cookies técnicas y, con tu permiso, de analítica '
       + '(Google Analytics 4 y Microsoft Clarity). '
       + '<a href="/politica-cookies/">Política de Cookies</a>.</span>'
       + '</p>'
       + '<div class="wm-cookie-actions">'
-      + '<button type="button" class="wm-cookie-btn wm-cookie-essential" id="wm-cookie-essential">Solo esenciales</button>'
-      + '<button type="button" class="wm-cookie-btn wm-cookie-accept" id="wm-cookie-accept">Aceptar todas</button>'
+      + '<button type="button" class="wm-cookie-btn wm-cookie-essential" id="wm-cookie-essential" data-i18n="cookie.essential">Solo esenciales</button>'
+      + '<button type="button" class="wm-cookie-btn wm-cookie-accept" id="wm-cookie-accept" data-i18n="cookie.accept">Aceptar todas</button>'
       + '</div></div>';
     document.body.appendChild(banner);
+    if (window.wmI18n) window.wmI18n.apply(banner);
     document.getElementById('wm-cookie-accept').addEventListener('click', acceptAll);
     document.getElementById('wm-cookie-essential').addEventListener('click', essentialOnly);
   }

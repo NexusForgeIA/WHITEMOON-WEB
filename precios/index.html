@@ -180,15 +180,27 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Precios","item":"https://whitemoon.es/precios/"}]}
 </script>
-<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/cookie-consent.js?v=2026101601"></script>
 <script defer src="/assets/wm-track.js?v=2026060302"></script>
 <script defer src="/assets/wm-nav.js?v=2026092902"></script>
+<!-- WM-I18N · selector de idioma · generado por scripts/nav_rebuild.py -->
+<style>.wm-i18n-wait body{visibility:hidden}
+.wm-lang{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid rgba(255,255,255,.1);border-radius:8px}
+.wm-lang button{min-width:32px;height:28px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:#9CA3AF;font-family:inherit;font-size:.74rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:color .15s ease,background .15s ease}
+.wm-lang button:hover{color:#E8E8F0}
+.wm-lang button[aria-pressed=true]{background:rgba(124,77,255,.2);color:#E8E8F0}
+.wm-lang button:focus-visible{outline:2px solid #9d70ff;outline-offset:1px}
+.wm-lang--drawer{align-self:flex-start;margin:0 0 12px}
+.wm-lang--drawer button{min-width:48px;height:40px;font-size:.85rem}
+@media(max-width:920px){.wm-lang--nav{display:none}}</style>
+<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','precios'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=2026101602';d.head.appendChild(k)})}catch(e){}})();</script>
+<script defer src="/assets/i18n.js?v=2026101602" data-page="precios"></script>
 </head>
 <body>
-<a class="skip" href="#main">Saltar al contenido</a>
+<a class="skip" href="#main" data-i18n="top.1">Saltar al contenido</a>
 
 <!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
-<nav class="wm-nav" aria-label="Navegación principal">
+<nav class="wm-nav" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.aria">
   <div class="wm-nav__row">
     <a class="wm-nav__logo" href="/">
       <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
@@ -196,153 +208,155 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
     </a>
 
     <div class="wm-nav__center">
-      <a href="/inteligencia-artificial/">IA</a>
+      <a href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
       <div class="wm-nav__dd">
-        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.productos">Productos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="wm-nav__menu" role="menu">
-          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
-          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
-          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
-          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
+          <a href="/diseno-web/" role="menuitem"><span data-i18n="nav.web">Web</span><span class="desc" data-i18n="nav.web.desc">Tu web profesional, sin agente de IA</span></a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc" data-i18n="nav.spark.desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc" data-i18n="nav.core.desc">Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc" data-i18n="nav.citas.desc">Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
-      <a href="/precios/">Precios</a>
-      <a href="/desarrollo-software/">Software a medida</a>
-      <a href="/contacto/">Contacto</a>
+      <a href="/precios/" data-i18n="nav.precios">Precios</a>
+      <a href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+      <a href="/contacto/" data-i18n="nav.contacto">Contacto</a>
     </div>
 
     <div class="wm-nav__right">
-      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <div class="wm-lang wm-lang--nav" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer" data-i18n-attr="aria-label:nav.burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
     </div>
   </div>
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
-  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
-  <span class="wm-drawer__label">Productos</span>
-  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú" data-i18n-attr="aria-label:nav.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="wm-lang wm-lang--drawer" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
+  <span class="wm-drawer__label" data-i18n="nav.productos">Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/" data-i18n="nav.web">Web</a>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
-  <a class="wm-drawer__link" href="/precios/">Precios</a>
-  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
-  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
-  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  <a class="wm-drawer__link" href="/precios/" data-i18n="nav.precios">Precios</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+  <a class="wm-drawer__link" href="/contacto/" data-i18n="nav.contacto">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </aside>
 <div class="sky" aria-hidden="true"></div><div class="scan" aria-hidden="true"></div>
 <main class="wrap" id="main">
   <section class="hero">
     <div>
-      <div class="eyebrow">Planes para negocios</div>
-      <h1>Más clientes con tu mismo negocio. <em>Elige tu plan.</em></h1>
-      <p class="lede">Una web para tus clientes, un agente 24/7 disponible para tu clientela, todo a golpe de click. <a href="/demos/"><u>¡Pruébalo ya!</u></a></p>
-      <p class="copy">Cinco formas de empezar, de la web sencilla al sistema completo con agente de IA. <b>Una sola alta, cuota mensual</b> y puedes irte cuando quieras.</p>
-      <div class="chips"><span class="chip">Sin permanencia</span><span class="chip">Precios sin IVA</span><span class="chip">Operativo en 5-7 días laborables</span></div>
+      <div class="eyebrow" data-i18n="main.1">Planes para negocios</div>
+      <h1 data-i18n="main.2">Más clientes con tu mismo negocio. <em>Elige tu plan.</em></h1>
+      <p class="lede" data-i18n="main.3">Una web para tus clientes, un agente 24/7 disponible para tu clientela, todo a golpe de click. <a href="/demos/"><u>¡Pruébalo ya!</u></a></p>
+      <p class="copy" data-i18n="main.4">Cinco formas de empezar, de la web sencilla al sistema completo con agente de IA. <b>Una sola alta, cuota mensual</b> y puedes irte cuando quieras.</p>
+      <div class="chips"><span class="chip" data-i18n="main.5">Sin permanencia</span><span class="chip" data-i18n="main.6">Precios sin IVA</span><span class="chip" data-i18n="main.7">Operativo en 5-7 días laborables</span></div>
     </div>
-    <div class="scene" role="img" aria-label="Simulación ilustrativa: un cliente reserva cita con el asistente de IA y el negocio recibe un aviso en el móvil">
+    <div class="scene" role="img" aria-label="Simulación ilustrativa: un cliente reserva cita con el asistente de IA y el negocio recibe un aviso en el móvil" data-i18n-attr="aria-label:main.8">
       <div class="col">
       <div class="phone" aria-hidden="true"><div class="screen"><span class="isl"></span>
-        <div class="sbar"><span>9:41</span><span>5G ▮▮▮</span></div>
-        <div class="notif"><small>Nuevo contacto · aviso al móvil</small>Marta pide cita mañana a las 18:30</div>
-        <div class="chath"><i>✦</i><div><b>Asistente IA</b><span><span class="dot"></span>En línea</span></div></div>
+        <div class="sbar"><span>9:41</span><span data-i18n="main.9">5G ▮▮▮</span></div>
+        <div class="notif" data-i18n="main.10"><small>Nuevo contacto · aviso al móvil</small>Marta pide cita mañana a las 18:30</div>
+        <div class="chath"><i>✦</i><div><b data-i18n="main.11">Asistente IA</b><span data-i18n="main.12"><span class="dot"></span>En línea</span></div></div>
         <div class="msgs">
-          <div class="cm u k1">Hola, ¿tenéis hueco mañana por la tarde?</div>
-          <div class="cm a k2">¡Hola! Mañana tengo 17:00 y 18:30. ¿Cuál te viene mejor?</div>
-          <div class="cm u k3">A las 18:30, por favor</div>
-          <div class="cm a k4">Perfecto. ¿Me dices tu nombre y tu móvil para confirmarla?</div>
-          <div class="lead"><b>Contacto guardado</b>Marta · mañana 18:30 · el negocio lo recibe al instante</div>
+          <div class="cm u k1" data-i18n="main.13">Hola, ¿tenéis hueco mañana por la tarde?</div>
+          <div class="cm a k2" data-i18n="main.14">¡Hola! Mañana tengo 17:00 y 18:30. ¿Cuál te viene mejor?</div>
+          <div class="cm u k3" data-i18n="main.15">A las 18:30, por favor</div>
+          <div class="cm a k4" data-i18n="main.16">Perfecto. ¿Me dices tu nombre y tu móvil para confirmarla?</div>
+          <div class="lead" data-i18n="main.17"><b>Contacto guardado</b>Marta · mañana 18:30 · el negocio lo recibe al instante</div>
         </div>
         <div class="typw"><div class="typ t1"><i></i><i></i><i></i></div><div class="typ t2"><i></i><i></i><i></i></div></div>
-        <div class="inp">Escribe un mensaje…</div>
+        <div class="inp" data-i18n="main.18">Escribe un mensaje…</div>
       </div></div>
-      <div class="sim">Simulación ilustrativa</div>
+      <div class="sim" data-i18n="main.19">Simulación ilustrativa</div>
       </div>
     </div>
   </section>
 
-  <div class="sec-head"><div class="eyebrow">Tarifas</div><h2>Cinco planes, una sola alta.</h2></div>
-  <section class="plans" aria-label="Planes y precios">
+  <div class="sec-head"><div class="eyebrow" data-i18n="main.20">Tarifas</div><h2 data-i18n="main.21">Cinco planes, una sola alta.</h2></div>
+  <section class="plans" aria-label="Planes y precios" data-i18n-attr="aria-label:main.22">
     <article class="plan">
       <i class="br tl"></i><i class="br br2"></i>
       
-      <div class="lvl">Plan 1 de 5</div>
-      <h3>Web Esencial</h3>
-      <p class="ptag">Tu negocio en Google con una web de 3 páginas: inicio, servicios y contacto.</p>
-      <div class="price"><span class="m">59<small>€</small></span><span class="per">/mes</span></div>
-      <div class="setup"><span>Alta única</span><strong>299 €</strong></div>
+      <div class="lvl" data-i18n="main.23">Plan 1 de 5</div>
+      <h3 data-i18n="main.24">Web Esencial</h3>
+      <p class="ptag" data-i18n="main.25">Tu negocio en Google con una web de 3 páginas: inicio, servicios y contacto.</p>
+      <div class="price"><span class="m">59<small>€</small></span><span class="per" data-i18n="main.26">/mes</span></div>
+      <div class="setup"><span data-i18n="main.27">Alta única</span><strong>299 €</strong></div>
     </article>
     <article class="plan">
       <i class="br tl"></i><i class="br br2"></i>
       
-      <div class="lvl">Plan 2 de 5</div>
-      <h3>Web Profesional</h3>
-      <p class="ptag">Web de 5 páginas: las tres básicas y dos más que decidimos contigo.</p>
-      <div class="price"><span class="m">79<small>€</small></span><span class="per">/mes</span></div>
-      <div class="setup"><span>Alta única</span><strong>299 €</strong></div>
+      <div class="lvl" data-i18n="main.28">Plan 2 de 5</div>
+      <h3 data-i18n="main.29">Web Profesional</h3>
+      <p class="ptag" data-i18n="main.30">Web de 5 páginas: las tres básicas y dos más que decidimos contigo.</p>
+      <div class="price"><span class="m">79<small>€</small></span><span class="per" data-i18n="main.31">/mes</span></div>
+      <div class="setup"><span data-i18n="main.32">Alta única</span><strong>299 €</strong></div>
     </article>
     <article class="plan">
       <i class="br tl"></i><i class="br br2"></i>
       
-      <div class="lvl">Plan 3 de 5</div>
+      <div class="lvl" data-i18n="main.33">Plan 3 de 5</div>
       <h3>Spark</h3>
-      <p class="ptag">Un agente de IA en la web que ya tienes: atiende, capta y te avisa al móvil.</p>
-      <div class="price"><span class="m">99<small>€</small></span><span class="per">/mes</span></div>
-      <div class="setup"><span>Alta única</span><strong>299 €</strong></div>
+      <p class="ptag" data-i18n="main.34">Un agente de IA en la web que ya tienes: atiende, capta y te avisa al móvil.</p>
+      <div class="price"><span class="m">99<small>€</small></span><span class="per" data-i18n="main.35">/mes</span></div>
+      <div class="setup"><span data-i18n="main.36">Alta única</span><strong>299 €</strong></div>
     </article>
     <article class="plan">
       <i class="br tl"></i><i class="br br2"></i>
       
-      <div class="lvl">Plan 4 de 5</div>
+      <div class="lvl" data-i18n="main.37">Plan 4 de 5</div>
       <h3>Agente IA Citas</h3>
-      <p class="ptag">Tus clientes reservan solos por QR o enlace, con panel de citas y reseñas por WhatsApp.</p>
-      <div class="price"><span class="m">99<small>€</small></span><span class="per">/mes</span></div>
-      <div class="setup"><span>Alta única</span><strong>299 €</strong></div>
+      <p class="ptag" data-i18n="main.38">Tus clientes reservan solos por QR o enlace, con panel de citas y reseñas por WhatsApp.</p>
+      <div class="price"><span class="m">99<small>€</small></span><span class="per" data-i18n="main.39">/mes</span></div>
+      <div class="setup"><span data-i18n="main.40">Alta única</span><strong>299 €</strong></div>
     </article>
     <article class="plan top">
       <i class="br tl"></i><i class="br br2"></i>
-      <span class="tag">El más completo</span>
-      <div class="lvl">Plan 5 de 5</div>
+      <span class="tag" data-i18n="main.41">El más completo</span>
+      <div class="lvl" data-i18n="main.42">Plan 5 de 5</div>
       <h3>Core Spark Web</h3>
-      <p class="ptag">Web de 5 páginas, agente de IA y panel de leads, con SEO y GEO/AEO desde el día 1.</p>
-      <div class="price"><span class="m">199<small>€</small></span><span class="per">/mes</span></div>
-      <div class="setup"><span>Alta única</span><strong>299 €</strong></div>
+      <p class="ptag" data-i18n="main.43">Web de 5 páginas, agente de IA y panel de leads, con SEO y GEO/AEO desde el día 1.</p>
+      <div class="price"><span class="m">199<small>€</small></span><span class="per" data-i18n="main.44">/mes</span></div>
+      <div class="setup"><span data-i18n="main.45">Alta única</span><strong>299 €</strong></div>
     </article>
   </section>
 
-  <div class="sec-head"><div class="eyebrow">Comparativa</div><h2>Qué incluye cada plan.</h2>
-    <div class="legend"><i><span class="y">✓</span> Incluido</i><i><span class="n">✕</span> No incluido</i></div></div>
-  <div class="frame"><div class="scroll" role="region" aria-label="Comparativa de planes" tabindex="0">
+  <div class="sec-head"><div class="eyebrow" data-i18n="main.46">Comparativa</div><h2 data-i18n="main.47">Qué incluye cada plan.</h2>
+    <div class="legend"><i data-i18n="main.48"><span class="y">✓</span> Incluido</i><i data-i18n="main.49"><span class="n">✕</span> No incluido</i></div></div>
+  <div class="frame"><div class="scroll" role="region" aria-label="Comparativa de planes" tabindex="0" data-i18n-attr="aria-label:main.50">
     <table>
-      <thead><tr><th></th><th>Web Esencial</th><th>Web Profesional</th><th>Spark</th><th>Agente IA Citas</th><th class="core">Core Spark Web</th></tr></thead>
+      <thead><tr><th></th><th data-i18n="main.51">Web Esencial</th><th data-i18n="main.52">Web Profesional</th><th>Spark</th><th>Agente IA Citas</th><th class="core">Core Spark Web</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Web nueva incluida<span class="note">Spark y Citas se instalan en tu web o por QR</span></th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Dominio incluido el primer año</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Hosting, SSL y mantenimiento</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">2 cambios pequeños al mes</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">SEO local básico</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Agente de IA 24/7<span class="note">Siempre se identifica como asistente de IA</span></th><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Widget de contacto: llamar o WhatsApp</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td class="core"><span class="n" role="img" aria-label="No incluido">✕</span></td></tr>
-        <tr><th scope="row">Capta nombre y teléfono con aviso al móvil</th><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Reseñas de Google por WhatsApp<span class="note">El envío lo hace el propio negocio con un clic</span></th><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="n" role="img" aria-label="No incluido">✕</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
-        <tr><th scope="row">Sin permanencia</th><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td><span class="y" role="img" aria-label="Incluido">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.53">Web nueva incluida<span class="note">Spark y Citas se instalan en tu web o por QR</span></th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.54">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.55">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.56">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.57">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.58">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.59">Dominio incluido el primer año</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.60">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.61">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.62">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.63">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.64">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.65">Hosting, SSL y mantenimiento</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.66">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.67">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.68">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.69">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.70">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.71">2 cambios pequeños al mes</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.72">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.73">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.74">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.75">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.76">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.77">SEO local básico</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.78">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.79">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.80">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.81">✕</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.82">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.83">Agente de IA 24/7<span class="note">Siempre se identifica como asistente de IA</span></th><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.84">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.85">✕</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.86">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.87">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.88">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.89">Widget de contacto: llamar o WhatsApp</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.90">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.91">✓</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.92">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.93">✕</span></td><td class="core"><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.94">✕</span></td></tr>
+        <tr><th scope="row" data-i18n="main.95">Capta nombre y teléfono con aviso al móvil</th><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.96">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.97">✕</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.98">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.99">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.100">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.101">Reseñas de Google por WhatsApp<span class="note">El envío lo hace el propio negocio con un clic</span></th><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.102">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.103">✕</span></td><td><span class="n" role="img" aria-label="No incluido" data-i18n-attr="aria-label:main.104">✕</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.105">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.106">✓</span></td></tr>
+        <tr><th scope="row" data-i18n="main.107">Sin permanencia</th><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.108">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.109">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.110">✓</span></td><td><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.111">✓</span></td><td class="core"><span class="y" role="img" aria-label="Incluido" data-i18n-attr="aria-label:main.112">✓</span></td></tr>
       </tbody>
     </table>
   </div></div>
 
-  <section class="cta" aria-label="Hablamos">
-    <h2>Te decimos qué plan encaja con tu negocio.</h2>
-    <p>Cuéntanos a qué te dedicas y en 10 minutos sabes por dónde empezar. Sin compromiso.</p>
-    <div class="ctas"><a class="btn" href="https://wa.me/34643199580" target="_blank" rel="noopener">Escríbenos por WhatsApp</a><a class="btn ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión</a></div>
+  <section class="cta" aria-label="Hablamos" data-i18n-attr="aria-label:main.113">
+    <h2 data-i18n="main.114">Te decimos qué plan encaja con tu negocio.</h2>
+    <p data-i18n="main.115">Cuéntanos a qué te dedicas y en 10 minutos sabes por dónde empezar. Sin compromiso.</p>
+    <div class="ctas"><a class="btn" href="https://wa.me/34643199580" target="_blank" rel="noopener" data-i18n="main.116">Escríbenos por WhatsApp</a><a class="btn ghost" href="https://cal.com/whitemoon" target="_blank" rel="noopener" data-i18n="main.117">Agendar reunión</a></div>
   </section>
 
-  <section class="base" aria-label="Cómo trabajamos">
-    <div class="cell"><div class="glow"></div><h3>Una alta, una cuota</h3><p>El alta cubre el diseño y la configuración. La cuota mensual mantiene todo funcionando.</p></div>
-    <div class="cell"><div class="glow"></div><h3>Sin permanencia</h3><p>30 días de aviso para cancelar. Sin letra pequeña.</p></div>
-    <div class="cell"><div class="glow"></div><h3>Empieza donde quieras, crece sin rehacer nada</h3><p>Hoy una web que te encuentra. Mañana un agente de IA que atiende y capta clientes 24/7. Después, el sistema completo. Cada plan se apoya en el anterior: mejoras de plan cuando tu negocio lo pida y se activa sobre lo que ya tienes.</p></div>
+  <section class="base" aria-label="Cómo trabajamos" data-i18n-attr="aria-label:main.118">
+    <div class="cell"><div class="glow"></div><h3 data-i18n="main.119">Una alta, una cuota</h3><p data-i18n="main.120">El alta cubre el diseño y la configuración. La cuota mensual mantiene todo funcionando.</p></div>
+    <div class="cell"><div class="glow"></div><h3 data-i18n="main.121">Sin permanencia</h3><p data-i18n="main.122">30 días de aviso para cancelar. Sin letra pequeña.</p></div>
+    <div class="cell"><div class="glow"></div><h3 data-i18n="main.123">Empieza donde quieras, crece sin rehacer nada</h3><p data-i18n="main.124">Hoy una web que te encuentra. Mañana un agente de IA que atiende y capta clientes 24/7. Después, el sistema completo. Cada plan se apoya en el anterior: mejoras de plan cuando tu negocio lo pida y se activa sobre lo que ya tienes.</p></div>
   </section>
 
-  <p class="fnote">Precios sin IVA. No garantizamos ventas: damos las herramientas para no perder ninguna consulta.</p>
+  <p class="fnote" data-i18n="main.125">Precios sin IVA. No garantizamos ventas: damos las herramientas para no perder ninguna consulta.</p>
 </main>
 
 <!-- WM-FOOT · footer unificado · markup generado por scripts/nav_rebuild.py -->
@@ -350,11 +364,11 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
   <div class="wm-foot__grid">
 
     <div class="wm-foot__brand">
-      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio" data-i18n-attr="aria-label:foot.logo">
         <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
         <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
       </a>
-      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <p data-i18n="foot.brand">Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
       <div class="wm-foot__social">
         <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
@@ -366,64 +380,64 @@ footer{margin-top:40px;color:var(--muted);font-size:.78rem;font-family:var(--mon
     </div>
 
     <div>
-      <h3>Servicios</h3>
+      <h3 data-i18n="foot.h.servicios">Servicios</h3>
       <ul>
-        <li><a href="/diseno-web/">Diseño web</a></li>
-        <li><a href="/spark/">Spark</a></li>
-        <li><a href="/core/">Core Spark Web</a></li>
-        <li><a href="/agente-ia-citas/">Agente IA Citas</a></li>
-        <li><a href="/desarrollo-software/">Software a medida</a></li>
-        <li><a href="/marketing/">Marketing</a></li>
+        <li><a href="/diseno-web/" data-i18n="foot.diseno-web">Diseño web</a></li>
+        <li><a href="/spark/" data-i18n="foot.spark">Spark</a></li>
+        <li><a href="/core/" data-i18n="foot.core">Core Spark Web</a></li>
+        <li><a href="/agente-ia-citas/" data-i18n="foot.agente-ia-citas">Agente IA Citas</a></li>
+        <li><a href="/desarrollo-software/" data-i18n="foot.desarrollo-software">Software a medida</a></li>
+        <li><a href="/marketing/" data-i18n="foot.marketing">Marketing</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Recursos</h3>
+      <h3 data-i18n="foot.h.recursos">Recursos</h3>
       <ul>
-        <li><a href="/demos/">Demos</a></li>
-        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
-        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
-        <li><a href="/casos/">Casos de uso</a></li>
-        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
-        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/demos/" data-i18n="foot.demos">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/" data-i18n="foot.costes-eficiencia-empresarial-ia">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/" data-i18n="foot.prompts-ia-pymes">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/" data-i18n="foot.casos">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/" data-i18n="foot.casos-de-exito.bambu-sushi">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/" data-i18n="foot.blog">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/" data-i18n="foot.agencia-ia-madrid">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/" data-i18n="foot.sobre-nosotros">Sobre nosotros</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Comparativas</h3>
+      <h3 data-i18n="foot.h.comparativas">Comparativas</h3>
       <ul>
-        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
-        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
-        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
-        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
-        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+        <li><a href="/alternativa-flownexion/" data-i18n="foot.alternativa-flownexion">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/" data-i18n="foot.alternativa-llmo">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/" data-i18n="foot.whitemoon-vs-intercom">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/" data-i18n="foot.whitemoon-vs-manychat">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/" data-i18n="foot.whitemoon-vs-tidio">WhiteMoon vs Tidio</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Contacto</h3>
+      <h3 data-i18n="foot.h.contacto">Contacto</h3>
       <div class="wm-foot__contact">
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong data-i18n="foot.direccion">Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong data-i18n="foot.horario">Horario</strong><span data-i18n="foot.horario.txt">Lun-Vie 9:00 - 18:00</span></div></div>
       </div>
     </div>
 
   </div>
 
   <div class="wm-foot__bottom">
-    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div>© <span id="yr">2026</span> <span data-i18n="foot.copy">WhiteMoon · Agencia de IA · Majadahonda, Madrid</span></div>
     <div class="wm-foot__legal">
-      <a href="/aviso-legal/">Aviso Legal</a>
-      <a href="/politica-privacidad/">Privacidad</a>
-      <a href="/politica-cookies/">Cookies</a>
+      <a href="/aviso-legal/" data-i18n="foot.aviso-legal">Aviso Legal</a>
+      <a href="/politica-privacidad/" data-i18n="foot.privacidad">Privacidad</a>
+      <a href="/politica-cookies/" data-i18n="foot.cookies">Cookies</a>
     </div>
-    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+    <div class="wm-foot__tag"><span data-i18n="foot.hecho">Hecho por</span> <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
   </div>
 </footer>
-<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/wm-launcher.js?v=2026101601" defer></script>
 </body>
 </html>

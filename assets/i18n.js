@@ -85,8 +85,15 @@
     if (val.indexOf('<') !== -1) el.innerHTML = val;
     else el.textContent = val;
   }
-  function paint(dict) {
-    var nodes = document.querySelectorAll('[data-i18n]');
+  // Todo lo que cuelga de `scope` (por defecto, la pagina), incluido el propio scope.
+  function all(scope, sel) {
+    var list = Array.prototype.slice.call(scope.querySelectorAll(sel));
+    if (scope.matches && scope.matches(sel)) list.unshift(scope);
+    return list;
+  }
+  function paint(dict, scope) {
+    scope = scope || document;
+    var nodes = all(scope, '[data-i18n]');
     for (var i = 0; i < nodes.length; i++) {
       var el = nodes[i];
       var val = dict && dict[el.getAttribute('data-i18n')];
@@ -97,7 +104,7 @@
         el.innerHTML = el[ORIG];
       }
     }
-    var attrs = document.querySelectorAll('[data-i18n-attr]');
+    var attrs = all(scope, '[data-i18n-attr]');
     for (var j = 0; j < attrs.length; j++) {
       var a = attrs[j];
       var saved = a[ORIG_ATTR] || (a[ORIG_ATTR] = {});
@@ -121,29 +128,63 @@
   }
   function reveal() { root.classList.remove('wm-i18n-wait'); }
 
+  // Diccionario pintado ahora mismo (null = espanol). Lo leen los widgets
+  // que montan su HTML con JS (banner de cookies, lanzador, widget de la home).
+  var painted = null;
+  var paintedLang = 'es';
+  function announce(lang) {
+    if (lang === paintedLang) return;
+    paintedLang = lang;
+    try {
+      document.dispatchEvent(new CustomEvent('wm:lang', { detail: { lang: lang } }));
+    } catch (e) { /* navegador sin CustomEvent: los widgets se quedan como esten */ }
+  }
+
   function apply(lang) {
     if (LANGS.indexOf(lang) === -1) lang = 'es';
     current = lang;
     syncButtons(lang);
     if (lang === 'es') {
+      painted = null;
       paint(null);
       root.lang = 'es';
       reveal();
+      announce('es');
       return Promise.resolve();
     }
     return load(lang).then(function (dict) {
       if (current !== lang) return;        // clics rapidos: gana el ultimo
+      painted = dict;
       paint(dict);
       root.lang = lang;
       reveal();
+      announce(lang);
     }).catch(function (e) {
       if (window.console) console.warn('[i18n]', e && e.message);
       current = 'es';
+      painted = null;
       syncButtons('es');
       root.lang = 'es';
       reveal();
+      announce('es');
     });
   }
+
+  // API para el HTML que se monta con JS. Sin diccionario pintado (espanol,
+  // o todavia cargando) t() devuelve el espanol que le pasan.
+  //   wmI18n.t('clave', 'texto en espanol')  -> texto en el idioma pintado
+  //   wmI18n.apply(nodo)                      -> traduce un bloque recien insertado
+  //   document 'wm:lang' (detail.lang)        -> el idioma acaba de cambiar
+  window.wmI18n = {
+    lang: function () { return paintedLang; },
+    t: function (key, es) {
+      var v = painted && painted[key];
+      return v != null ? v : es;
+    },
+    apply: function (scope) {
+      if (painted && scope) paint(painted, scope);
+    }
+  };
 
   // ── Selector ────────────────────────────────────────────────────────
   document.addEventListener('click', function (e) {

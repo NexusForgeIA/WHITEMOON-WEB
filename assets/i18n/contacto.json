@@ -36,7 +36,11 @@
   "donde-estamos.9": "View map",
   "donde-estamos.10": "View on Google Maps",
   "donde-estamos.11": "Get directions",
-  "donde-estamos.12": "Base map © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap</a>"
+  "donde-estamos.12": "Base map © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap</a>",
+  "form.contacto.faltan": "We need your name and a phone number so we can call you.",
+  "form.contacto.consent": "To get back to you we need you to accept the privacy policy.",
+  "form.contacto.enviando": "Sending…",
+  "form.contacto.error": "We couldn't send it. Please try again or email us at "
  },
  "fr": {
   "top.1": "Contact",
@@ -74,7 +78,11 @@
   "donde-estamos.9": "Afficher la carte",
   "donde-estamos.10": "Voir sur Google Maps",
   "donde-estamos.11": "Itinéraire",
-  "donde-estamos.12": "Fond de carte © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap</a>"
+  "donde-estamos.12": "Fond de carte © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener\">OpenStreetMap</a>",
+  "form.contacto.faltan": "Il nous faut votre nom et un téléphone pour pouvoir vous appeler.",
+  "form.contacto.consent": "Pour vous répondre, nous avons besoin que vous acceptiez la politique de confidentialité.",
+  "form.contacto.enviando": "Envoi…",
+  "form.contacto.error": "L'envoi a échoué. Réessayez ou écrivez-nous à "
  },
  "_revisar": {
   "en": {
@@ -96,7 +104,8 @@
    "donde-estamos.2": "Registro mixto: 'Nous travaillons' + 'on prend un café' (más cercano, como el español); revisar coherencia.",
    "donde-estamos.4": "Dirección dejada en español a propósito (es la dirección postal real).",
    "donde-estamos.6": "Formato horario '9h00 – 19h00'; un nativo puede preferir '9 h – 19 h'.",
-   "donde-estamos.11": "'Cómo llegar' → 'Itinéraire' (botón); revisar."
+   "donde-estamos.11": "'Cómo llegar' → 'Itinéraire' (botón); revisar.",
+   "form.contacto.consent": "Aviso de validación (la casilla de consentimiento sigue en español)."
   }
  }
 }
