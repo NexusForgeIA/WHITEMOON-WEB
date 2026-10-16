@@ -107,7 +107,8 @@
   "faq.4": "Prices are published on our pricing page: one-off setup fee plus a monthly fee, excl. VAT, no lock-in.",
   "contacto.7": "Published prices, no lock-in.",
   "demodlg.1": "Agente IA Citas demo for a sample beauty salon",
-  "demodlg.2": "Live demo · sample beauty salon · no appointment is saved."
+  "demodlg.2": "Live demo · sample beauty salon · no appointment is saved.",
+  "demodlg.4": "Booking agent demo: sample beauty salon"
  },
  "fr": {
   "top.1": "Aller au contenu",
@@ -216,7 +217,8 @@
   "faq.4": "Nos tarifs sont publiés sur la page tarifs : frais de mise en service uniques et abonnement mensuel, HT et sans engagement.",
   "contacto.7": "Tarifs publiés, sans engagement.",
   "demodlg.1": "Démo de l'Agente IA Citas pour un institut de beauté fictif",
-  "demodlg.2": "Démo réelle · institut de beauté fictif · aucun rendez-vous n'est enregistré."
+  "demodlg.2": "Démo réelle · institut de beauté fictif · aucun rendez-vous n'est enregistré.",
+  "demodlg.4": "Démo de l'agent de rendez-vous : institut de beauté fictif"
  },
  "_revisar": {
   "en": {

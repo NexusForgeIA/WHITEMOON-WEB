@@ -37,7 +37,7 @@
 <link rel="preload" href="/assets/site.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="/assets/site.css"></noscript>
 <link rel="dns-prefetch" href="https://wa.me">
-<script defer src="/assets/cookie-consent.js?v=2026072802"></script>
+<script defer src="/assets/cookie-consent.js?v=2026101601"></script>
 <script defer src="/assets/wm-track.js?v=2026060302"></script>
 <link rel="stylesheet" href="/assets/wm-nav.css?v=2026092902">
 <link rel="stylesheet" href="/assets/wm-ct-holo.css?v=2026101401">
@@ -181,8 +181,8 @@
 .wm-lang--drawer{align-self:flex-start;margin:0 0 12px}
 .wm-lang--drawer button{min-width:48px;height:40px;font-size:.85rem}
 @media(max-width:920px){.wm-lang--nav{display:none}}</style>
-<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','contacto'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=2026101601';d.head.appendChild(k)})}catch(e){}})();</script>
-<script defer src="/assets/i18n.js?v=2026101601" data-page="contacto"></script>
+<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','contacto'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=2026101602';d.head.appendChild(k)})}catch(e){}})();</script>
+<script defer src="/assets/i18n.js?v=2026101602" data-page="contacto"></script>
 </head>
 <body class="cth">
 
@@ -556,6 +556,10 @@
     var el = form.elements[name];
     return el ? (el.value || '').trim() : '';
   }
+  // Idioma (assets/i18n.js): textos por clave; sin traduccion, el espanol.
+  function T(key, es) {
+    return window.wmI18n ? window.wmI18n.t(key, es) : es;
+  }
   function setMsg(kind, text) {
     msg.className = 'ct-msg' + (kind ? ' is-' + kind : '');
     msg.textContent = text || '';
@@ -624,7 +628,7 @@
       var falta = !nombre ? 'nombre' : 'telefono';
       form.elements[falta].setAttribute('aria-invalid', 'true');
       form.elements[falta].focus();
-      setMsg('warn', 'Necesitamos tu nombre y un teléfono para poder llamarte.');
+      setMsg('warn', T('form.contacto.faltan', 'Necesitamos tu nombre y un teléfono para poder llamarte.'));
       return;
     }
 
@@ -636,12 +640,12 @@
         consent.setAttribute('aria-invalid', 'true');
         consent.focus();
       }
-      setMsg('warn', 'Para poder escribirte necesitamos que aceptes la política de privacidad.');
+      setMsg('warn', T('form.contacto.consent', 'Para poder escribirte necesitamos que aceptes la política de privacidad.'));
       return;
     }
 
     setMsg('', '');
-    if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+    if (btn) { btn.disabled = true; btn.textContent = T('form.contacto.enviando', 'Enviando…'); }
 
     var mensaje = 'Lead formulario contacto';
 
@@ -662,9 +666,9 @@
       fecha: new Date().toISOString()
     }).then(function (entro) {
       if (!entro) {
-        if (btn) { btn.disabled = false; btn.textContent = 'Enviar'; }
+        if (btn) { btn.disabled = false; btn.textContent = T(btn.getAttribute('data-i18n'), 'Enviar'); }
         msg.className = 'ct-msg is-error';
-        msg.innerHTML = 'No se pudo enviar. Prueba otra vez o escríbenos a ' +
+        msg.innerHTML = T('form.contacto.error', 'No se pudo enviar. Prueba otra vez o escríbenos a ') +
           '<!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off-->';
         return;
       }
@@ -683,7 +687,7 @@
 })();
 </script>
 
-<script src="/assets/wm-launcher.js?v=2026091501" defer></script>
+<script src="/assets/wm-launcher.js?v=2026101601" defer></script>
 
 <script src="/assets/wm-ct-holo.js?v=2026101401" defer></script>
 </body>

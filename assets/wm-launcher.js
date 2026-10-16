@@ -52,13 +52,22 @@
   // las mide el listener delegado de assets/wm-track.js, que emite
   // whatsapp_click con placement:'launcher'. Marcarlas aquí también daría
   // dos eventos por clic.
+  //
+  // Idioma (solo en las paginas con assets/i18n.js): label/hint llevan
+  // data-i18n y los pinta i18n.js; el texto prellenado de WhatsApp sale de
+  // la clave `wa` (wmI18n.t). El numero y el enlace no cambian nunca. En
+  // espanol el href es exactamente el de siempre.
   var ACTIONS = [
-    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes" },
-    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA" },
-    { href: WA + "?text=Hola,%20me%20interesa%20el%20Agente%20IA%20Citas", icon: "citas", label: "Me interesa Agente IA Citas", hint: "Reservas y citas por QR" },
-    { href: CAL, icon: "cal", label: "Agendar reunión", hint: "Elige día y hora", ev: "launcher_agendar" },
+    { href: WA + "?text=Hola,%20me%20interesa%20Spark", icon: "spark", label: "Me interesa Spark", hint: "Agente IA para la web que ya tienes", k: "spark", wa: "Hola, me interesa Spark" },
+    { href: WA + "?text=Hola,%20me%20interesa%20Core%20Spark%20Web", icon: "web", label: "Me interesa Core Spark Web", hint: "Web nueva con agente IA", k: "core", wa: "Hola, me interesa Core Spark Web" },
+    { href: WA + "?text=Hola,%20me%20interesa%20el%20Agente%20IA%20Citas", icon: "citas", label: "Me interesa Agente IA Citas", hint: "Reservas y citas por QR", k: "citas", wa: "Hola, me interesa el Agente IA Citas" },
+    { href: CAL, icon: "cal", label: "Agendar reunión", hint: "Elige día y hora", ev: "launcher_agendar", k: "cal" },
     { href: WA, icon: "wa", label: "WhatsApp", hint: "643 199 580" }
   ];
+  function T(key, es) {
+    return window.wmI18n ? window.wmI18n.t(key, es) : es;
+  }
+  function k(key) { return key ? ' data-i18n="' + key + '"' : ""; }
 
   var css = ''
     + '#wm-launcher{position:fixed;right:24px;bottom:var(--wml-base,24px);z-index:9998;'
@@ -126,16 +135,16 @@
   var items = ACTIONS.map(function (a, i) {
     return '<li><a class="wml-link" data-i="' + i + '" href="' + a.href + '" target="_blank" rel="noopener">'
       + '<span class="wml-badge' + (a.icon === "wa" ? " is-wa" : "") + '">' + svg(a.icon, "") + "</span>"
-      + '<span class="wml-txt"><span class="wml-label">' + a.label + "</span>"
-      + '<span class="wml-hint">' + a.hint + "</span></span>"
-      + '<span class="wml-sr"> (se abre en una pestaña nueva)</span></a></li>';
+      + '<span class="wml-txt"><span class="wml-label"' + k(a.k && "launcher." + a.k) + ">" + a.label + "</span>"
+      + '<span class="wml-hint"' + k(a.k && "launcher." + a.k + ".hint") + ">" + a.hint + "</span></span>"
+      + '<span class="wml-sr" data-i18n="launcher.newtab"> (se abre en una pestaña nueva)</span></a></li>';
   }).join("");
   // El panel va ANTES del botón en el DOM: con el panel abierto el tabulador
   // recorre las 5 acciones y termina en el FAB, que es el que lo cierra.
   root.innerHTML =
-    '<div class="wml-panel" id="wml-panel" role="region" aria-label="Opciones de contacto">'
-    + '<div class="wml-head"><p class="wml-title">¿Hablamos?</p>'
-    + '<p class="wml-sub">Elige cómo prefieres contactar con WhiteMoon.</p></div>'
+    '<div class="wml-panel" id="wml-panel" role="region" aria-label="Opciones de contacto" data-i18n-attr="aria-label:launcher.aria">'
+    + '<div class="wml-head"><p class="wml-title" data-i18n="launcher.title">¿Hablamos?</p>'
+    + '<p class="wml-sub" data-i18n="launcher.sub">Elige cómo prefieres contactar con WhiteMoon.</p></div>'
     + '<ul class="wml-list">' + items + "</ul></div>"
     + '<button type="button" class="wml-fab" aria-label="Abrir menú de contacto" aria-expanded="false" aria-controls="wml-panel">'
     + '<span class="wml-ring" aria-hidden="true"></span>'
@@ -152,7 +161,7 @@
     if (isOpen() || root.classList.contains("is-hidden")) return;
     root.classList.add("is-open");
     fab.setAttribute("aria-expanded", "true");
-    fab.setAttribute("aria-label", "Cerrar menú de contacto");
+    fab.setAttribute("aria-label", T("launcher.fab.close", "Cerrar menú de contacto"));
     track("abrir_launcher");
     // Espera al frame en que el panel deja de estar visibility:hidden.
     requestAnimationFrame(function () { links[0].focus(); });
@@ -162,9 +171,25 @@
     if (!isOpen()) return;
     root.classList.remove("is-open");
     fab.setAttribute("aria-expanded", "false");
-    fab.setAttribute("aria-label", "Abrir menú de contacto");
+    fab.setAttribute("aria-label", T("launcher.fab.open", "Abrir menú de contacto"));
     if (returnFocus) fab.focus();
   }
+
+  // Cambio de idioma: textos prellenados de WhatsApp y etiqueta del FAB.
+  // El resto (label, hint, titulo) lo repinta i18n.js por sus data-i18n.
+  document.addEventListener("wm:lang", function (e) {
+    var lang = e.detail && e.detail.lang;
+    Array.prototype.forEach.call(links, function (a) {
+      var act = ACTIONS[+a.getAttribute("data-i")];
+      if (!act.wa) return;
+      a.setAttribute("href", lang === "es" || !lang
+        ? act.href
+        : WA + "?text=" + encodeURIComponent(T("launcher." + act.k + ".wa", act.wa)));
+    });
+    fab.setAttribute("aria-label", isOpen()
+      ? T("launcher.fab.close", "Cerrar menú de contacto")
+      : T("launcher.fab.open", "Abrir menú de contacto"));
+  });
 
   fab.addEventListener("click", function () {
     if (isOpen()) close(true);

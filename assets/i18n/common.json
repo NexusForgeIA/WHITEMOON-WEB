@@ -38,7 +38,29 @@
   "foot.privacidad": "Privacy",
   "foot.cookies": "Cookies",
   "foot.hecho": "Made by",
-  "nav.precios": "Pricing"
+  "nav.precios": "Pricing",
+  "cookie.aria": "Cookie notice",
+  "cookie.long": "We use the technical cookies the site needs and, with your permission, analytics cookies (Google Analytics 4 and Microsoft Clarity) to understand how the site is used. You can accept them all or continue with the essential ones only. More information in our <a href=\"/politica-cookies/\">Política de Cookies</a> (in Spanish).",
+  "cookie.short": "Technical cookies and, with your permission, analytics cookies (Google Analytics 4 and Microsoft Clarity). <a href=\"/politica-cookies/\">Política de Cookies</a> (in Spanish).",
+  "cookie.essential": "Essential only",
+  "cookie.accept": "Accept all",
+  "launcher.aria": "Contact options",
+  "launcher.title": "Shall we talk?",
+  "launcher.sub": "Choose how you would like to contact WhiteMoon.",
+  "launcher.spark": "I'm interested in Spark",
+  "launcher.spark.hint": "AI agent for the website you already have",
+  "launcher.spark.wa": "Hi, I'm interested in Spark",
+  "launcher.core": "I'm interested in Core Spark Web",
+  "launcher.core.hint": "New website with an AI agent",
+  "launcher.core.wa": "Hi, I'm interested in Core Spark Web",
+  "launcher.citas": "I'm interested in Agente IA Citas",
+  "launcher.citas.hint": "Bookings and appointments by QR code",
+  "launcher.citas.wa": "Hi, I'm interested in Agente IA Citas",
+  "launcher.cal": "Book a call",
+  "launcher.cal.hint": "Pick a day and time",
+  "launcher.newtab": " (opens in a new tab)",
+  "launcher.fab.open": "Open contact menu",
+  "launcher.fab.close": "Close contact menu"
  },
  "fr": {
   "lang.group": "Langue",
@@ -79,19 +101,44 @@
   "foot.cookies": "Cookies",
   "foot.hecho": "Réalisé par",
   "foot.demos": "Démos",
-  "nav.precios": "Tarifs"
+  "nav.precios": "Tarifs",
+  "cookie.aria": "Avis sur les cookies",
+  "cookie.long": "Nous utilisons les cookies techniques nécessaires et, avec votre accord, des cookies de mesure d'audience (Google Analytics 4 et Microsoft Clarity) pour comprendre comment le site est utilisé. Vous pouvez tous les accepter ou continuer avec les seuls cookies essentiels. Plus d'informations dans notre <a href=\"/politica-cookies/\">Política de Cookies</a> (en espagnol).",
+  "cookie.short": "Cookies techniques et, avec votre accord, de mesure d'audience (Google Analytics 4 et Microsoft Clarity). <a href=\"/politica-cookies/\">Política de Cookies</a> (en espagnol).",
+  "cookie.essential": "Essentiels uniquement",
+  "cookie.accept": "Tout accepter",
+  "launcher.aria": "Options de contact",
+  "launcher.title": "On en parle ?",
+  "launcher.sub": "Choisissez comment contacter WhiteMoon.",
+  "launcher.spark": "Spark m'intéresse",
+  "launcher.spark.hint": "Agent IA pour le site que vous avez déjà",
+  "launcher.spark.wa": "Bonjour, Spark m'intéresse",
+  "launcher.core": "Core Spark Web m'intéresse",
+  "launcher.core.hint": "Nouveau site avec agent IA",
+  "launcher.core.wa": "Bonjour, Core Spark Web m'intéresse",
+  "launcher.citas": "Agente IA Citas m'intéresse",
+  "launcher.citas.hint": "Réservations et rendez-vous par QR code",
+  "launcher.citas.wa": "Bonjour, l'Agente IA Citas m'intéresse",
+  "launcher.cal": "Réserver un appel",
+  "launcher.cal.hint": "Choisissez le jour et l'heure",
+  "launcher.newtab": " (s'ouvre dans un nouvel onglet)",
+  "launcher.fab.open": "Ouvrir le menu de contact",
+  "launcher.fab.close": "Fermer le menu de contact"
  },
  "_revisar": {
   "en": {
    "nav.citas.desc": "'Bookings by QR code': confirmar que suena natural.",
-   "foot.casos": "'Use cases' vs 'Examples': elegir según el contenido de /casos/."
+   "foot.casos": "'Use cases' vs 'Examples': elegir según el contenido de /casos/.",
+   "cookie.long": "Banner de cookies: revisar con quien lleve el RGPD. Enlaza a la política en español y lo dice."
   },
   "fr": {
    "nav.citas.desc": "Revisar naturalidad.",
    "foot.brand": "PME vs TPE: para negocios muy pequeños en Francia se dice TPE.",
    "foot.horario.txt": "Formato de horas francés (9 h–18 h): confirmar.",
    "foot.aviso-legal": "'Mentions légales' es el equivalente francés del aviso legal; la página enlazada sigue en español.",
-   "foot.hecho": "'Réalisé par' vs 'Conçu par'."
+   "foot.hecho": "'Réalisé par' vs 'Conçu par'.",
+   "cookie.long": "Banner de cookies: revisar con quien lleve el RGPD. Enlaza a la política en español y lo dice.",
+   "launcher.spark.wa": "Texto prellenado de WhatsApp: lo recibe el equipo; confirmar que se entiende."
   }
  }
 }

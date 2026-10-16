@@ -118,9 +118,23 @@ def classes(n: Node) -> set[str]:
     return set((n.attrs.get("class") or "").split())
 
 
+# --sin-cifras (/precios/): ninguna cifra se traduce ni se mueve. Un bloque
+# con "€" queda fuera entero y cualquier texto con un digito se queda sin clave.
+SIN_CIFRAS = False
+SRC = ""
+EURO = re.compile(r"€|&euro;|&#8364;", re.I)
+DIGIT = re.compile(r"\d")
+
+
 def opaque(n: Node) -> bool:
     if n.tag in OPAQUE or "data-i18n-skip" in n.attrs:
         return True
+    if SIN_CIFRAS and n.close is not None:
+        inside = SRC[n.tag_end:n.close]
+        # Expresion de precio ("59 €/mes", "Alta unica 299 €"): bloque corto
+        # con €, fuera entero, unidad incluida.
+        if EURO.search(inside) and len(" ".join(re.sub(r"<[^>]+>", " ", inside).split())) <= 80:
+            return True
     if n.tag == "nav" and "wm-nav" in classes(n):
         return True
     if n.tag == "aside" and "wm-drawer" in classes(n):
@@ -147,6 +161,8 @@ def runs(n: Node, src: str):
 
 def meaningful(text: str) -> bool:
     t = " ".join(html.unescape(text).split())
+    if SIN_CIFRAS and (DIGIT.search(t) or EURO.search(t)):
+        return False
     return bool(LETTER.search(t)) and not INVARIANT.match(t)
 
 
@@ -169,6 +185,8 @@ def inner(n: Node, src: str) -> str:
 
 
 def mark(src: str, page: str):
+    global SRC
+    SRC = src
     tree = Tree(src)
     tree.feed(src)
     tree.close()
@@ -211,7 +229,12 @@ def mark(src: str, page: str):
                 add_attr(n, f' data-i18n-attr="{";".join(pairs)}"')
 
             texts = runs(n, src)
-            if texts and any(meaningful(src[a:b]) for a, b in texts):
+            if (SIN_CIFRAS and texts and n.close is not None and rich_safe(n)
+                    and (DIGIT.search(src[n.tag_end:n.close]) or EURO.search(src[n.tag_end:n.close]))):
+                # Frase con una cifra dentro (p. ej. "Hasta <b>5</b> paginas"):
+                # entera en espanol; trocearla dejaria medias frases traducidas.
+                covered = True
+            elif texts and any(meaningful(src[a:b]) for a, b in texts):
                 if rich_safe(n) and n.close is not None:
                     k = key()
                     add_attr(n, f' data-i18n="{k}"')
@@ -251,7 +274,11 @@ def main() -> int:
     ap.add_argument("page")
     ap.add_argument("--dump")
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--sin-cifras", action="store_true",
+                    help="no marca nada con digitos ni bloques con € (/precios/)")
     args = ap.parse_args()
+    global SIN_CIFRAS
+    SIN_CIFRAS = args.sin_cifras
     with open(args.file, encoding="utf-8", newline="") as fh:
         src = fh.read()
     body = src[src.lower().find("<body"):]
