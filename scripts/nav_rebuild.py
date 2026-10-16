@@ -44,6 +44,63 @@ EXCLUDE = {
     "automatizaciones/index.html",       # landing WhiteMoon 360, nav de anclas
 }
 
+# Selector de idioma ES/EN/FR (assets/i18n.js), solo para el visitante: el HTML
+# sigue en espanol. Fase 1: estas paginas -> nombre de su diccionario en
+# assets/i18n/<nombre>.json. En ellas la navbar y el footer salen con
+# data-i18n (claves de assets/i18n/common.json) y con el selector; en el resto
+# del universo el markup queda exactamente igual que antes.
+I18N_PAGES = {
+    "index.html": "home",
+    "spark/index.html": "spark",
+    "core/index.html": "core",
+    "agente-ia-citas/index.html": "agente-ia-citas",
+    "diseno-web/index.html": "diseno-web",
+    "contacto/index.html": "contacto",
+}
+I18N_V = "2026101601"
+# Si hay "en"/"fr" guardado: oculta el body hasta pintar (tope 2 s) para que el
+# cambio de texto al cargar no cuente como CLS, y precarga los diccionarios.
+I18N_HEAD = """<!-- WM-I18N · selector de idioma · generado por scripts/nav_rebuild.py -->
+<style>.wm-i18n-wait body{visibility:hidden}
+.wm-lang{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid rgba(255,255,255,.1);border-radius:8px}
+.wm-lang button{min-width:32px;height:28px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:#9CA3AF;font-family:inherit;font-size:.74rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:color .15s ease,background .15s ease}
+.wm-lang button:hover{color:#E8E8F0}
+.wm-lang button[aria-pressed=true]{background:rgba(124,77,255,.2);color:#E8E8F0}
+.wm-lang button:focus-visible{outline:2px solid #9d70ff;outline-offset:1px}
+.wm-lang--drawer{align-self:flex-start;margin:0 0 12px}
+.wm-lang--drawer button{min-width:48px;height:40px;font-size:.85rem}
+@media(max-width:920px){.wm-lang--nav{display:none}}</style>
+<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','%(page)s'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=%(v)s';d.head.appendChild(k)})}catch(e){}})();</script>
+<script defer src="/assets/i18n.js?v=%(v)s" data-page="%(page)s"></script>
+"""
+I18N_HEAD_RX = re.compile(
+    r'^[ \t]*<!-- WM-I18N ·.*?<script defer src="/assets/i18n\.js[^>]*></script>[ \t]*\r?\n',
+    re.M | re.S,
+)
+
+
+def lang_switch(where: str) -> str:
+    """ES | EN | FR. El nombre accesible de cada boton contiene su texto visible."""
+    return (
+        f'<div class="wm-lang wm-lang--{where}" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">'
+        '<button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button>'
+        '<button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button>'
+        '<button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button>'
+        '</div>'
+    )
+
+
+def i18n_helpers(on: bool):
+    """t(k): data-i18n · w(k, txt): texto envuelto en <span data-i18n> · ta(k): aria-label."""
+    if not on:
+        return (lambda k: ""), (lambda k, txt: txt), (lambda k: "")
+    return (
+        lambda k: f' data-i18n="{k}"',
+        lambda k, txt: f'<span data-i18n="{k}">{txt}</span>',
+        lambda k: f' data-i18n-attr="aria-label:{k}"',
+    )
+
+
 # Paginas cuyo header vivia en el flujo del documento (sticky). Ahi la navbar
 # tiene que seguir siendo sticky: si pasa a fixed, tapa el primer bloque.
 FLOW_PAGES_EXTRA = {"blog/index.html", "demos/index.html"}
@@ -77,10 +134,14 @@ WM_HEAD_RX = re.compile(
 LAST_SHEET_RX = re.compile(r'<link[^>]+rel=["\']stylesheet["\'][^>]*>', re.I)
 
 
-def nav_html(flow: bool) -> str:
+def nav_html(flow: bool, i18n: bool = False) -> str:
     cls = "wm-nav wm-nav--flow" if flow else "wm-nav"
+    t, w, ta = i18n_helpers(i18n)
+    # A la derecha del CTA: asi no se mueve cuando el CTA cambia de largo.
+    sw_nav = "\n      " + lang_switch("nav") if i18n else ""
+    sw_drawer = "\n  " + lang_switch("drawer") if i18n else ""
     return f"""<!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
-<nav class="{cls}" aria-label="Navegación principal">
+<nav class="{cls}" aria-label="Navegación principal"{ta("nav.aria")}>
   <div class="wm-nav__row">
     <a class="wm-nav__logo" href="/">
       <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
@@ -88,39 +149,39 @@ def nav_html(flow: bool) -> str:
     </a>
 
     <div class="wm-nav__center">
-      <a href="/inteligencia-artificial/">IA</a>
+      <a href="/inteligencia-artificial/"{t("nav.ia")}>IA</a>
       <div class="wm-nav__dd">
-        <button type="button" aria-haspopup="true" aria-expanded="false">Productos{CARET}</button>
+        <button type="button" aria-haspopup="true" aria-expanded="false">{w("nav.productos", "Productos")}{CARET}</button>
         <div class="wm-nav__menu" role="menu">
-          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
-          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
-          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
-          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
+          <a href="/diseno-web/" role="menuitem">{w("nav.web", "Web")}<span class="desc"{t("nav.web.desc")}>Tu web profesional, sin agente de IA</span></a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc"{t("nav.spark.desc")}>Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc"{t("nav.core.desc")}>Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc"{t("nav.citas.desc")}>Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
-      <a href="/precios/">Precios</a>
-      <a href="/desarrollo-software/">Software a medida</a>
-      <a href="/contacto/">Contacto</a>
+      <a href="/precios/"{t("nav.precios")}>Precios</a>
+      <a href="/desarrollo-software/"{t("nav.software")}>Software a medida</a>
+      <a href="/contacto/"{t("nav.contacto")}>Contacto</a>
     </div>
 
     <div class="wm-nav__right">
-      <a class="wm-nav__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
-      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer">{BURGER}</button>
+      <a class="wm-nav__cta" href="{CAL}" target="_blank" rel="noopener">{w("nav.cta", "Agendar reunión")}{ARROW}</a>{sw_nav}
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"{ta("nav.burger")}>{BURGER}</button>
     </div>
   </div>
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
-  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú">{CLOSE}</button>
-  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
-  <span class="wm-drawer__label">Productos</span>
-  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"{ta("nav.close")}>{CLOSE}</button>{sw_drawer}
+  <a class="wm-drawer__link" href="/inteligencia-artificial/"{t("nav.ia")}>IA</a>
+  <span class="wm-drawer__label"{t("nav.productos")}>Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/"{t("nav.web")}>Web</a>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
-  <a class="wm-drawer__link" href="/precios/">Precios</a>
-  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
-  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
-  <a class="wm-drawer__cta" href="{CAL}" target="_blank" rel="noopener">Agendar reunión{ARROW}</a>
+  <a class="wm-drawer__link" href="/precios/"{t("nav.precios")}>Precios</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/"{t("nav.software")}>Software a medida</a>
+  <a class="wm-drawer__link" href="/contacto/"{t("nav.contacto")}>Contacto</a>
+  <a class="wm-drawer__cta" href="{CAL}" target="_blank" rel="noopener">{w("nav.cta", "Agendar reunión")}{ARROW}</a>
 </aside>"""
 
 
@@ -174,7 +235,12 @@ FOOTER_COLS = [
 ]
 
 
-def footer_html(with_id: bool) -> str:
+def foot_key(href: str) -> str:
+    return "foot." + (href.strip("/").replace("/", ".") or "home")
+
+
+def footer_html(with_id: bool, i18n: bool = False) -> str:
+    t, w, ta = i18n_helpers(i18n)
     ident = ' id="contacto"' if with_id else ""
     social = "\n".join(
         f'        <a href="{href}" target="_blank" rel="noopener noreferrer" aria-label="{label}" title="{label}">{svg}</a>'
@@ -182,8 +248,8 @@ def footer_html(with_id: bool) -> str:
     )
     social += f'\n        <!--email_off--><a href="mailto:comercial@whitemoon.es" aria-label="Email" title="Email">{ICON_MAIL}</a><!--/email_off-->'
     cols = "\n\n".join(
-        f'    <div>\n      <h3>{title}</h3>\n      <ul>\n'
-        + "\n".join(f'        <li><a href="{href}">{text}</a></li>' for href, text in links)
+        f'    <div>\n      <h3{t("foot.h." + title.lower())}>{title}</h3>\n      <ul>\n'
+        + "\n".join(f'        <li><a href="{href}"{t(foot_key(href))}>{text}</a></li>' for href, text in links)
         + "\n      </ul>\n    </div>"
         for title, links in FOOTER_COLS
     )
@@ -192,11 +258,11 @@ def footer_html(with_id: bool) -> str:
   <div class="wm-foot__grid">
 
     <div class="wm-foot__brand">
-      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio"{ta("foot.logo")}>
         <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
         <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
       </a>
-      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <p{t("foot.brand")}>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
       <div class="wm-foot__social">
 {social}
       </div>
@@ -205,25 +271,25 @@ def footer_html(with_id: bool) -> str:
 {cols}
 
     <div>
-      <h3>Contacto</h3>
+      <h3{t("foot.h.contacto")}>Contacto</h3>
       <div class="wm-foot__contact">
         <div class="wm-foot__item">{ICON_MAIL}<div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
         <div class="wm-foot__item">{ICON_WA}<div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
-        <div class="wm-foot__item">{ICON_PIN}<div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
-        <div class="wm-foot__item">{ICON_CLOCK}<div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+        <div class="wm-foot__item">{ICON_PIN}<div class="meta"><strong{t("foot.direccion")}>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item">{ICON_CLOCK}<div class="meta"><strong{t("foot.horario")}>Horario</strong>{w("foot.horario.txt", "Lun-Vie 9:00 - 18:00")}</div></div>
       </div>
     </div>
 
   </div>
 
   <div class="wm-foot__bottom">
-    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div>© <span id="yr">2026</span> {w("foot.copy", "WhiteMoon · Agencia de IA · Majadahonda, Madrid")}</div>
     <div class="wm-foot__legal">
-      <a href="/aviso-legal/">Aviso Legal</a>
-      <a href="/politica-privacidad/">Privacidad</a>
-      <a href="/politica-cookies/">Cookies</a>
+      <a href="/aviso-legal/"{t("foot.aviso-legal")}>Aviso Legal</a>
+      <a href="/politica-privacidad/"{t("foot.privacidad")}>Privacidad</a>
+      <a href="/politica-cookies/"{t("foot.cookies")}>Cookies</a>
     </div>
-    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+    <div class="wm-foot__tag">{w("foot.hecho", "Hecho por")} <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
   </div>
 </footer>"""
 
@@ -312,7 +378,7 @@ def is_flow(rel: str, html: str) -> bool:
     return bool(nav_tag and re.search(r"position\s*:\s*sticky", nav_tag.group(0), re.I))
 
 
-def ensure_head(html: str) -> str:
+def ensure_head(html: str, i18n_page: str | None = None) -> str:
     """Enlaza la hoja y el script de la navbar.
 
     La hoja va JUNTO AL RESTO de <link rel=stylesheet>, nunca al final del
@@ -321,6 +387,7 @@ def ensure_head(html: str) -> str:
     40px para dejar sitio a su banner fijo).
     """
     html = WM_HEAD_RX.sub("", html)
+    html = I18N_HEAD_RX.sub("", html)
     head_end = html.lower().find("</head>")
     head = html[:head_end]
     # Rangos <noscript>…</noscript>: ahi dentro el <link> solo cargaria sin JS.
@@ -343,11 +410,14 @@ def ensure_head(html: str) -> str:
     if at is None:
         at = head_end
     html = html[:at] + HEAD_CSS + "\n" + html[at:]
-    return re.sub(r"</head>", HEAD_JS + "\n</head>", html, count=1, flags=re.I)
+    tail = HEAD_JS + "\n"
+    if i18n_page:
+        tail += I18N_HEAD % {"page": i18n_page, "v": I18N_V}
+    return re.sub(r"</head>", lambda m: tail + "</head>", html, count=1, flags=re.I)
 
 
 def replace_nav(html: str, rel: str) -> str:
-    block = nav_html(is_flow(rel, html))
+    block = nav_html(is_flow(rel, html), rel in I18N_PAGES)
     # Idempotencia: fuera lo que este script haya dejado en pasadas anteriores.
     # Sin esto cada ejecucion apilaba otro <aside class="wm-drawer">, porque la
     # sustitucion de abajo solo toca el <nav>.
@@ -377,7 +447,7 @@ def _visible(html: str) -> str:
     return OPAQUE_RX.sub(lambda m: " " * len(m.group(0)), html)
 
 
-def replace_footer(html: str) -> str:
+def replace_footer(html: str, i18n: bool = False) -> str:
     html = HOME_FOOT_STYLE_RX.sub("", html)
     html = re.sub(r'^[ \t]*<!-- WM-FOOT ·[^>]*-->[ \t]*\r?\n', "", html, flags=re.M)
     vis = _visible(html)
@@ -392,7 +462,7 @@ def replace_footer(html: str) -> str:
     # Si la pagina ya usa id="contacto" en su contenido, el footer va sin id.
     rest = vis[:start] + vis[end:]
     with_id = not re.search(r'\sid=["\']contacto["\']', rest)
-    return html[:start] + footer_html(with_id) + html[end:]
+    return html[:start] + footer_html(with_id, i18n) + html[end:]
 
 
 def page_url(rel: str) -> str:
@@ -448,7 +518,9 @@ def main() -> int:
     for rel in pages:
         path = os.path.join(ROOT, rel)
         before = read(path)
-        after = replace_footer(ensure_head(replace_nav(before, rel)))
+        after = replace_footer(
+            ensure_head(replace_nav(before, rel), I18N_PAGES.get(rel)), rel in I18N_PAGES
+        )
         if 'class="wm-foot"' not in after:
             no_footer.append(rel)
         after = same_eol(before, after)

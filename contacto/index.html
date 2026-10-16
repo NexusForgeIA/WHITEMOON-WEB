@@ -171,11 +171,23 @@
   footer a:hover{color:var(--p2)}
 </style>
 <script defer src="/assets/wm-nav.js?v=2026092902"></script>
+<!-- WM-I18N · selector de idioma · generado por scripts/nav_rebuild.py -->
+<style>.wm-i18n-wait body{visibility:hidden}
+.wm-lang{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid rgba(255,255,255,.1);border-radius:8px}
+.wm-lang button{min-width:32px;height:28px;padding:0 6px;border:0;border-radius:6px;background:transparent;color:#9CA3AF;font-family:inherit;font-size:.74rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:color .15s ease,background .15s ease}
+.wm-lang button:hover{color:#E8E8F0}
+.wm-lang button[aria-pressed=true]{background:rgba(124,77,255,.2);color:#E8E8F0}
+.wm-lang button:focus-visible{outline:2px solid #9d70ff;outline-offset:1px}
+.wm-lang--drawer{align-self:flex-start;margin:0 0 12px}
+.wm-lang--drawer button{min-width:48px;height:40px;font-size:.85rem}
+@media(max-width:920px){.wm-lang--nav{display:none}}</style>
+<script>(function(){try{var l=localStorage.getItem('wm-lang');if(l!=='en'&&l!=='fr')return;var d=document,h=d.documentElement;h.lang=l;h.classList.add('wm-i18n-wait');setTimeout(function(){h.classList.remove('wm-i18n-wait')},2000);['common','contacto'].forEach(function(p){var k=d.createElement('link');k.rel='preload';k.as='fetch';k.crossOrigin='anonymous';k.href='/assets/i18n/'+p+'.json?v=2026101601';d.head.appendChild(k)})}catch(e){}})();</script>
+<script defer src="/assets/i18n.js?v=2026101601" data-page="contacto"></script>
 </head>
 <body class="cth">
 
 <!-- WM-NAV · navbar unificada · markup generado por scripts/nav_rebuild.py -->
-<nav class="wm-nav" aria-label="Navegación principal">
+<nav class="wm-nav" aria-label="Navegación principal" data-i18n-attr="aria-label:nav.aria">
   <div class="wm-nav__row">
     <a class="wm-nav__logo" href="/">
       <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="28" height="28" loading="eager" decoding="async">
@@ -183,39 +195,41 @@
     </a>
 
     <div class="wm-nav__center">
-      <a href="/inteligencia-artificial/">IA</a>
+      <a href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
       <div class="wm-nav__dd">
-        <button type="button" aria-haspopup="true" aria-expanded="false">Productos<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <button type="button" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav.productos">Productos</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></button>
         <div class="wm-nav__menu" role="menu">
-          <a href="/diseno-web/" role="menuitem">Web<span class="desc">Tu web profesional, sin agente de IA</span></a>
-          <a href="/spark/" role="menuitem">Spark<span class="desc">Agente de IA para la web que ya tienes</span></a>
-          <a href="/core/" role="menuitem">Core Spark Web<span class="desc">Web nueva con el agente de IA dentro</span></a>
-          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc">Reservas y citas por QR, sin tocar tu web</span></a>
+          <a href="/diseno-web/" role="menuitem"><span data-i18n="nav.web">Web</span><span class="desc" data-i18n="nav.web.desc">Tu web profesional, sin agente de IA</span></a>
+          <a href="/spark/" role="menuitem">Spark<span class="desc" data-i18n="nav.spark.desc">Agente de IA para la web que ya tienes</span></a>
+          <a href="/core/" role="menuitem">Core Spark Web<span class="desc" data-i18n="nav.core.desc">Web nueva con el agente de IA dentro</span></a>
+          <a href="/agente-ia-citas/" role="menuitem">Agente IA Citas<span class="desc" data-i18n="nav.citas.desc">Reservas y citas por QR, sin tocar tu web</span></a>
         </div>
       </div>
-      <a href="/precios/">Precios</a>
-      <a href="/desarrollo-software/">Software a medida</a>
-      <a href="/contacto/">Contacto</a>
+      <a href="/precios/" data-i18n="nav.precios">Precios</a>
+      <a href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+      <a href="/contacto/" data-i18n="nav.contacto">Contacto</a>
     </div>
 
     <div class="wm-nav__right">
-      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
+      <a class="wm-nav__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <div class="wm-lang wm-lang--nav" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+      <button class="wm-nav__burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="wmDrawer" data-i18n-attr="aria-label:nav.burger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg></button>
     </div>
   </div>
 </nav>
 <aside class="wm-drawer" id="wmDrawer" aria-hidden="true">
-  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <a class="wm-drawer__link" href="/inteligencia-artificial/">IA</a>
-  <span class="wm-drawer__label">Productos</span>
-  <a class="wm-drawer__link" href="/diseno-web/">Web</a>
+  <button class="wm-drawer__close" type="button" aria-label="Cerrar menú" data-i18n-attr="aria-label:nav.close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="wm-lang wm-lang--drawer" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group"><button type="button" data-lang="es" lang="es" aria-pressed="true" aria-label="Español">ES</button><button type="button" data-lang="en" lang="en" aria-pressed="false" aria-label="English">EN</button><button type="button" data-lang="fr" lang="fr" aria-pressed="false" aria-label="Français">FR</button></div>
+  <a class="wm-drawer__link" href="/inteligencia-artificial/" data-i18n="nav.ia">IA</a>
+  <span class="wm-drawer__label" data-i18n="nav.productos">Productos</span>
+  <a class="wm-drawer__link" href="/diseno-web/" data-i18n="nav.web">Web</a>
   <a class="wm-drawer__link" href="/spark/">Spark</a>
   <a class="wm-drawer__link" href="/core/">Core Spark Web</a>
   <a class="wm-drawer__link" href="/agente-ia-citas/">Agente IA Citas</a>
-  <a class="wm-drawer__link" href="/precios/">Precios</a>
-  <a class="wm-drawer__link" href="/desarrollo-software/">Software a medida</a>
-  <a class="wm-drawer__link" href="/contacto/">Contacto</a>
-  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener">Agendar reunión<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+  <a class="wm-drawer__link" href="/precios/" data-i18n="nav.precios">Precios</a>
+  <a class="wm-drawer__link" href="/desarrollo-software/" data-i18n="nav.software">Software a medida</a>
+  <a class="wm-drawer__link" href="/contacto/" data-i18n="nav.contacto">Contacto</a>
+  <a class="wm-drawer__cta" href="https://cal.com/whitemoon" target="_blank" rel="noopener"><span data-i18n="nav.cta">Agendar reunión</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
 </aside>
 
 <main>
@@ -223,9 +237,9 @@
   <!-- ── HERO ──────────────────────────────────────────────────────── -->
   <section class="ct-hero">
     <div class="ct-wrap">
-      <span class="ct-eyebrow">Contacto</span>
-      <h1>Hablemos de tu proyecto de <span class="hl">IA</span></h1>
-      <p class="lead">Somos una agencia de IA en Majadahonda (Madrid). Cuéntanos qué necesitas y te decimos, gratis y sin tecnicismos, si la IA te encaja y por dónde empezaría. Sin compromiso.</p>
+      <span class="ct-eyebrow" data-i18n="top.1">Contacto</span>
+      <h1 data-i18n="top.2">Hablemos de tu proyecto de <span class="hl">IA</span></h1>
+      <p class="lead" data-i18n="top.3">Somos una agencia de IA en Majadahonda (Madrid). Cuéntanos qué necesitas y te decimos, gratis y sin tecnicismos, si la IA te encaja y por dónde empezaría. Sin compromiso.</p>
     </div>
   </section>
 
@@ -235,15 +249,15 @@
       <div class="ct-grid">
 
         <div class="ct-card">
-          <h2>Por dónde prefieras</h2>
-          <p class="sub">Escribes tú, y contestamos nosotros. En horario de oficina solemos responder el mismo día.</p>
+          <h2 data-i18n="top.4">Por dónde prefieras</h2>
+          <p class="sub" data-i18n="top.5">Escribes tú, y contestamos nosotros. En horario de oficina solemos responder el mismo día.</p>
 
           <a class="ct-ch" href="https://wa.me/34643199580" target="_blank" rel="noopener">
             <span class="ct-ch__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-4-1L3 20l1.1-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg></span>
             <span>
               <span class="ct-ch__t">WhatsApp</span>
               <p class="ct-ch__v">643 199 580</p>
-              <p class="ct-ch__d">Lo más rápido. Escríbenos y te contestamos.</p>
+              <p class="ct-ch__d" data-i18n="top.6">Lo más rápido. Escríbenos y te contestamos.</p>
             </span>
           </a>
 
@@ -253,7 +267,7 @@
             <span>
               <span class="ct-ch__t">Email</span>
               <p class="ct-ch__v">comercial@whitemoon.es</p>
-              <p class="ct-ch__d">Para propuestas, presupuestos y documentación.</p>
+              <p class="ct-ch__d" data-i18n="top.7">Para propuestas, presupuestos y documentación.</p>
             </span>
           </a>
           <!--/email_off-->
@@ -261,45 +275,45 @@
           <div class="ct-ch">
             <span class="ct-ch__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
             <span>
-              <span class="ct-ch__t">Horario</span>
-              <p class="ct-ch__v">Lunes a viernes, 9:00 – 19:00</p>
-              <p class="ct-ch__d">Fuera de horario, el agente de la web sigue atendiendo.</p>
+              <span class="ct-ch__t" data-i18n="top.8">Horario</span>
+              <p class="ct-ch__v" data-i18n="top.9">Lunes a viernes, 9:00 – 19:00</p>
+              <p class="ct-ch__d" data-i18n="top.10">Fuera de horario, el agente de la web sigue atendiendo.</p>
             </span>
           </div>
 
           <a class="ct-meet" href="https://cal.com/whitemoon" target="_blank" rel="noopener" onclick="wmTrack('click_contacto_canal',{canal:'cal.com'})">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Agendar una reunión de 15 min
+            <span data-i18n="top.11">Agendar una reunión de 15 min</span>
           </a>
-          <p class="ct-meet-note">Eliges hueco en el calendario y hablamos por videollamada. Sin guion de ventas.</p>
+          <p class="ct-meet-note" data-i18n="top.12">Eliges hueco en el calendario y hablamos por videollamada. Sin guion de ventas.</p>
         </div>
 
         <div class="ct-card">
-          <h2>O déjanos tres datos</h2>
-          <p class="sub">Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
+          <h2 data-i18n="top.13">O déjanos tres datos</h2>
+          <p class="sub" data-i18n="top.14">Nombre, teléfono y a qué te dedicas. Te llamamos en menos de 24 horas laborables.</p>
 
           <form id="contactoLeadForm" novalidate>
             <div class="ct-field">
-              <label for="ct-nombre">Nombre</label>
-              <input type="text" id="ct-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required>
+              <label for="ct-nombre" data-i18n="contactoleadform.1">Nombre</label>
+              <input type="text" id="ct-nombre" name="nombre" autocomplete="name" placeholder="Cómo te llamas" required data-i18n-attr="placeholder:contactoleadform.2">
             </div>
             <div class="ct-field">
-              <label for="ct-telefono">Teléfono</label>
-              <input type="tel" id="ct-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required>
+              <label for="ct-telefono" data-i18n="contactoleadform.3">Teléfono</label>
+              <input type="tel" id="ct-telefono" name="telefono" autocomplete="tel" placeholder="Para poder llamarte" required data-i18n-attr="placeholder:contactoleadform.4">
             </div>
             <div class="ct-field">
-              <label for="ct-sector">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
-              <input type="text" id="ct-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas">
+              <label for="ct-sector" data-i18n="contactoleadform.5">Sector <span style="color:#9CA3AF;font-weight:400">(opcional)</span></label>
+              <input type="text" id="ct-sector" name="sector" autocomplete="organization" placeholder="A qué te dedicas" data-i18n-attr="placeholder:contactoleadform.6">
             </div>
             <div class="ct-consent">
               <input type="checkbox" id="ct-consent" name="consent" required
-                     aria-label="He leído y acepto la política de privacidad">
-              <span class="ct-consent-txt"><label for="ct-consent">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener">política de privacidad</a>.</span>
+                     aria-label="He leído y acepto la política de privacidad" data-i18n-attr="aria-label:contactoleadform.7">
+              <span class="ct-consent-txt"><label for="ct-consent" data-i18n="contactoleadform.8">He leído y acepto la</label> <a href="/politica-privacidad/" target="_blank" rel="noopener" data-i18n="contactoleadform.9">política de privacidad</a>.</span>
             </div>
-            <button type="submit" class="ct-send" id="ct-send">Enviar</button>
-            <p class="ct-reassure">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
+            <button type="submit" class="ct-send" id="ct-send" data-i18n="contactoleadform.10">Enviar</button>
+            <p class="ct-reassure" data-i18n="contactoleadform.11">Te contactamos en menos de 24 h laborables. Sin compromiso.</p>
             <p class="ct-msg" id="ct-msg" role="status" aria-live="polite"></p>
-            <p class="ct-note">
+            <p class="ct-note" data-i18n="contactoleadform.12">
               <b>Responsable:</b> Cristobal Martinez Comas (WhiteMoon).
               <b>Datos que pedimos:</b> nombre, teléfono y sector.
               <b>Para qué:</b> contactarte sobre tu consulta. No se ceden a terceros salvo los proveedores necesarios para prestarte el servicio.
@@ -309,8 +323,8 @@
 
           <div class="ct-ok" id="ct-ok">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
-            <b>¡Recibido! Te llamamos enseguida.</b>
-            <p>Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a>.</p>
+            <b data-i18n="top.15">¡Recibido! Te llamamos enseguida.</b>
+            <p data-i18n="top.16">Si prefieres adelantarte, escríbenos por WhatsApp al <a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a>.</p>
           </div>
         </div>
 
@@ -321,8 +335,8 @@
   <!-- ── DÓNDE ESTAMOS ─────────────────────────────────────────────── -->
   <section class="ct-donde" id="donde-estamos">
     <div class="ct-wrap">
-      <h2>Dónde estamos</h2>
-      <p class="sub">Damos servicio en remoto a toda España, pero la oficina está en el centro de Majadahonda. Si te viene bien, nos tomamos un café y lo vemos en persona.</p>
+      <h2 data-i18n="donde-estamos.1">Dónde estamos</h2>
+      <p class="sub" data-i18n="donde-estamos.2">Damos servicio en remoto a toda España, pero la oficina está en el centro de Majadahonda. Si te viene bien, nos tomamos un café y lo vemos en persona.</p>
 
       <div class="ct-donde-grid">
 
@@ -330,15 +344,15 @@
           <li>
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
             <span>
-              <p class="k">Dirección</p>
-              <p class="v">Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</p>
+              <p class="k" data-i18n="donde-estamos.3">Dirección</p>
+              <p class="v" data-i18n="donde-estamos.4">Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</p>
             </span>
           </li>
           <li>
             <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span>
             <span>
-              <p class="k">Horario</p>
-              <p class="v">Lunes a viernes, 9:00 – 19:00</p>
+              <p class="k" data-i18n="donde-estamos.5">Horario</p>
+              <p class="v" data-i18n="donde-estamos.6">Lunes a viernes, 9:00 – 19:00</p>
             </span>
           </li>
           <li>
@@ -362,27 +376,27 @@
             <!-- Facade: imagen estatica. El iframe de Google se inyecta SOLO al pulsar,
                  asi la pagina no carga ni un script ni una cookie de Google en el load. -->
             <button type="button" class="ct-mapa__facade" id="ctMapaBtn"
-                    aria-label="Ver mapa interactivo de Google Maps con la ubicación de WhiteMoon">
+                    aria-label="Ver mapa interactivo de Google Maps con la ubicación de WhiteMoon" data-i18n-attr="aria-label:donde-estamos.7">
               <img src="/assets/images/mapa-majadahonda.webp" width="1200" height="600"
-                   alt="Ubicación de WhiteMoon en Majadahonda" loading="lazy" decoding="async">
+                   alt="Ubicación de WhiteMoon en Majadahonda" loading="lazy" decoding="async" data-i18n-attr="alt:donde-estamos.8">
               <span class="ct-mapa__cta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21 1 6"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></svg>
-                Ver mapa
+                <span data-i18n="donde-estamos.9">Ver mapa</span>
               </span>
             </button>
             <div class="ct-mapa__bar">
               <a href="https://maps.app.goo.gl/9L9i8K4i5hX4oYxi6" target="_blank" rel="noopener" onclick="wmTrack('click_contacto_mapa',{accion:'ficha'})">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Ver en Google Maps
+                <span data-i18n="donde-estamos.10">Ver en Google Maps</span>
               </a>
               <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Calle+Madrid+9%2C+28220+Majadahonda%2C+Madrid" target="_blank" rel="noopener" onclick="wmTrack('click_contacto_mapa',{accion:'como-llegar'})">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-                Cómo llegar
+                <span data-i18n="donde-estamos.11">Cómo llegar</span>
               </a>
-              <p class="ct-mapa__attr">Mapa base © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></p>
+              <p class="ct-mapa__attr" data-i18n="donde-estamos.12">Mapa base © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a></p>
             </div>
           </div>
-          <p class="ct-mapa__aviso">Al pulsar «Ver mapa» se carga el mapa interactivo de Google, que puede instalar cookies suyas. Hasta entonces no se envía nada a Google. Detalle en la <a href="/politica-cookies/">política de cookies</a>.</p>
+          <p class="ct-mapa__aviso" data-i18n="donde-estamos.13">Al pulsar «Ver mapa» se carga el mapa interactivo de Google, que puede instalar cookies suyas. Hasta entonces no se envía nada a Google. Detalle en la <a href="/politica-cookies/">política de cookies</a>.</p>
         </div>
 
       </div>
@@ -396,11 +410,11 @@
   <div class="wm-foot__grid">
 
     <div class="wm-foot__brand">
-      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio">
+      <a href="/" class="wm-foot__logo" aria-label="WhiteMoon, inicio" data-i18n-attr="aria-label:foot.logo">
         <img src="/assets/images/icono-44.webp" srcset="/assets/images/icono-44.webp 1x, /assets/images/icono-80.webp 2x" alt="" width="32" height="32" loading="lazy" decoding="async">
         <span><span class="wm-l">WHITE</span><span class="wm-a">MOON</span></span>
       </a>
-      <p>Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
+      <p data-i18n="foot.brand">Webs con agente de IA, chatbots y automatización para pymes.<br>Operativo en días, sin permanencia.</p>
       <div class="wm-foot__social">
         <a href="https://www.instagram.com/whitemoon_agencia_ia" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://www.tiktok.com/@whitemoon_ia" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg></a>
@@ -412,62 +426,62 @@
     </div>
 
     <div>
-      <h3>Servicios</h3>
+      <h3 data-i18n="foot.h.servicios">Servicios</h3>
       <ul>
-        <li><a href="/diseno-web/">Diseño web</a></li>
-        <li><a href="/spark/">Spark</a></li>
-        <li><a href="/core/">Core Spark Web</a></li>
-        <li><a href="/agente-ia-citas/">Agente IA Citas</a></li>
-        <li><a href="/desarrollo-software/">Software a medida</a></li>
-        <li><a href="/marketing/">Marketing</a></li>
+        <li><a href="/diseno-web/" data-i18n="foot.diseno-web">Diseño web</a></li>
+        <li><a href="/spark/" data-i18n="foot.spark">Spark</a></li>
+        <li><a href="/core/" data-i18n="foot.core">Core Spark Web</a></li>
+        <li><a href="/agente-ia-citas/" data-i18n="foot.agente-ia-citas">Agente IA Citas</a></li>
+        <li><a href="/desarrollo-software/" data-i18n="foot.desarrollo-software">Software a medida</a></li>
+        <li><a href="/marketing/" data-i18n="foot.marketing">Marketing</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Recursos</h3>
+      <h3 data-i18n="foot.h.recursos">Recursos</h3>
       <ul>
-        <li><a href="/demos/">Demos</a></li>
-        <li><a href="/costes-eficiencia-empresarial-ia/">Calculadoras</a></li>
-        <li><a href="/prompts-ia-pymes/">Prompts de IA para pymes</a></li>
-        <li><a href="/casos/">Casos de uso</a></li>
-        <li><a href="/casos-de-exito/bambu-sushi/">Caso real: Bambu Sushi</a></li>
-        <li><a href="/blog/">Blog</a></li>
-        <li><a href="/agencia-ia-madrid/">Agencia de IA en Madrid</a></li>
-        <li><a href="/sobre-nosotros/">Sobre nosotros</a></li>
+        <li><a href="/demos/" data-i18n="foot.demos">Demos</a></li>
+        <li><a href="/costes-eficiencia-empresarial-ia/" data-i18n="foot.costes-eficiencia-empresarial-ia">Calculadoras</a></li>
+        <li><a href="/prompts-ia-pymes/" data-i18n="foot.prompts-ia-pymes">Prompts de IA para pymes</a></li>
+        <li><a href="/casos/" data-i18n="foot.casos">Casos de uso</a></li>
+        <li><a href="/casos-de-exito/bambu-sushi/" data-i18n="foot.casos-de-exito.bambu-sushi">Caso real: Bambu Sushi</a></li>
+        <li><a href="/blog/" data-i18n="foot.blog">Blog</a></li>
+        <li><a href="/agencia-ia-madrid/" data-i18n="foot.agencia-ia-madrid">Agencia de IA en Madrid</a></li>
+        <li><a href="/sobre-nosotros/" data-i18n="foot.sobre-nosotros">Sobre nosotros</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Comparativas</h3>
+      <h3 data-i18n="foot.h.comparativas">Comparativas</h3>
       <ul>
-        <li><a href="/alternativa-flownexion/">WhiteMoon vs Flownexion</a></li>
-        <li><a href="/alternativa-llmo/">WhiteMoon vs Llmo</a></li>
-        <li><a href="/whitemoon-vs-intercom/">WhiteMoon vs Intercom</a></li>
-        <li><a href="/whitemoon-vs-manychat/">WhiteMoon vs ManyChat</a></li>
-        <li><a href="/whitemoon-vs-tidio/">WhiteMoon vs Tidio</a></li>
+        <li><a href="/alternativa-flownexion/" data-i18n="foot.alternativa-flownexion">WhiteMoon vs Flownexion</a></li>
+        <li><a href="/alternativa-llmo/" data-i18n="foot.alternativa-llmo">WhiteMoon vs Llmo</a></li>
+        <li><a href="/whitemoon-vs-intercom/" data-i18n="foot.whitemoon-vs-intercom">WhiteMoon vs Intercom</a></li>
+        <li><a href="/whitemoon-vs-manychat/" data-i18n="foot.whitemoon-vs-manychat">WhiteMoon vs ManyChat</a></li>
+        <li><a href="/whitemoon-vs-tidio/" data-i18n="foot.whitemoon-vs-tidio">WhiteMoon vs Tidio</a></li>
       </ul>
     </div>
 
     <div>
-      <h3>Contacto</h3>
+      <h3 data-i18n="foot.h.contacto">Contacto</h3>
       <div class="wm-foot__contact">
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg><div class="meta"><strong>Email</strong><!--email_off--><a href="mailto:comercial@whitemoon.es">comercial@whitemoon.es</a><!--/email_off--></div></div>
         <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg><div class="meta"><strong>WhatsApp</strong><a href="https://wa.me/34643199580" target="_blank" rel="noopener">643 199 580</a></div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong>Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
-        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong>Horario</strong>Lun-Vie 9:00 - 18:00</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div class="meta"><strong data-i18n="foot.direccion">Dirección</strong>Calle Madrid 9, 2ºB<br>28220 Majadahonda, Madrid</div></div>
+        <div class="wm-foot__item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 14"/></svg><div class="meta"><strong data-i18n="foot.horario">Horario</strong><span data-i18n="foot.horario.txt">Lun-Vie 9:00 - 18:00</span></div></div>
       </div>
     </div>
 
   </div>
 
   <div class="wm-foot__bottom">
-    <div>© <span id="yr">2026</span> WhiteMoon · Agencia de IA · Majadahonda, Madrid</div>
+    <div>© <span id="yr">2026</span> <span data-i18n="foot.copy">WhiteMoon · Agencia de IA · Majadahonda, Madrid</span></div>
     <div class="wm-foot__legal">
-      <a href="/aviso-legal/">Aviso Legal</a>
-      <a href="/politica-privacidad/">Privacidad</a>
-      <a href="/politica-cookies/">Cookies</a>
+      <a href="/aviso-legal/" data-i18n="foot.aviso-legal">Aviso Legal</a>
+      <a href="/politica-privacidad/" data-i18n="foot.privacidad">Privacidad</a>
+      <a href="/politica-cookies/" data-i18n="foot.cookies">Cookies</a>
     </div>
-    <div class="wm-foot__tag">Hecho por <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
+    <div class="wm-foot__tag"><span data-i18n="foot.hecho">Hecho por</span> <img src="/assets/images/icono-44.webp" alt="" width="14" height="14" loading="lazy" decoding="async"> whitemoon.es</div>
   </div>
 </footer>
 
