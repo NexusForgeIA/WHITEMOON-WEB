@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Seguro Coche 2026 · Gratis en 30s · WhiteMoon</title>
-<meta name="description" content="Estima el precio de tu seguro de coche en 30 segundos: terceros, terceros ampliado y todo riesgo según tu perfil. Gratis y sin registro, calcula ya.">
+<meta name="description" content="Simulador de seguro de coche: estima cómo cambia tu prima según edad, carnet, vehículo y siniestros a partir de tu cotización. Gratis y sin registro.">
 <meta name="keywords" content="calculadora seguro coche, precio seguro coche 2026, terceros ampliado todo riesgo, simulador seguro auto">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia de IA">
 <link rel="canonical" href="https://whitemoon.es/calculadora-seguro-coche-estimado/">
 <meta property="og:title" content="Calculadora Seguro Coche 2026 · Gratis en 30s · WhiteMoon">
-<meta property="og:description" content="Horquilla de precio del seguro según tu perfil de conductor.">
+<meta property="og:description" content="Estima cómo cambia tu seguro de coche según tu perfil, a partir de tu cotización real.">
 <meta property="og:url" content="https://whitemoon.es/calculadora-seguro-coche-estimado/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
 <meta name="theme-color" content="#7c4dff">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Seguro Coche Estimado 2026 · WhiteMoon","description":"Horquilla de precio orientativa del seguro de coche según edad del conductor, antigüedad del carnet, tipo de vehículo, uso y siniestralidad.","url":"https://whitemoon.es/calculadora-seguro-coche-estimado/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Seguro Coche Estimado 2026 · WhiteMoon","description":"Estima cómo cambia el precio de tu seguro de coche según edad, carnet, vehículo, uso y siniestros, a partir de una cotización real que introduces tú.","url":"https://whitemoon.es/calculadora-seguro-coche-estimado/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Seguro Coche Estimado","item":"https://whitemoon.es/calculadora-seguro-coche-estimado/"}]}
@@ -126,7 +126,7 @@
       <div class="hdr c">
         <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><path d="M12 2 L4 5v7c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5z"/></svg></span> Calculadora gratuita · Vehículos 2026</span>
         <h1 class="sec-h">Calculadora <em>Seguro Coche Estimado</em></h1>
-        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Horquilla orientativa del precio anual del seguro según tu perfil de conductor: edad, antigüedad del carnet, tipo de vehículo, uso y siniestralidad reciente. ⚠️ Datos orientativos: verifica los tipos, tasas y cifras vigentes para tu caso antes de decidir.</p>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima cuánto cambiaría el precio anual de tu seguro según tu perfil de conductor (edad, antigüedad del carnet, tipo de vehículo, uso y siniestralidad reciente), partiendo de una cotización real que tú introduces. Orientativo: pide siempre presupuesto a las aseguradoras.</p>
       </div>
     </div>
   </section>
@@ -185,30 +185,40 @@
           </select>
         </div>
 
+        <div class="calc-row" style="margin-top:6px">
+          <label class="calc-label">Tu punto de partida: cotización real de referencia (€/año)</label>
+          <p style="font-size:12px;color:#8888a0;margin:0 0 10px;line-height:1.6">No fijamos ningún precio de mercado. Introduce una cotización real que te hayan dado para un perfil base (30-50 años, carnet de 2-5 años, turismo, uso particular, 1 siniestro) y la calculadora estima cuánto cambiaría con tu perfil. Rellena solo las coberturas que te interesen.</p>
+          <div class="calc-cols">
+            <div class="calc-row"><label class="calc-label" for="sg-b3">Terceros</label><input id="sg-b3" class="calc-input" type="number" min="0" step="1" inputmode="numeric" placeholder="tu cotización, € al año" oninput="calcSG()"></div>
+            <div class="calc-row"><label class="calc-label" for="sg-b3a">Terceros ampliado</label><input id="sg-b3a" class="calc-input" type="number" min="0" step="1" inputmode="numeric" placeholder="tu cotización, € al año" oninput="calcSG()"></div>
+            <div class="calc-row"><label class="calc-label" for="sg-btr">Todo riesgo</label><input id="sg-btr" class="calc-input" type="number" min="0" step="1" inputmode="numeric" placeholder="tu cotización, € al año" oninput="calcSG()"></div>
+          </div>
+        </div>
+
         <div class="coverage-grid">
           <div class="cov-card">
             <div class="cov-name">Terceros</div>
-            <div class="cov-range" id="sg-3-range">280 - 420 €</div>
-            <div class="cov-mid">Media <span id="sg-3-mid">350 €</span>/año</div>
+            <div class="cov-range" id="sg-3-range">—</div>
+            <div class="cov-mid"><span id="sg-3-mid">Introduce tu cotización</span></div>
             <div class="cov-detail">Daños a terceros. Mínimo obligatorio por ley.</div>
           </div>
           <div class="cov-card recommended">
             <div class="cov-name">Terceros ampliado ⭐</div>
-            <div class="cov-range" id="sg-3a-range">440 - 660 €</div>
-            <div class="cov-mid">Media <span id="sg-3a-mid">550 €</span>/año</div>
+            <div class="cov-range" id="sg-3a-range">—</div>
+            <div class="cov-mid"><span id="sg-3a-mid">Introduce tu cotización</span></div>
             <div class="cov-detail">+ lunas + robo + incendio + asistencia. La opción más popular.</div>
           </div>
           <div class="cov-card">
             <div class="cov-name">Todo riesgo</div>
-            <div class="cov-range" id="sg-tr-range">760 - 1.140 €</div>
-            <div class="cov-mid">Media <span id="sg-tr-mid">950 €</span>/año</div>
+            <div class="cov-range" id="sg-tr-range">—</div>
+            <div class="cov-mid"><span id="sg-tr-mid">Introduce tu cotización</span></div>
             <div class="cov-detail">+ daños propios incluso con culpa. Con franquicia opcional.</div>
           </div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="sg-detail">Perfil: conductor 30-50 años · carnet 2-5 años · turismo · uso particular · 0 siniestros. Factor multiplicador combinado: 0,90. Aplica sobre precios base (350/550/950€) con horquilla ±20%.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="sg-detail">Rellena tu cotización de referencia para ver la estimación.</div>
 
-        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Precios orientativos basados en medias del mercado español 2026 (Mutua, Línea Directa, Mapfre, AXA, Allianz). El precio real depende también de modelo concreto, código postal, garaje y descuentos por permanencia. Compara con al menos 4-5 compañías antes de contratar.</p>
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Estimación orientativa, no un presupuesto. Parte de la cotización que tú introduces; no usamos precios de ninguna aseguradora ni medias de mercado. Los porcentajes de cada opción (edad, carnet, vehículo, uso, siniestros) son supuestos ilustrativos nuestros, no tarifas reales de ninguna compañía. El precio real depende también del modelo, el código postal, el garaje y los descuentos. Compara varias cotizaciones antes de decidir.</p>
       </div>
     </div>
   </section>
@@ -369,7 +379,6 @@
 
 <script src="/assets/wm-launcher.js?v=2026091501" defer></script>
 <script>
-var BASE_PRECIO = {terceros: 350, ampliado: 550, todoRiesgo: 950};
 
 function getFactor(id){
   var sel = document.getElementById(id);
@@ -385,23 +394,17 @@ function calcSG(){
 
   var combinado = fEdad * fCarnet * fVehiculo * fUso * fSiniestros;
 
-  function rango(base){
-    var mid = base * combinado;
-    var min = mid * 0.80;
-    var max = mid * 1.20;
-    return {min: Math.round(min), max: Math.round(max), mid: Math.round(mid)};
+  function base(id){ var v = parseFloat(document.getElementById(id).value); return (isFinite(v) && v > 0) ? v : null; }
+  function pinta(rid, b){
+    var rEl = document.getElementById(rid + '-range'), mEl = document.getElementById(rid + '-mid');
+    if (b === null){ rEl.textContent = '—'; mEl.textContent = 'Introduce tu cotización'; return; }
+    rEl.textContent = Math.round(b * combinado).toLocaleString('es-ES') + ' €/año';
+    mEl.textContent = 'según tu cotización de ' + Math.round(b).toLocaleString('es-ES') + ' €';
   }
+  pinta('sg-3', base('sg-b3'));
+  pinta('sg-3a', base('sg-b3a'));
+  pinta('sg-tr', base('sg-btr'));
 
-  var t = rango(BASE_PRECIO.terceros);
-  var a = rango(BASE_PRECIO.ampliado);
-  var r = rango(BASE_PRECIO.todoRiesgo);
-
-  document.getElementById('sg-3-range').textContent = t.min.toLocaleString('es-ES') + ' - ' + t.max.toLocaleString('es-ES') + ' €';
-  document.getElementById('sg-3-mid').textContent = t.mid.toLocaleString('es-ES') + ' €';
-  document.getElementById('sg-3a-range').textContent = a.min.toLocaleString('es-ES') + ' - ' + a.max.toLocaleString('es-ES') + ' €';
-  document.getElementById('sg-3a-mid').textContent = a.mid.toLocaleString('es-ES') + ' €';
-  document.getElementById('sg-tr-range').textContent = r.min.toLocaleString('es-ES') + ' - ' + r.max.toLocaleString('es-ES') + ' €';
-  document.getElementById('sg-tr-mid').textContent = r.mid.toLocaleString('es-ES') + ' €';
 
   var edadText = document.getElementById('sg-edad').options[document.getElementById('sg-edad').selectedIndex].textContent.split(' (')[0];
   var carnetText = document.getElementById('sg-carnet').options[document.getElementById('sg-carnet').selectedIndex].textContent.split(' (')[0];
@@ -412,7 +415,7 @@ function calcSG(){
   document.getElementById('sg-detail').textContent = 'Perfil: ' + edadText.toLowerCase() + ' · ' +
     carnetText.toLowerCase() + ' carnet · ' + vehText.toLowerCase() + ' · uso ' + usoText.toLowerCase() +
     ' · ' + sinText.toLowerCase() + '. Factor multiplicador combinado: ' +
-    combinado.toFixed(2).replace('.', ',') + '. Aplica sobre precios base (350/550/950€) con horquilla ±20%.';
+    combinado.toFixed(2).replace('.', ',') + '. Es el efecto relativo (supuestos ilustrativos) sobre la cotización que introduces.';
 }
 calcSG();
 </script>
