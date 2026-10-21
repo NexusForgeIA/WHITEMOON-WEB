@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calculadora Depreciación Vehículo 2026 · WhiteMoon</title>
-<meta name="description" content="Calculadora depreciación vehículo 2026: valor actual estimado, % de depreciación acumulada, pérdida anual y mejor momento para vender según Anexo IV BOE.">
+<meta name="description" content="Calculadora depreciación vehículo 2026: valor actual estimado, % de depreciación acumulada y pérdida media anual según la tabla del Anexo IV del BOE.">
 <meta name="keywords" content="calculadora depreciacion coche 2026, valor coche segunda mano, perdida valor vehiculo, anexo iv boe coches">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="author" content="WhiteMoon Agencia de IA">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://whitemoon.es/assets/og/og-whitemoon.jpg">
 <meta name="theme-color" content="#7c4dff">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Depreciación Vehículo 2026 · WhiteMoon","description":"Calcula el valor actual estimado de un coche según su antigüedad, marca (premium/generalista) y kilometraje, usando la tabla del Anexo IV BOE.","url":"https://whitemoon.es/calculadora-depreciacion-vehiculo/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora Depreciación Vehículo 2026 · WhiteMoon","description":"Calcula el valor actual estimado de un coche según su antigüedad con la tabla del Anexo IV del BOE, con un ajuste de mercado opcional que pones tú.","url":"https://whitemoon.es/calculadora-depreciacion-vehiculo/","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"inLanguage":"es-ES"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"WhiteMoon","item":"https://whitemoon.es/"},{"@type":"ListItem","position":2,"name":"Calculadora Depreciación Vehículo","item":"https://whitemoon.es/calculadora-depreciacion-vehiculo/"}]}
@@ -123,7 +123,7 @@
       <div class="hdr c">
         <span class="sec-lbl" style="color:#00d4aa"><span style="display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;display:inline-block;vertical-align:middle;color:currentColor"><polyline points="3 7 9 13 13 9 21 17"/><polyline points="14 17 21 17 21 10"/></svg></span> Calculadora gratuita · Vehículos 2026</span>
         <h1 class="sec-h">Calculadora <em>Depreciación de Vehículos</em></h1>
-        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima el valor actual de tu coche según antigüedad, segmento (premium/generalista) y kilometraje, usando la tabla del Anexo IV BOE 2026 + ajustes de mercado. ⚠️ Datos orientativos: verifica los tipos, tasas y cifras vigentes para tu caso antes de decidir.</p>
+        <p class="sec-sub" style="max-width:760px;margin:14px auto 0">Estima el valor actual de tu coche según su antigüedad con la tabla del Anexo IV del BOE, y añade tu propio ajuste de mercado si quieres. ⚠️ Datos orientativos: verifica las cifras vigentes para tu caso antes de decidir.</p>
       </div>
     </div>
   </section>
@@ -141,34 +141,24 @@
             <input type="number" id="dp-antiguedad" class="calc-input" value="5" min="0" max="30" step="1" oninput="calcDP()">
           </div>
         </div>
-        <div class="calc-cols">
-          <div class="calc-row">
-            <label class="calc-label" for="dp-marca">Segmento de marca</label>
-            <select id="dp-marca" class="calc-select" onchange="calcDP()">
-              <option value="generalista" data-factor="1" selected>Generalista (Toyota, Hyundai, Renault, Citroën, SEAT…)</option>
-              <option value="premium" data-factor="0.92">Premium (Mercedes, BMW, Audi, Volvo, Lexus)</option>
-              <option value="lujo" data-factor="0.85">Lujo (Porsche, Range Rover, gama alta)</option>
-              <option value="electrico" data-factor="0.88">Eléctrico (depreciación rápida primeros 3 años)</option>
-            </select>
-          </div>
-          <div class="calc-row">
-            <label class="calc-label" for="dp-km">Kilómetros actuales</label>
-            <input type="number" id="dp-km" class="calc-input" value="90000" min="0" max="800000" step="1000" oninput="calcDP()">
-          </div>
+        <div class="calc-row">
+          <label class="calc-label" for="dp-ajuste">Tu ajuste de mercado (%, opcional)</label>
+          <input type="number" id="dp-ajuste" class="calc-input" value="0" min="-60" max="60" step="1" oninput="calcDP()">
+          <p style="font-size:12px;color:#8888a0;margin:8px 0 0;line-height:1.6">Déjalo en 0 para ver el valor puro de la tabla del Anexo IV. Si anuncios de coches similares (marca, kilómetros, estado) se venden por encima o por debajo, pon aquí esa diferencia: es tu propio supuesto, no un dato nuestro.</p>
         </div>
 
         <div class="calc-out">
-          <div class="calc-out-card"><div class="calc-out-num" id="dp-valor">10.575 €</div><div class="calc-out-lbl">Valor actual estimado</div></div>
-          <div class="calc-out-card"><div class="calc-out-num" id="dp-pct">57,7 %</div><div class="calc-out-lbl">Depreciación acumulada</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="dp-valor">11.750 €</div><div class="calc-out-lbl">Valor actual estimado</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="dp-pct">53,0 %</div><div class="calc-out-lbl">Depreciación acumulada</div></div>
         </div>
         <div class="calc-out">
-          <div class="calc-out-card"><div class="calc-out-num" id="dp-anual">2.885 €</div><div class="calc-out-lbl">Pérdida media anual</div></div>
-          <div class="calc-out-card win"><div class="calc-out-num" id="dp-mejor">9-10 años</div><div class="calc-out-lbl">Mejor momento para vender</div></div>
+          <div class="calc-out-card"><div class="calc-out-num" id="dp-anual">2.650 €</div><div class="calc-out-lbl">Pérdida media anual</div></div>
+          <div class="calc-out-card win"><div class="calc-out-num" id="dp-mejor">47 %</div><div class="calc-out-lbl">Valor según tabla Anexo IV</div></div>
         </div>
 
-        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="dp-detail">25.000€ nuevo · generalista · 5 años · 90.000 km → Tabla Anexo IV: 47% × 25.000€ = 11.750€. Ajuste km altos (-10%): 10.575€. Depreciación acumulada 57,7% (14.425€/5 años = 2.885€/año media). Mejor venta entre años 9-10.</div>
+        <div style="font-size:12px;color:#8888a0;background:rgba(13,13,26,.4);border-radius:9px;padding:12px 14px;line-height:1.6" id="dp-detail">25.000€ nuevo · 5 años → Tabla Anexo IV: 47% × 25.000€ = 11.750€. Depreciación acumulada 53,0% (2.650€/año de media).</div>
 
-        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Valor orientativo basado en tabla Anexo IV BOE 2026 + ajustes de mercado. Ajustes aplicados: marca premium/lujo (-8% a -15%), eléctrico (-12% en años 0-3), km altos (-10% si supera la media 12k/año), km bajos (+5% si por debajo de 8k/año). Confirma con tasaciones reales de mercado (Coches.net, Wallapop, AutoScout24).</p>
+        <p style="font-size:11px;color:#8888a0;text-align:center;margin:14px 0 0">Valor orientativo: aplica la tabla de coeficientes del Anexo IV (BOE) según la antigüedad y, si lo indicas, tu propio ajuste de mercado. La tabla es una referencia fiscal; el valor real de venta puede ser distinto. Contrasta con anuncios de coches similares.</p>
       </div>
     </div>
   </section>
@@ -341,43 +331,25 @@ function getDep(y){for(var i=0;i<DEPRECIACION.length;i++){if(y<=DEPRECIACION[i].
 function calcDP(){
   var precio = parseFloat(document.getElementById('dp-precio').value) || 0;
   var antiguedad = parseInt(document.getElementById('dp-antiguedad').value, 10) || 0;
-  var marcaSel = document.getElementById('dp-marca');
-  var factor = parseFloat(marcaSel.options[marcaSel.selectedIndex].getAttribute('data-factor'));
-  var km = parseInt(document.getElementById('dp-km').value, 10) || 0;
+  var ajuste = parseFloat(document.getElementById('dp-ajuste').value) || 0;
 
-  // Anexo IV BOE base
   var pctBase = getDep(antiguedad);
-  var valorBase = precio * (pctBase / 100);
+  var valorTabla = precio * (pctBase / 100);
+  var valor = valorTabla * (1 + ajuste / 100);
 
-  // Ajuste marca
-  valorBase = valorBase * factor;
+  var depAcum = precio > 0 ? ((precio - valor) / precio) * 100 : 0;
+  var perdAnual = antiguedad > 0 ? (precio - valor) / antiguedad : 0;
 
-  // Ajuste kilometraje: media 12k/año
-  var kmEsperado = antiguedad * 12000;
-  if(km > kmEsperado * 1.4){ valorBase = valorBase * 0.90; } // km muy altos
-  else if(km < kmEsperado * 0.7 && antiguedad > 1){ valorBase = valorBase * 1.05; } // km bajos
-
-  var depAcum = precio > 0 ? ((precio - valorBase) / precio) * 100 : 0;
-  var perdAnual = antiguedad > 0 ? (precio - valorBase) / antiguedad : 0;
-
-  // Mejor momento para vender
-  var mejor;
-  if(antiguedad < 3) mejor = '3-4 años';
-  else if(antiguedad <= 6) mejor = '7-9 años';
-  else if(antiguedad <= 9) mejor = '9-10 años';
-  else mejor = 'Mantener uso';
-
-  document.getElementById('dp-valor').textContent = Math.round(valorBase).toLocaleString('es-ES') + ' €';
+  document.getElementById('dp-valor').textContent = Math.round(valor).toLocaleString('es-ES') + ' €';
   document.getElementById('dp-pct').textContent = depAcum.toFixed(1).replace('.', ',') + ' %';
   document.getElementById('dp-anual').textContent = Math.round(perdAnual).toLocaleString('es-ES') + ' €';
-  document.getElementById('dp-mejor').textContent = mejor;
-  document.getElementById('dp-detail').textContent = Math.round(precio).toLocaleString('es-ES') + '€ nuevo · ' +
-    marcaSel.options[marcaSel.selectedIndex].textContent.split(' (')[0].toLowerCase() + ' · ' + antiguedad +
-    ' años · ' + km.toLocaleString('es-ES') + ' km → Tabla Anexo IV: ' + pctBase + '% × ' +
-    Math.round(precio).toLocaleString('es-ES') + '€ = ' + Math.round(precio * pctBase / 100).toLocaleString('es-ES') +
-    '€. Tras ajustes marca + km: ' + Math.round(valorBase).toLocaleString('es-ES') +
-    '€. Depreciación acumulada ' + depAcum.toFixed(1).replace('.', ',') + '% (' +
-    Math.round(perdAnual).toLocaleString('es-ES') + '€/año media). Mejor venta: ' + mejor + '.';
+  document.getElementById('dp-mejor').textContent = pctBase + ' %';
+  document.getElementById('dp-detail').textContent = Math.round(precio).toLocaleString('es-ES') + '€ nuevo · ' + antiguedad +
+    ' años → Tabla Anexo IV: ' + pctBase + '% × ' + Math.round(precio).toLocaleString('es-ES') + '€ = ' +
+    Math.round(valorTabla).toLocaleString('es-ES') + '€.' +
+    (ajuste !== 0 ? ' Con tu ajuste de ' + (ajuste > 0 ? '+' : '') + ajuste + '%: ' + Math.round(valor).toLocaleString('es-ES') + '€.' : '') +
+    ' Depreciación acumulada ' + depAcum.toFixed(1).replace('.', ',') + '% (' +
+    Math.round(perdAnual).toLocaleString('es-ES') + '€/año de media).';
 }
 calcDP();
 </script>
